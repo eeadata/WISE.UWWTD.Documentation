@@ -64,7 +64,7 @@ First decision step in determining what wastewater treatment level is legally â€
 
 ## Decision Tree
 
-```{mermaid}
+```mermaid
 graph TB
 
 A["Number of discharge points > 0 (except BG and HR in 2018) and at least one agglomeration is connected"]
@@ -75,24 +75,17 @@ A -->|NO| NR["Required = NR"]
 linkStyle 0 stroke:green,color:green,stroke-width:1px
 linkStyle 1 stroke:red,color:red,stroke-width:1px
 
-
-B -->|YES| APP1["Required = Appropriate"] 
-B ---->|NO| C["Check receiving area type:
-If number of discharge points > 1 choose the most constraining
-(SA, CSA, A58>NA>LSA),
-if number of discharge points = 0, use NA of type FW"]
+B -->|YES| APP1["Required = Appropriate"]
+B -->|NO| C["Check receiving area type:<br/>If number of discharge points > 1 choose the most constraining<br/>(SA, CSA, A58 > NA > LSA)<br/>If number of discharge points = 0, use NA of type FW"]
 
 linkStyle 2 stroke:green,color:green,stroke-width:1px
 linkStyle 3 stroke:red,color:red,stroke-width:1px
 
-
 %% Receiving area types
 
-
-C ---> NA["NA"]
-C ---> SA["SA, CSA, A54 and/or A58"]
-C ---> LSA["LSA"]
-
+C --> NA["NA"]
+C --> SA["SA, CSA, A54 and/or A58"]
+C --> LSA["LSA"]
 
 %% SA branch
 
@@ -133,7 +126,6 @@ linkStyle 20 stroke:red,color:red,stroke-width:1px
 LC2 --> F["Biggest agglomeration generated load >= 15000 p.e"]
 
 F -->|YES| SEC4["Required = Secondary"]
-
 F -->|NO| G["Biggest agglomeration generated load >= 10000 p.e"]
 
 G -->|YES| PRI2["Required = Primary"]
@@ -144,19 +136,18 @@ linkStyle 23 stroke:red,color:red,stroke-width:1px
 linkStyle 24 stroke:green,color:green,stroke-width:1px
 linkStyle 25 stroke:red,color:red,stroke-width:1px
 
-
 %% Reference identifiers
- 
-NR -.- ID1(["01-A-01"])
-APP1 -.- ID2(["01-A-02"])
-SEC1 -.- ID3(["01-A-03"])
-APP2 -.- ID4(["01-A-04"])
-SEC2 -.- ID5(["01-A-05"])
-PRI1 -.- ID6(["01-A-06"])
-SEC3 -.- ID7(["01-A-07"])
-SEC4 -.- ID8(["01-A-08"])
-PRI2 -.- ID9(["01-A-09"])
-APP3 -.- ID10(["01-A-10"])
+
+NR -.-> ID1(["01-A-01"])
+APP1 -.-> ID2(["01-A-02"])
+SEC1 -.-> ID3(["01-A-03"])
+APP2 -.-> ID4(["01-A-04"])
+SEC2 -.-> ID5(["01-A-05"])
+PRI1 -.-> ID6(["01-A-06"])
+SEC3 -.-> ID7(["01-A-07"])
+SEC4 -.-> ID8(["01-A-08"])
+PRI2 -.-> ID9(["01-A-09"])
+APP3 -.-> ID10(["01-A-10"])
 
 classDef reference stroke:#00a2ff,color:#00a2ff;
 class ID1,ID2,ID3,ID4,ID5,ID6,ID7,ID8,ID9,ID10 reference;

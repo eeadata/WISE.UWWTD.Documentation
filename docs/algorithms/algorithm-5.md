@@ -44,6 +44,12 @@ It also calls **Algorithm 10** and **Algorithm 11** when all plants are NR/NI wi
     * Art. 5 & 6 = **NR**
     * `exit_leaf = 05-03`
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

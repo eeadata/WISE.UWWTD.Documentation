@@ -51,6 +51,12 @@ This procedure checks whether an agglomeration ≥ 2000 p.e. has an adequate was
 * compliance = **PD**
 * (`alg4_exit_leaf = 04-04`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

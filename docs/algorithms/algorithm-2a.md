@@ -61,6 +61,12 @@ It then checks whether the actual treatment in place and performance (**BOD5, TS
 
 * Passes control to **Algorithm 2b**.
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

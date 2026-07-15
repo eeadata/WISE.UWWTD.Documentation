@@ -45,6 +45,12 @@ The compliance depends on:
 
 * → fallback to **NR**
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

@@ -57,6 +57,12 @@ This is a **hierarchical logic**, where certain conditions override others.
 * → Overall compliance = **NR**
 * (`exit_leaf = 10-09`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

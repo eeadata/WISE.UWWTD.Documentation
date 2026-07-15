@@ -59,6 +59,12 @@ Determines the compliance status (**NR, NC, PD, C**) based on:
   * Fallback to deadline checks for Art.4 and Art.5 and rules
   * (`06-12 → 06-14`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

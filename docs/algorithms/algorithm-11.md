@@ -75,6 +75,12 @@ Determine the legal compliance for **Articles 4, 5, and 6** at the agglomeration
     * No change
     * (`exit_leaf = 11-01`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

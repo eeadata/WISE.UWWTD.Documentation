@@ -34,6 +34,11 @@ Inputs:
     * **rcaB = 1 & rcaAPhos = 0** → (b), **01-C-05**
     * **rcaB = 1 & rcaAPhos = 1** → (aP+b), **01-C-06**
 
+## Decision Tree
+
+```{mermaid}
+
+```
 
 ## Pseudocode
 

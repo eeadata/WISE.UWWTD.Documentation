@@ -42,6 +42,12 @@ Algorithm 3’s role is to take compliance from Algorithm 2 and adjust it to **C
   * compliance = **PD**
   * (`alg3_exit_leaf = 03-03`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

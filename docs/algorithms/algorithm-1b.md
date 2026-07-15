@@ -41,6 +41,11 @@ Algorithm 1b determines the required wastewater treatment level for a treatment 
 * Stores the calculated **result** and **exit\_leaf** using a placeholder function:
   * `update_algorithm_plant`
 
+## Decision Tree
+
+```{mermaid}
+
+```
 
 ## Pseudocode
 

@@ -34,6 +34,12 @@ Compliance depends on:
   * **NR**
   * (`exit_leaf = 08-05`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

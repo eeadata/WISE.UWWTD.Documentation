@@ -36,6 +36,12 @@ For each required case, it runs a branch of the decision tree:
   * **"C" (compliant)** or
   * **"NC" (non-compliant)**
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

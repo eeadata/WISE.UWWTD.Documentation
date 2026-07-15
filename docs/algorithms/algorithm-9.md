@@ -67,6 +67,12 @@ Compliance depends on:
     * **PD**
     * (`exit_leaf = 09-05 or 09-12`)
 
+## Decision Tree
+
+```{mermaid}
+
+```
+
 ## Pseudocode
 
 ```python

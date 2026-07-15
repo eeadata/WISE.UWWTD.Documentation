@@ -17,7 +17,8 @@ extensions = ['sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',
               'sphinx_copybutton',
-              'sphinx_togglebutton'
+              'sphinx_togglebutton',
+              'sphinxcontrib.mermaid'
               ]
 
 templates_path = ['_templates']
@@ -37,9 +38,6 @@ html_theme_options = {
 }
 
 
-
-
-
 html_static_path = ['_static']
 html_css_files = ['custom.css']
 
@@ -48,8 +46,6 @@ html_show_copyright = False
 html_js_files = [
     "js/mermaid-zoom.js",
 ]
-
-
 
 # MERMAID DIAGRAMS 
 mermaid_init_js = """

@@ -158,7 +158,7 @@ SEC4 -.- ID8(["01-A-08"])
 PRI2 -.- ID9(["01-A-09"])
 APP3 -.- ID10(["01-A-10"])
 
-classDef reference stroke:#00a2ff,color:#00a2ff, shape: stadium;
+classDef reference stroke:#00a2ff,color:#00a2ff;
 class ID1,ID2,ID3,ID4,ID5,ID6,ID7,ID8,ID9,ID10 reference;
 
 classDef decision fill:#ffffff,stroke:#000000,stroke-width:1px;

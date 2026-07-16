@@ -37,7 +37,54 @@ Inputs:
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+CSA["CSA"] --- ART["Article 5(4) applies"]
 
+ART --- Y1((YES)) --- SEC["Required = Secondary"]
+SEC -.- ID07(["01-C-07"])
+
+ART --- N1((NO)) --- NAN["Receiving area demands Nitrogen (aN)"]
+
+NAN --- Y2((YES)) --- PAP1["Receiving area demands Phosphorus (aP)"]
+NAN --- N2((NO)) --- NB["Receiving area demands Nitrogen (b)"]
+
+%% aN = YES branch
+PAP1 --- Y3((YES)) --- NAP["Required = Nitrogen(a) & Phosphorus (aN + aP)"]
+NAP -.- ID01(["01-C-01"])
+
+PAP1 --- N3((NO)) --- NA["Required = Nitrogen(a) (aN)"]
+NA -.- ID02(["01-C-02"])
+
+%% aN = NO branch (Nitrogen b)
+NB --- Y4((YES)) --- PAP2["Receiving area demands Phosphorus (aP)"]
+NB --- N4((NO)) --- PAP3["Receiving area demands Phosphorus (aP)"]
+
+%% Nitrogen b = YES branch
+PAP2 --- Y5((YES)) --- NBP["Required = Nitrogen(b) & Phosphorus (b+aP)"]
+NBP -.- ID06(["01-C-06"])
+
+PAP2 --- N5((NO)) --- NBONLY["Required = Nitrogen (b)"]
+NBONLY -.- ID05(["01-C-05"])
+
+%% Nitrogen b = NO branch
+PAP3 --- Y6((YES)) --- PONLY["Required = Phosphorus (aP)"]
+PONLY -.- ID04(["01-C-04"])
+
+PAP3 --- N6((NO)) --- SEC2["Required = Secondary"]
+SEC2 -.- ID03(["01-C-03"])
+
+classDef reference stroke:#00a2ff,color:#00a2ff;
+class ID07,ID01,ID02,ID06,ID05,ID04,ID03 reference;
+
+%% Styles
+classDef reference stroke:#00a2ff,color:#00a2ff;
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
+
+%% Class Assignments
+class ID07,ID01,ID02,ID06,ID05,ID04,ID03 reference;
+class Y1,Y2,Y3,Y4,Y5,Y6 yesBox;
+class N1,N2,N3,N4,N5,N6 noBox;
 ```
 
 ## Pseudocode

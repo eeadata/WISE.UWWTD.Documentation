@@ -47,7 +47,43 @@ It also calls **Algorithm 10** and **Algorithm 11** when all plants are NR/NI wi
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+ROOT["agglomeration: sum of wastewater collected in collecting system > 0%"]
 
+ROOT -->|NO| ALG6_1["see algorithm n°6"]
+ROOT -->|YES| CONN["at least connected to one treatment plant"]
+
+CONN -->|YES| ALL_PLANTS["all plants have treatment required = appropriate & treatment compliance = NR OR NI"]
+CONN -->|NO| CHECK_LOAD["Check agglomeration generated load > 10000p.e"]
+
+%% Left Subtree
+ALL_PLANTS -->|YES| COMP_NR["Compliance Article 4 = NR Compliance Article 5 = NR Compliance Article 6 = NR"]
+COMP_NR --> ALG10["see algorithm n°10"]
+COMP_NR -.- ID04(["05-04"])
+
+ALL_PLANTS -->|NO| AT_LEAST["at least one treatment plant compliance =? and all other treatment plants compliance = C or NR or PD"]
+
+AT_LEAST -->|YES| COMP_Q["Compliance Article 4 = ? Compliance Article 5 = ? Compliance Article 6 = ?"]
+COMP_Q --> ALG6_2["see algorithm n°6"]
+COMP_Q -.- ID02(["05-02"])
+
+AT_LEAST -->|NO| ALG6_NO["see algorithm n°6"]
+
+%% Right Subtree
+CHECK_LOAD -->|NO| LOAD_NO["Compliance Article 4 = ? Compliance Article 5 = NR Compliance Article 6 = NR"]
+LOAD_NO --> ALG6_3["see algorithm n°6"]
+LOAD_NO -.- ID03(["05-03"])
+
+CHECK_LOAD -->|YES| LOAD_YES["Compliance Article 4 = ? Compliance Article 5 = ? Compliance Article 6 = NR"]
+LOAD_YES --> ALG6_4["see algorithm n°6"]
+LOAD_YES -.- ID01(["05-01"])
+
+classDef reference stroke:#00a2ff,color:#00a2ff;
+class ID04,ID02,ID03,ID01 reference;
+
+%% Apply YES (Green) and NO (Red) Link Styles
+linkStyle 1,2,4,8,15 stroke:green,color:green,stroke-width:2px;
+linkStyle 0,3,7,11,12 stroke:red,color:red,stroke-width:2px;
 ```
 
 ## Pseudocode

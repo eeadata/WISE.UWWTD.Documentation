@@ -54,7 +54,41 @@ This procedure checks whether an agglomeration ≥ 2000 p.e. has an adequate was
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+ROOT["Check agglomeration generated load"]
 
+ROOT -->|< 2000p.e| LT2000["Compliance art3 = NR Compliance art4 = NR Compliance art5 = NR Compliance art6 = NR"]
+LT2000 -.- ID01(["04-01"])
+
+ROOT -->|>= 2000p.e| GE2000["Deadline of Article 3 is before or equal to reporting reference date"]
+
+GE2000 -->|NO| ART3_PD["Compliance art3 = PD"]
+ART3_PD -.- ID04(["04-04"])
+
+GE2000 -->|YES| COND1["If ((sum of wastewater not collected in collecting system and not addressed by IAS) + sum of wastewater treated in IAS) <= 2000p.e AND ((% of wastewater not collected in collecting system and not addressed by IAS) + % of wastewater treated in IAS) <= 2%"]
+
+COND1 -->|YES| ART3_C["Compliance art3 = C"]
+ART3_C -.- ID02(["04-02"])
+
+COND1 -->|NO| COND2["If (sum of wastewater not collected in collecting system and not addressed by IAS) > 2000p.e OR (% of wastewater not collected in collecting system and not addressed by IAS) > 2%"]
+
+COND2 -->|YES| ART3_NC["Compliance art3 = NC"]
+ART3_NC -.- ID05(["04-05"])
+
+COND2 -->|NO| COND3["If addressed by IAS >2% or >1000pe"]
+
+COND3 -->|YES| ART3_C_ADDQC["Compliance art3 = C Additionnal compliance art3: AddQC"]
+ART3_C_ADDQC -.- ID06(["04-06"])
+
+COND3 -->|NO| ART3_C_QC["Compliance art3 = C Additionnal compliance art3= QC"]
+ART3_C_QC -.- ID03(["04-03"])
+
+classDef reference stroke:#00a2ff,color:#00a2ff;
+class ID01,ID04,ID02,ID05,ID06,ID03 reference;
+
+%% Apply YES (Green) and NO (Red) Link Styles
+linkStyle 5,6,9,12 stroke:green,color:green,stroke-width:2px;
+linkStyle 3,8,11,14 stroke:red,color:red,stroke-width:2px;
 ```
 
 ## Pseudocode

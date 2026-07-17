@@ -35,11 +35,18 @@ html_theme_options = {
     "show_toc_level": 3, 
     "use_edit_page_button": False,
     "navbar_align": "right",
+    "logo": {
+        "alt_text": "WISE UWWTD Documentation",
+        "text": "WISE UWWTD Documentation",
+    },
 }
 
 
 html_static_path = ['_static']
-html_css_files = ['custom.css']
+html_css_files = [
+    'customTable.css',
+    'customTheme.css'
+    ]
 
 html_show_copyright = False
 

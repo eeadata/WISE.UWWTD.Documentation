@@ -3,10 +3,10 @@
 ## Overview 
 
 Determine the nutrient requirements for a plant based on the nitrogen and phosphorus flags for the 
-receiving area (Eutrophication: rcaANitro, rcaAPhos; Quality of water for drinking: rcaB)  
+If receiving area (Eutrophication: rcaANitro, rcaAPhos; Quality of water for drinking: rcaB)  
 
 Inputs:
-- rcaANitro → Does the primary receiving area demand Nitrogen? 
+- rcaANitro → Does the primary If receiving area demand Nitrogen? 
 - rcaAPhos → Does it demand Phosphorus? 
 - rcaB → Secondary Nitrogen demand.
 
@@ -38,15 +38,15 @@ Inputs:
 
 ```{mermaid}
 graph TB
-CSA["CSA"] --- ART["Article 5(4) applies"]
+CSA["CSA"] --> ART["Article 5(4) applies"]
 
 ART --- Y1((YES)) --- SEC["Required = Secondary"]
 SEC -.- ID07(["01-C-07"])
 
-ART --- N1((NO)) --- NAN["Receiving area demands Nitrogen (aN)"]
+ART --- N1((NO)) --- NAN["If receiving area demands Nitrogen (aN)"]
 
-NAN --- Y2((YES)) --- PAP1["Receiving area demands Phosphorus (aP)"]
-NAN --- N2((NO)) --- NB["Receiving area demands Nitrogen (b)"]
+NAN --- Y2((YES)) --- PAP1["If receiving area demands Phosphorus (aP)"]
+NAN --- N2((NO)) --- NB["If receiving area demands Nitrogen (b)"]
 
 %% aN = YES branch
 PAP1 --- Y3((YES)) --- NAP["Required = Nitrogen(a) & Phosphorus (aN + aP)"]
@@ -56,8 +56,8 @@ PAP1 --- N3((NO)) --- NA["Required = Nitrogen(a) (aN)"]
 NA -.- ID02(["01-C-02"])
 
 %% aN = NO branch (Nitrogen b)
-NB --- Y4((YES)) --- PAP2["Receiving area demands Phosphorus (aP)"]
-NB --- N4((NO)) --- PAP3["Receiving area demands Phosphorus (aP)"]
+NB --- Y4((YES)) --- PAP2["If receiving area demands Phosphorus (aP)"]
+NB --- N4((NO)) --- PAP3["If receiving area demands Phosphorus (aP)"]
 
 %% Nitrogen b = YES branch
 PAP2 --- Y5((YES)) --- NBP["Required = Nitrogen(b) & Phosphorus (b+aP)"]
@@ -89,6 +89,7 @@ class N1,N2,N3,N4,N5,N6 noBox;
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 if article_5_4_applies: 
     result_required = "Secondary" 

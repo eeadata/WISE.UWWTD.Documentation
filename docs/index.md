@@ -12,5 +12,4 @@ This **documentation** introduces a compliance algorithm designed to systematica
 Overview <overview/index>
 Notation <notation>
 Compliance Algorithms <algorithms/index>
-Annexe I <annexe1>
 ```

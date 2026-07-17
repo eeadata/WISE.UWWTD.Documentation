@@ -83,6 +83,7 @@ Determine the legal compliance for **Articles 4, 5, and 6** at the agglomeration
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 # Article 3 = NC branch 
 if art3 == "NC": 

@@ -53,42 +53,47 @@ ROOT --> M1["If required=primary or secondary check date article 4: if = null OR
 ROOT --> R1["if required= more stringent, check date article 4: if = null OR if deadline is before or equal reporting reference date."]
 
 %% Left Branch
-L1 -->|YES| L_YES["compliance = result of algorithm n°2"]
+L1 --- Y1((YES)) --- L_YES["compliance = result of algorithm n°2"]
 L_YES -.- ID01(["03-01"])
-L1 -->|NO| L_NO["compliance = PD"]
+L1 --- N1((NO)) --- L_NO["compliance = PD"]
 L_NO -.- ID02(["03-02"])
 
 %% Middle Branch
-M1 -->|NO| M_NO["Compliance = PD"]
+M1 --- N2((NO)) --- M_NO["Compliance = PD"]
 M_NO -.- ID03A(["03-03"])
-M1 -->|YES| A5_CHECK["check date article 5: if = null OR if deadline is before or equal reporting reference date."]
+M1 --- Y2((YES)) --- A5_CHECK["check date article 5: if = null OR if deadline is before or equal reporting reference date."]
 
 %% Right Branch
-R1 -->|YES| A5_CHECK
-R1 -->|NO| R_NO["Compliance = PD"]
+R1 --- Y3((YES)) --- A5_CHECK
+R1 --- N3((NO)) --- R_NO["Compliance = PD"]
 R_NO -.- ID03B(["03-03"])
 
 %% Article 5 Check
-A5_CHECK -->|YES| A5_YES["compliance = result of algorithm n°2"]
+A5_CHECK --- Y4((YES)) --- A5_YES["compliance = result of algorithm n°2"]
 A5_YES -.- ID04(["03-04"])
-A5_CHECK -->|NO| A5_NO["If secondary treatment in place AND if COD and BOD5 performance = pass"]
+A5_CHECK --- N4((NO)) --- A5_NO["If secondary treatment in place AND if COD and BOD5 performance = pass"]
 
-%% Secondary Treatment Check
-A5_NO -->|YES| SEC_YES["Compliance = C"]
-SEC_YES -.- ID05(["03-05"])
-A5_NO -->|NO| SEC_NO["Compliance = NC"]
-SEC_NO -.- ID06(["03-06"])
+%% A5_NO branch
 
+A5_NO --- Y5((YES)) --- N6["Compliance = C"] -.- ID05(["03-05"])
+A5_NO --- N5((NO)) --- N7["Compliance = NC"] -.- ID06(["03-06"])
+
+
+
+%% Styles
 classDef reference stroke:#00a2ff,color:#00a2ff;
-class ID01,ID02,ID03A,ID03B,ID04,ID05,ID06 reference;
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
 
-%% Apply YES (Green) and NO (Red) Link Styles
-linkStyle 3,9,10,13,16 stroke:green,color:green,stroke-width:2px;
-linkStyle 5,7,11,15,18 stroke:red,color:red,stroke-width:2px;
+%% Class Assignments
+class ID01,ID02,ID03A,ID03B,ID04,ID05,ID06 reference;
+class Y1,Y2,Y3,Y4,Y5 yesBox;
+class N1,N2,N3,N4,N5 noBox;
 ```
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 # --- Case 1: Required = Appropriate --- 
 if required == "Appropriate": 

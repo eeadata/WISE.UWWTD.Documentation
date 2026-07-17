@@ -53,6 +53,7 @@ The compliance depends on:
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 if number_plants_connected = 0 and aggPercWithoutTreatment > 2%: 
  

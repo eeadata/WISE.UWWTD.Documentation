@@ -42,6 +42,7 @@ Compliance depends on:
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 A = (aggC1 * aggGenerated) * 0.01 
  

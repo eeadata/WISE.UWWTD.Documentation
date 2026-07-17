@@ -65,6 +65,7 @@ This is a **hierarchical logic**, where certain conditions override others.
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 # Unknown compliance 
 if "?" in (art3, art4, art5, art6): 

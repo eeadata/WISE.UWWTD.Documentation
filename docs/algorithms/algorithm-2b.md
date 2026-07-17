@@ -39,6 +39,7 @@ For each required case, it runs a branch of the decision tree:
 ## Decision Tree
 
 ```{mermaid}
+
 graph LR
 ROOT["More stringent treatment (uwwOtherTreatment)"]
 
@@ -56,173 +57,187 @@ ROOT --> BR5["More Stringent Nitrogen and Other (b + c)"]
 ROOT --> BR6["More stringent Other (c) or (rcaParameterOther)"]
 
 %% Branch 1
-B1 --> C1["If secondary treatment, N-removal and P-removal is in place"]
-C1 -->|NO| T1_NO["Treatment = Not met"]
-C1 -->|YES| T1_YES["Treatment = Met"]
+B1 --- C1["If secondary treatment, N-removal and P-removal is in place"]
+C1 --- N1((NO)) --- T1_NO["Treatment = Not met"]
+C1 --- Y1((YES)) --- T1_YES["Treatment = Met"]
 
-T1_NO --> P1_NO["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
-P1_NO -->|NO| R04["Performance = Not met Compliance = NC"]
+T1_NO --- P1_NO["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
+P1_NO --- N2((NO)) --- R04["Performance = Not met Compliance = NC"]
 R04 -.- ID04(["02-B-04"])
-P1_NO -->|YES| R03["Performance = Met Compliance = NC"]
+P1_NO --- Y2((YES)) --- R03["Performance = Met Compliance = NC"]
 R03 -.- ID03(["02-B-03"])
 
-T1_YES --> P1_YES["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
-P1_YES -->|NO| R02["Performance = Not met Compliance = NC"]
+T1_YES --- P1_YES["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
+P1_YES --- N3((NO)) --- R02["Performance = Not met Compliance = NC"]
 R02 -.- ID02(["02-B-02"])
-P1_YES -->|YES| R01["Performance = Met Compliance = C"]
+P1_YES --- Y3((YES)) --- R01["Performance = Met Compliance = C"]
 R01 -.- ID01(["02-B-01"])
 
 %% Branch 2
-B2 --> C2["If secondary treatment and P-removal is in place"]
-C2 -->|NO| T2_NO["Treatment = Not met"]
-C2 -->|YES| T2_YES["Treatment = Met"]
+B2 --- C2["If secondary treatment and P-removal is in place"]
+C2 --- N4((NO)) --- T2_NO["Treatment = Not met"]
+C2 --- Y4((YES)) --- T2_YES["Treatment = Met"]
 
-T2_NO --> P2_NO["If COD, BOD5 and Phosphorus performance pass"]
-P2_NO -->|NO| R08["Performance = Not met Compliance = NC"]
+T2_NO --- P2_NO["If COD, BOD5 and Phosphorus performance pass"]
+P2_NO --- N5((NO)) --- R08["Performance = Not met Compliance = NC"]
 R08 -.- ID08(["02-B-08"])
-P2_NO -->|YES| R07["Performance = Met Compliance = NC"]
+P2_NO --- Y5((YES)) --- R07["Performance = Met Compliance = NC"]
 R07 -.- ID07(["02-B-07"])
 
-T2_YES --> P2_YES["If COD, BOD5 and Phosphorus performance pass"]
-P2_YES -->|NO| R06["Performance = Not met Compliance = NC"]
+T2_YES --- P2_YES["If COD, BOD5 and Phosphorus performance pass"]
+P2_YES --- N6((NO)) --- R06["Performance = Not met Compliance = NC"]
 R06 -.- ID06(["02-B-06"])
-P2_YES -->|YES| R05["Performance = Met Compliance = C"]
+P2_YES --- Y6((YES)) --- R05["Performance = Met Compliance = C"]
 R05 -.- ID05(["02-B-05"])
 
 %% Branch 3
-B3 --> C3["If secondary treatment and N-removal is in place"]
-C3 -->|NO| T3_NO["Treatment = Not met"]
-C3 -->|YES| T3_YES["Treatment = Met"]
+B3 --- C3["If secondary treatment and N-removal is in place"]
+C3 --- N7((NO)) --- T3_NO["Treatment = Not met"]
+C3 --- Y7((YES)) --- T3_YES["Treatment = Met"]
 
-T3_NO --> P3_NO["If COD, BOD5 and Nitrogen performance pass"]
-P3_NO -->|NO| R12["Performance = Not met Compliance = NC"]
+T3_NO --- P3_NO["If COD, BOD5 and Nitrogen performance pass"]
+P3_NO --- N8((NO)) --- R12["Performance = Not met Compliance = NC"]
 R12 -.- ID12(["02-B-12"])
-P3_NO -->|YES| R11["Performance = Met Compliance = NC"]
+P3_NO --- Y8((YES)) --- R11["Performance = Met Compliance = NC"]
 R11 -.- ID11(["02-B-11"])
 
-T3_YES --> P3_YES["If COD, BOD5 and Nitrogen performance pass"]
-P3_YES -->|NO| R10["Performance = Not met Compliance = NC"]
+T3_YES --- P3_YES["If COD, BOD5 and Nitrogen performance pass"]
+P3_YES --- N9((NO)) --- R10["Performance = Not met Compliance = NC"]
 R10 -.- ID10(["02-B-10"])
-P3_YES -->|YES| R09["Performance = Met Compliance = C"]
+P3_YES --- Y9((YES)) --- R09["Performance = Met Compliance = C"]
 R09 -.- ID09(["02-B-09"])
 
 %% Branch 4
-B4 --> C4["If secondary treatment and N-removal is in place"]
-C4 -->|NO| T4_NO["Treatment = Not met"]
-C4 -->|YES| T4_YES["Treatment = Met"]
+B4 --- C4["If secondary treatment and N-removal is in place"]
+C4 --- N10((NO)) --- T4_NO["Treatment = Not met"]
+C4 --- Y10((YES)) --- T4_YES["Treatment = Met"]
 
-T4_NO --> R15["Performance = Not met Compliance = NC"]
+T4_NO --- R15["Performance = Not met Compliance = NC"]
 R15 -.- ID15(["02-B-15"])
 
-T4_YES --> P4_YES["If COD and BOD5 performance pass"]
-P4_YES -->|NO| R14["Performance = Not met Compliance = NC"]
+T4_YES --- P4_YES["If COD and BOD5 performance pass"]
+P4_YES --- N11((NO)) --- R14["Performance = Not met Compliance = NC"]
 R14 -.- ID14(["02-B-14"])
-P4_YES -->|YES| R13["Performance = Met Compliance = C"]
+P4_YES --- Y11((YES)) --- R13["Performance = Met Compliance = C"]
 R13 -.- ID13(["02-B-13"])
 
 %% Branch 5
-B5 --> C5["If secondary treatment and N-removal and P removal is in place"]
-C5 -->|NO| T5_NO["Treatment = Not met"]
-C5 -->|YES| T5_YES["Treatment = Met"]
+B5 --- C5["If secondary treatment and N-removal and P removal is in place"]
+C5 --- N12((NO)) --- T5_NO["Treatment = Not met"]
+C5 --- Y12((YES)) --- T5_YES["Treatment = Met"]
 
-T5_NO --> R18["Performance = Not met Compliance = NC"]
+T5_NO --- R18["Performance = Not met Compliance = NC"]
 R18 -.- ID18(["02-B-18"])
 
-T5_YES --> P5_YES["If COD, BOD5 and Phosphorus performance pass"]
-P5_YES -->|NO| R17["Performance = Not met Compliance = NC"]
+T5_YES --- P5_YES["If COD, BOD5 and Phosphorus performance pass"]
+P5_YES --- N13((NO)) --- R17["Performance = Not met Compliance = NC"]
 R17 -.- ID17(["02-B-17"])
-P5_YES -->|YES| R16["Performance = Met Compliance = C"]
+P5_YES --- Y13((YES)) --- R16["Performance = Met Compliance = C"]
 R16 -.- ID16(["02-B-16"])
 
 %% Branch 6
-BR1 --> C6["If secondary treatment and N-removal and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C6 -->|NO| T6_NO["Treatment = Not met Performance = Not met Compliance = NC"]
+BR1 --- C6["If secondary treatment and N-removal and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C6 --- N14((NO)) --- T6_NO["Treatment = Not met Performance = Not met Compliance = NC"]
 T6_NO -.- ID21(["02-B-21"])
-C6 -->|YES| T6_YES["Treatment = Met"]
-T6_YES --> P6_YES["If COD, BOD5 and Phosphorus performance pass"]
-P6_YES -->|NO| R20["Performance = Not met Compliance = NC"]
+C6 --- Y14((YES)) --- T6_YES["Treatment = Met"]
+
+T6_YES --- P6_YES["If COD, BOD5 and Phosphorus performance pass"]
+P6_YES --- N15((NO)) --- R20["Performance = Not met Compliance = NC"]
 R20 -.- ID20(["02-B-20"])
-P6_YES -->|YES| R19["Performance = Met Compliance = C"]
+P6_YES --- Y15((YES)) --- R19["Performance = Met Compliance = C"]
 R19 -.- ID19(["02-B-19"])
 
 %% Branch 7
-BR2 --> C7["If secondary treatment and N-removal and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C7 -->|NO| T7_NO["Treatment = Not met"]
-C7 -->|YES| T7_YES["Treatment = Met"]
-T7_NO --> P7_NO["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
-P7_NO -->|NO| R25["Performance = Not met Compliance = NC"]
+BR2 --- C7["If secondary treatment and N-removal and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C7 --- N16((NO)) --- T7_NO["Treatment = Not met"]
+C7 --- Y16((YES)) --- T7_YES["Treatment = Met"]
+
+T7_NO --- P7_NO["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
+P7_NO --- N17((NO)) --- R25["Performance = Not met Compliance = NC"]
 R25 -.- ID25(["02-B-25"])
-P7_NO -->|YES| R24["Performance = Met Compliance = NC"]
+P7_NO --- Y17((YES)) --- R24["Performance = Met Compliance = NC"]
 R24 -.- ID24(["02-B-24"])
-T7_YES --> P7_YES["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
-P7_YES -->|NO| R23["Performance = Not met Compliance = NC"]
+
+T7_YES --- P7_YES["If COD, BOD5, Nitrogen and Phosphorus performance pass"]
+P7_YES --- N18((NO)) --- R23["Performance = Not met Compliance = NC"]
 R23 -.- ID23(["02-B-23"])
-P7_YES -->|YES| R22["Performance = Met Compliance = C"]
+P7_YES --- Y18((YES)) --- R22["Performance = Met Compliance = C"]
 R22 -.- ID22(["02-B-22"])
 
 %% Branch 8
-BR3 --> C8["If secondary treatment and N-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C8 -->|NO| T8_NO["Treatment = Not met"]
-C8 -->|YES| T8_YES["Treatment = Met"]
-T8_NO --> P8_NO["If COD, BOD5 and Nitrogen performance pass"]
-P8_NO -->|NO| R29["Performance = Not met Compliance = NC"]
+BR3 --- C8["If secondary treatment and N-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C8 --- N19((NO)) --- T8_NO["Treatment = Not met"]
+C8 --- Y19((YES)) --- T8_YES["Treatment = Met"]
+
+T8_NO --- P8_NO["If COD, BOD5 and Nitrogen performance pass"]
+P8_NO --- N20((NO)) --- R29["Performance = Not met Compliance = NC"]
 R29 -.- ID29(["02-B-29"])
-P8_NO -->|YES| R28["Performance = Met Compliance = NC"]
+P8_NO --- Y20((YES)) --- R28["Performance = Met Compliance = NC"]
 R28 -.- ID28(["02-B-28"])
-T8_YES --> P8_YES["If COD, BOD5 and Nitrogen performance pass"]
-P8_YES -->|NO| R27["Performance = Not met Compliance = NC"]
+
+T8_YES --- P8_YES["If COD, BOD5 and Nitrogen performance pass"]
+P8_YES --- N21((NO)) --- R27["Performance = Not met Compliance = NC"]
 R27 -.- ID27(["02-B-27"])
-P8_YES -->|YES| R26["Performance = Met Compliance = C"]
+P8_YES --- Y21((YES)) --- R26["Performance = Met Compliance = C"]
 R26 -.- ID26(["02-B-26"])
 
 %% Branch 9
-BR4 --> C9["If secondary treatment and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C9 -->|NO| T9_NO["Treatment = Not met"]
-C9 -->|YES| T9_YES["Treatment = Met"]
-T9_NO --> P9_NO["If COD, BOD5 and Phosphorus performance pass"]
-P9_NO -->|NO| R33["Performance = Not met Compliance = NC"]
+BR4 --- C9["If secondary treatment and P-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C9 --- N22((NO)) --- T9_NO["Treatment = Not met"]
+C9 --- Y22((YES)) --- T9_YES["Treatment = Met"]
+
+T9_NO --- P9_NO["If COD, BOD5 and Phosphorus performance pass"]
+P9_NO --- N23((NO)) --- R33["Performance = Not met Compliance = NC"]
 R33 -.- ID33(["02-B-33"])
-P9_NO -->|YES| R32["Performance = Met Compliance = NC"]
+P9_NO --- Y23((YES)) --- R32["Performance = Met Compliance = NC"]
 R32 -.- ID32(["02-B-32"])
-T9_YES --> P9_YES["If COD, BOD5 and Phosphorus performance pass"]
-P9_YES -->|NO| R31["Performance = Not met Compliance = NC"]
+
+T9_YES --- P9_YES["If COD, BOD5 and Phosphorus performance pass"]
+P9_YES --- N24((NO)) --- R31["Performance = Not met Compliance = NC"]
 R31 -.- ID31(["02-B-31"])
-P9_YES -->|YES| R30["Performance = Met Compliance = C"]
+P9_YES --- Y24((YES)) --- R30["Performance = Met Compliance = C"]
 R30 -.- ID30(["02-B-30"])
 
 %% Branch 10
-BR5 --> C10["If secondary treatment and N-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C10 -->|NO| T10_NO["Treatment = Not met"]
-C10 -->|YES| T10_YES["Treatment = Met"]
-T10_NO --> R36["Performance = Not met Compliance = NC"]
+BR5 --- C10["If secondary treatment and N-removal and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C10 --- N25((NO)) --- T10_NO["Treatment = Not met"]
+C10 --- Y25((YES)) --- T10_YES["Treatment = Met"]
+
+T10_NO --- R36["Performance = Not met Compliance = NC"]
 R36 -.- ID36(["02-B-36"])
-T10_YES --> P10_YES["If COD and BOD5 performance pass"]
-P10_YES -->|NO| R35["Performance = Not met Compliance = NC"]
+
+T10_YES --- P10_YES["If COD and BOD5 performance pass"]
+P10_YES --- N26((NO)) --- R35["Performance = Not met Compliance = NC"]
 R35 -.- ID35(["02-B-35"])
-P10_YES -->|YES| R34["Performance = Met Compliance = C"]
+P10_YES --- Y26((YES)) --- R34["Performance = Met Compliance = C"]
 R34 -.- ID34(["02-B-34"])
 
 %% Branch 11
-BR6 --> C11["If secondary treatment and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
-C11 -->|NO| T11_NO["Treatment = Not met"]
-C11 -->|YES| T11_YES["Treatment = Met"]
-T11_NO --> P11_NO["If COD and BOD5 performance pass"]
-P11_NO -->|NO| R40["Performance = Not met Compliance = NC"]
+BR6 --- C11["If secondary treatment and one or more of UV, Chlorination, Ozonation, Sand filtration, Micro filtration or Other type of more stringent treatment is in place"]
+C11 --- N27((NO)) --- T11_NO["Treatment = Not met"]
+C11 --- Y27((YES)) --- T11_YES["Treatment = Met"]
+
+T11_NO --- P11_NO["If COD and BOD5 performance pass"]
+P11_NO --- N28((NO)) --- R40["Performance = Not met Compliance = NC"]
 R40 -.- ID40(["02-B-40"])
-P11_NO -->|YES| R39["Performance = Met Compliance = NC"]
+P11_NO --- Y28((YES)) --- R39["Performance = Met Compliance = NC"]
 R39 -.- ID39(["02-B-39"])
-T11_YES --> P11_YES["If COD and BOD5 performance pass"]
-P11_YES -->|NO| R38["Performance = Not met Compliance = NC"]
+
+T11_YES --- P11_YES["If COD and BOD5 performance pass"]
+P11_YES --- N29((NO)) --- R38["Performance = Not met Compliance = NC"]
 R38 -.- ID38(["02-B-38"])
-P11_YES -->|YES| R37["Performance = Met Compliance = C"]
+P11_YES --- Y29((YES)) --- R37["Performance = Met Compliance = C"]
 R37 -.- ID37(["02-B-37"])
 
+%% Styles
 classDef reference stroke:#00a2ff,color:#00a2ff;
-class ID04,ID03,ID02,ID01,ID08,ID07,ID06,ID05,ID12,ID11,ID10,ID09,ID15,ID14,ID13,ID18,ID17,ID16,ID21,ID20,ID19,ID25,ID24,ID23,ID22,ID29,ID28,ID27,ID26,ID33,ID32,ID31,ID30,ID36,ID35,ID34,ID40,ID39,ID38,ID37 reference;
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
 
-%% Apply YES (Green) and NO (Red) Link Styles
-linkStyle 13,17,22,26,30,35,39,43,48,52,58,62,68,73,77,81,85,90,94,98,103,107,111,116,120,126,130,134,139 stroke:green,color:green,stroke-width:2px;
-linkStyle 12,15,20,25,28,33,38,41,46,51,56,61,66,71,75,80,83,88,93,96,101,106,109,114,119,124,129,132,137 stroke:red,color:red,stroke-width:2px;
+%% Class Assignments
+class ID01,ID02,ID03,ID04,ID05,ID06,ID07,ID08,ID09,ID10,ID11,ID12,ID13,ID14,ID15,ID16,ID17,ID18,ID19,ID20,ID21,ID22,ID23,ID24,ID25,ID26,ID27,ID28,ID29,ID30,ID31,ID32,ID33,ID34,ID35,ID36,ID37,ID38,ID39,ID40 reference;
+class Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y10,Y11,Y12,Y13,Y14,Y15,Y16,Y17,Y18,Y19,Y20,Y21,Y22,Y23,Y24,Y25,Y26,Y27,Y28,Y29 yesBox;
+class N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12,N13,N14,N15,N16,N17,N18,N19,N20,N21,N22,N23,N24,N25,N26,N27,N28,N29 noBox;
 
 ```
 
@@ -230,6 +245,7 @@ linkStyle 12,15,20,25,28,33,38,41,46,51,56,61,66,71,75,80,83,88,93,96,101,106,10
 
 ## Pseudocode
 
+```{dropdown} Show python code
 ```python
 # ------------------------------------------------------------------- 
 # CASE 1: Nitrogen + Phosphorus ( (aN+aP) or (nitrogen+phosphorus) ) 

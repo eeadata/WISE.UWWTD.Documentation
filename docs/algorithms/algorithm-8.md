@@ -37,7 +37,39 @@ Compliance depends on:
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+ROOT["At least one plant has treatment required = primary"]
 
+ROOT --> N1((NO)) --- C_NR_1["Compliance Article 6 = NR"]
+C_NR_1 -.- ID01(["08-01"])
+
+ROOT --> Y1((YES)) --- COND_1["At least one compliance for Article 6 = NC and (Sum of load entering for all plants with compliance for article 6 = NC) >1% and >= 2000p.e."]
+
+COND_1 --- Y2((YES)) --- C_NC_1["Compliance article 6 = NC"]
+C_NC_1 -.- ID02(["08-02"])
+
+COND_1 --- N2((NO)) --- COND_2["At least one compliance for Article 6 = PD"]
+
+COND_2 --- Y3((YES)) --- C_PD_1["Compliance article 6 = PD"]
+C_PD_1 -.- ID03(["08-03"])
+
+COND_2 --- N3((NO)) --- COND_3["At least one compliance for Article 6 = C"]
+
+COND_3 --- Y4((YES)) --- C_C_1["Compliance article 6 = C"]
+C_C_1 -.- ID04(["08-04"])
+
+COND_3 --- N4((NO)) --- C_NR_2["Compliance article 6 = NR"]
+C_NR_2 -.- ID05(["08-05"])
+
+%% Styles
+classDef reference stroke:#00a2ff,color:#00a2ff;
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
+
+%% Class Assignments
+class ID01,ID02,ID03,ID04,ID05 reference;
+class Y1,Y2,Y3,Y4 yesBox;
+class N1,N2,N3,N4 noBox;
 ```
 
 ## Pseudocode

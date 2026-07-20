@@ -48,7 +48,51 @@ The compliance depends on:
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+ROOT["There is no station and aggPercWithoutTreatment>2%"]
 
+ROOT --> Y1((YES)) --- DL_A["Deadline of article 4 is before or equal to reporting reference year"]
+DL_A --- Y2((YES)) --- C_NC_1["Compliance article 4=NC"]
+DL_A --- N1((NO)) --- C_PD_1["Compliance article 4=PD"]
+
+ROOT --> N2((NO)) --- AT_LEAST["At least one station has treatment required = secondary or more stringent"]
+
+AT_LEAST --- N3((NO)) --- C_NR_1["Compliance Article 4 = NR"]
+AT_LEAST ---- Y3((YES)) --- LOAD_DIS["Load discharged without treatment <=2% of generated load and <=2000p.e"]
+
+LOAD_DIS --- N4((NO)) --- DL_B["Deadline of article 4 is before or equal to reporting reference year"]
+DL_B --- Y4((YES)) --- C_NC_2["Compliance article 4=NC"]
+DL_B --- N5((NO)) --- C_PD_2["Compliance article 4=PD"]
+
+LOAD_DIS --- Y5((YES)) --- BIG_COND["([(load collected in collecting system-sum of load entering the treatment plants)] + (Sum of load entering for all stations with treatment in place = primary or NI or compliance for article 4 = NC)) <=1% OR < 2000p.e"]
+
+BIG_COND --- N6((NO)) --- DL_C["Deadline of article 4 is <> (null or NR or NI or ?)"]
+DL_C --- N7((NO)) --- C_NR_2["Compliance article 4=NR"]
+DL_C --- Y6((YES)) --- DL_D["Deadline of article 4 is before or equal to reporting reference year"]
+DL_D --- Y7((YES)) --- C_NC_3["Compliance article 4=NC"]
+DL_D --- N8((NO)) --- C_PD_3["Compliance article 4=PD"]
+
+BIG_COND --- Y8((YES)) --- COND_NC["At least one compliance for Article 4 = NC AND Sum of load entering for all stations with compliance for article 4 = NC) >1% or >=2000p.e."]
+
+COND_NC --- Y9((YES)) --- DL_E["Deadline of article 4 is before or equal to reporting reference year"]
+DL_E --- Y10((YES)) --- C_NC_4["Compliance article 4 = NC"]
+DL_E --- N9((NO)) --- C_PD_4["Compliance article 4 = PD"]
+
+COND_NC --- N10((NO)) --- COND_PD["At least one compliance for Article 4 = PD OR agglomeration deadline article 4 is after reporting reference year"]
+
+COND_PD --- Y11((YES)) --- C_PD_5["Compliance article 4 = PD"]
+COND_PD --- N11((NO)) --- COND_C["At least one compliance for Article 4 = C"]
+
+COND_C --- Y12((YES)) --- C_C_1["Compliance article 4 = C"]
+COND_C --- N12((NO)) --- C_NR_3["Compliance article 4 = NR"]
+
+%% Styles
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
+
+%% Class Assignments
+class Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y10,Y11,Y12 yesBox;
+class N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 noBox;
 ```
 
 ## Pseudocode

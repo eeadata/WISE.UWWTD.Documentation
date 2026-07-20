@@ -70,7 +70,90 @@ Compliance depends on:
 ## Decision Tree
 
 ```{mermaid}
+graph TB
+ROOT["Agglomeration is <10.000pe"]
 
+%% Left Branch
+ROOT --> Y1((YES)) --- C_NR_01["Compliance Article 5 = NR"]
+C_NR_01 -.- ID01(["09-01"])
+
+%% Main NO Branch
+ROOT --> N1((NO)) --- ART5["Article 5(4) applies"]
+
+%% Art 5(4) YES
+ART5 --- Y2((YES)) --- RCA["rca removal rate N<75% and removal rate P<75%"]
+
+RCA --- Y3((YES)) --- C_NC_13["Compliance Article 5 = NC"]
+C_NC_13 -.- ID13(["09-13"])
+
+RCA --- N2((NO)) --- C_C_02["Compliance Article 5 = C"]
+C_C_02 -.- ID02(["09-02"])
+
+%% Art 5(4) NO
+ART5 --- N3((NO)) --- MORE_STR["At least one plant has treatment required = more stringent"]
+
+%% More stringent NO
+MORE_STR --- N4((NO)) --- C_NR_03["Compliance Article 5 = NR"]
+C_NR_03 -.- ID03(["09-03"])
+
+%% More stringent YES
+MORE_STR --- Y4((YES)) --- LOAD_DIS["Load discharged without treatment <=2% of generated load and <= 2000p.e"]
+
+%% Load discharged NO
+LOAD_DIS --- N5((NO)) --- DL5A["Deadline of article 5 is before or equal to reporting reference year"]
+
+DL5A --- Y5((YES)) --- C_NC_04["Compliance article 5=NC"]
+C_NC_04 -.- ID04(["09-04"])
+
+DL5A --- N6((NO)) --- C_PD_05["Compliance article 5=PD"]
+C_PD_05 -.- ID05(["09-05"])
+
+%% Load discharged YES
+LOAD_DIS --- Y6((YES)) --- SUM_LOAD["(Sum of load entering for all plants with treatment in place = primary or secondary or NI or compliance for article 5 = NC) <=1% and < 2000p.e."]
+
+%% Sum load YES
+SUM_LOAD --- Y7((YES)) --- COND_NC["At least one compliance for Article 5 = NC AND (Sum of load entering for all plants with compliance for article 5 = NC) >1% or >= 2000p.e."]
+
+COND_NC --- Y8((YES)) --- C_NC_06["Compliance article 5 = NC"]
+C_NC_06 -.- ID06(["09-06"])
+
+COND_NC --- N7((NO)) --- COND_PD["At least one compliance for Article 5 = PD"]
+
+COND_PD --- Y9((YES)) --- C_PD_07["Compliance article 5 =PD"]
+C_PD_07 -.- ID07(["09-07"])
+
+COND_PD --- N8((NO)) --- COND_C["At least one compliance for Article 5 = C"]
+
+COND_C --- Y10((YES)) --- C_C_08["Compliance article 5 = C"]
+C_C_08 -.- ID08(["09-08"])
+
+COND_C --- N9((NO)) --- C_NR_09["Compliance article 5 = NR"]
+C_NR_09 -.- ID09(["09-09"])
+
+%% Sum load NO
+SUM_LOAD --- N10((NO)) --- DL5B["Deadline of article 5 is <> (null or NR or NI or ?)"]
+
+DL5B --- N11((NO)) --- C_NR_10["Compliance article 5=NR"]
+C_NR_10 -.- ID10(["09-10"])
+
+DL5B --- Y11((YES)) --- DL5C["Deadline of article 5 is before or equal to reporting reference year"]
+
+DL5C --- Y12((YES)) --- C_NC_11["Compliance article 5=NC"]
+C_NC_11 -.- ID11(["09-11"])
+
+DL5C --- N12((NO)) --- C_PD_12["Compliance article 5=PD"]
+C_PD_12 -.- ID12(["09-12"])
+
+
+%% Styles
+classDef reference stroke:#00a2ff,color:#00a2ff;
+classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
+classDef noBox fill:#F44336,color:white,stroke:#C62828;
+
+%% Class Assignments
+class ID01,ID02,ID03,ID04,ID05,ID06,ID07,ID08,ID09,ID10,ID11,ID12,ID13 reference;
+class Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y10,Y11,Y12 yesBox;
+class N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 noBox;
 ```
 
 ## Pseudocode

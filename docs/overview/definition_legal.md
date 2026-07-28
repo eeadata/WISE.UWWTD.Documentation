@@ -30,7 +30,7 @@ Agglomerations may be partially compliant:
 
 ## Tolerances
 
-The total wastewater load of an agglomeration is considered compliant even if[^1]:
+The total wastewater load of an agglomeration is considered compliant even if[^tolerance]:
 
 - ≤2% (and ≤2,000 p.e.) of the wastewater load does not comply with Article 3, and
 - ≤1% (and ≤2,000 p.e.) of the collected wastewater load does not comply with Article 4 
@@ -68,4 +68,4 @@ Full compliance with the Directive is calculated on the basis of the wastewater 
 
 ---
 
-[^1]: For more information regarding the tolerance, please check: [https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199-473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details](https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199-473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details)
+[^tolerance]: For more information regarding the tolerance, please check: [https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199-473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details](https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199-473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details)

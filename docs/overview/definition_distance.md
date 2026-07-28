@@ -5,7 +5,7 @@ The term distance to target represents the remaining effort required for a Membe
 It indicates how far a Member State is from meeting the goals for collecting and treating wastewater. The rules used to define this concept are as follows:  
 
 - **Distance to target – collection**: the total load of wastewater that should be collected according to the Directive but is not yet collected.  
-- **Distance to target – treatment**: the total load of collected wastewater that is not treated at all or not treated adequately. Additionally, if the load of wastewater that is not collected or addressed through individual systems (IAS) exceeds 2%, this load is also considered to 8 require treatment[^1]. Inadequately treated wastewater refers to discharged water that does not meet the Directive’s quality requirements, e.g., BOD₅, COD, and, where applicable, total phosphorus and/or total nitrogen concentrations.  
+- **Distance to target – treatment**: the total load of collected wastewater that is not treated at all or not treated adequately. Additionally, if the load of wastewater that is not collected or addressed through individual systems (IAS) exceeds 2%, this load is also considered to 8 require treatment[^dtt]. Inadequately treated wastewater refers to discharged water that does not meet the Directive’s quality requirements, e.g., BOD₅, COD, and, where applicable, total phosphorus and/or total nitrogen concentrations.  
 
 
 ## Targets
@@ -24,4 +24,4 @@ It indicates how far a Member State is from meeting the goals for collecting and
 
 ---
 
-[^1]: Please refer to [https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199 473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details](https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199473014cf65bf/library/ea692049-6cc8-464d-a0a5)
+[^dtt]: Please refer to [https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199 473014cf65bf/library/ea692049-6cc8-464d-a0a5-663bc11b98d6/details](https://circabc.europa.eu/ui/group/65764c73-4a57-45dc-8199473014cf65bf/library/ea692049-6cc8-464d-a0a5)

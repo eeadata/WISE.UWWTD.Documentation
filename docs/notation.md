@@ -23,7 +23,7 @@
 
 ---
 
-[^1]: Pending Deadline  
-[^2]: Questionable Compliance  
-[^3]: Additional Questionable Compliance
+[^deadline]: If a country has been granted a deadline extension for implementing the Directive (see {ref}`overview`) 
+[^qcompliance]: Questionable Compliance  
+[^aqcompliance]: Additional Questionable Compliance
 

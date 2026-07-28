@@ -2,22 +2,22 @@
 
 ## Area Types
 
-```{include} tables\notation_areaTypes.md
+```{include} tables/notation_areaTypes
 ```
 
 ## Water Types
 
-```{include} tables\notation_waterTypes.md
+```{include} tables/notation_waterTypes
 ```
 
 ## Compliance Status
 
-```{include} tables\notation_complianceStatus.md
+```{include} tables/notation_complianceStatus
 ```
 
 ## Measurements / Calculations
 
-```{include} tables\notation_measurementsCalculations.md
+```{include} tables/notation_measurementsCalculations
 ```
 
 

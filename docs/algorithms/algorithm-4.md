@@ -1,3 +1,4 @@
+(algorithm4)
 # Algorithm 4. Agglomeration: Article 3 Compliance
 
 ## Overview

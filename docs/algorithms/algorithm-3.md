@@ -1,3 +1,4 @@
+(algorithm3)
 # Algorithm 3. UWWTD: Treatment and Performance Compliance (Correction for Transitional Period)
 
 ## Overview

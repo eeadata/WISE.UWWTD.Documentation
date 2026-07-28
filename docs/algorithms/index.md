@@ -2,7 +2,7 @@
 
 Each of the decision trees are explained in more detail, providing an overview, pseudocode, and the 
 decision tree.  For internal record keeping, the “Exit Leafs” of the algorithm are logged (the blue 
-boxes in the decision tree and pseudocode). l
+boxes in the decision tree and pseudocode).
 
 ```{toctree}
 :maxdepth: 1

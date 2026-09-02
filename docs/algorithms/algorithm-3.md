@@ -46,50 +46,95 @@ Algorithm 3’s role is to take compliance from Algorithm 2 and adjust it to **C
 ## Decision Tree
 
 ```{mermaid}
-graph TB
-ROOT(["RESULTS: Algorithm n°2"])
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
 
-ROOT --> L1["If required=appropriate check date article 4: if = null OR if deadline is before or equal reporting reference date."]
-ROOT --> M1["If required=primary or secondary check date article 4: if = null OR if deadline is before or equal reporting reference date."]
-ROOT --> R1["if required= more stringent, check date article 4: if = null OR if deadline is before or equal reporting reference date."]
+graph TB
+
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
+
+ROOT{"RESULTS: Algorithm n°2"}
+
+ROOT --> L1{"If required=appropriate check date article 4: if = null OR if deadline is before or equal reporting reference date."}
+ROOT --> M1{"If required=primary or secondary check date article 4: if = null OR if deadline is before or equal reporting reference date."}
+ROOT --> R1{"if required= more stringent, check date article 4: if = null OR if deadline is before or equal reporting reference date."}
 
 %% Left Branch
-L1 --- Y1((YES)) --- L_YES["compliance = result of algorithm n°2"]
-L_YES -.- ID01(["03-01"])
-L1 --- N1((NO)) --- L_NO["compliance = PD"]
-L_NO -.- ID02(["03-02"])
+L1 -->|YES| L_YES["compliance = result of algorithm n°2"]
+L_YES -.-> ID01(["03-01"])
+
+L1 -->|NO| L_NO["compliance = PD"]
+L_NO -.-> ID02(["03-02"])
 
 %% Middle Branch
-M1 --- N2((NO)) --- M_NO["Compliance = PD"]
-M_NO -.- ID03A(["03-03"])
-M1 --- Y2((YES)) --- A5_CHECK["check date article 5: if = null OR if deadline is before or equal reporting reference date."]
+M1 -->|NO| M_NO["Compliance = PD"]
+M_NO -.-> ID03A(["03-03"])
+
+M1 -->|YES| A5_CHECK{"check date article 5: if = null OR if deadline is before or equal reporting reference date."}
 
 %% Right Branch
-R1 --- Y3((YES)) --- A5_CHECK
-R1 --- N3((NO)) --- R_NO["Compliance = PD"]
-R_NO -.- ID03B(["03-03"])
+R1 -->|YES| A5_CHECK
+R1 -->|NO| R_NO["Compliance = PD"]
+R_NO -.-> ID03B(["03-03"])
 
 %% Article 5 Check
-A5_CHECK --- Y4((YES)) --- A5_YES["compliance = result of algorithm n°2"]
-A5_YES -.- ID04(["03-04"])
-A5_CHECK --- N4((NO)) --- A5_NO["If secondary treatment in place AND if COD and BOD5 performance = pass"]
+A5_CHECK -->|YES| A5_YES["compliance = result of algorithm n°2"]
+A5_YES -.-> ID04(["03-04"])
+
+A5_CHECK -->|NO| A5_NO{"If secondary treatment in place AND if COD and BOD5 performance = pass"}
 
 %% A5_NO branch
+A5_NO -->|YES| N6["Compliance = C"]
+N6 -.-> ID05(["03-05"])
 
-A5_NO --- Y5((YES)) --- N6["Compliance = C"] -.- ID05(["03-05"])
-A5_NO --- N5((NO)) --- N7["Compliance = NC"] -.- ID06(["03-06"])
+A5_NO -->|NO| N7["Compliance = NC"]
+N7 -.-> ID06(["03-06"])
 
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
 
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
 
-%% Class Assignments
-class ID01,ID02,ID03A,ID03B,ID04,ID05,ID06 reference;
-class Y1,Y2,Y3,Y4,Y5 yesBox;
-class N1,N2,N3,N4,N5 noBox;
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,L1,M1,R1,A5_CHECK,A5_NO decision;
+class N7 nc;
+class N6 compliance;
+class L_NO,M_NO,R_NO pd;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## Pseudocode

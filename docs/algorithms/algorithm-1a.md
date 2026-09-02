@@ -65,69 +65,109 @@ First decision step in determining what wastewater treatment level is legally â€
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-ROOT["If number of discharge points > 0 (except BG and HR in 2018) and at least one agglomeration is connected"]
 
-ROOT --> Y1((YES)) --- B1["If biggest agglomeration generated load < 2000p.e"]
-ROOT --> N1((NO)) --- B2["Required = NR"]
-B2 -.- ID01(["01-A-01"])
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-B1 --- Y2((YES)) --- C1["Required = Appropriate"]
-C1 -.- ID02(["01-A-02"])
+ROOT{"If number of discharge points > 0 (except BG and HR in 2018) and at least one agglomeration is connected"}
 
-B1 --- N2((NO)) --- C2["Check receiving area type: If number of discharge points > 1 choose the most constraining (SA, CSA, A58>NA>LSA), if number of discharge points =0, use NA of type FW"]
+ROOT -->|YES| B1{"If biggest agglomeration generated load < 2000p.e"}
+ROOT -->|NO| B2["Required = NR"]
+B2 -.-> ID01(["01-A-01"])
 
-C2 --- TYPE1["SA, CSA, A54 and/or A58"]
-C2 --- TYPE2["NA"]
-C2 --- TYPE3["LSA"]
+B1 -->|YES| C1["Required = Appropriate"]
+C1 -.-> ID02(["01-A-02"])
+
+B1 -->|NO| C2{"Check receiving area type: If number of discharge points > 1 choose the most constraining (SA, CSA, A58>NA>LSA), if number of discharge points =0, use NA of type FW"}
+
+C2 --> TYPE1["SA, CSA, A54 and/or A58"]
+C2 --> TYPE2["NA"]
+C2 --> TYPE3["LSA"]
 
 %% SA, CSA, A54 branch
-TYPE1 --- ALG1["see separate algorithms 1b and 1c"]
+TYPE1 --> ALG1["see separate algorithms 1b and 1c"]
 
 %% NA branch
-TYPE2 --- WB1["Check waterbody type"]
-WB1 --- WB1_1["ES, FW or LF"]
-WB1 --- WB1_2["LC or CW"]
+TYPE2 --> WB1{"Check waterbody type"}
+WB1 --> WB1_1["ES, FW or LF"]
+WB1 --> WB1_2["LC or CW"]
 
-WB1_1 --- REQ1["Required = Secondary"]
-REQ1 -.- ID03(["01-A-03"])
+WB1_1 --> REQ1["Required = Secondary"]
+REQ1 -.-> ID03(["01-A-03"])
 
-WB1_2 --- LOAD1["If biggest agglomeration generated load < 10000p.e"]
-LOAD1 --- Y3((YES)) --- REQ2["Required = Appropriate"]
-REQ2 -.- ID04(["01-A-04"])
-LOAD1 --- N3((NO)) --- REQ3["Required = Secondary"]
-REQ3 -.- ID05(["01-A-05"])
+WB1_2 --> LOAD1{"If biggest agglomeration generated load < 10000p.e"}
+LOAD1 -->|YES| REQ2["Required = Appropriate"]
+REQ2 -.-> ID04(["01-A-04"])
+LOAD1 -->|NO| REQ3["Required = Secondary"]
+REQ3 -.-> ID05(["01-A-05"])
 
 %% LSA branch
-TYPE3 --- WB2["Check waterbody type"]
-WB2 --- WB2_1["ES or LF"]
-WB2 --- WB2_2["LC or CW"]
+TYPE3 --> WB2{"Check waterbody type"}
+WB2 --> WB2_1["ES or LF"]
+WB2 --> WB2_2["LC or CW"]
 
-WB2_1 --- LOAD2["If biggest agglomeration generated load >= 2000 and <= 10000p.e"]
-LOAD2 --- Y4((YES)) --- REQ4["Required = Primary"]
-REQ4 -.- ID06(["01-A-06"])
-LOAD2 --- N4((NO)) --- REQ5["Required = Secondary"]
-REQ5 -.- ID07(["01-A-07"])
+WB2_1 --> LOAD2{"If biggest agglomeration generated load >= 2000 and <= 10000p.e"}
+LOAD2 -->|YES| REQ4["Required = Primary"]
+REQ4 -.-> ID06(["01-A-06"])
+LOAD2 -->|NO| REQ5["Required = Secondary"]
+REQ5 -.-> ID07(["01-A-07"])
 
-WB2_2 --- LOAD3["If biggest agglomeration generated load >= 150 000p.e"]
-LOAD3 --- Y5((YES)) --- REQ6["Required = Secondary"]
-REQ6 -.- ID08(["01-A-08"])
-LOAD3 --- N5((NO)) --- LOAD4["If biggest agglomeration generated load >= 10000p.e"]
+WB2_2 --> LOAD3{"If biggest agglomeration generated load >= 150 000p.e"}
+LOAD3 -->|YES| REQ6["Required = Secondary"]
+REQ6 -.-> ID08(["01-A-08"])
+LOAD3 -->|NO| LOAD4{"If biggest agglomeration generated load >= 10000p.e"}
 
-LOAD4 --- Y6((YES)) --- REQ7["Required = Primary"]
-REQ7 -.- ID09(["01-A-09"])
-LOAD4 --- N6((NO)) --- REQ8["Required = Appropriate"]
-REQ8 -.- ID10(["01-A-10"])
+LOAD4 -->|YES| REQ7["Required = Primary"]
+REQ7 -.-> ID09(["01-A-09"])
+LOAD4 -->|NO| REQ8["Required = Appropriate"]
+REQ8 -.-> ID10(["01-A-10"])
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
 
-%% Class Assignments
-class ID01,ID02,ID03,ID04,ID05,ID06,ID07,ID08,ID09,ID10 reference;
-class Y1,Y2,Y3,Y4,Y5,Y6 yesBox;
-class N1,N2,N3,N4,N5,N6 noBox;
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,B1,C2,WB1,LOAD1,WB2,LOAD2,LOAD3,LOAD4 decision;
+class B2 nr;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 

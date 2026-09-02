@@ -64,83 +64,149 @@ It then checks whether the actual treatment in place and performance (**BOD5, If
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-A["Check agg info exists"]
 
-A --> Y1((YES)) --- B["Check dcp info exists"]
-A --> N1((NO)) --- A2["Compliance = NI Treatment = not calculable Performance = not calculable"]
-A2 -.- ID02A02(["02-A-02"])
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-B --- Y2((YES)) --- C["Check at least one agglomeration connected to the treatment plant has status = active"]
-B --- N2((NO)) --- A1["Compliance = ? Treatment = False Performance = False"]
-A1 -.- ID02A01(["02-A-01"])
+A{"Check agg info exists"}
 
-C --- Y3((YES)) --- D["Check if the treatment plant is active, connected and receives waste water (status=active + ISCON + load entering >0)"]
-C --- N3((NO)) --- A13["Compliance = NR Treatment = not calculable Performance = not calculable"]
-A13 -.- ID02A13(["02-A-13"])
+A -->|YES| B{"Check dcp info exists"}
+A -->|NO| A2_1["Compliance = NI"]
+A2_1 --- A2_2["Treatment = not calculable"]
+A2_2 --- A2_3["Performance = not calculable"]
+A2_3 -.-> ID02A02(["02-A-02"])
 
-D --- N4((NO)) --- SEWER["Check if there is only a sewer (status= active + NOTCON)"]
-D --- Y4((YES)) --- REQ["Get required treatment (see algorithm 1)"]
+B -->|YES| C{"Check at least one agglomeration connected to the treatment plant has status = active"}
+B -->|NO| A1_1["Compliance = ?"]
+A1_1 --- A1_2["Treatment = False"]
+A1_2 --- A1_3["Performance = False"]
+A1_3 -.-> ID02A01(["02-A-01"])
 
-SEWER --- N5((NO)) --- A14["Treatment = not calculable Performance = not calculable Compliance = NR"]
-SEWER --- Y5((YES)) --- A15["Treatment = False Performance = False compliance = NR"]
-A14 -.- ID02A14(["02-A-14"])
-A15 -.- ID02A15(["02-A-15"])
+C -->|YES| D{"Check if the treatment plant is active, connected and receives waste water (status=active + ISCON + load entering >0)"}
+C -->|NO| A13_1["Compliance = NR"]
+A13_1 --- A13_2["Treatment = not calculable"]
+A13_2 --- A13_3["Performance = not calculable"]
+A13_3 -.-> ID02A13(["02-A-13"])
 
+D -->|NO| SEWER{"Check if there is only a sewer (status= active + NOTCON)"}
+D -->|YES| REQ{"Get required treatment (see algorithm 1)"}
 
-REQ --- L1((Secondary)) --- SEC["Secondary treatment in place?"]
-REQ --- L2((Primary)) --- PRI["If primary treatment in place"]
-REQ --- L3(("Appropriate or NR")) --- APP["Treatment = not calculable Performance = not calculable compliance = NR"]
-REQ --- MORE["More stringent: see algorithm 2b more stringent"]
-REQ --- L4(("NI or ?")) --- NI["Treatment = NR Performance = NR compliance = ?"]
+SEWER -->|NO| A14_1["Treatment = not calculable"]
+A14_1 --- A14_2["Performance = not calculable"]
+A14_2 --- A14_3["Compliance = NR"]
+A14_3 -.-> ID02A14(["02-A-14"])
 
+SEWER -->|YES| A15_1["Treatment = False"]
+A15_1 --- A15_2["Performance = False"]
+A15_2 --- A15_3["Compliance = NR"]
+A15_3 -.-> ID02A15(["02-A-15"])
 
-APP -.- ID02A04(["02-A-04"])
-NI -.- ID02A03(["02-A-03"])
+REQ -->|Secondary| SEC{"Secondary treatment in place?"}
+REQ -->|Primary| PRI{"If primary treatment in place"}
+REQ -->|Appropriate or NR| APP_1["Treatment = not calculable"]
+APP_1 --- APP_2["Performance = not calculable"]
+APP_2 --- APP_3["Compliance = NR"]
+APP_3 -.-> ID02A04(["02-A-04"])
 
-SEC --- N6((NO)) --- SECF["Treatment= False"]
-SEC --- Y6((YES)) --- SECT["Treatment = True"]
+REQ -->|More stringent| MORE["More stringent: see algorithm 2b more stringent"]
 
-SECF --- SECF_PERF["If COD and BOD5 performance = pass"]
-SECT --- SECT_PERF["If COD and BOD5 performance = pass"]
+REQ -->|NI or ?| NI_1["Treatment = NR"]
+NI_1 --- NI_2["Performance = NR"]
+NI_2 --- NI_3["Compliance = ?"]
+NI_3 -.-> ID02A03(["02-A-03"])
 
-SECF_PERF --- N7((NO)) --- A12["Performance = False Compliance = NC"]
-SECF_PERF --- Y7((YES)) --- A11["Performance = True Compliance = NC"]
-A12 -.- ID02A12(["02-A-12"])
-A11 -.- ID02A11(["02-A-11"])
+SEC -->|NO| SECF["Treatment = False"]
+SEC -->|YES| SECT["Treatment = True"]
 
-SECT_PERF --- N8((NO)) --- A10["Performance = False Compliance = NC"]
-SECT_PERF --- Y8((YES)) --- A09["Performance = True Compliance = C"]
-A10 -.- ID02A10(["02-A-10"])
-A09 -.- ID02A09(["02-A-09"])
+SECF --> SECF_PERF{"If COD and BOD5 performance = pass"}
+SECT --> SECT_PERF{"If COD and BOD5 performance = pass"}
 
-PRI --- N9((NO)) --- PRIF["Treatment = False"]
-PRI --- Y9((YES)) --- PRIT["Treatment = True"]
+SECF_PERF -->|NO| A12_1["Performance = False"]
+A12_1 --- A12_2["Compliance = NC"]
+A12_2 -.-> ID02A12(["02-A-12"])
 
-PRIF --- PRIF_PERF["If TSS and BOD5 performance = pass"]
-PRIT --- PRIT_PERF["If TSS and BOD5 performance = pass"]
+SECF_PERF -->|YES| A11_1["Performance = True"]
+A11_1 --- A11_2["Compliance = NC"]
+A11_2 -.-> ID02A11(["02-A-11"])
 
-PRIF_PERF --- N10((NO)) --- A08["Performance = False Compliance = NC"]
-PRIF_PERF --- Y10((YES)) --- A07["Performance = True Compliance = NC"]
-A08 -.- ID02A08(["02-A-08"])
-A07 -.- ID02A07(["02-A-07"])
+SECT_PERF -->|NO| A10_1["Performance = False"]
+A10_1 --- A10_2["Compliance = NC"]
+A10_2 -.-> ID02A10(["02-A-10"])
 
-PRIT_PERF --- N11((NO)) --- A06["Performance = False Compliance = NC"]
-PRIT_PERF --- Y11((YES)) --- A05["Performance = True Compliance = C"]
-A06 -.- ID02A06(["02-A-06"])
-A05 -.- ID02A05(["02-A-05"])
+SECT_PERF -->|YES| A09_1["Performance = True"]
+A09_1 --- A09_2["Compliance = C"]
+A09_2 -.-> ID02A09(["02-A-09"])
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
-classDef routeBox fill:#E0E0E0,color:black,stroke:#9E9E9E;
+PRI -->|NO| PRIF["Treatment = False"]
+PRI -->|YES| PRIT["Treatment = True"]
 
-%% Class Assignments
-class ID02A01,ID02A02,ID02A03,ID02A04,ID02A05,ID02A06,ID02A07,ID02A08,ID02A09,ID02A10,ID02A11,ID02A12,ID02A13,ID02A14,ID02A15 reference;
-class Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y10,Y11 yesBox;
-class N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11 noBox;
-class L1,L2,L3,L4 routeBox;
+PRIF --> PRIF_PERF{"If TSS and BOD5 performance = pass"}
+PRIT --> PRIT_PERF{"If TSS and BOD5 performance = pass"}
+
+PRIF_PERF -->|NO| A08_1["Performance = False"]
+A08_1 --- A08_2["Compliance = NC"]
+A08_2 -.-> ID02A08(["02-A-08"])
+
+PRIF_PERF -->|YES| A07_1["Performance = True"]
+A07_1 --- A07_2["Compliance = NC"]
+A07_2 -.-> ID02A07(["02-A-07"])
+
+PRIT_PERF -->|NO| A06_1["Performance = False"]
+A06_1 --- A06_2["Compliance = NC"]
+A06_2 -.-> ID02A06(["02-A-06"])
+
+PRIT_PERF -->|YES| A05_1["Performance = True"]
+A05_1 --- A05_2["Compliance = C"]
+A05_2 -.-> ID02A05(["02-A-05"])
+
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
+
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class A,B,C,D,SEWER,REQ,SEC,PRI,SECF_PERF,SECT_PERF,PRIF_PERF,PRIT_PERF decision;
+class A12_2,A11_2,A10_2,A08_2,A07_2,A06_2 nc;
+class A09_2,A05_2 compliance;
+class A13_1,A14_3,A15_3,APP_3,NI_1,NI_2 nr;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## PseudoIf code

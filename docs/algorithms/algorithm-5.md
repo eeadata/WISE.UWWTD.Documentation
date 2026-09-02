@@ -48,47 +48,89 @@ It also calls **Algorithm 10** and **Algorithm 11** when all plants are NR/NI wi
 
 ```{mermaid}
 
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-ROOT["agglomeration: sum of wastewater collected in collecting system > 0%"]
 
-ROOT --> N1((NO)) --- ALG6_1["see algorithm n°6"]
-ROOT --> Y1((YES)) ---- CONN["at least connected to one treatment plant"]
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-CONN --- Y2((YES)) --- ALL_PLANTS["all plants have treatment required = appropriate & treatment compliance = NR OR NI"]
-CONN --- N2((NO)) --- CHECK_LOAD["Check agglomeration generated load > 10000p.e"]
+ROOT{"agglomeration: sum of wastewater collected in collecting system > 0%"}
+
+ROOT -->|NO| ALG6_1["see algorithm n°6"]
+ROOT -->|YES| CONN{"at least connected to one treatment plant"}
+
+CONN -->|YES| ALL_PLANTS{"all plants have treatment required = appropriate & treatment compliance = NR OR NI"}
+CONN -->|NO| CHECK_LOAD{"Check agglomeration generated load > 10000p.e"}
 
 %% Left Subtree
-ALL_PLANTS --- Y3((YES)) --- COMP_NR["Compliance Article 4 = NR Compliance Article 5 = NR Compliance Article 6 = NR"]
-COMP_NR --- ALG10["see algorithm n°10"]
-ALG10 -.- ID04(["05-04"])
+ALL_PLANTS -->|YES| COMP_NR_1["Compliance Article 4 = NR Compliance Article 5 = NR Compliance Article 6 = NR"]
+COMP_NR_1 --> ALG10["see algorithm n°10"]
+ALG10 -.-> ID04(["05-04"])
 
-ALL_PLANTS --- N3((NO)) --- AT_LEAST["at least one treatment plant compliance =? and all other treatment plants compliance = C or NR or PD"]
+ALL_PLANTS -->|NO| AT_LEAST{"at least one treatment plant compliance =? and all other treatment plants compliance = C or NR or PD"}
 
-AT_LEAST --- Y4((YES)) --- COMP_Q["Compliance Article 4 = ? Compliance Article 5 = ? Compliance Article 6 = ?"]
-COMP_Q --- ALG6_2["see algorithm n°6"]
-ALG6_2 -.- ID02(["05-02"])
+AT_LEAST -->|YES| COMP_Q_1["Compliance Article 4 = ? Compliance Article 5 = ? Compliance Article 6 = ?"]
+COMP_Q_1 --> ALG6_2["see algorithm n°6"]
+ALG6_2 -.-> ID02(["05-02"])
 
-AT_LEAST --- N4((NO)) --- ALG6_NO["see algorithm n°6"]
-ALG6_NO -.- ID03(["05-03"])
+AT_LEAST -->|NO| ALG6_NO["see algorithm n°6"]
+ALG6_NO -.-> ID03(["05-03"])
 
 %% Right Subtree
-CHECK_LOAD --- N5((NO)) --- LOAD_NO["Compliance Article 4 = ? Compliance Article 5 = NR Compliance Article 6 = NR"]
-LOAD_NO --- ALG6_3["see algorithm n°6"]
-ALG6_3 -.- ID03(["05-03"])
+CHECK_LOAD -->|NO| LOAD_NO_1["Compliance Article 4 = ?"]
+LOAD_NO_1 --- LOAD_NO_2["Compliance Article 5 = NR Compliance Article 6 = NR"]
+LOAD_NO_2 --> ALG6_3["see algorithm n°6"]
+ALG6_3 -.-> ID03(["05-03"])
 
-CHECK_LOAD --- Y5((YES)) --- LOAD_YES["Compliance Article 4 = ? Compliance Article 5 = ? Compliance Article 6 = NR"]
-LOAD_YES --- ALG6_4["see algorithm n°6"]
-ALG6_4 -.- ID01(["05-01"])
+CHECK_LOAD -->|YES| LOAD_YES_1["Compliance Article 4 = ? Compliance Article 5 = ?"]
+LOAD_YES_1 --- LOAD_YES_3["Compliance Article 6 = NR"]
+LOAD_YES_3 --> ALG6_4["see algorithm n°6"]
+ALG6_4 -.-> ID01(["05-01"])
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
 
-%% Class Assignments
-class ID01,ID02,ID03,ID04 reference;
-class Y1,Y2,Y3,Y4,Y5 yesBox;
-class N1,N2,N3,N4,N5 noBox;
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,CONN,ALL_PLANTS,AT_LEAST,CHECK_LOAD decision;
+class COMP_NR_1,COMP_NR_2,COMP_NR_3,LOAD_NO_2,LOAD_NO_3,LOAD_YES_3 nr;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 
 ```
 

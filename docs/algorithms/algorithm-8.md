@@ -37,39 +37,82 @@ Compliance depends on:
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-ROOT["At least one plant has treatment required = primary"]
 
-ROOT --> N1((NO)) --- C_NR_1["Compliance Article 6 = NR"]
-C_NR_1 -.- ID01(["08-01"])
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-ROOT --> Y1((YES)) --- COND_1["At least one compliance for Article 6 = NC and (Sum of load entering for all plants with compliance for article 6 = NC) >1% and >= 2000p.e."]
+ROOT{"At least one plant has treatment required = primary"}
 
-COND_1 --- Y2((YES)) --- C_NC_1["Compliance article 6 = NC"]
-C_NC_1 -.- ID02(["08-02"])
+ROOT -->|NO| C_NR_1["Compliance Article 6 = NR"]
+C_NR_1 -.-> ID01(["08-01"])
 
-COND_1 --- N2((NO)) --- COND_2["At least one compliance for Article 6 = PD"]
+ROOT -->|YES| COND_1{"At least one compliance for Article 6 = NC and (Sum of load entering for all plants with compliance for article 6 = NC) >1% and >= 2000p.e."}
 
-COND_2 --- Y3((YES)) --- C_PD_1["Compliance article 6 = PD"]
-C_PD_1 -.- ID03(["08-03"])
+COND_1 -->|YES| C_NC_1["Compliance article 6 = NC"]
+C_NC_1 -.-> ID02(["08-02"])
 
-COND_2 --- N3((NO)) --- COND_3["At least one compliance for Article 6 = C"]
+COND_1 -->|NO| COND_2{"At least one compliance for Article 6 = PD"}
 
-COND_3 --- Y4((YES)) --- C_C_1["Compliance article 6 = C"]
-C_C_1 -.- ID04(["08-04"])
+COND_2 -->|YES| C_PD_1["Compliance article 6 = PD"]
+C_PD_1 -.-> ID03(["08-03"])
 
-COND_3 --- N4((NO)) --- C_NR_2["Compliance article 6 = NR"]
-C_NR_2 -.- ID05(["08-05"])
+COND_2 -->|NO| COND_3{"At least one compliance for Article 6 = C"}
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+COND_3 -->|YES| C_C_1["Compliance article 6 = C"]
+C_C_1 -.-> ID04(["08-04"])
 
-%% Class Assignments
-class ID01,ID02,ID03,ID04,ID05 reference;
-class Y1,Y2,Y3,Y4 yesBox;
-class N1,N2,N3,N4 noBox;
+COND_3 -->|NO| C_NR_2["Compliance article 6 = NR"]
+C_NR_2 -.-> ID05(["08-05"])
+
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
+
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,COND_1,COND_2,COND_3 decision;
+class C_NC_1 nc;
+class C_C_1 compliance;
+class C_NR_1,C_NR_2 nr;
+class C_PD_1 pd;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## Pseudocode

@@ -70,90 +70,138 @@ Compliance depends on:
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  },
+  "themeVariables": {
+    "fontFamily": "Arial, sans-serif",
+    "fontSize": "14px",
+    "lineColor": "#64748B",
+    "textColor": "#1E293B" 
+  }
+}}%%
+
 graph TB
-ROOT["Agglomeration is <10.000pe"]
+
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
+
+ROOT{"Agglomeration is <10.000pe"}
 
 %% Left Branch
-ROOT --> Y1((YES)) --- C_NR_01["Compliance Article 5 = NR"]
-C_NR_01 -.- ID01(["09-01"])
+ROOT -->|YES| C_NR_01["Compliance Article 5 = NR"]
+C_NR_01 -.-> ID01(["09-01"])
 
 %% Main NO Branch
-ROOT --> N1((NO)) --- ART5["Article 5(4) applies"]
+ROOT -->|NO| ART5{"Article 5(4) applies"}
 
 %% Art 5(4) YES
-ART5 --- Y2((YES)) --- RCA["rca removal rate N<75% and removal rate P<75%"]
+ART5 -->|YES| RCA{"rca removal rate N<75% and removal rate P<75%"}
 
-RCA --- Y3((YES)) --- C_NC_13["Compliance Article 5 = NC"]
-C_NC_13 -.- ID13(["09-13"])
+RCA -->|YES| C_NC_13["Compliance Article 5 = NC"]
+C_NC_13 -.-> ID13(["09-13"])
 
-RCA --- N2((NO)) --- C_C_02["Compliance Article 5 = C"]
-C_C_02 -.- ID02(["09-02"])
+RCA -->|NO| C_C_02["Compliance Article 5 = C"]
+C_C_02 -.-> ID02(["09-02"])
 
 %% Art 5(4) NO
-ART5 --- N3((NO)) --- MORE_STR["At least one plant has treatment required = more stringent"]
+ART5 -->|NO| MORE_STR{"At least one plant has treatment required = more stringent"}
 
 %% More stringent NO
-MORE_STR --- N4((NO)) --- C_NR_03["Compliance Article 5 = NR"]
-C_NR_03 -.- ID03(["09-03"])
+MORE_STR -->|NO| C_NR_03["Compliance Article 5 = NR"]
+C_NR_03 -.-> ID03(["09-03"])
 
 %% More stringent YES
-MORE_STR --- Y4((YES)) --- LOAD_DIS["Load discharged without treatment <=2% of generated load and <= 2000p.e"]
+MORE_STR -->|YES| LOAD_DIS{"Load discharged without treatment <=2% of generated load and <= 2000p.e"}
 
 %% Load discharged NO
-LOAD_DIS --- N5((NO)) --- DL5A["Deadline of article 5 is before or equal to reporting reference year"]
+LOAD_DIS -->|NO| DL5A{"Deadline of article 5 is before or equal to reporting reference year"}
 
-DL5A --- Y5((YES)) --- C_NC_04["Compliance article 5=NC"]
-C_NC_04 -.- ID04(["09-04"])
+DL5A -->|YES| C_NC_04["Compliance article 5=NC"]
+C_NC_04 -.-> ID04(["09-04"])
 
-DL5A --- N6((NO)) --- C_PD_05["Compliance article 5=PD"]
-C_PD_05 -.- ID05(["09-05"])
+DL5A -->|NO| C_PD_05["Compliance article 5=PD"]
+C_PD_05 -.-> ID05(["09-05"])
 
 %% Load discharged YES
-LOAD_DIS --- Y6((YES)) --- SUM_LOAD["(Sum of load entering for all plants with treatment in place = primary or secondary or NI or compliance for article 5 = NC) <=1% and < 2000p.e."]
+LOAD_DIS -->|YES| SUM_LOAD{"(Sum of load entering for all plants with treatment in place = primary or secondary or NI or compliance for article 5 = NC) <=1% and < 2000p.e."}
 
 %% Sum load YES
-SUM_LOAD --- Y7((YES)) --- COND_NC["At least one compliance for Article 5 = NC AND (Sum of load entering for all plants with compliance for article 5 = NC) >1% or >= 2000p.e."]
+SUM_LOAD -->|YES| COND_NC{"At least one compliance for Article 5 = NC AND (Sum of load entering for all plants with compliance for article 5 = NC) >1% or >= 2000p.e."}
 
-COND_NC --- Y8((YES)) --- C_NC_06["Compliance article 5 = NC"]
-C_NC_06 -.- ID06(["09-06"])
+COND_NC -->|YES| C_NC_06["Compliance article 5 = NC"]
+C_NC_06 -.-> ID06(["09-06"])
 
-COND_NC --- N7((NO)) --- COND_PD["At least one compliance for Article 5 = PD"]
+COND_NC -->|NO| COND_PD{"At least one compliance for Article 5 = PD"}
 
-COND_PD --- Y9((YES)) --- C_PD_07["Compliance article 5 =PD"]
-C_PD_07 -.- ID07(["09-07"])
+COND_PD -->|YES| C_PD_07["Compliance article 5 =PD"]
+C_PD_07 -.-> ID07(["09-07"])
 
-COND_PD --- N8((NO)) --- COND_C["At least one compliance for Article 5 = C"]
+COND_PD -->|NO| COND_C{"At least one compliance for Article 5 = C"}
 
-COND_C --- Y10((YES)) --- C_C_08["Compliance article 5 = C"]
-C_C_08 -.- ID08(["09-08"])
+COND_C -->|YES| C_C_08["Compliance article 5 = C"]
+C_C_08 -.-> ID08(["09-08"])
 
-COND_C --- N9((NO)) --- C_NR_09["Compliance article 5 = NR"]
-C_NR_09 -.- ID09(["09-09"])
+COND_C -->|NO| C_NR_09["Compliance article 5 = NR"]
+C_NR_09 -.-> ID09(["09-09"])
 
 %% Sum load NO
-SUM_LOAD --- N10((NO)) --- DL5B["Deadline of article 5 is <> (null or NR or NI or ?)"]
+SUM_LOAD -->|NO| DL5B{"Deadline of article 5 is <> (null or NR or NI or ?)"}
 
-DL5B --- N11((NO)) --- C_NR_10["Compliance article 5=NR"]
-C_NR_10 -.- ID10(["09-10"])
+DL5B -->|NO| C_NR_10["Compliance article 5=NR"]
+C_NR_10 -.-> ID10(["09-10"])
 
-DL5B --- Y11((YES)) --- DL5C["Deadline of article 5 is before or equal to reporting reference year"]
+DL5B -->|YES| DL5C{"Deadline of article 5 is before or equal to reporting reference year"}
 
-DL5C --- Y12((YES)) --- C_NC_11["Compliance article 5=NC"]
-C_NC_11 -.- ID11(["09-11"])
+DL5C -->|YES| C_NC_11["Compliance article 5=NC"]
+C_NC_11 -.-> ID11(["09-11"])
 
-DL5C --- N12((NO)) --- C_PD_12["Compliance article 5=PD"]
-C_PD_12 -.- ID12(["09-12"])
+DL5C -->|NO| C_PD_12["Compliance article 5=PD"]
+C_PD_12 -.-> ID12(["09-12"])
 
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
 
-%% Class Assignments
-class ID01,ID02,ID03,ID04,ID05,ID06,ID07,ID08,ID09,ID10,ID11,ID12,ID13 reference;
-class Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8,Y9,Y10,Y11,Y12 yesBox;
-class N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 noBox;
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,ART5,RCA,MORE_STR,LOAD_DIS,DL5A,SUM_LOAD,COND_NC,COND_PD,COND_C,DL5B,DL5C decision;
+class C_NC_13,C_NC_04,C_NC_06,C_NC_11 nc;
+class C_C_02,C_C_08 compliance;
+class C_NR_01,C_NR_03,C_NR_09,C_NR_10 nr;
+class C_PD_05,C_PD_07,C_PD_12 pd;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## Pseudocode

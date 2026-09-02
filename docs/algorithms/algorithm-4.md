@@ -55,46 +55,88 @@ This procedure checks whether an agglomeration ≥ 2000 p.e. has an adequate was
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-ROOT["Check agglomeration generated load"]
 
-ROOT --> L1(("< 2000p.e")) --- LT2000["Compliance art3 = NR Compliance art4 = NR Compliance art5 = NR Compliance art6 = NR"]
-LT2000 -.- ID01(["04-01"])
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-ROOT --> L2((">= 2000p.e")) --- GE2000["Deadline of Article 3 is before or equal to reporting reference date"]
+ROOT{"Check agglomeration generated load"}
 
-GE2000 --- N1((NO)) --- ART3_PD["Compliance art3 = PD"]
-ART3_PD -.- ID04(["04-04"])
+ROOT -->|< 2000p.e| LT2000_1["Compliance art3 = NR Compliance art4 = NR Compliance art5 = NR Compliance art6 = NR"]
 
-GE2000 --- Y1((YES)) --- COND1["If ((sum of wastewater not collected in collecting system and not addressed by IAS) + sum of wastewater treated in IAS) <= 2000p.e AND ((% of wastewater not collected in collecting system and not addressed by IAS) + % of wastewater treated in IAS) <= 2%"]
+LT2000_1 -.-> ID01(["04-01"])
 
-COND1 --- Y2((YES)) --- ART3_C["Compliance art3 = C"]
-ART3_C -.- ID02(["04-02"])
+ROOT -->|>= 2000p.e| GE2000{"Deadline of Article 3 is before or equal to reporting reference date"}
 
-COND1 --- N2((NO)) --- COND2["If (sum of wastewater not collected in collecting system and not addressed by IAS) > 2000p.e OR (% of wastewater not collected in collecting system and not addressed by IAS) > 2%"]
+GE2000 -->|NO| ART3_PD["Compliance art3 = PD"]
+ART3_PD -.-> ID04(["04-04"])
 
-COND2 --- Y3((YES)) --- ART3_NC["Compliance art3 = NC"]
-ART3_NC -.- ID05(["04-05"])
+GE2000 -->|YES| COND1{"If ((sum of wastewater not collected in collecting system and not addressed by IAS) + sum of wastewater treated in IAS) <= 2000p.e AND ((% of wastewater not collected in collecting system and not addressed by IAS) + % of wastewater treated in IAS) <= 2%"}
 
-COND2 --- N3((NO)) --- COND3["If addressed by IAS >2% or >1000pe"]
+COND1 -->|YES| ART3_C["Compliance art3 = C"]
+ART3_C -.-> ID02(["04-02"])
 
-COND3 --- Y4((YES)) --- ART3_C_ADDQC["Compliance art3 = C Additionnal compliance art3: AddQC"]
-ART3_C_ADDQC -.- ID06(["04-06"])
+COND1 -->|NO| COND2{"If (sum of wastewater not collected in collecting system and not addressed by IAS) > 2000p.e OR (% of wastewater not collected in collecting system and not addressed by IAS) > 2%"}
 
-COND3 --- N4((NO)) --- ART3_C_QC["Compliance art3 = C Additionnal compliance art3= QC"]
-ART3_C_QC -.- ID03(["04-03"])
+COND2 -->|YES| ART3_NC["Compliance art3 = NC"]
+ART3_NC -.-> ID05(["04-05"])
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
-classDef routeBox fill:#E0E0E0,color:black,stroke:#9E9E9E;
+COND2 -->|NO| COND3{"If addressed by IAS >2% or >1000pe"}
 
-%% Class Assignments
-class ID01,ID02,ID03,ID04,ID05,ID06 reference;
-class Y1,Y2,Y3,Y4 yesBox;
-class N1,N2,N3,N4 noBox;
-class L1,L2 routeBox;
+COND3 -->|YES| ART3_C_ADDQC["Compliance art3 = C Additionnal compliance art3: AddQC"]
+ART3_C_ADDQC -.-> ID06(["04-06"])
+
+COND3 -->|NO| ART3_C_QC["Compliance art3 = C Additionnal compliance art3= QC"]
+ART3_C_QC -.-> ID03(["04-03"])
+
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
+
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,GE2000,COND1,COND2,COND3 decision;
+class ART3_NC nc;
+class ART3_C,ART3_C_ADDQC,ART3_C_QC compliance;
+class LT2000_1,LT2000_2,LT2000_3,LT2000_4 nr;
+class ART3_PD pd;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## Pseudocode

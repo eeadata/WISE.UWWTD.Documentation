@@ -37,55 +37,93 @@ Inputs:
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-CSA["CSA"] --> ART["Article 5(4) applies"]
 
-ART --- Y1((YES)) --- SEC["Required = Secondary"]
-SEC -.- ID07(["01-C-07"])
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
 
-ART --- N1((NO)) --- NAN["If receiving area demands Nitrogen (aN)"]
+CSA["CSA"] --> ART{"Article 5(4) applies"}
 
-NAN --- Y2((YES)) --- PAP1["If receiving area demands Phosphorus (aP)"]
-NAN --- N2((NO)) --- NB["If receiving area demands Nitrogen (b)"]
+ART -->|YES| SEC["Required = Secondary"]
+SEC -.-> ID07(["01-C-07"])
+
+ART -->|NO| NAN{"If receiving area demands Nitrogen (aN)"}
+
+NAN -->|YES| PAP1{"If receiving area demands Phosphorus (aP)"}
+NAN -->|NO| NB{"If receiving area demands Nitrogen (b)"}
 
 %% aN = YES branch
-PAP1 --- Y3((YES)) --- NAP["Required = Nitrogen(a) & Phosphorus (aN + aP)"]
-NAP -.- ID01(["01-C-01"])
+PAP1 -->|YES| NAP["Required = Nitrogen(a) & Phosphorus (aN + aP)"]
+NAP -.-> ID01(["01-C-01"])
 
-PAP1 --- N3((NO)) --- NA["Required = Nitrogen(a) (aN)"]
-NA -.- ID02(["01-C-02"])
+PAP1 -->|NO| NA["Required = Nitrogen(a) (aN)"]
+NA -.-> ID02(["01-C-02"])
 
 %% aN = NO branch (Nitrogen b)
-NB --- Y4((YES)) --- PAP2["If receiving area demands Phosphorus (aP)"]
-NB --- N4((NO)) --- PAP3["If receiving area demands Phosphorus (aP)"]
+NB -->|YES| PAP2{"If receiving area demands Phosphorus (aP)"}
+NB -->|NO| PAP3{"If receiving area demands Phosphorus (aP)"}
 
 %% Nitrogen b = YES branch
-PAP2 --- Y5((YES)) --- NBP["Required = Nitrogen(b) & Phosphorus (b+aP)"]
-NBP -.- ID06(["01-C-06"])
+PAP2 -->|YES| NBP["Required = Nitrogen(b) & Phosphorus (b+aP)"]
+NBP -.-> ID06(["01-C-06"])
 
-PAP2 --- N5((NO)) --- NBONLY["Required = Nitrogen (b)"]
-NBONLY -.- ID05(["01-C-05"])
+PAP2 -->|NO| NBONLY["Required = Nitrogen (b)"]
+NBONLY -.-> ID05(["01-C-05"])
 
 %% Nitrogen b = NO branch
-PAP3 --- Y6((YES)) --- PONLY["Required = Phosphorus (aP)"]
-PONLY -.- ID04(["01-C-04"])
+PAP3 -->|YES| PONLY["Required = Phosphorus (aP)"]
+PONLY -.-> ID04(["01-C-04"])
 
-PAP3 --- N6((NO)) --- SEC2["Required = Secondary"]
-SEC2 -.- ID03(["01-C-03"])
+PAP3 -->|NO| SEC2["Required = Secondary"]
+SEC2 -.-> ID03(["01-C-03"])
 
-classDef reference stroke:#00a2ff,color:#00a2ff;
-class ID07,ID01,ID02,ID06,ID05,ID04,ID03 reference;
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
 
-%% Class Assignments
-class ID07,ID01,ID02,ID06,ID05,ID04,ID03 reference;
-class Y1,Y2,Y3,Y4,Y5,Y6 yesBox;
-class N1,N2,N3,N4,N5,N6 noBox;
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ART,NAN,PAP1,NB,PAP2,PAP3 decision;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
+
+
 
 ## Pseudocode
 

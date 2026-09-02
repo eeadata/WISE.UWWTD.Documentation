@@ -78,64 +78,119 @@ Determine the legal compliance for **Articles 4, 5, and 6** at the agglomeration
 ## Decision Tree
 
 ```{mermaid}
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 55,
+    "padding": 15
+  }
+}}%%
+
 graph TB
-ROOT["Compliance article 3 = NC"]
+
+%% ============================================================
+%% DECISION TREE
+%% ============================================================
+
+ROOT{"Compliance article 3 = NC"}
 
 %% Left Branch
-ROOT --> N1((NO)) --- ART5["Article 5(4) applies"]
+ROOT -->|NO| ART5{"Article 5(4) applies"}
 
-ART5 --- Y2((YES)) --- AGG["Agglomeration is <10.000pe"]
+ART5 -->|YES| AGG{"Agglomeration is <10.000pe"}
 
-AGG --- Y3((YES)) --- LEG_1108["Legal compliance Article 4 = Compliance Article 4<br>Legal compliance Article 5 = NR<br>Legal Compliance Article 6 = Compliance Article 6"]
-LEG_1108 -.- ID11_08(["11-08"])
+AGG -->|YES| LEG_1108_1["Legal compliance Article 4 = Compliance Article 4"]
+LEG_1108_1 --- LEG_1108_2["Legal compliance Article 5 = NR"]
+LEG_1108_2 --- LEG_1108_3["Legal Compliance Article 6 = Compliance Article 6"]
+LEG_1108_3 -.-> ID11_08(["11-08"])
 
-AGG --- N3((NO)) --- COMP_4C["Compliance Article 4= C"]
+AGG -->|NO| COMP_4C{"Compliance Article 4= C"}
 
-COMP_4C --- Y4((YES)) --- LEG_1106["Legal compliance Article 4 = Compliance Article 4<br>Legal compliance Article 5 = NR<br>Legal Compliance Article 6 = Compliance Article 6"]
-LEG_1106 -.- ID11_06(["11-06"])
+COMP_4C -->|YES| LEG_1106_1["Legal compliance Article 4 = Compliance Article 4"]
+LEG_1106_1 --- LEG_1106_2["Legal compliance Article 5 = NR"]
+LEG_1106_2 --- LEG_1106_3["Legal Compliance Article 6 = Compliance Article 6"]
+LEG_1106_3 -.-> ID11_06(["11-06"])
 
-COMP_4C --- N4((NO)) --- LEG_1107["Legal compliance Article 4 = Compliance Article 4<br>Legal compliance Article 5 = NC<br>Legal Compliance Article 6 = Compliance Article 6"]
-LEG_1107 -.- ID11_07(["11-07"])
+COMP_4C -->|NO| LEG_1107_1["Legal compliance Article 4 = Compliance Article 4"]
+LEG_1107_1 --- LEG_1107_2["Legal compliance Article 5 = NC"]
+LEG_1107_2 --- LEG_1107_3["Legal Compliance Article 6 = Compliance Article 6"]
+LEG_1107_3 -.-> ID11_07(["11-07"])
 
-ART5 --- N2((NO)) --- COMP_4NC["Compliance article 4 = NC"]
+ART5 -->|NO| COMP_4NC{"Compliance article 4 = NC"}
 
-COMP_4NC --- N5((NO)) --- LEG_1101["Legal compliance Article 4 = Compliance Article 4<br>Legal compliance Article 5 = Compliance Article 5<br>Legal Compliance Article 6 = Compliance Article 6"]
-LEG_1101 -.- ID11_01(["11-01"])
+COMP_4NC -->|NO| LEG_1101_1["Legal compliance Article 4 = Compliance Article 4"]
+LEG_1101_1 --- LEG_1101_2["Legal compliance Article 5 = Compliance Article 5"]
+LEG_1101_2 --- LEG_1101_3["Legal Compliance Article 6 = Compliance Article 6"]
+LEG_1101_3 -.-> ID11_01(["11-01"])
 
-COMP_4NC --- Y6((YES))
-COMP_4NC --- N8((YES))
+COMP_4NC -->|YES| COMP_5{"Compliance article 5 ≠ NR OR ≠ PD"}
 
 %% Right Branch
-ROOT --> Y1((YES)) --- COMP_6["Compliance article 6 ≠ NR OR ≠ PD"]
-
-COMP_6 --- Y5((YES)) --- LEG_1102["Legal Compliance Article 4 = NR<br>Legal compliance Article 5 = NR<br>Legal Compliance article 6 = NC"]
-LEG_1102 -.- ID11_02(["11-02"])
-
-COMP_6 --- N6((NO)) --- COMP_4["Compliance article 4 ≠ NR OR ≠ PD"]
+ROOT -->|YES| COMP_6{"Compliance article 6 ≠ NR OR ≠ PD"}
 
 
-COMP_4 --- Y6((YES)) --- COMP_5["Compliance article 5 ≠ NR OR ≠ PD"]
-COMP_4 --- N5((YES))
 
+COMP_6 -->|NO| COMP_4{"Compliance article 4 ≠ NR OR ≠ PD"}
 
-COMP_5 --- Y7((YES)) --- LEG_1104["Legal compliance Article 4 = NC<br>Legal Compliance Article 5 = NC<br>Legal compliance Article 6 = NR"]
-LEG_1104 -.- ID11_04(["11-04"])
+COMP_4 -->|YES| COMP_5
 
-COMP_5 --- N7((NO)) --- LEG_1105["Legal compliance Article 4 = NC<br>Legal Compliance Article 5 = Compliance Article 5<br>Legal compliance Article 6 = NR"]
-LEG_1105 -.- ID11_05(["11-05"])
+COMP_5 -->|YES| LEG_1104_1["Legal compliance Article 4 = NC"]
+LEG_1104_1 --- LEG_1104_2["Legal Compliance Article 5 = NC"]
+LEG_1104_2 --- LEG_1104_3["Legal compliance Article 6 = NR"]
+LEG_1104_3 -.-> ID11_04(["11-04"])
 
-COMP_4 --- N8((NO)) --- LEG_1103["Legal compliance Article 4 = Compliance Article 4<br>Legal compliance Article 5 = Compliance Article 5<br>Legal compliance Article 6 = Compliance Article 6."]
-LEG_1103 -.- ID11_03(["11-03"])
+COMP_5 -->|NO| LEG_1105_1["Legal compliance Article 4 = NC"]
+LEG_1105_1 --- LEG_1105_2["Legal compliance Article 5 = Compliance Article 5"]
+LEG_1105_2 --- LEG_1105_3["Legal compliance Article 6 = NR"]
+LEG_1105_3 -.-> ID11_05(["11-05"])
 
-%% Styles
-classDef reference stroke:#00a2ff,color:#00a2ff;
-classDef yesBox fill:#4CAF50,color:white,stroke:#2E7D32;
-classDef noBox fill:#F44336,color:white,stroke:#C62828;
+COMP_4 -->|NO| LEG_1103_1["Legal compliance Article 4 = Compliance Article 4"]
+LEG_1103_1 --- LEG_1103_2["Legal compliance Article 5 = Compliance Article 5"]
+LEG_1103_2 --- LEG_1103_3["Legal compliance Article 6 = Compliance Article 6."]
+LEG_1103_3 -.-> ID11_03(["11-03"])
 
-%% Class Assignments
-class ID11_01,ID11_02,ID11_03,ID11_04,ID11_05,ID11_06,ID11_07,ID11_08 reference;
-class Y1,Y2,Y3,Y4,Y5,Y6,Y7 yesBox;
-class N1,N2,N3,N4,N5,N6,N7,N8 noBox;
+COMP_6 -->|YES| LEG_1102_1["Legal Compliance Article 4 = NR"]
+LEG_1102_1 --- LEG_1102_2["Legal compliance Article 5 = NR"]
+LEG_1102_2 --- LEG_1102_3["Legal Compliance Article 6 = NC"]
+LEG_1102_3 -.-> ID11_02(["11-02"])
+
+%% ============================================================
+%% DECISION STYLE
+%% ============================================================
+
+classDef decision fill:#FFF7E6,stroke:#D97706,stroke-width:2px,color:#1E293B;
+
+%% ============================================================
+%% COMPLIANCE OUTCOME STYLES
+%% ============================================================
+
+%% NC = RED
+classDef nc fill:#FEE2E2,stroke:#DC2626,stroke-width:2px,color:#991B1B;
+
+%% C = GREEN
+classDef compliance fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534;
+
+%% NR = BLUE
+classDef nr fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E40AF;
+
+%% PD = GREY
+classDef pd fill:#E5E7EB,stroke:#6B7280,stroke-width:2px,color:#374151;
+
+%% ============================================================
+%% APPLY STYLES
+%% ============================================================
+
+class ROOT,ART5,AGG,COMP_4C,COMP_4NC,COMP_6,COMP_4,COMP_5 decision;
+class LEG_1102_3,LEG_1104_1,LEG_1104_2,LEG_1105_1,LEG_1107_2 nc;
+class LEG_1102_1,LEG_1102_2,LEG_1104_3,LEG_1105_3,LEG_1106_2,LEG_1108_2 nr;
+
+%% ============================================================
+%% EDGES
+%% ============================================================
+
+linkStyle default stroke:#64748B,stroke-width:1.5px;
 ```
 
 ## Pseudocode

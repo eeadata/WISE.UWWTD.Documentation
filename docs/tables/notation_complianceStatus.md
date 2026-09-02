@@ -12,12 +12,12 @@
 * - NI
   - No Information
 * - PD
-  - Pending Deadline [^deadline]
+  - Pending Deadline [^1]
 * - NR
   - Not Relevant
 * - QC
-  - Questionable Compliance [^qcompliance]
+  - Questionable Compliance [^2]
 * - AddQC
-  - Additional Questionable Compliance [^aqcompliance]
+  - Additional Questionable Compliance [^3]
 
 ```

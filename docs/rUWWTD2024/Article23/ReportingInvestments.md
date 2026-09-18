@@ -84,8 +84,8 @@ Each row has one investment amount, one amount per funding source and one set of
   reported for the plant;
 * `investment` holds the forecast cost of all collecting system and individual system measures
   reported for the agglomeration;
-* `expectedYearStartWork` takes one year; `expectedDatePerformance` and `completionDate` each
-  take one date.
+* `expectedYearStartWork` and `expectedYearPerformance` each take one year; `completionDate`
+  takes one date.
 
 The draft does not say which date to report when measures have different start or completion
 dates. You can describe the separate measures and their dates in `remarks`. A decision on how
@@ -177,8 +177,8 @@ methodology linked in `prioritisationReference`.
 
 The draft uses several reference dates. They are listed in {ref}`art23-timing`. For investments:
 
-* `expectedYearStartWork` is an expected year, and `expectedDatePerformance` and
-  `completionDate` are expected dates;
+* `expectedYearStartWork` and `expectedYearPerformance` are expected years, and
+  `completionDate` is an expected date;
 * OtherInvestment rows cover the period from `startYear` to `endYear`;
 * the draft does not say whether investment amounts should cover the whole implementation period
   to 2045 or a shorter horizon, such as the six years until the next update
@@ -186,8 +186,8 @@ The draft uses several reference dates. They are listed in {ref}`art23-timing`. 
 
 ## Projected loads and capacity
 
-* `expectedLoad` is the planned load entering the plant at the expected date of compliance, that is
-  the date in `expectedDatePerformance`, not necessarily 2045.
+* `expectedLoad` is the planned load entering the plant at the expected date of compliance, that
+  is the year in `expectedYearPerformance`, not necessarily 2045.
 * `expectedCapacity` is the planned organic design capacity in p.e. Hydraulic capacity is not
   requested.
 * `expectedLoad` is the expected generated load of the agglomeration at the expected date of

@@ -112,10 +112,10 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - gYear
   - Required
   - –
-* - `expectedDatePerformance`
-  - Expected date of performance
-  - Expected date of compliance, meaning 12 months of compliant samples.
-  - date
+* - `expectedYearPerformance`
+  - Expected year of performance
+  - Expected year of compliance, meaning 12 months of compliant samples.
+  - gYear
   - Required
   - –
 :::

@@ -27,10 +27,17 @@ flowchart LR
     Reference
     Document
   end
-  MSSummary -- referenceCode --> Reference
-  Derogation -- referenceCode --> Reference
-  Reference -- documentCode --> Document
+  MSSummary -- "referenceCode" --> Reference
+  Derogation -- "referenceCode" --> Reference
+  Reference -- "documentCode" --> Document
+  dcMetadata -. "licenseDocument" .-> Document
+  dcMetadata -. "metadataDocument" .-> Document
 ```
+
+Only MSSummary and Derogation cite documents. The UWWTP, Agglomeration and OtherInvestment
+tables have no reference fields, and the UWWTP table has no field linking a plant to an
+agglomeration. The dashed links are optional: `dcMetadata` points to a document only where the
+licence or further metadata is delivered as one.
 
 The tables of the reporting dataset do not carry web addresses. Fields such as
 `programmeReference` hold a `referenceCode` pointing into the documents dataset, which resolves to

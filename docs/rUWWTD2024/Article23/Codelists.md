@@ -86,46 +86,151 @@ Used by `article7_4DeadlineExtension`.
   - The maximum extension under Article 7(4).
 :::
 
-(art23-cl-compliance)=
-## National self-assessment - Articles 3 to 8
+(art23-cl-compliance-share)=
+## Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above
 
-**Type:** `ComplianceSelfAssessment_Enum`
+**Type:** `ComplianceShare_Enum`
 
-Used by `article3Compliance` to `article8Compliance` in {ref}`art23-mssummary`. For the meaning of C, NC and
-PD, see {ref}`art23-status-values`.
+Used by `article3Compliance` and `article6Compliance` in {ref}`art23-mssummary`.
 
-:::{list-table} Proposed self-assessment values
+:::{list-table} Proposed compliance share values
 :header-rows: 1
-:widths: 22 78
+:widths: 22 20 34 24
 
 * - Notation
-  - Proposed values
-* - `article3Compliance`
-  - C (compliant); NC - Agglomerations over 2000 p.e. not compliant; NC - Not yet transposed at
-    national level; PD - Agglomerations below 2000 p.e. not defined; PD - Agglomerations below
-    2000 p.e.
-* - `article4Compliance`
-  - C (compliant); NC - Not yet transposed at national level; PD - IS registry absence;
-    PD - More than 2% of load addressed by IS; PD - Technological inadequacy of existing IS
-* - `article5Compliance`
-  - C (compliant); NC - Not yet transposed at national level; PD - IUWMP not yet established for
-    drainage areas of aggl. of 100 000 p.e. and above (Art 5); PD - IUWMP not yet established for
-    drainage areas of aggl. referred to in Art 5(2)
-* - `article6Compliance`
-  - C (compliant); NC - Not yet transposed at national level; NC - Agglomerations over 2000 p.e.
-    not compliant; PD - Agglomerations below 2000 p.e. not defined; PD - Agglomerations below
-    2000 p.e. not compliant
-* - `article7Compliance`
-  - C (compliant); NC - Not yet transposed at national level; PD - Agglomerations over
-    150 000 p.e. not compliant; PD - Areas sensitive to eutrophication not yet identified (Art 7);
-    PD - Agglomerations Art. 7(3) not compliant; PD - Extended deadlines (Art 7(6))
-* - `article8Compliance`
-  - C (compliant); NC - Not yet transposed at national level; PD - Treatment plants >= 150 000 p.e.
-    without 4T; PD - Areas at risk for micropollutants not yet identified; PD - Intermediate
-    requirement reached only (Art 8); PD - Contribution from the EPR not set/gathered (Art 9)
+  - Label
+  - Definition
+  - Notes
+* - `lessThan50`
+  - Less than 50%
+  - Fewer than half of the agglomerations comply.
+  - –
+* - `from50to75`
+  - 50-75%
+  - Between 50 % and 75 % of the agglomerations comply.
+  - –
+* - `from76to85`
+  - 76-85%
+  - Between 76 % and 85 % of the agglomerations comply.
+  - –
+* - `from86to95`
+  - 86-95%
+  - Between 86 % and 95 % of the agglomerations comply.
+  - –
+* - `from96to99`
+  - 96-99%
+  - Between 96 % and 99 % of the agglomerations comply.
+  - –
+* - `full`
+  - 100%
+  - All agglomerations comply.
+  - –
 :::
 
-Known wording issues are listed under {ref}`art23-oi-self-assessment`.
+(art23-cl-compliance-share-estimated)=
+## Estimated compliance share - Articles 3, 6, 7 and 8
+
+**Type:** `ComplianceShareEstimated_Enum`
+
+Used by `article3Compliance1000to1999`, `article6Compliance1000to1999`, `article7Compliance` and
+`article8Compliance` in {ref}`art23-mssummary`. The wider bands reflect that detailed data may not
+yet be available for these agglomerations and plants.
+
+:::{list-table} Proposed estimated compliance share values
+:header-rows: 1
+:widths: 22 20 34 24
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `none`
+  - 0%
+  - None comply.
+  - –
+* - `from1to25`
+  - 1-25%
+  - Up to a quarter comply.
+  - –
+* - `from26to50`
+  - 26-50%
+  - Between a quarter and a half comply.
+  - –
+* - `from51to75`
+  - 51-75%
+  - Between a half and three quarters comply.
+  - –
+* - `from76to100`
+  - 76-100%
+  - More than three quarters comply.
+  - –
+:::
+
+(art23-cl-risk-assessment)=
+## Risk assessment
+
+**Type:** `RiskAssessment_Enum`
+
+Used by `riskAssessment` in {ref}`art23-mssummary`.
+
+:::{list-table} Proposed risk assessment values
+:header-rows: 1
+:widths: 20 20 36 24
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `yes`
+  - Yes
+  - A risk assessment has been carried out in accordance with Article 18.
+  - The date, the identified risks and the summary are then required.
+* - `partially`
+  - Partially
+  - A risk assessment covers only some urban wastewater discharges.
+  - –
+* - `no`
+  - No
+  - No risk assessment has been carried out.
+  - –
+:::
+
+(art23-cl-contribution-period)=
+## Contribution period
+
+**Type:** `ContributionPeriod_Enum`
+
+Used by `contributionPeriod` in {ref}`art23-mssummary`. Several values may be selected.
+
+:::{list-table} Proposed contribution period values
+:header-rows: 1
+:widths: 20 20 36 24
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `endOf2033`
+  - End of 2033
+  - The planned resources cover the requirements due by the end of 2033.
+  - Interim deadline of Articles 8(1) and 8(4).
+* - `endOf2036`
+  - End of 2036
+  - The planned resources cover the requirements due by the end of 2036.
+  - Interim deadline of Article 8(4).
+* - `endOf2039`
+  - End of 2039
+  - The planned resources cover the requirements due by the end of 2039.
+  - Interim deadline of Articles 8(1) and 8(4).
+* - `endOf2045`
+  - End of 2045
+  - The planned resources cover the requirements due by the end of 2045.
+  - Final deadline of Articles 8(1) and 8(4).
+* - `other`
+  - Other
+  - Another period, explained in `contributionPeriodOther`.
+  - –
+:::
 
 (art23-cl-status)=
 ## Plant and agglomeration status

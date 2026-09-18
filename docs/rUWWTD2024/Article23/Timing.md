@@ -107,7 +107,7 @@ The share of plants or agglomerations that must meet the requirements by each da
   - All
 :::
 
-These years match the `sufficientResources2033` to `sufficientResources2045` fields in {ref}`art23-mssummary`.
+These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
 
 ## Reference dates in the draft reporting format
 
@@ -124,7 +124,7 @@ These years match the `sufficientResources2033` to `sufficientResources2045` fie
   - {ref}`art23-mssummary`
 * - 1 January 2028
   - The draft states that compliance is self-reported "as at" this date in the first programme.
-  - {ref}`art23-mssummary`: `article3Compliance` to `article8Compliance`
+  - {ref}`art23-mssummary`: the Article 3 to 8 self-assessment fields
 * - 1 January 2025
   - Numbers and loads justifying deadline extensions (set by the Directive).
   - {ref}`art23-derogation`
@@ -135,9 +135,9 @@ These years match the `sufficientResources2033` to `sufficientResources2045` fie
   - Projected loads and shares.
   - `expectedLoad` in both investment tables, `expectedLoadCollected`,
     `expectedLoadIndividualSystems`
-* - Expected year and dates
+* - Expected years and date
   - Start of works, compliance and completion.
-  - `expectedYearStartWork`, `expectedDatePerformance`, `completionDate`
+  - `expectedYearStartWork`, `expectedYearPerformance`, `completionDate`
 * - `startYear` to `endYear`
   - Period covered by a row of aggregated investments. The period is not defined in the draft.
   - {ref}`art23-otherinvestment`

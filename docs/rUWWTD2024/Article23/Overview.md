@@ -64,14 +64,14 @@ is required, and `situationAt` records the date of the reported situation.
 * - Legal content
   - Draft tables and fields
 * - Article 23(1)(a) - level of implementation of Articles 3 to 8
-  - {ref}`art23-mssummary`: `article3Compliance` to `article8Compliance`.
+  - {ref}`art23-mssummary`: the Article 3 to 8 self-assessment fields.
     {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: the `status` field of each.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
   - {ref}`art23-uwwtp`, {ref}`art23-agglomeration`, {ref}`art23-otherinvestment`
     (`collectingSystemNewInvestment`, `treatmentPlantNewInvestment`).
-    {ref}`art23-mssummary`: `producerResponsibilityContribution`, `producerResponsibilityEstimateBasedOn`, `sufficientResources2033` to
-    `sufficientResources2045`, `prioritisationReference`.
+    {ref}`art23-mssummary`: `producerResponsibilityContribution`,
+    `producerResponsibilityEstimateBasedOn`, `contributionPeriod`, `prioritisationReference`.
 * - Article 23(1)(c) - renewal, upgrade or replacement of existing infrastructure
   - Measure code `23(1c)` in {ref}`art23-uwwtp` and {ref}`art23-agglomeration`;
     {ref}`art23-otherinvestment` (`collectingSystemRenewalInvestment`, `treatmentPlantRenewalInvestment`).

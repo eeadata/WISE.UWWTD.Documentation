@@ -2,8 +2,8 @@
 # MSSummary
 
 :::{warning} Draft
-Draft baseline. The self-assessment codelists in particular are under review
-({ref}`art23-oi-self-assessment`).
+Draft baseline. The self-assessment fields were revised after the country consultation and are
+still under review ({ref}`art23-oi-self-assessment`).
 :::
 
 **Table status:** Required.
@@ -30,7 +30,7 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
 
 :::{list-table} MSSummary fields - programme and references
 :header-rows: 1
-:widths: 22 16 26 10 10 16
+:widths: 22 16 26 12 10 14
 
 * - Notation
   - Label
@@ -40,11 +40,11 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Condition
 * - `situationAt`
   - Situation at
-  - Date of the reported situation, for example the date the programme was approved or
-    the date of the decision not to establish one.
+  - Date of the reported situation, for example the date the programme was approved or the
+    date of the decision not to establish one.
   - date
   - Required
-  - –
+  - Between 2026 and 2045
 * - `programmeObligation`
   - Programme obligation
   - Whether the Member State is obliged to provide a national implementation programme.
@@ -65,16 +65,23 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Required if `programmeObligation` = yes
 :::
 
+The programme is updated at least every six years, unless the Member State is fully compliant
+with Articles 3 to 8.
+
 ## Self-assessment of Articles 3 to 8
 
 Each field records the Member State's own assessment, at national level, of compliance with one
 Article in the first programme. The draft notes that detailed information may not yet be
-available, so these are estimates. The draft states that compliance status is self-reported as
-at 1 January 2028.
+available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
+percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
+Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.
+
+Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
+agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.
 
 :::{list-table} MSSummary fields - self-assessment
 :header-rows: 1
-:widths: 26 18 24 10 8 14
+:widths: 26 18 22 14 8 12
 
 * - Notation
   - Label
@@ -84,22 +91,31 @@ at 1 January 2028.
   - Codelist
 * - `article3Compliance`
   - Article 3 compliance
-  - Self-assessment of Article 3 (collecting systems).
-  - ComplianceSelfAssessment_Enum
+  - Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting
+    systems).
+  - ComplianceShare_Enum
   - Required
-  - {ref}`art23-cl-compliance`
+  - {ref}`art23-cl-compliance-share`
+* - `article3Compliance1000to1999`
+  - Article 3 compliance, 1 000 to 1 999 p.e.
+  - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.
+  - ComplianceShareEstimated_Enum
+  - Required
+  - {ref}`art23-cl-compliance-share-estimated`
 * - `article4Compliance`
   - Article 4 compliance
-  - Self-assessment of Article 4 (individual systems).
-  - ComplianceSelfAssessment_Enum
+  - Whether a system of authorisation and control of individual systems has been introduced in
+    accordance with the Directive.
+  - YesNo
   - Required
-  - {ref}`art23-cl-compliance`
-* - `article5Compliance`
-  - Article 5 compliance
-  - Self-assessment of Article 5 (integrated urban wastewater management plans).
-  - ComplianceSelfAssessment_Enum
+  - –
+* - `article5ManagementPlanCount`
+  - Article 5 management plans
+  - Number of agglomerations of 100 000 p.e. and above that already have an integrated urban
+    wastewater management plan.
+  - nonNegativeValue
   - Required
-  - {ref}`art23-cl-compliance`
+  - –
 * - `article5ManagementPlanReference`
   - Article 5 management plan reference
   - Reference to the document listing the Member State's integrated urban wastewater
@@ -109,30 +125,37 @@ at 1 January 2028.
   - –
 * - `article6Compliance`
   - Article 6 compliance
-  - Self-assessment of Article 6 (secondary treatment).
-  - ComplianceSelfAssessment_Enum
+  - Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary
+    treatment).
+  - ComplianceShare_Enum
   - Required
-  - {ref}`art23-cl-compliance`
+  - {ref}`art23-cl-compliance-share`
+* - `article6Compliance1000to1999`
+  - Article 6 compliance, 1 000 to 1 999 p.e.
+  - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.
+  - ComplianceShareEstimated_Enum
+  - Required
+  - {ref}`art23-cl-compliance-share-estimated`
 * - `article7Compliance`
   - Article 7 compliance
-  - Self-assessment of Article 7 (tertiary treatment).
-  - ComplianceSelfAssessment_Enum
+  - Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary
+    treatment requirements.
+  - ComplianceShareEstimated_Enum
   - Required
-  - {ref}`art23-cl-compliance`
+  - {ref}`art23-cl-compliance-share-estimated`
 * - `article8Compliance`
   - Article 8 compliance
-  - Self-assessment of Article 8 (quaternary treatment).
-  - ComplianceSelfAssessment_Enum
+  - Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary
+    treatment requirements.
+  - ComplianceShareEstimated_Enum
   - Required
-  - {ref}`art23-cl-compliance`
+  - {ref}`art23-cl-compliance-share-estimated`
 :::
 
 :::{note}
-Most deadlines of Articles 3 to 8 fall after 1 January 2028. The value PD (pending deadline)
-reflects this. The draft does not yet state whether one or several values may be reported per
-Article, how a single national value is derived from plant or agglomeration data, or when to use
-"not yet transposed at national level". An alternative structure for this assessment is also
-under review. See {ref}`art23-oi-self-assessment`.
+Most deadlines of Articles 3 to 8 fall after 1 January 2028, so the first programme records an
+expected position rather than a settled one. How a single national share is derived from plant or
+agglomeration data is not stated. See {ref}`art23-oi-self-assessment`.
 :::
 
 ## Risk assessment
@@ -143,54 +166,56 @@ the measures adopted to be included in the programme.
 
 :::{list-table} MSSummary fields - risk assessment
 :header-rows: 1
-:widths: 22 16 26 10 10 16
+:widths: 22 16 26 12 10 14
 
 * - Notation
   - Label
   - Definition
   - Type
   - Status
-  - Condition
+  - Condition or codelist
 * - `riskAssessment`
   - Risk assessment
   - Whether a risk assessment of urban wastewater discharges has been carried out in
     accordance with Article 18.
-  - YesNo
+  - RiskAssessment_Enum
   - Required
-  - –
+  - {ref}`art23-cl-risk-assessment`
 * - `riskDate`
   - Risk assessment date
   - Date of issue of the risk assessment.
   - date
   - Conditional
-  - If `riskAssessment` = yes
+  - Required if `riskAssessment` = `yes`
 * - `riskIdentified`
   - Risks identified
   - Whether any risks have been identified. Measures under Article 18(2) that address
-    identified risks are reported with the measure codelists of the UWWTP and
-    Agglomeration tables.
+    identified risks are reported with the measure codelists of the UWWTP and Agglomeration
+    tables.
   - YesNo
   - Conditional
-  - If `riskAssessment` = yes
+  - Required if `riskAssessment` = `yes`
 * - `riskSummaryReference`
   - Risk summary reference
   - Reference to the relevant section of the river basin management plan, or to another
     official summary of the identified risks and adopted measures.
   - referenceCode
   - Conditional
-  - Required if `riskAssessment` = yes
+  - Required if `riskAssessment` = `yes`
 :::
 
-The draft offers only yes or no for `riskAssessment`. How to report a risk assessment that covers
-only some discharges is still open ({ref}`art23-oi-risk`).
+A risk assessment covering only some discharges is reported as `partially`. How the three
+conditional fields apply in that case is open ({ref}`art23-oi-risk`).
 
 ## Producer responsibility contribution
 
 Article 23(1)(b) asks for an estimation of the financial contribution from PROs "when available".
+In the first programme a Member State may estimate the contribution for the whole period or for
+the period of an interim target, and assign it to that period.
 
 :::{list-table} MSSummary fields - producer responsibility contribution
 :header-rows: 1
-:widths: 28 18 22 12 8 14
+:widths: 28 18 22 12 8 12
 
 * - Notation
   - Label
@@ -211,38 +236,20 @@ Article 23(1)(b) asks for an estimation of the financial contribution from PROs 
   - EstimateBasis_Enum
   - Required
   - {ref}`art23-cl-pro-basis`
-* - `sufficientResources2033`
-  - Sufficient resources by 2033
-  - Will the planned resources, including the contribution in
-    `producerResponsibilityContribution`, be sufficient to meet the requirements of the
-    Directive by the end of 2033?
-  - YesNo
-  - Required
-  - –
-* - `sufficientResources2036`
-  - Sufficient resources by 2036
-  - As `sufficientResources2033`, by the end of 2036.
-  - YesNo
-  - Required
-  - –
-* - `sufficientResources2039`
-  - Sufficient resources by 2039
-  - As `sufficientResources2033`, by the end of 2039.
-  - YesNo
-  - Required
-  - –
-* - `sufficientResources2045`
-  - Sufficient resources by 2045
-  - As `sufficientResources2033`, by the end of 2045.
-  - YesNo
-  - Required
-  - –
-* - `otherPeriod`
-  - Other period
-  - Another period covered by the funds in `producerResponsibilityContribution`.
-  - string255
+* - `contributionPeriod`
+  - Contribution period
+  - Period or periods by which the planned resources, including the contribution in
+    `producerResponsibilityContribution`, are expected to be sufficient to meet the
+    requirements of the Directive. Select one or more.
+  - ContributionPeriod_Enum [0..n]
   - Optional
-  - –
+  - {ref}`art23-cl-contribution-period`
+* - `contributionPeriodOther`
+  - Other contribution period
+  - Explanation of the period, where `contributionPeriod` includes `other`.
+  - string1000
+  - Conditional
+  - Required if `contributionPeriod` includes `other`
 * - `remarks`
   - Remarks
   - Other important information on compliance and its assessment.
@@ -251,6 +258,12 @@ Article 23(1)(b) asks for an estimation of the financial contribution from PROs 
   - –
 :::
 
-The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8.
-The draft does not state which requirements the questions cover, which period `producerResponsibilityContribution`
-refers to, or whether amounts are nominal. These points are open ({ref}`art23-oi-pro`).
+The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8. A
+Member State that has estimated its contribution over a longer period, such as 2028 to 2045, or
+that works to a different budgetary cycle, selects `other` and describes the period in
+`contributionPeriodOther`.
+
+`contributionPeriod` replaces four separate yes or no questions, one per deadline, and an
+accompanying free-text period. It carries no requirement marker in the draft, although the
+questions it replaces were Required; whether amounts are nominal is also open
+({ref}`art23-oi-pro`).

@@ -76,7 +76,8 @@ how `producerResponsibilityFund` relates to the national `producerResponsibility
 
 ## Several measures or investments at one plant or agglomeration
 
-Each plant and each agglomeration has one row, because `code` and `code` are primary keys.
+Each plant and each agglomeration has one row, because `code` is the primary key of both
+  tables.
 Each row has one investment amount, one amount per funding source and one set of dates:
 
 * `measure` accepts several measures, so `investment` holds the forecast cost of all measures
@@ -143,7 +144,7 @@ without splitting the amount between funds. This is not yet decided
 
 ## Loans
 
-`loan` and `loan` are Required in the draft, and the lender's name is required when the
+The `loan` fields are Required in the draft, and the lender's name is required when the
 amount is above 0. There is no loan field in OtherInvestment. Article 23(1)(d) refers to sources
 of public financing. The draft does not define "loan", for example whether it covers public and
 private lenders, and the EU fund codelist includes the European Investment Bank. Whether the loan
@@ -160,7 +161,7 @@ Article 23(1)(b) requires a prioritisation of investments related to:
 
 The Directive does not link priority to the timing of completion.
 
-In the draft, `prioritisation` and `prioritisation` take the values High, Medium or Low,
+In the draft, the `prioritisation` fields take the values High, Medium or Low,
 and `prioritisationReference` points to the national prioritisation methodology. The draft
 description adds that "'High' should be used for projects that are scheduled for earlier
 completion relative to others".

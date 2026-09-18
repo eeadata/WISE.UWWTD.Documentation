@@ -22,6 +22,15 @@ part of this table in the draft.
 The reference fields may point to a chapter of the programme. Where no extension is requested, report
 `noDerogation`: the extension fields are Required.
 
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_Derogation_ClassDiagram.mmd
+:name: Article23_Derogation_ClassDiagram
+:caption: Article 23 - Derogation - draft
+:align: center
+```
+
+In {numref}`Article23_Derogation_ClassDiagram`, `[1]` marks the Required fields and `[0..1]` the
+Optional and Conditional ones ({ref}`art23-requirement-status`).
+
 ## Article 3(2) - collecting systems (1 000 to 1 999 p.e.)
 
 Agglomerations of 1 000 to 1 999 p.e. must have collecting systems by 31 December 2035. A Member

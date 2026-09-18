@@ -2,16 +2,13 @@
 # Codelists
 
 :::{warning} Draft
-All codelists on this page are proposals from the draft guidance. The labels are
-reproduced from the draft, with spacing and hyphens made consistent. The draft does not define the
-codes to be entered in the reporting template, and several labels are under review
+All codelists on this page are proposals, and several are under review
 ({ref}`art23-open-issues`).
 :::
 
 Every codelist below is named as a WISE enumeration type, given under the heading, and gives for
 each value the notation to report, a short label and a definition, following
-{ref}`art23-notation`. The notations are proposals: the draft guidance
-lists labels only and does not define the codes to be entered in the reporting template.
+{ref}`art23-notation`.
 
 Only the plant `measure` field is explicitly described as allowing more than one value. For the
 other codelists, the draft does not say whether several values may be selected.
@@ -54,8 +51,7 @@ Used by `article3_2DeadlineExtension` and `article6_3DeadlineExtension`.
 :::
 
 Under the Directive, the maximum extension is 8 or 10 years depending on the situation on
-1 January 2025, or 12 or 14 years for Bulgaria, Croatia and Romania. The draft lists the values as
-plain years; the notations above are proposals ({ref}`art23-notation`).
+1 January 2025, or 12 or 14 years for Bulgaria, Croatia and Romania.
 
 (art23-cl-deadline-ext-7-4)=
 ## Deadline extension - Article 7(4)
@@ -129,8 +125,7 @@ PD, see {ref}`art23-status-values`.
     requirement reached only (Art 8); PD - Contribution from the EPR not set/gathered (Art 9)
 :::
 
-The last `article3Compliance` value is incomplete in the draft. Known wording issues are listed under
-{ref}`art23-oi-self-assessment`.
+Known wording issues are listed under {ref}`art23-oi-self-assessment`.
 
 (art23-cl-status)=
 ## Plant and agglomeration status
@@ -150,23 +145,23 @@ Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomerati
 * - `compliant`
   - Compliant (C)
   - Articles 3 to 8 compliant; Article 18 requirements fulfilled or not applicable.
-  - The draft writes this value as C.
+  - –
 * - `nonCompliant`
   - Non-compliant (NC)
   - Articles 3 to 8 non-compliant; Article 18 requirements fulfilled or not applicable.
-  - The draft writes this value as NC.
+  - –
 * - `pendingDeadline`
   - Pending deadline (PD)
   - Pending deadline: time remains for submission of the application.
-  - The draft writes this value as PD.
+  - –
 * - `compliantArticle18NotMet`
   - Compliant, Article 18 not met (C+A18)
   - Articles 3 to 8 compliant; more stringent Article 18 requirements not met.
-  - The draft writes this value as C+A18.
+  - –
 * - `nonCompliantArticle18NotMet`
   - Non-compliant, Article 18 not met (NC+A18)
   - Articles 3 to 8 non-compliant; more stringent Article 18 requirements not met.
-  - The draft writes this value as NC+A18.
+  - –
 :::
 
 (art23-cl-uww-measures)=
@@ -353,7 +348,7 @@ Used by the `europeanUnionFundName` and `europeanUnionFundsName` fields.
 * - `recoveryAndResilienceFacility`
   - Recovery and Resilience Facility
   - Funding under the Recovery and Resilience Facility.
-  - The draft calls this the Resilience Recovery Facility.
+  - –
 * - `horizonEurope`
   - Horizon Europe
   - Funding under Horizon Europe.

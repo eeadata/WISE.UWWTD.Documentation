@@ -19,3 +19,21 @@ html[data-theme="dark"] {
     text-align: center;
     text-transform: uppercase;
 }
+
+/* =========================
+   Content width
+   The field tables carry six columns, so the article pane is widened
+   beyond the theme's 60em default and the page beyond its 88rem.
+========================= */
+.bd-page-width {
+    max-width: 110rem;
+}
+
+.bd-main .bd-content .bd-article-container {
+    max-width: 100%;
+}
+
+/* Slightly narrower navigation, leaving more room for the content */
+.bd-sidebar-primary {
+    width: 21%;
+}

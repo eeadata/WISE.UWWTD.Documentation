@@ -65,7 +65,7 @@ is required, and `situationAt` records the date of the reported situation.
   - Draft tables and fields
 * - Article 23(1)(a) - level of implementation of Articles 3 to 8
   - {ref}`art23-mssummary`: `article3Compliance` to `article8Compliance`.
-    {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: `status`, `status`.
+    {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: the `status` field of each.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
   - {ref}`art23-uwwtp`, {ref}`art23-agglomeration`, {ref}`art23-otherinvestment`

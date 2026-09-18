@@ -17,6 +17,15 @@ organisations (PROs).
 According to the draft, a Member State that is fully compliant with Articles 3 to 8 does not need
 to report the more detailed tables.
 
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_MSSummary_ClassDiagram.mmd
+:name: Article23_MSSummary_ClassDiagram
+:caption: Article 23 - MSSummary - draft
+:align: center
+```
+
+In {numref}`Article23_MSSummary_ClassDiagram`, `[1]` marks the Required fields and `[0..1]` the
+Optional and Conditional ones ({ref}`art23-requirement-status`).
+
 ## Programme and references
 
 :::{list-table} MSSummary fields - programme and references

@@ -1,0 +1,26 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class OtherInvestment{
+    + startYear: gYear [1]
+    + endYear: gYear [1]
+    + collectingSystemNewInvestment: nonNegativeValue [1]
+    + collectingSystemRenewalInvestment: nonNegativeValue [1]
+    + treatmentPlantNewInvestment: nonNegativeValue [1]
+    + treatmentPlantRenewalInvestment: nonNegativeValue [1]
+    + europeanUnionFunds: nonNegativeValue [1]
+    + europeanUnionFundsName: EUFund_Enum [0..1]
+    + otherPublicFunds: nonNegativeValue [1]
+    + otherPublicFundSpecification: OtherPublicFund_Enum [0..1]
+    + remarks: string1000 [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

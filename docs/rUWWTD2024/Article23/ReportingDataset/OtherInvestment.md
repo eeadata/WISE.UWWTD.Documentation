@@ -21,6 +21,15 @@ Total investment by the Member State is the sum of the investments reported in t
 Agglomeration and OtherInvestment tables. Do not repeat here anything already reported in those
 tables.
 
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_OtherInvestment_ClassDiagram.mmd
+:name: Article23_OtherInvestment_ClassDiagram
+:caption: Article 23 - OtherInvestment - draft
+:align: center
+```
+
+In {numref}`Article23_OtherInvestment_ClassDiagram`, `[1]` marks the Required fields and `[0..1]` the
+Optional and Conditional ones ({ref}`art23-requirement-status`).
+
 ## OtherInvestment fields
 
 The descriptions of the four investment fields follow the wording of Article 23(1)(b), for

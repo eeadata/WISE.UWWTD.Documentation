@@ -130,10 +130,11 @@ These years match the `sufficientResources2033` to `sufficientResources2045` fie
   - {ref}`art23-derogation`
 * - "Reference year"
   - Status of plants and agglomerations. Not defined in the draft.
-  - `status`, `status`
+  - `status` in both investment tables
 * - Expected date of compliance
   - Projected loads and shares.
-  - `expectedLoad`, `expectedLoad`, `expectedLoadCollected`, `expectedLoadIndividualSystems`
+  - `expectedLoad` in both investment tables, `expectedLoadCollected`,
+    `expectedLoadIndividualSystems`
 * - Expected year and dates
   - Start of works, compliance and completion.
   - `expectedYearStartWork`, `expectedDatePerformance`, `completionDate`

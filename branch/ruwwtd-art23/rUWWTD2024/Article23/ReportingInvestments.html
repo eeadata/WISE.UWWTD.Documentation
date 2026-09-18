@@ -404,7 +404,7 @@ question, this is said and the open issue is linked. No rules have been added be
 <section id="where-to-report-each-investment">
 <h2>Where to report each investment<a class="headerlink" href="#where-to-report-each-investment" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 37 </span><span class="caption-text">Where to report investments in the draft format</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 40 </span><span class="caption-text">Where to report investments in the draft format</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -493,8 +493,8 @@ Each row has one investment amount, one amount per funding source and one set of
 reported for the plant;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">investment</span></code> holds the forecast cost of all collecting system and individual system measures
 reported for the agglomeration;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code> takes one year; <code class="docutils literal notranslate"><span class="pre">expectedDatePerformance</span></code> and <code class="docutils literal notranslate"><span class="pre">completionDate</span></code> each
-take one date.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code> and <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code> each take one year; <code class="docutils literal notranslate"><span class="pre">completionDate</span></code>
+takes one date.</p></li>
 </ul>
 <p>The draft does not say which date to report when measures have different start or completion
 dates. You can describe the separate measures and their dates in <code class="docutils literal notranslate"><span class="pre">remarks</span></code>. A decision on how
@@ -504,7 +504,7 @@ multiple measures and dates should be reported is pending (<a class="reference i
 <h2>Funding sources<a class="headerlink" href="#funding-sources" title="Link to this heading">#</a></h2>
 <p>Each investment table has a separate amount for each type of funding:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 38 </span><span class="caption-text">Funding fields by table</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 41 </span><span class="caption-text">Funding fields by table</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 25.0%" />
@@ -598,8 +598,8 @@ methodology linked in <code class="docutils literal notranslate"><span class="pr
 <h2>Reporting periods and dates<a class="headerlink" href="#reporting-periods-and-dates" title="Link to this heading">#</a></h2>
 <p>The draft uses several reference dates. They are listed in <a class="reference internal" href="Timing.html#art23-timing"><span class="std std-ref">Reporting timing and reference dates</span></a>. For investments:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code> is an expected year, and <code class="docutils literal notranslate"><span class="pre">expectedDatePerformance</span></code> and
-<code class="docutils literal notranslate"><span class="pre">completionDate</span></code> are expected dates;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code> and <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code> are expected years, and
+<code class="docutils literal notranslate"><span class="pre">completionDate</span></code> is an expected date;</p></li>
 <li><p>OtherInvestment rows cover the period from <code class="docutils literal notranslate"><span class="pre">startYear</span></code> to <code class="docutils literal notranslate"><span class="pre">endYear</span></code>;</p></li>
 <li><p>the draft does not say whether investment amounts should cover the whole implementation period
 to 2045 or a shorter horizon, such as the six years until the next update
@@ -609,8 +609,8 @@ to 2045 or a shorter horizon, such as the six years until the next update
 <section id="projected-loads-and-capacity">
 <h2>Projected loads and capacity<a class="headerlink" href="#projected-loads-and-capacity" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> is the planned load entering the plant at the expected date of compliance, that is
-the date in <code class="docutils literal notranslate"><span class="pre">expectedDatePerformance</span></code>, not necessarily 2045.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> is the planned load entering the plant at the expected date of compliance, that
+is the year in <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>, not necessarily 2045.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code> is the planned organic design capacity in p.e. Hydraulic capacity is not
 requested.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> is the expected generated load of the agglomeration at the expected date of

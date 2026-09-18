@@ -501,63 +501,205 @@ other codelists, the draft does not say whether several values may be selected.<
 </table>
 </div>
 </section>
-<section id="national-self-assessment-articles-3-to-8">
-<span id="art23-cl-compliance"></span><h2>National self-assessment - Articles 3 to 8<a class="headerlink" href="#national-self-assessment-articles-3-to-8" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ComplianceSelfAssessment_Enum</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code> to <code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code> in <a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. For the meaning of C, NC and
-PD, see <a class="reference internal" href="Terminology.html#art23-status-values"><span class="std std-ref">Status values C, NC and PD</span></a>.</p>
+<section id="compliance-share-articles-3-and-6-agglomerations-of-2-000-p-e-and-above">
+<span id="art23-cl-compliance-share"></span><h2>Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above<a class="headerlink" href="#compliance-share-articles-3-and-6-agglomerations-of-2-000-p-e-and-above" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ComplianceShare_Enum</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code> and <code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code> in <a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 28 </span><span class="caption-text">Proposed self-assessment values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 28 </span><span class="caption-text">Proposed compliance share values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
-<col style="width: 78.0%" />
+<col style="width: 20.0%" />
+<col style="width: 34.0%" />
+<col style="width: 24.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
-<th class="head"><p>Proposed values</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Agglomerations over 2000 p.e. not compliant; NC - Not yet transposed at
-national level; PD - Agglomerations below 2000 p.e. not defined; PD - Agglomerations below
-2000 p.e.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lessThan50</span></code></p></td>
+<td><p>Less than 50%</p></td>
+<td><p>Fewer than half of the agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article4Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Not yet transposed at national level; PD - IS registry absence;
-PD - More than 2% of load addressed by IS; PD - Technological inadequacy of existing IS</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from50to75</span></code></p></td>
+<td><p>50-75%</p></td>
+<td><p>Between 50 % and 75 % of the agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article5Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Not yet transposed at national level; PD - IUWMP not yet established for
-drainage areas of aggl. of 100 000 p.e. and above (Art 5); PD - IUWMP not yet established for
-drainage areas of aggl. referred to in Art 5(2)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from76to85</span></code></p></td>
+<td><p>76-85%</p></td>
+<td><p>Between 76 % and 85 % of the agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Not yet transposed at national level; NC - Agglomerations over 2000 p.e.
-not compliant; PD - Agglomerations below 2000 p.e. not defined; PD - Agglomerations below
-2000 p.e. not compliant</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from86to95</span></code></p></td>
+<td><p>86-95%</p></td>
+<td><p>Between 86 % and 95 % of the agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Not yet transposed at national level; PD - Agglomerations over
-150 000 p.e. not compliant; PD - Areas sensitive to eutrophication not yet identified (Art 7);
-PD - Agglomerations Art. 7(3) not compliant; PD - Extended deadlines (Art 7(6))</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from96to99</span></code></p></td>
+<td><p>96-99%</p></td>
+<td><p>Between 96 % and 99 % of the agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code></p></td>
-<td><p>C (compliant); NC - Not yet transposed at national level; PD - Treatment plants &gt;= 150 000 p.e.
-without 4T; PD - Areas at risk for micropollutants not yet identified; PD - Intermediate
-requirement reached only (Art 8); PD - Contribution from the EPR not set/gathered (Art 9)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">full</span></code></p></td>
+<td><p>100%</p></td>
+<td><p>All agglomerations comply.</p></td>
+<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Known wording issues are listed under <a class="reference internal" href="OpenIssues.html#art23-oi-self-assessment"><span class="std std-ref">OI-02 Self-assessment of Articles 3 to 8</span></a>.</p>
+</section>
+<section id="estimated-compliance-share-articles-3-6-7-and-8">
+<span id="art23-cl-compliance-share-estimated"></span><h2>Estimated compliance share - Articles 3, 6, 7 and 8<a class="headerlink" href="#estimated-compliance-share-articles-3-6-7-and-8" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ComplianceShareEstimated_Enum</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">article3Compliance1000to1999</span></code>, <code class="docutils literal notranslate"><span class="pre">article6Compliance1000to1999</span></code>, <code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code> and
+<code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code> in <a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. The wider bands reflect that detailed data may not
+yet be available for these agglomerations and plants.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">Proposed estimated compliance share values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 20.0%" />
+<col style="width: 34.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p></td>
+<td><p>0%</p></td>
+<td><p>None comply.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from1to25</span></code></p></td>
+<td><p>1-25%</p></td>
+<td><p>Up to a quarter comply.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from26to50</span></code></p></td>
+<td><p>26-50%</p></td>
+<td><p>Between a quarter and a half comply.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from51to75</span></code></p></td>
+<td><p>51-75%</p></td>
+<td><p>Between a half and three quarters comply.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from76to100</span></code></p></td>
+<td><p>76-100%</p></td>
+<td><p>More than three quarters comply.</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="risk-assessment">
+<span id="art23-cl-risk-assessment"></span><h2>Risk assessment<a class="headerlink" href="#risk-assessment" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">RiskAssessment_Enum</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> in <a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">Proposed risk assessment values</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 36.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">yes</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>A risk assessment has been carried out in accordance with Article 18.</p></td>
+<td><p>The date, the identified risks and the summary are then required.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">partially</span></code></p></td>
+<td><p>Partially</p></td>
+<td><p>A risk assessment covers only some urban wastewater discharges.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No risk assessment has been carried out.</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="contribution-period">
+<span id="art23-cl-contribution-period"></span><h2>Contribution period<a class="headerlink" href="#contribution-period" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ContributionPeriod_Enum</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> in <a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. Several values may be selected.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<caption><span class="caption-number">Table 31 </span><span class="caption-text">Proposed contribution period values</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 36.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endOf2033</span></code></p></td>
+<td><p>End of 2033</p></td>
+<td><p>The planned resources cover the requirements due by the end of 2033.</p></td>
+<td><p>Interim deadline of Articles 8(1) and 8(4).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">endOf2036</span></code></p></td>
+<td><p>End of 2036</p></td>
+<td><p>The planned resources cover the requirements due by the end of 2036.</p></td>
+<td><p>Interim deadline of Article 8(4).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endOf2039</span></code></p></td>
+<td><p>End of 2039</p></td>
+<td><p>The planned resources cover the requirements due by the end of 2039.</p></td>
+<td><p>Interim deadline of Articles 8(1) and 8(4).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">endOf2045</span></code></p></td>
+<td><p>End of 2045</p></td>
+<td><p>The planned resources cover the requirements due by the end of 2045.</p></td>
+<td><p>Final deadline of Articles 8(1) and 8(4).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">other</span></code></p></td>
+<td><p>Other</p></td>
+<td><p>Another period, explained in <code class="docutils literal notranslate"><span class="pre">contributionPeriodOther</span></code>.</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="plant-and-agglomeration-status">
 <span id="art23-cl-status"></span><h2>Plant and agglomeration status<a class="headerlink" href="#plant-and-agglomeration-status" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Status_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">status</span></code> field of the <a class="reference internal" href="ReportingDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="ReportingDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 29 </span><span class="caption-text">Proposed status values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id7">
+<caption><span class="caption-number">Table 32 </span><span class="caption-text">Proposed status values</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 22.0%" />
@@ -605,8 +747,8 @@ requirement reached only (Art 8); PD - Contribution from the EPR not set/gathere
 <span id="art23-cl-uww-measures"></span><h2>Treatment plant measures<a class="headerlink" href="#treatment-plant-measures" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">TreatmentPlantMeasure_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">measure</span></code> field of the <a class="reference internal" href="ReportingDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> table. Select one or more values.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-number">Table 30 </span><span class="caption-text">Proposed treatment plant measures</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id8">
+<caption><span class="caption-number">Table 33 </span><span class="caption-text">Proposed treatment plant measures</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 24.0%" />
@@ -696,8 +838,8 @@ agglomerations of 10 000 p.e. and above discharging into risk areas.</p></td>
 <span id="art23-cl-agg-measures"></span><h2>Agglomeration measures<a class="headerlink" href="#agglomeration-measures" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">AgglomerationMeasure_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">measures</span></code> field of the <a class="reference internal" href="ReportingDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> table.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
-<caption><span class="caption-number">Table 31 </span><span class="caption-text">Proposed agglomeration measures</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id9">
+<caption><span class="caption-number">Table 34 </span><span class="caption-text">Proposed agglomeration measures</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 24.0%" />
@@ -752,8 +894,8 @@ assessment.</p></td>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Priority_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> field of the <a class="reference internal" href="ReportingDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="ReportingDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a>
 tables.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id7">
-<caption><span class="caption-number">Table 32 </span><span class="caption-text">Proposed priority values</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id10">
+<caption><span class="caption-number">Table 35 </span><span class="caption-text">Proposed priority values</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 20.0%" />
@@ -793,8 +935,8 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 <span id="art23-cl-eu-funds"></span><h2>EU funds<a class="headerlink" href="#eu-funds" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">EUFund_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> and <code class="docutils literal notranslate"><span class="pre">europeanUnionFundsName</span></code> fields.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id8">
-<caption><span class="caption-number">Table 33 </span><span class="caption-text">Proposed EU fund values</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-number">Table 36 </span><span class="caption-text">Proposed EU fund values</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 30.0%" />
@@ -867,8 +1009,8 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 <span id="art23-cl-public-funds"></span><h2>Other public funds<a class="headerlink" href="#other-public-funds" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">OtherPublicFund_Enum</span></code></p>
 <p>Used by the <code class="docutils literal notranslate"><span class="pre">otherPublicFundSpecification</span></code> field.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id9">
-<caption><span class="caption-number">Table 34 </span><span class="caption-text">Proposed other public fund values</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id12">
+<caption><span class="caption-number">Table 37 </span><span class="caption-text">Proposed other public fund values</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -911,8 +1053,8 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 <span id="art23-cl-pro-basis"></span><h2>Basis of the producer responsibility estimate<a class="headerlink" href="#basis-of-the-producer-responsibility-estimate" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">EstimateBasis_Enum</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code>.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id10">
-<caption><span class="caption-number">Table 35 </span><span class="caption-text">Proposed basis of estimate values</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id13">
+<caption><span class="caption-number">Table 38 </span><span class="caption-text">Proposed basis of estimate values</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -946,8 +1088,8 @@ responsibility organisations during the recognition procedure.</p></td>
 <span id="art23-cl-licence"></span><h2>Licence<a class="headerlink" href="#licence" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Licence_Enum</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">license</span></code> in <a class="reference internal" href="DocumentsDataset/dcMetadata.html#art23-dcmetadata"><span class="std std-ref">dcMetadata</span></a>.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id11">
-<caption><span class="caption-number">Table 36 </span><span class="caption-text">Proposed licence values</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id14">
+<caption><span class="caption-number">Table 39 </span><span class="caption-text">Proposed licence values</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 22.0%" />
@@ -1029,7 +1171,10 @@ responsibility organisations during the recognition procedure.</p></td>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deadline-extension-articles-3-2-and-6-3">Deadline extension - Articles 3(2) and 6(3)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deadline-extension-article-7-4">Deadline extension - Article 7(4)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-self-assessment-articles-3-to-8">National self-assessment - Articles 3 to 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-share-articles-3-and-6-agglomerations-of-2-000-p-e-and-above">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimated-compliance-share-articles-3-6-7-and-8">Estimated compliance share - Articles 3, 6, 7 and 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-assessment">Risk assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-period">Contribution period</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plant-and-agglomeration-status">Plant and agglomeration status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-plant-measures">Treatment plant measures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agglomeration-measures">Agglomeration measures</a></li>

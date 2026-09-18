@@ -85,8 +85,8 @@ Investment
 : The forecast cost of measures, in million EUR. See {ref}`art23-investments`.
 
 Expected date of compliance
-: For a treatment plant, the draft defines it as the date by which 12 months of compliant samples
-  are expected (`expectedDatePerformance`).
+: For a treatment plant, the year by which 12 months of compliant samples are expected
+  (`expectedYearPerformance`).
 
 Organic design capacity
 : The design capacity of a plant expressed in p.e. (`expectedCapacity`).
@@ -98,16 +98,14 @@ Derogation
 (art23-status-values)=
 ## Status values C, NC and PD
 
-The codelists for the national self-assessment and for plant and agglomeration status use
-three main values:
+The codelist for plant and agglomeration status uses three main values:
 
 * **C** - compliant;
 * **NC** - non-compliant;
 * **PD** - pending deadline, used where the relevant deadline has not yet passed.
 
-The draft does not yet explain when each value applies, how several applicable values are
-reported, or what "not yet transposed at national level" means. See {ref}`art23-oi-self-assessment`
-and {ref}`art23-oi-status`.
+The draft does not yet explain when each value applies, or how several applicable values are
+reported. See {ref}`art23-oi-status`.
 
 (art23-requirement-status)=
 ## Requirement status

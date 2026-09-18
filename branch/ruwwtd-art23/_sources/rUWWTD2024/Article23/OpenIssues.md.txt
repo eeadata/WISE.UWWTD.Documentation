@@ -26,20 +26,22 @@ investment to reach or maintain compliance, with other investments reported as t
 (art23-oi-self-assessment)=
 ## OI-02 Self-assessment of Articles 3 to 8
 
-**Baseline.** One codelist value per Article in MSSummary.
+**Baseline.** After the country consultation the self-assessment was restructured: Articles 3 and
+6 are reported as the share of compliant agglomerations in percentage ranges, split between
+agglomerations of 2 000 p.e. and above and those of 1 000 to 1 999 p.e.; Article 4 is a yes or no
+answer on whether a system of authorisation and control of individual systems exists; Article 5 is
+a count of agglomerations of 100 000 p.e. and above that already have an integrated urban
+wastewater management plan; Articles 7 and 8 are the share of compliant treatment plants of
+150 000 p.e. and above.
 
 **Questions.**
 
-* Can several values be reported for one Article, and how is one national value derived?
-* What do "not yet transposed at national level" and PD mean?
-* How are staged interim targets under Articles 7 and 8 treated?
-* Some labels differ from the legal wording. For example, Article 7(1) concerns plants treating
-  150 000 p.e. and above rather than agglomerations, and the producer responsibility item listed
-  under Article 8 relates to another Article.
-
-**Under consideration.** Keeping a single value per Article with clearer definitions. An
-alternative, more quantitative structure for the self-assessment is also being reviewed. It is not
-part of the reporting format.
+* Is the share counted by number of agglomerations or by population equivalent?
+* Articles 3 and 6 use six percentage bands for the larger agglomerations and five for the
+  smaller ones, and Articles 7 and 8 use the five-band list. Should one set of bands be used
+  throughout?
+* How is a single national share derived where a Member State holds only plant-level data?
+* Should the basis of each value be recorded, for example calculated or estimated?
 
 (art23-oi-status)=
 ## OI-03 Plant and agglomeration status
@@ -124,7 +126,8 @@ codelist, which includes the European Investment Bank?
 ## OI-10 Producer responsibility contribution
 
 **Questions.** Which period does `producerResponsibilityContribution` cover, and is the amount nominal? Which
-requirements do `sufficientResources2033` to `sufficientResources2045` refer to? Should there be an "unknown"
+requirements does `contributionPeriod` refer to, and should it be Required now that it replaces
+four Required questions? Should there be an "unknown"
 option? Can the fields be optional in the first programme, when estimates may not be available?
 How does `producerResponsibilityFund` relate to the national total?
 
@@ -145,8 +148,8 @@ to when new connections extend the area served by a plant?
 (art23-oi-dates)=
 ## OI-13 Start and completion dates
 
-**Question.** The start of works is reported as a year (`expectedYearStartWork`). Where
-planning is uncertain, is an expected year enough for `expectedDatePerformance` and
+**Question.** The plant fields are reported as years (`expectedYearStartWork`,
+`expectedYearPerformance`). Where planning is uncertain, is an expected year enough for
 `completionDate` as well?
 
 (art23-oi-measures)=

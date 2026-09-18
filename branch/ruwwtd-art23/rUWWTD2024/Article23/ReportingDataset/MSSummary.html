@@ -759,8 +759,8 @@ window.runMermaid = runMermaid;</script>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Draft
-Draft baseline. The self-assessment codelists in particular are under review
-(<a class="reference internal" href="../OpenIssues.html#art23-oi-self-assessment"><span class="std std-ref">OI-02 Self-assessment of Articles 3 to 8</span></a>).</p>
+Draft baseline. The self-assessment fields were revised after the country consultation and are
+still under review (<a class="reference internal" href="../OpenIssues.html#art23-oi-self-assessment"><span class="std std-ref">OI-02 Self-assessment of Articles 3 to 8</span></a>).</p>
 </div>
 <p><strong>Table status:</strong> Required.
 <strong>Rows:</strong> one row per Member State.</p>
@@ -788,26 +788,25 @@ class MSSummary{
     + programmeReference: referenceCode [0..1]
     + prioritisationReference: referenceCode [0..1]
 
-    + article3Compliance: ComplianceSelfAssessment_Enum [1]
-    + article4Compliance: ComplianceSelfAssessment_Enum [1]
-    + article5Compliance: ComplianceSelfAssessment_Enum [1]
+    + article3Compliance: ComplianceShare_Enum [1]
+    + article3Compliance1000to1999: ComplianceShareEstimated_Enum [1]
+    + article4Compliance: YesNo [1]
+    + article5ManagementPlanCount: nonNegativeValue [1]
     + article5ManagementPlanReference: referenceCode [0..1]
-    + article6Compliance: ComplianceSelfAssessment_Enum [1]
-    + article7Compliance: ComplianceSelfAssessment_Enum [1]
-    + article8Compliance: ComplianceSelfAssessment_Enum [1]
+    + article6Compliance: ComplianceShare_Enum [1]
+    + article6Compliance1000to1999: ComplianceShareEstimated_Enum [1]
+    + article7Compliance: ComplianceShareEstimated_Enum [1]
+    + article8Compliance: ComplianceShareEstimated_Enum [1]
 
-    + riskAssessment: YesNo [1]
+    + riskAssessment: RiskAssessment_Enum [1]
     + riskDate: date [0..1]
     + riskIdentified: YesNo [0..1]
     + riskSummaryReference: referenceCode [0..1]
 
     + producerResponsibilityContribution: nonNegativeValue [1]
     + producerResponsibilityEstimateBasedOn: EstimateBasis_Enum [1]
-    + sufficientResources2033: YesNo [1]
-    + sufficientResources2036: YesNo [1]
-    + sufficientResources2039: YesNo [1]
-    + sufficientResources2045: YesNo [1]
-    + otherPeriod: string255 [0..1]
+    + contributionPeriod: ContributionPeriod_Enum [0..n]
+    + contributionPeriodOther: string1000 [0..1]
     + remarks: string1000 [0..1]
 }
 
@@ -828,9 +827,9 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
+<col style="width: 12.0%" />
 <col style="width: 10.0%" />
-<col style="width: 10.0%" />
-<col style="width: 16.0%" />
+<col style="width: 14.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
@@ -844,11 +843,11 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">situationAt</span></code></p></td>
 <td><p>Situation at</p></td>
-<td><p>Date of the reported situation, for example the date the programme was approved or
-the date of the decision not to establish one.</p></td>
+<td><p>Date of the reported situation, for example the date the programme was approved or the
+date of the decision not to establish one.</p></td>
 <td><p>date</p></td>
 <td><p>Required</p></td>
-<td><p>–</p></td>
+<td><p>Between 2026 and 2045</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">programmeObligation</span></code></p></td>
 <td><p>Programme obligation</p></td>
@@ -874,22 +873,27 @@ the date of the decision not to establish one.</p></td>
 </tbody>
 </table>
 </div>
+<p>The programme is updated at least every six years, unless the Member State is fully compliant
+with Articles 3 to 8.</p>
 </section>
 <section id="self-assessment-of-articles-3-to-8">
 <h2>Self-assessment of Articles 3 to 8<a class="headerlink" href="#self-assessment-of-articles-3-to-8" title="Link to this heading">#</a></h2>
 <p>Each field records the Member State’s own assessment, at national level, of compliance with one
 Article in the first programme. The draft notes that detailed information may not yet be
-available, so these are estimates. The draft states that compliance status is self-reported as
-at 1 January 2028.</p>
+available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
+percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
+Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.</p>
+<p>Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
+agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
 <caption><span class="caption-number">Table 8 </span><span class="caption-text">MSSummary fields - self-assessment</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 18.0%" />
-<col style="width: 24.0%" />
-<col style="width: 10.0%" />
-<col style="width: 8.0%" />
+<col style="width: 22.0%" />
 <col style="width: 14.0%" />
+<col style="width: 8.0%" />
+<col style="width: 12.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
@@ -903,26 +907,36 @@ at 1 January 2028.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code></p></td>
 <td><p>Article 3 compliance</p></td>
-<td><p>Self-assessment of Article 3 (collecting systems).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting
+systems).</p></td>
+<td><p>ComplianceShare_Enum</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article4Compliance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance1000to1999</span></code></p></td>
+<td><p>Article 3 compliance, 1 000 to 1 999 p.e.</p></td>
+<td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.</p></td>
+<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>Required</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article4Compliance</span></code></p></td>
 <td><p>Article 4 compliance</p></td>
-<td><p>Self-assessment of Article 4 (individual systems).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<td><p>Whether a system of authorisation and control of individual systems has been introduced in
+accordance with the Directive.</p></td>
+<td><p>YesNo</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article5Compliance</span></code></p></td>
-<td><p>Article 5 compliance</p></td>
-<td><p>Self-assessment of Article 5 (integrated urban wastewater management plans).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article5ManagementPlanCount</span></code></p></td>
+<td><p>Article 5 management plans</p></td>
+<td><p>Number of agglomerations of 100 000 p.e. and above that already have an integrated urban
+wastewater management plan.</p></td>
+<td><p>nonNegativeValue</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article5ManagementPlanReference</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article5ManagementPlanReference</span></code></p></td>
 <td><p>Article 5 management plan reference</p></td>
 <td><p>Reference to the document listing the Member State’s integrated urban wastewater
 management plans.</p></td>
@@ -930,37 +944,45 @@ management plans.</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code></p></td>
 <td><p>Article 6 compliance</p></td>
-<td><p>Self-assessment of Article 6 (secondary treatment).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary
+treatment).</p></td>
+<td><p>ComplianceShare_Enum</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance1000to1999</span></code></p></td>
+<td><p>Article 6 compliance, 1 000 to 1 999 p.e.</p></td>
+<td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.</p></td>
+<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>Required</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code></p></td>
 <td><p>Article 7 compliance</p></td>
-<td><p>Self-assessment of Article 7 (tertiary treatment).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary
+treatment requirements.</p></td>
+<td><p>ComplianceShareEstimated_Enum</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code></p></td>
 <td><p>Article 8 compliance</p></td>
-<td><p>Self-assessment of Article 8 (quaternary treatment).</p></td>
-<td><p>ComplianceSelfAssessment_Enum</p></td>
+<td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary
+treatment requirements.</p></td>
+<td><p>ComplianceShareEstimated_Enum</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance"><span class="std std-ref">National self-assessment - Articles 3 to 8</span></a></p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Most deadlines of Articles 3 to 8 fall after 1 January 2028. The value PD (pending deadline)
-reflects this. The draft does not yet state whether one or several values may be reported per
-Article, how a single national value is derived from plant or agglomeration data, or when to use
-“not yet transposed at national level”. An alternative structure for this assessment is also
-under review. See <a class="reference internal" href="../OpenIssues.html#art23-oi-self-assessment"><span class="std std-ref">OI-02 Self-assessment of Articles 3 to 8</span></a>.</p>
+<p>Most deadlines of Articles 3 to 8 fall after 1 January 2028, so the first programme records an
+expected position rather than a settled one. How a single national share is derived from plant or
+agglomeration data is not stated. See <a class="reference internal" href="../OpenIssues.html#art23-oi-self-assessment"><span class="std std-ref">OI-02 Self-assessment of Articles 3 to 8</span></a>.</p>
 </div>
 </section>
 <section id="risk-assessment">
@@ -974,9 +996,9 @@ the measures adopted to be included in the programme.</p>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
 <col style="width: 26.0%" />
+<col style="width: 12.0%" />
 <col style="width: 10.0%" />
-<col style="width: 10.0%" />
-<col style="width: 16.0%" />
+<col style="width: 14.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
@@ -984,7 +1006,7 @@ the measures adopted to be included in the programme.</p>
 <th class="head"><p>Definition</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Status</p></th>
-<th class="head"><p>Condition</p></th>
+<th class="head"><p>Condition or codelist</p></th>
 </tr>
 </thead>
 <tbody>
@@ -992,25 +1014,25 @@ the measures adopted to be included in the programme.</p>
 <td><p>Risk assessment</p></td>
 <td><p>Whether a risk assessment of urban wastewater discharges has been carried out in
 accordance with Article 18.</p></td>
-<td><p>YesNo</p></td>
+<td><p>RiskAssessment_Enum</p></td>
 <td><p>Required</p></td>
-<td><p>–</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-risk-assessment"><span class="std std-ref">Risk assessment</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">riskDate</span></code></p></td>
 <td><p>Risk assessment date</p></td>
 <td><p>Date of issue of the risk assessment.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = yes</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = <code class="docutils literal notranslate"><span class="pre">yes</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">riskIdentified</span></code></p></td>
 <td><p>Risks identified</p></td>
 <td><p>Whether any risks have been identified. Measures under Article 18(2) that address
-identified risks are reported with the measure codelists of the UWWTP and
-Agglomeration tables.</p></td>
+identified risks are reported with the measure codelists of the UWWTP and Agglomeration
+tables.</p></td>
 <td><p>YesNo</p></td>
 <td><p>Conditional</p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = yes</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = <code class="docutils literal notranslate"><span class="pre">yes</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">riskSummaryReference</span></code></p></td>
 <td><p>Risk summary reference</p></td>
@@ -1018,26 +1040,28 @@ Agglomeration tables.</p></td>
 official summary of the identified risks and adopted measures.</p></td>
 <td><p>referenceCode</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = yes</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = <code class="docutils literal notranslate"><span class="pre">yes</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The draft offers only yes or no for <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code>. How to report a risk assessment that covers
-only some discharges is still open (<a class="reference internal" href="../OpenIssues.html#art23-oi-risk"><span class="std std-ref">OI-16 Risk assessment fields</span></a>).</p>
+<p>A risk assessment covering only some discharges is reported as <code class="docutils literal notranslate"><span class="pre">partially</span></code>. How the three
+conditional fields apply in that case is open (<a class="reference internal" href="../OpenIssues.html#art23-oi-risk"><span class="std std-ref">OI-16 Risk assessment fields</span></a>).</p>
 </section>
 <section id="producer-responsibility-contribution">
 <h2>Producer responsibility contribution<a class="headerlink" href="#producer-responsibility-contribution" title="Link to this heading">#</a></h2>
-<p>Article 23(1)(b) asks for an estimation of the financial contribution from PROs “when available”.</p>
+<p>Article 23(1)(b) asks for an estimation of the financial contribution from PROs “when available”.
+In the first programme a Member State may estimate the contribution for the whole period or for
+the period of an interim target, and assign it to that period.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
 <caption><span class="caption-number">Table 10 </span><span class="caption-text">MSSummary fields - producer responsibility contribution</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 27.5%" />
-<col style="width: 17.6%" />
-<col style="width: 21.6%" />
-<col style="width: 11.8%" />
-<col style="width: 7.8%" />
-<col style="width: 13.7%" />
+<col style="width: 28.0%" />
+<col style="width: 18.0%" />
+<col style="width: 22.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 12.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
@@ -1064,44 +1088,23 @@ national level.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-pro-basis"><span class="std std-ref">Basis of the producer responsibility estimate</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sufficientResources2033</span></code></p></td>
-<td><p>Sufficient resources by 2033</p></td>
-<td><p>Will the planned resources, including the contribution in
-<code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>, be sufficient to meet the requirements of the
-Directive by the end of 2033?</p></td>
-<td><p>YesNo</p></td>
-<td><p>Required</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sufficientResources2036</span></code></p></td>
-<td><p>Sufficient resources by 2036</p></td>
-<td><p>As <code class="docutils literal notranslate"><span class="pre">sufficientResources2033</span></code>, by the end of 2036.</p></td>
-<td><p>YesNo</p></td>
-<td><p>Required</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sufficientResources2039</span></code></p></td>
-<td><p>Sufficient resources by 2039</p></td>
-<td><p>As <code class="docutils literal notranslate"><span class="pre">sufficientResources2033</span></code>, by the end of 2039.</p></td>
-<td><p>YesNo</p></td>
-<td><p>Required</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sufficientResources2045</span></code></p></td>
-<td><p>Sufficient resources by 2045</p></td>
-<td><p>As <code class="docutils literal notranslate"><span class="pre">sufficientResources2033</span></code>, by the end of 2045.</p></td>
-<td><p>YesNo</p></td>
-<td><p>Required</p></td>
-<td><p>–</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">otherPeriod</span></code></p></td>
-<td><p>Other period</p></td>
-<td><p>Another period covered by the funds in <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>.</p></td>
-<td><p>string255</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code></p></td>
+<td><p>Contribution period</p></td>
+<td><p>Period or periods by which the planned resources, including the contribution in
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>, are expected to be sufficient to meet the
+requirements of the Directive. Select one or more.</p></td>
+<td><p>ContributionPeriod_Enum [0..n]</p></td>
 <td><p>Optional</p></td>
-<td><p>–</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-contribution-period"><span class="std std-ref">Contribution period</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriodOther</span></code></p></td>
+<td><p>Other contribution period</p></td>
+<td><p>Explanation of the period, where <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> includes <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+<td><p>string1000</p></td>
+<td><p>Conditional</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> includes <code class="docutils literal notranslate"><span class="pre">other</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
 <td><p>Remarks</p></td>
 <td><p>Other important information on compliance and its assessment.</p></td>
 <td><p>string1000</p></td>
@@ -1111,9 +1114,14 @@ Directive by the end of 2033?</p></td>
 </tbody>
 </table>
 </div>
-<p>The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8.
-The draft does not state which requirements the questions cover, which period <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>
-refers to, or whether amounts are nominal. These points are open (<a class="reference internal" href="../OpenIssues.html#art23-oi-pro"><span class="std std-ref">OI-10 Producer responsibility contribution</span></a>).</p>
+<p>The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8. A
+Member State that has estimated its contribution over a longer period, such as 2028 to 2045, or
+that works to a different budgetary cycle, selects <code class="docutils literal notranslate"><span class="pre">other</span></code> and describes the period in
+<code class="docutils literal notranslate"><span class="pre">contributionPeriodOther</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> replaces four separate yes or no questions, one per deadline, and an
+accompanying free-text period. It carries no requirement marker in the draft, although the
+questions it replaces were Required; whether amounts are nominal is also open
+(<a class="reference internal" href="../OpenIssues.html#art23-oi-pro"><span class="std std-ref">OI-10 Producer responsibility contribution</span></a>).</p>
 </section>
 </section>
 

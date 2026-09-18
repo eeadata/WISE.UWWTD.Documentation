@@ -779,10 +779,16 @@ document the programme refers to.</p>
     Reference
     Document
   end
-  MSSummary -- referenceCode --&gt; Reference
-  Derogation -- referenceCode --&gt; Reference
-  Reference -- documentCode --&gt; Document
-    </pre><p>The tables of the reporting dataset do not carry web addresses. Fields such as
+  MSSummary -- &quot;referenceCode&quot; --&gt; Reference
+  Derogation -- &quot;referenceCode&quot; --&gt; Reference
+  Reference -- &quot;documentCode&quot; --&gt; Document
+  dcMetadata -. &quot;licenseDocument&quot; .-&gt; Document
+  dcMetadata -. &quot;metadataDocument&quot; .-&gt; Document
+    </pre><p>Only MSSummary and Derogation cite documents. The UWWTP, Agglomeration and OtherInvestment
+tables have no reference fields, and the UWWTP table has no field linking a plant to an
+agglomeration. The dashed links are optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only where the
+licence or further metadata is delivered as one.</p>
+<p>The tables of the reporting dataset do not carry web addresses. Fields such as
 <code class="docutils literal notranslate"><span class="pre">programmeReference</span></code> hold a <code class="docutils literal notranslate"><span class="pre">referenceCode</span></code> pointing into the documents dataset, which resolves to
 a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 (<a class="reference internal" href="OpenIssues.html#art23-oi-documents"><span class="std std-ref">OI-20 Documents dataset</span></a>).</p>

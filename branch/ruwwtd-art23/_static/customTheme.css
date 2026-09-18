@@ -1,0 +1,21 @@
+html[data-theme="light"] {
+    --pst-color-secondary: #0079CF;
+}
+
+html[data-theme="dark"] {
+    --pst-color-secondary: #0079CF;
+}
+/* Draft marker shown on every page of the rUWWTD section */
+.draft-banner {
+    display: block;
+    margin: 0 0 1.5rem 0;
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--pst-color-warning);
+    border-radius: 0.25rem;
+    background-color: var(--pst-color-warning-bg);
+    color: var(--pst-color-text-base);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+}

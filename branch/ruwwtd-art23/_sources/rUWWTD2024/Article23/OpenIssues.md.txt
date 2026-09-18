@@ -44,7 +44,8 @@ part of the reporting format.
 (art23-oi-status)=
 ## OI-03 Plant and agglomeration status
 
-**Baseline.** `status` and `status` share one codelist that combines Articles 3 to 8 with
+**Baseline.** The plant and agglomeration `status` fields share one codelist that combines
+Articles 3 to 8 with
 Article 18.
 
 **Questions.**
@@ -109,7 +110,8 @@ reporting investments was also suggested.
 (art23-oi-loans)=
 ## OI-09 Loan fields
 
-**Baseline.** `loan` and `loan` are Required. Lender names are required when the amount is
+**Baseline.** The `loan` fields of both investment tables are Required. Lender names are
+required when the amount is
 above 0.
 
 **Questions.** What is the legal basis and purpose, given that Article 23(1)(d) refers to public
@@ -129,7 +131,8 @@ How does `producerResponsibilityFund` relate to the national total?
 (art23-oi-costs)=
 ## OI-11 Nominal or annualised costs
 
-**Question.** Are investment amounts (`investment`, `investment`, `producerResponsibilityContribution`) nominal or
+**Question.** Are investment amounts (the `investment` fields and
+`producerResponsibilityContribution`) nominal or
 annualised? If annualised, which assumptions should be reported?
 
 (art23-oi-loads)=

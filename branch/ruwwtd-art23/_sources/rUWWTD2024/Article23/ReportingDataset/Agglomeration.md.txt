@@ -20,6 +20,15 @@ system capacity or the need to manage urban runoff. Whether compliant agglomerat
 renewal investments must also be listed is open ({ref}`art23-oi-scope`). See also
 {ref}`art23-investments`.
 
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_Agglomeration_ClassDiagram.mmd
+:name: Article23_Agglomeration_ClassDiagram
+:caption: Article 23 - Agglomeration - draft
+:align: center
+```
+
+In {numref}`Article23_Agglomeration_ClassDiagram`, `[1]` marks the Required fields and `[0..1]` the
+Optional and Conditional ones ({ref}`art23-requirement-status`).
+
 ## Agglomeration, status and measures
 
 :::{list-table} Agglomeration fields - agglomeration, status and measures

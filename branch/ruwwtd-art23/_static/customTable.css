@@ -22,6 +22,8 @@
     display: table;
     table-layout: fixed; /* prevent overflow */
     white-space: normal;
+    font-size: 0.8rem;   /* fit six columns without crowding */
+    line-height: 1.45;
 }
 
 
@@ -35,6 +37,13 @@
     white-space: normal;
     word-break: break-word;
     overflow-wrap: break-word;
+}
+
+
+/* Tighter cells, so the smaller text is not lost in padding */
+.pst-scrollable-table-container table th,
+.pst-scrollable-table-container table td {
+    padding: 0.4rem 0.5rem;
 }
 
 

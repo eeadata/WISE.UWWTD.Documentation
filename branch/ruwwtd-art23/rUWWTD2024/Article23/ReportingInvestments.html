@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=2fdf4863" />
-    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=93901a86" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
@@ -485,7 +485,8 @@ how <code class="docutils literal notranslate"><span class="pre">producerRespons
 </section>
 <section id="several-measures-or-investments-at-one-plant-or-agglomeration">
 <h2>Several measures or investments at one plant or agglomeration<a class="headerlink" href="#several-measures-or-investments-at-one-plant-or-agglomeration" title="Link to this heading">#</a></h2>
-<p>Each plant and each agglomeration has one row, because <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">code</span></code> are primary keys.
+<p>Each plant and each agglomeration has one row, because <code class="docutils literal notranslate"><span class="pre">code</span></code> is the primary key of both
+tables.
 Each row has one investment amount, one amount per funding source and one set of dates:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">measure</span></code> accepts several measures, so <code class="docutils literal notranslate"><span class="pre">investment</span></code> holds the forecast cost of all measures
@@ -565,7 +566,7 @@ not say whether an empty optional amount means zero or unknown.</p></li>
 </section>
 <section id="loans">
 <h2>Loans<a class="headerlink" href="#loans" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">loan</span></code> and <code class="docutils literal notranslate"><span class="pre">loan</span></code> are Required in the draft, and the lender’s name is required when the
+<p>The <code class="docutils literal notranslate"><span class="pre">loan</span></code> fields are Required in the draft, and the lender’s name is required when the
 amount is above 0. There is no loan field in OtherInvestment. Article 23(1)(d) refers to sources
 of public financing. The draft does not define “loan”, for example whether it covers public and
 private lenders, and the EU fund codelist includes the European Investment Bank. Whether the loan
@@ -581,7 +582,7 @@ fields should be optional, and how they relate to the other funding fields, is s
 risks for the environment or human health.</p></li>
 </ul>
 <p>The Directive does not link priority to the timing of completion.</p>
-<p>In the draft, <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> and <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> take the values High, Medium or Low,
+<p>In the draft, the <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> fields take the values High, Medium or Low,
 and <code class="docutils literal notranslate"><span class="pre">prioritisationReference</span></code> points to the national prioritisation methodology. The draft
 description adds that “‘High’ should be used for projects that are scheduled for earlier
 completion relative to others”.</p>

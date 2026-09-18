@@ -98,7 +98,7 @@ Derogation
 (art23-status-values)=
 ## Status values C, NC and PD
 
-The draft codelists for the national self-assessment and for plant and agglomeration status use
+The codelists for the national self-assessment and for plant and agglomeration status use
 three main values:
 
 * **C** - compliant;
@@ -172,6 +172,5 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **Attachment** - a file uploaded to Reportnet 3, at most 100 MB, as pdf, xlsx or docx;
 * ***Name*_Enum** - a value from the codelist of that name (see {ref}`art23-codelists`).
 
-The draft guidance describes these fields with its own type names, such as text, integer,
-decimal, url and yes/no. The types above are proposals for aligning Article 23 with the rest of
-WISE ({ref}`art23-oi-naming`).
+These types are proposals for aligning Article 23 with the rest of WISE
+({ref}`art23-oi-naming`).

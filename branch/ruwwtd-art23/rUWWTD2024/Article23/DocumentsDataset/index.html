@@ -753,14 +753,13 @@ window.runMermaid = runMermaid;</script>
 <p>The documents dataset follows the standard structure used in various WISE dataflows
 (<a class="reference internal" href="#article23-documents-classdiagram"><span class="std std-numref">Figure 8</span></a>):</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> table provides the basic Dublin Core metadata elements about the delivery.</p>
-<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> table is required and contains only one record per delivery (i.e. per
+country). It provides the basic Dublin Core metadata elements about the delivery.</p></li>
 <li><p>If required by the data providers, the <code class="docutils literal notranslate"><span class="pre">licenseDocument</span></code> and the <code class="docutils literal notranslate"><span class="pre">metadataDocument</span></code>
 attributes allow the provision of additional information about the dataset.</p></li>
-</ul>
-</li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">Document</span></code> table allows the upload of documents (for example, PDFs) or the provision of a
-<code class="docutils literal notranslate"><span class="pre">hyperlink</span></code> to a document stored in a publicly accessible national web site.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Document</span></code> table is standard in the WISE dataflows: it allows the upload of documents
+(for example, PDFs) or the provision of a hyperlink to a document stored in a publicly
+accessible national web site.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Reference</span></code> table is also standard in the WISE dataflows: the <code class="docutils literal notranslate"><span class="pre">bookmark</span></code> allows the
 identification of the chapter(s), section(s) or page range(s) where the relevant information
 about a <code class="docutils literal notranslate"><span class="pre">subject</span></code> can be found within a document.</p></li>
@@ -778,43 +777,47 @@ classDiagram
 direction LR
 
 class dcMetadata {
-+ title: string [1]
-+ creatorOrganisationName: string [1]
-+ creatorElectronicMailAddress: Email [1]
-+ description: string [0..1]
-+ created: date [0..1]
-+ language: Language_Enum [1..n]
-+ license: Licence_Enum [1]
-+ rights: string [0..1]
-+ rightsHolder: string [0..1]
-+ licenseDocument: documentCode [0..n]
-+ metadataDocument: documentCode [0..n]
+
+«metadata»
+  + title: string
+  + creatorOrganisationName: string
+  + creatorElectronicMailAddress: Email
+  + description: string [0..1]
+  + created: date [0..1]
+  + language: Language [1..n]
+  + license: Licence
+  + rights: string [0..1]
+  + rightsHolder: string [0..1]
+  + licenseDocument: documentCode [0..n]
+  + metadataDocument: documentCode [0..n]
 }
 
 class Reference {
-    + referenceCode: wiseIdentifier [1]
-    + documentCode: documentCode [1]
-    + bookmark: string250 [0..1]
-    + subject: string250 [0..1]
+  + referenceCode: wiseIdentifier
+  + documentCode: documentCode
+  + bookmark: string250 [0..1]
+  + subject: string250 [0..1]
 }
 
 class Document {
-    + documentCode: wiseIdentifier [1]
-    + documentName: string250 [1]
-    + hyperlink: URL [0..1]
-    + documentFile: Attachment [0..1]
+  + documentCode: wiseIdentifier
+  + documentName: string250
+  + hyperlink: URL [0..1]
+  + documentFile: Attachment [0..1]
 }
 
-class Licence_Enum{
+class Licence{
   &lt;&lt;enumeration&gt;&gt;
   CC0
   CC_BY_4_0
+  exactMatch_CC_BY_4_0
+  narrowMatch_CC_BY_4_0
 }
 
 Reference ..&gt; Document: documentCode
 dcMetadata ..&gt; Document: licenseDocument
 dcMetadata ..&gt; Document: metadataDocument
-dcMetadata ..&gt; Licence_Enum: license
+dcMetadata ..&gt; Licence: license
 
 classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;

@@ -862,14 +862,14 @@ and Conditional ones, and <code class="docutils literal notranslate"><span class
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
-<td><p>Latitude of the treatment plant, in decimal degrees (WGS 84).</p></td>
+<td><p>Latitude of the treatment plant (ETRS89 or WGS-84, decimal degrees).</p></td>
 <td><p>NumberDecimalType</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if <code class="docutils literal notranslate"><span class="pre">code</span></code> was not reported under Directive 91/271/EEC</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
 <td><p>Longitude</p></td>
-<td><p>Longitude of the treatment plant, in decimal degrees (WGS 84).</p></td>
+<td><p>Longitude of the treatment plant (ETRS89 or WGS-84, decimal degrees).</p></td>
 <td><p>NumberDecimalType</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if <code class="docutils literal notranslate"><span class="pre">code</span></code> was not reported under Directive 91/271/EEC</p></td>
@@ -1060,6 +1060,11 @@ instruction to report 0 if none.</p>
 <li><p><strong>Several measures at one plant.</strong> You can select several measures, but each plant has one row
 with one set of dates and one investment total. How to report measures with different dates is
 open (<a class="reference internal" href="../OpenIssues.html#art23-oi-multiple-measures"><span class="std std-ref">OI-06 Several measures and dates per plant or agglomeration</span></a>).</p></li>
+<li><p><strong>Coordinates.</strong> As under Directive 91/271/EEC, report ETRS89 or WGS-84 decimal degrees; the
+two differ by about a metre in Europe. Use a full stop as the decimal separator, for example
+<code class="docutils literal notranslate"><span class="pre">52.37403</span></code> and <code class="docutils literal notranslate"><span class="pre">4.88969</span></code>, and a negative longitude west of Greenwich. Degrees, minutes and
+seconds are not accepted. Five decimal places locate a point to about a metre, which is more
+than enough.</p></li>
 <li><p><strong>Zero versus unknown.</strong> 0 means none planned. See <a class="reference internal" href="../ReportingInvestments.html#art23-investments-zero-unknown"><span class="std std-ref">Zero versus unknown</span></a>.</p></li>
 <li><p><strong>Reference year.</strong> The draft does not define the reference year of <code class="docutils literal notranslate"><span class="pre">status</span></code>
 (<a class="reference internal" href="../OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>).</p></li>

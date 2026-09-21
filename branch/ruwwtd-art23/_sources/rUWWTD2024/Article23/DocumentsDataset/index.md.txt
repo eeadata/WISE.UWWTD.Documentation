@@ -7,13 +7,15 @@ html_theme.sidebar_secondary.remove: true
 The documents dataset follows the standard structure used in various WISE dataflows
 ({numref}`Article23_Documents_ClassDiagram`):
 
-* The `dcMetadata` table provides the basic Dublin Core metadata elements about the delivery.
+* The `dcMetadata` table is required and contains only one record per delivery (i.e. per
+  country). It provides the basic Dublin Core metadata elements about the delivery.
 
-  - If required by the data providers, the `licenseDocument` and the `metadataDocument`
-    attributes allow the provision of additional information about the dataset.
+* If required by the data providers, the `licenseDocument` and the `metadataDocument`
+  attributes allow the provision of additional information about the dataset.
 
-* The `Document` table allows the upload of documents (for example, PDFs) or the provision of a
-  `hyperlink` to a document stored in a publicly accessible national web site.
+* The `Document` table is standard in the WISE dataflows: it allows the upload of documents
+  (for example, PDFs) or the provision of a hyperlink to a document stored in a publicly
+  accessible national web site.
 
 * The `Reference` table is also standard in the WISE dataflows: the `bookmark` allows the
   identification of the chapter(s), section(s) or page range(s) where the relevant information

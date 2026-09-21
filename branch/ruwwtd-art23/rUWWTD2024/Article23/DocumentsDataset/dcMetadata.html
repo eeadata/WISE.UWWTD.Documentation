@@ -406,7 +406,7 @@ Proposal. The draft reporting guidance does not describe a documents dataset; th
 the WISE convention used in the other dataflows (<a class="reference internal" href="../OpenIssues.html#art23-oi-documents"><span class="std std-ref">OI-20 Documents dataset</span></a>).</p>
 </div>
 <p><strong>Table status:</strong> Required.
-<strong>Rows:</strong> one row per delivery.</p>
+<strong>Rows:</strong> one record per delivery, that is per country.</p>
 <p>The table provides the basic Dublin Core metadata elements about the delivery: who produced it,
 when, under which licence, and the rights held over it. See
 <a class="reference internal" href="index.html#article23-documents-classdiagram"><span class="std std-numref">Figure 8</span></a>.</p>
@@ -470,14 +470,14 @@ when, under which licence, and the rights held over it. See
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
 <td><p>Language</p></td>
 <td><p>Language or languages of the delivery.</p></td>
-<td><p>Language_Enum [1..n]</p></td>
+<td><p>Language [1..n]</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">license</span></code></p></td>
 <td><p>Licence</p></td>
 <td><p>Licence under which the delivery is published.</p></td>
-<td><p>Licence_Enum</p></td>
+<td><p>Licence</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-licence"><span class="std std-ref">Licence</span></a></p></td>
 </tr>

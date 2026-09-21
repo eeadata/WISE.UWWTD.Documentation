@@ -56,13 +56,13 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - –
 * - `latitude`
   - Latitude
-  - Latitude of the agglomeration, in decimal degrees (WGS 84).
+  - Latitude of the agglomeration (ETRS89 or WGS-84, decimal degrees).
   - NumberDecimalType
   - Conditional
   - Required if `code` was not reported under Directive 91/271/EEC
 * - `longitude`
   - Longitude
-  - Longitude of the agglomeration, in decimal degrees (WGS 84).
+  - Longitude of the agglomeration (ETRS89 or WGS-84, decimal degrees).
   - NumberDecimalType
   - Conditional
   - Required if `code` was not reported under Directive 91/271/EEC

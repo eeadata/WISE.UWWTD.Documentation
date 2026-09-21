@@ -237,14 +237,16 @@ as a file uploaded to Reportnet 3.
 UWWTP and Agglomeration tables is linked to a plant or agglomeration already reported under
 Directive 91/271/EEC.
 
-**Proposal.** Report `latitude` and `longitude` in decimal degrees (WGS 84) where the plant or
-agglomeration has not been reported before, so that new infrastructure can be located without
-waiting for the next monitoring delivery.
+**Proposal.** Report `latitude` and `longitude` where the plant or agglomeration has not been
+reported before, so that new infrastructure can be located without waiting for the next
+monitoring delivery. The description follows the one used under Directive 91/271/EEC: ETRS89 or
+WGS-84, decimal degrees.
 
 **Questions.**
 
-* Is WGS 84 the right reference system, or should the reporting follow the coordinate reference
-  systems used for WISE spatial data?
+* ETRS89 (EPSG:4258) or WGS-84 (EPSG:4326) are accepted, as under Directive 91/271/EEC; they
+  differ by about a metre in Europe. WISE spatial data also accepts ETRS89-LAEA (EPSG:3035) for
+  analysis. Is the pair enough, or should one be required?
 * For an agglomeration, which point is reported: the centroid, the administrative centre, or the
   point already used in earlier reporting?
 * How is "not reported before" determined in practice, and should the condition instead be a

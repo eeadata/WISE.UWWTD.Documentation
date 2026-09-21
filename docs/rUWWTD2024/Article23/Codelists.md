@@ -535,7 +535,7 @@ Used by `producerResponsibilityEstimateBasedOn`.
 (art23-cl-licence)=
 ## Licence
 
-**Type:** `Licence_Enum`
+**Type:** `Licence`
 
 Used by `license` in {ref}`art23-dcmetadata`.
 
@@ -555,6 +555,14 @@ Used by `license` in {ref}`art23-dcmetadata`.
   - CC BY 4.0
   - Creative Commons Attribution 4.0 International.
   - Used across the WISE dataflows.
+* - `exactMatch_CC_BY_4_0`
+  - Exact match of CC BY 4.0
+  - A national licence whose terms match CC BY 4.0.
+  - –
+* - `narrowMatch_CC_BY_4_0`
+  - Narrow match of CC BY 4.0
+  - A national licence that is more restrictive than CC BY 4.0.
+  - –
 :::
 
 Where a Member State publishes under another licence, report the licence document in

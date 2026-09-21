@@ -7,7 +7,7 @@ the WISE convention used in the other dataflows ({ref}`art23-oi-documents`).
 :::
 
 **Table status:** Required.
-**Rows:** one row per delivery.
+**Rows:** one record per delivery, that is per country.
 
 The table provides the basic Dublin Core metadata elements about the delivery: who produced it,
 when, under which licence, and the rights held over it. See
@@ -58,13 +58,13 @@ when, under which licence, and the rights held over it. See
 * - `language`
   - Language
   - Language or languages of the delivery.
-  - Language_Enum [1..n]
+  - Language [1..n]
   - Required
   - –
 * - `license`
   - Licence
   - Licence under which the delivery is published.
-  - Licence_Enum
+  - Licence
   - Required
   - {ref}`art23-cl-licence`
 * - `rights`

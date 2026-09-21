@@ -9,43 +9,47 @@ classDiagram
 direction LR
 
 class dcMetadata {
-+ title: string [1]
-+ creatorOrganisationName: string [1]
-+ creatorElectronicMailAddress: Email [1]
-+ description: string [0..1]
-+ created: date [0..1]
-+ language: Language_Enum [1..n]
-+ license: Licence_Enum [1]
-+ rights: string [0..1]
-+ rightsHolder: string [0..1]
-+ licenseDocument: documentCode [0..n]
-+ metadataDocument: documentCode [0..n]
+
+«metadata»
+  + title: string
+  + creatorOrganisationName: string
+  + creatorElectronicMailAddress: Email
+  + description: string [0..1]
+  + created: date [0..1]
+  + language: Language [1..n]
+  + license: Licence
+  + rights: string [0..1]
+  + rightsHolder: string [0..1]
+  + licenseDocument: documentCode [0..n]
+  + metadataDocument: documentCode [0..n]
 }
 
 class Reference {
-    + referenceCode: wiseIdentifier [1]
-    + documentCode: documentCode [1]
-    + bookmark: string250 [0..1]
-    + subject: string250 [0..1]
+  + referenceCode: wiseIdentifier
+  + documentCode: documentCode
+  + bookmark: string250 [0..1]
+  + subject: string250 [0..1]
 }
 
 class Document {
-    + documentCode: wiseIdentifier [1]
-    + documentName: string250 [1]
-    + hyperlink: URL [0..1]
-    + documentFile: Attachment [0..1]
+  + documentCode: wiseIdentifier
+  + documentName: string250
+  + hyperlink: URL [0..1]
+  + documentFile: Attachment [0..1]
 }
 
-class Licence_Enum{
+class Licence{
   <<enumeration>>
   CC0
   CC_BY_4_0
+  exactMatch_CC_BY_4_0
+  narrowMatch_CC_BY_4_0
 }
 
 Reference ..> Document: documentCode
 dcMetadata ..> Document: licenseDocument
 dcMetadata ..> Document: metadataDocument
-dcMetadata ..> Licence_Enum: license
+dcMetadata ..> Licence: license
 
 classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;

@@ -262,8 +262,3 @@ The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Artic
 Member State that has estimated its contribution over a longer period, such as 2028 to 2045, or
 that works to a different budgetary cycle, selects `other` and describes the period in
 `contributionPeriodOther`.
-
-`contributionPeriod` replaces four separate yes or no questions, one per deadline, and an
-accompanying free-text period. It carries no requirement marker in the draft, although the
-questions it replaces were Required; whether amounts are nominal is also open
-({ref}`art23-oi-pro`).

@@ -125,7 +125,8 @@ codelist, which includes the European Investment Bank?
 (art23-oi-pro)=
 ## OI-10 Producer responsibility contribution
 
-**Questions.** Which period does `producerResponsibilityContribution` cover, and is the amount nominal? Which
+**Questions.** Which period does `producerResponsibilityContribution` cover, and is the amount
+nominal? Which
 requirements does `contributionPeriod` refer to, and should it be Required now that it replaces
 four Required questions? Should there be an "unknown"
 option? Can the fields be optional in the first programme, when estimates may not be available?

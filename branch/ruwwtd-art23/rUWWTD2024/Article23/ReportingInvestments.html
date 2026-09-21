@@ -435,7 +435,8 @@ or agglomeration</p></td>
 <td><p><a class="reference internal" href="ReportingDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a>: <code class="docutils literal notranslate"><span class="pre">collectingSystemRenewalInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantRenewalInvestment</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Contribution from producer responsibility organisations</p></td>
-<td><p><a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>: <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> (national total); optionally <code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> per
+<td><p><a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>: <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> (national total); optionally
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> per
 plant</p></td>
 </tr>
 <tr class="row-odd"><td><p>Investment plans justifying deadline extensions</p></td>
@@ -551,15 +552,18 @@ without splitting the amount between funds. This is not yet decided
 <span id="art23-investments-zero-unknown"></span><h2>Zero versus unknown<a class="headerlink" href="#zero-versus-unknown" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>0 means none planned.</strong> The draft says to report 0 if there is none for <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code>,
-<code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code>, <code class="docutils literal notranslate"><span class="pre">otherPublicFund</span></code>, <code class="docutils literal notranslate"><span class="pre">loan</span></code>, <code class="docutils literal notranslate"><span class="pre">collectingSystemNewInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">collectingSystemRenewalInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantNewInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantRenewalInvestment</span></code>,
-<code class="docutils literal notranslate"><span class="pre">europeanUnionFunds</span></code> and <code class="docutils literal notranslate"><span class="pre">otherPublicFunds</span></code>. When an amount is 0, the related fund name or specification is
+<code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code>, <code class="docutils literal notranslate"><span class="pre">otherPublicFund</span></code>, <code class="docutils literal notranslate"><span class="pre">loan</span></code>, <code class="docutils literal notranslate"><span class="pre">collectingSystemNewInvestment</span></code>,
+<code class="docutils literal notranslate"><span class="pre">collectingSystemRenewalInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantNewInvestment</span></code>,
+<code class="docutils literal notranslate"><span class="pre">treatmentPlantRenewalInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFunds</span></code> and <code class="docutils literal notranslate"><span class="pre">otherPublicFunds</span></code>. When an amount
+is 0, the related fund name or specification is
 not required.</p></li>
 <li><p><strong>There is no “unknown” value.</strong> Because 0 is read as “none planned”, it should not be used to
 mean “not known”. How to report a required amount that is not yet known is an open question.
 An explicit “unknown” option has been proposed (<a class="reference internal" href="OpenIssues.html#art23-oi-unknown"><span class="std std-ref">OI-08 Unknown amounts and uncertain costs</span></a>).</p></li>
 <li><p><strong>Amounts known only as totals.</strong> Where investments are known only as totals and not by plant or
 agglomeration, the draft allows them to be reported in <a class="reference internal" href="ReportingDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a>.</p></li>
-<li><p><strong>Optional fields.</strong> An optional field such as <code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> can be left empty. The draft does
+<li><p><strong>Optional fields.</strong> An optional field such as <code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> can be left empty.
+The draft does
 not say whether an empty optional amount means zero or unknown.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">remarks</span></code> to explain estimates and their uncertainty.</p></li>
 </ul>
@@ -614,7 +618,8 @@ is the year in <code class="docutils literal notranslate"><span class="pre">expe
 <li><p><code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code> is the planned organic design capacity in p.e. Hydraulic capacity is not
 requested.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> is the expected generated load of the agglomeration at the expected date of
-compliance. <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code> and <code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code> give the expected percentages collected and
+compliance. <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code> and <code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code> give the expected
+percentages collected and
 addressed through individual systems.</p></li>
 </ul>
 <p>Articles 3(3) and 6(5) set out how the load of an agglomeration and the load entering a plant are

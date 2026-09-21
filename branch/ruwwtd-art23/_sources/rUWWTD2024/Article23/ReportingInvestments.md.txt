@@ -30,7 +30,8 @@ question, this is said and the open issue is linked. No rules have been added be
     or agglomeration
   - {ref}`art23-otherinvestment`: `collectingSystemRenewalInvestment`, `treatmentPlantRenewalInvestment`
 * - Contribution from producer responsibility organisations
-  - {ref}`art23-mssummary`: `producerResponsibilityContribution` (national total); optionally `producerResponsibilityFund` per
+  - {ref}`art23-mssummary`: `producerResponsibilityContribution` (national total); optionally
+    `producerResponsibilityFund` per
     plant
 * - Investment plans justifying deadline extensions
   - {ref}`art23-derogation`: links to the documents. The investments themselves are reported in
@@ -130,15 +131,18 @@ without splitting the amount between funds. This is not yet decided
 ## Zero versus unknown
 
 * **0 means none planned.** The draft says to report 0 if there is none for `europeanUnionFund`,
-  `europeanUnionFund`, `otherPublicFund`, `loan`, `collectingSystemNewInvestment`, `collectingSystemRenewalInvestment`, `treatmentPlantNewInvestment`, `treatmentPlantRenewalInvestment`,
-  `europeanUnionFunds` and `otherPublicFunds`. When an amount is 0, the related fund name or specification is
+  `europeanUnionFund`, `otherPublicFund`, `loan`, `collectingSystemNewInvestment`,
+  `collectingSystemRenewalInvestment`, `treatmentPlantNewInvestment`,
+  `treatmentPlantRenewalInvestment`, `europeanUnionFunds` and `otherPublicFunds`. When an amount
+  is 0, the related fund name or specification is
   not required.
 * **There is no "unknown" value.** Because 0 is read as "none planned", it should not be used to
   mean "not known". How to report a required amount that is not yet known is an open question.
   An explicit "unknown" option has been proposed ({ref}`art23-oi-unknown`).
 * **Amounts known only as totals.** Where investments are known only as totals and not by plant or
   agglomeration, the draft allows them to be reported in {ref}`art23-otherinvestment`.
-* **Optional fields.** An optional field such as `producerResponsibilityFund` can be left empty. The draft does
+* **Optional fields.** An optional field such as `producerResponsibilityFund` can be left empty.
+  The draft does
   not say whether an empty optional amount means zero or unknown.
 * Use `remarks` to explain estimates and their uncertainty.
 
@@ -191,7 +195,8 @@ The draft uses several reference dates. They are listed in {ref}`art23-timing`. 
 * `expectedCapacity` is the planned organic design capacity in p.e. Hydraulic capacity is not
   requested.
 * `expectedLoad` is the expected generated load of the agglomeration at the expected date of
-  compliance. `expectedLoadCollected` and `expectedLoadIndividualSystems` give the expected percentages collected and
+  compliance. `expectedLoadCollected` and `expectedLoadIndividualSystems` give the expected
+  percentages collected and
   addressed through individual systems.
 
 Articles 3(3) and 6(5) set out how the load of an agglomeration and the load entering a plant are

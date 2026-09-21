@@ -101,7 +101,8 @@ technical or economic reasons.
 :::
 
 The draft condition for the four count and load fields applies when
-`article3_2DeadlineExtension` is not `noDerogation`. It asks for either the numbers of agglomerations or the loads, which mirrors the
+`article3_2DeadlineExtension` is not `noDerogation`. It asks for either the numbers of
+agglomerations or the loads, which mirrors the
 two alternative conditions in Article 3(2). It refers to "treated and untreated load", although
 the fields describe collected load. See {ref}`art23-oi-derogation`.
 

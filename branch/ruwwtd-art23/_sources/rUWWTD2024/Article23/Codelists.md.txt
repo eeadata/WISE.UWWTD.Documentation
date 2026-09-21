@@ -91,7 +91,7 @@ Used by `article7_4DeadlineExtension`.
 
 **Type:** `ComplianceShare_Enum`
 
-Used by `article3Compliance` and `article6Compliance` in {ref}`art23-mssummary`.
+Used by `article3Compliance` and `article6Compliance` in {ref}`art23-selfassessment`.
 
 :::{list-table} Proposed compliance share values
 :header-rows: 1
@@ -133,7 +133,8 @@ Used by `article3Compliance` and `article6Compliance` in {ref}`art23-mssummary`.
 **Type:** `ComplianceShareEstimated_Enum`
 
 Used by `article3Compliance1000to1999`, `article6Compliance1000to1999`, `article7Compliance` and
-`article8Compliance` in {ref}`art23-mssummary`. The wider bands reflect that detailed data may not
+`article8Compliance` in {ref}`art23-selfassessment`. The wider bands reflect that detailed data
+may not
 yet be available for these agglomerations and plants.
 
 :::{list-table} Proposed estimated compliance share values

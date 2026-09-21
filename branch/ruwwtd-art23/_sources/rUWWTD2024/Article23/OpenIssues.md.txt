@@ -229,3 +229,23 @@ as a file uploaded to Reportnet 3.
 
 * Should a Member State be allowed to upload the programme, or must it be published online?
 * Is one row per cited chapter workable for Reporters, or should a document be cited as a whole?
+
+(art23-oi-coordinates)=
+## OI-21 Coordinates of new plants and agglomerations
+
+**Baseline.** The draft reporting guidance has no coordinates. It assumes that every row of the
+UWWTP and Agglomeration tables is linked to a plant or agglomeration already reported under
+Directive 91/271/EEC.
+
+**Proposal.** Report `latitude` and `longitude` in decimal degrees (WGS 84) where the plant or
+agglomeration has not been reported before, so that new infrastructure can be located without
+waiting for the next monitoring delivery.
+
+**Questions.**
+
+* Is WGS 84 the right reference system, or should the reporting follow the coordinate reference
+  systems used for WISE spatial data?
+* For an agglomeration, which point is reported: the centroid, the administrative centre, or the
+  point already used in earlier reporting?
+* How is "not reported before" determined in practice, and should the condition instead be a
+  quality check against the last accepted delivery?

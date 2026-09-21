@@ -310,12 +310,13 @@
 <li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="ReportingDataset/index.html">Reporting dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/MSSummary.html">MSSummary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Derogation.html">Derogation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/UWWTP.html">UWWTP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/OtherInvestment.html">OtherInvestment</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -595,6 +596,24 @@ as a file uploaded to Reportnet 3.</p>
 <li><p>Is one row per cited chapter workable for Reporters, or should a document be cited as a whole?</p></li>
 </ul>
 </section>
+<section id="oi-21-coordinates-of-new-plants-and-agglomerations">
+<span id="art23-oi-coordinates"></span><h2>OI-21 Coordinates of new plants and agglomerations<a class="headerlink" href="#oi-21-coordinates-of-new-plants-and-agglomerations" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The draft reporting guidance has no coordinates. It assumes that every row of the
+UWWTP and Agglomeration tables is linked to a plant or agglomeration already reported under
+Directive 91/271/EEC.</p>
+<p><strong>Proposal.</strong> Report <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> in decimal degrees (WGS 84) where the plant or
+agglomeration has not been reported before, so that new infrastructure can be located without
+waiting for the next monitoring delivery.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Is WGS 84 the right reference system, or should the reporting follow the coordinate reference
+systems used for WISE spatial data?</p></li>
+<li><p>For an agglomeration, which point is reported: the centroid, the administrative centre, or the
+point already used in earlier reporting?</p></li>
+<li><p>How is “not reported before” determined in practice, and should the condition instead be a
+quality check against the last accepted delivery?</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -655,6 +674,7 @@ as a file uploaded to Reportnet 3.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-18-otherinvestment-reference-period">OI-18 OtherInvestment reference period</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-19-publication-of-cost-estimates">OI-19 Publication of cost estimates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-20-documents-dataset">OI-20 Documents dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-21-coordinates-of-new-plants-and-agglomerations">OI-21 Coordinates of new plants and agglomerations</a></li>
 </ul>
   </nav></div>
 

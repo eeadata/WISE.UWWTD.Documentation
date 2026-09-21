@@ -6,7 +6,7 @@ The table structure below is the draft baseline. It is not final.
 :::
 
 The dataflow is delivered as three datasets, following the WISE convention used in the other
-dataflows: a private dataset for the contact details, the reporting dataset with the six tables of
+dataflows: a private dataset for the contact details, the descriptive dataset with the tables of
 the draft reporting format, and a documents dataset holding the delivery metadata and every
 document the programme refers to.
 
@@ -15,8 +15,9 @@ flowchart LR
   subgraph private["Private dataset"]
     Contact
   end
-  subgraph reporting["Reporting dataset"]
+  subgraph descriptive["Descriptive dataset"]
     MSSummary
+    SelfAssessment
     Derogation
     UWWTP["UWWTP<br/>one row per plant"]
     Agglomeration["Agglomeration<br/>one row per agglomeration"]
@@ -39,7 +40,7 @@ tables have no reference fields, and the UWWTP table has no field linking a plan
 agglomeration. The dashed links are optional: `dcMetadata` points to a document only where the
 licence or further metadata is delivered as one.
 
-The tables of the reporting dataset do not carry web addresses. Fields such as
+The tables of the descriptive dataset do not carry web addresses. Fields such as
 `programmeReference` hold a `referenceCode` pointing into the documents dataset, which resolves to
 a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 ({ref}`art23-oi-documents`).
@@ -59,9 +60,12 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 * - {ref}`art23-mssummary`
   - One per Member State
   - Required
-  - Whether a programme is required, references to it, national self-assessment of Articles 3 to
-    8,
+  - Whether a programme is required, references to it and to the prioritisation methodology,
     risk assessment and PRO contribution.
+* - {ref}`art23-selfassessment`
+  - One per Member State
+  - Required
+  - National self-assessment of compliance with Articles 3 to 8.
 * - {ref}`art23-derogation`
   - One per Member State
   - Required in the first programme; afterwards only if derogation requests change

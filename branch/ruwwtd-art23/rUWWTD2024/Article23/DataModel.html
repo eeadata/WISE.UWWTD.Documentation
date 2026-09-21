@@ -669,12 +669,13 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="ReportingDataset/index.html">Reporting dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/MSSummary.html">MSSummary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Derogation.html">Derogation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/UWWTP.html">UWWTP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/OtherInvestment.html">OtherInvestment</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -759,7 +760,7 @@ window.runMermaid = runMermaid;</script>
 The table structure below is the draft baseline. It is not final.</p>
 </div>
 <p>The dataflow is delivered as three datasets, following the WISE convention used in the other
-dataflows: a private dataset for the contact details, the reporting dataset with the six tables of
+dataflows: a private dataset for the contact details, the descriptive dataset with the tables of
 the draft reporting format, and a documents dataset holding the delivery metadata and every
 document the programme refers to.</p>
 <pre  class="mermaid">
@@ -767,8 +768,9 @@ document the programme refers to.</p>
   subgraph private[&quot;Private dataset&quot;]
     Contact
   end
-  subgraph reporting[&quot;Reporting dataset&quot;]
+  subgraph descriptive[&quot;Descriptive dataset&quot;]
     MSSummary
+    SelfAssessment
     Derogation
     UWWTP[&quot;UWWTP&lt;br/&gt;one row per plant&quot;]
     Agglomeration[&quot;Agglomeration&lt;br/&gt;one row per agglomeration&quot;]
@@ -788,7 +790,7 @@ document the programme refers to.</p>
 tables have no reference fields, and the UWWTP table has no field linking a plant to an
 agglomeration. The dashed links are optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only where the
 licence or further metadata is delivered as one.</p>
-<p>The tables of the reporting dataset do not carry web addresses. Fields such as
+<p>The tables of the descriptive dataset do not carry web addresses. Fields such as
 <code class="docutils literal notranslate"><span class="pre">programmeReference</span></code> hold a <code class="docutils literal notranslate"><span class="pre">referenceCode</span></code> pointing into the documents dataset, which resolves to
 a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 (<a class="reference internal" href="OpenIssues.html#art23-oi-documents"><span class="std std-ref">OI-20 Documents dataset</span></a>).</p>
@@ -813,46 +815,50 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 <td><p>Required</p></td>
 <td><p>Reporting contact details.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ReportingDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a></p></td>
 <td><p>One per Member State</p></td>
 <td><p>Required</p></td>
-<td><p>Whether a programme is required, references to it, national self-assessment of Articles 3 to
-8,
+<td><p>Whether a programme is required, references to it and to the prioritisation methodology,
 risk assessment and PRO contribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ReportingDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html#art23-selfassessment"><span class="std std-ref">SelfAssessment</span></a></p></td>
+<td><p>One per Member State</p></td>
+<td><p>Required</p></td>
+<td><p>National self-assessment of compliance with Articles 3 to 8.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a></p></td>
 <td><p>One per Member State</p></td>
 <td><p>Required in the first programme; afterwards only if derogation requests change</p></td>
 <td><p>Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
 under Article 6(4).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ReportingDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
 <td><p>One per plant (<code class="docutils literal notranslate"><span class="pre">code</span></code> is the primary key)</p></td>
 <td><p>Conditional: required where investments in treatment plants are planned</p></td>
 <td><p>Measures, status, prioritisation, projected load and capacity, dates, investment and funding.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ReportingDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 <td><p>One per agglomeration (<code class="docutils literal notranslate"><span class="pre">code</span></code> is the primary key)</p></td>
 <td><p>Conditional: required where investments in collecting systems or individual systems are
 planned</p></td>
 <td><p>Measures, status, prioritisation, projected load, completion date, investment and funding.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="ReportingDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a></p></td>
 <td><p>One or more per Member State, for example one for the whole period or one per year</p></td>
 <td><p>Conditional: can remain empty if all resources are attributed to plants or agglomerations</p></td>
 <td><p>Totals of investments and funding not attributed to a single plant or agglomeration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DocumentsDataset/dcMetadata.html#art23-dcmetadata"><span class="std std-ref">dcMetadata</span></a> (documents)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DocumentsDataset/dcMetadata.html#art23-dcmetadata"><span class="std std-ref">dcMetadata</span></a> (documents)</p></td>
 <td><p>One per delivery</p></td>
 <td><p>Required</p></td>
 <td><p>Dublin Core metadata about the delivery.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="DocumentsDataset/Reference.html#art23-reference"><span class="std std-ref">Reference</span></a> (documents)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DocumentsDataset/Reference.html#art23-reference"><span class="std std-ref">Reference</span></a> (documents)</p></td>
 <td><p>One per cited place in a document</p></td>
 <td><p>Conditional: required where a reporting table cites a document</p></td>
 <td><p>Chapter, section or bookmark within a document.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DocumentsDataset/Document.html#art23-document"><span class="std std-ref">Document</span></a> (documents)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DocumentsDataset/Document.html#art23-document"><span class="std std-ref">Document</span></a> (documents)</p></td>
 <td><p>One per document</p></td>
 <td><p>Conditional: required where a reporting table cites a document</p></td>
 <td><p>The document itself, as a hyperlink or an uploaded file.</p></td>

@@ -124,7 +124,7 @@ These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
   - {ref}`art23-mssummary`
 * - 1 January 2028
   - The draft states that compliance is self-reported "as at" this date in the first programme.
-  - {ref}`art23-mssummary`: the Article 3 to 8 self-assessment fields
+  - {ref}`art23-selfassessment`: the Article 3 to 8 self-assessment fields
 * - 1 January 2025
   - Numbers and loads justifying deadline extensions (set by the Directive).
   - {ref}`art23-derogation`

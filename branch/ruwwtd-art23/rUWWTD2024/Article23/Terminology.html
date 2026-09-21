@@ -311,12 +311,13 @@
 <li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="ReportingDataset/index.html">Reporting dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/MSSummary.html">MSSummary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Derogation.html">Derogation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/UWWTP.html">UWWTP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ReportingDataset/OtherInvestment.html">OtherInvestment</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -488,7 +489,7 @@ precipitation or system failures (Article 2(6)).</p>
 and link to the full document (<code class="docutils literal notranslate"><span class="pre">programmeReference</span></code>).</p>
 <p>Measure
 : An action to reach or maintain compliance, selected from the measure codelists of the
-<a class="reference internal" href="ReportingDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="ReportingDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables.</p>
+<a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables.</p>
 <p>Investment
 : The forecast cost of measures, in million EUR. See <a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting investments</span></a>.</p>
 <p>Expected date of compliance
@@ -497,7 +498,7 @@ and link to the full document (<code class="docutils literal notranslate"><span 
 <p>Organic design capacity
 : The design capacity of a plant expressed in p.e. (<code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code>).</p>
 <p>Derogation
-: In the <a class="reference internal" href="ReportingDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a> table, an extension of a deadline under Article 3(2), 6(3),
+: In the <a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a> table, an extension of a deadline under Article 3(2), 6(3),
 7(4) or 23(1), or less stringent treatment under Article 6(4).</p>
 </section>
 <section id="status-values-c-nc-and-pd">
@@ -554,6 +555,8 @@ tables add notes. Notations are proposals and are not final (<a class="reference
 <li><p><strong>nonNegativeValue</strong> - a non-negative number. The unit follows in brackets, for example
 a load in p.e. or an amount in million EUR;</p></li>
 <li><p><strong>Percentage</strong> - a value in the interval [0, 100];</p></li>
+<li><p><strong>NumberDecimalType</strong> - a number with decimals that may be negative, used here for coordinates
+in decimal degrees;</p></li>
 <li><p><strong>gYear</strong> - a Gregorian year;</p></li>
 <li><p><strong>date</strong> - a date in the format yyyy-mm-dd;</p></li>
 <li><p><strong>YesNo</strong> - a yes or no answer;</p></li>

@@ -1,10 +1,10 @@
 ---
 html_theme.sidebar_secondary.remove: true
 ---
-(art23-reporting-dataset)=
-# Reporting dataset
+(art23-descriptive-dataset)=
+# Descriptive dataset
 
-The reporting dataset holds the national implementation programme itself: the national summary
+The descriptive dataset holds the national implementation programme itself: the national summary
 and self-assessment, the derogations requested, and the planned investments per treatment plant,
 per agglomeration and in aggregate.
 
@@ -17,6 +17,7 @@ Documents referred to from these tables are reported in the {ref}`art23-document
 :::{toctree}
 :maxdepth: 1
 MSSummary
+SelfAssessment
 Derogation
 UWWTP
 Agglomeration

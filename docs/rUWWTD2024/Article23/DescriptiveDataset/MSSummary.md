@@ -2,17 +2,16 @@
 # MSSummary
 
 :::{warning} Draft
-Draft baseline. The self-assessment fields were revised after the country consultation and are
-still under review ({ref}`art23-oi-self-assessment`).
+Draft baseline. Field names, types and statuses are not final.
 :::
 
 **Table status:** Required.
 **Rows:** one row per Member State.
 
 The table gives an overview of the programme: whether one is required, references to it and to
-the prioritisation methodology, a national self-assessment of compliance with Articles 3 to 8, the
-Article 18 risk assessment, and the estimated contribution from producer responsibility
-organisations (PROs).
+the prioritisation methodology, the Article 18 risk assessment, and the estimated contribution
+from producer responsibility organisations (PROs). The national self-assessment of compliance
+with Articles 3 to 8 is reported in {ref}`art23-selfassessment`.
 
 According to the draft, a Member State that is fully compliant with Articles 3 to 8 does not need
 to report the more detailed tables.
@@ -63,59 +62,6 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - referenceCode
   - Conditional
   - Required if `programmeObligation` = yes
-:::
-
-The programme is updated at least every six years, unless the Member State is fully compliant
-with Articles 3 to 8.
-
-## Self-assessment of Articles 3 to 8
-
-Each field records the Member State's own assessment, at national level, of compliance with one
-Article in the first programme. The draft notes that detailed information may not yet be
-available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
-percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
-Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.
-
-Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
-agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.
-
-:::{list-table} MSSummary fields - self-assessment
-:header-rows: 1
-:widths: 26 18 22 14 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Codelist
-* - `article3Compliance`
-  - Article 3 compliance
-  - Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting
-    systems).
-  - ComplianceShare_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share`
-* - `article3Compliance1000to1999`
-  - Article 3 compliance, 1 000 to 1 999 p.e.
-  - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.
-  - ComplianceShareEstimated_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share-estimated`
-* - `article4Compliance`
-  - Article 4 compliance
-  - Whether a system of authorisation and control of individual systems has been introduced in
-    accordance with the Directive.
-  - YesNo
-  - Required
-  - –
-* - `article5ManagementPlanCount`
-  - Article 5 management plans
-  - Number of agglomerations of 100 000 p.e. and above that already have an integrated urban
-    wastewater management plan.
-  - nonNegativeValue
-  - Required
-  - –
 * - `article5ManagementPlanReference`
   - Article 5 management plan reference
   - Reference to the document listing the Member State's integrated urban wastewater
@@ -123,40 +69,10 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
   - referenceCode
   - Optional
   - –
-* - `article6Compliance`
-  - Article 6 compliance
-  - Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary
-    treatment).
-  - ComplianceShare_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share`
-* - `article6Compliance1000to1999`
-  - Article 6 compliance, 1 000 to 1 999 p.e.
-  - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.
-  - ComplianceShareEstimated_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share-estimated`
-* - `article7Compliance`
-  - Article 7 compliance
-  - Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary
-    treatment requirements.
-  - ComplianceShareEstimated_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share-estimated`
-* - `article8Compliance`
-  - Article 8 compliance
-  - Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary
-    treatment requirements.
-  - ComplianceShareEstimated_Enum
-  - Required
-  - {ref}`art23-cl-compliance-share-estimated`
 :::
 
-:::{note}
-Most deadlines of Articles 3 to 8 fall after 1 January 2028, so the first programme records an
-expected position rather than a settled one. How a single national share is derived from plant or
-agglomeration data is not stated. See {ref}`art23-oi-self-assessment`.
-:::
+The programme is updated at least every six years, unless the Member State is fully compliant
+with Articles 3 to 8.
 
 ## Risk assessment
 

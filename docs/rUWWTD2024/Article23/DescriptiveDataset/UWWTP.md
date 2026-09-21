@@ -13,7 +13,8 @@ infrastructure.
 
 The table is used to monitor planned investments in treatment plants, the measures they fund and
 their funding sources. According to the draft, rows are linked to the plants already reported
-under Directive 91/271/EEC.
+under Directive 91/271/EEC. A plant reported for the first time has no such link, so its
+coordinates are required ({ref}`art23-oi-coordinates`).
 
 The draft lists plants that are currently non-compliant, face upcoming deadlines, or are at risk
 of future non-compliance, for example because of capacity constraints, more stringent
@@ -55,6 +56,18 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - string255
   - Required
   - –
+* - `latitude`
+  - Latitude
+  - Latitude of the treatment plant, in decimal degrees (WGS 84).
+  - NumberDecimalType
+  - Conditional
+  - Required if `code` was not reported under Directive 91/271/EEC
+* - `longitude`
+  - Longitude
+  - Longitude of the treatment plant, in decimal degrees (WGS 84).
+  - NumberDecimalType
+  - Conditional
+  - Required if `code` was not reported under Directive 91/271/EEC
 * - `status`
   - Status
   - Status of the plant at the reference year.

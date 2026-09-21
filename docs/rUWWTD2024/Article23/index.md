@@ -25,7 +25,7 @@ Timing
 Terminology
 DataModel
 PrivateDataset/index
-ReportingDataset/index
+DescriptiveDataset/index
 DocumentsDataset/index
 Codelists
 ReportingInvestments
@@ -58,7 +58,7 @@ existing reported data.
 :::{grid-item-card} {ref}`art23-private-dataset`
 Reporting contact details, kept separate because they are personal data.
 :::
-:::{grid-item-card} {ref}`art23-reporting-dataset`
+:::{grid-item-card} {ref}`art23-descriptive-dataset`
 The programme itself: national summary, derogations and planned investments.
 :::
 :::{grid-item-card} {ref}`art23-documents-dataset`
@@ -71,7 +71,10 @@ Delivery metadata, and the documents the programme refers to.
 ::::{grid} 3
 :gutter: 1 2 3 3
 :::{grid-item-card} {ref}`art23-mssummary`
-National self-assessment, links and producer responsibility contribution.
+Programme references, risk assessment and producer responsibility contribution.
+:::
+:::{grid-item-card} {ref}`art23-selfassessment`
+National self-assessment of compliance with Articles 3 to 8.
 :::
 :::{grid-item-card} {ref}`art23-derogation`
 Deadline extensions and less stringent treatment.

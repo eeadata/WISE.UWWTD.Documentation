@@ -1,0 +1,23 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class SelfAssessment{
+    + article3Compliance: ComplianceShare_Enum [1]
+    + article3Compliance1000to1999: ComplianceShareEstimated_Enum [1]
+    + article4Compliance: YesNo [1]
+    + article5ManagementPlanCount: nonNegativeValue [1]
+    + article6Compliance: ComplianceShare_Enum [1]
+    + article6Compliance1000to1999: ComplianceShareEstimated_Enum [1]
+    + article7Compliance: ComplianceShareEstimated_Enum [1]
+    + article8Compliance: ComplianceShareEstimated_Enum [1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

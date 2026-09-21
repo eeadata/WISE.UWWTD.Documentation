@@ -25,7 +25,7 @@ The documents dataset follows the standard structure used in various WISE datafl
 :align: center
 ```
 
-The fields of the {ref}`art23-reporting-dataset` that refer to a document - the programme, the
+The fields of the {ref}`art23-descriptive-dataset` that refer to a document - the programme, the
 prioritisation methodology, the investment plans, the extension reasons, the cultural heritage
 lists, the Article 6(4) study and the risk summary - hold a `referenceCode` from the `Reference`
 table rather than a web address ({ref}`art23-oi-documents`). The same document can therefore be

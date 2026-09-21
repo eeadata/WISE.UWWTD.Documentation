@@ -11,6 +11,8 @@ direction LR
 class UWWTP{
     + code: wiseIdentifier [1]
     + name: string255 [1]
+    + latitude: NumberDecimalType [0..1]
+    + longitude: NumberDecimalType [0..1]
     + status: Status_Enum [1]
     + measure: TreatmentPlantMeasure_Enum [1..n]
     + measureText: string1000 [0..1]
@@ -29,7 +31,6 @@ class UWWTP{
     + otherPublicFundSpecification: OtherPublicFund_Enum [0..1]
     + loan: nonNegativeValue [1]
     + loanName: string255 [0..1]
-
     + remarks: string1000 [0..1]
 }
 

@@ -64,7 +64,7 @@ is required, and `situationAt` records the date of the reported situation.
 * - Legal content
   - Draft tables and fields
 * - Article 23(1)(a) - level of implementation of Articles 3 to 8
-  - {ref}`art23-mssummary`: the Article 3 to 8 self-assessment fields.
+  - {ref}`art23-selfassessment`: the Article 3 to 8 self-assessment fields.
     {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: the `status` field of each.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation

@@ -12,7 +12,8 @@ individual systems.
 
 The table gives an overview of measures for collecting systems, individual systems and integrated
 urban wastewater management plans, their cost and their funding sources. Rows are linked to the
-list of agglomerations.
+list of agglomerations. An agglomeration reported for the first time has no such link, so its
+coordinates are required ({ref}`art23-oi-coordinates`).
 
 The draft lists agglomerations that are currently non-compliant, face upcoming deadlines, or are
 at risk of future non-compliance, for example because of load increases, insufficient collecting
@@ -53,6 +54,18 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - string255
   - Required
   - –
+* - `latitude`
+  - Latitude
+  - Latitude of the agglomeration, in decimal degrees (WGS 84).
+  - NumberDecimalType
+  - Conditional
+  - Required if `code` was not reported under Directive 91/271/EEC
+* - `longitude`
+  - Longitude
+  - Longitude of the agglomeration, in decimal degrees (WGS 84).
+  - NumberDecimalType
+  - Conditional
+  - Required if `code` was not reported under Directive 91/271/EEC
 * - `status`
   - Status
   - Status of the agglomeration at the reference year.

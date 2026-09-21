@@ -6,7 +6,7 @@ Proposal. The draft reporting guidance does not describe a documents dataset; th
 the WISE convention used in the other dataflows ({ref}`art23-oi-documents`).
 :::
 
-**Table status:** Conditional. Required where a field of the {ref}`art23-reporting-dataset`
+**Table status:** Conditional. Required where a field of the {ref}`art23-descriptive-dataset`
 points to a document.
 **Rows:** one row per document.
 

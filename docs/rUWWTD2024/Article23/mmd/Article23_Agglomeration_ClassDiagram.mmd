@@ -11,6 +11,8 @@ direction LR
 class Agglomeration{
     + code: wiseIdentifier [1]
     + name: string255 [1]
+    + latitude: NumberDecimalType [0..1]
+    + longitude: NumberDecimalType [0..1]
     + status: Status_Enum [1]
     + measures: AgglomerationMeasure_Enum [1]
     + prioritisation: Priority_Enum [1]

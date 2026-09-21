@@ -156,6 +156,8 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **nonNegativeValue** - a non-negative number. The unit follows in brackets, for example
   a load in p.e. or an amount in million EUR;
 * **Percentage** - a value in the interval [0, 100];
+* **NumberDecimalType** - a number with decimals that may be negative, used here for coordinates
+  in decimal degrees;
 * **gYear** - a Gregorian year;
 * **date** - a date in the format yyyy-mm-dd;
 * **YesNo** - a yes or no answer;

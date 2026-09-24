@@ -1,15 +1,31 @@
-# UWWTD - Urban Waste Water Treatment Directive
-
-## Compliance Algorithms
-
-This **documentation** introduces a compliance algorithm designed to systematically evaluate wastewater data against regulatory requirements, with reference to the Urban Waste Water Treatment Directive 
-91/271/EEC (UWWTD).
+---
+html_theme.sidebar_secondary.remove: true
+---
+# WISE - Urban Waste Water Treatment Directive
 
 ```{toctree}
 :maxdepth: 2
-:caption: Contents
+:hidden:
 
-Overview <overview/index>
-Notation <notation>
-Compliance Algorithms <algorithms/index>
+UWWTD1991/index
+rUWWTD2024/index
 ```
+
+## Main sections
+
+The **Urban Waste Water Treatment Directive Documentation** is organized in 2 main sections,
+one per Directive.
+
+::::{grid} 2
+:gutter: 1 2 3 3
+:::{grid-item-card} {ref}`uwwtd-1991`
+Contains the documentation of the compliance algorithms applied to the data reported
+under Directive 91/271/EEC, still in force until 31 July 2027.
+:::
+:::{grid-item-card} {ref}`ruwwtd-2024`
+**DRAFT - UNDER REVIEW & REVISION**
+^^^
+Contains the documentation of the electronic reporting under Directive (EU) 2024/3019,
+which recasts Directive 91/271/EEC.
+:::
+::::

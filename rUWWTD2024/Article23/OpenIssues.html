@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Open issues and proposed changes &#8212; WISE.UWWTD.Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rUWWTD2024/Article23/OpenIssues';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Reporting investments" href="ReportingInvestments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/wise.svg" class="logo__image only-light" alt="WISE UWWTD Documentation"/>
+    <img src="../../_static/wise.svg" class="logo__image only-dark pst-js-only" alt="WISE UWWTD Documentation"/>
+  
+  
+    <p class="title logo__title">Urban Waste Water Treatment Directive</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Article 23 - National implementation programmes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Purpose and scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Timing.html">Reporting timing and reference dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataModel.html">Data model overview</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="PrivateDataset/index.html">Private dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/dcMetadata.html">dcMetadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Reference.html">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Document.html">Document</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Open issues and proposed changes</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">rUWWTD - Directive (EU) 2024/3019</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Article 23 - National implementation programmes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Open issues and proposed changes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="open-issues-and-proposed-changes">
+<span id="art23-open-issues"></span><h1>Open issues and proposed changes<a class="headerlink" href="#open-issues-and-proposed-changes" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nothing on this page is decided
+These questions were raised in the May 2026 consultation on the draft guidance, or found when
+comparing the draft with its Figure 1 and with the Directive. None has been resolved. Until a
+decision is published, the draft baseline described in this section applies. Proposals
+listed here are not reporting requirements.</p>
+</div>
+<section id="oi-01-which-plants-and-agglomerations-to-list">
+<span id="art23-oi-scope"></span><h2>OI-01 Which plants and agglomerations to list<a class="headerlink" href="#oi-01-which-plants-and-agglomerations-to-list" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> Only plants and agglomerations that are non-compliant, face upcoming deadlines or are
+at risk of future non-compliance are listed. The same draft makes the UWWTP table mandatory where
+renewal investments are planned, and includes a renewal measure code.</p>
+<p><strong>Question.</strong> Must compliant plants and agglomerations with planned renewal, upgrade or
+replacement investments be listed individually, or reported as totals in OtherInvestment?
+Article 23(1)(b) refers to investments for each agglomeration, and Article 23(1)(c) to existing
+infrastructure in general.</p>
+<p><strong>Under consideration.</strong> Covering all plants and agglomerations, or listing only those needing
+investment to reach or maintain compliance, with other investments reported as totals.</p>
+</section>
+<section id="oi-02-self-assessment-of-articles-3-to-8">
+<span id="art23-oi-self-assessment"></span><h2>OI-02 Self-assessment of Articles 3 to 8<a class="headerlink" href="#oi-02-self-assessment-of-articles-3-to-8" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> After the country consultation the self-assessment was restructured: Articles 3 and
+6 are reported as the share of compliant agglomerations in percentage ranges, split between
+agglomerations of 2 000 p.e. and above and those of 1 000 to 1 999 p.e.; Article 4 is a yes or no
+answer on whether a system of authorisation and control of individual systems exists; Article 5 is
+a count of agglomerations of 100 000 p.e. and above that already have an integrated urban
+wastewater management plan; Articles 7 and 8 are the share of compliant treatment plants of
+150 000 p.e. and above.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Is the share counted by number of agglomerations or by population equivalent?</p></li>
+<li><p>Articles 3 and 6 use six percentage bands for the larger agglomerations and five for the
+smaller ones, and Articles 7 and 8 use the five-band list. Should one set of bands be used
+throughout?</p></li>
+<li><p>How is a single national share derived where a Member State holds only plant-level data?</p></li>
+<li><p>Should the basis of each value be recorded, for example calculated or estimated?</p></li>
+</ul>
+</section>
+<section id="oi-03-plant-and-agglomeration-status">
+<span id="art23-oi-status"></span><h2>OI-03 Plant and agglomeration status<a class="headerlink" href="#oi-03-plant-and-agglomeration-status" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The plant and agglomeration <code class="docutils literal notranslate"><span class="pre">status</span></code> fields share one codelist that combines
+Articles 3 to 8 with
+Article 18.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Should plant status refer only to Articles 6 to 8, and agglomeration status to Articles 3 to 5?</p></li>
+<li><p>What does “pending deadline (time for submission of application)” mean?</p></li>
+<li><p>When is C used if only non-compliant cases are listed?</p></li>
+<li><p>How are agglomerations using individual systems under Article 4 reported?</p></li>
+<li><p>Should Article 18 be recorded separately?</p></li>
+</ul>
+</section>
+<section id="oi-04-reference-date-and-investment-horizon-of-the-first-programme">
+<span id="art23-oi-reference-dates"></span><h2>OI-04 Reference date and investment horizon of the first programme<a class="headerlink" href="#oi-04-reference-date-and-investment-horizon-of-the-first-programme" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> Several dates are used: the situation date (<code class="docutils literal notranslate"><span class="pre">situationAt</span></code>), compliance “as at
+1 January 2028”, derogation figures on 1 January 2025, and an undefined “reference year” for plant
+and agglomeration status.</p>
+<p><strong>Questions.</strong> Which period should the first programme’s information describe, and may data
+collected for earlier reporting under Directive 91/271/EEC be reused? Should investment amounts
+cover the whole implementation period to 2045 or a shorter horizon?</p>
+</section>
+<section id="oi-05-prioritisation">
+<span id="art23-oi-prioritisation"></span><h2>OI-05 Prioritisation<a class="headerlink" href="#oi-05-prioritisation" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> High, Medium or Low, with “‘High’ should be used for projects that are scheduled
+for earlier completion relative to others”.</p>
+<p><strong>Proposed change.</strong> Remove the link between high priority and earlier completion, because
+high-priority projects can take longer. The legal criteria are the size of the agglomeration and
+the level of environmental impact and related risks.</p>
+<p><strong>Other questions.</strong> Definitions for comparability, the level at which priority is assessed, and
+whether the field could be optional in the first programme.</p>
+</section>
+<section id="oi-06-several-measures-and-dates-per-plant-or-agglomeration">
+<span id="art23-oi-multiple-measures"></span><h2>OI-06 Several measures and dates per plant or agglomeration<a class="headerlink" href="#oi-06-several-measures-and-dates-per-plant-or-agglomeration" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> One row per plant or agglomeration, with one investment total and one set of dates.
+<code class="docutils literal notranslate"><span class="pre">measure</span></code> accepts several measures. <code class="docutils literal notranslate"><span class="pre">measures</span></code> does not say.</p>
+<p><strong>Question.</strong> How should measures with different dates, or collecting system and individual system
+investments in the same agglomeration, be reported?</p>
+</section>
+<section id="oi-07-several-funds-in-one-row">
+<span id="art23-oi-multiple-funds"></span><h2>OI-07 Several funds in one row<a class="headerlink" href="#oi-07-several-funds-in-one-row" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> One fund name or specification per row. The draft does not state whether several
+can be given, or whether funding amounts must add up to the investment.</p>
+<p><strong>Under consideration.</strong> Allowing several fund names with one total amount and no split between
+funds.</p>
+</section>
+<section id="oi-08-unknown-amounts-and-uncertain-costs">
+<span id="art23-oi-unknown"></span><h2>OI-08 Unknown amounts and uncertain costs<a class="headerlink" href="#oi-08-unknown-amounts-and-uncertain-costs" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> Amounts are required, and 0 means none. There is no “unknown” value.</p>
+<p><strong>Under consideration.</strong> Adding an “unknown” option, allowing more flexibility where costs cannot
+yet be estimated, and using OtherInvestment for aggregated estimates. A minimum threshold for
+reporting investments was also suggested.</p>
+</section>
+<section id="oi-09-loan-fields">
+<span id="art23-oi-loans"></span><h2>OI-09 Loan fields<a class="headerlink" href="#oi-09-loan-fields" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The <code class="docutils literal notranslate"><span class="pre">loan</span></code> fields of both investment tables are Required. Lender names are
+required when the amount is
+above 0.</p>
+<p><strong>Questions.</strong> What is the legal basis and purpose, given that Article 23(1)(d) refers to public
+financing? Does “loan” cover public and private lenders? How do loans relate to the EU fund
+codelist, which includes the European Investment Bank?</p>
+<p><strong>Under consideration.</strong> Making the loan fields optional.</p>
+</section>
+<section id="oi-10-producer-responsibility-contribution">
+<span id="art23-oi-pro"></span><h2>OI-10 Producer responsibility contribution<a class="headerlink" href="#oi-10-producer-responsibility-contribution" title="Link to this heading">#</a></h2>
+<p><strong>Questions.</strong> Which period does <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> cover, and is the amount
+nominal? Which
+requirements does <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> refer to, and should it be Required now that it replaces
+four Required questions? Should there be an “unknown”
+option? Can the fields be optional in the first programme, when estimates may not be available?
+How does <code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> relate to the national total?</p>
+</section>
+<section id="oi-11-nominal-or-annualised-costs">
+<span id="art23-oi-costs"></span><h2>OI-11 Nominal or annualised costs<a class="headerlink" href="#oi-11-nominal-or-annualised-costs" title="Link to this heading">#</a></h2>
+<p><strong>Question.</strong> Are investment amounts (the <code class="docutils literal notranslate"><span class="pre">investment</span></code> fields and
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>) nominal or
+annualised? If annualised, which assumptions should be reported?</p>
+</section>
+<section id="oi-12-projected-loads-and-capacity">
+<span id="art23-oi-loads"></span><h2>OI-12 Projected loads and capacity<a class="headerlink" href="#oi-12-projected-loads-and-capacity" title="Link to this heading">#</a></h2>
+<p><strong>Questions.</strong> Is the expected load estimated for the expected date of compliance of the measure
+or for a fixed year? On what basis is it calculated? What does the expected collected share refer
+to when new connections extend the area served by a plant?</p>
+</section>
+<section id="oi-13-start-and-completion-dates">
+<span id="art23-oi-dates"></span><h2>OI-13 Start and completion dates<a class="headerlink" href="#oi-13-start-and-completion-dates" title="Link to this heading">#</a></h2>
+<p><strong>Question.</strong> The plant fields are reported as years (<code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code>,
+<code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>). Where planning is uncertain, is an expected year enough for
+<code class="docutils literal notranslate"><span class="pre">completionDate</span></code> as well?</p>
+</section>
+<section id="oi-14-measure-codelists">
+<span id="art23-oi-measures"></span><h2>OI-14 Measure codelists<a class="headerlink" href="#oi-14-measure-codelists" title="Link to this heading">#</a></h2>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Should new or existing individual systems be added to the agglomeration measures?</p></li>
+<li><p>What does compliance with Article 5 mean at agglomeration level?</p></li>
+<li><p>Should energy neutrality, a plant-level code, be reported per plant?</p></li>
+<li><p>Should small plants selected under Article 18(2) be listed?</p></li>
+<li><p>Should the plant measure field be named in the plural, as Figure 1 does?</p></li>
+<li><p>What codes will be used in the template?</p></li>
+</ul>
+</section>
+<section id="oi-15-derogation-details">
+<span id="art23-oi-derogation"></span><h2>OI-15 Derogation details<a class="headerlink" href="#oi-15-derogation-details" title="Link to this heading">#</a></h2>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>What counts as a complete collecting system, including where individual systems are used?</p></li>
+<li><p>How are agglomerations served by one plant each treated?</p></li>
+<li><p>The Article 3(2) condition asks for numbers or loads, but the Article 6(3) condition asks for
+both.</p></li>
+<li><p>Should the Article 6(4) study be optional where studies are not yet complete?</p></li>
+<li><p>What content is expected in the linked plans and justifications?</p></li>
+</ul>
+</section>
+<section id="oi-16-risk-assessment-fields">
+<span id="art23-oi-risk"></span><h2>OI-16 Risk assessment fields<a class="headerlink" href="#oi-16-risk-assessment-fields" title="Link to this heading">#</a></h2>
+<p><strong>Questions.</strong> How should a risk assessment that covers only some discharges be reported? Is a
+link to the river basin management plan appropriate, and can it be prefilled?</p>
+</section>
+<section id="oi-17-field-names-data-types-and-statuses">
+<span id="art23-oi-naming"></span><h2>OI-17 Field names, data types and statuses<a class="headerlink" href="#oi-17-field-names-data-types-and-statuses" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> Figure 1 of the draft guidance and its field tables differ in several places, in
+field names, data types and requirement statuses. The field tables are followed in this
+documentation.</p>
+<p><strong>Proposals.</strong></p>
+<ul class="simple">
+<li><p>Use one set of identifiers and types: url for link fields, and consistent capitalisation of
+EU.</p></li>
+<li><p>Decide whether <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code> and <code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code> are optional or
+conditional.</p></li>
+<li><p>Adopt notations that write acronyms out in full and do not repeat the table name, as used in
+this documentation (<a class="reference internal" href="Terminology.html#art23-notation"><span class="std std-ref">Notation, label and definition</span></a>), instead of the draft’s <code class="docutils literal notranslate"><span class="pre">uww</span></code>, <code class="docutils literal notranslate"><span class="pre">agg</span></code>, <code class="docutils literal notranslate"><span class="pre">con</span></code>, <code class="docutils literal notranslate"><span class="pre">inv</span></code>
+and <code class="docutils literal notranslate"><span class="pre">pro</span></code> prefixes.</p></li>
+<li><p>Add a short label for every field.</p></li>
+</ul>
+</section>
+<section id="oi-18-otherinvestment-reference-period">
+<span id="art23-oi-otherinvestment"></span><h2>OI-18 OtherInvestment reference period<a class="headerlink" href="#oi-18-otherinvestment-reference-period" title="Link to this heading">#</a></h2>
+<p><strong>Question.</strong> Which period do <code class="docutils literal notranslate"><span class="pre">startYear</span></code> and <code class="docutils literal notranslate"><span class="pre">endYear</span></code> describe, for example the
+programme’s six years, individual years, or the period to 2045?</p>
+</section>
+<section id="oi-19-publication-of-cost-estimates">
+<span id="art23-oi-confidentiality"></span><h2>OI-19 Publication of cost estimates<a class="headerlink" href="#oi-19-publication-of-cost-estimates" title="Link to this heading">#</a></h2>
+<p><strong>Question.</strong> Will investment estimates per plant or agglomeration be made public? Some estimates
+may be commercially sensitive.</p>
+</section>
+<section id="oi-20-documents-dataset">
+<span id="art23-oi-documents"></span><h2>OI-20 Documents dataset<a class="headerlink" href="#oi-20-documents-dataset" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The draft reporting guidance gives every document as a url field on the reporting
+table itself: the programme, the prioritisation methodology, the investment plans, the extension
+reasons, the cultural heritage lists, the Article 6(4) study and the risk summary.</p>
+<p><strong>Proposal.</strong> Follow the WISE convention used in the other dataflows and deliver documents in a
+separate documents dataset (<a class="reference internal" href="DocumentsDataset/index.html#art23-documents-dataset"><span class="std std-ref">Documents dataset</span></a>). The reporting tables then hold a
+<code class="docutils literal notranslate"><span class="pre">referenceCode</span></code> instead of a web address, and each document is delivered once, as a hyperlink or
+as a file uploaded to Reportnet 3.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Should a Member State be allowed to upload the programme, or must it be published online?</p></li>
+<li><p>Is one row per cited chapter workable for Reporters, or should a document be cited as a whole?</p></li>
+</ul>
+</section>
+<section id="oi-21-coordinates-of-new-plants-and-agglomerations">
+<span id="art23-oi-coordinates"></span><h2>OI-21 Coordinates of new plants and agglomerations<a class="headerlink" href="#oi-21-coordinates-of-new-plants-and-agglomerations" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The draft reporting guidance has no coordinates. It assumes that every row of the
+UWWTP and Agglomeration tables is linked to a plant or agglomeration already reported under
+Directive 91/271/EEC.</p>
+<p><strong>Proposal.</strong> Report <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> where the plant or agglomeration has not been
+reported before, so that new infrastructure can be located without waiting for the next
+monitoring delivery. The description follows the one used under Directive 91/271/EEC: ETRS89 or
+WGS-84, decimal degrees.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>ETRS89 (EPSG:4258) or WGS-84 (EPSG:4326) are accepted, as under Directive 91/271/EEC; they
+differ by about a metre in Europe. WISE spatial data also accepts ETRS89-LAEA (EPSG:3035) for
+analysis. Is the pair enough, or should one be required?</p></li>
+<li><p>For an agglomeration, which point is reported: the centroid, the administrative centre, or the
+point already used in earlier reporting?</p></li>
+<li><p>How is “not reported before” determined in practice, and should the condition instead be a
+quality check against the last accepted delivery?</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ReportingInvestments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reporting investments</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-01-which-plants-and-agglomerations-to-list">OI-01 Which plants and agglomerations to list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-02-self-assessment-of-articles-3-to-8">OI-02 Self-assessment of Articles 3 to 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-03-plant-and-agglomeration-status">OI-03 Plant and agglomeration status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-04-reference-date-and-investment-horizon-of-the-first-programme">OI-04 Reference date and investment horizon of the first programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-05-prioritisation">OI-05 Prioritisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-06-several-measures-and-dates-per-plant-or-agglomeration">OI-06 Several measures and dates per plant or agglomeration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-07-several-funds-in-one-row">OI-07 Several funds in one row</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-08-unknown-amounts-and-uncertain-costs">OI-08 Unknown amounts and uncertain costs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-09-loan-fields">OI-09 Loan fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-10-producer-responsibility-contribution">OI-10 Producer responsibility contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-11-nominal-or-annualised-costs">OI-11 Nominal or annualised costs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-12-projected-loads-and-capacity">OI-12 Projected loads and capacity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-13-start-and-completion-dates">OI-13 Start and completion dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-14-measure-codelists">OI-14 Measure codelists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-15-derogation-details">OI-15 Derogation details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-16-risk-assessment-fields">OI-16 Risk assessment fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-17-field-names-data-types-and-statuses">OI-17 Field names, data types and statuses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-18-otherinvestment-reference-period">OI-18 OtherInvestment reference period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-19-publication-of-cost-estimates">OI-19 Publication of cost estimates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-20-documents-dataset">OI-20 Documents dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-21-coordinates-of-new-plants-and-agglomerations">OI-21 Coordinates of new plants and agglomerations</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/edit/main/docs/rUWWTD2024/Article23/OpenIssues.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/rUWWTD2024/Article23/OpenIssues.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

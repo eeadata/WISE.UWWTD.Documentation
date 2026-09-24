@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Terminology &#8212; WISE.UWWTD.Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rUWWTD2024/Article23/Terminology';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data model overview" href="DataModel.html" />
+    <link rel="prev" title="Reporting timing and reference dates" href="Timing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/wise.svg" class="logo__image only-light" alt="WISE UWWTD Documentation"/>
+    <img src="../../_static/wise.svg" class="logo__image only-dark pst-js-only" alt="WISE UWWTD Documentation"/>
+  
+  
+    <p class="title logo__title">Urban Waste Water Treatment Directive</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Article 23 - National implementation programmes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Purpose and scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Timing.html">Reporting timing and reference dates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataModel.html">Data model overview</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="PrivateDataset/index.html">Private dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/dcMetadata.html">dcMetadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Reference.html">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Document.html">Document</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">rUWWTD - Directive (EU) 2024/3019</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Article 23 - National implementation programmes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Terminology</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="terminology">
+<span id="art23-terminology"></span><h1>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h1>
+<section id="acronyms">
+<h2>Acronyms<a class="headerlink" href="#acronyms" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Acronym</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aggl.</p></td>
+<td><p>Agglomeration (Article 2(4))</p></td>
+</tr>
+<tr class="row-odd"><td><p>C, NC, PD</p></td>
+<td><p>Compliant, non-compliant, pending deadline - status values used in the draft codelists
+(see <a class="reference internal" href="#art23-status-values"><span class="std std-ref">Status values C, NC and PD</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>EEA</p></td>
+<td><p>European Environment Agency</p></td>
+</tr>
+<tr class="row-odd"><td><p>EPR</p></td>
+<td><p>Extended producer responsibility</p></td>
+</tr>
+<tr class="row-even"><td><p>IS</p></td>
+<td><p>Individual system (Article 2(28))</p></td>
+</tr>
+<tr class="row-odd"><td><p>IUWMP</p></td>
+<td><p>Integrated urban wastewater management plan (Article 5)</p></td>
+</tr>
+<tr class="row-even"><td><p>MS</p></td>
+<td><p>Member State</p></td>
+</tr>
+<tr class="row-odd"><td><p>NIP</p></td>
+<td><p>National implementation programme (Article 23)</p></td>
+</tr>
+<tr class="row-even"><td><p>p.e.</p></td>
+<td><p>Population equivalent (Article 2(10))</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRO</p></td>
+<td><p>Producer responsibility organisation (Article 2(20))</p></td>
+</tr>
+<tr class="row-even"><td><p>RBMP</p></td>
+<td><p>River basin management plan</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWO</p></td>
+<td><p>Storm water overflow (Article 2(6))</p></td>
+</tr>
+<tr class="row-even"><td><p>UWWTD</p></td>
+<td><p>Urban Wastewater Treatment Directive (EU) 2024/3019</p></td>
+</tr>
+<tr class="row-odd"><td><p>UWWTP</p></td>
+<td><p>Urban wastewater treatment plant</p></td>
+</tr>
+<tr class="row-even"><td><p>1T, 2T, 3T, 4T</p></td>
+<td><p>Primary, secondary, tertiary and quaternary treatment (Article 2(11) to 2(14))</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="legal-definitions">
+<h2>Legal definitions<a class="headerlink" href="#legal-definitions" title="Link to this heading">#</a></h2>
+<p>The following definitions from Article 2 of the Directive are used most in this section.</p>
+<p>Agglomeration
+: An area where the population, expressed in population equivalent, with or without economic
+activities, is sufficiently concentrated for urban wastewater to be collected and conducted to
+one or more urban wastewater treatment plants or final discharge points (Article 2(4)).</p>
+<p>Individual system
+: A sanitation facility that collects, stores, treats or disposes of domestic wastewater from
+buildings or parts of buildings not connected to a collecting system (Article 2(28)).</p>
+<p>Population equivalent (p.e.)
+: 1 p.e. is the organic biodegradable load with a five-day biochemical oxygen demand (BOD5) of
+60 g of oxygen per day (Article 2(10)).</p>
+<p>Producer responsibility organisation
+: A nationally recognised organisation established to enable producers to fulfil their
+obligations under Articles 9 and 10 (Article 2(20)).</p>
+<p>Secondary, tertiary and quaternary treatment
+: Treatment that reduces biodegradable organic matter, that reduces nitrogen and/or phosphorus,
+and that reduces a broad spectrum of micropollutants, respectively (Article 2(12) to 2(14)).</p>
+<p>Storm water overflow
+: Discharge of untreated urban wastewater into receiving waters from combined sewers caused by
+precipitation or system failures (Article 2(6)).</p>
+</section>
+<section id="terms-used-in-the-draft-reporting-format">
+<h2>Terms used in the draft reporting format<a class="headerlink" href="#terms-used-in-the-draft-reporting-format" title="Link to this heading">#</a></h2>
+<p>National implementation programme (NIP)
+: The programme each Member State establishes under Article 23. The reported tables summarise it
+and link to the full document (<code class="docutils literal notranslate"><span class="pre">programmeReference</span></code>).</p>
+<p>Measure
+: An action to reach or maintain compliance, selected from the measure codelists of the
+<a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables.</p>
+<p>Investment
+: The forecast cost of measures, in million EUR. See <a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting investments</span></a>.</p>
+<p>Expected date of compliance
+: For a treatment plant, the year by which 12 months of compliant samples are expected
+(<code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>).</p>
+<p>Organic design capacity
+: The design capacity of a plant expressed in p.e. (<code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code>).</p>
+<p>Derogation
+: In the <a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a> table, an extension of a deadline under Article 3(2), 6(3),
+7(4) or 23(1), or less stringent treatment under Article 6(4).</p>
+</section>
+<section id="status-values-c-nc-and-pd">
+<span id="art23-status-values"></span><h2>Status values C, NC and PD<a class="headerlink" href="#status-values-c-nc-and-pd" title="Link to this heading">#</a></h2>
+<p>The codelist for plant and agglomeration status uses three main values:</p>
+<ul class="simple">
+<li><p><strong>C</strong> - compliant;</p></li>
+<li><p><strong>NC</strong> - non-compliant;</p></li>
+<li><p><strong>PD</strong> - pending deadline, used where the relevant deadline has not yet passed.</p></li>
+</ul>
+<p>The draft does not yet explain when each value applies, or how several applicable values are
+reported. See <a class="reference internal" href="OpenIssues.html#art23-oi-status"><span class="std std-ref">OI-03 Plant and agglomeration status</span></a>.</p>
+</section>
+<section id="requirement-status">
+<span id="art23-requirement-status"></span><h2>Requirement status<a class="headerlink" href="#requirement-status" title="Link to this heading">#</a></h2>
+<p>Each field in the draft has one of three statuses:</p>
+<p>Required
+: Mandatory. The report cannot be completed without it.</p>
+<p>Conditional
+: Mandatory only when the stated condition, which depends on other reported data, is met.</p>
+<p>Optional
+: Desirable, but the report can be submitted without it.</p>
+<p>In the class diagrams these statuses are shown as the attribute multiplicity, following the WISE
+modelling conventions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[1]</span></code> - exactly one value: a Required field;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> - zero or one value: an Optional field, or a Conditional field, which is required
+only when its condition is met;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[1..n]</span></code> and <code class="docutils literal notranslate"><span class="pre">[0..n]</span></code> - one or many, and zero or many, distinct values. Multivalued fields are
+reported in Reportnet 3 as a comma-separated list of values.</p></li>
+</ul>
+<p>The diagrams therefore do not distinguish Optional from Conditional fields; the field tables do,
+and give the condition.</p>
+</section>
+<section id="notation-label-and-definition">
+<span id="art23-notation"></span><h2>Notation, label and definition<a class="headerlink" href="#notation-label-and-definition" title="Link to this heading">#</a></h2>
+<p>Each field and each codelist value is described with the same three columns:</p>
+<ul class="simple">
+<li><p><strong>Notation</strong> - the name used when reporting the field or value. Notations are written in
+camelCase, acronyms are written out in full, and the name of the table is not repeated in
+them: the contact name is <code class="docutils literal notranslate"><span class="pre">name</span></code> in the Contact table, not <code class="docutils literal notranslate"><span class="pre">contactName</span></code>.</p></li>
+<li><p><strong>Label</strong> - a short human-readable name for the field or value.</p></li>
+<li><p><strong>Definition</strong> - what the field or value means.</p></li>
+</ul>
+<p>Field tables add the data type, the requirement status and any condition or codelist. Codelist
+tables add notes. Notations are proposals and are not final (<a class="reference internal" href="OpenIssues.html#art23-oi-naming"><span class="std std-ref">OI-17 Field names, data types and statuses</span></a>).</p>
+</section>
+<section id="data-types">
+<h2>Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
+<p>The field tables use the WISE attribute types, as defined for the other WISE dataflows:</p>
+<ul class="simple">
+<li><p><strong>string<em>n</em></strong> - character string of at most <em>n</em> characters, UTF-8 encoded, for example
+<code class="docutils literal notranslate"><span class="pre">string100</span></code>. Plain <strong>string</strong> allows up to 4 000 characters;</p></li>
+<li><p><strong>nonNegativeValue</strong> - a non-negative number. The unit follows in brackets, for example
+a load in p.e. or an amount in million EUR;</p></li>
+<li><p><strong>Percentage</strong> - a value in the interval [0, 100];</p></li>
+<li><p><strong>NumberDecimalType</strong> - a number with decimals that may be negative, used here for coordinates
+in decimal degrees;</p></li>
+<li><p><strong>gYear</strong> - a Gregorian year;</p></li>
+<li><p><strong>date</strong> - a date in the format yyyy-mm-dd;</p></li>
+<li><p><strong>YesNo</strong> - a yes or no answer;</p></li>
+<li><p><strong>Email</strong> - an e-mail address, at most 250 characters, validated with a regular expression;</p></li>
+<li><p><strong>URL</strong> - a web address, at most 2 100 characters, validated with a regular expression;</p></li>
+<li><p><strong>wiseIdentifier</strong> - a WISE identifier of at most 42 characters, starting with the ISO 3166-1
+alpha-2 country code, used here for the codes of plants, agglomerations, documents and
+references;</p></li>
+<li><p><strong>documentCode</strong> - a wiseIdentifier identifying a document of the <a class="reference internal" href="DocumentsDataset/index.html#art23-documents-dataset"><span class="std std-ref">Documents dataset</span></a>;</p></li>
+<li><p><strong>referenceCode</strong> - a wiseIdentifier identifying a place within such a document, for example a
+chapter or a bookmark;</p></li>
+<li><p><strong>Attachment</strong> - a file uploaded to Reportnet 3, at most 100 MB, as pdf, xlsx or docx;</p></li>
+<li><p><strong><em>Name</em>_Enum</strong> - a value from the codelist of that name (see <a class="reference internal" href="Codelists.html#art23-codelists"><span class="std std-ref">Codelists</span></a>).</p></li>
+</ul>
+<p>These types are proposals for aligning Article 23 with the rest of WISE
+(<a class="reference internal" href="OpenIssues.html#art23-oi-naming"><span class="std std-ref">OI-17 Field names, data types and statuses</span></a>).</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Timing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reporting timing and reference dates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DataModel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data model overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acronyms">Acronyms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legal-definitions">Legal definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-used-in-the-draft-reporting-format">Terms used in the draft reporting format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status-values-c-nc-and-pd">Status values C, NC and PD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement-status">Requirement status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-label-and-definition">Notation, label and definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data types</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/edit/main/docs/rUWWTD2024/Article23/Terminology.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/rUWWTD2024/Article23/Terminology.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -5,8 +5,9 @@
 name: documentation
 
 # Defines the events that trigger this workflow: 
-# Runs on code pushes, pull requests, and manual triggers (workflow_dispatch)
-on: [push, pull_request, workflow_dispatch]
+# Runs on code pushes, pull requests, manual triggers (workflow_dispatch),
+# and branch deletions, which remove that branch's published preview
+on: [push, pull_request, workflow_dispatch, delete]
 
 # Grants the workflow write permissions to the repository. 
 # This is required so it can push the built HTML to the gh-pages branch later.
@@ -15,6 +16,8 @@ permissions:
 
 jobs:
   docs:
+    # The build itself runs for every event; only the deploy steps are gated
+    if: ${{ github.event_name != 'delete' }}
     # Runs the job on a fresh Ubuntu Linux virtual machine hosted by GitHub
     runs-on: ubuntu-latest
     
@@ -37,7 +40,10 @@ jobs:
         run: |
           sphinx-build docs _build
           
-      # Step 5: Deploy the built HTML files to a live GitHub Pages site
+      # Step 5: Deploy the built HTML files to a live GitHub Pages site.
+      # The site is served from the gh-pages branch: main at the root, and every
+      # other branch in its own subdirectory under branch/, so work in progress
+      # can be reviewed online before it is merged.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         
@@ -52,5 +58,46 @@ jobs:
           # Only upload the contents of the built HTML directory
           publish_dir: _build/
           
-          # Keep the gh-pages branch history clean by wiping previous commits on that branch
-          force_orphan: true
+          # Keep the branch previews published under branch/. Without this, the
+          # deployment of main would delete them. Note that files removed from
+          # the documentation are not deleted from the published site either;
+          # to clear them out, delete the gh-pages branch and push main again.
+          keep_files: true
+
+      # Step 6: Publish a preview of any other branch under branch/<branch name>,
+      # for example branch/ruwwtd-art23/. Pull requests are not deployed: the
+      # preview of their source branch already covers them.
+      - name: Deploy branch preview to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.event_name == 'push' && github.ref != 'refs/heads/main' && github.ref != 'refs/heads/gh-pages' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/
+          
+          # One subdirectory per branch. Slashes in a branch name become
+          # subdirectories, which is harmless.
+          destination_dir: branch/${{ github.ref_name }}
+          
+          # Leave the rest of the site, and the other previews, untouched
+          keep_files: true
+
+  # Remove a branch's preview once the branch itself is deleted
+  cleanup:
+    if: ${{ github.event_name == 'delete' && github.event.ref_type == 'branch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+      - name: Remove the preview of the deleted branch
+        env:
+          DELETED_BRANCH: ${{ github.event.ref }}
+        run: |
+          if [ -d "branch/$DELETED_BRANCH" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git rm -r -q "branch/$DELETED_BRANCH"
+            git commit -q -m "Remove preview of deleted branch $DELETED_BRANCH"
+            git push
+          fi

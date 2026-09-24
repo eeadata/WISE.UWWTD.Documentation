@@ -1,0 +1,31 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class MSSummary{
+    + situationAt: date [1]
+    + programmeObligation: YesNo [1]
+    + programmeReference: referenceCode [0..1]
+    + prioritisationReference: referenceCode [0..1]
+    + article5ManagementPlanReference: referenceCode [0..1]
+
+    + riskAssessment: RiskAssessment_Enum [1]
+    + riskDate: date [0..1]
+    + riskIdentified: YesNo [0..1]
+    + riskSummaryReference: referenceCode [0..1]
+
+    + producerResponsibilityContribution: nonNegativeValue [1]
+    + producerResponsibilityEstimateBasedOn: EstimateBasis_Enum [1]
+    + contributionPeriod: ContributionPeriod_Enum [0..n]
+    + contributionPeriodOther: string1000 [0..1]
+    + remarks: string1000 [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

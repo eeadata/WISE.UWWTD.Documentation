@@ -75,8 +75,6 @@ been verified ({ref}`sp-oi-reportnet`).
 * An optional field left empty clears the value accepted earlier.
 * `supersedesIdentifier` is an exception: left empty, it means that no new replacement is
   reported. It never removes a replacement accepted earlier.
-* `uwwCode` and `aggCode` are another: they are filled by the EEA and are not changed or cleared by
-  an update.
 
 **Codes and history are kept.** An object keeps its `thematicIdIdentifier` for as long as it
 remains the same object; a new name, a corrected location or a change of condition does not change
@@ -90,9 +88,7 @@ reported ({ref}`sp-cl-scheme`).
 
 Some plant and agglomeration codes reported in earlier cycles do not meet the WISE identifier
 rules. To keep the link with past reporting, the EEA converts each one into a compliant
-`thematicIdIdentifier`. The original code is kept, unchanged, in the optional `uwwCode` or
-`aggCode` field, which the EEA fills for every plant and agglomeration taken over from earlier
-reporting.
+`thematicIdIdentifier`, and keeps the link between the original code and the converted one.
 
 Codes that already meet the rules are copied unchanged. The rest are converted by applying these
 steps in order.
@@ -334,8 +330,6 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
   - Severity
 * - `thematicIdIdentifier` follows the WISE identifier rules
   - Blocker
-* - `uwwCode` and `aggCode` are not changed from the values filled by the EEA
-  - Error
 * - `creation`, `aggregation` and `splitting` use a code never used in the table, including
     retired codes
   - Blocker

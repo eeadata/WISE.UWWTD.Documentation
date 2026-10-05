@@ -82,17 +82,17 @@ facility is a `change`.
 (sp-oi-dischargepoint-simplicity)=
 ### SP-12 Discharge points
 
-Reported like the other objects, with no link to a treatment plant or agglomeration: DischargePoint
-has no `uwwCode` or `aggCode` field. Discharge points are intended for Article 22 reporting and are
-not needed for Article 23. Completing this table is not a prerequisite for an Article 23 delivery.
+Reported like the other objects, with no link to a treatment plant or agglomeration. Discharge
+points are intended for Article 22 reporting and are not needed for Article 23. Completing this
+table is not a prerequisite for an Article 23 delivery.
 
 (sp-oi-legacy-codes)=
 ### SP-14 Codes from earlier reporting
 
 Codes that meet the WISE identifier rules are copied unchanged. The others are converted by the
-EEA in fixed steps, and the original code is kept in `uwwCode` or `aggCode`. A wrong country
-prefix, a code over 42 characters, or two codes that become identical are flagged for the Member
-State to resolve, not fixed automatically ({ref}`sp-code-conversion`).
+EEA in fixed steps, and the EEA keeps the link to the original code. A wrong country prefix, a
+code over 42 characters, or two codes that become identical are flagged for the Member State to
+resolve, not fixed automatically ({ref}`sp-code-conversion`).
 
 **Review decision, 5 October 2026.** The data owner checked the data and reported that the
 collision scenario raised in the review does not occur. No additional collision-handling design
@@ -122,7 +122,7 @@ only then can Article 22 or Article 23 reference them. Later deliveries are chec
 accepted register. This follows the WISE GIS Guidance's use of `noChange` for objects
 reported before and not replaced. A converted code is also reported as `noChange`, not as the WISE
 `changeCode`: those original codes were not valid WISE identifiers, so this is the first WISE
-registration of the object, and the original code is kept in `uwwCode` or `aggCode`
+registration of the object, and the EEA keeps the link to the original code
 ({ref}`first reporting <sp-first-reporting>`).
 
 ## Remaining open issues

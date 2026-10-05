@@ -81,7 +81,8 @@ Used by `wiseEvolutionType` in the Agglomeration, UWWTP and DischargePoint table
 
 **Type:** `LocationStatus`
 
-Used by `locationStatus` in the UWWTP and DischargePoint tables. A UWWTD codelist.
+Used by `locationStatus` in the UWWTP table only; a discharge point always has a known location.
+A UWWTD codelist.
 
 :::{list-table} Location status values
 :header-rows: 1
@@ -178,5 +179,9 @@ Used by `receivingType` in the DischargePoint table.
 
 **Type:** `Language`
 
-Used by `nameLanguage`. The language codelist selected for WISE reporting is reused; it is not
-repeated here.
+Used by `nameLanguage` in the Agglomeration, UWWTP and DischargePoint tables, for the language of
+`nameText`. The values are the three-letter codes of the shared
+[ISO 639-2 vocabulary](https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view) of the Eionet
+Data Dictionary (`common/iso639-2`, released 10 July 2019), for example `eng`, `fra` or `deu`. It
+is the vocabulary of the WISE data element
+[`nameLanguage`](https://dd.eionet.europa.eu/dataelements/76740), and is not repeated here.

@@ -23,9 +23,10 @@ condition changed ({ref}`sp-lifecycle`).
 ## What the fields are
 
 **Identifiers.** `thematicIdIdentifier` is the treatment plant's code: the key that other
-reporting uses to refer to it ({ref}`sp-references`). The three INSPIRE fields are only for Member
-States that already publish the treatment plant in a national INSPIRE dataset; they let the two
-records be matched. Otherwise they stay empty.
+reporting uses to refer to it ({ref}`sp-references`). `uwwCode` keeps the plant's code from the
+reporting under Directive 91/271/EEC, unchanged ({ref}`sp-code-conversion`). The three INSPIRE
+fields are only for Member States that already publish the treatment plant in a national INSPIRE
+dataset; they let the two records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 
@@ -59,6 +60,16 @@ split or a retirement. A new plant that replaces earlier plants lists their code
   - wiseIdentifier
   - Required
   - –
+* - `uwwCode`
+  - UWWTP code (1991)
+  - Code of the treatment plant as reported under Directive 91/271/EEC, kept unchanged, also where
+    `thematicIdIdentifier` is a converted code ({ref}`sp-code-conversion`).
+  - string254
+  - Optional
+  - Filled by the EEA;
+    empty for objects not
+    reported before; not
+    changed by updates
 * - `inspireIdLocalId`
   - INSPIRE local identifier
   - Local identifier of the same object in a national INSPIRE dataset.

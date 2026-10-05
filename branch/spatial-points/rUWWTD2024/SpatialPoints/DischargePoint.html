@@ -771,7 +771,8 @@ objects reported under Directive 91/271/EEC; a Member State then reports only wh
 <p><strong>Scope.</strong> The table covers the outlets of treatment plants and direct untreated discharges from
 agglomerations. Storm water overflows are not reported in this dataflow
 (<a class="reference internal" href="OpenIssues.html#sp-oi-storm-overflows"><span class="std std-ref">SP-10 Storm water overflows</span></a>).</p>
-<p>Location rules are the same as for treatment plants (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
+<p>The location of a discharge point is always required, whatever its condition: a projected
+discharge point is reported once its location is known (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
 <figure class="align-center" id="spatialpoints-dischargepoint-classdiagram">
 <pre  class="mermaid">
         ---
@@ -791,9 +792,8 @@ class DischargePoint {
     + nameText: string254 [1]
     + nameLanguage: Language [1]
     + nameTextInternational: string254 [0..1]
-    + locationStatus: LocationStatus [1]
-    + latitude: NumberDecimalType [0..1]
-    + longitude: NumberDecimalType [0..1]
+    + latitude: NumberDecimalType [1]
+    + longitude: NumberDecimalType [1]
     + conditionOfFacility: ConditionOfFacility [1]
     + receivingType: ReceivingType [1]
     + waterBodyCode: wiseIdentifier [0..1]
@@ -819,10 +819,10 @@ reporting uses to refer to it (<a class="reference internal" href="index.html#sp
 States that already publish the discharge point in a national INSPIRE dataset; they let the two
 records be matched. Otherwise they stay empty.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.</p>
-<p><strong>Location and receiving water.</strong> The position of the outlet in decimal degrees, with
-<code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> and <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> as for treatment plants. <code class="docutils literal notranslate"><span class="pre">receivingType</span></code> says whether
-the wastewater goes to surface water, groundwater or soil, and <code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> gives the receiving
-water body reported under the Water Framework Directive.</p>
+<p><strong>Location and receiving water.</strong> The position of the outlet in decimal degrees, always required,
+and <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> as for treatment plants. <code class="docutils literal notranslate"><span class="pre">receivingType</span></code> says whether the wastewater goes
+to surface water, groundwater or soil, and <code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> gives the receiving water body reported
+under the Water Framework Directive.</p>
 <p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: a new discharge point, a change, a
 merger, a split or a retirement. A new discharge point that replaces earlier ones lists their codes
 in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>. A discharge point that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a
@@ -831,7 +831,7 @@ retirement. See <a class="reference internal" href="index.html#sp-lifecycle"><sp
 <section id="dischargepoint-fields">
 <h2>DischargePoint fields<a class="headerlink" href="#dischargepoint-fields" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 44 </span><span class="caption-text">DischargePoint fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 45 </span><span class="caption-text">DischargePoint fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -905,48 +905,36 @@ given</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locationStatus</span></code></p></td>
-<td><p>Location status</p></td>
-<td><p>Whether the location is the selected site, a provisional one, or
-not yet known.</p></td>
-<td><p>LocationStatus</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="Codelists.html#sp-cl-location"><span class="std std-ref">Location status</span></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
 <td><p>Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
 accepted; use the precision available.</p></td>
 <td><p>NumberDecimalType</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required unless
-<code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
-<code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
 <td><p>Longitude</p></td>
 <td><p>Longitude of the location, as for <code class="docutils literal notranslate"><span class="pre">latitude</span></code>.</p></td>
 <td><p>NumberDecimalType</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required unless
-<code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
-<code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
 <td><p>Condition of facility</p></td>
 <td><p>Physical state of the discharge point. Same codelist as for treatment plants.</p></td>
 <td><p>ConditionOfFacility</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">receivingType</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">receivingType</span></code></p></td>
 <td><p>Receiving type</p></td>
 <td><p>What the wastewater is discharged into.</p></td>
 <td><p>ReceivingType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-receiving"><span class="std std-ref">Receiving type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code></p></td>
 <td><p>Water body</p></td>
 <td><p>Code of the WFD surface water body or groundwater body receiving the
 discharge.</p></td>
@@ -954,14 +942,14 @@ discharge.</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
 <td><p>What is being reported: a new object, a change, a merger, a split or a retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
 <td><p>Codes of the discharge points this one replaces, given once, in the delivery in which
 the change happens. Several codes are separated by commas.</p></td>

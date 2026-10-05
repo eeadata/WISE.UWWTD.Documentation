@@ -45,16 +45,89 @@ Location of each discharge point, what discharges there and into what.
 
 **Starting point.** The objects already reported under Directive 91/271/EEC are taken over as the
 starting content of the dataflow. Their existing codes are reused where they follow the WISE
-identifier rules ({ref}`sp-wise-identifier`); where a code has to be changed, the mapping between
-the old and the new code is maintained centrally.
+identifier rules ({ref}`sp-wise-identifier`); the other codes are converted, keeping the original
+code ({ref}`sp-code-conversion`).
 
-**Updates.** A Member State reports only the objects that are new, changed or retired. An object
-that is not reported stays as it is: leaving it out is never a deletion. An accepted object is
-never dropped, and its code is never reused for another object.
+**Updates.** A Member State reports only the objects that are new, changed or retired. Omitting an
+object means no change: leaving it out is never a deletion.
 
-**Codes.** An object keeps its `thematicIdIdentifier` for as long as it remains the same object. A
-new name, a corrected location or a change of condition does not change the code. The identifier
-scheme of each table is fixed and is added centrally; it is not reported ({ref}`sp-cl-scheme`).
+**A row is the complete object.** A reported row gives all the current values of the object, not
+only those that changed. It is proposed that the reporting tables are prefilled with the accepted
+values, so that the reporter only edits what has changed; whether Reportnet can do this has not
+been verified ({ref}`sp-oi-reportnet`).
+
+* An optional field left empty clears the value accepted earlier.
+* `supersedesIdentifier` is an exception: left empty, it means that no new replacement is
+  reported. It never removes a replacement accepted earlier.
+* `uwwCode` and `aggCode` are another: they are filled by the EEA and are not changed or cleared by
+  an update.
+
+**Codes and history are kept.** An object keeps its `thematicIdIdentifier` for as long as it
+remains the same object; a new name, a corrected location or a change of condition does not change
+it. An accepted object is never dropped, and its code is never reused. After an object is retired,
+its code and history are kept centrally, and Article 22 and Article 23 reporting that referred to
+it remains valid. The identifier scheme of each table is fixed and is added centrally; it is not
+reported ({ref}`sp-cl-scheme`).
+
+(sp-code-conversion)=
+### Converting existing codes into WISE identifiers
+
+Some plant and agglomeration codes reported in earlier cycles do not meet the WISE identifier
+rules. To keep the link with past reporting, the EEA converts each one into a compliant
+`thematicIdIdentifier`. The original code is kept, unchanged, in the optional `uwwCode` or
+`aggCode` field, which the EEA fills for every plant and agglomeration taken over from earlier
+reporting.
+
+Codes that already meet the rules are copied unchanged. The rest are converted by applying these
+steps in order.
+
+:::{list-table} Converting a code
+:header-rows: 1
+:widths: 6 50 44
+
+* - Step
+  - Rule
+  - Example (before → after)
+* - 1
+  - Remove spaces at the start and end of the code.
+  - `" FR123 "` → `FR123`
+* - 2
+  - Make all letters upper case.
+  - `PTAGL014tp01` → `PTAGL014TP01`
+* - 3
+  - Replace accented letters with their plain letter (Ä → A, É → E, Ø → O, ß → SS).
+  - `ATAG_8-MÖDLING` → `ATAG_8-MODLING`
+* - 4
+  - Replace every other character that is not allowed (anything other than A–Z, 0–9, `_` and
+    `-`, such as `.` `/` `\` `,` `;` `:` and spaces inside the code) with a hyphen `-`.
+  - `DEAG_MV55.20.2` → `DEAG_MV55-20-2`
+
+    `CZ8108-644404-00575917-4/1U` → `CZ8108-644404-00575917-4-1U`
+* - 5
+  - Reduce repeated separators to one, keeping the first.
+  - `FR1__XYZ1234--1` → `FR1_XYZ1234-1`
+* - 6
+  - Remove a separator straight after the country code.
+  - `HU-AGGL-AIR064` → `HUAGGL-AIR064`
+
+    `SE_AGGLO_1048` → `SEAGGLO_1048`
+* - 7
+  - Remove any separator at the end of the code.
+  - `FR123_` → `FR123`
+:::
+
+**Why disallowed characters become a hyphen instead of being deleted.** A hyphen keeps the parts of
+the code apart. If the full stop were deleted, `MV55.20.2` and `MV552.0.2` would both become
+`MV552002`. Turning it into a hyphen keeps them distinct.
+
+**What the conversion does not do.** The following cases are flagged for the Member State to
+resolve, not fixed automatically:
+
+* **Wrong or missing country prefix:** a code that does not start with the reporting country's
+  code (`EL` for Greece, `UK` for the United Kingdom) is not changed.
+* **Too long:** a code longer than 42 characters is not shortened.
+* **Duplicates:** if two codes end up the same within a country, neither is changed. The Member
+  State chooses new identifiers.
 
 (sp-lifecycle)=
 ### What to report when something changes
@@ -85,7 +158,7 @@ Three cases that are easy to get wrong:
 1. **Merger.** XXAGG0101 and XXAGG0102 merge into a new agglomeration. Report XXAGG0150 with
    `aggregation` and `supersedesIdentifier` = `XXAGG0101,XXAGG0102`. Do not report the two old
    agglomerations; they are retired with XXAGG0150 as their successor. A later rename of XXAGG0150
-   is a `change` and does not repeat the old codes.
+   is a `change` with `supersedesIdentifier` left empty, which keeps the merger in its history.
 2. **Absorption.** XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
    as a `change`, with its new values, and `supersedesIdentifier` = `XXAGG0111`. It keeps its
    code: in WISE, an `aggregation` produces a new object and must not reuse a replaced code. How
@@ -96,6 +169,28 @@ Three cases that are easy to get wrong:
 
 `XX` stands for the country code. An object reported by mistake is corrected through the
 helpdesk, not by leaving it out of a delivery ({ref}`sp-oi-reportnet`).
+
+(sp-lifecycle-rules)=
+### Rules for changes and replacements
+
+All the rows of a delivery are checked together against the accepted state before the delivery,
+so the order of the rows does not matter.
+
+* **Change and retirement.** `change` and `deletion` apply only to an accepted object that is
+  current, that is, not retired.
+* **Reactivation.** `reactivation` applies only to an object retired with `deletion`, not to one
+  that has been replaced.
+* **Predecessors.** Each code in `supersedesIdentifier` must be an accepted, current object of the
+  same country and the same table, other than the object itself. It must not also be reported in
+  its own row of the delivery, nor be listed by another row, except by the other parts of the same
+  split.
+* **Mergers and splits.** An `aggregation` lists at least two codes. A `splitting` lists exactly
+  one; all the new objects that list the same code are checked together as one split, and there
+  must be at least two.
+* **Absorption.** A `change` with `supersedesIdentifier` is accepted only in the Agglomeration
+  table.
+* **New codes.** `creation`, `aggregation` and `splitting` use a code never used before in the
+  table, including retired codes.
 
 (sp-references)=
 ## Use by Article 22 and Article 23 reporting
@@ -114,8 +209,8 @@ in the same way; its tables are not defined yet.
 ## Locations
 
 **Coordinates as numbers.** Report latitude and longitude in decimal degrees, using ETRS89 or
-WGS-84. Either is accepted. No conversion between the two systems or
-separate declaration of the system is required.
+WGS-84. Either is accepted. No conversion between the two systems or separate declaration of the
+system is required.
 
 Use existing coordinates or read them from a map that provides latitude and longitude in either
 system. Enter the two numbers directly in the table; no GIS file or metadata is needed. Use a
@@ -129,7 +224,7 @@ located by a point within its main settlement, chosen by the reporting authority
 a treatment plant is not used in its place. An unsuitable earlier point is corrected as a
 `change`, keeping the code.
 
-**Treatment plants and discharge points.**
+**Treatment plants.** The location of a plant may not yet be known while it is projected.
 
 | `conditionOfFacility` | `locationStatus` | Coordinates |
 | --- | --- | --- |
@@ -139,19 +234,32 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 | `underConstruction` or `functional` | `confirmed` | the site |
 | `disused` or `decommissioned` | `confirmed` | the known location, kept |
 
-When the site of a projected facility is selected, the same code is kept and the object is
-reported as a `change`. A location is never filled with zero, or with the point of the
-agglomeration the facility serves.
+When the site of a projected plant is selected, the same code is kept and the plant is reported as
+a `change`.
+
+**Discharge points.** Latitude and longitude are always required, whatever the condition of the
+discharge point. A projected discharge point is reported once its location is known; its condition
+stays `projected` until it is built.
+
+A location is never filled with zero, or with the point of the agglomeration a facility serves.
 
 (sp-names)=
 ## Names
 
-`nameText` holds the official national name, and `nameLanguage` its language, using the language
-codelist selected for WISE reporting. An existing English name may be added in
-`nameTextInternational`, but no translation is required. `nameText` and `nameLanguage` are
-required for agglomerations, treatment plants and discharge points alike, as in the WISE spatial
-data definitions. Where the earlier reporting did not give the language, the reporter adds it the
-first time the object is updated.
+Each object has one name, with its language, and optionally an English name:
+
+* `nameText` is the name in the national language.
+* `nameLanguage` is the language of `nameText`, as a three-letter code from the
+  [ISO 639-2 vocabulary](https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view) of the Eionet
+  Data Dictionary, for example `fra` or `deu` ({ref}`sp-cl-language`).
+* `nameTextInternational` is an English name, where one is already in use. No translation is
+  required.
+
+`nameText` and `nameLanguage` are required and `nameTextInternational` is optional, for
+agglomerations, treatment plants and discharge points alike. This reuses the name fields of the
+WISE spatial data definitions ({ref}`sp-sources`); it is a convention of this reporting, not a
+requirement of the Directive. Where the earlier reporting did not give the language, the reporter
+adds it the first time the object is updated.
 
 ## INSPIRE identifiers
 
@@ -191,20 +299,51 @@ Valid: `FR123`, `FR1_XYZ1234_1`, `FR1-XYZ1234-1`, `FR1XYZ12341`. Not valid: `FR1
 (sp-quality-checks)=
 ## Quality checks
 
-| Check | Severity |
-| --- | --- |
-| `thematicIdIdentifier` follows the WISE identifier rules | Blocker |
-| A new object does not reuse a code already used in the table, including retired codes | Blocker |
-| A `change` or `deletion` refers to a code already accepted | Blocker |
-| `supersedesIdentifier` is given with `aggregation` and `splitting` | Error |
-| Codes in `supersedesIdentifier` exist, and an object does not supersede itself | Error |
-| `latitude` is between -90 and 90 and `longitude` between -180 and 180 | Blocker |
-| Coordinates are given unless `locationStatus` is `notYetKnown` | Blocker |
-| `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `projected` | Error |
-| Coordinates are not both zero | Error |
-| `inspireIdLocalId` and `inspireIdNamespace` are both given or both empty | Error |
-| `nameText` and `nameLanguage` are given | Blocker |
-| `waterBodyCode` refers to a water body reported under the Water Framework Directive | Warning |
+The lifecycle checks compare the delivery with the accepted state before it
+({ref}`sp-lifecycle-rules`).
+
+:::{list-table}
+:header-rows: 1
+:widths: 80 20
+
+* - Check
+  - Severity
+* - `thematicIdIdentifier` follows the WISE identifier rules
+  - Blocker
+* - `uwwCode` and `aggCode` are not changed from the values filled by the EEA
+  - Error
+* - `creation`, `aggregation` and `splitting` use a code never used in the table, including
+    retired codes
+  - Blocker
+* - `change` and `deletion` refer to an accepted, current object
+  - Blocker
+* - `reactivation` refers to an object retired with `deletion` and not replaced
+  - Blocker
+* - `supersedesIdentifier` is given with `aggregation` and `splitting`, and otherwise only with a
+    `change` in the Agglomeration table
+  - Error
+* - Each code in `supersedesIdentifier` is an accepted, current object of the same country and
+    table, other than the object itself, and is not reported or replaced elsewhere in the delivery
+  - Blocker
+* - An `aggregation` lists at least two codes; a split lists one code, shared by at least two new
+    objects
+  - Error
+* - `latitude` is between -90 and 90 and `longitude` between -180 and 180
+  - Blocker
+* - Agglomerations and discharge points have coordinates; treatment plants have them unless
+    `locationStatus` is `notYetKnown`
+  - Blocker
+* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `projected`
+  - Error
+* - Coordinates are not both zero
+  - Error
+* - `inspireIdLocalId` and `inspireIdNamespace` are both given or both empty
+  - Error
+* - `nameText` and `nameLanguage` are given, and `nameLanguage` is in the ISO 639-2 vocabulary
+  - Blocker
+* - `waterBodyCode` refers to a water body reported under the Water Framework Directive
+  - Warning
+:::
 
 Article 22 and Article 23 deliveries check that each referenced code has been accepted here, for
 the reporting country and the right object type (Blocker), and warn when it has been retired.
@@ -212,15 +351,29 @@ the reporting country and the right object type (Blocker), and warn when it has 
 (sp-sources)=
 ## Sources
 
+The WISE definitions below are reused selectively. This dataflow is a simplified UWWTD proposal,
+not a copy of the WISE spatial data schema.
+
+* WISE spatial data, Eionet Data Dictionary dataset 3158, released 18 May 2017: tables
+  [MonitoringSite](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/MonitoringSite),
+  [RiverBasinDistrict](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/RiverBasinDistrict)
+  and
+  [SurfaceWaterBodyLine](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/SurfaceWaterBodyLine).
+  All three use the same name fields.
+* Name data elements: [`nameText`](https://dd.eionet.europa.eu/dataelements/76739), released
+  3 December 2015;
+  [`nameTextInternational`](https://dd.eionet.europa.eu/dataelements/76738), released
+  3 December 2015; [`nameLanguage`](https://dd.eionet.europa.eu/dataelements/76740), released
+  10 July 2019, whose values are the ISO 639-2 vocabulary.
+* ISO 639-2 language vocabulary, Eionet Data Dictionary,
+  [common/iso639-2](https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view), released
+  10 July 2019.
 * WISE evolution type vocabulary, Eionet Data Dictionary,
   [WiseEvolutionTypeValue](https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue),
   released 28 September 2026.
 * WISE GIS Guidance,
   [v7.0.6, 20 September 2023](https://cdr.eionet.europa.eu/help/WFD/WFD_780_2022/GISGuidance/WISE_GIS_Guidance.pdf),
   section "Life-cycle management".
-* WISE spatial data, MonitoringSite table, Eionet Data Dictionary dataset 3158, released
-  18 May 2017
-  ([latest](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/MonitoringSite)).
 * Water Framework Directive 4th-cycle data model review, a proposal,
   [commit 954c7c7](https://github.com/eeadata/WISE.WFD.Documentation/tree/954c7c742a6739c5edcd1c97131aeb24a85dd0b4/docs/DataModelReview),
   28 September 2026.

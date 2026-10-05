@@ -410,7 +410,7 @@
 and is added automatically, with the value below, when the WISE output is produced
 (<a class="reference internal" href="OpenIssues.html#sp-oi-schemes"><span class="std std-ref">SP-15 Identifier schemes</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 45 </span><span class="caption-text">Identifier scheme values</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 46 </span><span class="caption-text">Identifier scheme values</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -452,7 +452,7 @@ and is added automatically, with the value below, when the WISE output is produc
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue">WISE evolution type vocabulary</a>
 (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>); only those needed here are used.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 46 </span><span class="caption-text">Evolution type values</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 47 </span><span class="caption-text">Evolution type values</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -504,9 +504,10 @@ and is added automatically, with the value below, when the WISE output is produc
 <section id="location-status">
 <span id="sp-cl-location"></span><h2>Location status<a class="headerlink" href="#location-status" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">LocationStatus</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> in the UWWTP and DischargePoint tables. A UWWTD codelist.</p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> in the UWWTP table only; a discharge point always has a known location.
+A UWWTD codelist.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 47 </span><span class="caption-text">Location status values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 48 </span><span class="caption-text">Location status values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -547,7 +548,7 @@ and is added automatically, with the value below, when the WISE output is produc
 state of the facility only. Whether an investment has been approved belongs to investment planning,
 not here.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 48 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 49 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -596,7 +597,7 @@ not here.</p>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ReceivingType</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">receivingType</span></code> in the DischargePoint table.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-number">Table 49 </span><span class="caption-text">Receiving type values</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 50 </span><span class="caption-text">Receiving type values</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -633,8 +634,12 @@ not here.</p>
 <section id="language">
 <span id="sp-cl-language"></span><h2>Language<a class="headerlink" href="#language" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Language</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code>. The language codelist selected for WISE reporting is reused; it is not
-repeated here.</p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> in the Agglomeration, UWWTP and DischargePoint tables, for the language of
+<code class="docutils literal notranslate"><span class="pre">nameText</span></code>. The values are the three-letter codes of the shared
+<a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view">ISO 639-2 vocabulary</a> of the Eionet
+Data Dictionary (<code class="docutils literal notranslate"><span class="pre">common/iso639-2</span></code>, released 10 July 2019), for example <code class="docutils literal notranslate"><span class="pre">eng</span></code>, <code class="docutils literal notranslate"><span class="pre">fra</span></code> or <code class="docutils literal notranslate"><span class="pre">deu</span></code>. It
+is the vocabulary of the WISE data element
+<a class="reference external" href="https://dd.eionet.europa.eu/dataelements/76740"><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></a>, and is not repeated here.</p>
 </section>
 </section>
 

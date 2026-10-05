@@ -14,7 +14,8 @@ objects reported under Directive 91/271/EEC; a Member State then reports only wh
 agglomerations. Storm water overflows are not reported in this dataflow
 ({ref}`sp-oi-storm-overflows`).
 
-Location rules are the same as for treatment plants ({ref}`sp-location`).
+The location of a discharge point is always required, whatever its condition: a projected
+discharge point is reported once its location is known ({ref}`sp-location`).
 
 ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_DischargePoint_ClassDiagram.mmd
 :name: SpatialPoints_DischargePoint_ClassDiagram
@@ -37,10 +38,10 @@ records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 
-**Location and receiving water.** The position of the outlet in decimal degrees, with
-`locationStatus` and `conditionOfFacility` as for treatment plants. `receivingType` says whether
-the wastewater goes to surface water, groundwater or soil, and `waterBodyCode` gives the receiving
-water body reported under the Water Framework Directive.
+**Location and receiving water.** The position of the outlet in decimal degrees, always required,
+and `conditionOfFacility` as for treatment plants. `receivingType` says whether the wastewater goes
+to surface water, groundwater or soil, and `waterBodyCode` gives the receiving water body reported
+under the Water Framework Directive.
 
 **Change.** `wiseEvolutionType` says what is being reported: a new discharge point, a change, a
 merger, a split or a retirement. A new discharge point that replaces earlier ones lists their codes
@@ -107,30 +108,19 @@ retirement. See {ref}`sp-lifecycle`.
   - string254
   - Optional
   - –
-* - `locationStatus`
-  - Location status
-  - Whether the location is the selected site, a provisional one, or
-    not yet known.
-  - LocationStatus
-  - Required
-  - {ref}`sp-cl-location`
 * - `latitude`
   - Latitude
   - Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
     accepted; use the precision available.
   - NumberDecimalType
-  - Conditional
-  - Required unless
-    `locationStatus` =
-    `notYetKnown`
+  - Required
+  - –
 * - `longitude`
   - Longitude
   - Longitude of the location, as for `latitude`.
   - NumberDecimalType
-  - Conditional
-  - Required unless
-    `locationStatus` =
-    `notYetKnown`
+  - Required
+  - –
 * - `conditionOfFacility`
   - Condition of facility
   - Physical state of the discharge point. Same codelist as for treatment plants.

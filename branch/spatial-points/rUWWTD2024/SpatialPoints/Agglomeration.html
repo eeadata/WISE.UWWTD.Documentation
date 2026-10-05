@@ -792,6 +792,7 @@ classDiagram
 direction LR
 class Agglomeration {
     + thematicIdIdentifier: wiseIdentifier [1]
+    + aggCode: string254 [0..1]
     + inspireIdLocalId: string254 [0..1]
     + inspireIdNamespace: string254 [0..1]
     + inspireIdVersionId: string25 [0..1]
@@ -814,9 +815,10 @@ classDef forFixing fill:white,stroke:#f00;
 <section id="what-the-fields-are">
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the agglomeration’s code: the key that other reporting
-uses to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). The three INSPIRE fields are only for Member States that
-already publish the agglomeration in a national INSPIRE dataset; they let the two records be
-matched. Otherwise they stay empty.</p>
+uses to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> keeps the agglomeration’s code from the
+reporting under Directive 91/271/EEC, unchanged (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>). The three INSPIRE
+fields are only for Member States that already publish the agglomeration in a national INSPIRE
+dataset; they let the two records be matched. Otherwise they stay empty.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.</p>
 <p><strong>Location.</strong> A representative point in decimal degrees, within the main settlement.</p>
 <p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: a new agglomeration, a change, a
@@ -827,7 +829,7 @@ keeps its code. See <a class="reference internal" href="index.html#sp-lifecycle"
 <section id="agglomeration-fields">
 <h2>Agglomeration fields<a class="headerlink" href="#agglomeration-fields" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 42 </span><span class="caption-text">Agglomeration fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 43 </span><span class="caption-text">Agglomeration fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -854,7 +856,18 @@ its code (<a class="reference internal" href="index.html#sp-reporting"><span cla
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aggCode</span></code></p></td>
+<td><p>Agglomeration code (1991)</p></td>
+<td><p>Code of the agglomeration as reported under Directive 91/271/EEC, kept unchanged, also where
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is a converted code (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
+<td><p>string254</p></td>
+<td><p>Optional</p></td>
+<td><p>Filled by the EEA;
+empty for objects not
+reported before; not
+changed by updates</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code></p></td>
 <td><p>INSPIRE local identifier</p></td>
 <td><p>Local identifier of the same object in a national INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
@@ -864,7 +877,7 @@ identifier has been
 assigned; give with
 <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 <td><p>INSPIRE namespace</p></td>
 <td><p>Namespace of that INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
@@ -873,35 +886,35 @@ assigned; give with
 <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is
 given</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
 <td><p>Version of the object in that INSPIRE dataset, where the source uses versions.</p></td>
 <td><p>string25</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
 <td><p>Name</p></td>
 <td><p>Official name of the agglomeration.</p></td>
 <td><p>string254</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></p></td>
 <td><p>Name language</p></td>
 <td><p>Language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code>.</p></td>
 <td><p>Language</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code></p></td>
 <td><p>English name</p></td>
 <td><p>Existing English version of the name, if available. No translation is required.</p></td>
 <td><p>string254</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
 <td><p>Latitude of the representative point in decimal degrees. ETRS89 or
 WGS-84 is accepted; use the precision available.</p></td>
@@ -909,21 +922,21 @@ WGS-84 is accepted; use the precision available.</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
 <td><p>Longitude</p></td>
 <td><p>Longitude of the representative point, as for <code class="docutils literal notranslate"><span class="pre">latitude</span></code>.</p></td>
 <td><p>NumberDecimalType</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
 <td><p>What is being reported: a new object, a change, a merger, a split or a retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
 <td><p>Codes of the agglomerations this one replaces, given once, in the delivery in which
 the change happens. Several codes are separated by commas.</p></td>

@@ -417,8 +417,10 @@ its main settlement. The location of a treatment plant is not used instead (<a c
 </section>
 <section id="sp-02-coordinates-of-planned-facilities">
 <span id="sp-oi-planned-location"></span><h3>SP-02 Coordinates of planned facilities<a class="headerlink" href="#sp-02-coordinates-of-planned-facilities" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> (<code class="docutils literal notranslate"><span class="pre">confirmed</span></code>, <code class="docutils literal notranslate"><span class="pre">provisional</span></code>, <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code>) allows a projected facility without a
-selected site. Coordinates are never filled with zero (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
+<p>For treatment plants, <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> (<code class="docutils literal notranslate"><span class="pre">confirmed</span></code>, <code class="docutils literal notranslate"><span class="pre">provisional</span></code>, <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code>) allows a
+projected plant without a selected site. Discharge points have no <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>: their latitude
+and longitude are always required, and a projected discharge point is reported once its location is
+known. Coordinates are never filled with zero (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
 </section>
 <section id="sp-03-no-link-between-agglomerations-and-treatment-plants">
 <span id="sp-oi-agglomeration-uwwtp"></span><h3>SP-03 No link between agglomerations and treatment plants<a class="headerlink" href="#sp-03-no-link-between-agglomerations-and-treatment-plants" title="Link to this heading">#</a></h3>
@@ -429,13 +431,17 @@ selected site. Coordinates are never filled with zero (<a class="reference inter
 <p>A new object formed by a merger or split lists the codes it replaces in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>,
 once. An agglomeration that absorbs another keeps its code and is reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> listing
 the absorbed code. <code class="docutils literal notranslate"><span class="pre">deletion</span></code> retires an object that is not replaced. Retired codes stay
-identifiable and are not reused; the reverse link and the history are kept centrally
-(<a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>).</p>
+identifiable and are not reused; the reverse link and the history are kept centrally. Changes and
+retirement apply to current objects only, reactivation only to objects retired without
+replacement, and predecessors must be current objects of the same country and table. A delivery is
+checked against the accepted state before it, with all the parts of a split checked together
+(<a class="reference internal" href="index.html#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>).</p>
 </section>
 <section id="sp-05-names">
 <span id="sp-oi-name-language"></span><h3>SP-05 Names<a class="headerlink" href="#sp-05-names" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required, <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> optional, as in the WISE
-spatial data definitions (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required, <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> optional, reusing the WISE
+spatial data name fields. <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> gives the language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code> as a code from the
+ISO 639-2 vocabulary of the Eionet Data Dictionary (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).</p>
 </section>
 <section id="sp-06-projected-facilities">
 <span id="sp-oi-condition"></span><h3>SP-06 Projected facilities<a class="headerlink" href="#sp-06-projected-facilities" title="Link to this heading">#</a></h3>
@@ -462,17 +468,26 @@ facility is a <code class="docutils literal notranslate"><span class="pre">chang
 </section>
 <section id="sp-12-discharge-points">
 <span id="sp-oi-dischargepoint-simplicity"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-12-discharge-points" title="Link to this heading">#</a></h3>
-<p>Reported like the other objects. <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> and <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> are not reported in this table.</p>
+<p>Reported like the other objects, with no link to a treatment plant or agglomeration: DischargePoint
+has no <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field.</p>
 </section>
 <section id="sp-14-codes-from-earlier-reporting">
 <span id="sp-oi-legacy-codes"></span><h3>SP-14 Codes from earlier reporting<a class="headerlink" href="#sp-14-codes-from-earlier-reporting" title="Link to this heading">#</a></h3>
-<p>Existing codes are reused where they follow the WISE identifier rules. Where a code has to change,
-the mapping to the old code is maintained centrally (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
+<p>Codes that meet the WISE identifier rules are copied unchanged. The others are converted by the
+EEA in fixed steps, and the original code is kept in <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code>. A wrong country
+prefix, a code over 42 characters, or two codes that become identical are flagged for the Member
+State to resolve, not fixed automatically (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
 </section>
 <section id="sp-15-identifier-schemes">
 <span id="sp-oi-schemes"></span><h3>SP-15 Identifier schemes<a class="headerlink" href="#sp-15-identifier-schemes" title="Link to this heading">#</a></h3>
 <p>Each table has one kind of code, so its scheme is fixed and added centrally, not reported
 (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p>
+</section>
+<section id="sp-16-complete-rows">
+<span id="sp-oi-complete-rows"></span><h3>SP-16 Complete rows<a class="headerlink" href="#sp-16-complete-rows" title="Link to this heading">#</a></h3>
+<p>A reported row gives all the current values of the object. An optional field left empty clears its
+earlier value; an empty <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> reports no new replacement and never removes one
+already accepted. Omitting an object means no change (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
 </section>
 </section>
 <section id="still-open">
@@ -496,8 +511,9 @@ dates.</p></li>
 <section id="sp-20-reportnet">
 <span id="sp-oi-reportnet"></span><h3>SP-20 Reportnet<a class="headerlink" href="#sp-20-reportnet" title="Link to this heading">#</a></h3>
 <p>A dataflow that stays open, accepts only new, changed or retired objects, and lets other dataflows
-check codes against accepted objects needs technical confirmation in Reportnet. How an object
-reported by mistake is corrected through the helpdesk is to be agreed.</p>
+check codes against accepted objects needs technical confirmation in Reportnet. So does
+prefilling the reporting tables with the accepted values. How an object reported by mistake is
+corrected through the helpdesk is to be agreed.</p>
 </section>
 </section>
 </section>
@@ -554,6 +570,7 @@ reported by mistake is corrected through the helpdesk is to be agreed.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-12-discharge-points">SP-12 Discharge points</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-14-codes-from-earlier-reporting">SP-14 Codes from earlier reporting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-15-identifier-schemes">SP-15 Identifier schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-16-complete-rows">SP-16 Complete rows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#still-open">Still open</a><ul class="pst-show_toc_level nav section-nav flex-column">

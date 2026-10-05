@@ -829,14 +829,99 @@ classDef forFixing fill:white,stroke:#f00;
 <span id="sp-reporting"></span><h2>Reporting<a class="headerlink" href="#reporting" title="Link to this heading">#</a></h2>
 <p><strong>Starting point.</strong> The objects already reported under Directive 91/271/EEC are taken over as the
 starting content of the dataflow. Their existing codes are reused where they follow the WISE
-identifier rules (<a class="reference internal" href="#sp-wise-identifier"><span class="std std-ref">WISE identifiers</span></a>); where a code has to be changed, the mapping between
-the old and the new code is maintained centrally.</p>
-<p><strong>Updates.</strong> A Member State reports only the objects that are new, changed or retired. An object
-that is not reported stays as it is: leaving it out is never a deletion. An accepted object is
-never dropped, and its code is never reused for another object.</p>
-<p><strong>Codes.</strong> An object keeps its <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> for as long as it remains the same object. A
-new name, a corrected location or a change of condition does not change the code. The identifier
-scheme of each table is fixed and is added centrally; it is not reported (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p>
+identifier rules (<a class="reference internal" href="#sp-wise-identifier"><span class="std std-ref">WISE identifiers</span></a>); the other codes are converted, keeping the original
+code (<a class="reference internal" href="#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
+<p><strong>Updates.</strong> A Member State reports only the objects that are new, changed or retired. Omitting an
+object means no change: leaving it out is never a deletion.</p>
+<p><strong>A row is the complete object.</strong> A reported row gives all the current values of the object, not
+only those that changed. It is proposed that the reporting tables are prefilled with the accepted
+values, so that the reporter only edits what has changed; whether Reportnet can do this has not
+been verified (<a class="reference internal" href="OpenIssues.html#sp-oi-reportnet"><span class="std std-ref">SP-20 Reportnet</span></a>).</p>
+<ul class="simple">
+<li><p>An optional field left empty clears the value accepted earlier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an exception: left empty, it means that no new replacement is
+reported. It never removes a replacement accepted earlier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> and <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> are another: they are filled by the EEA and are not changed or cleared by
+an update.</p></li>
+</ul>
+<p><strong>Codes and history are kept.</strong> An object keeps its <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> for as long as it
+remains the same object; a new name, a corrected location or a change of condition does not change
+it. An accepted object is never dropped, and its code is never reused. After an object is retired,
+its code and history are kept centrally, and Article 22 and Article 23 reporting that referred to
+it remains valid. The identifier scheme of each table is fixed and is added centrally; it is not
+reported (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p>
+<section id="converting-existing-codes-into-wise-identifiers">
+<span id="sp-code-conversion"></span><h3>Converting existing codes into WISE identifiers<a class="headerlink" href="#converting-existing-codes-into-wise-identifiers" title="Link to this heading">#</a></h3>
+<p>Some plant and agglomeration codes reported in earlier cycles do not meet the WISE identifier
+rules. To keep the link with past reporting, the EEA converts each one into a compliant
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>. The original code is kept, unchanged, in the optional <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or
+<code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field, which the EEA fills for every plant and agglomeration taken over from earlier
+reporting.</p>
+<p>Codes that already meet the rules are copied unchanged. The rest are converted by applying these
+steps in order.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 42 </span><span class="caption-text">Converting a code</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 50.0%" />
+<col style="width: 44.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Rule</p></th>
+<th class="head"><p>Example (before → after)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Remove spaces at the start and end of the code.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">FR123</span> <span class="pre">&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">FR123</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Make all letters upper case.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PTAGL014tp01</span></code> → <code class="docutils literal notranslate"><span class="pre">PTAGL014TP01</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Replace accented letters with their plain letter (Ä → A, É → E, Ø → O, ß → SS).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ATAG_8-MÖDLING</span></code> → <code class="docutils literal notranslate"><span class="pre">ATAG_8-MODLING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Replace every other character that is not allowed (anything other than A–Z, 0–9, <code class="docutils literal notranslate"><span class="pre">_</span></code> and
+<code class="docutils literal notranslate"><span class="pre">-</span></code>, such as <code class="docutils literal notranslate"><span class="pre">.</span></code> <code class="docutils literal notranslate"><span class="pre">/</span></code> <code class="docutils literal notranslate"><span class="pre">\</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="docutils literal notranslate"><span class="pre">;</span></code> <code class="docutils literal notranslate"><span class="pre">:</span></code> and spaces inside the code) with a hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DEAG_MV55.20.2</span></code> → <code class="docutils literal notranslate"><span class="pre">DEAG_MV55-20-2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">CZ8108-644404-00575917-4/1U</span></code> → <code class="docutils literal notranslate"><span class="pre">CZ8108-644404-00575917-4-1U</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Reduce repeated separators to one, keeping the first.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FR1__XYZ1234--1</span></code> → <code class="docutils literal notranslate"><span class="pre">FR1_XYZ1234-1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Remove a separator straight after the country code.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HU-AGGL-AIR064</span></code> → <code class="docutils literal notranslate"><span class="pre">HUAGGL-AIR064</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">SE_AGGLO_1048</span></code> → <code class="docutils literal notranslate"><span class="pre">SEAGGLO_1048</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Remove any separator at the end of the code.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FR123_</span></code> → <code class="docutils literal notranslate"><span class="pre">FR123</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Why disallowed characters become a hyphen instead of being deleted.</strong> A hyphen keeps the parts of
+the code apart. If the full stop were deleted, <code class="docutils literal notranslate"><span class="pre">MV55.20.2</span></code> and <code class="docutils literal notranslate"><span class="pre">MV552.0.2</span></code> would both become
+<code class="docutils literal notranslate"><span class="pre">MV552002</span></code>. Turning it into a hyphen keeps them distinct.</p>
+<p><strong>What the conversion does not do.</strong> The following cases are flagged for the Member State to
+resolve, not fixed automatically:</p>
+<ul class="simple">
+<li><p><strong>Wrong or missing country prefix:</strong> a code that does not start with the reporting country’s
+code (<code class="docutils literal notranslate"><span class="pre">EL</span></code> for Greece, <code class="docutils literal notranslate"><span class="pre">UK</span></code> for the United Kingdom) is not changed.</p></li>
+<li><p><strong>Too long:</strong> a code longer than 42 characters is not shortened.</p></li>
+<li><p><strong>Duplicates:</strong> if two codes end up the same within a country, neither is changed. The Member
+State chooses new identifiers.</p></li>
+</ul>
+</section>
 <section id="what-to-report-when-something-changes">
 <span id="sp-lifecycle"></span><h3>What to report when something changes<a class="headerlink" href="#what-to-report-when-something-changes" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -907,7 +992,7 @@ can be reopened in the same way.</p></li>
 <li><p><strong>Merger.</strong> XXAGG0101 and XXAGG0102 merge into a new agglomeration. Report XXAGG0150 with
 <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0101,XXAGG0102</span></code>. Do not report the two old
 agglomerations; they are retired with XXAGG0150 as their successor. A later rename of XXAGG0150
-is a <code class="docutils literal notranslate"><span class="pre">change</span></code> and does not repeat the old codes.</p></li>
+is a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> left empty, which keeps the merger in its history.</p></li>
 <li><p><strong>Absorption.</strong> XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
 as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, with its new values, and <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0111</span></code>. It keeps its
 code: in WISE, an <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> produces a new object and must not reuse a replaced code. How
@@ -918,6 +1003,28 @@ kept and is not reused.</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">XX</span></code> stands for the country code. An object reported by mistake is corrected through the
 helpdesk, not by leaving it out of a delivery (<a class="reference internal" href="OpenIssues.html#sp-oi-reportnet"><span class="std std-ref">SP-20 Reportnet</span></a>).</p>
+</section>
+<section id="rules-for-changes-and-replacements">
+<span id="sp-lifecycle-rules"></span><h3>Rules for changes and replacements<a class="headerlink" href="#rules-for-changes-and-replacements" title="Link to this heading">#</a></h3>
+<p>All the rows of a delivery are checked together against the accepted state before the delivery,
+so the order of the rows does not matter.</p>
+<ul class="simple">
+<li><p><strong>Change and retirement.</strong> <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> apply only to an accepted object that is
+current, that is, not retired.</p></li>
+<li><p><strong>Reactivation.</strong> <code class="docutils literal notranslate"><span class="pre">reactivation</span></code> applies only to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>, not to one
+that has been replaced.</p></li>
+<li><p><strong>Predecessors.</strong> Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> must be an accepted, current object of the
+same country and the same table, other than the object itself. It must not also be reported in
+its own row of the delivery, nor be listed by another row, except by the other parts of the same
+split.</p></li>
+<li><p><strong>Mergers and splits.</strong> An <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> lists at least two codes. A <code class="docutils literal notranslate"><span class="pre">splitting</span></code> lists exactly
+one; all the new objects that list the same code are checked together as one split, and there
+must be at least two.</p></li>
+<li><p><strong>Absorption.</strong> A <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is accepted only in the Agglomeration
+table.</p></li>
+<li><p><strong>New codes.</strong> <code class="docutils literal notranslate"><span class="pre">creation</span></code>, <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code> use a code never used before in the
+table, including retired codes.</p></li>
+</ul>
 </section>
 </section>
 <section id="use-by-article-22-and-article-23-reporting">
@@ -936,8 +1043,8 @@ are not rewritten to point to successors.</p></li>
 <section id="locations">
 <span id="sp-location"></span><h2>Locations<a class="headerlink" href="#locations" title="Link to this heading">#</a></h2>
 <p><strong>Coordinates as numbers.</strong> Report latitude and longitude in decimal degrees, using ETRS89 or
-WGS-84. Either is accepted. No conversion between the two systems or
-separate declaration of the system is required.</p>
+WGS-84. Either is accepted. No conversion between the two systems or separate declaration of the
+system is required.</p>
 <p>Use existing coordinates or read them from a map that provides latitude and longitude in either
 system. Enter the two numbers directly in the table; no GIS file or metadata is needed. Use a
 full stop as the decimal separator, for example <code class="docutils literal notranslate"><span class="pre">52.374031</span></code> and <code class="docutils literal notranslate"><span class="pre">4.889690</span></code>, and a negative
@@ -948,7 +1055,7 @@ already reported is kept where it still represents the agglomeration. A new aggl
 located by a point within its main settlement, chosen by the reporting authority. The location of
 a treatment plant is not used in its place. An unsuitable earlier point is corrected as a
 <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the code.</p>
-<p><strong>Treatment plants and discharge points.</strong></p>
+<p><strong>Treatment plants.</strong> The location of a plant may not yet be known while it is projected.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></th>
@@ -980,18 +1087,29 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 </tbody>
 </table>
 </div>
-<p>When the site of a projected facility is selected, the same code is kept and the object is
-reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code>. A location is never filled with zero, or with the point of the
-agglomeration the facility serves.</p>
+<p>When the site of a projected plant is selected, the same code is kept and the plant is reported as
+a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</p>
+<p><strong>Discharge points.</strong> Latitude and longitude are always required, whatever the condition of the
+discharge point. A projected discharge point is reported once its location is known; its condition
+stays <code class="docutils literal notranslate"><span class="pre">projected</span></code> until it is built.</p>
+<p>A location is never filled with zero, or with the point of the agglomeration a facility serves.</p>
 </section>
 <section id="names">
 <span id="sp-names"></span><h2>Names<a class="headerlink" href="#names" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> holds the official national name, and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> its language, using the language
-codelist selected for WISE reporting. An existing English name may be added in
-<code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code>, but no translation is required. <code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are
-required for agglomerations, treatment plants and discharge points alike, as in the WISE spatial
-data definitions. Where the earlier reporting did not give the language, the reporter adds it the
-first time the object is updated.</p>
+<p>Each object has one name, with its language, and optionally an English name:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> is the name in the national language.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> is the language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code>, as a three-letter code from the
+<a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view">ISO 639-2 vocabulary</a> of the Eionet
+Data Dictionary, for example <code class="docutils literal notranslate"><span class="pre">fra</span></code> or <code class="docutils literal notranslate"><span class="pre">deu</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-language"><span class="std std-ref">Language</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> is an English name, where one is already in use. No translation is
+required.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required and <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> is optional, for
+agglomerations, treatment plants and discharge points alike. This reuses the name fields of the
+WISE spatial data definitions (<a class="reference internal" href="#sp-sources"><span class="std std-ref">Sources</span></a>); it is a convention of this reporting, not a
+requirement of the Directive. Where the earlier reporting did not give the language, the reporter
+adds it the first time the object is updated.</p>
 </section>
 <section id="inspire-identifiers">
 <h2>INSPIRE identifiers<a class="headerlink" href="#inspire-identifiers" title="Link to this heading">#</a></h2>
@@ -1044,7 +1162,13 @@ Kingdom;</p></li>
 </section>
 <section id="quality-checks">
 <span id="sp-quality-checks"></span><h2>Quality checks<a class="headerlink" href="#quality-checks" title="Link to this heading">#</a></h2>
+<p>The lifecycle checks compare the delivery with the accepted state before it
+(<a class="reference internal" href="#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 80.0%" />
+<col style="width: 20.0%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Check</p></th>
 <th class="head"><p>Severity</p></th>
@@ -1054,37 +1178,51 @@ Kingdom;</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> follows the WISE identifier rules</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p>A new object does not reuse a code already used in the table, including retired codes</p></td>
-<td><p>Blocker</p></td>
-</tr>
-<tr class="row-even"><td><p>A <code class="docutils literal notranslate"><span class="pre">change</span></code> or <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refers to a code already accepted</p></td>
-<td><p>Blocker</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is given with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> and <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> are not changed from the values filled by the EEA</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>Codes in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> exist, and an object does not supersede itself</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> is between -90 and 90 and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> between -180 and 180</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">creation</span></code>, <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code> use a code never used in the table, including
+retired codes</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p>Coordinates are given unless <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> is <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refer to an accepted, current object</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-even"><td><p>Coordinates are not both zero</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are given</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code> refers to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and not replaced</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> refers to a water body reported under the Water Framework Directive</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is given with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code>, and otherwise only with a
+<code class="docutils literal notranslate"><span class="pre">change</span></code> in the Agglomeration table</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an accepted, current object of the same country and
+table, other than the object itself, and is not reported or replaced elsewhere in the delivery</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-odd"><td><p>An <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> lists at least two codes; a split lists one code, shared by at least two new
+objects</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> is between -90 and 90 and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> between -180 and 180</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-odd"><td><p>Agglomerations and discharge points have coordinates; treatment plants have them unless
+<code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> is <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coordinates are not both zero</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are given, and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> is in the ISO 639-2 vocabulary</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> refers to a water body reported under the Water Framework Directive</p></td>
 <td><p>Warning</p></td>
 </tr>
 </tbody>
@@ -1095,16 +1233,29 @@ the reporting country and the right object type (Blocker), and warn when it has 
 </section>
 <section id="sources">
 <span id="sp-sources"></span><h2>Sources<a class="headerlink" href="#sources" title="Link to this heading">#</a></h2>
+<p>The WISE definitions below are reused selectively. This dataflow is a simplified UWWTD proposal,
+not a copy of the WISE spatial data schema.</p>
 <ul class="simple">
+<li><p>WISE spatial data, Eionet Data Dictionary dataset 3158, released 18 May 2017: tables
+<a class="reference external" href="https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/MonitoringSite">MonitoringSite</a>,
+<a class="reference external" href="https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/RiverBasinDistrict">RiverBasinDistrict</a>
+and
+<a class="reference external" href="https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/SurfaceWaterBodyLine">SurfaceWaterBodyLine</a>.
+All three use the same name fields.</p></li>
+<li><p>Name data elements: <a class="reference external" href="https://dd.eionet.europa.eu/dataelements/76739"><code class="docutils literal notranslate"><span class="pre">nameText</span></code></a>, released
+3 December 2015;
+<a class="reference external" href="https://dd.eionet.europa.eu/dataelements/76738"><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code></a>, released
+3 December 2015; <a class="reference external" href="https://dd.eionet.europa.eu/dataelements/76740"><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></a>, released
+10 July 2019, whose values are the ISO 639-2 vocabulary.</p></li>
+<li><p>ISO 639-2 language vocabulary, Eionet Data Dictionary,
+<a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view">common/iso639-2</a>, released
+10 July 2019.</p></li>
 <li><p>WISE evolution type vocabulary, Eionet Data Dictionary,
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue">WiseEvolutionTypeValue</a>,
 released 28 September 2026.</p></li>
 <li><p>WISE GIS Guidance,
 <a class="reference external" href="https://cdr.eionet.europa.eu/help/WFD/WFD_780_2022/GISGuidance/WISE_GIS_Guidance.pdf">v7.0.6, 20 September 2023</a>,
 section “Life-cycle management”.</p></li>
-<li><p>WISE spatial data, MonitoringSite table, Eionet Data Dictionary dataset 3158, released
-18 May 2017
-(<a class="reference external" href="https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/MonitoringSite">latest</a>).</p></li>
 <li><p>Water Framework Directive 4th-cycle data model review, a proposal,
 <a class="reference external" href="https://github.com/eeadata/WISE.WFD.Documentation/tree/954c7c742a6739c5edcd1c97131aeb24a85dd0b4/docs/DataModelReview">commit 954c7c7</a>,
 28 September 2026.</p></li>

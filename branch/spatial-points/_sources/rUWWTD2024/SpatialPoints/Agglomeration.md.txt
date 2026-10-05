@@ -30,9 +30,10 @@ The location is a representative point, not the boundary of the agglomeration
 ## What the fields are
 
 **Identifiers.** `thematicIdIdentifier` is the agglomeration's code: the key that other reporting
-uses to refer to it ({ref}`sp-references`). The three INSPIRE fields are only for Member States that
-already publish the agglomeration in a national INSPIRE dataset; they let the two records be
-matched. Otherwise they stay empty.
+uses to refer to it ({ref}`sp-references`). `aggCode` keeps the agglomeration's code from the
+reporting under Directive 91/271/EEC, unchanged ({ref}`sp-code-conversion`). The three INSPIRE
+fields are only for Member States that already publish the agglomeration in a national INSPIRE
+dataset; they let the two records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 
@@ -62,6 +63,16 @@ keeps its code. See {ref}`sp-lifecycle`.
   - wiseIdentifier
   - Required
   - –
+* - `aggCode`
+  - Agglomeration code (1991)
+  - Code of the agglomeration as reported under Directive 91/271/EEC, kept unchanged, also where
+    `thematicIdIdentifier` is a converted code ({ref}`sp-code-conversion`).
+  - string254
+  - Optional
+  - Filled by the EEA;
+    empty for objects not
+    reported before; not
+    changed by updates
 * - `inspireIdLocalId`
   - INSPIRE local identifier
   - Local identifier of the same object in a national INSPIRE dataset.

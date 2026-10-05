@@ -1,9 +1,15 @@
 (sp-dischargepoint)=
 # DischargePoint
 
-**Table status:** Conditional. Rows are reported only for discharge points that are new, changed
-or retired.
+**Table status:** Conditional. In the first delivery, confirm or update the prefilled discharge points
+({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired objects; unchanged rows
+may be included as `noChange`.
 **Rows:** one row per discharge point reported. `thematicIdIdentifier` is the key.
+
+**Use by other reporting.** Discharge points are not needed for the Article 23 national
+implementation programme: its tables refer only to agglomerations and treatment plants.
+This table is intended for use by Article 22 reporting, whose detailed format is still to be
+defined. Completing it is not a prerequisite for submitting Article 23 reporting.
 
 The table identifies and locates the points where urban wastewater is discharged, and records the receiving
 water or land. No treatment plant or agglomeration link is requested. The dataflow starts from the
@@ -43,10 +49,10 @@ and `conditionOfFacility` as for treatment plants. `receivingType` says whether 
 to surface water, groundwater or soil, and `waterBodyCode` gives the receiving water body reported
 under the Water Framework Directive.
 
-**Change.** `wiseEvolutionType` says what is being reported: a new discharge point, a change, a
-merger, a split or a retirement. A new discharge point that replaces earlier ones lists their codes
-in `supersedesIdentifier`. A discharge point that closes is a `change` of condition, not a
-retirement. See {ref}`sp-lifecycle`.
+**Change.** `wiseEvolutionType` says what is being reported: no change, a new discharge point, a
+change, a merger, a split or a retirement. A new discharge point that replaces earlier ones lists
+their codes in `supersedesIdentifier`. A discharge point that closes is a `change` of condition,
+not a retirement. See {ref}`sp-lifecycle`.
 
 ## DischargePoint fields
 
@@ -142,7 +148,8 @@ retirement. See {ref}`sp-lifecycle`.
   - –
 * - `wiseEvolutionType`
   - Evolution type
-  - What is being reported: a new object, a change, a merger, a split or a retirement.
+  - What is being reported: no change, a new object, a change, a merger, a split or a
+    retirement.
   - WiseEvolutionType
   - Required
   - {ref}`sp-cl-evolution`

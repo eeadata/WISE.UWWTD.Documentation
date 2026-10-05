@@ -855,8 +855,6 @@ been verified (<a class="reference internal" href="OpenIssues.html#sp-oi-reportn
 <li><p>An optional field left empty clears the value accepted earlier.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an exception: left empty, it means that no new replacement is
 reported. It never removes a replacement accepted earlier.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> and <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> are another: they are filled by the EEA and are not changed or cleared by
-an update.</p></li>
 </ul>
 <p><strong>Codes and history are kept.</strong> An object keeps its <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> for as long as it
 remains the same object; a new name, a corrected location or a change of condition does not change
@@ -868,9 +866,7 @@ reported (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span
 <span id="sp-code-conversion"></span><h3>Converting existing codes into WISE identifiers<a class="headerlink" href="#converting-existing-codes-into-wise-identifiers" title="Link to this heading">#</a></h3>
 <p>Some plant and agglomeration codes reported in earlier cycles do not meet the WISE identifier
 rules. To keep the link with past reporting, the EEA converts each one into a compliant
-<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>. The original code is kept, unchanged, in the optional <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or
-<code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field, which the EEA fills for every plant and agglomeration taken over from earlier
-reporting.</p>
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, and keeps the link between the original code and the converted one.</p>
 <p>Codes that already meet the rules are copied unchanged. The rest are converted by applying these
 steps in order.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
@@ -1199,58 +1195,55 @@ delivery only, read “accepted” in these checks as the EEA-prepared migration
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> follows the WISE identifier rules</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> and <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> are not changed from the values filled by the EEA</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">creation</span></code>, <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code> use a code never used in the table, including
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">creation</span></code>, <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code> use a code never used in the table, including
 retired codes</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">noChange</span></code>, <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refer to an accepted, current object</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">noChange</span></code>, <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refer to an accepted, current object</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has no <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has no <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has the accepted location; a different location is a <code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
+<tr class="row-even"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has the accepted location; a different location is a <code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code> refers to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and not replaced</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code> refers to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and not replaced</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is given with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code>, and otherwise only with a
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is given with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code>, and otherwise only with a
 <code class="docutils literal notranslate"><span class="pre">change</span></code> in the Agglomeration table</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an accepted, current object of the same country and
+<tr class="row-odd"><td><p>Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an accepted, current object of the same country and
 table, other than the object itself. It is not reported in its own row or replaced elsewhere
 in the delivery, except by other successors of the same split</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p>An <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> lists at least two codes; a split lists one code, shared by at least two new
+<tr class="row-even"><td><p>An <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> lists at least two codes; a split lists one code, shared by at least two new
 objects</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> is between -90 and 90 and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> between -180 and 180</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> is between -90 and 90 and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> between -180 and 180</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p>Agglomerations and discharge points have coordinates; treatment plants have them unless
+<tr class="row-even"><td><p>Agglomerations and discharge points have coordinates; treatment plants have them unless
 <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> is <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>Coordinates are not both zero</p></td>
+<tr class="row-even"><td><p>Coordinates are not both zero</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are given, and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> is in the ISO 639-2 vocabulary</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are given, and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> is in the ISO 639-2 vocabulary</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> refers to a water body reported under the Water Framework Directive</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> refers to a water body reported under the Water Framework Directive</p></td>
 <td><p>Warning</p></td>
 </tr>
 </tbody>

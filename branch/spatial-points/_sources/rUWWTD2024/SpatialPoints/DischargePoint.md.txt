@@ -1,9 +1,9 @@
 (sp-dischargepoint)=
 # DischargePoint
 
-**Table status:** Conditional. In the first delivery, confirm or update the prefilled discharge points
-({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired objects; unchanged rows
-may be included as `noChange`.
+**Table status:** Conditional. In the first delivery, confirm or update the prefilled discharge
+points ({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired
+objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per discharge point reported. `thematicIdIdentifier` is the key.
 
 **Use by other reporting.** Discharge points are not needed for the Article 23 national

@@ -761,9 +761,9 @@ window.runMermaid = runMermaid;</script>
                   
   <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="uwwtp">
 <span id="sp-uwwtp"></span><h1>UWWTP<a class="headerlink" href="#uwwtp" title="Link to this heading">#</a></h1>
-<p><strong>Table status:</strong> Conditional. In the first delivery, confirm or update the prefilled treatment plants
-(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired objects; unchanged rows
-may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
+<p><strong>Table status:</strong> Conditional. In the first delivery, confirm or update the prefilled treatment
+plants (<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired
+objects; unchanged rows may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per treatment plant reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
 <p>The table identifies and locates every urban wastewater treatment plant, including projected ones,
 with its code, name, location and condition. The dataflow starts from the objects reported under
@@ -785,7 +785,6 @@ classDiagram
 direction LR
 class UWWTP {
     + thematicIdIdentifier: wiseIdentifier [1]
-    + uwwCode: string254 [0..1]
     + inspireIdLocalId: string254 [0..1]
     + inspireIdNamespace: string254 [0..1]
     + inspireIdVersionId: string25 [0..1]
@@ -811,10 +810,9 @@ classDef forFixing fill:white,stroke:#f00;
 <section id="what-the-fields-are">
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the treatment plant’s code: the key that other
-reporting uses to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> keeps the plant’s code from the
-reporting under Directive 91/271/EEC, unchanged (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>). The three INSPIRE
-fields are only for Member States that already publish the treatment plant in a national INSPIRE
-dataset; they let the two records be matched. Otherwise they stay empty.</p>
+reporting uses to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). The three INSPIRE fields are only for Member
+States that already publish the treatment plant in a national INSPIRE dataset; they let the two
+records be matched. Otherwise they stay empty.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.
 For a projected plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the same identifier.</p>
@@ -853,23 +851,14 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
 <td><p>Code of the treatment plant. A new plant receives a new code; an existing one keeps its
-code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p></td>
+code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).
+A code from the reporting under Directive 91/271/EEC that does not meet the WISE
+identifier rules is converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uwwCode</span></code></p></td>
-<td><p>UWWTP code (1991)</p></td>
-<td><p>Code of the treatment plant as reported under Directive 91/271/EEC, kept unchanged, also where
-<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is a converted code (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
-<td><p>string254</p></td>
-<td><p>Optional</p></td>
-<td><p>Filled by the EEA;
-empty for objects not
-reported before; not
-changed by updates</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code></p></td>
 <td><p>INSPIRE local identifier</p></td>
 <td><p>Local identifier of the same object in a national INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
@@ -879,7 +868,7 @@ identifier has been
 assigned; give with
 <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 <td><p>INSPIRE namespace</p></td>
 <td><p>Namespace of that INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
@@ -888,14 +877,14 @@ assigned; give with
 <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is
 given</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
 <td><p>Version of the object in that INSPIRE dataset, where the source uses versions.</p></td>
 <td><p>string25</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
 <td><p>Name</p></td>
 <td><p>Official name of the treatment plant, or a working or descriptive name for a projected plant
 that has no official name yet.</p></td>
@@ -903,21 +892,21 @@ that has no official name yet.</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code></p></td>
 <td><p>Name language</p></td>
 <td><p>Language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code>.</p></td>
 <td><p>Language</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code></p></td>
 <td><p>English name</p></td>
 <td><p>Existing English version of the name, if available. No translation is required.</p></td>
 <td><p>string254</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">locationStatus</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locationStatus</span></code></p></td>
 <td><p>Location status</p></td>
 <td><p>Whether the location is the selected site, a provisional one, or
 not yet known.</p></td>
@@ -925,7 +914,7 @@ not yet known.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-location"><span class="std std-ref">Location status</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
 <td><p>Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
 accepted; use the precision available.</p></td>
@@ -935,7 +924,7 @@ accepted; use the precision available.</p></td>
 <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
 <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
 <td><p>Longitude</p></td>
 <td><p>Longitude of the location, as for <code class="docutils literal notranslate"><span class="pre">latitude</span></code>.</p></td>
 <td><p>NumberDecimalType</p></td>
@@ -944,7 +933,7 @@ accepted; use the precision available.</p></td>
 <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
 <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
 <td><p>Condition of facility</p></td>
 <td><p>Physical state of the plant: projected, under construction, in use, or no
 longer in use.</p></td>
@@ -952,7 +941,7 @@ longer in use.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code></p></td>
 <td><p>EU Registry facility identifier</p></td>
 <td><p>Identifier of the same installation in the EU Registry of industrial
 facilities, where it is registered there.</p></td>
@@ -960,7 +949,7 @@ facilities, where it is registered there.</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
 <td><p>What is being reported: no change, a new object, a change, a merger, a split or a
 retirement.</p></td>
@@ -968,7 +957,7 @@ retirement.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
 <td><p>Codes of the treatment plants this one replaces, given once, in the delivery in which
 the change happens. Several codes are separated by commas.</p></td>

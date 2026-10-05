@@ -1,9 +1,9 @@
 (sp-uwwtp)=
 # UWWTP
 
-**Table status:** Conditional. In the first delivery, confirm or update the prefilled treatment plants
-({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired objects; unchanged rows
-may be included as `noChange`.
+**Table status:** Conditional. In the first delivery, confirm or update the prefilled treatment
+plants ({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired
+objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
 
 The table identifies and locates every urban wastewater treatment plant, including projected ones,
@@ -24,10 +24,9 @@ condition changed ({ref}`sp-lifecycle`).
 ## What the fields are
 
 **Identifiers.** `thematicIdIdentifier` is the treatment plant's code: the key that other
-reporting uses to refer to it ({ref}`sp-references`). `uwwCode` keeps the plant's code from the
-reporting under Directive 91/271/EEC, unchanged ({ref}`sp-code-conversion`). The three INSPIRE
-fields are only for Member States that already publish the treatment plant in a national INSPIRE
-dataset; they let the two records be matched. Otherwise they stay empty.
+reporting uses to refer to it ({ref}`sp-references`). The three INSPIRE fields are only for Member
+States that already publish the treatment plant in a national INSPIRE dataset; they let the two
+records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 For a projected plant without an official name, give a working or descriptive name. When the
@@ -60,19 +59,11 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - Code
   - Code of the treatment plant. A new plant receives a new code; an existing one keeps its
     code ({ref}`sp-reporting`).
+    A code from the reporting under Directive 91/271/EEC that does not meet the WISE
+    identifier rules is converted ({ref}`sp-code-conversion`).
   - wiseIdentifier
   - Required
   - –
-* - `uwwCode`
-  - UWWTP code (1991)
-  - Code of the treatment plant as reported under Directive 91/271/EEC, kept unchanged, also where
-    `thematicIdIdentifier` is a converted code ({ref}`sp-code-conversion`).
-  - string254
-  - Optional
-  - Filled by the EEA;
-    empty for objects not
-    reported before; not
-    changed by updates
 * - `inspireIdLocalId`
   - INSPIRE local identifier
   - Local identifier of the same object in a national INSPIRE dataset.

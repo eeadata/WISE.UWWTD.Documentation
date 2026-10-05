@@ -473,16 +473,16 @@ facility is a <code class="docutils literal notranslate"><span class="pre">chang
 </section>
 <section id="sp-12-discharge-points">
 <span id="sp-oi-dischargepoint-simplicity"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-12-discharge-points" title="Link to this heading">#</a></h3>
-<p>Reported like the other objects, with no link to a treatment plant or agglomeration: DischargePoint
-has no <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field. Discharge points are intended for Article 22 reporting and are
-not needed for Article 23. Completing this table is not a prerequisite for an Article 23 delivery.</p>
+<p>Reported like the other objects, with no link to a treatment plant or agglomeration. Discharge
+points are intended for Article 22 reporting and are not needed for Article 23. Completing this
+table is not a prerequisite for an Article 23 delivery.</p>
 </section>
 <section id="sp-14-codes-from-earlier-reporting">
 <span id="sp-oi-legacy-codes"></span><h3>SP-14 Codes from earlier reporting<a class="headerlink" href="#sp-14-codes-from-earlier-reporting" title="Link to this heading">#</a></h3>
 <p>Codes that meet the WISE identifier rules are copied unchanged. The others are converted by the
-EEA in fixed steps, and the original code is kept in <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code>. A wrong country
-prefix, a code over 42 characters, or two codes that become identical are flagged for the Member
-State to resolve, not fixed automatically (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
+EEA in fixed steps, and the EEA keeps the link to the original code. A wrong country prefix, a
+code over 42 characters, or two codes that become identical are flagged for the Member State to
+resolve, not fixed automatically (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
 <p><strong>Review decision, 5 October 2026.</strong> The data owner checked the data and reported that the
 collision scenario raised in the review does not occur. No additional collision-handling design
 is introduced; the existing flag-and-resolve rule stays.</p>
@@ -508,7 +508,7 @@ only then can Article 22 or Article 23 reference them. Later deliveries are chec
 accepted register. This follows the WISE GIS Guidance’s use of <code class="docutils literal notranslate"><span class="pre">noChange</span></code> for objects
 reported before and not replaced. A converted code is also reported as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>, not as the WISE
 <code class="docutils literal notranslate"><span class="pre">changeCode</span></code>: those original codes were not valid WISE identifiers, so this is the first WISE
-registration of the object, and the original code is kept in <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code>
+registration of the object, and the EEA keeps the link to the original code
 (<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>).</p>
 </section>
 </section>

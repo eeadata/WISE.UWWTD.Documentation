@@ -33,7 +33,19 @@ flowchart LR
   Reference -- "documentCode" --> Document
   dcMetadata -. "licenseDocument" .-> Document
   dcMetadata -. "metadataDocument" .-> Document
+  subgraph spatial["Spatial points dataflow"]
+    SpUWWTP["UWWTP<br/>name and location"]
+    SpAgglomeration["Agglomeration<br/>name and location"]
+  end
+  UWWTP -- "thematicIdIdentifier" --> SpUWWTP
+  Agglomeration -- "thematicIdIdentifier" --> SpAgglomeration
 ```
+
+The names and locations of treatment plants and agglomerations are not reported in this
+dataflow. They are reported in the separate {ref}`spatial-points` dataflow, and the UWWTP and
+Agglomeration tables refer to them by `thematicIdIdentifier`. A code must already have been
+accepted there, for the reporting country and the right object type ({ref}`sp-references`).
+Earlier reporting stays valid when an object later changes or is retired.
 
 Only MSSummary and Derogation cite documents. The UWWTP, Agglomeration and OtherInvestment
 tables have no reference fields, and the UWWTP table has no field linking a plant to an
@@ -72,11 +84,11 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
   - Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
     under Article 6(4).
 * - {ref}`art23-uwwtp`
-  - One per plant (`code` is the primary key)
+  - One per plant (`thematicIdIdentifier` is the primary key)
   - Conditional: required where investments in treatment plants are planned
   - Measures, status, prioritisation, projected load and capacity, dates, investment and funding.
 * - {ref}`art23-agglomeration`
-  - One per agglomeration (`code` is the primary key)
+  - One per agglomeration (`thematicIdIdentifier` is the primary key)
   - Conditional: required where investments in collecting systems or individual systems are
     planned
   - Measures, status, prioritisation, projected load, completion date, investment and funding.

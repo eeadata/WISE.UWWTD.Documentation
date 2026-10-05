@@ -233,21 +233,11 @@ as a file uploaded to Reportnet 3.
 (art23-oi-coordinates)=
 ## OI-21 Coordinates of new plants and agglomerations
 
-**Baseline.** The draft reporting guidance has no coordinates. It assumes that every row of the
-UWWTP and Agglomeration tables is linked to a plant or agglomeration already reported under
-Directive 91/271/EEC.
-
-**Proposal.** Report `latitude` and `longitude` where the plant or agglomeration has not been
-reported before, so that new infrastructure can be located without waiting for the next
-monitoring delivery. The description follows the one used under Directive 91/271/EEC: ETRS89 or
-WGS-84, decimal degrees.
-
-**Questions.**
-
-* ETRS89 (EPSG:4258) or WGS-84 (EPSG:4326) are accepted, as under Directive 91/271/EEC; they
-  differ by about a metre in Europe. WISE spatial data also accepts ETRS89-LAEA (EPSG:3035) for
-  analysis. Is the pair enough, or should one be required?
-* For an agglomeration, which point is reported: the centroid, the administrative centre, or the
-  point already used in earlier reporting?
-* How is "not reported before" determined in practice, and should the condition instead be a
-  quality check against the last accepted delivery?
+**Resolved.** Names and locations are no longer reported in the Article 23 tables. Every
+treatment plant and agglomeration is identified and located once, in the {ref}`spatial-points`
+dataflow. That dataflow starts from the objects reported under Directive 91/271/EEC, stays open
+for updates, and is first opened together with the Article 23 dataflow. The UWWTP and
+Agglomeration tables refer to it by `thematicIdIdentifier`. A new plant or agglomeration is
+reported there first, and only accepted codes can be referred to ({ref}`sp-references`). The
+questions on the coordinate reference system and on the point representing an agglomeration are
+dealt with in that dataflow ({ref}`sp-location`).

@@ -8,12 +8,14 @@ funding fields are still under discussion (see the open issues linked below).
 
 **Table status:** Conditional. Required where investments are planned in collecting systems or
 individual systems.
-**Rows:** one row per agglomeration. `code` is the primary key.
+**Rows:** one row per agglomeration. `thematicIdIdentifier` is the primary key.
 
 The table gives an overview of measures for collecting systems, individual systems and integrated
-urban wastewater management plans, their cost and their funding sources. Rows are linked to the
-list of agglomerations. An agglomeration reported for the first time has no such link, so its
-coordinates are required ({ref}`art23-oi-coordinates`).
+urban wastewater management plans, their cost and their funding sources. Each row refers to an
+agglomeration in the {ref}`sp-agglomeration` table of the {ref}`spatial-points` dataflow, by its
+`thematicIdIdentifier`. The agglomeration's name and location are reported there, not here. An
+agglomeration reported for the first time is reported there first, and its code must have been
+accepted before this table can refer to it ({ref}`sp-references`).
 
 The draft lists agglomerations that are currently non-compliant, face upcoming deadlines, or are
 at risk of future non-compliance, for example because of load increases, insufficient collecting
@@ -42,30 +44,15 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Type
   - Status
   - Condition or codelist
-* - `code`
+* - `thematicIdIdentifier`
   - Agglomeration code
-  - Unique code of the agglomeration, as specified by the Member State. Primary key.
+  - Code of the agglomeration, as in the spatial points dataflow. Primary key.
   - wiseIdentifier
   - Required
-  - –
-* - `name`
-  - Agglomeration name
-  - Name of the agglomeration.
-  - string255
-  - Required
-  - –
-* - `latitude`
-  - Latitude
-  - Latitude of the agglomeration (ETRS89 or WGS-84, decimal degrees).
-  - NumberDecimalType
-  - Conditional
-  - Required if `code` was not reported under Directive 91/271/EEC
-* - `longitude`
-  - Longitude
-  - Longitude of the agglomeration (ETRS89 or WGS-84, decimal degrees).
-  - NumberDecimalType
-  - Conditional
-  - Required if `code` was not reported under Directive 91/271/EEC
+  - Accepted code of an
+    agglomeration of the
+    country in
+    {ref}`sp-agglomeration`
 * - `status`
   - Status
   - Status of the agglomeration at the reference year.

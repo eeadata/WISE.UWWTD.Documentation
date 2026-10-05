@@ -689,7 +689,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -827,12 +827,26 @@ classDef forFixing fill:white,stroke:#f00;
 </div>
 <section id="reporting">
 <span id="sp-reporting"></span><h2>Reporting<a class="headerlink" href="#reporting" title="Link to this heading">#</a></h2>
-<p><strong>Starting point.</strong> The objects already reported under Directive 91/271/EEC are taken over as the
-starting content of the dataflow. Their existing codes are reused where they follow the WISE
-identifier rules (<a class="reference internal" href="#sp-wise-identifier"><span class="std std-ref">WISE identifiers</span></a>); the other codes are converted, keeping the original
-code (<a class="reference internal" href="#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
-<p><strong>Updates.</strong> A Member State reports only the objects that are new, changed or retired. Omitting an
-object means no change: leaving it out is never a deletion.</p>
+<p id="sp-first-reporting"><strong>First reporting.</strong> The tables are prefilled with the objects already reported under Directive
+91/271/EEC, every row with <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> = <code class="docutils literal notranslate"><span class="pre">noChange</span></code>. Their existing codes are reused where
+they follow the WISE identifier rules (<a class="reference internal" href="#sp-wise-identifier"><span class="std std-ref">WISE identifiers</span></a>); the other codes are converted,
+keeping the original code (<a class="reference internal" href="#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>). The Member State:</p>
+<ul class="simple">
+<li><p>leaves a row as <code class="docutils literal notranslate"><span class="pre">noChange</span></code> to confirm it;</p></li>
+<li><p>sets a row to <code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">deletion</span></code> or another value where something has changed
+(<a class="reference internal" href="#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>);</p></li>
+<li><p>adds a row with <code class="docutils literal notranslate"><span class="pre">creation</span></code> for each object not yet reported.</p></li>
+</ul>
+<p>For the first delivery, lifecycle checks use the EEA-prepared migration baseline in place of the
+accepted register. Baseline objects can therefore be confirmed with <code class="docutils literal notranslate"><span class="pre">noChange</span></code>, corrected,
+retired or replaced before their first acceptance. New codes must also be distinct from baseline
+codes. This exception does not make baseline codes available to Article 22 or Article 23: only
+objects accepted through this dataflow can be referenced there.</p>
+<p>The accepted delivery puts these objects into the register. Using <code class="docutils literal notranslate"><span class="pre">noChange</span></code> for objects that were
+reported before and have not been replaced follows the WISE GIS Guidance (<a class="reference internal" href="#sp-sources"><span class="std std-ref">Sources</span></a>).</p>
+<p><strong>Later updates.</strong> After the first reporting, a Member State reports only the objects that are new,
+changed or retired. Omitting an object means no change: leaving it out is never a deletion. If the
+whole table has to be delivered again, rows left as they are stay <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.</p>
 <p><strong>A row is the complete object.</strong> A reported row gives all the current values of the object, not
 only those that changed. It is proposed that the reporting tables are prefilled with the accepted
 values, so that the reporter only edits what has changed; whether Reportnet can do this has not
@@ -934,8 +948,8 @@ State chooses new identifiers.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Nothing has changed</p></td>
-<td><p>Nothing</p></td>
-<td><p>–</p></td>
+<td><p>Nothing, or the prefilled row as it is</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">noChange</span></code></p></td>
 <td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p>New object</p></td>
@@ -1007,10 +1021,14 @@ helpdesk, not by leaving it out of a delivery (<a class="reference internal" hre
 <section id="rules-for-changes-and-replacements">
 <span id="sp-lifecycle-rules"></span><h3>Rules for changes and replacements<a class="headerlink" href="#rules-for-changes-and-replacements" title="Link to this heading">#</a></h3>
 <p>All the rows of a delivery are checked together against the accepted state before the delivery,
-so the order of the rows does not matter.</p>
+so the order of the rows does not matter. For the first delivery only, the EEA-prepared migration
+baseline takes the place of that accepted state throughout these checks
+(<a class="reference internal" href="#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later deliveries use the accepted register.</p>
 <ul class="simple">
-<li><p><strong>Change and retirement.</strong> <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> apply only to an accepted object that is
-current, that is, not retired.</p></li>
+<li><p><strong>No change, change and retirement.</strong> <code class="docutils literal notranslate"><span class="pre">noChange</span></code>, <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> apply only to an
+accepted object that is current, that is, not retired. A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row keeps the accepted code
+and location and lists no codes in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>; values missing from the earlier
+reporting, such as a name language, may be added under <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.</p></li>
 <li><p><strong>Reactivation.</strong> <code class="docutils literal notranslate"><span class="pre">reactivation</span></code> applies only to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>, not to one
 that has been replaced.</p></li>
 <li><p><strong>Predecessors.</strong> Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> must be an accepted, current object of the
@@ -1110,6 +1128,8 @@ agglomerations, treatment plants and discharge points alike. This reuses the nam
 WISE spatial data definitions (<a class="reference internal" href="#sp-sources"><span class="std std-ref">Sources</span></a>); it is a convention of this reporting, not a
 requirement of the Directive. Where the earlier reporting did not give the language, the reporter
 adds it the first time the object is updated.</p>
+<p>A projected treatment plant without an official name uses a working or descriptive name. When
+the official name is assigned, update the name and keep the same identifier (<a class="reference internal" href="UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a>).</p>
 </section>
 <section id="inspire-identifiers">
 <h2>INSPIRE identifiers<a class="headerlink" href="#inspire-identifiers" title="Link to this heading">#</a></h2>
@@ -1162,8 +1182,9 @@ Kingdom;</p></li>
 </section>
 <section id="quality-checks">
 <span id="sp-quality-checks"></span><h2>Quality checks<a class="headerlink" href="#quality-checks" title="Link to this heading">#</a></h2>
-<p>The lifecycle checks compare the delivery with the accepted state before it
-(<a class="reference internal" href="#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>).</p>
+<p>The lifecycle checks compare the delivery with the accepted state before it. For the first
+delivery only, read “accepted” in these checks as the EEA-prepared migration baseline
+(<a class="reference internal" href="#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>); baseline codes also count as used when checking new codes.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 80.0%" />
@@ -1185,8 +1206,14 @@ Kingdom;</p></li>
 retired codes</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refer to an accepted, current object</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">noChange</span></code>, <code class="docutils literal notranslate"><span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> refer to an accepted, current object</p></td>
 <td><p>Blocker</p></td>
+</tr>
+<tr class="row-even"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has no <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>A <code class="docutils literal notranslate"><span class="pre">noChange</span></code> row has the accepted location; a different location is a <code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
+<td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code> refers to an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and not replaced</p></td>
 <td><p>Blocker</p></td>
@@ -1196,7 +1223,8 @@ retired codes</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p>Each code in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> is an accepted, current object of the same country and
-table, other than the object itself, and is not reported or replaced elsewhere in the delivery</p></td>
+table, other than the object itself. It is not reported in its own row or replaced elsewhere
+in the delivery, except by other successors of the same split</p></td>
 <td><p>Blocker</p></td>
 </tr>
 <tr class="row-odd"><td><p>An <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> lists at least two codes; a split lists one code, shared by at least two new

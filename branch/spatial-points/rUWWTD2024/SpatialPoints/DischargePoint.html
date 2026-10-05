@@ -693,7 +693,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -761,9 +761,14 @@ window.runMermaid = runMermaid;</script>
                   
   <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="dischargepoint">
 <span id="sp-dischargepoint"></span><h1>DischargePoint<a class="headerlink" href="#dischargepoint" title="Link to this heading">#</a></h1>
-<p><strong>Table status:</strong> Conditional. Rows are reported only for discharge points that are new, changed
-or retired.
+<p><strong>Table status:</strong> Conditional. In the first delivery, confirm or update the prefilled discharge points
+(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired objects; unchanged rows
+may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per discharge point reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
+<p><strong>Use by other reporting.</strong> Discharge points are not needed for the Article 23 national
+implementation programme: its tables refer only to agglomerations and treatment plants.
+This table is intended for use by Article 22 reporting, whose detailed format is still to be
+defined. Completing it is not a prerequisite for submitting Article 23 reporting.</p>
 <p>The table identifies and locates the points where urban wastewater is discharged, and records the receiving
 water or land. No treatment plant or agglomeration link is requested. The dataflow starts from the
 objects reported under Directive 91/271/EEC; a Member State then reports only what changes
@@ -823,10 +828,10 @@ records be matched. Otherwise they stay empty.</p>
 and <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> as for treatment plants. <code class="docutils literal notranslate"><span class="pre">receivingType</span></code> says whether the wastewater goes
 to surface water, groundwater or soil, and <code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> gives the receiving water body reported
 under the Water Framework Directive.</p>
-<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: a new discharge point, a change, a
-merger, a split or a retirement. A new discharge point that replaces earlier ones lists their codes
-in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>. A discharge point that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a
-retirement. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
+<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new discharge point, a
+change, a merger, a split or a retirement. A new discharge point that replaces earlier ones lists
+their codes in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>. A discharge point that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition,
+not a retirement. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
 </section>
 <section id="dischargepoint-fields">
 <h2>DischargePoint fields<a class="headerlink" href="#dischargepoint-fields" title="Link to this heading">#</a></h2>
@@ -944,7 +949,8 @@ discharge.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
-<td><p>What is being reported: a new object, a change, a merger, a split or a retirement.</p></td>
+<td><p>What is being reported: no change, a new object, a change, a merger, a split or a
+retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>

@@ -43,13 +43,29 @@ Location of each discharge point, what discharges there and into what.
 (sp-reporting)=
 ## Reporting
 
-**Starting point.** The objects already reported under Directive 91/271/EEC are taken over as the
-starting content of the dataflow. Their existing codes are reused where they follow the WISE
-identifier rules ({ref}`sp-wise-identifier`); the other codes are converted, keeping the original
-code ({ref}`sp-code-conversion`).
+(sp-first-reporting)=
+**First reporting.** The tables are prefilled with the objects already reported under Directive
+91/271/EEC, every row with `wiseEvolutionType` = `noChange`. Their existing codes are reused where
+they follow the WISE identifier rules ({ref}`sp-wise-identifier`); the other codes are converted,
+keeping the original code ({ref}`sp-code-conversion`). The Member State:
 
-**Updates.** A Member State reports only the objects that are new, changed or retired. Omitting an
-object means no change: leaving it out is never a deletion.
+* leaves a row as `noChange` to confirm it;
+* sets a row to `change`, `deletion` or another value where something has changed
+  ({ref}`sp-lifecycle`);
+* adds a row with `creation` for each object not yet reported.
+
+For the first delivery, lifecycle checks use the EEA-prepared migration baseline in place of the
+accepted register. Baseline objects can therefore be confirmed with `noChange`, corrected,
+retired or replaced before their first acceptance. New codes must also be distinct from baseline
+codes. This exception does not make baseline codes available to Article 22 or Article 23: only
+objects accepted through this dataflow can be referenced there.
+
+The accepted delivery puts these objects into the register. Using `noChange` for objects that were
+reported before and have not been replaced follows the WISE GIS Guidance ({ref}`sp-sources`).
+
+**Later updates.** After the first reporting, a Member State reports only the objects that are new,
+changed or retired. Omitting an object means no change: leaving it out is never a deletion. If the
+whole table has to be delivered again, rows left as they are stay `noChange`.
 
 **A row is the complete object.** A reported row gives all the current values of the object, not
 only those that changed. It is proposed that the reporting tables are prefilled with the accepted
@@ -134,7 +150,7 @@ resolve, not fixed automatically:
 
 | Situation | What to report | `wiseEvolutionType` | `supersedesIdentifier` |
 | --- | --- | --- | --- |
-| Nothing has changed | Nothing | – | – |
+| Nothing has changed | Nothing, or the prefilled row as it is | `noChange` | – |
 | New object | The object, with a new code | `creation` | – |
 | Name, location or other value changed | The object, same code | `change` | – |
 | Facility closed or reopened | The object, with its new condition | `change` | – |
@@ -174,10 +190,14 @@ helpdesk, not by leaving it out of a delivery ({ref}`sp-oi-reportnet`).
 ### Rules for changes and replacements
 
 All the rows of a delivery are checked together against the accepted state before the delivery,
-so the order of the rows does not matter.
+so the order of the rows does not matter. For the first delivery only, the EEA-prepared migration
+baseline takes the place of that accepted state throughout these checks
+({ref}`first reporting <sp-first-reporting>`). Later deliveries use the accepted register.
 
-* **Change and retirement.** `change` and `deletion` apply only to an accepted object that is
-  current, that is, not retired.
+* **No change, change and retirement.** `noChange`, `change` and `deletion` apply only to an
+  accepted object that is current, that is, not retired. A `noChange` row keeps the accepted code
+  and location and lists no codes in `supersedesIdentifier`; values missing from the earlier
+  reporting, such as a name language, may be added under `noChange`.
 * **Reactivation.** `reactivation` applies only to an object retired with `deletion`, not to one
   that has been replaced.
 * **Predecessors.** Each code in `supersedesIdentifier` must be an accepted, current object of the
@@ -261,6 +281,9 @@ WISE spatial data definitions ({ref}`sp-sources`); it is a convention of this re
 requirement of the Directive. Where the earlier reporting did not give the language, the reporter
 adds it the first time the object is updated.
 
+A projected treatment plant without an official name uses a working or descriptive name. When
+the official name is assigned, update the name and keep the same identifier ({ref}`sp-uwwtp`).
+
 ## INSPIRE identifiers
 
 The WISE code in `thematicIdIdentifier` is required for every object. `inspireIdLocalId` and
@@ -299,8 +322,9 @@ Valid: `FR123`, `FR1_XYZ1234_1`, `FR1-XYZ1234-1`, `FR1XYZ12341`. Not valid: `FR1
 (sp-quality-checks)=
 ## Quality checks
 
-The lifecycle checks compare the delivery with the accepted state before it
-({ref}`sp-lifecycle-rules`).
+The lifecycle checks compare the delivery with the accepted state before it. For the first
+delivery only, read "accepted" in these checks as the EEA-prepared migration baseline
+({ref}`sp-lifecycle-rules`); baseline codes also count as used when checking new codes.
 
 :::{list-table}
 :header-rows: 1
@@ -315,15 +339,20 @@ The lifecycle checks compare the delivery with the accepted state before it
 * - `creation`, `aggregation` and `splitting` use a code never used in the table, including
     retired codes
   - Blocker
-* - `change` and `deletion` refer to an accepted, current object
+* - `noChange`, `change` and `deletion` refer to an accepted, current object
   - Blocker
+* - A `noChange` row has no `supersedesIdentifier`
+  - Error
+* - A `noChange` row has the accepted location; a different location is a `change`
+  - Error
 * - `reactivation` refers to an object retired with `deletion` and not replaced
   - Blocker
 * - `supersedesIdentifier` is given with `aggregation` and `splitting`, and otherwise only with a
     `change` in the Agglomeration table
   - Error
 * - Each code in `supersedesIdentifier` is an accepted, current object of the same country and
-    table, other than the object itself, and is not reported or replaced elsewhere in the delivery
+    table, other than the object itself. It is not reported in its own row or replaced elsewhere
+    in the delivery, except by other successors of the same split
   - Blocker
 * - An `aggregation` lists at least two codes; a split lists one code, shared by at least two new
     objects

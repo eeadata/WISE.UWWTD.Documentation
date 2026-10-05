@@ -1,8 +1,9 @@
 (sp-agglomeration)=
 # Agglomeration
 
-**Table status:** Conditional. Rows are reported only for agglomerations that are new, changed
-or retired.
+**Table status:** Conditional. In the first delivery, confirm or update the prefilled agglomerations
+({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired objects; unchanged rows
+may be included as `noChange`.
 **Rows:** one row per agglomeration reported. `thematicIdIdentifier` is the key.
 
 The table identifies and locates every agglomeration with its code, name and a representative
@@ -39,10 +40,10 @@ dataset; they let the two records be matched. Otherwise they stay empty.
 
 **Location.** A representative point in decimal degrees, within the main settlement.
 
-**Change.** `wiseEvolutionType` says what is being reported: a new agglomeration, a change, a
-merger, a split or a retirement. A new agglomeration that results from a merger or split lists the
-codes it replaces in `supersedesIdentifier`; so does an agglomeration that absorbs another and
-keeps its code. See {ref}`sp-lifecycle`.
+**Change.** `wiseEvolutionType` says what is being reported: no change, a new agglomeration, a
+change, a merger, a split or a retirement. A new agglomeration that results from a merger or split
+lists the codes it replaces in `supersedesIdentifier`; so does an agglomeration that absorbs
+another and keeps its code. See {ref}`sp-lifecycle`.
 
 ## Agglomeration fields
 
@@ -129,7 +130,8 @@ keeps its code. See {ref}`sp-lifecycle`.
   - –
 * - `wiseEvolutionType`
   - Evolution type
-  - What is being reported: a new object, a change, a merger, a split or a retirement.
+  - What is being reported: no change, a new object, a change, a merger, a split or a
+    retirement.
   - WiseEvolutionType
   - Required
   - {ref}`sp-cl-evolution`

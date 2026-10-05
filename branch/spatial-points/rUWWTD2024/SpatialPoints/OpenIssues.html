@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Open issues &#8212; WISE.UWWTD.Documentation  documentation</title>
+    <title>Decisions and open issues &#8212; WISE.UWWTD.Documentation  documentation</title>
   
   
   
@@ -334,7 +334,7 @@
 <li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Open issues</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -383,7 +383,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Spatial points</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Open issues</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Decisions and open issues</span></li>
   </ul>
 </nav>
 </div>
@@ -400,13 +400,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="open-issues">
-<span id="sp-open-issues"></span><h1>Open issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h1>
+  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="decisions-and-open-issues">
+<span id="sp-open-issues"></span><h1>Decisions and open issues<a class="headerlink" href="#decisions-and-open-issues" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Draft
-The decisions below have been applied to the spatial points pages. They remain proposals until the
-dataflow is agreed.</p>
+The decisions below are settled for this draft and have been applied to the spatial points pages.
+They remain proposals until the dataflow is agreed. Only the items under “Remaining open issues”
+still need a decision or technical confirmation.</p>
 </div>
 <section id="decisions">
 <h2>Decisions<a class="headerlink" href="#decisions" title="Link to this heading">#</a></h2>
@@ -435,13 +436,17 @@ identifiable and are not reused; the reverse link and the history are kept centr
 retirement apply to current objects only, reactivation only to objects retired without
 replacement, and predecessors must be current objects of the same country and table. A delivery is
 checked against the accepted state before it, with all the parts of a split checked together
-(<a class="reference internal" href="index.html#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>).</p>
+(<a class="reference internal" href="index.html#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>). The shared predecessor of the successors of the same split is
+explicitly allowed by the quality checks. The first delivery uses the migration baseline instead
+of the accepted state (SP-17).</p>
 </section>
 <section id="sp-05-names">
 <span id="sp-oi-name-language"></span><h3>SP-05 Names<a class="headerlink" href="#sp-05-names" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required, <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> optional, reusing the WISE
 spatial data name fields. <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> gives the language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code> as a code from the
-ISO 639-2 vocabulary of the Eionet Data Dictionary (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).</p>
+ISO 639-2 vocabulary of the Eionet Data Dictionary (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).
+A projected treatment plant without an official name uses a working or descriptive name; assigning
+its official name later does not change its identifier.</p>
 </section>
 <section id="sp-06-projected-facilities">
 <span id="sp-oi-condition"></span><h3>SP-06 Projected facilities<a class="headerlink" href="#sp-06-projected-facilities" title="Link to this heading">#</a></h3>
@@ -469,7 +474,8 @@ facility is a <code class="docutils literal notranslate"><span class="pre">chang
 <section id="sp-12-discharge-points">
 <span id="sp-oi-dischargepoint-simplicity"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-12-discharge-points" title="Link to this heading">#</a></h3>
 <p>Reported like the other objects, with no link to a treatment plant or agglomeration: DischargePoint
-has no <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field.</p>
+has no <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code> field. Discharge points are intended for Article 22 reporting and are
+not needed for Article 23. Completing this table is not a prerequisite for an Article 23 delivery.</p>
 </section>
 <section id="sp-14-codes-from-earlier-reporting">
 <span id="sp-oi-legacy-codes"></span><h3>SP-14 Codes from earlier reporting<a class="headerlink" href="#sp-14-codes-from-earlier-reporting" title="Link to this heading">#</a></h3>
@@ -477,6 +483,9 @@ has no <code class="docutils literal notranslate"><span class="pre">uwwCode</spa
 EEA in fixed steps, and the original code is kept in <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code>. A wrong country
 prefix, a code over 42 characters, or two codes that become identical are flagged for the Member
 State to resolve, not fixed automatically (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
+<p><strong>Review decision, 5 October 2026.</strong> The data owner checked the data and reported that the
+collision scenario raised in the review does not occur. No additional collision-handling design
+is introduced; the existing flag-and-resolve rule stays.</p>
 </section>
 <section id="sp-15-identifier-schemes">
 <span id="sp-oi-schemes"></span><h3>SP-15 Identifier schemes<a class="headerlink" href="#sp-15-identifier-schemes" title="Link to this heading">#</a></h3>
@@ -489,9 +498,22 @@ State to resolve, not fixed automatically (<a class="reference internal" href="i
 earlier value; an empty <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> reports no new replacement and never removes one
 already accepted. Omitting an object means no change (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
 </section>
+<section id="sp-17-first-reporting-with-nochange">
+<span id="sp-oi-first-reporting"></span><h3>SP-17 First reporting with noChange<a class="headerlink" href="#sp-17-first-reporting-with-nochange" title="Link to this heading">#</a></h3>
+<p>The first reporting is a table prefilled from the reporting under Directive 91/271/EEC, every row
+<code class="docutils literal notranslate"><span class="pre">noChange</span></code>. Lifecycle checks use the EEA-prepared migration baseline for this delivery, so the
+Member State can confirm, correct, retire or replace baseline objects before first acceptance.
+New codes must not reuse baseline codes. The accepted delivery puts the objects into the register;
+only then can Article 22 or Article 23 reference them. Later deliveries are checked against the
+accepted register. This follows the WISE GIS Guidance’s use of <code class="docutils literal notranslate"><span class="pre">noChange</span></code> for objects
+reported before and not replaced. A converted code is also reported as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>, not as the WISE
+<code class="docutils literal notranslate"><span class="pre">changeCode</span></code>: those original codes were not valid WISE identifiers, so this is the first WISE
+registration of the object, and the original code is kept in <code class="docutils literal notranslate"><span class="pre">uwwCode</span></code> or <code class="docutils literal notranslate"><span class="pre">aggCode</span></code>
+(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>).</p>
 </section>
-<section id="still-open">
-<h2>Still open<a class="headerlink" href="#still-open" title="Link to this heading">#</a></h2>
+</section>
+<section id="remaining-open-issues">
+<h2>Remaining open issues<a class="headerlink" href="#remaining-open-issues" title="Link to this heading">#</a></h2>
 <section id="sp-11-condition-codelist">
 <span id="sp-oi-vocabulary"></span><h3>SP-11 Condition codelist<a class="headerlink" href="#sp-11-condition-codelist" title="Link to this heading">#</a></h3>
 <p>The current INSPIRE register for the condition of a facility could not be retrieved. Its accepted
@@ -499,9 +521,10 @@ values should be confirmed, including the status of <code class="docutils litera
 </section>
 <section id="sp-13-differences-from-wise">
 <span id="sp-oi-wise"></span><h3>SP-13 Differences from WISE<a class="headerlink" href="#sp-13-differences-from-wise" title="Link to this heading">#</a></h3>
-<p>This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Points to settle:</p>
+<p>This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Reporting
+<code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> instead of a WISE <code class="docutils literal notranslate"><span class="pre">geometry</span></code> is settled for this draft. Points still
+to settle:</p>
 <ul class="simple">
-<li><p>Location is reported as <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code>, not as a WISE <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p></li>
 <li><p>How an absorption, reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>, is published to WISE.</p></li>
 <li><p>Whether <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> is kept, or replaced or complemented by the WISE operational period
 dates.</p></li>
@@ -512,7 +535,8 @@ dates.</p></li>
 <span id="sp-oi-reportnet"></span><h3>SP-20 Reportnet<a class="headerlink" href="#sp-20-reportnet" title="Link to this heading">#</a></h3>
 <p>A dataflow that stays open, accepts only new, changed or retired objects, and lets other dataflows
 check codes against accepted objects needs technical confirmation in Reportnet. So does
-prefilling the reporting tables with the accepted values. How an object reported by mistake is
+prefilling the reporting tables, for the first reporting from the reporting under Directive
+91/271/EEC and later with the accepted values. How an object reported by mistake is
 corrected through the helpdesk is to be agreed.</p>
 </section>
 </section>
@@ -571,9 +595,10 @@ corrected through the helpdesk is to be agreed.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-14-codes-from-earlier-reporting">SP-14 Codes from earlier reporting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-15-identifier-schemes">SP-15 Identifier schemes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-16-complete-rows">SP-16 Complete rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-17-first-reporting-with-nochange">SP-17 First reporting with noChange</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#still-open">Still open</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remaining-open-issues">Remaining open issues</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11-condition-codelist">SP-11 Condition codelist</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-13-differences-from-wise">SP-13 Differences from WISE</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-20-reportnet">SP-20 Reportnet</a></li>

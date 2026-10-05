@@ -693,7 +693,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -761,8 +761,9 @@ window.runMermaid = runMermaid;</script>
                   
   <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="uwwtp">
 <span id="sp-uwwtp"></span><h1>UWWTP<a class="headerlink" href="#uwwtp" title="Link to this heading">#</a></h1>
-<p><strong>Table status:</strong> Conditional. Rows are reported only for treatment plants that are new, changed
-or retired.
+<p><strong>Table status:</strong> Conditional. In the first delivery, confirm or update the prefilled treatment plants
+(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired objects; unchanged rows
+may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per treatment plant reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
 <p>The table identifies and locates every urban wastewater treatment plant, including projected ones,
 with its code, name, location and condition. The dataflow starts from the objects reported under
@@ -814,14 +815,16 @@ reporting uses to refer to it (<a class="reference internal" href="index.html#sp
 reporting under Directive 91/271/EEC, unchanged (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>). The three INSPIRE
 fields are only for Member States that already publish the treatment plant in a national INSPIRE
 dataset; they let the two records be matched. Otherwise they stay empty.</p>
-<p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.</p>
+<p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.
+For a projected plant without an official name, give a working or descriptive name. When the
+official name is assigned, report the new name as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the same identifier.</p>
 <p><strong>Location and state.</strong> The position of the plant in decimal degrees, and <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>, which
 says whether that position is the actual site, a provisional one, or not yet known.
 <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> says whether the plant is projected, under construction, in use or out of
 use. <code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code> links it to the same installation in the EU Registry, where it is
 registered there.</p>
-<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: a new plant, a change, a merger, a
-split or a retirement. A new plant that replaces earlier plants lists their codes in
+<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new plant, a change, a
+merger, a split or a retirement. A new plant that replaces earlier plants lists their codes in
 <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>. A plant that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a retirement. See
 <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
 </section>
@@ -894,7 +897,8 @@ given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
 <td><p>Name</p></td>
-<td><p>Official name of the treatment plant.</p></td>
+<td><p>Official name of the treatment plant, or a working or descriptive name for a projected plant
+that has no official name yet.</p></td>
 <td><p>string254</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -958,7 +962,8 @@ facilities, where it is registered there.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
-<td><p>What is being reported: a new object, a change, a merger, a split or a retirement.</p></td>
+<td><p>What is being reported: no change, a new object, a change, a merger, a split or a
+retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>

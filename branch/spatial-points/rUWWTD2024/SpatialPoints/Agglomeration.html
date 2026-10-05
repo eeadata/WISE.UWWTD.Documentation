@@ -693,7 +693,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -761,8 +761,9 @@ window.runMermaid = runMermaid;</script>
                   
   <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="agglomeration">
 <span id="sp-agglomeration"></span><h1>Agglomeration<a class="headerlink" href="#agglomeration" title="Link to this heading">#</a></h1>
-<p><strong>Table status:</strong> Conditional. Rows are reported only for agglomerations that are new, changed
-or retired.
+<p><strong>Table status:</strong> Conditional. In the first delivery, confirm or update the prefilled agglomerations
+(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired objects; unchanged rows
+may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per agglomeration reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
 <p>The table identifies and locates every agglomeration with its code, name and a representative
 point. The dataflow starts from the objects reported under Directive 91/271/EEC; a Member State
@@ -821,10 +822,10 @@ fields are only for Member States that already publish the agglomeration in a na
 dataset; they let the two records be matched. Otherwise they stay empty.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.</p>
 <p><strong>Location.</strong> A representative point in decimal degrees, within the main settlement.</p>
-<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: a new agglomeration, a change, a
-merger, a split or a retirement. A new agglomeration that results from a merger or split lists the
-codes it replaces in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>; so does an agglomeration that absorbs another and
-keeps its code. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
+<p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new agglomeration, a
+change, a merger, a split or a retirement. A new agglomeration that results from a merger or split
+lists the codes it replaces in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>; so does an agglomeration that absorbs
+another and keeps its code. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
 </section>
 <section id="agglomeration-fields">
 <h2>Agglomeration fields<a class="headerlink" href="#agglomeration-fields" title="Link to this heading">#</a></h2>
@@ -931,7 +932,8 @@ WGS-84 is accepted; use the precision available.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
-<td><p>What is being reported: a new object, a change, a merger, a split or a retirement.</p></td>
+<td><p>What is being reported: no change, a new object, a change, a merger, a split or a
+retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>

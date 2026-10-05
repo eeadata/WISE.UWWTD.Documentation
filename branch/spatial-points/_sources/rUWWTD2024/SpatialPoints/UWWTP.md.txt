@@ -1,8 +1,9 @@
 (sp-uwwtp)=
 # UWWTP
 
-**Table status:** Conditional. Rows are reported only for treatment plants that are new, changed
-or retired.
+**Table status:** Conditional. In the first delivery, confirm or update the prefilled treatment plants
+({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired objects; unchanged rows
+may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
 
 The table identifies and locates every urban wastewater treatment plant, including projected ones,
@@ -29,6 +30,8 @@ fields are only for Member States that already publish the treatment plant in a 
 dataset; they let the two records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
+For a projected plant without an official name, give a working or descriptive name. When the
+official name is assigned, report the new name as a `change`, keeping the same identifier.
 
 **Location and state.** The position of the plant in decimal degrees, and `locationStatus`, which
 says whether that position is the actual site, a provisional one, or not yet known.
@@ -36,8 +39,8 @@ says whether that position is the actual site, a provisional one, or not yet kno
 use. `euRegistryFacilityId` links it to the same installation in the EU Registry, where it is
 registered there.
 
-**Change.** `wiseEvolutionType` says what is being reported: a new plant, a change, a merger, a
-split or a retirement. A new plant that replaces earlier plants lists their codes in
+**Change.** `wiseEvolutionType` says what is being reported: no change, a new plant, a change, a
+merger, a split or a retirement. A new plant that replaces earlier plants lists their codes in
 `supersedesIdentifier`. A plant that closes is a `change` of condition, not a retirement. See
 {ref}`sp-lifecycle`.
 
@@ -95,7 +98,8 @@ split or a retirement. A new plant that replaces earlier plants lists their code
   - –
 * - `nameText`
   - Name
-  - Official name of the treatment plant.
+  - Official name of the treatment plant, or a working or descriptive name for a projected plant
+    that has no official name yet.
   - string254
   - Required
   - –
@@ -151,7 +155,8 @@ split or a retirement. A new plant that replaces earlier plants lists their code
   - –
 * - `wiseEvolutionType`
   - Evolution type
-  - What is being reported: a new object, a change, a merger, a split or a retirement.
+  - What is being reported: no change, a new object, a change, a merger, a split or a
+    retirement.
   - WiseEvolutionType
   - Required
   - {ref}`sp-cl-evolution`

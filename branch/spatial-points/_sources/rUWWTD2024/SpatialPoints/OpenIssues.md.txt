@@ -1,9 +1,10 @@
 (sp-open-issues)=
-# Open issues
+# Decisions and open issues
 
 :::{warning} Draft
-The decisions below have been applied to the spatial points pages. They remain proposals until the
-dataflow is agreed.
+The decisions below are settled for this draft and have been applied to the spatial points pages.
+They remain proposals until the dataflow is agreed. Only the items under "Remaining open issues"
+still need a decision or technical confirmation.
 :::
 
 ## Decisions
@@ -37,7 +38,9 @@ identifiable and are not reused; the reverse link and the history are kept centr
 retirement apply to current objects only, reactivation only to objects retired without
 replacement, and predecessors must be current objects of the same country and table. A delivery is
 checked against the accepted state before it, with all the parts of a split checked together
-({ref}`sp-lifecycle-rules`).
+({ref}`sp-lifecycle-rules`). The shared predecessor of the successors of the same split is
+explicitly allowed by the quality checks. The first delivery uses the migration baseline instead
+of the accepted state (SP-17).
 
 (sp-oi-name-language)=
 ### SP-05 Names
@@ -45,6 +48,8 @@ checked against the accepted state before it, with all the parts of a split chec
 `nameText` and `nameLanguage` are required, `nameTextInternational` optional, reusing the WISE
 spatial data name fields. `nameLanguage` gives the language of `nameText` as a code from the
 ISO 639-2 vocabulary of the Eionet Data Dictionary ({ref}`sp-names`).
+A projected treatment plant without an official name uses a working or descriptive name; assigning
+its official name later does not change its identifier.
 
 (sp-oi-condition)=
 ### SP-06 Projected facilities
@@ -78,7 +83,8 @@ facility is a `change`.
 ### SP-12 Discharge points
 
 Reported like the other objects, with no link to a treatment plant or agglomeration: DischargePoint
-has no `uwwCode` or `aggCode` field.
+has no `uwwCode` or `aggCode` field. Discharge points are intended for Article 22 reporting and are
+not needed for Article 23. Completing this table is not a prerequisite for an Article 23 delivery.
 
 (sp-oi-legacy-codes)=
 ### SP-14 Codes from earlier reporting
@@ -87,6 +93,10 @@ Codes that meet the WISE identifier rules are copied unchanged. The others are c
 EEA in fixed steps, and the original code is kept in `uwwCode` or `aggCode`. A wrong country
 prefix, a code over 42 characters, or two codes that become identical are flagged for the Member
 State to resolve, not fixed automatically ({ref}`sp-code-conversion`).
+
+**Review decision, 5 October 2026.** The data owner checked the data and reported that the
+collision scenario raised in the review does not occur. No additional collision-handling design
+is introduced; the existing flag-and-resolve rule stays.
 
 (sp-oi-schemes)=
 ### SP-15 Identifier schemes
@@ -101,7 +111,21 @@ A reported row gives all the current values of the object. An optional field lef
 earlier value; an empty `supersedesIdentifier` reports no new replacement and never removes one
 already accepted. Omitting an object means no change ({ref}`sp-reporting`).
 
-## Still open
+(sp-oi-first-reporting)=
+### SP-17 First reporting with noChange
+
+The first reporting is a table prefilled from the reporting under Directive 91/271/EEC, every row
+`noChange`. Lifecycle checks use the EEA-prepared migration baseline for this delivery, so the
+Member State can confirm, correct, retire or replace baseline objects before first acceptance.
+New codes must not reuse baseline codes. The accepted delivery puts the objects into the register;
+only then can Article 22 or Article 23 reference them. Later deliveries are checked against the
+accepted register. This follows the WISE GIS Guidance's use of `noChange` for objects
+reported before and not replaced. A converted code is also reported as `noChange`, not as the WISE
+`changeCode`: those original codes were not valid WISE identifiers, so this is the first WISE
+registration of the object, and the original code is kept in `uwwCode` or `aggCode`
+({ref}`first reporting <sp-first-reporting>`).
+
+## Remaining open issues
 
 (sp-oi-vocabulary)=
 ### SP-11 Condition codelist
@@ -112,9 +136,10 @@ values should be confirmed, including the status of `decommissioned`.
 (sp-oi-wise)=
 ### SP-13 Differences from WISE
 
-This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Points to settle:
+This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Reporting
+`latitude` and `longitude` instead of a WISE `geometry` is settled for this draft. Points still
+to settle:
 
-* Location is reported as `latitude` and `longitude`, not as a WISE `geometry`.
 * How an absorption, reported as a `change` with `supersedesIdentifier`, is published to WISE.
 * Whether `conditionOfFacility` is kept, or replaced or complemented by the WISE operational period
   dates.
@@ -125,5 +150,6 @@ This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema.
 
 A dataflow that stays open, accepts only new, changed or retired objects, and lets other dataflows
 check codes against accepted objects needs technical confirmation in Reportnet. So does
-prefilling the reporting tables with the accepted values. How an object reported by mistake is
+prefilling the reporting tables, for the first reporting from the reporting under Directive
+91/271/EEC and later with the accepted values. How an object reported by mistake is
 corrected through the helpdesk is to be agreed.

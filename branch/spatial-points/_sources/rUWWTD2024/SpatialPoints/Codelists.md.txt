@@ -54,6 +54,11 @@ Used by `wiseEvolutionType` in the Agglomeration, UWWTP and DischargePoint table
   - Creation
   - A new object that does not replace another.
   - New code.
+* - `noChange`
+  - No change
+  - The code and location are unchanged.
+  - The prefilled value in the first reporting. Missing values may be added. Never with
+    `supersedesIdentifier`.
 * - `change`
   - Change
   - The code is unchanged; other values are updated.

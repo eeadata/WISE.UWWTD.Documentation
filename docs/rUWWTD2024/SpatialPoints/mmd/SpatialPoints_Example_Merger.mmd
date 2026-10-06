@@ -1,0 +1,13 @@
+---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  A["XXAGG0101<br/>not reported<br/>retired"] --> N["XXAGG0150<br/><b>aggregation</b><br/>supersedes: XXAGG0101,XXAGG0102"]
+  B["XXAGG0102<br/>not reported<br/>retired"] --> N
+  N -- "later rename" --> N2["XXAGG0150<br/><b>change</b><br/>supersedes: empty<br/>merger stays in history"]
+
+  classDef retired fill:#f4f4f4,stroke:#999,stroke-dasharray:4 3,color:#666;
+  class A,B retired;

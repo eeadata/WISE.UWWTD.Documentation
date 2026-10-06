@@ -165,22 +165,56 @@ resolve, not fixed automatically:
   `change` with `conditionOfFacility` set to `disused` or `decommissioned`. It keeps its code and
   can be reopened in the same way.
 
-Three cases that are easy to get wrong:
+Cases that are easy to get wrong:
 
 1. **Merger.** XXAGG0101 and XXAGG0102 merge into a new agglomeration. Report XXAGG0150 with
    `aggregation` and `supersedesIdentifier` = `XXAGG0101,XXAGG0102`. Do not report the two old
    agglomerations; they are retired with XXAGG0150 as their successor. A later rename of XXAGG0150
    is a `change` with `supersedesIdentifier` left empty, which keeps the merger in its history.
-2. **Absorption.** XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
+
+   ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Merger.mmd
+   :name: SpatialPoints_Example_Merger
+   :caption: Merger: the old agglomerations are retired; a later rename is a change
+   :align: center
+   ```
+
+2. **Split.** Later, XXAGG0150, the agglomeration formed by the merger, splits into two. Report
+   XXAGG0151 and XXAGG0152, each with `splitting` and `supersedesIdentifier` = `XXAGG0150`, in the
+   same delivery. Do not report XXAGG0150; it is retired with both as its successors, and its own
+   merger history is kept.
+
+   ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Split.mmd
+   :name: SpatialPoints_Example_Split
+   :caption: Split: each new agglomeration lists the code it replaces
+   :align: center
+   ```
+
+3. **Absorption.** XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
    as a `change`, with its new values, and `supersedesIdentifier` = `XXAGG0111`. It keeps its
    code: in WISE, an `aggregation` produces a new object and must not reuse a replaced code. How
    this case is published to WISE is open ({ref}`sp-oi-wise`).
-3. **Closure or retirement.** A treatment plant that closes is a `change` of condition, not a
+
+   ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Absorption.mmd
+   :name: SpatialPoints_Example_Absorption
+   :caption: Absorption: the surviving agglomeration keeps its code
+   :align: center
+   ```
+
+4. **Closure or retirement.** A treatment plant that closes is a `change` of condition, not a
    `deletion`. `deletion` is for an object that no longer exists and is not replaced; its code is
    kept and is not reused.
 
-`XX` stands for the country code. An object reported by mistake is corrected through the
-helpdesk, not by leaving it out of a delivery ({ref}`sp-oi-reportnet`).
+   ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Closure.mmd
+   :name: SpatialPoints_Example_Closure
+   :caption: Closure: the plant still exists, so its condition changes
+   :align: center
+   ```
+
+   ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Retirement.mmd
+   :name: SpatialPoints_Example_Retirement
+   :caption: Retirement: the object no longer exists and nothing replaces it
+   :align: center
+   ```
 
 (sp-lifecycle-rules)=
 ### Rules for changes and replacements
@@ -294,8 +328,11 @@ about a Member State's separate INSPIRE obligations.
 | --- | --- |
 | `wiseIdentifier` | A WISE code, following the rules below |
 | `string254`, `string25` | Text of at most 254 or 25 characters |
-| `NumberDecimalType` | A decimal number, which may be negative |
+| `NumberDecimalExtendedType` | A decimal number, which may be negative, as in the WFD schema |
 | *codelist name* | A value from the codelist of that name ({ref}`sp-codelists`) |
+
+Decimal numbers use a full stop as the decimal separator and no thousands separator, for example
+`-8.61`, not `-8,61`.
 
 `[0..n]` marks a field that accepts several values, separated by commas.
 
@@ -391,6 +428,10 @@ not a copy of the WISE spatial data schema.
 * ISO 639-2 language vocabulary, Eionet Data Dictionary,
   [common/iso639-2](https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view), released
   10 July 2019.
+* WFD reporting schema,
+  [WFDCommon_2022.xsd](https://dd.eionet.europa.eu/schemas/WFD2022/WFDCommon_2022.xsd):
+  `NumberDecimalExtendedType`, a plain decimal number. Its `NumberDecimalType` is not used for
+  coordinates, as it allows only non-negative values and the codes `-9999`, `-8888` and `-7777`.
 * WISE evolution type vocabulary, Eionet Data Dictionary,
   [WiseEvolutionTypeValue](https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue),
   released 28 September 2026.

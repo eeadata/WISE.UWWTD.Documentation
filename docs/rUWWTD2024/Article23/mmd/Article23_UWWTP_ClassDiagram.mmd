@@ -9,10 +9,7 @@ classDiagram
 direction LR
 
 class UWWTP{
-    + code: wiseIdentifier [1]
-    + name: string255 [1]
-    + latitude: NumberDecimalType [0..1]
-    + longitude: NumberDecimalType [0..1]
+    + thematicIdIdentifier: wiseIdentifier [1]
     + status: Status_Enum [1]
     + treatmentPlantMeasure: TreatmentPlantMeasure_Enum [1..n]
     + measureText: string1000 [0..1]

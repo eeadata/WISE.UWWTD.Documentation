@@ -6,3 +6,4 @@ tmp
 *.laccdb
 ~*.xlsx
 /temp
+.venv/

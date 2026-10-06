@@ -77,8 +77,8 @@ how `producerResponsibilityFund` relates to the national `producerResponsibility
 
 ## Several measures or investments at one plant or agglomeration
 
-Each plant and each agglomeration has one row, because `code` is the primary key of both
-  tables.
+Each plant and each agglomeration has one row, because `thematicIdIdentifier` is the primary
+key of both tables.
 Each row has one investment amount, one amount per funding source and one set of dates:
 
 * `treatmentPlantMeasure` accepts several measures, so `investment` holds the forecast cost of all measures

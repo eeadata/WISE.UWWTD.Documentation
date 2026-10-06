@@ -15,6 +15,7 @@ guidance is finalised. Do not rely on it as final reporting guidance.
 :hidden:
 
 Article23/index
+SpatialPoints/index
 ```
 
 Documentation of the electronic reporting under the
@@ -30,6 +31,10 @@ Information will be added as it becomes available.
 :::{grid-item-card} {ref}`art23`
 Draft reporting guidance for national implementation programmes: purpose, timing, the six
 reporting tables, field references and open issues.
+:::
+:::{grid-item-card} {ref}`spatial-points`
+Proposal for a dataflow identifying and locating agglomerations, treatment plants and discharge
+points, referred to by the Article 22 and Article 23 reporting.
 :::
 ::::
 

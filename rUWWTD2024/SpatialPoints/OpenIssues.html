@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Decisions and open issues &#8212; WISE.UWWTD.Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=562b8974" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rUWWTD2024/SpatialPoints/OpenIssues';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Codelists" href="Codelists.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/wise.svg" class="logo__image only-light" alt="WISE UWWTD Documentation"/>
+    <img src="../../_static/wise.svg" class="logo__image only-dark pst-js-only" alt="WISE UWWTD Documentation"/>
+  
+  
+    <p class="title logo__title">Urban Waste Water Treatment Directive</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Article23/index.html">Article 23 - National implementation programmes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/Overview.html">Purpose and scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/Timing.html">Reporting timing and reference dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/Terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/DataModel.html">Data model overview</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Article23/PrivateDataset/index.html">Private dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/PrivateDataset/Contact.html">Contact</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Article23/DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Article23/DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DocumentsDataset/dcMetadata.html">dcMetadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DocumentsDataset/Reference.html">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DocumentsDataset/Document.html">Document</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/Codelists.html">Codelists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/OpenIssues.html">Open issues and proposed changes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Spatial points</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Decisions and open issues</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">rUWWTD - Directive (EU) 2024/3019</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Spatial points</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Decisions and open issues</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="decisions-and-open-issues">
+<span id="sp-open-issues"></span><h1>Decisions and open issues<a class="headerlink" href="#decisions-and-open-issues" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Draft
+The decisions below are settled for this draft and have been applied to the spatial points pages.
+They remain proposals until the dataflow is agreed. Only the items under “Remaining open issues”
+still need a decision or technical confirmation.</p>
+</div>
+<section id="decisions">
+<h2>Decisions<a class="headerlink" href="#decisions" title="Link to this heading">#</a></h2>
+<section id="sp-01-representative-point-of-an-agglomeration">
+<span id="sp-oi-representative-point"></span><h3>SP-01 Representative point of an agglomeration<a class="headerlink" href="#sp-01-representative-point-of-an-agglomeration" title="Link to this heading">#</a></h3>
+<p>A point already reported is kept where it still represents the agglomeration; a new one lies within
+its main settlement. The location of a treatment plant is not used instead (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
+</section>
+<section id="sp-02-coordinates-of-planned-facilities">
+<span id="sp-oi-planned-location"></span><h3>SP-02 Coordinates of planned facilities<a class="headerlink" href="#sp-02-coordinates-of-planned-facilities" title="Link to this heading">#</a></h3>
+<p>For treatment plants, <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> (<code class="docutils literal notranslate"><span class="pre">confirmed</span></code>, <code class="docutils literal notranslate"><span class="pre">provisional</span></code>, <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code>) allows a
+proposed plant without a selected site. Discharge points have no <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>: their latitude
+and longitude are always required, and a proposed discharge point is reported once its location is
+known. Coordinates are never filled with zero (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
+</section>
+<section id="sp-03-no-link-between-agglomerations-and-treatment-plants">
+<span id="sp-oi-agglomeration-uwwtp"></span><h3>SP-03 No link between agglomerations and treatment plants<a class="headerlink" href="#sp-03-no-link-between-agglomerations-and-treatment-plants" title="Link to this heading">#</a></h3>
+<p>No link table is requested. Article 23(1)(b) does not require one.</p>
+</section>
+<section id="sp-04-merges-splits-and-retirement">
+<span id="sp-oi-lineage"></span><h3>SP-04 Merges, splits and retirement<a class="headerlink" href="#sp-04-merges-splits-and-retirement" title="Link to this heading">#</a></h3>
+<p>A new object formed by a merger or split lists the codes it replaces in <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>,
+once. An agglomeration that absorbs another keeps its code and is reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> listing
+the absorbed code. <code class="docutils literal notranslate"><span class="pre">deletion</span></code> retires an object that is not replaced. Retired codes stay
+identifiable and are not reused; the reverse link and the history are kept centrally. Changes and
+retirement apply to current objects only, reactivation only to objects retired without
+replacement, and predecessors must be current objects of the same country and table. A delivery is
+checked against the accepted state before it, with all the parts of a split checked together
+(<a class="reference internal" href="index.html#sp-lifecycle-rules"><span class="std std-ref">Rules for changes and replacements</span></a>). The shared predecessor of the successors of the same split is
+explicitly allowed by the quality checks. The first delivery uses the migration baseline instead
+of the accepted state (SP-17).</p>
+</section>
+<section id="sp-05-names">
+<span id="sp-oi-name-language"></span><h3>SP-05 Names<a class="headerlink" href="#sp-05-names" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required, <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> optional, reusing the WISE
+spatial data name fields. <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> gives the language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code> as a code from the
+ISO 639-2 vocabulary of the Eionet Data Dictionary (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).
+A proposed treatment plant without an official name uses a working or descriptive name; assigning
+its official name later does not change its identifier.</p>
+</section>
+<section id="sp-06-proposed-facilities">
+<span id="sp-oi-condition"></span><h3>SP-06 Proposed facilities<a class="headerlink" href="#sp-06-proposed-facilities" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">planned</span></code> is dropped; <code class="docutils literal notranslate"><span class="pre">proposed</span></code> is the only pre-construction condition. It corresponds to the
+INSPIRE value <code class="docutils literal notranslate"><span class="pre">projected</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
+</section>
+<section id="sp-07-inspire-identifiers">
+<span id="sp-oi-inspire"></span><h3>SP-07 INSPIRE identifiers<a class="headerlink" href="#sp-07-inspire-identifiers" title="Link to this heading">#</a></h3>
+<p>Given only where an INSPIRE identifier already exists; never invented.</p>
+</section>
+<section id="sp-09-no-documents-or-metadata">
+<span id="sp-oi-metadata"></span><h3>SP-09 No documents or metadata<a class="headerlink" href="#sp-09-no-documents-or-metadata" title="Link to this heading">#</a></h3>
+<p>Only the three tables are reported. Coordinates are accepted in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places, without conversion or a declaration of the system.</p>
+</section>
+<section id="sp-10-storm-water-overflows">
+<span id="sp-oi-storm-overflows"></span><h3>SP-10 Storm water overflows<a class="headerlink" href="#sp-10-storm-water-overflows" title="Link to this heading">#</a></h3>
+<p>Not reported in this dataflow (<a class="reference internal" href="DischargePoint.html#sp-dischargepoint"><span class="std std-ref">DischargePoint</span></a>).</p>
+</section>
+<section id="sp-11-condition-codelist">
+<span id="sp-oi-vocabulary"></span><h3>SP-11 Condition codelist<a class="headerlink" href="#sp-11-condition-codelist" title="Link to this heading">#</a></h3>
+<p>The INSPIRE
+<a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist,
+checked on 6 October 2026, has the values <code class="docutils literal notranslate"><span class="pre">functional</span></code>, <code class="docutils literal notranslate"><span class="pre">projected</span></code>, <code class="docutils literal notranslate"><span class="pre">underConstruction</span></code>,
+<code class="docutils literal notranslate"><span class="pre">disused</span></code> and <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>, all valid. <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> uses them, with <code class="docutils literal notranslate"><span class="pre">projected</span></code> called
+<code class="docutils literal notranslate"><span class="pre">proposed</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
+</section>
+<section id="sp-11a-reactivation">
+<span id="sp-oi-reactivation"></span><h3>SP-11a Reactivation<a class="headerlink" href="#sp-11a-reactivation" title="Link to this heading">#</a></h3>
+<p>Three situations sound alike but are reported differently.</p>
+<p><strong>Reactivation: bringing back a retired code.</strong> An object reported with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> no longer
+existed and nothing replaced it; its code is retired but kept. If the same object comes back into
+use, it is reported with <code class="docutils literal notranslate"><span class="pre">reactivation</span></code>, under its old code, so that its history and earlier
+references link up again. For example, agglomeration XXAGG0300 falls below the reporting
+threshold and is reported with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>; years later it grows again and is reported with
+<code class="docutils literal notranslate"><span class="pre">reactivation</span></code>. WISE has the same value, for monitoring sites that were retired and later reused.</p>
+<p><strong>Not possible: reactivating an object that was replaced.</strong> A code retired because something
+replaced it, through a merger, split or absorption, cannot be reactivated. Otherwise the old code
+and its successor would both be in use, which would quietly undo the merger or split. For example,
+after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 with <code class="docutils literal notranslate"><span class="pre">reactivation</span></code>
+is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
+reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.</p>
+<p><strong>Reopening a closed facility is a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</strong> A treatment plant or discharge point that closes is
+not retired: it stays in the register with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or
+<code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. Bringing it back into use only changes that condition. For example, XXUWWTP0005
+closes (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>) and later reopens (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">functional</span></code>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Situation</p></th>
+<th class="head"><p>Code retired?</p></th>
+<th class="head"><p>Report</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Retired without replacement, back in use</p></td>
+<td><p>Yes, by <code class="docutils literal notranslate"><span class="pre">deletion</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Replaced by a merger, split or absorption</p></td>
+<td><p>Yes, superseded</p></td>
+<td><p>Not possible</p></td>
+</tr>
+<tr class="row-even"><td><p>Facility closed, now reopened</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="sp-12-discharge-points">
+<span id="sp-oi-dischargepoint-simplicity"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-12-discharge-points" title="Link to this heading">#</a></h3>
+<p>Reported like the other objects, with no link to a treatment plant or agglomeration. Discharge
+points are intended for Article 22 reporting and are not needed for Article 23. Completing this
+table is not a prerequisite for an Article 23 delivery.</p>
+</section>
+<section id="sp-14-codes-from-earlier-reporting">
+<span id="sp-oi-legacy-codes"></span><h3>SP-14 Codes from earlier reporting<a class="headerlink" href="#sp-14-codes-from-earlier-reporting" title="Link to this heading">#</a></h3>
+<p>Codes that meet the WISE identifier rules are copied unchanged. The others are converted by the
+EEA in fixed steps, and the EEA keeps the link to the original code. A wrong country prefix, a
+code over 42 characters, or two codes that become identical are flagged for the Member State to
+resolve, not fixed automatically (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p>
+<p><strong>Review decision, 5 October 2026.</strong> The data owner checked the data and reported that the
+collision scenario raised in the review does not occur. No additional collision-handling design
+is introduced; the existing flag-and-resolve rule stays.</p>
+</section>
+<section id="sp-15-identifier-schemes">
+<span id="sp-oi-schemes"></span><h3>SP-15 Identifier schemes<a class="headerlink" href="#sp-15-identifier-schemes" title="Link to this heading">#</a></h3>
+<p>Each table has one kind of code, so its scheme is fixed and added centrally, not reported
+(<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p>
+</section>
+<section id="sp-16-complete-rows">
+<span id="sp-oi-complete-rows"></span><h3>SP-16 Complete rows<a class="headerlink" href="#sp-16-complete-rows" title="Link to this heading">#</a></h3>
+<p>A reported row gives all the current values of the object. An optional field left empty clears its
+earlier value; an empty <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> reports no new replacement and never removes one
+already accepted. Omitting an object means no change (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
+</section>
+<section id="sp-17-first-reporting-with-nochange">
+<span id="sp-oi-first-reporting"></span><h3>SP-17 First reporting with noChange<a class="headerlink" href="#sp-17-first-reporting-with-nochange" title="Link to this heading">#</a></h3>
+<p>The first reporting is a table prefilled from the reporting under Directive 91/271/EEC, every row
+<code class="docutils literal notranslate"><span class="pre">noChange</span></code>. Lifecycle checks use the EEA-prepared migration baseline for this delivery, so the
+Member State can confirm, correct, retire or replace baseline objects before first acceptance.
+New codes must not reuse baseline codes. The accepted delivery puts the objects into the register;
+only then can Article 22 or Article 23 reference them. Later deliveries are checked against the
+accepted register. This follows the WISE GIS Guidance’s use of <code class="docutils literal notranslate"><span class="pre">noChange</span></code> for objects
+reported before and not replaced. A converted code is also reported as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>, not as the WISE
+<code class="docutils literal notranslate"><span class="pre">changeCode</span></code>: those original codes were not valid WISE identifiers, so this is the first WISE
+registration of the object, and the EEA keeps the link to the original code
+(<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>).</p>
+</section>
+</section>
+<section id="remaining-open-issues">
+<h2>Remaining open issues<a class="headerlink" href="#remaining-open-issues" title="Link to this heading">#</a></h2>
+<section id="sp-13-differences-from-wise">
+<span id="sp-oi-wise"></span><h3>SP-13 Differences from WISE<a class="headerlink" href="#sp-13-differences-from-wise" title="Link to this heading">#</a></h3>
+<p>This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Reporting
+<code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> instead of a WISE <code class="docutils literal notranslate"><span class="pre">geometry</span></code> is settled for this draft. Points still
+to settle:</p>
+<ul class="simple">
+<li><p>How an absorption, reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code>, is published to WISE.</p></li>
+<li><p>Whether <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> is kept, or replaced or complemented by the WISE operational period
+dates.</p></li>
+<li><p>Whether the EU Registry link, <code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code>, is still wanted.</p></li>
+</ul>
+</section>
+<section id="sp-20-reportnet">
+<span id="sp-oi-reportnet"></span><h3>SP-20 Reportnet<a class="headerlink" href="#sp-20-reportnet" title="Link to this heading">#</a></h3>
+<p>A dataflow that stays open, accepts only new, changed or retired objects, and lets other dataflows
+check codes against accepted objects needs technical confirmation in Reportnet. So does
+prefilling the reporting tables, for the first reporting from the reporting under Directive
+91/271/EEC and later with the accepted values. How an object reported by mistake is
+corrected through the helpdesk is to be agreed.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Codelists.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Codelists</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-01-representative-point-of-an-agglomeration">SP-01 Representative point of an agglomeration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-02-coordinates-of-planned-facilities">SP-02 Coordinates of planned facilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-03-no-link-between-agglomerations-and-treatment-plants">SP-03 No link between agglomerations and treatment plants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-04-merges-splits-and-retirement">SP-04 Merges, splits and retirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-05-names">SP-05 Names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-06-proposed-facilities">SP-06 Proposed facilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-07-inspire-identifiers">SP-07 INSPIRE identifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-09-no-documents-or-metadata">SP-09 No documents or metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-10-storm-water-overflows">SP-10 Storm water overflows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11-condition-codelist">SP-11 Condition codelist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11a-reactivation">SP-11a Reactivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-12-discharge-points">SP-12 Discharge points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-14-codes-from-earlier-reporting">SP-14 Codes from earlier reporting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-15-identifier-schemes">SP-15 Identifier schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-16-complete-rows">SP-16 Complete rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-17-first-reporting-with-nochange">SP-17 First reporting with noChange</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remaining-open-issues">Remaining open issues</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-13-differences-from-wise">SP-13 Differences from WISE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-20-reportnet">SP-20 Reportnet</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/edit/main/docs/rUWWTD2024/SpatialPoints/OpenIssues.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/rUWWTD2024/SpatialPoints/OpenIssues.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.22.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

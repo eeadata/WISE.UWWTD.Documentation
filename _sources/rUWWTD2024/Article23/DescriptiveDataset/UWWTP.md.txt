@@ -9,12 +9,13 @@ funding fields are still under discussion (see the open issues linked below).
 **Table status:** Conditional. Required where investments are planned in urban wastewater
 treatment plants to implement the Directive, or to renew, upgrade or replace existing
 infrastructure.
-**Rows:** one row per plant. `code` is the primary key.
+**Rows:** one row per plant. `thematicIdIdentifier` is the primary key.
 
 The table is used to monitor planned investments in treatment plants, the measures they fund and
-their funding sources. According to the draft, rows are linked to the plants already reported
-under Directive 91/271/EEC. A plant reported for the first time has no such link, so its
-coordinates are required ({ref}`art23-oi-coordinates`).
+their funding sources. Each row refers to a treatment plant in the {ref}`sp-uwwtp` table of the
+{ref}`spatial-points` dataflow, by its `thematicIdIdentifier`. The plant's name and location are
+reported there, not here. A plant reported for the first time is reported there first, and its
+code must have been accepted before this table can refer to it ({ref}`sp-references`).
 
 The draft lists plants that are currently non-compliant, face upcoming deadlines, or are at risk
 of future non-compliance, for example because of capacity constraints, more stringent
@@ -44,30 +45,16 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - Type
   - Status
   - Condition or codelist
-* - `code`
+* - `thematicIdIdentifier`
   - Plant code
-  - Unique code of the treatment plant. Primary key.
+  - Code of the treatment plant, as in the spatial points dataflow. Primary key. Its identifier
+    scheme is always `euUWWTPCode`, the only one used, so the scheme is not reported.
   - wiseIdentifier
   - Required
-  - –
-* - `name`
-  - Plant name
-  - Name of the treatment plant.
-  - string255
-  - Required
-  - –
-* - `latitude`
-  - Latitude
-  - Latitude of the treatment plant (ETRS89 or WGS-84, decimal degrees).
-  - NumberDecimalType
-  - Conditional
-  - Required if `code` was not reported under Directive 91/271/EEC
-* - `longitude`
-  - Longitude
-  - Longitude of the treatment plant (ETRS89 or WGS-84, decimal degrees).
-  - NumberDecimalType
-  - Conditional
-  - Required if `code` was not reported under Directive 91/271/EEC
+  - Accepted code of a
+    treatment plant of the
+    country in
+    {ref}`sp-uwwtp`
 * - `status`
   - Status
   - Status of the plant at the reference year.
@@ -211,11 +198,6 @@ instruction to report 0 if none.
 * **Several measures at one plant.** You can select several measures, but each plant has one row
   with one set of dates and one investment total. How to report measures with different dates is
   open ({ref}`art23-oi-multiple-measures`).
-* **Coordinates.** As under Directive 91/271/EEC, report ETRS89 or WGS-84 decimal degrees; the
-  two differ by about a metre in Europe. Use a full stop as the decimal separator, for example
-  `52.37403` and `4.88969`, and a negative longitude west of Greenwich. Degrees, minutes and
-  seconds are not accepted. Five decimal places locate a point to about a metre, which is more
-  than enough.
 * **Zero versus unknown.** 0 means none planned. See {ref}`art23-investments-zero-unknown`.
 * **Reference year.** The draft does not define the reference year of `status`
   ({ref}`art23-oi-reference-dates`).

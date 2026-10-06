@@ -258,15 +258,21 @@ in the same way; its tables are not defined yet.
 (sp-location)=
 ## Locations
 
-**Coordinates as numbers.** Report latitude and longitude in decimal degrees, using ETRS89 or
-WGS-84. Either is accepted. No conversion between the two systems or separate declaration of the
-system is required.
+**Coordinates as numbers.** Report latitude and longitude in decimal degrees, in ETRS89
+(EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places. Either system is accepted.
+No conversion between the two systems or separate declaration of the system is required.
 
 Use existing coordinates or read them from a map that provides latitude and longitude in either
 system. Enter the two numbers directly in the table; no GIS file or metadata is needed. Use a
 full stop as the decimal separator, for example `52.374031` and `4.889690`, and a negative
-longitude west of Greenwich. Use the precision available; six decimal places are not required
-and do not imply that the location is accurate to 0.1 m.
+longitude west of Greenwich. Four decimal places locate a point to about 10 m; more are accepted.
+
+| Decimal places | Precision |
+| --- | --- |
+| 3 | about 100 m |
+| 4 | about 10 m |
+| 5 | about 1 m |
+| 6 | about 10 cm |
 
 **Agglomerations.** The point represents the agglomeration; it is not its boundary. A point
 already reported is kept where it still represents the agglomeration. A new agglomeration is
@@ -274,22 +280,22 @@ located by a point within its main settlement, chosen by the reporting authority
 a treatment plant is not used in its place. An unsuitable earlier point is corrected as a
 `change`, keeping the code.
 
-**Treatment plants.** The location of a plant may not yet be known while it is projected.
+**Treatment plants.** The location of a plant may not yet be known while it is proposed.
 
 | `conditionOfFacility` | `locationStatus` | Coordinates |
 | --- | --- | --- |
-| `projected`, site not selected | `notYetKnown` | empty |
-| `projected`, provisional site known | `provisional` | an approximate point |
-| `projected`, site selected | `confirmed` | the site |
+| `proposed`, site not selected | `notYetKnown` | empty |
+| `proposed`, provisional site known | `provisional` | an approximate point |
+| `proposed`, site selected | `confirmed` | the site |
 | `underConstruction` or `functional` | `confirmed` | the site |
 | `disused` or `decommissioned` | `confirmed` | the known location, kept |
 
-When the site of a projected plant is selected, the same code is kept and the plant is reported as
+When the site of a proposed plant is selected, the same code is kept and the plant is reported as
 a `change`.
 
 **Discharge points.** Latitude and longitude are always required, whatever the condition of the
-discharge point. A projected discharge point is reported once its location is known; its condition
-stays `projected` until it is built.
+discharge point. A proposed discharge point is reported once its location is known; its condition
+stays `proposed` until it is built.
 
 A location is never filled with zero, or with the point of the agglomeration a facility serves.
 
@@ -311,7 +317,7 @@ WISE spatial data definitions ({ref}`sp-sources`); it is a convention of this re
 requirement of the Directive. Where the earlier reporting did not give the language, the reporter
 adds it the first time the object is updated.
 
-A projected treatment plant without an official name uses a working or descriptive name. When
+A proposed treatment plant without an official name uses a working or descriptive name. When
 the official name is assigned, update the name and keep the same identifier ({ref}`sp-uwwtp`).
 
 ## INSPIRE identifiers
@@ -393,10 +399,15 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
 * - Agglomerations and discharge points have coordinates; treatment plants have them unless
     `locationStatus` is `notYetKnown`
   - Blocker
-* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `projected`
+* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `proposed`
   - Error
 * - Coordinates are not both zero
   - Error
+* - A new or changed location has at least four decimal places
+  - Error
+* - A location taken over from the reporting under Directive 91/271/EEC has at least four decimal
+    places
+  - Warning
 * - `inspireIdLocalId` and `inspireIdNamespace` are both given or both empty
   - Error
 * - `nameText` and `nameLanguage` are given, and `nameLanguage` is in the ISO 639-2 vocabulary
@@ -432,6 +443,9 @@ not a copy of the WISE spatial data schema.
   [WFDCommon_2022.xsd](https://dd.eionet.europa.eu/schemas/WFD2022/WFDCommon_2022.xsd):
   `NumberDecimalExtendedType`, a plain decimal number. Its `NumberDecimalType` is not used for
   coordinates, as it allows only non-negative values and the codes `-9999`, `-8888` and `-7777`.
+* INSPIRE condition of facility codelist,
+  [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue),
+  checked on 6 October 2026.
 * WISE evolution type vocabulary, Eionet Data Dictionary,
   [WiseEvolutionTypeValue](https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue),
   released 28 September 2026.

@@ -20,7 +20,7 @@ objects reported under Directive 91/271/EEC; a Member State then reports only wh
 agglomerations. Storm water overflows are not reported in this dataflow
 ({ref}`sp-oi-storm-overflows`).
 
-The location of a discharge point is always required, whatever its condition: a projected
+The location of a discharge point is always required, whatever its condition: a proposed
 discharge point is reported once its location is known ({ref}`sp-location`).
 
 ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_DischargePoint_ClassDiagram.mmd
@@ -68,8 +68,9 @@ not a retirement. See {ref}`sp-lifecycle`.
   - Condition
 * - `thematicIdIdentifier`
   - Code
-  - Code of the discharge point. A new discharge point receives a new code; an existing one
-    keeps its code ({ref}`sp-reporting`).
+  - Code of the discharge point. Its identifier scheme is always `euDischargePointCode`, the only
+    one for this table, so the scheme is not reported but added centrally ({ref}`sp-cl-scheme`). A
+    new discharge point receives a new code; an existing one keeps its code ({ref}`sp-reporting`).
   - wiseIdentifier
   - Required
   - –
@@ -116,8 +117,8 @@ not a retirement. See {ref}`sp-lifecycle`.
   - –
 * - `latitude`
   - Latitude
-  - Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
-    accepted; use the precision available.
+  - Latitude of the location in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+    (EPSG:4326), with at least four decimal places.
   - NumberDecimalExtendedType
   - Required
   - –
@@ -155,8 +156,9 @@ not a retirement. See {ref}`sp-lifecycle`.
   - {ref}`sp-cl-evolution`
 * - `supersedesIdentifier`
   - Supersedes
-  - Codes of the discharge points this one replaces, given once, in the delivery in which
-    the change happens. Several codes are separated by commas.
+  - Codes of the discharge points this one replaces, given once, in the delivery in which the change
+    happens. They are codes of the same scheme, `euDischargePointCode`. Several codes are separated
+    by commas.
   - wiseIdentifier [0..n]
   - Conditional
   - Required with

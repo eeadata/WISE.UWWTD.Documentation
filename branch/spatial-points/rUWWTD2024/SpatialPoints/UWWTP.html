@@ -765,10 +765,10 @@ window.runMermaid = runMermaid;</script>
 plants (<a class="reference internal" href="index.html#sp-first-reporting"><span class="std std-ref">first reporting</span></a>). Later, report only new, changed or retired
 objects; unchanged rows may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per treatment plant reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
-<p>The table identifies and locates every urban wastewater treatment plant, including projected ones,
+<p>The table identifies and locates every urban wastewater treatment plant, including proposed ones,
 with its code, name, location and condition. The dataflow starts from the objects reported under
 Directive 91/271/EEC; a Member State then reports only what changes (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
-<p>A projected plant whose site has not been chosen is reported with <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
+<p>A proposed plant whose site has not been chosen is reported with <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> =
 <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and no coordinates. When its site is chosen, the same code is kept and the plant is
 reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>). A plant that closes keeps its code, with its
 condition changed (<a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>).</p>
@@ -814,11 +814,11 @@ reporting uses to refer to it (<a class="reference internal" href="index.html#sp
 States that already publish the treatment plant in a national INSPIRE dataset; they let the two
 records be matched. Otherwise they stay empty.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.
-For a projected plant without an official name, give a working or descriptive name. When the
+For a proposed plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the same identifier.</p>
 <p><strong>Location and state.</strong> The position of the plant in decimal degrees, and <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>, which
 says whether that position is the actual site, a provisional one, or not yet known.
-<code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> says whether the plant is projected, under construction, in use or out of
+<code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> says whether the plant is proposed, under construction, in use or out of
 use. <code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code> links it to the same installation in the EU Registry, where it is
 registered there.</p>
 <p><strong>Change.</strong> <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new plant, a change, a
@@ -850,10 +850,11 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
-<td><p>Code of the treatment plant. A new plant receives a new code; an existing one keeps its
-code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).
-A code from the reporting under Directive 91/271/EEC that does not meet the WISE
-identifier rules is converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
+<td><p>Code of the treatment plant. Its identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, the only one for
+this table, so the scheme is not reported but added centrally (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>). A new plant
+receives a new code; an existing one keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>). A code from the
+reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is converted
+(<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -886,7 +887,7 @@ given</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code></p></td>
 <td><p>Name</p></td>
-<td><p>Official name of the treatment plant, or a working or descriptive name for a projected plant
+<td><p>Official name of the treatment plant, or a working or descriptive name for a proposed plant
 that has no official name yet.</p></td>
 <td><p>string254</p></td>
 <td><p>Required</p></td>
@@ -916,8 +917,8 @@ not yet known.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
-<td><p>Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
-accepted; use the precision available.</p></td>
+<td><p>Latitude of the location in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places.</p></td>
 <td><p>NumberDecimalExtendedType</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required unless
@@ -935,7 +936,7 @@ accepted; use the precision available.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
 <td><p>Condition of facility</p></td>
-<td><p>Physical state of the plant: projected, under construction, in use, or no
+<td><p>Physical state of the plant: proposed, under construction, in use, or no
 longer in use.</p></td>
 <td><p>ConditionOfFacility</p></td>
 <td><p>Required</p></td>
@@ -959,8 +960,9 @@ retirement.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
-<td><p>Codes of the treatment plants this one replaces, given once, in the delivery in which
-the change happens. Several codes are separated by commas.</p></td>
+<td><p>Codes of the treatment plants this one replaces, given once, in the delivery in which the change
+happens. They are codes of the same scheme, <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. Several codes are separated by
+commas.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required with

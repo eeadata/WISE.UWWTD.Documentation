@@ -58,10 +58,11 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - Condition
 * - `thematicIdIdentifier`
   - Code
-  - Code of the agglomeration. A new agglomeration receives a new code; an existing one keeps
-    its code ({ref}`sp-reporting`).
-    A code from the reporting under Directive 91/271/EEC that does not meet the WISE
-    identifier rules is converted ({ref}`sp-code-conversion`).
+  - Code of the agglomeration. Its identifier scheme is always `euAgglomerationCode`, the only one
+    for this table, so the scheme is not reported but added centrally ({ref}`sp-cl-scheme`). A new
+    agglomeration receives a new code; an existing one keeps its code ({ref}`sp-reporting`). A code
+    from the reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is
+    converted ({ref}`sp-code-conversion`).
   - wiseIdentifier
   - Required
   - –
@@ -108,8 +109,8 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - –
 * - `latitude`
   - Latitude
-  - Latitude of the representative point in decimal degrees. ETRS89 or
-    WGS-84 is accepted; use the precision available.
+  - Latitude of the representative point in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+    (EPSG:4326), with at least four decimal places.
   - NumberDecimalExtendedType
   - Required
   - –
@@ -128,8 +129,9 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - {ref}`sp-cl-evolution`
 * - `supersedesIdentifier`
   - Supersedes
-  - Codes of the agglomerations this one replaces, given once, in the delivery in which
-    the change happens. Several codes are separated by commas.
+  - Codes of the agglomerations this one replaces, given once, in the delivery in which the change
+    happens. They are codes of the same scheme, `euAgglomerationCode`. Several codes are separated
+    by commas.
   - wiseIdentifier [0..n]
   - Conditional
   - Required with

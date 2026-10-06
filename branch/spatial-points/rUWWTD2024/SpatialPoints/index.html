@@ -1154,20 +1154,41 @@ are not rewritten to point to successors.</p></li>
 </section>
 <section id="locations">
 <span id="sp-location"></span><h2>Locations<a class="headerlink" href="#locations" title="Link to this heading">#</a></h2>
-<p><strong>Coordinates as numbers.</strong> Report latitude and longitude in decimal degrees, using ETRS89 or
-WGS-84. Either is accepted. No conversion between the two systems or separate declaration of the
-system is required.</p>
+<p><strong>Coordinates as numbers.</strong> Report latitude and longitude in decimal degrees, in ETRS89
+(EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places. Either system is accepted.
+No conversion between the two systems or separate declaration of the system is required.</p>
 <p>Use existing coordinates or read them from a map that provides latitude and longitude in either
 system. Enter the two numbers directly in the table; no GIS file or metadata is needed. Use a
 full stop as the decimal separator, for example <code class="docutils literal notranslate"><span class="pre">52.374031</span></code> and <code class="docutils literal notranslate"><span class="pre">4.889690</span></code>, and a negative
-longitude west of Greenwich. Use the precision available; six decimal places are not required
-and do not imply that the location is accurate to 0.1 m.</p>
+longitude west of Greenwich. Four decimal places locate a point to about 10 m; more are accepted.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Decimal places</p></th>
+<th class="head"><p>Precision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>about 100 m</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>about 10 m</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>about 1 m</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>about 10 cm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><strong>Agglomerations.</strong> The point represents the agglomeration; it is not its boundary. A point
 already reported is kept where it still represents the agglomeration. A new agglomeration is
 located by a point within its main settlement, chosen by the reporting authority. The location of
 a treatment plant is not used in its place. An unsuitable earlier point is corrected as a
 <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the code.</p>
-<p><strong>Treatment plants.</strong> The location of a plant may not yet be known while it is projected.</p>
+<p><strong>Treatment plants.</strong> The location of a plant may not yet be known while it is proposed.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></th>
@@ -1176,15 +1197,15 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">projected</span></code>, site not selected</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">proposed</span></code>, site not selected</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 <td><p>empty</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">projected</span></code>, provisional site known</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">proposed</span></code>, provisional site known</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">provisional</span></code></p></td>
 <td><p>an approximate point</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">projected</span></code>, site selected</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">proposed</span></code>, site selected</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">confirmed</span></code></p></td>
 <td><p>the site</p></td>
 </tr>
@@ -1199,11 +1220,11 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 </tbody>
 </table>
 </div>
-<p>When the site of a projected plant is selected, the same code is kept and the plant is reported as
+<p>When the site of a proposed plant is selected, the same code is kept and the plant is reported as
 a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</p>
 <p><strong>Discharge points.</strong> Latitude and longitude are always required, whatever the condition of the
-discharge point. A projected discharge point is reported once its location is known; its condition
-stays <code class="docutils literal notranslate"><span class="pre">projected</span></code> until it is built.</p>
+discharge point. A proposed discharge point is reported once its location is known; its condition
+stays <code class="docutils literal notranslate"><span class="pre">proposed</span></code> until it is built.</p>
 <p>A location is never filled with zero, or with the point of the agglomeration a facility serves.</p>
 </section>
 <section id="names">
@@ -1222,7 +1243,7 @@ agglomerations, treatment plants and discharge points alike. This reuses the nam
 WISE spatial data definitions (<a class="reference internal" href="#sp-sources"><span class="std std-ref">Sources</span></a>); it is a convention of this reporting, not a
 requirement of the Directive. Where the earlier reporting did not give the language, the reporter
 adds it the first time the object is updated.</p>
-<p>A projected treatment plant without an official name uses a working or descriptive name. When
+<p>A proposed treatment plant without an official name uses a working or descriptive name. When
 the official name is assigned, update the name and keep the same identifier (<a class="reference internal" href="UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a>).</p>
 </section>
 <section id="inspire-identifiers">
@@ -1331,11 +1352,18 @@ objects</p></td>
 <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> is <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code> and <code class="docutils literal notranslate"><span class="pre">provisional</span></code> occur only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">proposed</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p>Coordinates are not both zero</p></td>
 <td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>A new or changed location has at least four decimal places</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>A location taken over from the reporting under Directive 91/271/EEC has at least four decimal
+places</p></td>
+<td><p>Warning</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
 <td><p>Error</p></td>
@@ -1375,6 +1403,9 @@ All three use the same name fields.</p></li>
 <a class="reference external" href="https://dd.eionet.europa.eu/schemas/WFD2022/WFDCommon_2022.xsd">WFDCommon_2022.xsd</a>:
 <code class="docutils literal notranslate"><span class="pre">NumberDecimalExtendedType</span></code>, a plain decimal number. Its <code class="docutils literal notranslate"><span class="pre">NumberDecimalType</span></code> is not used for
 coordinates, as it allows only non-negative values and the codes <code class="docutils literal notranslate"><span class="pre">-9999</span></code>, <code class="docutils literal notranslate"><span class="pre">-8888</span></code> and <code class="docutils literal notranslate"><span class="pre">-7777</span></code>.</p></li>
+<li><p>INSPIRE condition of facility codelist,
+<a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a>,
+checked on 6 October 2026.</p></li>
 <li><p>WISE evolution type vocabulary, Eionet Data Dictionary,
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue">WiseEvolutionTypeValue</a>,
 released 28 September 2026.</p></li>

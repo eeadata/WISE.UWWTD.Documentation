@@ -531,17 +531,17 @@ A UWWTD codelist.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">confirmed</span></code></p></td>
 <td><p>Confirmed</p></td>
 <td><p>The coordinates are those of the selected or existing site.</p></td>
-<td><p>Required for every condition other than <code class="docutils literal notranslate"><span class="pre">projected</span></code>.</p></td>
+<td><p>Required for every condition other than <code class="docutils literal notranslate"><span class="pre">proposed</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">provisional</span></code></p></td>
 <td><p>Provisional</p></td>
 <td><p>The coordinates are an approximate point for a site not yet selected.</p></td>
-<td><p>Only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code>.</p></td>
+<td><p>Only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">proposed</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code></p></td>
 <td><p>Not yet known</p></td>
 <td><p>No site has been selected and no coordinates are given.</p></td>
-<td><p>Only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">projected</span></code>.</p></td>
+<td><p>Only with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> = <code class="docutils literal notranslate"><span class="pre">proposed</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -552,7 +552,9 @@ A UWWTD codelist.</p>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ConditionOfFacility</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> in the UWWTP and DischargePoint tables. It describes the physical
 state of the facility only. Whether an investment has been approved belongs to investment planning,
-not here.</p>
+not here. The values follow the INSPIRE
+<a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist,
+except that its <code class="docutils literal notranslate"><span class="pre">projected</span></code> is called <code class="docutils literal notranslate"><span class="pre">proposed</span></code> here (<a class="reference internal" href="OpenIssues.html#sp-oi-vocabulary"><span class="std std-ref">SP-11 Condition codelist</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
 <caption><span class="caption-number">Table 49 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
@@ -569,10 +571,10 @@ not here.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">projected</span></code></p></td>
-<td><p>Projected</p></td>
-<td><p>The facility is being designed; construction has not started.</p></td>
-<td><p>The only pre-construction value.</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">proposed</span></code></p></td>
+<td><p>Proposed</p></td>
+<td><p>The facility is planned or being designed; construction has not started.</p></td>
+<td><p>The only pre-construction value. INSPIRE value <code class="docutils literal notranslate"><span class="pre">projected</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">underConstruction</span></code></p></td>
 <td><p>Under construction</p></td>
@@ -592,7 +594,7 @@ not here.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">decommissioned</span></code></p></td>
 <td><p>Decommissioned</p></td>
 <td><p>The facility has been closed and taken out of service.</p></td>
-<td><p>Its known location is kept. To be confirmed against the INSPIRE register (<a class="reference internal" href="OpenIssues.html#sp-oi-vocabulary"><span class="std std-ref">SP-11 Condition codelist</span></a>).</p></td>
+<td><p>Its known location is kept.</p></td>
 </tr>
 </tbody>
 </table>

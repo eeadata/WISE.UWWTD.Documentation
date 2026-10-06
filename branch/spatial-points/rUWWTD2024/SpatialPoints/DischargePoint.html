@@ -776,7 +776,7 @@ objects reported under Directive 91/271/EEC; a Member State then reports only wh
 <p><strong>Scope.</strong> The table covers the outlets of treatment plants and direct untreated discharges from
 agglomerations. Storm water overflows are not reported in this dataflow
 (<a class="reference internal" href="OpenIssues.html#sp-oi-storm-overflows"><span class="std std-ref">SP-10 Storm water overflows</span></a>).</p>
-<p>The location of a discharge point is always required, whatever its condition: a projected
+<p>The location of a discharge point is always required, whatever its condition: a proposed
 discharge point is reported once its location is known (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
 <figure class="align-center" id="spatialpoints-dischargepoint-classdiagram">
 <pre  class="mermaid">
@@ -857,8 +857,9 @@ not a retirement. See <a class="reference internal" href="index.html#sp-lifecycl
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
-<td><p>Code of the discharge point. A new discharge point receives a new code; an existing one
-keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p></td>
+<td><p>Code of the discharge point. Its identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code>, the only
+one for this table, so the scheme is not reported but added centrally (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>). A
+new discharge point receives a new code; an existing one keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -912,8 +913,8 @@ given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
-<td><p>Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
-accepted; use the precision available.</p></td>
+<td><p>Latitude of the location in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places.</p></td>
 <td><p>NumberDecimalExtendedType</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -957,8 +958,9 @@ retirement.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
-<td><p>Codes of the discharge points this one replaces, given once, in the delivery in which
-the change happens. Several codes are separated by commas.</p></td>
+<td><p>Codes of the discharge points this one replaces, given once, in the delivery in which the change
+happens. They are codes of the same scheme, <code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code>. Several codes are separated
+by commas.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required with

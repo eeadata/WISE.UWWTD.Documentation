@@ -419,8 +419,8 @@ its main settlement. The location of a treatment plant is not used instead (<a c
 <section id="sp-02-coordinates-of-planned-facilities">
 <span id="sp-oi-planned-location"></span><h3>SP-02 Coordinates of planned facilities<a class="headerlink" href="#sp-02-coordinates-of-planned-facilities" title="Link to this heading">#</a></h3>
 <p>For treatment plants, <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> (<code class="docutils literal notranslate"><span class="pre">confirmed</span></code>, <code class="docutils literal notranslate"><span class="pre">provisional</span></code>, <code class="docutils literal notranslate"><span class="pre">notYetKnown</span></code>) allows a
-projected plant without a selected site. Discharge points have no <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>: their latitude
-and longitude are always required, and a projected discharge point is reported once its location is
+proposed plant without a selected site. Discharge points have no <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code>: their latitude
+and longitude are always required, and a proposed discharge point is reported once its location is
 known. Coordinates are never filled with zero (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
 </section>
 <section id="sp-03-no-link-between-agglomerations-and-treatment-plants">
@@ -445,12 +445,13 @@ of the accepted state (SP-17).</p>
 <p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are required, <code class="docutils literal notranslate"><span class="pre">nameTextInternational</span></code> optional, reusing the WISE
 spatial data name fields. <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> gives the language of <code class="docutils literal notranslate"><span class="pre">nameText</span></code> as a code from the
 ISO 639-2 vocabulary of the Eionet Data Dictionary (<a class="reference internal" href="index.html#sp-names"><span class="std std-ref">Names</span></a>).
-A projected treatment plant without an official name uses a working or descriptive name; assigning
+A proposed treatment plant without an official name uses a working or descriptive name; assigning
 its official name later does not change its identifier.</p>
 </section>
-<section id="sp-06-projected-facilities">
-<span id="sp-oi-condition"></span><h3>SP-06 Projected facilities<a class="headerlink" href="#sp-06-projected-facilities" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">planned</span></code> is dropped; <code class="docutils literal notranslate"><span class="pre">projected</span></code> is the only pre-construction condition (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
+<section id="sp-06-proposed-facilities">
+<span id="sp-oi-condition"></span><h3>SP-06 Proposed facilities<a class="headerlink" href="#sp-06-proposed-facilities" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">planned</span></code> is dropped; <code class="docutils literal notranslate"><span class="pre">proposed</span></code> is the only pre-construction condition. It corresponds to the
+INSPIRE value <code class="docutils literal notranslate"><span class="pre">projected</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
 </section>
 <section id="sp-07-inspire-identifiers">
 <span id="sp-oi-inspire"></span><h3>SP-07 INSPIRE identifiers<a class="headerlink" href="#sp-07-inspire-identifiers" title="Link to this heading">#</a></h3>
@@ -458,12 +459,20 @@ its official name later does not change its identifier.</p>
 </section>
 <section id="sp-09-no-documents-or-metadata">
 <span id="sp-oi-metadata"></span><h3>SP-09 No documents or metadata<a class="headerlink" href="#sp-09-no-documents-or-metadata" title="Link to this heading">#</a></h3>
-<p>Only the three tables are reported. ETRS89 or WGS-84 coordinates are accepted, without conversion,
-a declaration of the system, or a required number of decimal places.</p>
+<p>Only the three tables are reported. Coordinates are accepted in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places, without conversion or a declaration of the system.</p>
 </section>
 <section id="sp-10-storm-water-overflows">
 <span id="sp-oi-storm-overflows"></span><h3>SP-10 Storm water overflows<a class="headerlink" href="#sp-10-storm-water-overflows" title="Link to this heading">#</a></h3>
 <p>Not reported in this dataflow (<a class="reference internal" href="DischargePoint.html#sp-dischargepoint"><span class="std std-ref">DischargePoint</span></a>).</p>
+</section>
+<section id="sp-11-condition-codelist">
+<span id="sp-oi-vocabulary"></span><h3>SP-11 Condition codelist<a class="headerlink" href="#sp-11-condition-codelist" title="Link to this heading">#</a></h3>
+<p>The INSPIRE
+<a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist,
+checked on 6 October 2026, has the values <code class="docutils literal notranslate"><span class="pre">functional</span></code>, <code class="docutils literal notranslate"><span class="pre">projected</span></code>, <code class="docutils literal notranslate"><span class="pre">underConstruction</span></code>,
+<code class="docutils literal notranslate"><span class="pre">disused</span></code> and <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>, all valid. <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> uses them, with <code class="docutils literal notranslate"><span class="pre">projected</span></code> called
+<code class="docutils literal notranslate"><span class="pre">proposed</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
 </section>
 <section id="sp-11a-reactivation">
 <span id="sp-oi-reactivation"></span><h3>SP-11a Reactivation<a class="headerlink" href="#sp-11a-reactivation" title="Link to this heading">#</a></h3>
@@ -551,11 +560,6 @@ registration of the object, and the EEA keeps the link to the original code
 </section>
 <section id="remaining-open-issues">
 <h2>Remaining open issues<a class="headerlink" href="#remaining-open-issues" title="Link to this heading">#</a></h2>
-<section id="sp-11-condition-codelist">
-<span id="sp-oi-vocabulary"></span><h3>SP-11 Condition codelist<a class="headerlink" href="#sp-11-condition-codelist" title="Link to this heading">#</a></h3>
-<p>The current INSPIRE register for the condition of a facility could not be retrieved. Its accepted
-values should be confirmed, including the status of <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>.</p>
-</section>
 <section id="sp-13-differences-from-wise">
 <span id="sp-oi-wise"></span><h3>SP-13 Differences from WISE<a class="headerlink" href="#sp-13-differences-from-wise" title="Link to this heading">#</a></h3>
 <p>This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Reporting
@@ -623,10 +627,11 @@ corrected through the helpdesk is to be agreed.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-03-no-link-between-agglomerations-and-treatment-plants">SP-03 No link between agglomerations and treatment plants</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-04-merges-splits-and-retirement">SP-04 Merges, splits and retirement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-05-names">SP-05 Names</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-06-projected-facilities">SP-06 Projected facilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-06-proposed-facilities">SP-06 Proposed facilities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-07-inspire-identifiers">SP-07 INSPIRE identifiers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-09-no-documents-or-metadata">SP-09 No documents or metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-10-storm-water-overflows">SP-10 Storm water overflows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11-condition-codelist">SP-11 Condition codelist</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11a-reactivation">SP-11a Reactivation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-12-discharge-points">SP-12 Discharge points</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-14-codes-from-earlier-reporting">SP-14 Codes from earlier reporting</a></li>
@@ -636,7 +641,6 @@ corrected through the helpdesk is to be agreed.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remaining-open-issues">Remaining open issues</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-11-condition-codelist">SP-11 Condition codelist</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-13-differences-from-wise">SP-13 Differences from WISE</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-20-reportnet">SP-20 Reportnet</a></li>
 </ul>

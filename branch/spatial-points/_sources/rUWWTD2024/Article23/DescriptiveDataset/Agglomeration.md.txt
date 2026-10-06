@@ -46,7 +46,8 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Condition or codelist
 * - `thematicIdIdentifier`
   - Agglomeration code
-  - Code of the agglomeration, as in the spatial points dataflow. Primary key.
+  - Code of the agglomeration, as in the spatial points dataflow. Primary key. Its identifier
+    scheme is always `euAgglomerationCode`, the only one used, so the scheme is not reported.
   - wiseIdentifier
   - Required
   - Accepted code of an

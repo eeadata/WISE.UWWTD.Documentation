@@ -849,10 +849,11 @@ another and keeps its code. See <a class="reference internal" href="index.html#s
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
-<td><p>Code of the agglomeration. A new agglomeration receives a new code; an existing one keeps
-its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).
-A code from the reporting under Directive 91/271/EEC that does not meet the WISE
-identifier rules is converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
+<td><p>Code of the agglomeration. Its identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, the only one
+for this table, so the scheme is not reported but added centrally (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>). A new
+agglomeration receives a new code; an existing one keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>). A code
+from the reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is
+converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -906,8 +907,8 @@ given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
 <td><p>Latitude</p></td>
-<td><p>Latitude of the representative point in decimal degrees. ETRS89 or
-WGS-84 is accepted; use the precision available.</p></td>
+<td><p>Latitude of the representative point in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places.</p></td>
 <td><p>NumberDecimalExtendedType</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -929,8 +930,9 @@ retirement.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code></p></td>
 <td><p>Supersedes</p></td>
-<td><p>Codes of the agglomerations this one replaces, given once, in the delivery in which
-the change happens. Several codes are separated by commas.</p></td>
+<td><p>Codes of the agglomerations this one replaces, given once, in the delivery in which the change
+happens. They are codes of the same scheme, <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. Several codes are separated
+by commas.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required with

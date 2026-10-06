@@ -10,8 +10,8 @@ Every codelist below is named as a WISE enumeration type, given under the headin
 each value the notation to report, a short label and a definition, following
 {ref}`art23-notation`.
 
-Only the plant `measure` field is explicitly described as allowing more than one value. For the
-other codelists, the draft does not say whether several values may be selected.
+Only the `treatmentPlantMeasure` field is explicitly described as allowing more than one value.
+For the other codelists, the draft does not say whether several values may be selected.
 
 (art23-cl-deadline-ext)=
 ## Deadline extension - Articles 3(2) and 6(3)
@@ -275,7 +275,7 @@ Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomerati
 
 **Type:** `TreatmentPlantMeasure_Enum`
 
-Used by the `measure` field of the {ref}`art23-uwwtp` table. Select one or more values.
+Used by the `treatmentPlantMeasure` field of the {ref}`art23-uwwtp` table. Select one or more values.
 
 :::{list-table} Proposed treatment plant measures
 :header-rows: 1
@@ -346,7 +346,7 @@ Used by the `measure` field of the {ref}`art23-uwwtp` table. Select one or more 
 
 **Type:** `AgglomerationMeasure_Enum`
 
-Used by the `measures` field of the {ref}`art23-agglomeration` table.
+Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table.
 
 :::{list-table} Proposed agglomeration measures
 :header-rows: 1

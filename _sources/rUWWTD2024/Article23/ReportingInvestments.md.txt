@@ -17,12 +17,12 @@ question, this is said and the open issue is linked. No rules have been added be
 * - Measures at an identified treatment plant: a new plant, an upgrade to tertiary or quaternary
     treatment, stricter treatment following the risk assessment, or renewal including capacity
     increase
-  - The plant's row in {ref}`art23-uwwtp`: measures in `measure`, cost in `investment`
+  - The plant's row in {ref}`art23-uwwtp`: measures in `treatmentPlantMeasure`, cost in `investment`
 * - Measures in the collecting system or individual systems of an identified agglomeration: new
     collecting systems, storm water overflow reduction, measures resulting from an IUWMP, or
     renewal
-  - The agglomeration's row in {ref}`art23-agglomeration`: measures in `measures`, cost in
-    `investment`
+  - The agglomeration's row in {ref}`art23-agglomeration`: measures in `agglomerationMeasure`,
+    cost in `investment`
 * - New collecting systems or plants required by the Directive but not yet attributed to a
     specific agglomeration or plant
   - {ref}`art23-otherinvestment`: `collectingSystemNewInvestment`, `treatmentPlantNewInvestment`
@@ -81,7 +81,7 @@ Each plant and each agglomeration has one row, because `code` is the primary key
   tables.
 Each row has one investment amount, one amount per funding source and one set of dates:
 
-* `measure` accepts several measures, so `investment` holds the forecast cost of all measures
+* `treatmentPlantMeasure` accepts several measures, so `investment` holds the forecast cost of all measures
   reported for the plant;
 * `investment` holds the forecast cost of all collecting system and individual system measures
   reported for the agglomeration;

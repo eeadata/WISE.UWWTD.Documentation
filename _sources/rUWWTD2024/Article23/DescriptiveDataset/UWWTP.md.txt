@@ -74,7 +74,7 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - Status_Enum
   - Required
   - {ref}`art23-cl-status`
-* - `measure`
+* - `treatmentPlantMeasure`
   - Measure
   - Measure or measures needed at the plant. Select one or more.
   - TreatmentPlantMeasure_Enum
@@ -85,7 +85,7 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - Description of another appropriate measure under Article 18(2).
   - string1000
   - Conditional
-  - If `measure` includes `otherMeasureArticle18_2`
+  - If `treatmentPlantMeasure` includes `otherMeasureArticle18_2`
 * - `prioritisation`
   - Prioritisation
   - Priority of the investment, related to the size of the agglomeration and the level of

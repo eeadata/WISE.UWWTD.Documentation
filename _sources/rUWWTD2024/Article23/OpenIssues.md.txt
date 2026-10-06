@@ -86,7 +86,7 @@ whether the field could be optional in the first programme.
 ## OI-06 Several measures and dates per plant or agglomeration
 
 **Baseline.** One row per plant or agglomeration, with one investment total and one set of dates.
-`measure` accepts several measures. `measures` does not say.
+`treatmentPlantMeasure` accepts several measures. `agglomerationMeasure` does not say.
 
 **Question.** How should measures with different dates, or collecting system and individual system
 investments in the same agglomeration, be reported?

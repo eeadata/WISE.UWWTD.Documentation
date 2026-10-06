@@ -57,21 +57,21 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
 * - `status`
   - Status
   - Status of the agglomeration at the reference year.
-  - Status_Enum
+  - PlantAgglomerationStatus
   - Required
   - {ref}`art23-cl-status`
 * - `agglomerationMeasure`
   - Measures
   - Measures to achieve compliance for collecting systems, individual systems and
     integrated urban wastewater management plans.
-  - AgglomerationMeasure_Enum
+  - AgglomerationMeasure
   - Required
   - {ref}`art23-cl-agg-measures`
 * - `prioritisation`
   - Prioritisation
   - Priority of the investment, related to the size of the agglomeration and the level of
     environmental impact.
-  - Priority_Enum
+  - Priority
   - Required
   - {ref}`art23-cl-priority`
 :::
@@ -147,7 +147,7 @@ can be selected in `agglomerationMeasure` ({ref}`art23-oi-multiple-measures`).
 * - `europeanUnionFundName`
   - European Union fund name
   - Name of the EU fund planned.
-  - EUFund_Enum
+  - EUFund
   - Conditional
   - If `europeanUnionFund` > 0. {ref}`art23-cl-eu-funds`
 * - `otherPublicFund`
@@ -160,7 +160,7 @@ can be selected in `agglomerationMeasure` ({ref}`art23-oi-multiple-measures`).
 * - `otherPublicFundSpecification`
   - Other public fund specification
   - Type of other public funds.
-  - OtherPublicFund_Enum
+  - OtherPublicFund
   - Conditional
   - Required if `otherPublicFund` > 0. {ref}`art23-cl-public-funds`
 * - `loan`

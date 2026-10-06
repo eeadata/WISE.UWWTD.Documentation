@@ -10,9 +10,9 @@ direction LR
 
 class Agglomeration{
     + thematicIdIdentifier: wiseIdentifier [1]
-    + status: Status_Enum [1]
-    + agglomerationMeasure: AgglomerationMeasure_Enum [1]
-    + prioritisation: Priority_Enum [1]
+    + status: PlantAgglomerationStatus [1]
+    + agglomerationMeasure: AgglomerationMeasure [1]
+    + prioritisation: Priority [1]
 
     + completionDate: date [1]
     + expectedLoad: nonNegativeValue [1]
@@ -21,9 +21,9 @@ class Agglomeration{
 
     + investment: nonNegativeValue [1]
     + europeanUnionFund: nonNegativeValue [1]
-    + europeanUnionFundName: EUFund_Enum [0..1]
+    + europeanUnionFundName: EUFund [0..1]
     + otherPublicFund: nonNegativeValue [1]
-    + otherPublicFundSpecification: OtherPublicFund_Enum [0..1]
+    + otherPublicFundSpecification: OtherPublicFund [0..1]
     + loan: nonNegativeValue [1]
     + loanName: string255 [0..1]
     + remarks: string1000 [0..1]

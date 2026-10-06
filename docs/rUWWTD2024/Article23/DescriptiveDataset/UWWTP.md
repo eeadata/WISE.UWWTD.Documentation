@@ -58,13 +58,13 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
 * - `status`
   - Status
   - Status of the plant at the reference year.
-  - Status_Enum
+  - PlantAgglomerationStatus
   - Required
   - {ref}`art23-cl-status`
 * - `treatmentPlantMeasure`
   - Measure
   - Measure or measures needed at the plant. Select one or more.
-  - TreatmentPlantMeasure_Enum
+  - TreatmentPlantMeasure
   - Required
   - {ref}`art23-cl-uww-measures`
 * - `measureText`
@@ -77,7 +77,7 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - Prioritisation
   - Priority of the investment, related to the size of the agglomeration and the level of
     environmental impact.
-  - Priority_Enum
+  - Priority
   - Required
   - {ref}`art23-cl-priority`
 :::
@@ -147,7 +147,7 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
 * - `europeanUnionFundName`
   - European Union fund name
   - Name of the EU fund planned for the plant.
-  - EUFund_Enum
+  - EUFund
   - Conditional
   - If `europeanUnionFund` > 0. {ref}`art23-cl-eu-funds`
 * - `producerResponsibilityFund`
@@ -165,7 +165,7 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
 * - `otherPublicFundSpecification`
   - Other public fund specification
   - Type of other public funds.
-  - OtherPublicFund_Enum
+  - OtherPublicFund
   - Conditional
   - If `otherPublicFund` > 0. {ref}`art23-cl-public-funds`
 * - `loan`

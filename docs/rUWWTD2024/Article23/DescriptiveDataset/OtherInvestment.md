@@ -96,7 +96,7 @@ replacement.
 * - `europeanUnionFundsName`
   - European Union funds name
   - Name of the EU funds.
-  - EUFund_Enum
+  - EUFund
   - Conditional
   - Required if `europeanUnionFunds` > 0. {ref}`art23-cl-eu-funds`
 * - `otherPublicFunds`
@@ -109,7 +109,7 @@ replacement.
 * - `otherPublicFundSpecification`
   - Other public fund specification
   - Type of other public funds.
-  - OtherPublicFund_Enum
+  - OtherPublicFund
   - Conditional
   - Required if `otherPublicFunds` > 0. {ref}`art23-cl-public-funds`
 * - `remarks`

@@ -49,13 +49,13 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
   - Article 3 compliance
   - Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting
     systems).
-  - ComplianceShare_Enum
+  - ComplianceShare
   - Required
   - {ref}`art23-cl-compliance-share`
 * - `article3Compliance1000to1999`
   - Article 3 compliance, 1 000 to 1 999 p.e.
   - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.
-  - ComplianceShareEstimated_Enum
+  - ComplianceShareEstimated
   - Required
   - {ref}`art23-cl-compliance-share-estimated`
 * - `article4Compliance`
@@ -76,27 +76,27 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
   - Article 6 compliance
   - Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary
     treatment).
-  - ComplianceShare_Enum
+  - ComplianceShare
   - Required
   - {ref}`art23-cl-compliance-share`
 * - `article6Compliance1000to1999`
   - Article 6 compliance, 1 000 to 1 999 p.e.
   - Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.
-  - ComplianceShareEstimated_Enum
+  - ComplianceShareEstimated
   - Required
   - {ref}`art23-cl-compliance-share-estimated`
 * - `article7Compliance`
   - Article 7 compliance
   - Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary
     treatment requirements.
-  - ComplianceShareEstimated_Enum
+  - ComplianceShareEstimated
   - Required
   - {ref}`art23-cl-compliance-share-estimated`
 * - `article8Compliance`
   - Article 8 compliance
   - Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary
     treatment requirements.
-  - ComplianceShareEstimated_Enum
+  - ComplianceShareEstimated
   - Required
   - {ref}`art23-cl-compliance-share-estimated`
 :::

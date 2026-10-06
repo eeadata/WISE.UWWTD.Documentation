@@ -72,7 +72,7 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Status_Enum
   - Required
   - {ref}`art23-cl-status`
-* - `measures`
+* - `agglomerationMeasure`
   - Measures
   - Measures to achieve compliance for collecting systems, individual systems and
     integrated urban wastewater management plans.
@@ -88,8 +88,8 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - {ref}`art23-cl-priority`
 :::
 
-Unlike the plant `measure` field, the draft does not say explicitly whether several values can be
-selected in `measures` ({ref}`art23-oi-multiple-measures`).
+Unlike the `treatmentPlantMeasure` field, the draft does not say explicitly whether several values
+can be selected in `agglomerationMeasure` ({ref}`art23-oi-multiple-measures`).
 
 ## Load and completion date
 

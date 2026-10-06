@@ -368,6 +368,10 @@ Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table
   - Measures to reduce storm water overflows
   - Measures to reduce storm water overflows from collecting systems.
   - Article 3(4): collecting systems must meet Part A of Annex I.
+* - `individualSystemsArticle4`
+  - Measures for individual systems
+  - Measures for individual systems used where a collecting system is not established.
+  - Article 4.
 * - `managementPlanMeasures`
   - Measures resulting from a management plan
   - Measures resulting from an integrated urban wastewater management plan.

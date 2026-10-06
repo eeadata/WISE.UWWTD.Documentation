@@ -6,11 +6,11 @@ plants ({ref}`first reporting <sp-first-reporting>`). Later, report only new, ch
 objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
 
-The table identifies and locates every urban wastewater treatment plant, including projected ones,
+The table identifies and locates every urban wastewater treatment plant, including proposed ones,
 with its code, name, location and condition. The dataflow starts from the objects reported under
 Directive 91/271/EEC; a Member State then reports only what changes ({ref}`sp-reporting`).
 
-A projected plant whose site has not been chosen is reported with `locationStatus` =
+A proposed plant whose site has not been chosen is reported with `locationStatus` =
 `notYetKnown` and no coordinates. When its site is chosen, the same code is kept and the plant is
 reported as a `change` ({ref}`sp-location`). A plant that closes keeps its code, with its
 condition changed ({ref}`sp-lifecycle`).
@@ -29,12 +29,12 @@ States that already publish the treatment plant in a national INSPIRE dataset; t
 records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
-For a projected plant without an official name, give a working or descriptive name. When the
+For a proposed plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a `change`, keeping the same identifier.
 
 **Location and state.** The position of the plant in decimal degrees, and `locationStatus`, which
 says whether that position is the actual site, a provisional one, or not yet known.
-`conditionOfFacility` says whether the plant is projected, under construction, in use or out of
+`conditionOfFacility` says whether the plant is proposed, under construction, in use or out of
 use. `euRegistryFacilityId` links it to the same installation in the EU Registry, where it is
 registered there.
 
@@ -57,10 +57,11 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - Condition
 * - `thematicIdIdentifier`
   - Code
-  - Code of the treatment plant. A new plant receives a new code; an existing one keeps its
-    code ({ref}`sp-reporting`).
-    A code from the reporting under Directive 91/271/EEC that does not meet the WISE
-    identifier rules is converted ({ref}`sp-code-conversion`).
+  - Code of the treatment plant. Its identifier scheme is always `euUWWTPCode`, the only one for
+    this table, so the scheme is not reported but added centrally ({ref}`sp-cl-scheme`). A new plant
+    receives a new code; an existing one keeps its code ({ref}`sp-reporting`). A code from the
+    reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is converted
+    ({ref}`sp-code-conversion`).
   - wiseIdentifier
   - Required
   - –
@@ -89,7 +90,7 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - –
 * - `nameText`
   - Name
-  - Official name of the treatment plant, or a working or descriptive name for a projected plant
+  - Official name of the treatment plant, or a working or descriptive name for a proposed plant
     that has no official name yet.
   - string254
   - Required
@@ -115,8 +116,8 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - {ref}`sp-cl-location`
 * - `latitude`
   - Latitude
-  - Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
-    accepted; use the precision available.
+  - Latitude of the location in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
+    (EPSG:4326), with at least four decimal places.
   - NumberDecimalExtendedType
   - Conditional
   - Required unless
@@ -132,7 +133,7 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
     `notYetKnown`
 * - `conditionOfFacility`
   - Condition of facility
-  - Physical state of the plant: projected, under construction, in use, or no
+  - Physical state of the plant: proposed, under construction, in use, or no
     longer in use.
   - ConditionOfFacility
   - Required
@@ -153,8 +154,9 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - {ref}`sp-cl-evolution`
 * - `supersedesIdentifier`
   - Supersedes
-  - Codes of the treatment plants this one replaces, given once, in the delivery in which
-    the change happens. Several codes are separated by commas.
+  - Codes of the treatment plants this one replaces, given once, in the delivery in which the change
+    happens. They are codes of the same scheme, `euUWWTPCode`. Several codes are separated by
+    commas.
   - wiseIdentifier [0..n]
   - Conditional
   - Required with

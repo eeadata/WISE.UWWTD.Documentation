@@ -47,7 +47,8 @@ and Conditional ones, and `[1..n]` the measure field, which accepts several valu
   - Condition or codelist
 * - `thematicIdIdentifier`
   - Plant code
-  - Code of the treatment plant, as in the spatial points dataflow. Primary key.
+  - Code of the treatment plant, as in the spatial points dataflow. Primary key. Its identifier
+    scheme is always `euUWWTPCode`, the only one used, so the scheme is not reported.
   - wiseIdentifier
   - Required
   - Accepted code of a

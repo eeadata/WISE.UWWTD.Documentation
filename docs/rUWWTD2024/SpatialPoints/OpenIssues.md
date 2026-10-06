@@ -19,8 +19,8 @@ its main settlement. The location of a treatment plant is not used instead ({ref
 ### SP-02 Coordinates of planned facilities
 
 For treatment plants, `locationStatus` (`confirmed`, `provisional`, `notYetKnown`) allows a
-projected plant without a selected site. Discharge points have no `locationStatus`: their latitude
-and longitude are always required, and a projected discharge point is reported once its location is
+proposed plant without a selected site. Discharge points have no `locationStatus`: their latitude
+and longitude are always required, and a proposed discharge point is reported once its location is
 known. Coordinates are never filled with zero ({ref}`sp-location`).
 
 (sp-oi-agglomeration-uwwtp)=
@@ -48,13 +48,14 @@ of the accepted state (SP-17).
 `nameText` and `nameLanguage` are required, `nameTextInternational` optional, reusing the WISE
 spatial data name fields. `nameLanguage` gives the language of `nameText` as a code from the
 ISO 639-2 vocabulary of the Eionet Data Dictionary ({ref}`sp-names`).
-A projected treatment plant without an official name uses a working or descriptive name; assigning
+A proposed treatment plant without an official name uses a working or descriptive name; assigning
 its official name later does not change its identifier.
 
 (sp-oi-condition)=
-### SP-06 Projected facilities
+### SP-06 Proposed facilities
 
-`planned` is dropped; `projected` is the only pre-construction condition ({ref}`sp-cl-condition`).
+`planned` is dropped; `proposed` is the only pre-construction condition. It corresponds to the
+INSPIRE value `projected` ({ref}`sp-cl-condition`).
 
 (sp-oi-inspire)=
 ### SP-07 INSPIRE identifiers
@@ -64,13 +65,22 @@ Given only where an INSPIRE identifier already exists; never invented.
 (sp-oi-metadata)=
 ### SP-09 No documents or metadata
 
-Only the three tables are reported. ETRS89 or WGS-84 coordinates are accepted, without conversion,
-a declaration of the system, or a required number of decimal places.
+Only the three tables are reported. Coordinates are accepted in ETRS89 (EPSG:4258) or WGS 84
+(EPSG:4326), with at least four decimal places, without conversion or a declaration of the system.
 
 (sp-oi-storm-overflows)=
 ### SP-10 Storm water overflows
 
 Not reported in this dataflow ({ref}`sp-dischargepoint`).
+
+(sp-oi-vocabulary)=
+### SP-11 Condition codelist
+
+The INSPIRE
+[ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
+checked on 6 October 2026, has the values `functional`, `projected`, `underConstruction`,
+`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them, with `projected` called
+`proposed` ({ref}`sp-cl-condition`).
 
 (sp-oi-reactivation)=
 ### SP-11a Reactivation
@@ -149,12 +159,6 @@ registration of the object, and the EEA keeps the link to the original code
 ({ref}`first reporting <sp-first-reporting>`).
 
 ## Remaining open issues
-
-(sp-oi-vocabulary)=
-### SP-11 Condition codelist
-
-The current INSPIRE register for the condition of a facility could not be retrieved. Its accepted
-values should be confirmed, including the status of `decommissioned`.
 
 (sp-oi-wise)=
 ### SP-13 Differences from WISE

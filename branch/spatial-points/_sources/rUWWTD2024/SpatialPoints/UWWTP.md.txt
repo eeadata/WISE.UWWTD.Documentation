@@ -117,7 +117,7 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - Latitude
   - Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
     accepted; use the precision available.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Conditional
   - Required unless
     `locationStatus` =
@@ -125,7 +125,7 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
 * - `longitude`
   - Longitude
   - Longitude of the location, as for `latitude`.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Conditional
   - Required unless
     `locationStatus` =

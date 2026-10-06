@@ -75,9 +75,32 @@ Not reported in this dataflow ({ref}`sp-dischargepoint`).
 (sp-oi-reactivation)=
 ### SP-11a Reactivation
 
-`reactivation` is kept, as in the WISE evolution vocabulary, for an object retired with `deletion`
-that is in use again. It does not apply to an object that has been replaced. Reopening a closed
-facility is a `change`.
+Three situations sound alike but are reported differently.
+
+**Reactivation: bringing back a retired code.** An object reported with `deletion` no longer
+existed and nothing replaced it; its code is retired but kept. If the same object comes back into
+use, it is reported with `reactivation`, under its old code, so that its history and earlier
+references link up again. For example, agglomeration XXAGG0300 falls below the reporting
+threshold and is reported with `deletion`; years later it grows again and is reported with
+`reactivation`. WISE has the same value, for monitoring sites that were retired and later reused.
+
+**Not possible: reactivating an object that was replaced.** A code retired because something
+replaced it, through a merger, split or absorption, cannot be reactivated. Otherwise the old code
+and its successor would both be in use, which would quietly undo the merger or split. For example,
+after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 with `reactivation`
+is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
+reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.
+
+**Reopening a closed facility is a `change`.** A treatment plant or discharge point that closes is
+not retired: it stays in the register with `conditionOfFacility` set to `disused` or
+`decommissioned`. Bringing it back into use only changes that condition. For example, XXUWWTP0005
+closes (`change`, `decommissioned`) and later reopens (`change`, `functional`).
+
+| Situation | Code retired? | Report |
+| --- | --- | --- |
+| Retired without replacement, back in use | Yes, by `deletion` | `reactivation` |
+| Replaced by a merger, split or absorption | Yes, superseded | Not possible |
+| Facility closed, now reopened | No | `change` |
 
 (sp-oi-dischargepoint-simplicity)=
 ### SP-12 Discharge points

@@ -110,13 +110,13 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - Latitude
   - Latitude of the representative point in decimal degrees. ETRS89 or
     WGS-84 is accepted; use the precision available.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Required
   - –
 * - `longitude`
   - Longitude
   - Longitude of the representative point, as for `latitude`.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Required
   - –
 * - `wiseEvolutionType`

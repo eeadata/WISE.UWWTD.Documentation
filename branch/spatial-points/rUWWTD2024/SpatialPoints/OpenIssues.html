@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
-    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=562b8974" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
@@ -467,9 +467,46 @@ a declaration of the system, or a required number of decimal places.</p>
 </section>
 <section id="sp-11a-reactivation">
 <span id="sp-oi-reactivation"></span><h3>SP-11a Reactivation<a class="headerlink" href="#sp-11a-reactivation" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code> is kept, as in the WISE evolution vocabulary, for an object retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>
-that is in use again. It does not apply to an object that has been replaced. Reopening a closed
-facility is a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</p>
+<p>Three situations sound alike but are reported differently.</p>
+<p><strong>Reactivation: bringing back a retired code.</strong> An object reported with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> no longer
+existed and nothing replaced it; its code is retired but kept. If the same object comes back into
+use, it is reported with <code class="docutils literal notranslate"><span class="pre">reactivation</span></code>, under its old code, so that its history and earlier
+references link up again. For example, agglomeration XXAGG0300 falls below the reporting
+threshold and is reported with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>; years later it grows again and is reported with
+<code class="docutils literal notranslate"><span class="pre">reactivation</span></code>. WISE has the same value, for monitoring sites that were retired and later reused.</p>
+<p><strong>Not possible: reactivating an object that was replaced.</strong> A code retired because something
+replaced it, through a merger, split or absorption, cannot be reactivated. Otherwise the old code
+and its successor would both be in use, which would quietly undo the merger or split. For example,
+after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 with <code class="docutils literal notranslate"><span class="pre">reactivation</span></code>
+is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
+reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.</p>
+<p><strong>Reopening a closed facility is a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</strong> A treatment plant or discharge point that closes is
+not retired: it stays in the register with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or
+<code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. Bringing it back into use only changes that condition. For example, XXUWWTP0005
+closes (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>) and later reopens (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">functional</span></code>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Situation</p></th>
+<th class="head"><p>Code retired?</p></th>
+<th class="head"><p>Report</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Retired without replacement, back in use</p></td>
+<td><p>Yes, by <code class="docutils literal notranslate"><span class="pre">deletion</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">reactivation</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Replaced by a merger, split or absorption</p></td>
+<td><p>Yes, superseded</p></td>
+<td><p>Not possible</p></td>
+</tr>
+<tr class="row-even"><td><p>Facility closed, now reopened</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="sp-12-discharge-points">
 <span id="sp-oi-dischargepoint-simplicity"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-12-discharge-points" title="Link to this heading">#</a></h3>

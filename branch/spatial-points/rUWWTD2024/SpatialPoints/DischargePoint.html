@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
-    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=562b8974" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
@@ -797,8 +797,8 @@ class DischargePoint {
     + nameText: string254 [1]
     + nameLanguage: Language [1]
     + nameTextInternational: string254 [0..1]
-    + latitude: NumberDecimalType [1]
-    + longitude: NumberDecimalType [1]
+    + latitude: NumberDecimalExtendedType [1]
+    + longitude: NumberDecimalExtendedType [1]
     + conditionOfFacility: ConditionOfFacility [1]
     + receivingType: ReceivingType [1]
     + waterBodyCode: wiseIdentifier [0..1]
@@ -810,7 +810,7 @@ classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;
 
     </pre><figcaption>
-<p><span class="caption-number">Figure 12 </span><span class="caption-text">Spatial points - DischargePoint - draft</span><a class="headerlink" href="#spatialpoints-dischargepoint-classdiagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 17 </span><span class="caption-text">Spatial points - DischargePoint - draft</span><a class="headerlink" href="#spatialpoints-dischargepoint-classdiagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The scheme of <code class="docutils literal notranslate"><span class="pre">waterBodyCode</span></code> follows from <code class="docutils literal notranslate"><span class="pre">receivingType</span></code>: <code class="docutils literal notranslate"><span class="pre">euSurfaceWaterBodyCode</span></code> for surface
@@ -914,14 +914,14 @@ given</p></td>
 <td><p>Latitude</p></td>
 <td><p>Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
 accepted; use the precision available.</p></td>
-<td><p>NumberDecimalType</p></td>
+<td><p>NumberDecimalExtendedType</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
 <td><p>Longitude</p></td>
 <td><p>Longitude of the location, as for <code class="docutils literal notranslate"><span class="pre">latitude</span></code>.</p></td>
-<td><p>NumberDecimalType</p></td>
+<td><p>NumberDecimalExtendedType</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>

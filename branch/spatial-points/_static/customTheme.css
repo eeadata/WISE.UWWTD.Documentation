@@ -37,3 +37,15 @@ html[data-theme="dark"] {
 .bd-sidebar-primary {
     width: 21%;
 }
+
+/* =========================
+   Small example diagrams
+   Mermaid diagrams are stretched to 500px high by default, which makes
+   the small worked examples on the spatial points page larger than the
+   text around them. Figures named SpatialPoints_Example_* are shown at
+   their natural size instead, so their text matches the page text.
+========================= */
+figure[id^="spatialpoints-example-"] .mermaid-container > pre > svg {
+    height: auto;
+    width: auto;
+}

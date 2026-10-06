@@ -118,13 +118,13 @@ not a retirement. See {ref}`sp-lifecycle`.
   - Latitude
   - Latitude of the location in decimal degrees. ETRS89 or WGS-84 is
     accepted; use the precision available.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Required
   - –
 * - `longitude`
   - Longitude
   - Longitude of the location, as for `latitude`.
-  - NumberDecimalType
+  - NumberDecimalExtendedType
   - Required
   - –
 * - `conditionOfFacility`

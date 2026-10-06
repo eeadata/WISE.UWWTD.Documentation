@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
-    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=f80159e5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=562b8974" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
@@ -997,22 +997,120 @@ centrally. The history of an object is kept centrally and is not reported again.
 <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. It keeps its code and
 can be reopened in the same way.</p></li>
 </ul>
-<p>Three cases that are easy to get wrong:</p>
-<ol class="arabic simple">
+<p>Cases that are easy to get wrong:</p>
+<ol class="arabic">
 <li><p><strong>Merger.</strong> XXAGG0101 and XXAGG0102 merge into a new agglomeration. Report XXAGG0150 with
 <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0101,XXAGG0102</span></code>. Do not report the two old
 agglomerations; they are retired with XXAGG0150 as their successor. A later rename of XXAGG0150
-is a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> left empty, which keeps the merger in its history.</p></li>
+is a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> left empty, which keeps the merger in its history.</p>
+<figure class="align-center" id="spatialpoints-example-merger">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  A[&quot;XXAGG0101&lt;br/&gt;not reported&lt;br/&gt;retired&quot;] --&gt; N[&quot;XXAGG0150&lt;br/&gt;&lt;b&gt;aggregation&lt;/b&gt;&lt;br/&gt;supersedes: XXAGG0101,XXAGG0102&quot;]
+  B[&quot;XXAGG0102&lt;br/&gt;not reported&lt;br/&gt;retired&quot;] --&gt; N
+  N -- &quot;later rename&quot; --&gt; N2[&quot;XXAGG0150&lt;br/&gt;&lt;b&gt;change&lt;/b&gt;&lt;br/&gt;supersedes: empty&lt;br/&gt;merger stays in history&quot;]
+
+  classDef retired fill:#f4f4f4,stroke:#999,stroke-dasharray:4 3,color:#666;
+  class A,B retired;
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 10 </span><span class="caption-text">Merger: the old agglomerations are retired; a later rename is a change</span><a class="headerlink" href="#spatialpoints-example-merger" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Split.</strong> Later, XXAGG0150, the agglomeration formed by the merger, splits into two. Report
+XXAGG0151 and XXAGG0152, each with <code class="docutils literal notranslate"><span class="pre">splitting</span></code> and <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0150</span></code>, in the
+same delivery. Do not report XXAGG0150; it is retired with both as its successors, and its own
+merger history is kept.</p>
+<figure class="align-center" id="spatialpoints-example-split">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  O[&quot;XXAGG0150&lt;br/&gt;formed by the merger&lt;br/&gt;not reported&lt;br/&gt;retired&quot;] --&gt; A[&quot;XXAGG0151&lt;br/&gt;&lt;b&gt;splitting&lt;/b&gt;&lt;br/&gt;supersedes: XXAGG0150&quot;]
+  O --&gt; B[&quot;XXAGG0152&lt;br/&gt;&lt;b&gt;splitting&lt;/b&gt;&lt;br/&gt;supersedes: XXAGG0150&quot;]
+
+  classDef retired fill:#f4f4f4,stroke:#999,stroke-dasharray:4 3,color:#666;
+  class O retired;
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 11 </span><span class="caption-text">Split: each new agglomeration lists the code it replaces</span><a class="headerlink" href="#spatialpoints-example-split" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p><strong>Absorption.</strong> XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
 as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, with its new values, and <code class="docutils literal notranslate"><span class="pre">supersedesIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0111</span></code>. It keeps its
 code: in WISE, an <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> produces a new object and must not reuse a replaced code. How
-this case is published to WISE is open (<a class="reference internal" href="OpenIssues.html#sp-oi-wise"><span class="std std-ref">SP-13 Differences from WISE</span></a>).</p></li>
+this case is published to WISE is open (<a class="reference internal" href="OpenIssues.html#sp-oi-wise"><span class="std std-ref">SP-13 Differences from WISE</span></a>).</p>
+<figure class="align-center" id="spatialpoints-example-absorption">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  S0[&quot;XXAGG0110&lt;br/&gt;before&quot;] -- &quot;same agglomeration,&lt;br/&gt;same code&quot; --&gt; S[&quot;XXAGG0110&lt;br/&gt;&lt;b&gt;change&lt;/b&gt;&lt;br/&gt;new values&lt;br/&gt;supersedes: XXAGG0111&quot;]
+  A[&quot;XXAGG0111&lt;br/&gt;not reported&lt;br/&gt;retired&quot;] -- &quot;absorbed&quot; --&gt; S
+
+  classDef retired fill:#f4f4f4,stroke:#999,stroke-dasharray:4 3,color:#666;
+  class A retired;
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 12 </span><span class="caption-text">Absorption: the surviving agglomeration keeps its code</span><a class="headerlink" href="#spatialpoints-example-absorption" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p><strong>Closure or retirement.</strong> A treatment plant that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a
 <code class="docutils literal notranslate"><span class="pre">deletion</span></code>. <code class="docutils literal notranslate"><span class="pre">deletion</span></code> is for an object that no longer exists and is not replaced; its code is
-kept and is not reused.</p></li>
+kept and is not reused.</p>
+<figure class="align-center" id="spatialpoints-example-closure">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  P[&quot;XXUWWTP0005&lt;br/&gt;functional&quot;] -- &quot;closes&quot; --&gt; C[&quot;XXUWWTP0005&lt;br/&gt;&lt;b&gt;change&lt;/b&gt;&lt;br/&gt;decommissioned&lt;br/&gt;still current&quot;]
+  C -- &quot;reopens&quot; --&gt; R[&quot;XXUWWTP0005&lt;br/&gt;&lt;b&gt;change&lt;/b&gt;&lt;br/&gt;functional&quot;]
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 13 </span><span class="caption-text">Closure: the plant still exists, so its condition changes</span><a class="headerlink" href="#spatialpoints-example-closure" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="spatialpoints-example-retirement">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    useMaxWidth: false
+---
+flowchart LR
+  Q[&quot;XXAGG0300&quot;] -- &quot;nothing&lt;br/&gt;replaces it&quot; --&gt; D[&quot;XXAGG0300&lt;br/&gt;&lt;b&gt;deletion&lt;/b&gt;&lt;br/&gt;retired&lt;br/&gt;code kept&quot;]
+
+  classDef retired fill:#f4f4f4,stroke:#999,stroke-dasharray:4 3,color:#666;
+  class D retired;
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 14 </span><span class="caption-text">Retirement: the object no longer exists and nothing replaces it</span><a class="headerlink" href="#spatialpoints-example-retirement" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ol>
-<p><code class="docutils literal notranslate"><span class="pre">XX</span></code> stands for the country code. An object reported by mistake is corrected through the
-helpdesk, not by leaving it out of a delivery (<a class="reference internal" href="OpenIssues.html#sp-oi-reportnet"><span class="std std-ref">SP-20 Reportnet</span></a>).</p>
 </section>
 <section id="rules-for-changes-and-replacements">
 <span id="sp-lifecycle-rules"></span><h3>Rules for changes and replacements<a class="headerlink" href="#rules-for-changes-and-replacements" title="Link to this heading">#</a></h3>
@@ -1150,8 +1248,8 @@ about a Member State’s separate INSPIRE obligations.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string254</span></code>, <code class="docutils literal notranslate"><span class="pre">string25</span></code></p></td>
 <td><p>Text of at most 254 or 25 characters</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NumberDecimalType</span></code></p></td>
-<td><p>A decimal number, which may be negative</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NumberDecimalExtendedType</span></code></p></td>
+<td><p>A decimal number, which may be negative, as in the WFD schema</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>codelist name</em></p></td>
 <td><p>A value from the codelist of that name (<a class="reference internal" href="Codelists.html#sp-codelists"><span class="std std-ref">Codelists</span></a>)</p></td>
@@ -1159,6 +1257,8 @@ about a Member State’s separate INSPIRE obligations.</p>
 </tbody>
 </table>
 </div>
+<p>Decimal numbers use a full stop as the decimal separator and no thousands separator, for example
+<code class="docutils literal notranslate"><span class="pre">-8.61</span></code>, not <code class="docutils literal notranslate"><span class="pre">-8,61</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">[0..n]</span></code> marks a field that accepts several values, separated by commas.</p>
 <section id="wise-identifiers">
 <span id="sp-wise-identifier"></span><h3>WISE identifiers<a class="headerlink" href="#wise-identifiers" title="Link to this heading">#</a></h3>
@@ -1271,6 +1371,10 @@ All three use the same name fields.</p></li>
 <li><p>ISO 639-2 language vocabulary, Eionet Data Dictionary,
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view">common/iso639-2</a>, released
 10 July 2019.</p></li>
+<li><p>WFD reporting schema,
+<a class="reference external" href="https://dd.eionet.europa.eu/schemas/WFD2022/WFDCommon_2022.xsd">WFDCommon_2022.xsd</a>:
+<code class="docutils literal notranslate"><span class="pre">NumberDecimalExtendedType</span></code>, a plain decimal number. Its <code class="docutils literal notranslate"><span class="pre">NumberDecimalType</span></code> is not used for
+coordinates, as it allows only non-negative values and the codes <code class="docutils literal notranslate"><span class="pre">-9999</span></code>, <code class="docutils literal notranslate"><span class="pre">-8888</span></code> and <code class="docutils literal notranslate"><span class="pre">-7777</span></code>.</p></li>
 <li><p>WISE evolution type vocabulary, Eionet Data Dictionary,
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue">WiseEvolutionTypeValue</a>,
 released 28 September 2026.</p></li>

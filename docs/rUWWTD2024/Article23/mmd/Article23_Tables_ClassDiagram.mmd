@@ -1,0 +1,134 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+namespace PrivateDataset {
+    class Contact {
+        + name: string100 [1]
+        + institution: string255 [1]
+        + phone: string100 [1]
+        + email: Email [1]
+    }
+}
+namespace DescriptiveDataset {
+    class MSSummary {
+        + situationAt: date [1]
+        + programmeObligation: YesNo [1]
+        + programmeReference: referenceCode [0..1]
+        + prioritisationReference: referenceCode [0..1]
+        + article5ManagementPlanReference: referenceCode [0..1]
+        + riskAssessment: RiskAssessment [1]
+        + riskDate: date [0..1]
+        + riskIdentified: YesNo [0..1]
+        + riskSummaryReference: referenceCode [0..1]
+        + producerResponsibilityContribution: nonNegativeValue [1]
+        + millionUnitsOfNationalCurrency: CurrencyCode [1]
+        + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
+        + contributionPeriod: ContributionPeriod [0..n]
+        + contributionPeriodOther: string1000 [0..1]
+        + remarks: string1000 [0..1]
+    }
+    class SelfAssessment {
+        + article3Compliance: ComplianceShare [1]
+        + article3Compliance1000to1999: ComplianceShareEstimated [1]
+        + article4Compliance: YesNo [1]
+        + article5ManagementPlanCount: nonNegativeValue [1]
+        + article6Compliance: ComplianceShare [1]
+        + article6Compliance1000to1999: ComplianceShareEstimated [1]
+        + article7Compliance: ComplianceShareEstimated [1]
+        + article8Compliance: ComplianceShareEstimated [1]
+    }
+    class Derogation {
+        + article3_2DeadlineExtension: DeadlineExtension [1]
+        + article3_2CompleteCollectingSystem: nonNegativeValue [0..1]
+        + article3_2NonCompleteCollectingSystem: nonNegativeValue [0..1]
+        + article3_2CompleteCollectingSystemLoad: nonNegativeValue [0..1]
+        + article3_2NonCompleteCollectingSystemLoad: nonNegativeValue [0..1]
+        + article3_2InvestmentPlanReference: referenceCode [0..1]
+        + article3_2ExtensionReasonReference: referenceCode [0..1]
+        + article3_2CulturalHeritage: YesNo [1]
+        + article3_2CulturalHeritageReference: referenceCode [0..1]
+        + article6_3CulturalHeritage: YesNo [1]
+        + article6_3CulturalHeritageReference: referenceCode [0..1]
+        + article6_3DeadlineExtension: DeadlineExtension [1]
+        + article6_3AgglomerationsWithSecondaryTreatment: nonNegativeValue [0..1]
+        + article6_3AgglomerationsWithoutSecondaryTreatment: nonNegativeValue [0..1]
+        + article6_3LoadWithSecondaryTreatment: nonNegativeValue [0..1]
+        + article6_3LoadWithoutSecondaryTreatment: nonNegativeValue [0..1]
+        + article6_3InvestmentPlanReference: referenceCode [0..1]
+        + article6_3ExtensionReasonReference: referenceCode [0..1]
+        + article6_4LessStringentTreatment: YesNo [1]
+        + article6_4LessStringentStudyReference: referenceCode [0..1]
+        + article7_4DeadlineExtension: DeadlineExtensionArticle7_4 [1]
+        + article7_4AgglomerationsWithTertiaryTreatment: nonNegativeValue [0..1]
+        + article7_4AgglomerationsWithoutTertiaryTreatment: nonNegativeValue [0..1]
+        + article7_4InvestmentPlanReference: referenceCode [0..1]
+        + article7_4ExtensionReasonReference: referenceCode [0..1]
+    }
+    class Measure {
+        + measureCode: wiseIdentifier [1]
+        + measureName: string255 [1]
+        + measureNameLanguage: Language [1]
+        + measureReference: referenceCode [0..1]
+        + uwwtdMeasureType: UWWTDMeasureType [1]
+        + measureText: string1000 [0..1]
+        + geographicalCoverage: UWWTDGeographicCoverage [1]
+        + numberOfObjects: nonNegativeInteger [0..1]
+        + prioritisation: Priority [1]
+        + implementationStatus: PlannedOngoingExecutedCancelled [1]
+        + expectedStartYear: gYear [0..1]
+        + expectedCompletionYear: gYear [1]
+        + costStatus: CostStatus [1]
+        + investmentCost: nonNegativeValue [0..1]
+        + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
+        + remarks: string1000 [0..1]
+    }
+    class MeasureObject {
+        + measureCode: wiseIdentifier [1]
+        + objectType: MeasureObjectType [1]
+        + thematicIdIdentifier: wiseIdentifier [1]
+    }
+    class MeasureFinancing {
+        + measureCode: wiseIdentifier [1]
+        + fundingSource: FundingSource [1]
+        + europeanUnionFundName: EUFund [0..1]
+        + loanName: string255 [0..1]
+        + fundingStatus: FundingStatus [1]
+        + amount: nonNegativeValue [0..1]
+    }
+    class UWWTP {
+        + thematicIdIdentifier: wiseIdentifier [1]
+        + status: PlantAgglomerationStatus [1]
+        + expectedLoad: nonNegativeValue [1]
+        + expectedCapacity: nonNegativeValue [1]
+        + remarks: string1000 [0..1]
+    }
+    class Agglomeration {
+        + thematicIdIdentifier: wiseIdentifier [1]
+        + status: PlantAgglomerationStatus [1]
+        + expectedLoad: nonNegativeValue [1]
+        + expectedLoadCollected: Percentage [0..1]
+        + expectedLoadIndividualSystems: Percentage [0..1]
+        + remarks: string1000 [0..1]
+    }
+}
+namespace SpatialPointsDataflow {
+    class SpatialUWWTP["UWWTP (spatial points)"]
+    class SpatialAgglomeration["Agglomeration (spatial points)"]
+}
+
+Measure "1" -- "0..n" MeasureObject : measureCode
+Measure "1" -- "0..n" MeasureFinancing : measureCode
+MeasureObject ..> SpatialUWWTP : thematicIdIdentifier
+MeasureObject ..> SpatialAgglomeration : thematicIdIdentifier
+UWWTP ..> SpatialUWWTP : thematicIdIdentifier
+Agglomeration ..> SpatialAgglomeration : thematicIdIdentifier
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

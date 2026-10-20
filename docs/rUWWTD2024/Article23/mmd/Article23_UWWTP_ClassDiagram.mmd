@@ -10,10 +10,10 @@ direction LR
 
 class UWWTP{
     + thematicIdIdentifier: wiseIdentifier [1]
-    + status: Status_Enum [1]
-    + treatmentPlantMeasure: TreatmentPlantMeasure_Enum [1..n]
+    + status: PlantAgglomerationStatus [1]
+    + treatmentPlantMeasure: TreatmentPlantMeasure [1..n]
     + measureText: string1000 [0..1]
-    + prioritisation: Priority_Enum [1]
+    + prioritisation: Priority [1]
 
     + expectedLoad: nonNegativeValue [1]
     + expectedCapacity: nonNegativeValue [1]
@@ -22,10 +22,10 @@ class UWWTP{
 
     + investment: nonNegativeValue [1]
     + europeanUnionFund: nonNegativeValue [1]
-    + europeanUnionFundName: EUFund_Enum [0..1]
+    + europeanUnionFundName: EUFund [0..1]
     + producerResponsibilityFund: nonNegativeValue [0..1]
     + otherPublicFund: nonNegativeValue [1]
-    + otherPublicFundSpecification: OtherPublicFund_Enum [0..1]
+    + otherPublicFundSpecification: OtherPublicFund [0..1]
     + loan: nonNegativeValue [1]
     + loanName: string255 [0..1]
     + remarks: string1000 [0..1]

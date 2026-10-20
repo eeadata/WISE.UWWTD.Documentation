@@ -54,7 +54,7 @@ technical or economic reasons.
 * - `article3_2DeadlineExtension`
   - Article 3(2) deadline extension
   - Extension of the Article 3(2) deadline.
-  - DeadlineExtension_Enum
+  - DeadlineExtension
   - Required
   - {ref}`art23-cl-deadline-ext`
 * - `article3_2CompleteCollectingSystem`
@@ -175,7 +175,7 @@ treatment on 1 January 2025.
 * - `article6_3DeadlineExtension`
   - Article 6(3) deadline extension
   - Extension of the Article 6(3) deadline.
-  - DeadlineExtension_Enum
+  - DeadlineExtension
   - Required
   - {ref}`art23-cl-deadline-ext`
 * - `article6_3AgglomerationsWithSecondaryTreatment`
@@ -283,7 +283,7 @@ of Article 7(1).
 * - `article7_4DeadlineExtension`
   - Article 7(4) deadline extension
   - Extension of the Article 7(3), point (d), deadline.
-  - DeadlineExtensionArticle7_4_Enum
+  - DeadlineExtensionArticle7_4
   - Required
   - {ref}`art23-cl-deadline-ext-7-4`
 * - `article7_4AgglomerationsWithTertiaryTreatment`

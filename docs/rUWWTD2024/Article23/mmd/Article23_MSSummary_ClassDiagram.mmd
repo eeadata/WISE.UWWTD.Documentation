@@ -15,14 +15,14 @@ class MSSummary{
     + prioritisationReference: referenceCode [0..1]
     + article5ManagementPlanReference: referenceCode [0..1]
 
-    + riskAssessment: RiskAssessment_Enum [1]
+    + riskAssessment: RiskAssessment [1]
     + riskDate: date [0..1]
     + riskIdentified: YesNo [0..1]
     + riskSummaryReference: referenceCode [0..1]
 
     + producerResponsibilityContribution: nonNegativeValue [1]
-    + producerResponsibilityEstimateBasedOn: EstimateBasis_Enum [1]
-    + contributionPeriod: ContributionPeriod_Enum [0..n]
+    + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
+    + contributionPeriod: ContributionPeriod [0..n]
     + contributionPeriodOther: string1000 [0..1]
     + remarks: string1000 [0..1]
 }

@@ -673,9 +673,11 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -685,7 +687,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -780,9 +782,11 @@ document the programme refers to.</p>
     MSSummary
     SelfAssessment
     Derogation
+    Measure[&quot;Measure&lt;br/&gt;one row per measure&quot;]
+    MeasureObject
+    MeasureFinancing
     UWWTP[&quot;UWWTP&lt;br/&gt;one row per plant&quot;]
     Agglomeration[&quot;Agglomeration&lt;br/&gt;one row per agglomeration&quot;]
-    OtherInvestment
   end
   subgraph documents[&quot;Documents dataset&quot;]
     dcMetadata
@@ -791,6 +795,9 @@ document the programme refers to.</p>
   end
   MSSummary -- &quot;referenceCode&quot; --&gt; Reference
   Derogation -- &quot;referenceCode&quot; --&gt; Reference
+  Measure -. &quot;measureReference&quot; .-&gt; Reference
+  MeasureObject -- &quot;measureCode&quot; --&gt; Measure
+  MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
   Reference -- &quot;documentCode&quot; --&gt; Document
   dcMetadata -. &quot;licenseDocument&quot; .-&gt; Document
   dcMetadata -. &quot;metadataDocument&quot; .-&gt; Document
@@ -800,15 +807,20 @@ document the programme refers to.</p>
   end
   UWWTP -- &quot;thematicIdIdentifier&quot; --&gt; SpUWWTP
   Agglomeration -- &quot;thematicIdIdentifier&quot; --&gt; SpAgglomeration
-    </pre><p>The names and locations of treatment plants and agglomerations are not reported in this
-dataflow. They are reported in the separate <a class="reference internal" href="../SpatialPoints/index.html#spatial-points"><span class="std std-ref">Spatial points</span></a> dataflow, and the UWWTP and
-Agglomeration tables refer to them by <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>. A code must already have been
+  MeasureObject -- &quot;thematicIdIdentifier&quot; --&gt; SpUWWTP
+  MeasureObject -- &quot;thematicIdIdentifier&quot; --&gt; SpAgglomeration
+    </pre><p>The names and locations of treatment plants and agglomerations are not reported in this dataflow.
+They are reported in the separate <a class="reference internal" href="../SpatialPoints/index.html#spatial-points"><span class="std std-ref">Spatial points</span></a> dataflow, and the UWWTP, Agglomeration and
+MeasureObject tables refer to them by <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>. A code must already have been
 accepted there, for the reporting country and the right object type (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>).
 Earlier reporting stays valid when an object later changes or is retired.</p>
-<p>Only MSSummary and Derogation cite documents. The UWWTP, Agglomeration and OtherInvestment
-tables have no reference fields, and the UWWTP table has no field linking a plant to an
+<p>MSSummary and Derogation cite documents, and a measure may do so in <code class="docutils literal notranslate"><span class="pre">measureReference</span></code>. The UWWTP
+and Agglomeration tables have no reference fields, and there is no field linking a plant to an
 agglomeration. The dashed links are optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only where the
 licence or further metadata is delivered as one.</p>
+<p>Measures are the main object of the programme: each measure has one row in Measure, lists the
+plants or agglomerations it concerns in MeasureObject, and gives its sources of financing in
+MeasureFinancing (<a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>). This is a proposal (<a class="reference internal" href="OpenIssues.html#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 <p>The tables of the descriptive dataset do not carry web addresses. Fields such as
 <code class="docutils literal notranslate"><span class="pre">programmeReference</span></code> hold a <code class="docutils literal notranslate"><span class="pre">referenceCode</span></code> pointing into the documents dataset, which resolves to
 a document delivered as a hyperlink or as a file uploaded to Reportnet 3
@@ -851,21 +863,30 @@ risk assessment and PRO contribution.</p></td>
 <td><p>Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
 under Article 6(4).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+<td><p>One per measure (<code class="docutils literal notranslate"><span class="pre">measureCode</span></code> is the primary key)</p></td>
+<td><p>Conditional: required where measures are planned</p></td>
+<td><p>Type, coverage, priority, status, dates and investment cost of each measure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a></p></td>
+<td><p>One per measure and plant or agglomeration</p></td>
+<td><p>Conditional: required for measures with listed plants or agglomerations</p></td>
+<td><p>The plants or agglomerations a measure concerns.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a></p></td>
+<td><p>One per measure and source of financing</p></td>
+<td><p>Optional</p></td>
+<td><p>Source, funding status and amount of the financing of each measure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
 <td><p>One per plant (<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the primary key)</p></td>
-<td><p>Conditional: required where investments in treatment plants are planned</p></td>
-<td><p>Measures, status, prioritisation, projected load and capacity, dates, investment and funding.</p></td>
+<td><p>Conditional: required for each plant concerned by a measure</p></td>
+<td><p>Status, projected load and capacity.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 <td><p>One per agglomeration (<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the primary key)</p></td>
-<td><p>Conditional: required where investments in collecting systems or individual systems are
-planned</p></td>
-<td><p>Measures, status, prioritisation, projected load, completion date, investment and funding.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a></p></td>
-<td><p>One or more per Member State, for example one for the whole period or one per year</p></td>
-<td><p>Conditional: can remain empty if all resources are attributed to plants or agglomerations</p></td>
-<td><p>Totals of investments and funding not attributed to a single plant or agglomeration.</p></td>
+<td><p>Conditional: required for each agglomeration concerned by a measure</p></td>
+<td><p>Status and projected load.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="DocumentsDataset/dcMetadata.html#art23-dcmetadata"><span class="std std-ref">dcMetadata</span></a> (documents)</p></td>
 <td><p>One per delivery</p></td>
@@ -885,11 +906,7 @@ planned</p></td>
 </tbody>
 </table>
 </div>
-<p>According to the draft, total investment by a Member State is the sum of the investments reported
-in the UWWTP, Agglomeration and OtherInvestment tables.</p>
-<p>The draft states that UWWTP rows are linked to plants already reported under Directive
-91/271/EEC, and Agglomeration rows to the list of agglomerations. The UWWTP table has no field
-linking a plant to an agglomeration.</p>
+<p>The total investment of a Member State is the sum of <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> over all measures.</p>
 </section>
 
 

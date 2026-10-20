@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Spatial points" href="../SpatialPoints/index.html" />
-    <link rel="prev" title="Reporting investments" href="ReportingInvestments.html" />
+    <link rel="prev" title="Reporting measures and costs" href="ReportingInvestments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -315,9 +315,11 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +329,7 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -418,11 +420,12 @@ listed here are not reporting requirements.</p>
 at risk of future non-compliance are listed. The same draft makes the UWWTP table mandatory where
 renewal investments are planned, and includes a renewal measure code.</p>
 <p><strong>Question.</strong> Must compliant plants and agglomerations with planned renewal, upgrade or
-replacement investments be listed individually, or reported as totals in OtherInvestment?
+replacement be listed individually, or reported in national measures without listing them?
 Article 23(1)(b) refers to investments for each agglomeration, and Article 23(1)(c) to existing
 infrastructure in general.</p>
 <p><strong>Under consideration.</strong> Covering all plants and agglomerations, or listing only those needing
-investment to reach or maintain compliance, with other investments reported as totals.</p>
+investment to reach or maintain compliance, with other renewal reported as national measures
+(<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-02-self-assessment-of-articles-3-to-8">
 <span id="art23-oi-self-assessment"></span><h2>OI-02 Self-assessment of Articles 3 to 8<a class="headerlink" href="#oi-02-self-assessment-of-articles-3-to-8" title="Link to this heading">#</a></h2>
@@ -482,6 +485,8 @@ whether the field could be optional in the first programme.</p>
 <code class="docutils literal notranslate"><span class="pre">treatmentPlantMeasure</span></code> accepts several measures. <code class="docutils literal notranslate"><span class="pre">agglomerationMeasure</span></code> does not say.</p>
 <p><strong>Question.</strong> How should measures with different dates, or collecting system and individual system
 investments in the same agglomeration, be reported?</p>
+<p><strong>Proposed answer.</strong> In the measure model, each measure is its own row with its own dates and
+cost, linked to the plant or agglomeration (<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-07-several-funds-in-one-row">
 <span id="art23-oi-multiple-funds"></span><h2>OI-07 Several funds in one row<a class="headerlink" href="#oi-07-several-funds-in-one-row" title="Link to this heading">#</a></h2>
@@ -489,6 +494,9 @@ investments in the same agglomeration, be reported?</p>
 can be given, or whether funding amounts must add up to the investment.</p>
 <p><strong>Under consideration.</strong> Allowing several fund names with one total amount and no split between
 funds.</p>
+<p><strong>Proposed answer.</strong> In the measure model, each source of financing, and each EU fund, is its own
+row in MeasureFinancing with its own amount, so the multi-select question no longer arises
+(<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-08-unknown-amounts-and-uncertain-costs">
 <span id="art23-oi-unknown"></span><h2>OI-08 Unknown amounts and uncertain costs<a class="headerlink" href="#oi-08-unknown-amounts-and-uncertain-costs" title="Link to this heading">#</a></h2>
@@ -496,6 +504,9 @@ funds.</p>
 <p><strong>Under consideration.</strong> Adding an “unknown” option, allowing more flexibility where costs cannot
 yet be estimated, and using OtherInvestment for aggregated estimates. A minimum threshold for
 reporting investments was also suggested.</p>
+<p><strong>Proposed answer.</strong> In the measure model, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> with an empty
+<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is a valid answer, and no minimum threshold applies
+(<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-09-loan-fields">
 <span id="art23-oi-loans"></span><h2>OI-09 Loan fields<a class="headerlink" href="#oi-09-loan-fields" title="Link to this heading">#</a></h2>
@@ -506,6 +517,8 @@ above 0.</p>
 financing? Does “loan” cover public and private lenders? How do loans relate to the EU fund
 codelist, which includes the European Investment Bank?</p>
 <p><strong>Under consideration.</strong> Making the loan fields optional.</p>
+<p><strong>Proposed answer.</strong> In the measure model, a loan is an optional source of financing in
+MeasureFinancing, with an optional lender name and amount.</p>
 </section>
 <section id="oi-10-producer-responsibility-contribution">
 <span id="art23-oi-pro"></span><h2>OI-10 Producer responsibility contribution<a class="headerlink" href="#oi-10-producer-responsibility-contribution" title="Link to this heading">#</a></h2>
@@ -514,13 +527,14 @@ nominal? Which
 requirements does <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> refer to, and should it be Required now that it replaces
 four Required questions? Should there be an “unknown”
 option? Can the fields be optional in the first programme, when estimates may not be available?
-How does <code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code> relate to the national total?</p>
+How does PRO funding reported for individual measures, with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code>, relate to the national total?</p>
 </section>
 <section id="oi-11-nominal-or-annualised-costs">
 <span id="art23-oi-costs"></span><h2>OI-11 Nominal or annualised costs<a class="headerlink" href="#oi-11-nominal-or-annualised-costs" title="Link to this heading">#</a></h2>
-<p><strong>Question.</strong> Are investment amounts (the <code class="docutils literal notranslate"><span class="pre">investment</span></code> fields and
-<code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>) nominal or
-annualised? If annualised, which assumptions should be reported?</p>
+<p><strong>Question.</strong> Are amounts (<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, the financing amounts and
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>) nominal or annualised? If annualised, which assumptions
+should be reported?</p>
 </section>
 <section id="oi-12-projected-loads-and-capacity">
 <span id="art23-oi-loads"></span><h2>OI-12 Projected loads and capacity<a class="headerlink" href="#oi-12-projected-loads-and-capacity" title="Link to this heading">#</a></h2>
@@ -533,18 +547,22 @@ to when new connections extend the area served by a plant?</p>
 <p><strong>Question.</strong> The plant fields are reported as years (<code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code>,
 <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>). Where planning is uncertain, is an expected year enough for
 <code class="docutils literal notranslate"><span class="pre">completionDate</span></code> as well?</p>
+<p><strong>Proposed answer.</strong> In the measure model, every measure has an <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code> and an
+optional <code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>, both years.</p>
 </section>
 <section id="oi-14-measure-codelists">
 <span id="art23-oi-measures"></span><h2>OI-14 Measure codelists<a class="headerlink" href="#oi-14-measure-codelists" title="Link to this heading">#</a></h2>
 <p><strong>Questions.</strong></p>
 <ul class="simple">
-<li><p>Should new or existing individual systems be added to the agglomeration measures?</p></li>
 <li><p>What does compliance with Article 5 mean at agglomeration level?</p></li>
 <li><p>Should energy neutrality, a plant-level code, be reported per plant?</p></li>
 <li><p>Should small plants selected under Article 18(2) be listed?</p></li>
-<li><p>Should the plant measure field be named in the plural, as Figure 1 does?</p></li>
 <li><p>What codes will be used in the template?</p></li>
 </ul>
+<p><strong>Proposed answer.</strong> In the measure model, the two measure codelists are merged into
+<code class="docutils literal notranslate"><span class="pre">UWWTDMeasureType</span></code>, with one type per measure. It includes individual systems under Article 4, and
+separate renewal values for collecting systems and treatment plants
+(<a class="reference internal" href="Codelists.html#art23-cl-measure-type"><span class="std std-ref">Measure type</span></a>).</p>
 </section>
 <section id="oi-15-derogation-details">
 <span id="art23-oi-derogation"></span><h2>OI-15 Derogation details<a class="headerlink" href="#oi-15-derogation-details" title="Link to this heading">#</a></h2>
@@ -584,6 +602,9 @@ and <code class="docutils literal notranslate"><span class="pre">pro</span></cod
 <span id="art23-oi-otherinvestment"></span><h2>OI-18 OtherInvestment reference period<a class="headerlink" href="#oi-18-otherinvestment-reference-period" title="Link to this heading">#</a></h2>
 <p><strong>Question.</strong> Which period do <code class="docutils literal notranslate"><span class="pre">startYear</span></code> and <code class="docutils literal notranslate"><span class="pre">endYear</span></code> describe, for example the
 programme’s six years, individual years, or the period to 2045?</p>
+<p><strong>Proposed answer.</strong> In the measure model, the OtherInvestment table is removed. Its amounts become
+national measures, or measures for plants or agglomerations not yet identified, each with its own
+years (<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-19-publication-of-cost-estimates">
 <span id="art23-oi-confidentiality"></span><h2>OI-19 Publication of cost estimates<a class="headerlink" href="#oi-19-publication-of-cost-estimates" title="Link to this heading">#</a></h2>
@@ -616,6 +637,71 @@ reported there first, and only accepted codes can be referred to (<a class="refe
 questions on the coordinate reference system and on the point representing an agglomeration are
 dealt with in that dataflow (<a class="reference internal" href="../SpatialPoints/index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p>
 </section>
+<section id="oi-22-measure-first-model">
+<span id="art23-oi-measure-model"></span><h2>OI-22 Measure-first model<a class="headerlink" href="#oi-22-measure-first-model" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> Investment, funding and measure fields are spread over the UWWTP, Agglomeration and
+OtherInvestment tables. It is hard to rebuild the total investment from them, or to report several
+measures, dates or funds for one plant.</p>
+<p><strong>Proposal.</strong> Start from measures, as the Directive and the Water Framework Directive do: a
+Measure table with one row per measure, a MeasureObject table listing the plants or agglomerations
+it concerns, and a MeasureFinancing table giving its sources of financing
+(<a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>). UWWTP and Agglomeration keep only the state of the object.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Terminology: should the tables and guidance use “measure” and “cost of measure”, while keeping
+the references to Article 23(1)(b) to (d)? The names should be checked against the text of
+Article 23(1).</p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, accepted as a valid answer?</p></li>
+<li><p>Are <code class="docutils literal notranslate"><span class="pre">secured</span></code>, <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code>, <code class="docutils literal notranslate"><span class="pre">planned</span></code> and <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> the funding statuses the Commission
+needs to assess progress?</p></li>
+</ul>
+</section>
+<section id="oi-23-one-type-and-one-completion-year-per-measure">
+<span id="art23-oi-measure-granularity"></span><h2>OI-23 One type and one completion year per measure<a class="headerlink" href="#oi-23-one-type-and-one-completion-year-per-measure" title="Link to this heading">#</a></h2>
+<p><strong>Proposal.</strong> A measure has one measure type and one completion year. A project combining two
+types, for example a collecting system and individual systems, is reported as two measures. If
+the plants or agglomerations under one measure finish in different years, the measure is split.</p>
+<p><strong>Questions.</strong> Is splitting acceptable where the Member State knows only the total cost of a
+combined project? Or does MeasureObject need its own completion year?</p>
+</section>
+<section id="oi-24-persistent-measure-codes">
+<span id="art23-oi-measure-codes"></span><h2>OI-24 Persistent measure codes<a class="headerlink" href="#oi-24-persistent-measure-codes" title="Link to this heading">#</a></h2>
+<p><strong>Proposal.</strong> As in the Water Framework Directive, <code class="docutils literal notranslate"><span class="pre">measureCode</span></code> is a persistent identifier: a
+measure keeps its code in later updates of the programme, so that its implementation status and
+progress can be followed.</p>
+<p><strong>Question.</strong> Should measure codes be registered, like the codes of plants and agglomerations in
+the spatial points dataflow, or only checked against the previous programme?</p>
+</section>
+<section id="oi-25-reporting-measures-once">
+<span id="art23-oi-wfd"></span><h2>OI-25 Reporting measures once<a class="headerlink" href="#oi-25-reporting-measures-once" title="Link to this heading">#</a></h2>
+<p><strong>Proposal.</strong> Measures for urban wastewater treatment plants and collecting systems are reported
+once, in this dataflow, and not again in the programme of measures under the Water Framework
+Directive. The Water Framework Directive classifies such measures under the key type of measure
+<code class="docutils literal notranslate"><span class="pre">X01</span></code> (construction or upgrades of wastewater treatment plants) or <code class="docutils literal notranslate"><span class="pre">G</span></code> (measures to control point
+source discharges) with the pressure <code class="docutils literal notranslate"><span class="pre">P1-1</span></code> (urban waste water). Each UWWTD measure type
+corresponds to such a key type and pressure, derived centrally (<a class="reference internal" href="Codelists.html#art23-cl-measure-type-wfd"><span class="std std-ref">Correspondence with the Water Framework Directive</span></a>).</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Is this agreed with the Water Framework Directive reporting, so that Member States are told not
+to report these measures there?</p></li>
+<li><p>Is the proposed correspondence between measure types and WFD key types correct, including the
+measure types without a direct equivalent?</p></li>
+</ul>
+</section>
+<section id="oi-26-plants-and-agglomerations-in-the-state-tables">
+<span id="art23-oi-listed-objects"></span><h2>OI-26 Plants and agglomerations in the state tables<a class="headerlink" href="#oi-26-plants-and-agglomerations-in-the-state-tables" title="Link to this heading">#</a></h2>
+<p><strong>Proposal.</strong> Every plant or agglomeration listed in MeasureObject also has a row in UWWTP or
+Agglomeration, with its status and expected load.</p>
+<p><strong>Question.</strong> Should plants and agglomerations without a planned measure, for example
+non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?</p>
+</section>
+<section id="oi-27-currency">
+<span id="art23-oi-currency"></span><h2>OI-27 Currency<a class="headerlink" href="#oi-27-currency" title="Link to this heading">#</a></h2>
+<p><strong>Proposal.</strong> As in the Water Framework Directive, amounts are reported in millions: of euro by
+euro area Member States, and of national currency by the others, with the currency code in
+<code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code>. The draft reports all amounts in million EUR.</p>
+<p><strong>Question.</strong> Which exchange rate and date are used when amounts are converted for comparison?</p>
+</section>
 </section>
 
 
@@ -634,7 +720,7 @@ dealt with in that dataflow (<a class="reference internal" href="../SpatialPoint
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Reporting investments</p>
+        <p class="prev-next-title">Reporting measures and costs</p>
       </div>
     </a>
     <a class="right-next"
@@ -686,6 +772,12 @@ dealt with in that dataflow (<a class="reference internal" href="../SpatialPoint
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-19-publication-of-cost-estimates">OI-19 Publication of cost estimates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-20-documents-dataset">OI-20 Documents dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-21-coordinates-of-new-plants-and-agglomerations">OI-21 Coordinates of new plants and agglomerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-22-measure-first-model">OI-22 Measure-first model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-23-one-type-and-one-completion-year-per-measure">OI-23 One type and one completion year per measure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-24-persistent-measure-codes">OI-24 Persistent measure codes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-25-reporting-measures-once">OI-25 Reporting measures once</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-26-plants-and-agglomerations-in-the-state-tables">OI-26 Plants and agglomerations in the state tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oi-27-currency">OI-27 Currency</a></li>
 </ul>
   </nav></div>
 

@@ -58,7 +58,7 @@
     <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reporting investments" href="ReportingInvestments.html" />
+    <link rel="next" title="Reporting measures and costs" href="ReportingInvestments.html" />
     <link rel="prev" title="Document" href="DocumentsDataset/Document.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -315,9 +315,11 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +329,7 @@
 </ul>
 </details></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -413,8 +415,7 @@ All codelists on this page are proposals, and several are under review
 <p>Every codelist below is named as a WISE enumeration type, given under the heading, and gives for
 each value the notation to report, a short label and a definition, following
 <a class="reference internal" href="Terminology.html#art23-notation"><span class="std std-ref">Notation, label and definition</span></a>.</p>
-<p>Only the <code class="docutils literal notranslate"><span class="pre">treatmentPlantMeasure</span></code> field is explicitly described as allowing more than one value.
-For the other codelists, the draft does not say whether several values may be selected.</p>
+<p>Each codelist field takes one value unless its type is marked <code class="docutils literal notranslate"><span class="pre">[0..n]</span></code>.</p>
 <section id="deadline-extension-articles-3-2-and-6-3">
 <span id="art23-cl-deadline-ext"></span><h2>Deadline extension - Articles 3(2) and 6(3)<a class="headerlink" href="#deadline-extension-articles-3-2-and-6-3" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">DeadlineExtension</span></code></p>
@@ -753,12 +754,18 @@ yet be available for these agglomerations and plants.</p>
 </table>
 </div>
 </section>
-<section id="treatment-plant-measures">
-<span id="art23-cl-uww-measures"></span><h2>Treatment plant measures<a class="headerlink" href="#treatment-plant-measures" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">TreatmentPlantMeasure</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">treatmentPlantMeasure</span></code> field of the <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> table. Select one or more values.</p>
+<section id="measure-type">
+<span id="art23-cl-measure-type"></span><h2>Measure type<a class="headerlink" href="#measure-type" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">UWWTDMeasureType</span></code></p>
+<p>Used by the <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> field of the <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> table. One value per measure. The
+codelist brings together the former treatment plant and agglomeration measure codelists; the
+renewal value, which both had, is split into one value for collecting systems and one for
+treatment plants. The notes give the article and the object type: a measure listing plants or
+agglomerations in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a> must list objects of that type.</p>
+<p>The name is prefixed with <code class="docutils literal notranslate"><span class="pre">UWWTD</span></code> because the Water Framework Directive codelist <code class="docutils literal notranslate"><span class="pre">MeasureType</span></code>
+classifies measures differently, by their nature (legislative, technical, economic and so on).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id8">
-<caption><span class="caption-number">Table 33 </span><span class="caption-text">Proposed treatment plant measures</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 33 </span><span class="caption-text">Proposed measure types</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 24.0%" />
@@ -773,132 +780,394 @@ yet be available for these agglomerations and plants.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_3</span></code></p></td>
-<td><p>New plant, agglomerations of 1 000 to 1 999 p.e.</p></td>
-<td><p>A new treatment plant providing secondary treatment.</p></td>
-<td><p>Article 6(3).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_1</span></code></p></td>
-<td><p>New plant, agglomerations of 2 000 p.e. and above</p></td>
-<td><p>A new treatment plant providing secondary treatment.</p></td>
-<td><p>Article 6(1).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogen</span></code></p></td>
-<td><p>Upgrade to tertiary treatment (N)</p></td>
-<td><p>Upgrade to tertiary treatment for nitrogen.</p></td>
-<td><p>Article 7(1) for plants of 150 000 p.e. and above; Article 7(3) for
-agglomerations of 10 000 p.e. and above discharging into sensitive areas.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryPhosphorus</span></code></p></td>
-<td><p>Upgrade to tertiary treatment (P)</p></td>
-<td><p>Upgrade to tertiary treatment for phosphorus.</p></td>
-<td><p>Articles 7(1) and 7(3), as above.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p></td>
-<td><p>Upgrade to tertiary treatment (N+P)</p></td>
-<td><p>Upgrade to tertiary treatment for both nitrogen and phosphorus.</p></td>
-<td><p>Articles 7(1) and 7(3), as above.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
-<td><p>Upgrade to quaternary treatment</p></td>
-<td><p>Upgrade to quaternary treatment for micropollutants.</p></td>
-<td><p>Article 8(1) for plants of 150 000 p.e. and above; Article 8(4) for
-agglomerations of 10 000 p.e. and above discharging into risk areas.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">energyNeutrality</span></code></p></td>
-<td><p>Energy neutrality</p></td>
-<td><p>Measures to meet the renewable energy targets.</p></td>
-<td><p>Article 11(2), for plants of 10 000 p.e. and above.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">secondaryTreatmentRiskBased</span></code></p></td>
-<td><p>Secondary treatment, agglomerations below 1 000 p.e.</p></td>
-<td><p>Applying secondary treatment on the basis of the risk assessment.</p></td>
-<td><p>Article 18(2)(c).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tertiaryTreatmentRiskBased</span></code></p></td>
-<td><p>Tertiary treatment, agglomerations below 10 000 p.e.</p></td>
-<td><p>Applying tertiary treatment on the basis of the risk assessment.</p></td>
-<td><p>Article 18(2)(d).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quaternaryTreatmentRiskBased</span></code></p></td>
-<td><p>Quaternary treatment, agglomerations below 10 000 p.e.</p></td>
-<td><p>Applying quaternary treatment on the basis of the risk assessment.</p></td>
-<td><p>Article 18(2)(e).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stricterTreatmentRiskBased</span></code></p></td>
-<td><p>Stricter treatment requirements</p></td>
-<td><p>Applying stricter requirements for treatment on the basis of the risk assessment.</p></td>
-<td><p>Article 18(2)(g).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code></p></td>
-<td><p>Other appropriate measure</p></td>
-<td><p>Another appropriate measure under Article 18(2).</p></td>
-<td><p>Article 18(2). Describe the measure in <code class="docutils literal notranslate"><span class="pre">measureText</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceArticle23_1c</span></code></p></td>
-<td><p>Renew or replace existing infrastructure</p></td>
-<td><p>Renewal or replacement of existing infrastructure, including capacity increase.</p></td>
-<td><p>Article 23(1)(c).</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="agglomeration-measures">
-<span id="art23-cl-agg-measures"></span><h2>Agglomeration measures<a class="headerlink" href="#agglomeration-measures" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">AgglomerationMeasure</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">agglomerationMeasure</span></code> field of the <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> table.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id9">
-<caption><span class="caption-number">Table 34 </span><span class="caption-text">Proposed agglomeration measures</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 24.0%" />
-<col style="width: 26.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Notation</p></th>
-<th class="head"><p>Label</p></th>
-<th class="head"><p>Definition</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_2</span></code></p></td>
-<td><p>New collecting systems, 1 000 to 1 999 p.e.</p></td>
-<td><p>New collecting systems in agglomerations of 1 000 to 1 999 p.e.</p></td>
-<td><p>Article 3(2).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code></p></td>
 <td><p>New collecting systems, 2 000 p.e. and above</p></td>
 <td><p>New collecting systems in agglomerations of 2 000 p.e. and above.</p></td>
-<td><p>Article 3(1).</p></td>
+<td><p>Article 3(1). Agglomeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_2</span></code></p></td>
+<td><p>New collecting systems, 1 000 to 1 999 p.e.</p></td>
+<td><p>New collecting systems in agglomerations of 1 000 to 1 999 p.e.</p></td>
+<td><p>Article 3(2). Agglomeration.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stormWaterOverflowReduction</span></code></p></td>
 <td><p>Measures to reduce storm water overflows</p></td>
-<td><p>Measures to reduce storm water overflows from collecting systems.</p></td>
-<td><p>Article 3(4): collecting systems must meet Part A of Annex I.</p></td>
+<td><p>Measures to reduce storm water overflows from collecting systems, so that they meet Part A
+of Annex I.</p></td>
+<td><p>Article 3(4). Agglomeration.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">individualSystemsArticle4</span></code></p></td>
 <td><p>Measures for individual systems</p></td>
 <td><p>Measures for individual systems used where a collecting system is not established.</p></td>
-<td><p>Article 4.</p></td>
+<td><p>Article 4. Agglomeration.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">managementPlanMeasures</span></code></p></td>
 <td><p>Measures resulting from a management plan</p></td>
 <td><p>Measures resulting from an integrated urban wastewater management plan.</p></td>
-<td><p>Article 5 and Annex V.</p></td>
+<td><p>Article 5 and Annex V. Agglomeration.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemRiskBased</span></code></p></td>
 <td><p>New collecting systems, below 1 000 p.e.</p></td>
 <td><p>New collecting systems in agglomerations below 1 000 p.e., on the basis of the risk
 assessment.</p></td>
-<td><p>Article 18(2)(b).</p></td>
+<td><p>Article 18(2)(b). Agglomeration.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceArticle23_1c</span></code></p></td>
-<td><p>Renew or replace existing infrastructure</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code></p></td>
+<td><p>Renew or replace existing collecting systems</p></td>
 <td><p>Renewal or replacement of existing collecting system infrastructure.</p></td>
-<td><p>Article 23(1)(c).</p></td>
+<td><p>Article 23(1)(c). Agglomeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_1</span></code></p></td>
+<td><p>New plant, agglomerations of 2 000 p.e. and above</p></td>
+<td><p>A new treatment plant providing secondary treatment.</p></td>
+<td><p>Article 6(1). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_3</span></code></p></td>
+<td><p>New plant, agglomerations of 1 000 to 1 999 p.e.</p></td>
+<td><p>A new treatment plant providing secondary treatment.</p></td>
+<td><p>Article 6(3). Treatment plant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogen</span></code></p></td>
+<td><p>Upgrade to tertiary treatment (N)</p></td>
+<td><p>Upgrade to tertiary treatment for nitrogen.</p></td>
+<td><p>Article 7(1), 7(3). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryPhosphorus</span></code></p></td>
+<td><p>Upgrade to tertiary treatment (P)</p></td>
+<td><p>Upgrade to tertiary treatment for phosphorus.</p></td>
+<td><p>Article 7(1), 7(3). Treatment plant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p></td>
+<td><p>Upgrade to tertiary treatment (N+P)</p></td>
+<td><p>Upgrade to tertiary treatment for both nitrogen and phosphorus.</p></td>
+<td><p>Article 7(1), 7(3). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
+<td><p>Upgrade to quaternary treatment</p></td>
+<td><p>Upgrade to quaternary treatment for micropollutants.</p></td>
+<td><p>Article 8(1), 8(4). Treatment plant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">energyNeutrality</span></code></p></td>
+<td><p>Energy neutrality</p></td>
+<td><p>Measures to meet the renewable energy targets.</p></td>
+<td><p>Article 11(2). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">secondaryTreatmentRiskBased</span></code></p></td>
+<td><p>Secondary treatment, agglomerations below 1 000 p.e.</p></td>
+<td><p>Applying secondary treatment on the basis of the risk assessment.</p></td>
+<td><p>Article 18(2)(c). Treatment plant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tertiaryTreatmentRiskBased</span></code></p></td>
+<td><p>Tertiary treatment, agglomerations below 10 000 p.e.</p></td>
+<td><p>Applying tertiary treatment on the basis of the risk assessment.</p></td>
+<td><p>Article 18(2)(d). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quaternaryTreatmentRiskBased</span></code></p></td>
+<td><p>Quaternary treatment, agglomerations below 10 000 p.e.</p></td>
+<td><p>Applying quaternary treatment on the basis of the risk assessment.</p></td>
+<td><p>Article 18(2)(e). Treatment plant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stricterTreatmentRiskBased</span></code></p></td>
+<td><p>Stricter treatment requirements</p></td>
+<td><p>Applying stricter requirements for treatment on the basis of the risk assessment.</p></td>
+<td><p>Article 18(2)(g). Treatment plant.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code></p></td>
+<td><p>Other appropriate measure</p></td>
+<td><p>Another appropriate measure under Article 18(2). Describe it in <code class="docutils literal notranslate"><span class="pre">measureText</span></code>.</p></td>
+<td><p>Article 18(2). Either.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code></p></td>
+<td><p>Renew or replace existing treatment plants</p></td>
+<td><p>Renewal or replacement of an existing treatment plant, including capacity increase.</p></td>
+<td><p>Article 23(1)(c). Treatment plant.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="correspondence-with-the-water-framework-directive">
+<span id="art23-cl-measure-type-wfd"></span><h3>Correspondence with the Water Framework Directive<a class="headerlink" href="#correspondence-with-the-water-framework-directive" title="Link to this heading">#</a></h3>
+<p>Measures for treatment plants and collecting systems are intended to be reported once, in this
+dataflow, and not again in the programme of measures under the Water Framework Directive
+(<a class="reference internal" href="OpenIssues.html#art23-oi-wfd"><span class="std std-ref">OI-25 Reporting measures once</span></a>). So that they can still be used in assessments under that Directive, each
+measure type corresponds to a WFD key type of measure (<code class="docutils literal notranslate"><span class="pre">mainKeyTypeOfMeasure</span></code>) and main pressure
+(<code class="docutils literal notranslate"><span class="pre">mainPressureType</span></code>), derived centrally and not reported. The correspondence below is a proposal,
+to be confirmed.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id9">
+<caption><span class="caption-number">Table 34 </span><span class="caption-text">Proposed correspondence with WFD key types of measures</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Measure type</p></th>
+<th class="head"><p>WFD key type of measure</p></th>
+<th class="head"><p>WFD main pressure</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stormWaterOverflowReduction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-2</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">individualSystemsArticle4</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">managementPlanMeasures</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-2</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemRiskBased</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Measure to control point source discharges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newPlantArticle6_3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryPhosphorus</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">energyNeutrality</span></code></p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>No direct equivalent; to be decided.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">secondaryTreatmentRiskBased</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tertiaryTreatmentRiskBased</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quaternaryTreatmentRiskBased</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stricterTreatmentRiskBased</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code></p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>No direct equivalent; to be decided.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X01</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code></p></td>
+<td><p>Construction or upgrades of wastewater treatment plants.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code> is the WFD pressure “Point - Urban waste water” and <code class="docutils literal notranslate"><span class="pre">P1-2</span></code> “Point - Storm overflows”.</p>
+</section>
+</section>
+<section id="geographical-coverage">
+<span id="art23-cl-coverage"></span><h2>Geographical coverage<a class="headerlink" href="#geographical-coverage" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">UWWTDGeographicCoverage</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>. Prefixed with <code class="docutils literal notranslate"><span class="pre">UWWTD</span></code> because the
+corresponding Water Framework Directive codelist, <code class="docutils literal notranslate"><span class="pre">WFDGeographicCoverage</span></code>, has other values.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id10">
+<caption><span class="caption-number">Table 35 </span><span class="caption-text">Proposed geographical coverage values</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 34.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">national</span></code></p></td>
+<td><p>National</p></td>
+<td><p>The measure applies to the whole Member State; no plants or agglomerations are listed.</p></td>
+<td><p>No rows in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p>Listed plants or agglomerations</p></td>
+<td><p>The measure applies to the plants or agglomerations listed in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.</p></td>
+<td><p>At least one row in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code></p></td>
+<td><p>Plants or agglomerations not yet identified</p></td>
+<td><p>The measure applies to plants or agglomerations that are not yet identified.</p></td>
+<td><p>Give <code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> if known.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="implementation-status">
+<span id="art23-cl-implementation-status"></span><h2>Implementation status<a class="headerlink" href="#implementation-status" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">PlannedOngoingExecutedCancelled</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">implementationStatus</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>. The same codelist as in the Water Framework
+Directive 4th cycle.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-number">Table 36 </span><span class="caption-text">Implementation status values</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 34.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
+<td><p>Planned</p></td>
+<td><p>The measure is planned and has not started.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ongoing</span></code></p></td>
+<td><p>Ongoing</p></td>
+<td><p>The measure has started and is not yet completed.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">executed</span></code></p></td>
+<td><p>Executed</p></td>
+<td><p>The measure has been completed.</p></td>
+<td><p>Used in later programmes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cancelled</span></code></p></td>
+<td><p>Cancelled</p></td>
+<td><p>The measure has been cancelled.</p></td>
+<td><p>Used in later programmes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cost-status">
+<span id="art23-cl-cost-status"></span><h2>Cost status<a class="headerlink" href="#cost-status" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">CostStatus</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id12">
+<caption><span class="caption-number">Table 37 </span><span class="caption-text">Proposed cost status values</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 34.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">known</span></code></p></td>
+<td><p>Known</p></td>
+<td><p>The cost comes from a project, tender or contract.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">estimated</span></code></p></td>
+<td><p>Estimated</p></td>
+<td><p>The cost is an estimate.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unknown</span></code></p></td>
+<td><p>Unknown</p></td>
+<td><p>The cost is not yet known.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> stays empty.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="object-type">
+<span id="art23-cl-object-type"></span><h2>Object type<a class="headerlink" href="#object-type" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">MeasureObjectType</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">objectType</span></code> in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id13">
+<caption><span class="caption-number">Table 38 </span><span class="caption-text">Proposed object type values</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 34.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
+<td><p>Agglomeration</p></td>
+<td><p>The object is an agglomeration.</p></td>
+<td><p>Code from <a class="reference internal" href="../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code></p></td>
+<td><p>Treatment plant</p></td>
+<td><p>The object is an urban wastewater treatment plant.</p></td>
+<td><p>Code from <a class="reference internal" href="../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -907,10 +1176,9 @@ assessment.</p></td>
 <section id="priority">
 <span id="art23-cl-priority"></span><h2>Priority<a class="headerlink" href="#priority" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Priority</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> field of the <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a>
-tables.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id10">
-<caption><span class="caption-number">Table 35 </span><span class="caption-text">Proposed priority values</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
+<p>Used by the <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> field of the <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> table.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id14">
+<caption><span class="caption-number">Table 39 </span><span class="caption-text">Proposed priority values</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 20.0%" />
@@ -927,31 +1195,31 @@ tables.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 <td><p>High</p></td>
-<td><p>High priority investment.</p></td>
+<td><p>High priority measure.</p></td>
 <td><p>Related to the size of the agglomeration and the level of environmental impact.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 <td><p>Medium</p></td>
-<td><p>Medium priority investment.</p></td>
+<td><p>Medium priority measure.</p></td>
 <td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">low</span></code></p></td>
 <td><p>Low</p></td>
-<td><p>Low priority investment.</p></td>
+<td><p>Low priority measure.</p></td>
 <td><p>–</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The draft does not define the boundaries between the three levels. See <a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting investments</span></a>
+<p>The draft does not define the boundaries between the three levels. See <a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>
 and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"><span class="std std-ref">OI-05 Prioritisation</span></a>.</p>
 </section>
 <section id="eu-funds">
 <span id="art23-cl-eu-funds"></span><h2>EU funds<a class="headerlink" href="#eu-funds" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">EUFund</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> and <code class="docutils literal notranslate"><span class="pre">europeanUnionFundsName</span></code> fields.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id11">
-<caption><span class="caption-number">Table 36 </span><span class="caption-text">Proposed EU fund values</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id15">
+<caption><span class="caption-number">Table 40 </span><span class="caption-text">Proposed EU fund values</span><a class="headerlink" href="#id15" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 30.0%" />
@@ -1020,17 +1288,18 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 </table>
 </div>
 </section>
-<section id="other-public-funds">
-<span id="art23-cl-public-funds"></span><h2>Other public funds<a class="headerlink" href="#other-public-funds" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">OtherPublicFund</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">otherPublicFundSpecification</span></code> field.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id12">
-<caption><span class="caption-number">Table 37 </span><span class="caption-text">Proposed other public fund values</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
+<section id="funding-source">
+<span id="art23-cl-funding-source"></span><h2>Funding source<a class="headerlink" href="#funding-source" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">FundingSource</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>. It replaces the former other public fund
+codelist, whose values are kept.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id16">
+<caption><span class="caption-number">Table 41 </span><span class="caption-text">Proposed funding source values</span><a class="headerlink" href="#id16" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 24.0%" />
+<col style="width: 30.0%" />
 <col style="width: 22.0%" />
-<col style="width: 34.0%" />
-<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 18.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
@@ -1040,6 +1309,16 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ownFunds</span></code></p></td>
+<td><p>Own funds</p></td>
+<td><p>Funds of the operator, including tariffs, under the polluter-pays or user-pays principle.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code></p></td>
+<td><p>Producer responsibility</p></td>
+<td><p>Funding from producer responsibility organisations.</p></td>
+<td><p>–</p></td>
+</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nationalFederal</span></code></p></td>
 <td><p>National-federal</p></td>
 <td><p>Funds from the national or federal budget.</p></td>
@@ -1060,6 +1339,143 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 <td><p>Public funds from another source.</p></td>
 <td><p>–</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code></p></td>
+<td><p>EU fund</p></td>
+<td><p>Funding from a Union fund.</p></td>
+<td><p>Name the fund in <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">loan</span></code></p></td>
+<td><p>Loan</p></td>
+<td><p>A loan from a public or private lender.</p></td>
+<td><p>Lender optional in <code class="docutils literal notranslate"><span class="pre">loanName</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">privateFunds</span></code></p></td>
+<td><p>Private funds</p></td>
+<td><p>Private funding other than a loan.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
+<td><p>Not identified</p></td>
+<td><p>The source of this part of the cost is not yet identified.</p></td>
+<td><p>Use with <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="funding-status">
+<span id="art23-cl-funding-status"></span><h2>Funding status<a class="headerlink" href="#funding-status" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">FundingStatus</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id17">
+<caption><span class="caption-number">Table 42 </span><span class="caption-text">Proposed funding status values</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 24.0%" />
+<col style="width: 22.0%" />
+<col style="width: 34.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
+<td><p>Secured</p></td>
+<td><p>The money is granted or committed.</p></td>
+<td><p>Counts towards the financing of the measure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
+<td><p>Applied for</p></td>
+<td><p>An application for the money has been made.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
+<td><p>Planned</p></td>
+<td><p>The Member State plans to use this source.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
+<td><p>Not identified</p></td>
+<td><p>No source has been identified yet.</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="currency">
+<span id="art23-cl-currency"></span><h2>Currency<a class="headerlink" href="#currency" title="Link to this heading">#</a></h2>
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">CurrencyCode</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> and <a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. As in
+the Water Framework Directive, amounts are reported in millions of euro by euro area Member States
+and in millions of national currency by the others, which use their own currency code, not a
+generic code for domestic currency. The values are those of the Water Framework Directive
+codelist.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id18">
+<caption><span class="caption-number">Table 43 </span><span class="caption-text">Currency values</span><a class="headerlink" href="#id18" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EUR</span></code></p></td>
+<td><p>Euro</p></td>
+<td><p>Euro.</p></td>
+<td><p>Euro area Member States.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CZK</span></code></p></td>
+<td><p>Czech koruna</p></td>
+<td><p>Czech koruna.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DKK</span></code></p></td>
+<td><p>Danish krone</p></td>
+<td><p>Danish krone.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HUF</span></code></p></td>
+<td><p>Hungarian forint</p></td>
+<td><p>Hungarian forint.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PLN</span></code></p></td>
+<td><p>Polish zloty</p></td>
+<td><p>Polish zloty.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RON</span></code></p></td>
+<td><p>Romanian leu</p></td>
+<td><p>Romanian leu.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SEK</span></code></p></td>
+<td><p>Swedish krona</p></td>
+<td><p>Swedish krona.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NOK</span></code></p></td>
+<td><p>Norwegian krone</p></td>
+<td><p>Norwegian krone.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ISK</span></code></p></td>
+<td><p>Icelandic krona</p></td>
+<td><p>Icelandic krona.</p></td>
+<td><p>–</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1068,8 +1484,8 @@ and <a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"
 <span id="art23-cl-pro-basis"></span><h2>Basis of the producer responsibility estimate<a class="headerlink" href="#basis-of-the-producer-responsibility-estimate" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">EstimateBasis</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code>.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id13">
-<caption><span class="caption-number">Table 38 </span><span class="caption-text">Proposed basis of estimate values</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id19">
+<caption><span class="caption-number">Table 44 </span><span class="caption-text">Proposed basis of estimate values</span><a class="headerlink" href="#id19" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -1103,8 +1519,8 @@ responsibility organisations during the recognition procedure.</p></td>
 <span id="art23-cl-licence"></span><h2>Licence<a class="headerlink" href="#licence" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">Licence</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">license</span></code> in <a class="reference internal" href="DocumentsDataset/dcMetadata.html#art23-dcmetadata"><span class="std std-ref">dcMetadata</span></a>.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id14">
-<caption><span class="caption-number">Table 39 </span><span class="caption-text">Proposed licence values</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id20">
+<caption><span class="caption-number">Table 45 </span><span class="caption-text">Proposed licence values</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 22.0%" />
@@ -1171,7 +1587,7 @@ responsibility organisations during the recognition procedure.</p></td>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reporting investments</p>
+        <p class="prev-next-title">Reporting measures and costs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1201,11 +1617,19 @@ responsibility organisations during the recognition procedure.</p></td>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-assessment">Risk assessment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-period">Contribution period</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plant-and-agglomeration-status">Plant and agglomeration status</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-plant-measures">Treatment plant measures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agglomeration-measures">Agglomeration measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-type">Measure type</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correspondence-with-the-water-framework-directive">Correspondence with the Water Framework Directive</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geographical-coverage">Geographical coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-status">Implementation status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost-status">Cost status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-type">Object type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priority">Priority</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eu-funds">EU funds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-public-funds">Other public funds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funding-source">Funding source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funding-status">Funding status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currency">Currency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-of-the-producer-responsibility-estimate">Basis of the producer responsibility estimate</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licence">Licence</a></li>
 </ul>

@@ -673,9 +673,11 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -685,7 +687,7 @@ window.runMermaid = runMermaid;</script>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -803,6 +805,7 @@ class MSSummary{
     + riskSummaryReference: referenceCode [0..1]
 
     + producerResponsibilityContribution: nonNegativeValue [1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [1]
     + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
     + contributionPeriod: ContributionPeriod [0..n]
     + contributionPeriodOther: string1000 [0..1]
@@ -975,18 +978,26 @@ the period of an interim target, and assign it to that period.</p>
 <td><p>Producer responsibility contribution</p></td>
 <td><p>Estimated financial contribution from producer responsibility organisations, total at
 national level.</p></td>
-<td><p>nonNegativeValue (million EUR)</p></td>
+<td><p>nonNegativeValue (million units of national currency)</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code></p></td>
+<td><p>Currency</p></td>
+<td><p>Currency of <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>, in millions of that currency. Euro area
+Member States use EUR.</p></td>
+<td><p>CurrencyCode</p></td>
+<td><p>Required</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-currency"><span class="std std-ref">Currency</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code></p></td>
 <td><p>Estimate based on</p></td>
 <td><p>Basis of the estimate.</p></td>
 <td><p>EstimateBasis</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-pro-basis"><span class="std std-ref">Basis of the producer responsibility estimate</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code></p></td>
 <td><p>Contribution period</p></td>
 <td><p>Period or periods by which the planned resources, including the contribution in
 <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>, are expected to be sufficient to meet the
@@ -995,14 +1006,14 @@ requirements of the Directive. Select one or more.</p></td>
 <td><p>Optional</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-contribution-period"><span class="std std-ref">Contribution period</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriodOther</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contributionPeriodOther</span></code></p></td>
 <td><p>Other contribution period</p></td>
 <td><p>Explanation of the period, where <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> includes <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
 <td><p>string1000</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> includes <code class="docutils literal notranslate"><span class="pre">other</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
 <td><p>Remarks</p></td>
 <td><p>Other important information on compliance and its assessment.</p></td>
 <td><p>string1000</p></td>

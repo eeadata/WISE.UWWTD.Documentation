@@ -143,9 +143,16 @@ the period of an interim target, and assign it to that period.
   - Producer responsibility contribution
   - Estimated financial contribution from producer responsibility organisations, total at
     national level.
-  - nonNegativeValue (million EUR)
+  - nonNegativeValue (million units of national currency)
   - Required
   - –
+* - `millionUnitsOfNationalCurrency`
+  - Currency
+  - Currency of `producerResponsibilityContribution`, in millions of that currency. Euro area
+    Member States use EUR.
+  - CurrencyCode
+  - Required
+  - {ref}`art23-cl-currency`
 * - `producerResponsibilityEstimateBasedOn`
   - Estimate based on
   - Basis of the estimate.

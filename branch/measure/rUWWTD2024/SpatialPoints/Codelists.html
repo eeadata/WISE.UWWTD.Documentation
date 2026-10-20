@@ -315,9 +315,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Article23/DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Article23/DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +329,7 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Article23/ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Article23/ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -411,7 +413,7 @@
 and is added automatically, with the value below, when the WISE output is produced
 (<a class="reference internal" href="OpenIssues.html#sp-oi-schemes"><span class="std std-ref">SP-15 Identifier schemes</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 46 </span><span class="caption-text">Identifier scheme values</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 53 </span><span class="caption-text">Identifier scheme values</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -453,7 +455,7 @@ and is added automatically, with the value below, when the WISE output is produc
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue">WISE evolution type vocabulary</a>
 (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>); only those needed here are used.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 47 </span><span class="caption-text">Evolution type values</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 54 </span><span class="caption-text">Evolution type values</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -514,7 +516,7 @@ and is added automatically, with the value below, when the WISE output is produc
 <p>Used by <code class="docutils literal notranslate"><span class="pre">locationStatus</span></code> in the UWWTP table only; a discharge point always has a known location.
 A UWWTD codelist.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 48 </span><span class="caption-text">Location status values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 55 </span><span class="caption-text">Location status values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -557,7 +559,7 @@ not here. The values follow the INSPIRE
 <a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist,
 except that its <code class="docutils literal notranslate"><span class="pre">projected</span></code> is called <code class="docutils literal notranslate"><span class="pre">proposed</span></code> here (<a class="reference internal" href="OpenIssues.html#sp-oi-vocabulary"><span class="std std-ref">SP-11 Condition codelist</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 49 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 56 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -606,7 +608,7 @@ except that its <code class="docutils literal notranslate"><span class="pre">pro
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ReceivingType</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">receivingType</span></code> in the DischargePoint table.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-number">Table 50 </span><span class="caption-text">Receiving type values</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 57 </span><span class="caption-text">Receiving type values</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />

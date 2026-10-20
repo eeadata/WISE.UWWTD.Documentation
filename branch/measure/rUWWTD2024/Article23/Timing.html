@@ -315,9 +315,11 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html">OtherInvestment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +329,7 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting investments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -580,27 +582,22 @@ of the decision not to establish one.</p></td>
 </tr>
 <tr class="row-odd"><td><p>“Reference year”</p></td>
 <td><p>Status of plants and agglomerations. Not defined in the draft.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code> in both investment tables</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code> in <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Expected date of compliance</p></td>
 <td><p>Projected loads and shares.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> in both investment tables, <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code>,
-<code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> in <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a>,
+<code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Expected years and date</p></td>
-<td><p>Start of works, compliance and completion.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>, <code class="docutils literal notranslate"><span class="pre">completionDate</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">startYear</span></code> to <code class="docutils literal notranslate"><span class="pre">endYear</span></code></p></td>
-<td><p>Period covered by a row of aggregated investments. The period is not defined in the draft.</p></td>
-<td><p><a class="reference internal" href="DescriptiveDataset/OtherInvestment.html#art23-otherinvestment"><span class="std std-ref">OtherInvestment</span></a></p></td>
+<tr class="row-odd"><td><p>Expected years</p></td>
+<td><p>Start of works, and completion or compliance, of each measure.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Which period the first programme should describe, and whether investment amounts cover the whole
-period to 2045, are open questions (<a class="reference internal" href="OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>,
-<a class="reference internal" href="OpenIssues.html#art23-oi-otherinvestment"><span class="std std-ref">OI-18 OtherInvestment reference period</span></a>).</p>
+<p>Which period the first programme should describe, and whether measures should cover the whole
+period to 2045, are open questions (<a class="reference internal" href="OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>).</p>
 </section>
 <section id="after-the-first-programme">
 <h2>After the first programme<a class="headerlink" href="#after-the-first-programme" title="Link to this heading">#</a></h2>

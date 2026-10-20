@@ -245,8 +245,9 @@ baseline takes the place of that accepted state throughout these checks
 (sp-references)=
 ## Use by Article 22 and Article 23 reporting
 
-The Article 23 {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables refer to treatment plants
-and agglomerations by `thematicIdIdentifier`, without repeating their name or location. The
+The Article 23 {ref}`art23-uwwtp`, {ref}`art23-agglomeration` and {ref}`art23-measureobject`
+tables refer to treatment plants and agglomerations by `thematicIdIdentifier`, without repeating
+their name or location. The
 Article 22 reporting is expected to refer to agglomerations, treatment plants and discharge points
 in the same way; its tables are not defined yet.
 

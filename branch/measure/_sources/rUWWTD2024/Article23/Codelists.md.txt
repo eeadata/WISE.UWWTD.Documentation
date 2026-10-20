@@ -10,8 +10,7 @@ Every codelist below is named as a WISE enumeration type, given under the headin
 each value the notation to report, a short label and a definition, following
 {ref}`art23-notation`.
 
-Only the `treatmentPlantMeasure` field is explicitly described as allowing more than one value.
-For the other codelists, the draft does not say whether several values may be selected.
+Each codelist field takes one value unless its type is marked `[0..n]`.
 
 (art23-cl-deadline-ext)=
 ## Deadline extension - Articles 3(2) and 6(3)
@@ -270,14 +269,21 @@ Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomerati
   - –
 :::
 
-(art23-cl-uww-measures)=
-## Treatment plant measures
+(art23-cl-measure-type)=
+## Measure type
 
-**Type:** `TreatmentPlantMeasure`
+**Type:** `UWWTDMeasureType`
 
-Used by the `treatmentPlantMeasure` field of the {ref}`art23-uwwtp` table. Select one or more values.
+Used by the `uwwtdMeasureType` field of the {ref}`art23-measure` table. One value per measure. The
+codelist brings together the former treatment plant and agglomeration measure codelists; the
+renewal value, which both had, is split into one value for collecting systems and one for
+treatment plants. The notes give the article and the object type: a measure listing plants or
+agglomerations in {ref}`art23-measureobject` must list objects of that type.
 
-:::{list-table} Proposed treatment plant measures
+The name is prefixed with `UWWTD` because the Water Framework Directive codelist `MeasureType`
+classifies measures differently, by their nature (legislative, technical, economic and so on).
+
+:::{list-table} Proposed measure types
 :header-rows: 1
 :widths: 30 24 26 20
 
@@ -285,106 +291,308 @@ Used by the `treatmentPlantMeasure` field of the {ref}`art23-uwwtp` table. Selec
   - Label
   - Definition
   - Notes
-* - `newPlantArticle6_3`
-  - New plant, agglomerations of 1 000 to 1 999 p.e.
-  - A new treatment plant providing secondary treatment.
-  - Article 6(3).
-* - `newPlantArticle6_1`
-  - New plant, agglomerations of 2 000 p.e. and above
-  - A new treatment plant providing secondary treatment.
-  - Article 6(1).
-* - `upgradeTertiaryNitrogen`
-  - Upgrade to tertiary treatment (N)
-  - Upgrade to tertiary treatment for nitrogen.
-  - Article 7(1) for plants of 150 000 p.e. and above; Article 7(3) for
-    agglomerations of 10 000 p.e. and above discharging into sensitive areas.
-* - `upgradeTertiaryPhosphorus`
-  - Upgrade to tertiary treatment (P)
-  - Upgrade to tertiary treatment for phosphorus.
-  - Articles 7(1) and 7(3), as above.
-* - `upgradeTertiaryNitrogenPhosphorus`
-  - Upgrade to tertiary treatment (N+P)
-  - Upgrade to tertiary treatment for both nitrogen and phosphorus.
-  - Articles 7(1) and 7(3), as above.
-* - `upgradeQuaternary`
-  - Upgrade to quaternary treatment
-  - Upgrade to quaternary treatment for micropollutants.
-  - Article 8(1) for plants of 150 000 p.e. and above; Article 8(4) for
-    agglomerations of 10 000 p.e. and above discharging into risk areas.
-* - `energyNeutrality`
-  - Energy neutrality
-  - Measures to meet the renewable energy targets.
-  - Article 11(2), for plants of 10 000 p.e. and above.
-* - `secondaryTreatmentRiskBased`
-  - Secondary treatment, agglomerations below 1 000 p.e.
-  - Applying secondary treatment on the basis of the risk assessment.
-  - Article 18(2)(c).
-* - `tertiaryTreatmentRiskBased`
-  - Tertiary treatment, agglomerations below 10 000 p.e.
-  - Applying tertiary treatment on the basis of the risk assessment.
-  - Article 18(2)(d).
-* - `quaternaryTreatmentRiskBased`
-  - Quaternary treatment, agglomerations below 10 000 p.e.
-  - Applying quaternary treatment on the basis of the risk assessment.
-  - Article 18(2)(e).
-* - `stricterTreatmentRiskBased`
-  - Stricter treatment requirements
-  - Applying stricter requirements for treatment on the basis of the risk assessment.
-  - Article 18(2)(g).
-* - `otherMeasureArticle18_2`
-  - Other appropriate measure
-  - Another appropriate measure under Article 18(2).
-  - Article 18(2). Describe the measure in `measureText`.
-* - `renewOrReplaceArticle23_1c`
-  - Renew or replace existing infrastructure
-  - Renewal or replacement of existing infrastructure, including capacity increase.
-  - Article 23(1)(c).
-:::
-
-(art23-cl-agg-measures)=
-## Agglomeration measures
-
-**Type:** `AgglomerationMeasure`
-
-Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table.
-
-:::{list-table} Proposed agglomeration measures
-:header-rows: 1
-:widths: 30 24 26 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `newCollectingSystemArticle3_2`
-  - New collecting systems, 1 000 to 1 999 p.e.
-  - New collecting systems in agglomerations of 1 000 to 1 999 p.e.
-  - Article 3(2).
 * - `newCollectingSystemArticle3_1`
   - New collecting systems, 2 000 p.e. and above
   - New collecting systems in agglomerations of 2 000 p.e. and above.
-  - Article 3(1).
+  - Article 3(1). Agglomeration.
+* - `newCollectingSystemArticle3_2`
+  - New collecting systems, 1 000 to 1 999 p.e.
+  - New collecting systems in agglomerations of 1 000 to 1 999 p.e.
+  - Article 3(2). Agglomeration.
 * - `stormWaterOverflowReduction`
   - Measures to reduce storm water overflows
-  - Measures to reduce storm water overflows from collecting systems.
-  - Article 3(4): collecting systems must meet Part A of Annex I.
+  - Measures to reduce storm water overflows from collecting systems, so that they meet Part A
+    of Annex I.
+  - Article 3(4). Agglomeration.
 * - `individualSystemsArticle4`
   - Measures for individual systems
   - Measures for individual systems used where a collecting system is not established.
-  - Article 4.
+  - Article 4. Agglomeration.
 * - `managementPlanMeasures`
   - Measures resulting from a management plan
   - Measures resulting from an integrated urban wastewater management plan.
-  - Article 5 and Annex V.
+  - Article 5 and Annex V. Agglomeration.
 * - `newCollectingSystemRiskBased`
   - New collecting systems, below 1 000 p.e.
   - New collecting systems in agglomerations below 1 000 p.e., on the basis of the risk
     assessment.
-  - Article 18(2)(b).
-* - `renewOrReplaceArticle23_1c`
-  - Renew or replace existing infrastructure
+  - Article 18(2)(b). Agglomeration.
+* - `renewOrReplaceCollectingSystem`
+  - Renew or replace existing collecting systems
   - Renewal or replacement of existing collecting system infrastructure.
-  - Article 23(1)(c).
+  - Article 23(1)(c). Agglomeration.
+* - `newPlantArticle6_1`
+  - New plant, agglomerations of 2 000 p.e. and above
+  - A new treatment plant providing secondary treatment.
+  - Article 6(1). Treatment plant.
+* - `newPlantArticle6_3`
+  - New plant, agglomerations of 1 000 to 1 999 p.e.
+  - A new treatment plant providing secondary treatment.
+  - Article 6(3). Treatment plant.
+* - `upgradeTertiaryNitrogen`
+  - Upgrade to tertiary treatment (N)
+  - Upgrade to tertiary treatment for nitrogen.
+  - Article 7(1), 7(3). Treatment plant.
+* - `upgradeTertiaryPhosphorus`
+  - Upgrade to tertiary treatment (P)
+  - Upgrade to tertiary treatment for phosphorus.
+  - Article 7(1), 7(3). Treatment plant.
+* - `upgradeTertiaryNitrogenPhosphorus`
+  - Upgrade to tertiary treatment (N+P)
+  - Upgrade to tertiary treatment for both nitrogen and phosphorus.
+  - Article 7(1), 7(3). Treatment plant.
+* - `upgradeQuaternary`
+  - Upgrade to quaternary treatment
+  - Upgrade to quaternary treatment for micropollutants.
+  - Article 8(1), 8(4). Treatment plant.
+* - `energyNeutrality`
+  - Energy neutrality
+  - Measures to meet the renewable energy targets.
+  - Article 11(2). Treatment plant.
+* - `secondaryTreatmentRiskBased`
+  - Secondary treatment, agglomerations below 1 000 p.e.
+  - Applying secondary treatment on the basis of the risk assessment.
+  - Article 18(2)(c). Treatment plant.
+* - `tertiaryTreatmentRiskBased`
+  - Tertiary treatment, agglomerations below 10 000 p.e.
+  - Applying tertiary treatment on the basis of the risk assessment.
+  - Article 18(2)(d). Treatment plant.
+* - `quaternaryTreatmentRiskBased`
+  - Quaternary treatment, agglomerations below 10 000 p.e.
+  - Applying quaternary treatment on the basis of the risk assessment.
+  - Article 18(2)(e). Treatment plant.
+* - `stricterTreatmentRiskBased`
+  - Stricter treatment requirements
+  - Applying stricter requirements for treatment on the basis of the risk assessment.
+  - Article 18(2)(g). Treatment plant.
+* - `otherMeasureArticle18_2`
+  - Other appropriate measure
+  - Another appropriate measure under Article 18(2). Describe it in `measureText`.
+  - Article 18(2). Either.
+* - `renewOrReplaceTreatmentPlant`
+  - Renew or replace existing treatment plants
+  - Renewal or replacement of an existing treatment plant, including capacity increase.
+  - Article 23(1)(c). Treatment plant.
+:::
+
+(art23-cl-measure-type-wfd)=
+### Correspondence with the Water Framework Directive
+
+Measures for treatment plants and collecting systems are intended to be reported once, in this
+dataflow, and not again in the programme of measures under the Water Framework Directive
+({ref}`art23-oi-wfd`). So that they can still be used in assessments under that Directive, each
+measure type corresponds to a WFD key type of measure (`mainKeyTypeOfMeasure`) and main pressure
+(`mainPressureType`), derived centrally and not reported. The correspondence below is a proposal,
+to be confirmed.
+
+:::{list-table} Proposed correspondence with WFD key types of measures
+:header-rows: 1
+:widths: 34 22 22 22
+
+* - Measure type
+  - WFD key type of measure
+  - WFD main pressure
+  - Notes
+* - `newCollectingSystemArticle3_1`
+  - `G`
+  - `P1-1`
+  - Measure to control point source discharges.
+* - `newCollectingSystemArticle3_2`
+  - `G`
+  - `P1-1`
+  - Measure to control point source discharges.
+* - `stormWaterOverflowReduction`
+  - `G`
+  - `P1-2`
+  - Measure to control point source discharges.
+* - `individualSystemsArticle4`
+  - `G`
+  - `P1-1`
+  - Measure to control point source discharges.
+* - `managementPlanMeasures`
+  - `G`
+  - `P1-2`
+  - Measure to control point source discharges.
+* - `newCollectingSystemRiskBased`
+  - `G`
+  - `P1-1`
+  - Measure to control point source discharges.
+* - `renewOrReplaceCollectingSystem`
+  - `G`
+  - `P1-1`
+  - Measure to control point source discharges.
+* - `newPlantArticle6_1`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `newPlantArticle6_3`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `upgradeTertiaryNitrogen`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `upgradeTertiaryPhosphorus`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `upgradeTertiaryNitrogenPhosphorus`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `upgradeQuaternary`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `energyNeutrality`
+  - –
+  - –
+  - No direct equivalent; to be decided.
+* - `secondaryTreatmentRiskBased`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `tertiaryTreatmentRiskBased`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `quaternaryTreatmentRiskBased`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `stricterTreatmentRiskBased`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+* - `otherMeasureArticle18_2`
+  - –
+  - –
+  - No direct equivalent; to be decided.
+* - `renewOrReplaceTreatmentPlant`
+  - `X01`
+  - `P1-1`
+  - Construction or upgrades of wastewater treatment plants.
+:::
+
+`P1-1` is the WFD pressure "Point - Urban waste water" and `P1-2` "Point - Storm overflows".
+
+(art23-cl-coverage)=
+## Geographical coverage
+
+**Type:** `UWWTDGeographicCoverage`
+
+Used by `geographicalCoverage` in {ref}`art23-measure`. Prefixed with `UWWTD` because the
+corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has other values.
+
+:::{list-table} Proposed geographical coverage values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `national`
+  - National
+  - The measure applies to the whole Member State; no plants or agglomerations are listed.
+  - No rows in {ref}`art23-measureobject`.
+* - `listedObjects`
+  - Listed plants or agglomerations
+  - The measure applies to the plants or agglomerations listed in {ref}`art23-measureobject`.
+  - At least one row in {ref}`art23-measureobject`.
+* - `unlistedObjects`
+  - Plants or agglomerations not yet identified
+  - The measure applies to plants or agglomerations that are not yet identified.
+  - Give `numberOfObjects` if known.
+:::
+
+(art23-cl-implementation-status)=
+## Implementation status
+
+**Type:** `PlannedOngoingExecutedCancelled`
+
+Used by `implementationStatus` in {ref}`art23-measure`. The same codelist as in the Water Framework
+Directive 4th cycle.
+
+:::{list-table} Implementation status values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `planned`
+  - Planned
+  - The measure is planned and has not started.
+  - –
+* - `ongoing`
+  - Ongoing
+  - The measure has started and is not yet completed.
+  - –
+* - `executed`
+  - Executed
+  - The measure has been completed.
+  - Used in later programmes.
+* - `cancelled`
+  - Cancelled
+  - The measure has been cancelled.
+  - Used in later programmes.
+:::
+
+(art23-cl-cost-status)=
+## Cost status
+
+**Type:** `CostStatus`
+
+Used by `costStatus` in {ref}`art23-measure`.
+
+:::{list-table} Proposed cost status values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `known`
+  - Known
+  - The cost comes from a project, tender or contract.
+  - –
+* - `estimated`
+  - Estimated
+  - The cost is an estimate.
+  - –
+* - `unknown`
+  - Unknown
+  - The cost is not yet known.
+  - `investmentCost` stays empty.
+:::
+
+(art23-cl-object-type)=
+## Object type
+
+**Type:** `MeasureObjectType`
+
+Used by `objectType` in {ref}`art23-measureobject`.
+
+:::{list-table} Proposed object type values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `agglomeration`
+  - Agglomeration
+  - The object is an agglomeration.
+  - Code from {ref}`sp-agglomeration`.
+* - `treatmentPlant`
+  - Treatment plant
+  - The object is an urban wastewater treatment plant.
+  - Code from {ref}`sp-uwwtp`.
 :::
 
 (art23-cl-priority)=
@@ -392,8 +600,7 @@ Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table
 
 **Type:** `Priority`
 
-Used by the `prioritisation` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomeration`
-tables.
+Used by the `prioritisation` field of the {ref}`art23-measure` table.
 
 :::{list-table} Proposed priority values
 :header-rows: 1
@@ -405,15 +612,15 @@ tables.
   - Notes
 * - `high`
   - High
-  - High priority investment.
+  - High priority measure.
   - Related to the size of the agglomeration and the level of environmental impact.
 * - `medium`
   - Medium
-  - Medium priority investment.
+  - Medium priority measure.
   - –
 * - `low`
   - Low
-  - Low priority investment.
+  - Low priority measure.
   - –
 :::
 
@@ -425,7 +632,7 @@ and {ref}`art23-oi-prioritisation`.
 
 **Type:** `EUFund`
 
-Used by the `europeanUnionFundName` and `europeanUnionFundsName` fields.
+Used by `europeanUnionFundName` in {ref}`art23-measurefinancing`.
 
 :::{list-table} Proposed EU fund values
 :header-rows: 1
@@ -477,21 +684,30 @@ Used by the `europeanUnionFundName` and `europeanUnionFundsName` fields.
   - –
 :::
 
-(art23-cl-public-funds)=
-## Other public funds
+(art23-cl-funding-source)=
+## Funding source
 
-**Type:** `OtherPublicFund`
+**Type:** `FundingSource`
 
-Used by the `otherPublicFundSpecification` field.
+Used by `fundingSource` in {ref}`art23-measurefinancing`. It replaces the former other public fund
+codelist, whose values are kept.
 
-:::{list-table} Proposed other public fund values
+:::{list-table} Proposed funding source values
 :header-rows: 1
-:widths: 24 22 34 20
+:widths: 30 22 30 18
 
 * - Notation
   - Label
   - Definition
   - Notes
+* - `ownFunds`
+  - Own funds
+  - Funds of the operator, including tariffs, under the polluter-pays or user-pays principle.
+  - –
+* - `producerResponsibilityOrganisation`
+  - Producer responsibility
+  - Funding from producer responsibility organisations.
+  - –
 * - `nationalFederal`
   - National-federal
   - Funds from the national or federal budget.
@@ -507,6 +723,112 @@ Used by the `otherPublicFundSpecification` field.
 * - `otherPublicFunds`
   - Other public funds
   - Public funds from another source.
+  - –
+* - `europeanUnionFund`
+  - EU fund
+  - Funding from a Union fund.
+  - Name the fund in `europeanUnionFundName`.
+* - `loan`
+  - Loan
+  - A loan from a public or private lender.
+  - Lender optional in `loanName`.
+* - `privateFunds`
+  - Private funds
+  - Private funding other than a loan.
+  - –
+* - `notIdentified`
+  - Not identified
+  - The source of this part of the cost is not yet identified.
+  - Use with `fundingStatus` = `notIdentified`.
+:::
+
+(art23-cl-funding-status)=
+## Funding status
+
+**Type:** `FundingStatus`
+
+Used by `fundingStatus` in {ref}`art23-measurefinancing`.
+
+:::{list-table} Proposed funding status values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `secured`
+  - Secured
+  - The money is granted or committed.
+  - Counts towards the financing of the measure.
+* - `appliedFor`
+  - Applied for
+  - An application for the money has been made.
+  - –
+* - `planned`
+  - Planned
+  - The Member State plans to use this source.
+  - –
+* - `notIdentified`
+  - Not identified
+  - No source has been identified yet.
+  - –
+:::
+
+(art23-cl-currency)=
+## Currency
+
+**Type:** `CurrencyCode`
+
+Used by `millionUnitsOfNationalCurrency` in {ref}`art23-measure` and {ref}`art23-mssummary`. As in
+the Water Framework Directive, amounts are reported in millions of euro by euro area Member States
+and in millions of national currency by the others, which use their own currency code, not a
+generic code for domestic currency. The values are those of the Water Framework Directive
+codelist.
+
+:::{list-table} Currency values
+:header-rows: 1
+:widths: 20 30 30 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `EUR`
+  - Euro
+  - Euro.
+  - Euro area Member States.
+* - `CZK`
+  - Czech koruna
+  - Czech koruna.
+  - –
+* - `DKK`
+  - Danish krone
+  - Danish krone.
+  - –
+* - `HUF`
+  - Hungarian forint
+  - Hungarian forint.
+  - –
+* - `PLN`
+  - Polish zloty
+  - Polish zloty.
+  - –
+* - `RON`
+  - Romanian leu
+  - Romanian leu.
+  - –
+* - `SEK`
+  - Swedish krona
+  - Swedish krona.
+  - –
+* - `NOK`
+  - Norwegian krone
+  - Norwegian krone.
+  - –
+* - `ISK`
+  - Icelandic krona
+  - Icelandic krona.
   - –
 :::
 

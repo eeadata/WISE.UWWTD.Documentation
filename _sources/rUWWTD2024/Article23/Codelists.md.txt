@@ -16,7 +16,7 @@ For the other codelists, the draft does not say whether several values may be se
 (art23-cl-deadline-ext)=
 ## Deadline extension - Articles 3(2) and 6(3)
 
-**Type:** `DeadlineExtension_Enum`
+**Type:** `DeadlineExtension`
 
 Used by `article3_2DeadlineExtension` and `article6_3DeadlineExtension`.
 
@@ -56,7 +56,7 @@ Under the Directive, the maximum extension is 8 or 10 years depending on the sit
 (art23-cl-deadline-ext-7-4)=
 ## Deadline extension - Article 7(4)
 
-**Type:** `DeadlineExtensionArticle7_4_Enum`
+**Type:** `DeadlineExtensionArticle7_4`
 
 Used by `article7_4DeadlineExtension`.
 
@@ -89,7 +89,7 @@ Used by `article7_4DeadlineExtension`.
 (art23-cl-compliance-share)=
 ## Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above
 
-**Type:** `ComplianceShare_Enum`
+**Type:** `ComplianceShare`
 
 Used by `article3Compliance` and `article6Compliance` in {ref}`art23-selfassessment`.
 
@@ -130,7 +130,7 @@ Used by `article3Compliance` and `article6Compliance` in {ref}`art23-selfassessm
 (art23-cl-compliance-share-estimated)=
 ## Estimated compliance share - Articles 3, 6, 7 and 8
 
-**Type:** `ComplianceShareEstimated_Enum`
+**Type:** `ComplianceShareEstimated`
 
 Used by `article3Compliance1000to1999`, `article6Compliance1000to1999`, `article7Compliance` and
 `article8Compliance` in {ref}`art23-selfassessment`. The wider bands reflect that detailed data
@@ -170,7 +170,7 @@ yet be available for these agglomerations and plants.
 (art23-cl-risk-assessment)=
 ## Risk assessment
 
-**Type:** `RiskAssessment_Enum`
+**Type:** `RiskAssessment`
 
 Used by `riskAssessment` in {ref}`art23-mssummary`.
 
@@ -199,7 +199,7 @@ Used by `riskAssessment` in {ref}`art23-mssummary`.
 (art23-cl-contribution-period)=
 ## Contribution period
 
-**Type:** `ContributionPeriod_Enum`
+**Type:** `ContributionPeriod`
 
 Used by `contributionPeriod` in {ref}`art23-mssummary`. Several values may be selected.
 
@@ -236,7 +236,7 @@ Used by `contributionPeriod` in {ref}`art23-mssummary`. Several values may be se
 (art23-cl-status)=
 ## Plant and agglomeration status
 
-**Type:** `Status_Enum`
+**Type:** `PlantAgglomerationStatus`
 
 Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables.
 
@@ -273,7 +273,7 @@ Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomerati
 (art23-cl-uww-measures)=
 ## Treatment plant measures
 
-**Type:** `TreatmentPlantMeasure_Enum`
+**Type:** `TreatmentPlantMeasure`
 
 Used by the `treatmentPlantMeasure` field of the {ref}`art23-uwwtp` table. Select one or more values.
 
@@ -344,7 +344,7 @@ Used by the `treatmentPlantMeasure` field of the {ref}`art23-uwwtp` table. Selec
 (art23-cl-agg-measures)=
 ## Agglomeration measures
 
-**Type:** `AgglomerationMeasure_Enum`
+**Type:** `AgglomerationMeasure`
 
 Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table.
 
@@ -390,7 +390,7 @@ Used by the `agglomerationMeasure` field of the {ref}`art23-agglomeration` table
 (art23-cl-priority)=
 ## Priority
 
-**Type:** `Priority_Enum`
+**Type:** `Priority`
 
 Used by the `prioritisation` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomeration`
 tables.
@@ -423,7 +423,7 @@ and {ref}`art23-oi-prioritisation`.
 (art23-cl-eu-funds)=
 ## EU funds
 
-**Type:** `EUFund_Enum`
+**Type:** `EUFund`
 
 Used by the `europeanUnionFundName` and `europeanUnionFundsName` fields.
 
@@ -480,7 +480,7 @@ Used by the `europeanUnionFundName` and `europeanUnionFundsName` fields.
 (art23-cl-public-funds)=
 ## Other public funds
 
-**Type:** `OtherPublicFund_Enum`
+**Type:** `OtherPublicFund`
 
 Used by the `otherPublicFundSpecification` field.
 
@@ -513,7 +513,7 @@ Used by the `otherPublicFundSpecification` field.
 (art23-cl-pro-basis)=
 ## Basis of the producer responsibility estimate
 
-**Type:** `EstimateBasis_Enum`
+**Type:** `EstimateBasis`
 
 Used by `producerResponsibilityEstimateBasedOn`.
 

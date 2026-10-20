@@ -94,7 +94,7 @@ the measures adopted to be included in the programme.
   - Risk assessment
   - Whether a risk assessment of urban wastewater discharges has been carried out in
     accordance with Article 18.
-  - RiskAssessment_Enum
+  - RiskAssessment
   - Required
   - {ref}`art23-cl-risk-assessment`
 * - `riskDate`
@@ -149,7 +149,7 @@ the period of an interim target, and assign it to that period.
 * - `producerResponsibilityEstimateBasedOn`
   - Estimate based on
   - Basis of the estimate.
-  - EstimateBasis_Enum
+  - EstimateBasis
   - Required
   - {ref}`art23-cl-pro-basis`
 * - `contributionPeriod`
@@ -157,7 +157,7 @@ the period of an interim target, and assign it to that period.
   - Period or periods by which the planned resources, including the contribution in
     `producerResponsibilityContribution`, are expected to be sufficient to meet the
     requirements of the Directive. Select one or more.
-  - ContributionPeriod_Enum [0..n]
+  - ContributionPeriod [0..n]
   - Optional
   - {ref}`art23-cl-contribution-period`
 * - `contributionPeriodOther`

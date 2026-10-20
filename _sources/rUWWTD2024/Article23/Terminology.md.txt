@@ -168,7 +168,8 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **referenceCode** - a wiseIdentifier identifying a place within such a document, for example a
   chapter or a bookmark;
 * **Attachment** - a file uploaded to Reportnet 3, at most 100 MB, as pdf, xlsx or docx;
-* ***Name*_Enum** - a value from the codelist of that name (see {ref}`art23-codelists`).
+* ***Codelist name*** - a value from the codelist of that name (see {ref}`art23-codelists`). As
+  in the WFD 4th cycle, codelist names have no `_Enum` suffix.
 
 These types are proposals for aligning Article 23 with the rest of WISE
 ({ref}`art23-oi-naming`).

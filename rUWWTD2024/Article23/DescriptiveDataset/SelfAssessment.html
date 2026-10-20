@@ -26,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/customTheme.css?v=562b8974" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -419,6 +419,7 @@ window.runMermaid = runMermaid;</script>
     <link rel="next" title="Derogation" href="Derogation.html" />
     <link rel="prev" title="MSSummary" href="MSSummary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
   
@@ -789,14 +790,14 @@ classDiagram
 direction LR
 
 class SelfAssessment{
-    + article3Compliance: ComplianceShare_Enum [1]
-    + article3Compliance1000to1999: ComplianceShareEstimated_Enum [1]
+    + article3Compliance: ComplianceShare [1]
+    + article3Compliance1000to1999: ComplianceShareEstimated [1]
     + article4Compliance: YesNo [1]
     + article5ManagementPlanCount: nonNegativeValue [1]
-    + article6Compliance: ComplianceShare_Enum [1]
-    + article6Compliance1000to1999: ComplianceShareEstimated_Enum [1]
-    + article7Compliance: ComplianceShareEstimated_Enum [1]
-    + article8Compliance: ComplianceShareEstimated_Enum [1]
+    + article6Compliance: ComplianceShare [1]
+    + article6Compliance1000to1999: ComplianceShareEstimated [1]
+    + article7Compliance: ComplianceShareEstimated [1]
+    + article8Compliance: ComplianceShareEstimated [1]
 }
 
 classDef default fill:white,stroke:#000;
@@ -842,14 +843,14 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
 <td><p>Article 3 compliance</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting
 systems).</p></td>
-<td><p>ComplianceShare_Enum</p></td>
+<td><p>ComplianceShare</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance1000to1999</span></code></p></td>
 <td><p>Article 3 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.</p></td>
-<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>ComplianceShareEstimated</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
@@ -873,14 +874,14 @@ wastewater management plan.</p></td>
 <td><p>Article 6 compliance</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary
 treatment).</p></td>
-<td><p>ComplianceShare_Enum</p></td>
+<td><p>ComplianceShare</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance1000to1999</span></code></p></td>
 <td><p>Article 6 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.</p></td>
-<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>ComplianceShareEstimated</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
@@ -888,7 +889,7 @@ treatment).</p></td>
 <td><p>Article 7 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary
 treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>ComplianceShareEstimated</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
@@ -896,7 +897,7 @@ treatment requirements.</p></td>
 <td><p>Article 8 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary
 treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated_Enum</p></td>
+<td><p>ComplianceShareEstimated</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
 </tr>
@@ -1001,8 +1002,8 @@ agglomeration data is not stated. See <a class="reference internal" href="../Ope
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1012,7 +1013,7 @@ agglomeration data is not stated. See <a class="reference internal" href="../Ope
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
   </p>
 </div>
       
@@ -1025,7 +1026,7 @@ agglomeration data is not stated. See <a class="reference internal" href="../Ope
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.22.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>

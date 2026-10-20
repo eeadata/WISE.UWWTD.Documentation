@@ -26,8 +26,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -37,10 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/customTheme.css?v=562b8974" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -419,6 +419,7 @@ window.runMermaid = runMermaid;</script>
     <link rel="next" title="OtherInvestment" href="OtherInvestment.html" />
     <link rel="prev" title="UWWTP" href="UWWTP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
   
@@ -798,9 +799,9 @@ direction LR
 
 class Agglomeration{
     + thematicIdIdentifier: wiseIdentifier [1]
-    + status: Status_Enum [1]
-    + agglomerationMeasure: AgglomerationMeasure_Enum [1]
-    + prioritisation: Priority_Enum [1]
+    + status: PlantAgglomerationStatus [1]
+    + agglomerationMeasure: AgglomerationMeasure [1]
+    + prioritisation: Priority [1]
 
     + completionDate: date [1]
     + expectedLoad: nonNegativeValue [1]
@@ -809,9 +810,9 @@ class Agglomeration{
 
     + investment: nonNegativeValue [1]
     + europeanUnionFund: nonNegativeValue [1]
-    + europeanUnionFundName: EUFund_Enum [0..1]
+    + europeanUnionFundName: EUFund [0..1]
     + otherPublicFund: nonNegativeValue [1]
-    + otherPublicFundSpecification: OtherPublicFund_Enum [0..1]
+    + otherPublicFundSpecification: OtherPublicFund [0..1]
     + loan: nonNegativeValue [1]
     + loanName: string255 [0..1]
     + remarks: string1000 [0..1]
@@ -862,7 +863,7 @@ country in
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>Status</p></td>
 <td><p>Status of the agglomeration at the reference year.</p></td>
-<td><p>Status_Enum</p></td>
+<td><p>PlantAgglomerationStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-status"><span class="std std-ref">Plant and agglomeration status</span></a></p></td>
 </tr>
@@ -870,7 +871,7 @@ country in
 <td><p>Measures</p></td>
 <td><p>Measures to achieve compliance for collecting systems, individual systems and
 integrated urban wastewater management plans.</p></td>
-<td><p>AgglomerationMeasure_Enum</p></td>
+<td><p>AgglomerationMeasure</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-agg-measures"><span class="std std-ref">Agglomeration measures</span></a></p></td>
 </tr>
@@ -878,7 +879,7 @@ integrated urban wastewater management plans.</p></td>
 <td><p>Prioritisation</p></td>
 <td><p>Priority of the investment, related to the size of the agglomeration and the level of
 environmental impact.</p></td>
-<td><p>Priority_Enum</p></td>
+<td><p>Priority</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-priority"><span class="std std-ref">Priority</span></a></p></td>
 </tr>
@@ -984,7 +985,7 @@ none.</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code></p></td>
 <td><p>European Union fund name</p></td>
 <td><p>Name of the EU fund planned.</p></td>
-<td><p>EUFund_Enum</p></td>
+<td><p>EUFund</p></td>
 <td><p>Conditional</p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> &gt; 0. <a class="reference internal" href="../Codelists.html#art23-cl-eu-funds"><span class="std std-ref">EU funds</span></a></p></td>
 </tr>
@@ -999,7 +1000,7 @@ Report 0 if none.</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">otherPublicFundSpecification</span></code></p></td>
 <td><p>Other public fund specification</p></td>
 <td><p>Type of other public funds.</p></td>
-<td><p>OtherPublicFund_Enum</p></td>
+<td><p>OtherPublicFund</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if <code class="docutils literal notranslate"><span class="pre">otherPublicFund</span></code> &gt; 0. <a class="reference internal" href="../Codelists.html#art23-cl-public-funds"><span class="std std-ref">Other public funds</span></a></p></td>
 </tr>
@@ -1147,8 +1148,8 @@ compliance means at agglomeration level.</p></li>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1158,7 +1159,7 @@ compliance means at agglomeration level.</p></li>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
   </p>
 </div>
       
@@ -1171,7 +1172,7 @@ compliance means at agglomeration level.</p></li>
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.22.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
 </p></div>
       
     </div>

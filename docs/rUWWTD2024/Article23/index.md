@@ -46,7 +46,7 @@ Legal deadlines and the reference dates used in the draft reporting format.
 Acronyms, legal definitions, requirement status and data types.
 :::
 :::{grid-item-card} {ref}`art23-data-model`
-The six reporting tables at a glance, how they fit together and how they are linked to
+The reporting tables at a glance, how they fit together and how they are linked to
 existing reported data.
 :::
 ::::
@@ -59,7 +59,7 @@ existing reported data.
 Reporting contact details, kept separate because they are personal data.
 :::
 :::{grid-item-card} {ref}`art23-descriptive-dataset`
-The programme itself: national summary, derogations and planned investments.
+The programme itself: national summary, derogations, and planned measures and their costs.
 :::
 :::{grid-item-card} {ref}`art23-documents-dataset`
 Delivery metadata, and the documents the programme refers to.
@@ -79,14 +79,20 @@ National self-assessment of compliance with Articles 3 to 8.
 :::{grid-item-card} {ref}`art23-derogation`
 Deadline extensions and less stringent treatment.
 :::
+:::{grid-item-card} {ref}`art23-measure`
+Planned measures, with their type, priority, dates and cost.
+:::
+:::{grid-item-card} {ref}`art23-measureobject`
+The plants or agglomerations each measure concerns.
+:::
+:::{grid-item-card} {ref}`art23-measurefinancing`
+Sources of financing of each measure.
+:::
 :::{grid-item-card} {ref}`art23-uwwtp`
-Planned investments per treatment plant.
+State of each listed treatment plant.
 :::
 :::{grid-item-card} {ref}`art23-agglomeration`
-Planned investments per agglomeration.
-:::
-:::{grid-item-card} {ref}`art23-otherinvestment`
-Investments not attributed to a single plant or agglomeration.
+State of each listed agglomeration.
 :::
 ::::
 
@@ -95,8 +101,8 @@ Investments not attributed to a single plant or agglomeration.
 ::::{grid} 3
 :gutter: 1 2 3 3
 :::{grid-item-card} {ref}`art23-investments`
-Where to report each investment, avoiding double counting, funding sources, zero versus
-unknown, prioritisation and projected loads.
+Measures, their cost and financing, currency, reporting once, worked examples and quality
+checks.
 :::
 :::{grid-item-card} {ref}`art23-codelists`
 All proposed codelists in one place.

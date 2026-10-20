@@ -16,12 +16,13 @@ at risk of future non-compliance are listed. The same draft makes the UWWTP tabl
 renewal investments are planned, and includes a renewal measure code.
 
 **Question.** Must compliant plants and agglomerations with planned renewal, upgrade or
-replacement investments be listed individually, or reported as totals in OtherInvestment?
+replacement be listed individually, or reported in national measures without listing them?
 Article 23(1)(b) refers to investments for each agglomeration, and Article 23(1)(c) to existing
 infrastructure in general.
 
 **Under consideration.** Covering all plants and agglomerations, or listing only those needing
-investment to reach or maintain compliance, with other investments reported as totals.
+investment to reach or maintain compliance, with other renewal reported as national measures
+({ref}`art23-oi-measure-model`).
 
 (art23-oi-self-assessment)=
 ## OI-02 Self-assessment of Articles 3 to 8
@@ -91,6 +92,9 @@ whether the field could be optional in the first programme.
 **Question.** How should measures with different dates, or collecting system and individual system
 investments in the same agglomeration, be reported?
 
+**Proposed answer.** In the measure model, each measure is its own row with its own dates and
+cost, linked to the plant or agglomeration ({ref}`art23-oi-measure-model`).
+
 (art23-oi-multiple-funds)=
 ## OI-07 Several funds in one row
 
@@ -100,6 +104,10 @@ can be given, or whether funding amounts must add up to the investment.
 **Under consideration.** Allowing several fund names with one total amount and no split between
 funds.
 
+**Proposed answer.** In the measure model, each source of financing, and each EU fund, is its own
+row in MeasureFinancing with its own amount, so the multi-select question no longer arises
+({ref}`art23-oi-measure-model`).
+
 (art23-oi-unknown)=
 ## OI-08 Unknown amounts and uncertain costs
 
@@ -108,6 +116,10 @@ funds.
 **Under consideration.** Adding an "unknown" option, allowing more flexibility where costs cannot
 yet be estimated, and using OtherInvestment for aggregated estimates. A minimum threshold for
 reporting investments was also suggested.
+
+**Proposed answer.** In the measure model, `costStatus` = `unknown` with an empty
+`investmentCost` is a valid answer, and no minimum threshold applies
+({ref}`art23-oi-measure-model`).
 
 (art23-oi-loans)=
 ## OI-09 Loan fields
@@ -122,6 +134,9 @@ codelist, which includes the European Investment Bank?
 
 **Under consideration.** Making the loan fields optional.
 
+**Proposed answer.** In the measure model, a loan is an optional source of financing in
+MeasureFinancing, with an optional lender name and amount.
+
 (art23-oi-pro)=
 ## OI-10 Producer responsibility contribution
 
@@ -130,14 +145,15 @@ nominal? Which
 requirements does `contributionPeriod` refer to, and should it be Required now that it replaces
 four Required questions? Should there be an "unknown"
 option? Can the fields be optional in the first programme, when estimates may not be available?
-How does `producerResponsibilityFund` relate to the national total?
+How does PRO funding reported for individual measures, with `fundingSource` =
+`producerResponsibilityOrganisation`, relate to the national total?
 
 (art23-oi-costs)=
 ## OI-11 Nominal or annualised costs
 
-**Question.** Are investment amounts (the `investment` fields and
-`producerResponsibilityContribution`) nominal or
-annualised? If annualised, which assumptions should be reported?
+**Question.** Are amounts (`investmentCost`, the financing amounts and
+`producerResponsibilityContribution`) nominal or annualised? If annualised, which assumptions
+should be reported?
 
 (art23-oi-loads)=
 ## OI-12 Projected loads and capacity
@@ -153,17 +169,23 @@ to when new connections extend the area served by a plant?
 `expectedYearPerformance`). Where planning is uncertain, is an expected year enough for
 `completionDate` as well?
 
+**Proposed answer.** In the measure model, every measure has an `expectedCompletionYear` and an
+optional `expectedStartYear`, both years.
+
 (art23-oi-measures)=
 ## OI-14 Measure codelists
 
 **Questions.**
 
-* Should new or existing individual systems be added to the agglomeration measures?
 * What does compliance with Article 5 mean at agglomeration level?
 * Should energy neutrality, a plant-level code, be reported per plant?
 * Should small plants selected under Article 18(2) be listed?
-* Should the plant measure field be named in the plural, as Figure 1 does?
 * What codes will be used in the template?
+
+**Proposed answer.** In the measure model, the two measure codelists are merged into
+`UWWTDMeasureType`, with one type per measure. It includes individual systems under Article 4, and
+separate renewal values for collecting systems and treatment plants
+({ref}`art23-cl-measure-type`).
 
 (art23-oi-derogation)=
 ## OI-15 Derogation details
@@ -207,6 +229,10 @@ documentation.
 **Question.** Which period do `startYear` and `endYear` describe, for example the
 programme's six years, individual years, or the period to 2045?
 
+**Proposed answer.** In the measure model, the OtherInvestment table is removed. Its amounts become
+national measures, or measures for plants or agglomerations not yet identified, each with its own
+years ({ref}`art23-oi-measure-model`).
+
 (art23-oi-confidentiality)=
 ## OI-19 Publication of cost estimates
 
@@ -241,3 +267,79 @@ Agglomeration tables refer to it by `thematicIdIdentifier`. A new plant or agglo
 reported there first, and only accepted codes can be referred to ({ref}`sp-references`). The
 questions on the coordinate reference system and on the point representing an agglomeration are
 dealt with in that dataflow ({ref}`sp-location`).
+
+(art23-oi-measure-model)=
+## OI-22 Measure-first model
+
+**Baseline.** Investment, funding and measure fields are spread over the UWWTP, Agglomeration and
+OtherInvestment tables. It is hard to rebuild the total investment from them, or to report several
+measures, dates or funds for one plant.
+
+**Proposal.** Start from measures, as the Directive and the Water Framework Directive do: a
+Measure table with one row per measure, a MeasureObject table listing the plants or agglomerations
+it concerns, and a MeasureFinancing table giving its sources of financing
+({ref}`art23-investments`). UWWTP and Agglomeration keep only the state of the object.
+
+**Questions.**
+
+* Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
+  the references to Article 23(1)(b) to (d)? The names should be checked against the text of
+  Article 23(1).
+* Is `costStatus` = `unknown`, with an empty `investmentCost`, accepted as a valid answer?
+* Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
+  needs to assess progress?
+
+(art23-oi-measure-granularity)=
+## OI-23 One type and one completion year per measure
+
+**Proposal.** A measure has one measure type and one completion year. A project combining two
+types, for example a collecting system and individual systems, is reported as two measures. If
+the plants or agglomerations under one measure finish in different years, the measure is split.
+
+**Questions.** Is splitting acceptable where the Member State knows only the total cost of a
+combined project? Or does MeasureObject need its own completion year?
+
+(art23-oi-measure-codes)=
+## OI-24 Persistent measure codes
+
+**Proposal.** As in the Water Framework Directive, `measureCode` is a persistent identifier: a
+measure keeps its code in later updates of the programme, so that its implementation status and
+progress can be followed.
+
+**Question.** Should measure codes be registered, like the codes of plants and agglomerations in
+the spatial points dataflow, or only checked against the previous programme?
+
+(art23-oi-wfd)=
+## OI-25 Reporting measures once
+
+**Proposal.** Measures for urban wastewater treatment plants and collecting systems are reported
+once, in this dataflow, and not again in the programme of measures under the Water Framework
+Directive. The Water Framework Directive classifies such measures under the key type of measure
+`X01` (construction or upgrades of wastewater treatment plants) or `G` (measures to control point
+source discharges) with the pressure `P1-1` (urban waste water). Each UWWTD measure type
+corresponds to such a key type and pressure, derived centrally ({ref}`art23-cl-measure-type-wfd`).
+
+**Questions.**
+
+* Is this agreed with the Water Framework Directive reporting, so that Member States are told not
+  to report these measures there?
+* Is the proposed correspondence between measure types and WFD key types correct, including the
+  measure types without a direct equivalent?
+
+(art23-oi-listed-objects)=
+## OI-26 Plants and agglomerations in the state tables
+
+**Proposal.** Every plant or agglomeration listed in MeasureObject also has a row in UWWTP or
+Agglomeration, with its status and expected load.
+
+**Question.** Should plants and agglomerations without a planned measure, for example
+non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?
+
+(art23-oi-currency)=
+## OI-27 Currency
+
+**Proposal.** As in the Water Framework Directive, amounts are reported in millions: of euro by
+euro area Member States, and of national currency by the others, with the currency code in
+`millionUnitsOfNationalCurrency`. The draft reports all amounts in million EUR.
+
+**Question.** Which exchange rate and date are used when amounts are converted for comparison?

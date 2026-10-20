@@ -1,0 +1,38 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class Measure{
+    + measureCode: wiseIdentifier [1]
+    + measureName: string255 [1]
+    + measureNameLanguage: Language [1]
+    + measureReference: referenceCode [0..1]
+    + uwwtdMeasureType: UWWTDMeasureType [1]
+    + measureText: string1000 [0..1]
+    + geographicalCoverage: UWWTDGeographicCoverage [1]
+    + numberOfObjects: nonNegativeInteger [0..1]
+    + prioritisation: Priority [1]
+
+    + implementationStatus: PlannedOngoingExecutedCancelled [1]
+    + expectedStartYear: gYear [0..1]
+    + expectedCompletionYear: gYear [1]
+
+    + costStatus: CostStatus [1]
+    + investmentCost: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
+    + remarks: string1000 [0..1]
+}
+class MeasureObject{<<descriptive>>}
+class MeasureFinancing{<<descriptive>>}
+
+Measure "1" -- "0..n" MeasureObject
+Measure "1" -- "0..n" MeasureFinancing
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

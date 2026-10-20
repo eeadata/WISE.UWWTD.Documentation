@@ -19,9 +19,11 @@ flowchart LR
     MSSummary
     SelfAssessment
     Derogation
+    Measure["Measure<br/>one row per measure"]
+    MeasureObject
+    MeasureFinancing
     UWWTP["UWWTP<br/>one row per plant"]
     Agglomeration["Agglomeration<br/>one row per agglomeration"]
-    OtherInvestment
   end
   subgraph documents["Documents dataset"]
     dcMetadata
@@ -30,6 +32,9 @@ flowchart LR
   end
   MSSummary -- "referenceCode" --> Reference
   Derogation -- "referenceCode" --> Reference
+  Measure -. "measureReference" .-> Reference
+  MeasureObject -- "measureCode" --> Measure
+  MeasureFinancing -- "measureCode" --> Measure
   Reference -- "documentCode" --> Document
   dcMetadata -. "licenseDocument" .-> Document
   dcMetadata -. "metadataDocument" .-> Document
@@ -39,18 +44,24 @@ flowchart LR
   end
   UWWTP -- "thematicIdIdentifier" --> SpUWWTP
   Agglomeration -- "thematicIdIdentifier" --> SpAgglomeration
+  MeasureObject -- "thematicIdIdentifier" --> SpUWWTP
+  MeasureObject -- "thematicIdIdentifier" --> SpAgglomeration
 ```
 
-The names and locations of treatment plants and agglomerations are not reported in this
-dataflow. They are reported in the separate {ref}`spatial-points` dataflow, and the UWWTP and
-Agglomeration tables refer to them by `thematicIdIdentifier`. A code must already have been
+The names and locations of treatment plants and agglomerations are not reported in this dataflow.
+They are reported in the separate {ref}`spatial-points` dataflow, and the UWWTP, Agglomeration and
+MeasureObject tables refer to them by `thematicIdIdentifier`. A code must already have been
 accepted there, for the reporting country and the right object type ({ref}`sp-references`).
 Earlier reporting stays valid when an object later changes or is retired.
 
-Only MSSummary and Derogation cite documents. The UWWTP, Agglomeration and OtherInvestment
-tables have no reference fields, and the UWWTP table has no field linking a plant to an
+MSSummary and Derogation cite documents, and a measure may do so in `measureReference`. The UWWTP
+and Agglomeration tables have no reference fields, and there is no field linking a plant to an
 agglomeration. The dashed links are optional: `dcMetadata` points to a document only where the
 licence or further metadata is delivered as one.
+
+Measures are the main object of the programme: each measure has one row in Measure, lists the
+plants or agglomerations it concerns in MeasureObject, and gives its sources of financing in
+MeasureFinancing ({ref}`art23-investments`). This is a proposal ({ref}`art23-oi-measure-model`).
 
 The tables of the descriptive dataset do not carry web addresses. Fields such as
 `programmeReference` hold a `referenceCode` pointing into the documents dataset, which resolves to
@@ -83,19 +94,26 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
   - Required in the first programme; afterwards only if derogation requests change
   - Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
     under Article 6(4).
+* - {ref}`art23-measure`
+  - One per measure (`measureCode` is the primary key)
+  - Conditional: required where measures are planned
+  - Type, coverage, priority, status, dates and investment cost of each measure.
+* - {ref}`art23-measureobject`
+  - One per measure and plant or agglomeration
+  - Conditional: required for measures with listed plants or agglomerations
+  - The plants or agglomerations a measure concerns.
+* - {ref}`art23-measurefinancing`
+  - One per measure and source of financing
+  - Optional
+  - Source, funding status and amount of the financing of each measure.
 * - {ref}`art23-uwwtp`
   - One per plant (`thematicIdIdentifier` is the primary key)
-  - Conditional: required where investments in treatment plants are planned
-  - Measures, status, prioritisation, projected load and capacity, dates, investment and funding.
+  - Conditional: required for each plant concerned by a measure
+  - Status, projected load and capacity.
 * - {ref}`art23-agglomeration`
   - One per agglomeration (`thematicIdIdentifier` is the primary key)
-  - Conditional: required where investments in collecting systems or individual systems are
-    planned
-  - Measures, status, prioritisation, projected load, completion date, investment and funding.
-* - {ref}`art23-otherinvestment`
-  - One or more per Member State, for example one for the whole period or one per year
-  - Conditional: can remain empty if all resources are attributed to plants or agglomerations
-  - Totals of investments and funding not attributed to a single plant or agglomeration.
+  - Conditional: required for each agglomeration concerned by a measure
+  - Status and projected load.
 * - {ref}`art23-dcmetadata` (documents)
   - One per delivery
   - Required
@@ -110,9 +128,4 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
   - The document itself, as a hyperlink or an uploaded file.
 :::
 
-According to the draft, total investment by a Member State is the sum of the investments reported
-in the UWWTP, Agglomeration and OtherInvestment tables.
-
-The draft states that UWWTP rows are linked to plants already reported under Directive
-91/271/EEC, and Agglomeration rows to the list of agglomerations. The UWWTP table has no field
-linking a plant to an agglomeration.
+The total investment of a Member State is the sum of `investmentCost` over all measures.

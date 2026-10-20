@@ -1,0 +1,18 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class MeasureObject{
+    + measureCode: wiseIdentifier [1]
+    + objectType: MeasureObjectType [1]
+    + thematicIdIdentifier: wiseIdentifier [1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

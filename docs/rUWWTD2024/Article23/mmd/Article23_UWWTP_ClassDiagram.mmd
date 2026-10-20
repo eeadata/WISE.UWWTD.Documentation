@@ -11,23 +11,8 @@ direction LR
 class UWWTP{
     + thematicIdIdentifier: wiseIdentifier [1]
     + status: PlantAgglomerationStatus [1]
-    + treatmentPlantMeasure: TreatmentPlantMeasure [1..n]
-    + measureText: string1000 [0..1]
-    + prioritisation: Priority [1]
-
     + expectedLoad: nonNegativeValue [1]
     + expectedCapacity: nonNegativeValue [1]
-    + expectedYearStartWork: gYear [1]
-    + expectedYearPerformance: gYear [1]
-
-    + investment: nonNegativeValue [1]
-    + europeanUnionFund: nonNegativeValue [1]
-    + europeanUnionFundName: EUFund [0..1]
-    + producerResponsibilityFund: nonNegativeValue [0..1]
-    + otherPublicFund: nonNegativeValue [1]
-    + otherPublicFundSpecification: OtherPublicFund [0..1]
-    + loan: nonNegativeValue [1]
-    + loanName: string255 [0..1]
     + remarks: string1000 [0..1]
 }
 

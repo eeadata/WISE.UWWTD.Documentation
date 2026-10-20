@@ -68,16 +68,16 @@ is required, and `situationAt` records the date of the reported situation.
     {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: the `status` field of each.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
-  - {ref}`art23-uwwtp`, {ref}`art23-agglomeration`, {ref}`art23-otherinvestment`
-    (`collectingSystemNewInvestment`, `treatmentPlantNewInvestment`).
+  - {ref}`art23-measure` with {ref}`art23-measureobject`: the measures, their `prioritisation`
+    and `investmentCost`.
     {ref}`art23-mssummary`: `producerResponsibilityContribution`,
     `producerResponsibilityEstimateBasedOn`, `contributionPeriod`, `prioritisationReference`.
 * - Article 23(1)(c) - renewal, upgrade or replacement of existing infrastructure
-  - Measure code `23(1c)` in {ref}`art23-uwwtp` and {ref}`art23-agglomeration`;
-    {ref}`art23-otherinvestment` (`collectingSystemRenewalInvestment`, `treatmentPlantRenewalInvestment`).
+  - {ref}`art23-measure`: measures of type `renewOrReplaceCollectingSystem` or
+    `renewOrReplaceTreatmentPlant`, for listed plants or agglomerations or national.
 * - Article 23(1)(d) - sources of public financing
-  - EU fund and other public fund fields in the three investment tables.
-    The draft also asks for loans; see {ref}`art23-oi-loans`.
+  - {ref}`art23-measurefinancing`: `fundingSource`, `fundingStatus` and `amount`.
+    Loans are an optional source; see {ref}`art23-oi-loans`.
 * - Article 23(1)(e) and Article 3(2) - derogation information
   - {ref}`art23-derogation`.
 * - Article 23(1), third subparagraph - cultural heritage
@@ -104,17 +104,18 @@ upgrade or replace existing infrastructure, which can concern compliant plants. 
 plants and agglomerations with planned renewal investments must be listed individually is not
 yet decided ({ref}`art23-oi-scope`).
 
-Either way, renewal investments are part of the programme under Article 23(1)(c). Investments
-that are not reported against a listed plant or agglomeration are reported as totals in the
-{ref}`art23-otherinvestment` table. See {ref}`art23-investments`.
+Either way, renewal is part of the programme under Article 23(1)(c). Measures that are not
+reported against listed plants or agglomerations are reported as national measures, or as
+measures for plants or agglomerations not yet identified. See {ref}`art23-investments`.
 
 ## Level of detail
 
 The Directive asks for an indicative financial estimation, an estimate of renewal investments and
 at least an indication of sources of public financing. The first programme is therefore expected
 to reflect the best information available when it is prepared, and it is updated at least every
-six years. Where investments are not yet allocated to specific plants or agglomerations, the draft
-allows them to be reported as totals in {ref}`art23-otherinvestment`.
+six years. Where measures are not yet allocated to specific plants or agglomerations, they can be
+reported without listing them, and a cost that is not yet known can be reported as unknown
+({ref}`art23-investments`).
 
 ## Formats and tools
 

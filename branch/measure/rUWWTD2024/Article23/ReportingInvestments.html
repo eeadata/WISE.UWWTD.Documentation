@@ -416,7 +416,7 @@ window.runMermaid = runMermaid;</script>
     <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Open issues and proposed changes" href="OpenIssues.html" />
+    <link rel="next" title="Examples" href="Examples.html" />
     <link rel="prev" title="Codelists" href="Codelists.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -665,6 +665,7 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="Timing.html">Reporting timing and reference dates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Terminology.html">Terminology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DataModel.html">Data model overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TablesAndFields.html">Tables and fields</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="PrivateDataset/index.html">Private dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
 </ul>
@@ -688,6 +689,7 @@ window.runMermaid = runMermaid;</script>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Reporting measures and costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
@@ -805,7 +807,7 @@ per measure.</p>
 <section id="where-to-report-each-measure">
 <h2>Where to report each measure<a class="headerlink" href="#where-to-report-each-measure" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 46 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 48 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -944,197 +946,17 @@ calculated: from the maximum average weekly load during the year, excluding unus
 situations. The draft does not say whether projected loads should be estimated on the same basis
 (<a class="reference internal" href="OpenIssues.html#art23-oi-loads"><span class="std std-ref">OI-12 Projected loads and capacity</span></a>).</p>
 </section>
-<section id="worked-examples">
-<span id="art23-measure-examples"></span><h2>Worked examples<a class="headerlink" href="#worked-examples" title="Link to this heading">#</a></h2>
-<p>The codes and amounts are invented. <code class="docutils literal notranslate"><span class="pre">XX</span></code> stands for the country code, and all amounts are in
-million EUR. Each row is shown as its main values.</p>
-<p><strong>1. Several measures at one plant, on different dates.</strong> Two measures, each with its own dates
-and cost, both linked to the same plant.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM001 · <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryPhosphorus</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">high</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · start 2027 ·
-completion 2030 · <code class="docutils literal notranslate"><span class="pre">known</span></code> · 12.0 · EUR</p></td>
-</tr>
-<tr class="row-odd"><td><p>Measure</p></td>
-<td><p>XXM002 · <code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">medium</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · start 2035 ·
-completion 2040 · <code class="docutils literal notranslate"><span class="pre">estimated</span></code> · 30.0 · EUR</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureObject</p></td>
-<td><p>XXM001 · <code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code> · XXUWWTP0101</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureObject</p></td>
-<td><p>XXM002 · <code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code> · XXUWWTP0101</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM001 · <code class="docutils literal notranslate"><span class="pre">ownFunds</span></code> · <code class="docutils literal notranslate"><span class="pre">secured</span></code> · 6.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureFinancing</p></td>
-<td><p>XXM001 · <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">europeanRegionalDevelopmentFund</span></code> · <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code> · 6.0</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM002 · <code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · 24.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureFinancing</p></td>
-<td><p>XXM002 · <code class="docutils literal notranslate"><span class="pre">ownFunds</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · 6.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>2. It costs 1 000, 500 is secured, the rest is applied for or not yet found.</strong> The gap is
-1 000 − 500 = 500, of which 300 is applied for.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM010 · <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">high</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> ·
-completion 2039 · <code class="docutils literal notranslate"><span class="pre">estimated</span></code> · 1 000.0 · EUR</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureObject</p></td>
-<td><p>XXM010 · <code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code> · XXUWWTP0201, and one row per further plant concerned</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM010 · <code class="docutils literal notranslate"><span class="pre">ownFunds</span></code> · <code class="docutils literal notranslate"><span class="pre">secured</span></code> · 500.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureFinancing</p></td>
-<td><p>XXM010 · <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">cohesionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code> · 300.0</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM010 · <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> · <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> · 200.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3. Ten plants to upgrade in ten years, cost not known.</strong> The Member State reports what it knows
-and says what it does not. There are no financing rows.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM020 · <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogen</span></code> · <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> 10 · <code class="docutils literal notranslate"><span class="pre">medium</span></code> ·
-<code class="docutils literal notranslate"><span class="pre">planned</span></code> · completion 2036 · <code class="docutils literal notranslate"><span class="pre">unknown</span></code> · no cost</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>4. National renewal of collecting systems.</strong> A measure for the whole Member State, with no
-objects listed. It replaces the renewal total of the former OtherInvestment table.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM030 · <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code> · <code class="docutils literal notranslate"><span class="pre">national</span></code> · <code class="docutils literal notranslate"><span class="pre">medium</span></code> · <code class="docutils literal notranslate"><span class="pre">ongoing</span></code> · start 2027 ·
-completion 2035 · <code class="docutils literal notranslate"><span class="pre">estimated</span></code> · 450.0 · EUR</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureFinancing</p></td>
-<td><p>XXM030 · <code class="docutils literal notranslate"><span class="pre">ownFunds</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · 300.0</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM030 · <code class="docutils literal notranslate"><span class="pre">municipal</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · 150.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>5. One measure, several agglomerations, two EU funds.</strong> Each fund is its own row with its own
-amount.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM040 · <code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">high</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> · start 2028 ·
-completion 2033 · <code class="docutils literal notranslate"><span class="pre">known</span></code> · 9.0 · EUR</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureObject</p></td>
-<td><p>XXM040 · <code class="docutils literal notranslate"><span class="pre">agglomeration</span></code> · XXAGG0301, XXAGG0302 and XXAGG0303, one row each</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM040 · <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">europeanRegionalDevelopmentFund</span></code> · <code class="docutils literal notranslate"><span class="pre">secured</span></code> · 4.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureFinancing</p></td>
-<td><p>XXM040 · <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">justTransitionFund</span></code> · <code class="docutils literal notranslate"><span class="pre">secured</span></code> · 2.0</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureFinancing</p></td>
-<td><p>XXM040 · <code class="docutils literal notranslate"><span class="pre">regional</span></code> · <code class="docutils literal notranslate"><span class="pre">secured</span></code> · 3.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>6. A collecting system and individual systems in one agglomeration.</strong> Two measures, one type
-each, both linked to the agglomeration.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<colgroup>
-<col style="width: 22.0%" />
-<col style="width: 78.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Table</p></th>
-<th class="head"><p>Row</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Measure</p></td>
-<td><p>XXM050 · <code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">high</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> ·
-completion 2032 · <code class="docutils literal notranslate"><span class="pre">estimated</span></code> · 5.0 · EUR</p></td>
-</tr>
-<tr class="row-odd"><td><p>Measure</p></td>
-<td><p>XXM051 · <code class="docutils literal notranslate"><span class="pre">individualSystemsArticle4</span></code> · <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> · <code class="docutils literal notranslate"><span class="pre">medium</span></code> · <code class="docutils literal notranslate"><span class="pre">planned</span></code> ·
-completion 2034 · <code class="docutils literal notranslate"><span class="pre">estimated</span></code> · 0.8 · EUR</p></td>
-</tr>
-<tr class="row-even"><td><p>MeasureObject</p></td>
-<td><p>XXM050 · <code class="docutils literal notranslate"><span class="pre">agglomeration</span></code> · XXAGG0401</p></td>
-</tr>
-<tr class="row-odd"><td><p>MeasureObject</p></td>
-<td><p>XXM051 · <code class="docutils literal notranslate"><span class="pre">agglomeration</span></code> · XXAGG0401</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="Examples.html#art23-examples"><span class="std std-ref">Examples</span></a> works through six situations raised in the consultation, from filling in
+the tables to adding the money back up: several measures at one plant, a collecting system and
+individual systems in one agglomeration, several funds for one project, a cost not yet known, part
+of the money still to be found, and a national renewal programme.</p>
 </section>
 <section id="from-the-draft-fields-to-the-measure-model">
 <h2>From the draft fields to the measure model<a class="headerlink" href="#from-the-draft-fields-to-the-measure-model" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 47 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 49 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -1199,7 +1021,7 @@ measure type</p></td>
 <section id="quality-checks">
 <span id="art23-quality-checks"></span><h2>Quality checks<a class="headerlink" href="#quality-checks" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 48 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 50 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 10.0%" />
 <col style="width: 22.0%" />
@@ -1334,11 +1156,11 @@ Member States</p></td>
       </div>
     </a>
     <a class="right-next"
-       href="OpenIssues.html"
+       href="Examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Open issues and proposed changes</p>
+        <p class="prev-next-title">Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1370,7 +1192,7 @@ Member States</p></td>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prioritisation">Prioritisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">Dates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-loads-and-capacity">Projected loads and capacity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-examples">Worked examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-draft-fields-to-the-measure-model">From the draft fields to the measure model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-checks">Quality checks</a></li>
 </ul>

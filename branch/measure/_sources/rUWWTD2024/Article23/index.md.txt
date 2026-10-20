@@ -24,11 +24,13 @@ Overview
 Timing
 Terminology
 DataModel
+TablesAndFields
 PrivateDataset/index
 DescriptiveDataset/index
 DocumentsDataset/index
 Codelists
 ReportingInvestments
+Examples
 OpenIssues
 ```
 
@@ -48,6 +50,9 @@ Acronyms, legal definitions, requirement status and data types.
 :::{grid-item-card} {ref}`art23-data-model`
 The reporting tables at a glance, how they fit together and how they are linked to
 existing reported data.
+:::
+:::{grid-item-card} {ref}`art23-tables-fields`
+Every table and field of the dataflow on one page, without the documents dataset.
 :::
 ::::
 
@@ -103,6 +108,9 @@ State of each listed agglomeration.
 :::{grid-item-card} {ref}`art23-investments`
 Measures, their cost and financing, currency, reporting once, worked examples and quality
 checks.
+:::
+:::{grid-item-card} {ref}`art23-examples`
+Six worked examples, from filling in the tables to adding the money back up.
 :::
 :::{grid-item-card} {ref}`art23-codelists`
 All proposed codelists in one place.

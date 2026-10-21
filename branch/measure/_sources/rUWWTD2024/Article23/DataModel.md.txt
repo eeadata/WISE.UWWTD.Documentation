@@ -20,7 +20,6 @@ flowchart LR
     SelfAssessment
     Derogation
     Measure["Measure<br/>one row per measure"]
-    MeasureObject
     MeasureFinancing
     UWWTP["UWWTP<br/>one row per plant"]
     Agglomeration["Agglomeration<br/>one row per agglomeration"]
@@ -33,7 +32,6 @@ flowchart LR
   MSSummary -- "referenceCode" --> Reference
   Derogation -- "referenceCode" --> Reference
   Measure -. "measureReference" .-> Reference
-  MeasureObject -- "measureCode" --> Measure
   MeasureFinancing -- "measureCode" --> Measure
   Reference -- "documentCode" --> Document
   dcMetadata -. "licenseDocument" .-> Document
@@ -44,13 +42,14 @@ flowchart LR
   end
   UWWTP -- "thematicIdIdentifier" --> SpUWWTP
   Agglomeration -- "thematicIdIdentifier" --> SpAgglomeration
-  MeasureObject -- "thematicIdIdentifier" --> SpUWWTP
-  MeasureObject -- "thematicIdIdentifier" --> SpAgglomeration
+  Measure -- "euUWWTPCode" --> SpUWWTP
+  Measure -- "euAgglomerationCode" --> SpAgglomeration
 ```
 
 The names and locations of treatment plants and agglomerations are not reported in this dataflow.
-They are reported in the separate {ref}`spatial-points` dataflow, and the UWWTP, Agglomeration and
-MeasureObject tables refer to them by `thematicIdIdentifier`. A code must already have been
+They are reported in the separate {ref}`spatial-points` dataflow. The UWWTP and Agglomeration tables
+refer to them by `thematicIdIdentifier`, and measures list them in `euUWWTPCode` or
+`euAgglomerationCode`. A code must already have been
 accepted there, for the reporting country and the right object type ({ref}`sp-references`).
 Earlier reporting stays valid when an object later changes or is retired.
 
@@ -60,8 +59,8 @@ agglomeration. The dashed links are optional: `dcMetadata` points to a document 
 licence or further metadata is delivered as one.
 
 Measures are the main object of the programme: each measure has one row in Measure, lists the
-plants or agglomerations it concerns in MeasureObject, and gives its sources of financing in
-MeasureFinancing ({ref}`art23-investments`). This is a proposal ({ref}`art23-oi-measure-model`).
+plants or agglomerations it concerns in `euUWWTPCode` or `euAgglomerationCode`, and gives its
+sources of financing in MeasureFinancing ({ref}`art23-investments`). This is a proposal ({ref}`art23-oi-measure-model`).
 
 The tables of the descriptive dataset do not carry web addresses. Fields such as
 `programmeReference` hold a `referenceCode` pointing into the documents dataset, which resolves to
@@ -97,11 +96,8 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 * - {ref}`art23-measure`
   - One per measure (`measureCode` is the primary key)
   - Conditional: required where measures are planned
-  - Type, coverage, priority, status, dates and investment cost of each measure.
-* - {ref}`art23-measureobject`
-  - One per measure and plant or agglomeration
-  - Conditional: required for measures with listed plants or agglomerations
-  - The plants or agglomerations a measure concerns.
+  - Type, coverage and listed plants or agglomerations, priority, status, dates and investment
+    cost of each measure.
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
   - Optional

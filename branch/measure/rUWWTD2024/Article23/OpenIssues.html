@@ -317,7 +317,6 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
@@ -646,8 +645,9 @@ dealt with in that dataflow (<a class="reference internal" href="../SpatialPoint
 OtherInvestment tables. It is hard to rebuild the total investment from them, or to report several
 measures, dates or funds for one plant.</p>
 <p><strong>Proposal.</strong> Start from measures, as the Directive and the Water Framework Directive do: a
-Measure table with one row per measure, a MeasureObject table listing the plants or agglomerations
-it concerns, and a MeasureFinancing table giving its sources of financing
+Measure table with one row per measure, listing the plants or agglomerations it concerns in a
+multi-valued field as the Water Framework Directive lists river basin districts, and a
+MeasureFinancing table giving its sources of financing
 (<a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>). UWWTP and Agglomeration keep only the state of the object.</p>
 <p><strong>Questions.</strong></p>
 <ul class="simple">
@@ -665,7 +665,8 @@ needs to assess progress?</p></li>
 object, with one cost that is not split between them. A measure has one completion year: if the
 plants or agglomerations under one measure finish in different years, the measure is split.</p>
 <p><strong>Questions.</strong> Are totals per measure type needed? With several types per measure, they are only
-exact for measures with a single type. Does MeasureObject need its own completion year?</p>
+exact for measures with a single type. Is a completion year per plant or agglomeration needed? It
+would need a separate table linking measures and objects, instead of the multi-valued field.</p>
 </section>
 <section id="oi-24-persistent-measure-codes">
 <span id="art23-oi-measure-codes"></span><h2>OI-24 Persistent measure codes<a class="headerlink" href="#oi-24-persistent-measure-codes" title="Link to this heading">#</a></h2>
@@ -693,8 +694,8 @@ measure types without a direct equivalent?</p></li>
 </section>
 <section id="oi-26-plants-and-agglomerations-in-the-state-tables">
 <span id="art23-oi-listed-objects"></span><h2>OI-26 Plants and agglomerations in the state tables<a class="headerlink" href="#oi-26-plants-and-agglomerations-in-the-state-tables" title="Link to this heading">#</a></h2>
-<p><strong>Proposal.</strong> Every plant or agglomeration listed in MeasureObject also has a row in UWWTP or
-Agglomeration, with its status and expected load.</p>
+<p><strong>Proposal.</strong> Every plant or agglomeration listed in a measure, in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, also has a row in UWWTP or Agglomeration, with its status and expected load.</p>
 <p><strong>Question.</strong> Should plants and agglomerations without a planned measure, for example
 non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?</p>
 </section>

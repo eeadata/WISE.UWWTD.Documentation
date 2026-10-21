@@ -31,27 +31,30 @@ The nitrogen and phosphorus works are one construction contract with one budget,
 measure of type `upgradeTertiaryNitrogenPhosphorus`, and the cost is not split between the two
 nutrients.
 
-Both measures are linked to the same plant. The plant's status, projected load and capacity are
-reported once, in the UWWTP table, not on either measure.
+Both measures list the same plant in `euUWWTPCode`. The plant's status, projected load and
+capacity are reported once, in the UWWTP table, not on either measure.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M001`
   - Rivermouth nitrogen and phosphorus removal
   - `upgradeTertiaryNitrogenPhosphorus`
   - `listedObjects`
+  - `UWWTP0007`
   - `high`
 * - `M002`
   - Rivermouth quaternary treatment
   - `upgradeQuaternary`
   - `listedObjects`
+  - `UWWTP0007`
   - `medium`
 :::
 
@@ -82,24 +85,9 @@ reported once, in the UWWTP table, not on either measure.
   - EUR
 :::
 
-:::{list-table} MeasureObject
-:header-rows: 1
-:widths: 20 30 50
-
-* - measureCode
-  - objectType
-  - thematicIdIdentifier
-* - `M001`
-  - `treatmentPlant`
-  - `UWWTP0007`
-* - `M002`
-  - `treatmentPlant`
-  - `UWWTP0007`
-:::
-
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 10 30 26 14 12 8
+:widths: 9 24 32 12 13 10
 
 * - measureCode
   - fundingSource
@@ -190,29 +178,32 @@ systems are to be invested in, in the same agglomeration: should one total be gi
 for each?
 
 **Filling it in.** Northtown is extending its collecting system and, for the outlying houses,
-supporting individual systems. These are two measures, with their own dates and costs, both linked
-to the agglomeration. Had they been one project, with one budget and one completion year, they
-could have been one measure with both types. The Agglomeration table gives the expected split of
-the load between the two.
+supporting individual systems. These are two measures, with their own dates and costs, both
+listing the agglomeration in `euAgglomerationCode`. Had they been one project, with one budget and
+one completion year, they could have been one measure with both types. The Agglomeration table
+gives the expected split of the load between the two.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M003`
   - Northtown collecting system extension
   - `newCollectingSystemArticle3_1`
   - `listedObjects`
+  - `AGG0101`
   - `high`
 * - `M004`
   - Northtown individual systems
   - `individualSystemsArticle4`
   - `listedObjects`
+  - `AGG0101`
   - `medium`
 :::
 
@@ -243,24 +234,9 @@ the load between the two.
   - EUR
 :::
 
-:::{list-table} MeasureObject
-:header-rows: 1
-:widths: 20 30 50
-
-* - measureCode
-  - objectType
-  - thematicIdIdentifier
-* - `M003`
-  - `agglomeration`
-  - `AGG0101`
-* - `M004`
-  - `agglomeration`
-  - `AGG0101`
-:::
-
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 10 30 26 14 12 8
+:widths: 9 24 32 12 13 10
 
 * - measureCode
   - fundingSource
@@ -339,23 +315,30 @@ collecting system and individual systems could only be described in remarks.
 several funds may be requested for one project.
 
 **Filling it in.** The Eastvale interconnection is one project that connects three agglomerations
-to a shared collecting system. It is one measure, linked to the three agglomerations. Its cost is
-given once, for the whole project, and not divided between the agglomerations. Each source of
-financing, including each EU fund, is its own row with its own amount.
+to a shared collecting system. It is one measure, with the three agglomerations in
+`euAgglomerationCode`. Its cost is given once, for the whole project, and not divided between the
+agglomerations. Each source of financing, including each EU fund, is its own row with its own
+amount.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M005`
   - Eastvale interconnection
   - `newCollectingSystemArticle3_1`
   - `listedObjects`
+  - `AGG0201`
+
+    `AGG0202`
+
+    `AGG0203`
   - `high`
 :::
 
@@ -379,27 +362,9 @@ financing, including each EU fund, is its own row with its own amount.
   - EUR
 :::
 
-:::{list-table} MeasureObject
-:header-rows: 1
-:widths: 20 30 50
-
-* - measureCode
-  - objectType
-  - thematicIdIdentifier
-* - `M005`
-  - `agglomeration`
-  - `AGG0201`
-* - `M005`
-  - `agglomeration`
-  - `AGG0202`
-* - `M005`
-  - `agglomeration`
-  - `AGG0203`
-:::
-
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 10 30 26 14 12 8
+:widths: 9 24 32 12 13 10
 
 * - measureCode
   - fundingSource
@@ -447,7 +412,7 @@ financing, including each EU fund, is its own row with its own amount.
   - `investmentCost` of the measure, counted once
 * - Agglomerations concerned
   - 3
-  - MeasureObject rows of the measure
+  - Codes in `euAgglomerationCode`
 * - EU funds sought
   - 6.0: 4.0 from the European Regional Development Fund and 2.0 from the Just Transition Fund
   - Financing rows with `fundingSource` = `europeanUnionFund`
@@ -476,17 +441,19 @@ unknown. There are no financing rows.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M006`
   - Nitrogen removal at small coastal plants
   - `upgradeTertiaryNitrogen`
   - `unlistedObjects`
+  - –
   - `medium`
 :::
 
@@ -548,12 +515,13 @@ is not yet identified.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M007`
   - Lakeside nutrient removal and quaternary treatment
@@ -561,6 +529,9 @@ is not yet identified.
 
     `upgradeQuaternary`
   - `listedObjects`
+  - `UWWTP0301`
+
+    `UWWTP0302`
   - `high`
 :::
 
@@ -584,24 +555,9 @@ is not yet identified.
   - EUR
 :::
 
-:::{list-table} MeasureObject
-:header-rows: 1
-:widths: 20 30 50
-
-* - measureCode
-  - objectType
-  - thematicIdIdentifier
-* - `M007`
-  - `treatmentPlant`
-  - `UWWTP0301`
-* - `M007`
-  - `treatmentPlant`
-  - `UWWTP0302`
-:::
-
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 10 30 26 14 12 8
+:widths: 9 24 32 12 13 10
 
 * - measureCode
   - fundingSource
@@ -677,17 +633,19 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 12 34 30 14 10
+:widths: 9 24 26 13 18 10
 
 * - Code
   - Name
   - Type
   - Coverage
+  - Plants or agglomerations
   - Priority
 * - `M008`
   - National renewal of collecting systems
   - `renewOrReplaceCollectingSystem`
   - `national`
+  - –
   - `medium`
 :::
 
@@ -713,7 +671,7 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 10 30 26 14 12 8
+:widths: 9 24 32 12 13 10
 
 * - measureCode
   - fundingSource
@@ -776,7 +734,7 @@ reports one national measure, with no plants or agglomerations listed.
 * - Total investment
   - 606.4
   - Sum of `investmentCost` over the measures
-* - Linked to listed plants or agglomerations
+* - For listed plants or agglomerations
   - 156.4
   - Examples 1, 2, 3 and 5
 * - National

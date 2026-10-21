@@ -20,7 +20,6 @@ MSSummary
 SelfAssessment
 Derogation
 Measure
-MeasureObject
 MeasureFinancing
 UWWTP
 Agglomeration

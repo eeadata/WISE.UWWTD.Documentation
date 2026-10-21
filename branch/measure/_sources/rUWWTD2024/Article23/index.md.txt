@@ -87,9 +87,6 @@ Deadline extensions and less stringent treatment.
 :::{grid-item-card} {ref}`art23-measure`
 Planned measures, with their type, priority, dates and cost.
 :::
-:::{grid-item-card} {ref}`art23-measureobject`
-The plants or agglomerations each measure concerns.
-:::
 :::{grid-item-card} {ref}`art23-measurefinancing`
 Sources of financing of each measure.
 :::

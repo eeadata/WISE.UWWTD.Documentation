@@ -675,7 +675,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
@@ -860,6 +859,8 @@ namespace DescriptiveDataset {
         + uwwtdMeasureType: UWWTDMeasureType [1..n]
         + measureText: string1000 [0..1]
         + geographicalCoverage: UWWTDGeographicCoverage [1]
+        + euUWWTPCode: wiseIdentifier [0..n]
+        + euAgglomerationCode: wiseIdentifier [0..n]
         + numberOfObjects: nonNegativeInteger [0..1]
         + prioritisation: Priority [1]
         + implementationStatus: PlannedOngoingExecutedCancelled [1]
@@ -869,11 +870,6 @@ namespace DescriptiveDataset {
         + investmentCost: nonNegativeValue [0..1]
         + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
         + remarks: string1000 [0..1]
-    }
-    class MeasureObject {
-        + measureCode: wiseIdentifier [1]
-        + objectType: MeasureObjectType [1]
-        + thematicIdIdentifier: wiseIdentifier [1]
     }
     class MeasureFinancing {
         + measureCode: wiseIdentifier [1]
@@ -904,10 +900,9 @@ namespace SpatialPointsDataflow {
     class SpatialAgglomeration[&quot;Agglomeration (spatial points)&quot;]
 }
 
-Measure &quot;1&quot; -- &quot;0..n&quot; MeasureObject : measureCode
 Measure &quot;1&quot; -- &quot;0..n&quot; MeasureFinancing : measureCode
-MeasureObject ..&gt; SpatialUWWTP : thematicIdIdentifier
-MeasureObject ..&gt; SpatialAgglomeration : thematicIdIdentifier
+Measure ..&gt; SpatialUWWTP : euUWWTPCode
+Measure ..&gt; SpatialAgglomeration : euAgglomerationCode
 UWWTP ..&gt; SpatialUWWTP : thematicIdIdentifier
 Agglomeration ..&gt; SpatialAgglomeration : thematicIdIdentifier
 
@@ -995,23 +990,20 @@ gives the definition, condition and codelist of every field.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
 <td><p>One per measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">measureName</span></code>, <code class="docutils literal notranslate"><span class="pre">measureNameLanguage</span></code>, <code class="docutils literal notranslate"><span class="pre">measureReference</span></code>, <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code>,
-<code class="docutils literal notranslate"><span class="pre">measureText</span></code>, <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code>, <code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code>, <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code>,
-<code class="docutils literal notranslate"><span class="pre">implementationStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code>, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>,
-<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code>, <code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
+<code class="docutils literal notranslate"><span class="pre">measureText</span></code>, <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code>, <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>,
+<code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code>, <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code>, <code class="docutils literal notranslate"><span class="pre">implementationStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>,
+<code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code>, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a></p></td>
-<td><p>One per measure and plant or agglomeration</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">objectType</span></code>, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a></p></td>
 <td><p>One per measure and source of financing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code>, <code class="docutils literal notranslate"><span class="pre">loanName</span></code>, <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
 <td><p>One per plant</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code>, <code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 <td><p>One per agglomeration</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code>, <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code>,
 <code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code>, <code class="docutils literal notranslate"><span class="pre">remarks</span></code></p></td>

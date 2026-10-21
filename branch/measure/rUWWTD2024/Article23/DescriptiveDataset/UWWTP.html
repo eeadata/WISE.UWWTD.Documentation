@@ -675,7 +675,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Derogation.html">Derogation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Measure.html">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Agglomeration.html">Agglomeration</a></li>
@@ -777,8 +776,8 @@ Draft baseline. Which plants must be listed and the status codelist are still un
 investment costs and funding are reported in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> and its related tables, not
 here (<a class="reference internal" href="../OpenIssues.html#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </div>
-<p><strong>Table status:</strong> Conditional. Required for each treatment plant concerned by a measure in
-<a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.
+<p><strong>Table status:</strong> Conditional. Required for each treatment plant listed in the <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> of a
+measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>.
 <strong>Rows:</strong> one row per plant. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the primary key.</p>
 <p>The table gives the state of each listed treatment plant: its status and its expected load and
 capacity. Each row refers to a treatment plant in the <a class="reference internal" href="../../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a> table of the
@@ -789,7 +788,7 @@ code must have been accepted before this table can refer to it (<a class="refere
 of future non-compliance, for example because of capacity constraints, more stringent
 requirements from the risk assessment or urban development. Whether compliant plants with planned
 renewal must also be listed is open (<a class="reference internal" href="../OpenIssues.html#art23-oi-scope"><span class="std std-ref">OI-01 Which plants and agglomerations to list</span></a>). The measures planned at a plant are
-reported in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> and linked to the plant in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>.</p>
+reported in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, with the plant’s code in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p>
 <figure class="align-center" id="article23-uwwtp-classdiagram">
 <pre  class="mermaid">
         ---
@@ -814,15 +813,15 @@ classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;
 
     </pre><figcaption>
-<p><span class="caption-number">Figure 9 </span><span class="caption-text">Article 23 - UWWTP - draft</span><a class="headerlink" href="#article23-uwwtp-classdiagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 8 </span><span class="caption-text">Article 23 - UWWTP - draft</span><a class="headerlink" href="#article23-uwwtp-classdiagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In <a class="reference internal" href="#article23-uwwtp-classdiagram"><span class="std std-numref">Figure 9</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
+<p>In <a class="reference internal" href="#article23-uwwtp-classdiagram"><span class="std std-numref">Figure 8</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
 Optional ones (<a class="reference internal" href="../Terminology.html#art23-requirement-status"><span class="std std-ref">Requirement status</span></a>).</p>
 <section id="uwwtp-fields">
 <h2>UWWTP fields<a class="headerlink" href="#uwwtp-fields" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 23 </span><span class="caption-text">UWWTP fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 22 </span><span class="caption-text">UWWTP fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -887,9 +886,9 @@ country in
 <section id="filling-in-the-table">
 <h2>Filling in the table<a class="headerlink" href="#filling-in-the-table" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Measures at the plant.</strong> Report each measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> and link it to the plant
-in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>. Several measures at one plant are several rows there, each with
-its own dates and cost.</p></li>
+<li><p><strong>Measures at the plant.</strong> Report each measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, with the plant’s code in
+<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. Several measures at one plant are several rows there, each with its own dates and
+cost.</p></li>
 <li><p><strong>Reference year.</strong> The draft does not define the reference year of <code class="docutils literal notranslate"><span class="pre">status</span></code>
 (<a class="reference internal" href="../OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>).</p></li>
 </ul>

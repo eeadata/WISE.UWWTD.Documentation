@@ -675,7 +675,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
@@ -779,10 +778,9 @@ fields of the UWWTP and Agglomeration tables and the OtherInvestment table
 maintain compliance, or to renew existing infrastructure. Each measure has a cost, and that cost
 is financed from one or more sources:</p>
 <ul class="simple">
-<li><p><strong>Measure</strong> (<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>): one row per measure, with its type, coverage, priority,
-status, dates and investment cost.</p></li>
-<li><p><strong>MeasureObject</strong> (<a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>): the plants or agglomerations the measure
-concerns, if they are listed.</p></li>
+<li><p><strong>Measure</strong> (<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>): one row per measure, with its types, coverage, the plants or
+agglomerations it concerns (<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>), priority, status, dates and
+investment cost.</p></li>
 <li><p><strong>MeasureFinancing</strong> (<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>): where the money comes from, source by
 source, and how far each part is secured.</p></li>
 </ul>
@@ -792,22 +790,20 @@ Framework Directive 4th cycle, where a <code class="docutils literal notranslate
 per measure.</p>
 <pre  class="mermaid">
         flowchart LR
-  Measure[&quot;Measure&lt;br/&gt;type, priority, dates, cost&quot;]
-  MeasureObject[&quot;MeasureObject&lt;br/&gt;plants or agglomerations&quot;]
+  Measure[&quot;Measure&lt;br/&gt;types, plants or agglomerations,&lt;br/&gt;priority, dates, cost&quot;]
   MeasureFinancing[&quot;MeasureFinancing&lt;br/&gt;source, status, amount&quot;]
   UWWTP[&quot;UWWTP&lt;br/&gt;state of the plant&quot;]
   Agglomeration[&quot;Agglomeration&lt;br/&gt;state of the agglomeration&quot;]
   Spatial[&quot;Spatial points&lt;br/&gt;code, name, location&quot;]
-  MeasureObject -- &quot;measureCode&quot; --&gt; Measure
   MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
-  MeasureObject -- &quot;thematicIdIdentifier&quot; --&gt; Spatial
+  Measure -- &quot;euUWWTPCode, euAgglomerationCode&quot; --&gt; Spatial
   UWWTP -- &quot;thematicIdIdentifier&quot; --&gt; Spatial
   Agglomeration -- &quot;thematicIdIdentifier&quot; --&gt; Spatial
     </pre></section>
 <section id="where-to-report-each-measure">
 <h2>Where to report each measure<a class="headerlink" href="#where-to-report-each-measure" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 48 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 46 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -821,14 +817,14 @@ per measure.</p>
 <tr class="row-even"><td><p>A measure at one or more identified treatment plants: a new plant, an upgrade to tertiary or
 quaternary treatment, stricter treatment following the risk assessment, energy neutrality,
 or renewal including capacity increase</p></td>
-<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and one row per
-plant in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a></p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and the plants’
+codes in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>A measure in the collecting systems or individual systems of one or more identified
 agglomerations: new collecting systems, storm water overflow reduction, individual systems,
 measures resulting from an IUWMP, or renewal</p></td>
-<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and one row per
-agglomeration in <a class="reference internal" href="DescriptiveDataset/MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a></p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and the
+agglomerations’ codes in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>A measure for the whole Member State, such as the nationwide renewal of collecting systems</p></td>
 <td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code>, no objects listed</p></td>
@@ -959,7 +955,7 @@ of the money still to be found, and a national renewal programme.</p>
 <section id="from-the-draft-fields-to-the-measure-model">
 <h2>From the draft fields to the measure model<a class="headerlink" href="#from-the-draft-fields-to-the-measure-model" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 49 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 47 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -1024,7 +1020,7 @@ measure type</p></td>
 <section id="quality-checks">
 <span id="art23-quality-checks"></span><h2>Quality checks<a class="headerlink" href="#quality-checks" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 50 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 48 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 10.0%" />
 <col style="width: 22.0%" />
@@ -1045,52 +1041,43 @@ measure type</p></td>
 <td><p>Blocker</p></td>
 </tr>
 <tr class="row-odd"><td><p>TU02</p></td>
-<td><p>MeasureObject</p></td>
-<td><p>The combination of <code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">objectType</span></code> and <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is unique</p></td>
-<td><p>Blocker</p></td>
-</tr>
-<tr class="row-even"><td><p>TU03</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p>The combination of <code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> and <code class="docutils literal notranslate"><span class="pre">loanName</span></code> is
 unique</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p>RF01</p></td>
-<td><p>MeasureObject, MeasureFinancing</p></td>
+<tr class="row-even"><td><p>RF01</p></td>
+<td><p>MeasureFinancing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code> exists in Measure</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p>RF02</p></td>
-<td><p>MeasureObject</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is accepted in the spatial points dataflow for the reporting country,
-as an agglomeration or a treatment plant following <code class="docutils literal notranslate"><span class="pre">objectType</span></code>; a retired code raises a
-warning (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>)</p></td>
+<tr class="row-odd"><td><p>RF02</p></td>
+<td><p>Measure</p></td>
+<td><p>Each code in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> is an accepted treatment plant, and each code in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> an accepted agglomeration, of the reporting country in the spatial points
+dataflow; a retired code raises a warning (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>)</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p>RF03</p></td>
-<td><p>MeasureObject</p></td>
-<td><p>Each listed plant or agglomeration has a row in UWWTP or Agglomeration</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-even"><td><p>R01</p></td>
+<tr class="row-even"><td><p>RF03</p></td>
 <td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> has at least one MeasureObject row</p></td>
+<td><p>Each plant or agglomeration listed in a measure has a row in UWWTP or Agglomeration</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R02</p></td>
+<tr class="row-odd"><td><p>R01</p></td>
 <td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> or <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> has no MeasureObject rows</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> lists at least one code, in the field that matches the
+kind of object of the measure types; the other field is empty</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R03</p></td>
-<td><p>MeasureObject</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">objectType</span></code> matches the object type of the measure types</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-odd"><td><p>R13</p></td>
+<tr class="row-even"><td><p>R02</p></td>
 <td><p>Measure</p></td>
-<td><p>All the types of a measure concern the same kind of object, treatment plants or
-agglomerations; <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> may be combined with either</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> or <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> lists no codes</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R03</p></td>
+<td><p>Measure</p></td>
+<td><p>All the types of a measure concern the same kind of object, treatment plants or agglomerations;
+<code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> may be combined with either</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p>R04</p></td>

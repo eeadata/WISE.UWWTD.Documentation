@@ -13,10 +13,9 @@ The programme starts from measures. A measure is what the Member State plans to 
 maintain compliance, or to renew existing infrastructure. Each measure has a cost, and that cost
 is financed from one or more sources:
 
-* **Measure** ({ref}`art23-measure`): one row per measure, with its type, coverage, priority,
-  status, dates and investment cost.
-* **MeasureObject** ({ref}`art23-measureobject`): the plants or agglomerations the measure
-  concerns, if they are listed.
+* **Measure** ({ref}`art23-measure`): one row per measure, with its types, coverage, the plants or
+  agglomerations it concerns (`euUWWTPCode` or `euAgglomerationCode`), priority, status, dates and
+  investment cost.
 * **MeasureFinancing** ({ref}`art23-measurefinancing`): where the money comes from, source by
   source, and how far each part is secured.
 
@@ -27,15 +26,13 @@ per measure.
 
 ```{mermaid}
 flowchart LR
-  Measure["Measure<br/>type, priority, dates, cost"]
-  MeasureObject["MeasureObject<br/>plants or agglomerations"]
+  Measure["Measure<br/>types, plants or agglomerations,<br/>priority, dates, cost"]
   MeasureFinancing["MeasureFinancing<br/>source, status, amount"]
   UWWTP["UWWTP<br/>state of the plant"]
   Agglomeration["Agglomeration<br/>state of the agglomeration"]
   Spatial["Spatial points<br/>code, name, location"]
-  MeasureObject -- "measureCode" --> Measure
   MeasureFinancing -- "measureCode" --> Measure
-  MeasureObject -- "thematicIdIdentifier" --> Spatial
+  Measure -- "euUWWTPCode, euAgglomerationCode" --> Spatial
   UWWTP -- "thematicIdIdentifier" --> Spatial
   Agglomeration -- "thematicIdIdentifier" --> Spatial
 ```
@@ -51,13 +48,13 @@ flowchart LR
 * - A measure at one or more identified treatment plants: a new plant, an upgrade to tertiary or
     quaternary treatment, stricter treatment following the risk assessment, energy neutrality,
     or renewal including capacity increase
-  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and one row per
-    plant in {ref}`art23-measureobject`
+  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and the plants'
+    codes in `euUWWTPCode`
 * - A measure in the collecting systems or individual systems of one or more identified
     agglomerations: new collecting systems, storm water overflow reduction, individual systems,
     measures resulting from an IUWMP, or renewal
-  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and one row per
-    agglomeration in {ref}`art23-measureobject`
+  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and the
+    agglomerations' codes in `euAgglomerationCode`
 * - A measure for the whole Member State, such as the nationwide renewal of collecting systems
   - A row in {ref}`art23-measure` with `geographicalCoverage` = `national`, no objects listed
 * - A measure whose plants or agglomerations are not yet identified, for example new collecting
@@ -233,44 +230,37 @@ of the money still to be found, and a national renewal programme.
   - `measureCode` is unique
   - Blocker
 * - TU02
-  - MeasureObject
-  - The combination of `measureCode`, `objectType` and `thematicIdIdentifier` is unique
-  - Blocker
-* - TU03
   - MeasureFinancing
   - The combination of `measureCode`, `fundingSource`, `europeanUnionFundName` and `loanName` is
     unique
   - Blocker
 * - RF01
-  - MeasureObject, MeasureFinancing
+  - MeasureFinancing
   - `measureCode` exists in Measure
   - Blocker
 * - RF02
-  - MeasureObject
-  - `thematicIdIdentifier` is accepted in the spatial points dataflow for the reporting country,
-    as an agglomeration or a treatment plant following `objectType`; a retired code raises a
-    warning ({ref}`sp-references`)
+  - Measure
+  - Each code in `euUWWTPCode` is an accepted treatment plant, and each code in
+    `euAgglomerationCode` an accepted agglomeration, of the reporting country in the spatial points
+    dataflow; a retired code raises a warning ({ref}`sp-references`)
   - Blocker
 * - RF03
-  - MeasureObject
-  - Each listed plant or agglomeration has a row in UWWTP or Agglomeration
+  - Measure
+  - Each plant or agglomeration listed in a measure has a row in UWWTP or Agglomeration
   - Error
 * - R01
   - Measure
-  - `geographicalCoverage` = `listedObjects` has at least one MeasureObject row
+  - `geographicalCoverage` = `listedObjects` lists at least one code, in the field that matches the
+    kind of object of the measure types; the other field is empty
   - Error
 * - R02
   - Measure
-  - `geographicalCoverage` = `national` or `unlistedObjects` has no MeasureObject rows
+  - `geographicalCoverage` = `national` or `unlistedObjects` lists no codes
   - Error
 * - R03
-  - MeasureObject
-  - `objectType` matches the object type of the measure types
-  - Error
-* - R13
   - Measure
-  - All the types of a measure concern the same kind of object, treatment plants or
-    agglomerations; `otherMeasureArticle18_2` may be combined with either
+  - All the types of a measure concern the same kind of object, treatment plants or agglomerations;
+    `otherMeasureArticle18_2` may be combined with either
   - Error
 * - R04
   - Measure

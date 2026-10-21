@@ -416,7 +416,7 @@ window.runMermaid = runMermaid;</script>
     <script src="../../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="MeasureObject" href="MeasureObject.html" />
+    <link rel="next" title="MeasureFinancing" href="MeasureFinancing.html" />
     <link rel="prev" title="Derogation" href="Derogation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -675,7 +675,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Derogation.html">Derogation</a></li>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Agglomeration.html">Agglomeration</a></li>
@@ -783,8 +782,13 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
 measure has one or more types, and one period, one priority and one investment cost. The plants or
-agglomerations it concerns are listed in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>, and the sources of its
-financing in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>. See <a class="reference internal" href="../ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>.</p>
+agglomerations it concerns are listed in the measure itself, in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and the sources of its financing in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>. See
+<a class="reference internal" href="../ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>.</p>
+<p>Listing the plants or agglomerations in a multi-valued field follows the Water Framework Directive,
+whose <code class="docutils literal notranslate"><span class="pre">Measure</span></code> table lists the river basin districts a measure concerns in <code class="docutils literal notranslate"><span class="pre">euRBDCode</span> <span class="pre">[0..n]</span></code>.
+Unlike the Water Framework Directive, which does not ask for the individual water bodies, Article
+23(1)(b) asks for the investments “for each agglomeration”, so the objects are listed.</p>
 <figure class="align-center" id="article23-measure-classdiagram">
 <pre  class="mermaid">
         ---
@@ -805,6 +809,8 @@ class Measure{
     + uwwtdMeasureType: UWWTDMeasureType [1..n]
     + measureText: string1000 [0..1]
     + geographicalCoverage: UWWTDGeographicCoverage [1]
+    + euUWWTPCode: wiseIdentifier [0..n]
+    + euAgglomerationCode: wiseIdentifier [0..n]
     + numberOfObjects: nonNegativeInteger [0..1]
     + prioritisation: Priority [1]
 
@@ -817,10 +823,8 @@ class Measure{
     + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
     + remarks: string1000 [0..1]
 }
-class MeasureObject{&lt;&lt;descriptive&gt;&gt;}
 class MeasureFinancing{&lt;&lt;descriptive&gt;&gt;}
 
-Measure &quot;1&quot; -- &quot;0..n&quot; MeasureObject
 Measure &quot;1&quot; -- &quot;0..n&quot; MeasureFinancing
 
 classDef default fill:white,stroke:#000;
@@ -902,10 +906,38 @@ treatment plants, or agglomerations.</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code></p></td>
 <td><p>Geographical coverage</p></td>
 <td><p>Whether the measure applies to the whole Member State, to plants or agglomerations listed in
-<a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>, or to plants or agglomerations not yet identified.</p></td>
+<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, or to plants or agglomerations not yet identified.</p></td>
 <td><p>UWWTDGeographicCoverage</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-coverage"><span class="std std-ref">Geographical coverage</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
+<td><p>Treatment plants</p></td>
+<td><p>Codes of the treatment plants the measure concerns, as in the spatial points dataflow.
+Several codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p></td>
+<td><p>wiseIdentifier [0..n]</p></td>
+<td><p>Conditional</p></td>
+<td><p>Required if
+<code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> =
+<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> and the
+measure types concern
+treatment plants; empty
+otherwise. Accepted codes
+in <a class="reference internal" href="../../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
+<td><p>Agglomerations</p></td>
+<td><p>Codes of the agglomerations the measure concerns, as in the spatial points dataflow. Several
+codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
+<td><p>wiseIdentifier [0..n]</p></td>
+<td><p>Conditional</p></td>
+<td><p>Required if
+<code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> =
+<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> and the
+measure types concern
+agglomerations; empty
+otherwise. Accepted codes
+in <a class="reference internal" href="../../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code></p></td>
 <td><p>Number of plants or agglomerations</p></td>
@@ -1041,8 +1073,10 @@ all in millions of that currency. Euro area Member States use EUR.</p></td>
 several types, for example an upgrade to tertiary and to quaternary treatment under one
 contract, is one measure with all its types. Its cost is given once and is not split between the
 types. Projects with their own dates or costs are separate measures.</p></li>
-<li><p><strong>Several measures at one plant.</strong> Report each measure as its own row and link each to the
-plant in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>. Each keeps its own dates and cost.</p></li>
+<li><p><strong>Several measures at one plant.</strong> Report each measure as its own row, each with the plant’s
+code in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. Each keeps its own dates and cost.</p></li>
+<li><p><strong>One measure, several plants or agglomerations.</strong> List all their codes in the one field,
+separated by commas. The cost is given once, for the whole measure.</p></li>
 <li><p><strong>Measures not tied to listed objects.</strong> Use <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> for measures
 for the whole Member State, such as the nationwide renewal of collecting systems, and
 <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> where the plants or agglomerations are not yet identified.</p></li>
@@ -1082,11 +1116,11 @@ not known is a valid answer.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="MeasureObject.html"
+       href="MeasureFinancing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MeasureObject</p>
+        <p class="prev-next-title">MeasureFinancing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

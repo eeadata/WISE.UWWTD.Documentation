@@ -317,7 +317,6 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureObject.html">MeasureObject</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
@@ -435,15 +434,16 @@ funders, seven years apart. They are reported as two measures, each with its own
 The nitrogen and phosphorus works are one construction contract with one budget, so they are one
 measure of type <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code>, and the cost is not split between the two
 nutrients.</p>
-<p>Both measures are linked to the same plant. The plant’s status, projected load and capacity are
-reported once, in the UWWTP table, not on either measure.</p>
+<p>Both measures list the same plant in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. The plant’s status, projected load and
+capacity are reported once, in the UWWTP table, not on either measure.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 51 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 49 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -451,6 +451,7 @@ reported once, in the UWWTP table, not on either measure.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -459,19 +460,21 @@ reported once, in the UWWTP table, not on either measure.</p>
 <td><p>Rivermouth nitrogen and phosphorus removal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0007</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M002</span></code></p></td>
 <td><p>Rivermouth quaternary treatment</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0007</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 52 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 50 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -512,39 +515,14 @@ reported once, in the UWWTP table, not on either measure.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 53 </span><span class="caption-text">MeasureObject</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 51 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>measureCode</p></th>
-<th class="head"><p>objectType</p></th>
-<th class="head"><p>thematicIdIdentifier</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M001</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0007</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M002</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0007</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 54 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 10.0%" />
-<col style="width: 30.0%" />
-<col style="width: 26.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 32.0%" />
 <col style="width: 12.0%" />
-<col style="width: 8.0%" />
+<col style="width: 13.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -587,8 +565,8 @@ reported once, in the UWWTP table, not on either measure.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-number">Table 55 </span><span class="caption-text">UWWTP</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 52 </span><span class="caption-text">UWWTP</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>thematicIdIdentifier</p></th>
 <th class="head"><p>status</p></th>
@@ -606,8 +584,8 @@ reported once, in the UWWTP table, not on either measure.</p>
 </table>
 </div>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
-<caption><span class="caption-number">Table 56 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 53 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -661,17 +639,18 @@ and the quaternary project of 2035 would not have been visible as a separate com
 systems are to be invested in, in the same agglomeration: should one total be given, or one row
 for each?</p>
 <p><strong>Filling it in.</strong> Northtown is extending its collecting system and, for the outlying houses,
-supporting individual systems. These are two measures, with their own dates and costs, both linked
-to the agglomeration. Had they been one project, with one budget and one completion year, they
-could have been one measure with both types. The Agglomeration table gives the expected split of
-the load between the two.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id7">
-<caption><span class="caption-number">Table 57 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
+supporting individual systems. These are two measures, with their own dates and costs, both
+listing the agglomeration in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. Had they been one project, with one budget and
+one completion year, they could have been one measure with both types. The Agglomeration table
+gives the expected split of the load between the two.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<caption><span class="caption-number">Table 54 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -679,6 +658,7 @@ the load between the two.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -687,19 +667,21 @@ the load between the two.</p>
 <td><p>Northtown collecting system extension</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AGG0101</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M004</span></code></p></td>
 <td><p>Northtown individual systems</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">individualSystemsArticle4</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AGG0101</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id8">
-<caption><span class="caption-number">Table 58 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id7">
+<caption><span class="caption-number">Table 55 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -739,40 +721,15 @@ the load between the two.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id9">
-<caption><span class="caption-number">Table 59 </span><span class="caption-text">MeasureObject</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id8">
+<caption><span class="caption-number">Table 56 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>measureCode</p></th>
-<th class="head"><p>objectType</p></th>
-<th class="head"><p>thematicIdIdentifier</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M003</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AGG0101</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M004</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AGG0101</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table" id="id10">
-<caption><span class="caption-number">Table 60 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 10.0%" />
-<col style="width: 30.0%" />
-<col style="width: 26.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 32.0%" />
 <col style="width: 12.0%" />
-<col style="width: 8.0%" />
+<col style="width: 13.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -808,8 +765,8 @@ the load between the two.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id11">
-<caption><span class="caption-number">Table 61 </span><span class="caption-text">Agglomeration</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id9">
+<caption><span class="caption-number">Table 57 </span><span class="caption-text">Agglomeration</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>thematicIdIdentifier</p></th>
 <th class="head"><p>status</p></th>
@@ -829,8 +786,8 @@ the load between the two.</p>
 </table>
 </div>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id12">
-<caption><span class="caption-number">Table 62 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id10">
+<caption><span class="caption-number">Table 58 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id10" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -874,16 +831,18 @@ collecting system and individual systems could only be described in remarks.</p>
 <p><strong>The question.</strong> A Member State pointed out that one fund name per row is not enough, because
 several funds may be requested for one project.</p>
 <p><strong>Filling it in.</strong> The Eastvale interconnection is one project that connects three agglomerations
-to a shared collecting system. It is one measure, linked to the three agglomerations. Its cost is
-given once, for the whole project, and not divided between the agglomerations. Each source of
-financing, including each EU fund, is its own row with its own amount.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id13">
-<caption><span class="caption-number">Table 63 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+to a shared collecting system. It is one measure, with the three agglomerations in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. Its cost is given once, for the whole project, and not divided between the
+agglomerations. Each source of financing, including each EU fund, is its own row with its own
+amount.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-number">Table 59 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -891,6 +850,7 @@ financing, including each EU fund, is its own row with its own amount.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -899,13 +859,17 @@ financing, including each EU fund, is its own row with its own amount.</p>
 <td><p>Eastvale interconnection</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">newCollectingSystemArticle3_1</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AGG0201</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">AGG0202</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">AGG0203</span></code></p>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id14">
-<caption><span class="caption-number">Table 64 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id12">
+<caption><span class="caption-number">Table 60 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -937,44 +901,15 @@ financing, including each EU fund, is its own row with its own amount.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id15">
-<caption><span class="caption-number">Table 65 </span><span class="caption-text">MeasureObject</span><a class="headerlink" href="#id15" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id13">
+<caption><span class="caption-number">Table 61 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>measureCode</p></th>
-<th class="head"><p>objectType</p></th>
-<th class="head"><p>thematicIdIdentifier</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AGG0201</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AGG0202</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agglomeration</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AGG0203</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table" id="id16">
-<caption><span class="caption-number">Table 66 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id16" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 10.0%" />
-<col style="width: 30.0%" />
-<col style="width: 26.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 32.0%" />
 <col style="width: 12.0%" />
-<col style="width: 8.0%" />
+<col style="width: 13.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -1018,8 +953,8 @@ financing, including each EU fund, is its own row with its own amount.</p>
 </table>
 </div>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id17">
-<caption><span class="caption-number">Table 67 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id14">
+<caption><span class="caption-number">Table 62 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -1038,7 +973,7 @@ financing, including each EU fund, is its own row with its own amount.</p>
 </tr>
 <tr class="row-odd"><td><p>Agglomerations concerned</p></td>
 <td><p>3</p></td>
-<td><p>MeasureObject rows of the measure</p></td>
+<td><p>Codes in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>EU funds sought</p></td>
 <td><p>6.0: 4.0 from the European Regional Development Fund and 2.0 from the Just Transition Fund</p></td>
@@ -1067,13 +1002,14 @@ would be very uncertain.</p>
 within the next ten years, but not yet which plants come first or what the work will cost. It
 reports one measure for plants not yet identified, gives their number, and says that the cost is
 unknown. There are no financing rows.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id18">
-<caption><span class="caption-number">Table 68 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id18" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id15">
+<caption><span class="caption-number">Table 63 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id15" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -1081,6 +1017,7 @@ unknown. There are no financing rows.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -1089,13 +1026,14 @@ unknown. There are no financing rows.</p>
 <td><p>Nitrogen removal at small coastal plants</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogen</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code></p></td>
+<td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id19">
-<caption><span class="caption-number">Table 69 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id19" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id16">
+<caption><span class="caption-number">Table 64 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id16" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -1129,8 +1067,8 @@ unknown. There are no financing rows.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> is 10.</p>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id20">
-<caption><span class="caption-number">Table 70 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id17">
+<caption><span class="caption-number">Table 65 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -1168,13 +1106,14 @@ therefore one measure with two types, <code class="docutils literal notranslate"
 and its cost is given once, not split between them. Half of the cost is secured from the
 operators’ own funds, an application for the Cohesion Fund is pending, and the source of the rest
 is not yet identified.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id21">
-<caption><span class="caption-number">Table 71 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id18">
+<caption><span class="caption-number">Table 66 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id18" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -1182,6 +1121,7 @@ is not yet identified.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -1192,13 +1132,16 @@ is not yet identified.</p>
 <p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p>
 </td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0301</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">UWWTP0302</span></code></p>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id22">
-<caption><span class="caption-number">Table 72 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id19">
+<caption><span class="caption-number">Table 67 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id19" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -1230,40 +1173,15 @@ is not yet identified.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id23">
-<caption><span class="caption-number">Table 73 </span><span class="caption-text">MeasureObject</span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id20">
+<caption><span class="caption-number">Table 68 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>measureCode</p></th>
-<th class="head"><p>objectType</p></th>
-<th class="head"><p>thematicIdIdentifier</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M007</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0301</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M007</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlant</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">UWWTP0302</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table" id="id24">
-<caption><span class="caption-number">Table 74 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 10.0%" />
-<col style="width: 30.0%" />
-<col style="width: 26.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 32.0%" />
 <col style="width: 12.0%" />
-<col style="width: 8.0%" />
+<col style="width: 13.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -1300,8 +1218,8 @@ is not yet identified.</p>
 </table>
 </div>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id25">
-<caption><span class="caption-number">Table 75 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id25" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id21">
+<caption><span class="caption-number">Table 69 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -1356,13 +1274,14 @@ national programme, without a list of agglomerations. The draft format reported 
 the OtherInvestment table.</p>
 <p><strong>Filling it in.</strong> The Member State plans to renew collecting systems across the country. It
 reports one national measure, with no plants or agglomerations listed.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id26">
-<caption><span class="caption-number">Table 76 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id26" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id22">
+<caption><span class="caption-number">Table 70 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id22" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 12.0%" />
-<col style="width: 34.0%" />
-<col style="width: 30.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 26.0%" />
+<col style="width: 13.0%" />
+<col style="width: 18.0%" />
 <col style="width: 10.0%" />
 </colgroup>
 <thead>
@@ -1370,6 +1289,7 @@ reports one national measure, with no plants or agglomerations listed.</p>
 <th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Coverage</p></th>
+<th class="head"><p>Plants or agglomerations</p></th>
 <th class="head"><p>Priority</p></th>
 </tr>
 </thead>
@@ -1378,13 +1298,14 @@ reports one national measure, with no plants or agglomerations listed.</p>
 <td><p>National renewal of collecting systems</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">national</span></code></p></td>
+<td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id27">
-<caption><span class="caption-number">Table 77 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id27" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id23">
+<caption><span class="caption-number">Table 71 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 12.0%" />
 <col style="width: 16.0%" />
@@ -1416,15 +1337,15 @@ reports one national measure, with no plants or agglomerations listed.</p>
 </tbody>
 </table>
 </div>
-<div class="pst-scrollable-table-container"><table class="table" id="id28">
-<caption><span class="caption-number">Table 78 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id28" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id24">
+<caption><span class="caption-number">Table 72 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 30.0%" />
-<col style="width: 26.0%" />
-<col style="width: 14.0%" />
+<col style="width: 9.0%" />
+<col style="width: 24.0%" />
+<col style="width: 32.0%" />
 <col style="width: 12.0%" />
-<col style="width: 8.0%" />
+<col style="width: 13.0%" />
+<col style="width: 10.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -1454,8 +1375,8 @@ reports one national measure, with no plants or agglomerations listed.</p>
 </table>
 </div>
 <p><strong>Adding it back up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id29">
-<caption><span class="caption-number">Table 79 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id29" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id25">
+<caption><span class="caption-number">Table 73 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id25" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 26.0%" />
@@ -1487,8 +1408,8 @@ reports one national measure, with no plants or agglomerations listed.</p>
 <section id="all-six-together">
 <span id="art23-examples-together"></span><h2>All six together<a class="headerlink" href="#all-six-together" title="Link to this heading">#</a></h2>
 <p><strong>The correct roll-up.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id30">
-<caption><span class="caption-number">Table 80 </span><span class="caption-text">All six examples together</span><a class="headerlink" href="#id30" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id26">
+<caption><span class="caption-number">Table 74 </span><span class="caption-text">All six examples together</span><a class="headerlink" href="#id26" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 34.0%" />
 <col style="width: 20.0%" />
@@ -1513,7 +1434,7 @@ reports one national measure, with no plants or agglomerations listed.</p>
 <td><p>606.4</p></td>
 <td><p>Sum of <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> over the measures</p></td>
 </tr>
-<tr class="row-odd"><td><p>Linked to listed plants or agglomerations</p></td>
+<tr class="row-odd"><td><p>For listed plants or agglomerations</p></td>
 <td><p>156.4</p></td>
 <td><p>Examples 1, 2, 3 and 5</p></td>
 </tr>
@@ -1549,8 +1470,8 @@ reports one national measure, with no plants or agglomerations listed.</p>
 </table>
 </div>
 <p><strong>The wrong answers, and why.</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id31">
-<caption><span class="caption-number">Table 81 </span><span class="caption-text">Common mistakes</span><a class="headerlink" href="#id31" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id27">
+<caption><span class="caption-number">Table 75 </span><span class="caption-text">Common mistakes</span><a class="headerlink" href="#id27" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 40.0%" />
 <col style="width: 20.0%" />

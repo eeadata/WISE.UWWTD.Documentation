@@ -278,8 +278,8 @@ Used by the `uwwtdMeasureType` field of the {ref}`art23-measure` table. One or m
 measure, as in the draft format, all for the same kind of object. The
 codelist brings together the former treatment plant and agglomeration measure codelists; the
 renewal value, which both had, is split into one value for collecting systems and one for
-treatment plants. The notes give the article and the object type: a measure listing plants or
-agglomerations in {ref}`art23-measureobject` must list objects of that type.
+treatment plants. The notes give the article and the object type: a measure listing plants lists
+them in `euUWWTPCode`, and a measure listing agglomerations in `euAgglomerationCode`.
 
 The name is prefixed with `UWWTD` because the Water Framework Directive codelist `MeasureType`
 classifies measures differently, by their nature (legislative, technical, economic and so on).
@@ -499,11 +499,12 @@ corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has o
 * - `national`
   - National
   - The measure applies to the whole Member State; no plants or agglomerations are listed.
-  - No rows in {ref}`art23-measureobject`.
+  - `euUWWTPCode` and `euAgglomerationCode` stay empty.
 * - `listedObjects`
   - Listed plants or agglomerations
-  - The measure applies to the plants or agglomerations listed in {ref}`art23-measureobject`.
-  - At least one row in {ref}`art23-measureobject`.
+  - The measure applies to the plants or agglomerations listed in `euUWWTPCode` or
+    `euAgglomerationCode`.
+  - At least one code listed.
 * - `unlistedObjects`
   - Plants or agglomerations not yet identified
   - The measure applies to plants or agglomerations that are not yet identified.
@@ -571,31 +572,6 @@ Used by `costStatus` in {ref}`art23-measure`.
   - Unknown
   - The cost is not yet known.
   - `investmentCost` stays empty.
-:::
-
-(art23-cl-object-type)=
-## Object type
-
-**Type:** `MeasureObjectType`
-
-Used by `objectType` in {ref}`art23-measureobject`.
-
-:::{list-table} Proposed object type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `agglomeration`
-  - Agglomeration
-  - The object is an agglomeration.
-  - Code from {ref}`sp-agglomeration`.
-* - `treatmentPlant`
-  - Treatment plant
-  - The object is an urban wastewater treatment plant.
-  - Code from {ref}`sp-uwwtp`.
 :::
 
 (art23-cl-priority)=

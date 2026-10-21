@@ -76,12 +76,10 @@ gives the definition, condition and codelist of every field.
 * - {ref}`art23-measure`
   - One per measure
   - `measureCode`, `measureName`, `measureNameLanguage`, `measureReference`, `uwwtdMeasureType`,
-    `measureText`, `geographicalCoverage`, `numberOfObjects`, `prioritisation`,
-    `implementationStatus`, `expectedStartYear`, `expectedCompletionYear`, `costStatus`,
-    `investmentCost`, `millionUnitsOfNationalCurrency`, `remarks`
-* - {ref}`art23-measureobject`
-  - One per measure and plant or agglomeration
-  - `measureCode`, `objectType`, `thematicIdIdentifier`
+    `measureText`, `geographicalCoverage`, `euUWWTPCode`, `euAgglomerationCode`,
+    `numberOfObjects`, `prioritisation`, `implementationStatus`, `expectedStartYear`,
+    `expectedCompletionYear`, `costStatus`, `investmentCost`, `millionUnitsOfNationalCurrency`,
+    `remarks`
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
   - `measureCode`, `fundingSource`, `europeanUnionFundName`, `loanName`, `fundingStatus`, `amount`

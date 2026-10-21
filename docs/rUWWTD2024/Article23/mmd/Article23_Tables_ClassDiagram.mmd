@@ -79,6 +79,8 @@ namespace DescriptiveDataset {
         + uwwtdMeasureType: UWWTDMeasureType [1..n]
         + measureText: string1000 [0..1]
         + geographicalCoverage: UWWTDGeographicCoverage [1]
+        + euUWWTPCode: wiseIdentifier [0..n]
+        + euAgglomerationCode: wiseIdentifier [0..n]
         + numberOfObjects: nonNegativeInteger [0..1]
         + prioritisation: Priority [1]
         + implementationStatus: PlannedOngoingExecutedCancelled [1]
@@ -88,11 +90,6 @@ namespace DescriptiveDataset {
         + investmentCost: nonNegativeValue [0..1]
         + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
         + remarks: string1000 [0..1]
-    }
-    class MeasureObject {
-        + measureCode: wiseIdentifier [1]
-        + objectType: MeasureObjectType [1]
-        + thematicIdIdentifier: wiseIdentifier [1]
     }
     class MeasureFinancing {
         + measureCode: wiseIdentifier [1]
@@ -123,10 +120,9 @@ namespace SpatialPointsDataflow {
     class SpatialAgglomeration["Agglomeration (spatial points)"]
 }
 
-Measure "1" -- "0..n" MeasureObject : measureCode
 Measure "1" -- "0..n" MeasureFinancing : measureCode
-MeasureObject ..> SpatialUWWTP : thematicIdIdentifier
-MeasureObject ..> SpatialAgglomeration : thematicIdIdentifier
+Measure ..> SpatialUWWTP : euUWWTPCode
+Measure ..> SpatialAgglomeration : euAgglomerationCode
 UWWTP ..> SpatialUWWTP : thematicIdIdentifier
 Agglomeration ..> SpatialAgglomeration : thematicIdIdentifier
 

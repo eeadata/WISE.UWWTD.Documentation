@@ -8,8 +8,8 @@ investment costs and funding are reported in {ref}`art23-measure` and its relate
 here ({ref}`art23-oi-measure-model`).
 :::
 
-**Table status:** Conditional. Required for each treatment plant concerned by a measure in
-{ref}`art23-measureobject`.
+**Table status:** Conditional. Required for each treatment plant listed in the `euUWWTPCode` of a
+measure in {ref}`art23-measure`.
 **Rows:** one row per plant. `thematicIdIdentifier` is the primary key.
 
 The table gives the state of each listed treatment plant: its status and its expected load and
@@ -22,7 +22,7 @@ The draft lists plants that are currently non-compliant, face upcoming deadlines
 of future non-compliance, for example because of capacity constraints, more stringent
 requirements from the risk assessment or urban development. Whether compliant plants with planned
 renewal must also be listed is open ({ref}`art23-oi-scope`). The measures planned at a plant are
-reported in {ref}`art23-measure` and linked to the plant in {ref}`art23-measureobject`.
+reported in {ref}`art23-measure`, with the plant's code in `euUWWTPCode`.
 
 ```{mermaid} /rUWWTD2024/Article23/mmd/Article23_UWWTP_ClassDiagram.mmd
 :name: Article23_UWWTP_ClassDiagram
@@ -83,9 +83,9 @@ Optional ones ({ref}`art23-requirement-status`).
 
 ## Filling in the table
 
-* **Measures at the plant.** Report each measure in {ref}`art23-measure` and link it to the plant
-  in {ref}`art23-measureobject`. Several measures at one plant are several rows there, each with
-  its own dates and cost.
+* **Measures at the plant.** Report each measure in {ref}`art23-measure`, with the plant's code in
+  `euUWWTPCode`. Several measures at one plant are several rows there, each with its own dates and
+  cost.
 * **Reference year.** The draft does not define the reference year of `status`
   ({ref}`art23-oi-reference-dates`).
 

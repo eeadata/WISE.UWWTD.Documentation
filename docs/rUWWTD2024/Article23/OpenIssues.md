@@ -277,8 +277,9 @@ OtherInvestment tables. It is hard to rebuild the total investment from them, or
 measures, dates or funds for one plant.
 
 **Proposal.** Start from measures, as the Directive and the Water Framework Directive do: a
-Measure table with one row per measure, a MeasureObject table listing the plants or agglomerations
-it concerns, and a MeasureFinancing table giving its sources of financing
+Measure table with one row per measure, listing the plants or agglomerations it concerns in a
+multi-valued field as the Water Framework Directive lists river basin districts, and a
+MeasureFinancing table giving its sources of financing
 ({ref}`art23-investments`). UWWTP and Agglomeration keep only the state of the object.
 
 **Questions.**
@@ -298,7 +299,8 @@ object, with one cost that is not split between them. A measure has one completi
 plants or agglomerations under one measure finish in different years, the measure is split.
 
 **Questions.** Are totals per measure type needed? With several types per measure, they are only
-exact for measures with a single type. Does MeasureObject need its own completion year?
+exact for measures with a single type. Is a completion year per plant or agglomeration needed? It
+would need a separate table linking measures and objects, instead of the multi-valued field.
 
 (art23-oi-measure-codes)=
 ## OI-24 Persistent measure codes
@@ -330,8 +332,8 @@ corresponds to such a key type and pressure, derived centrally ({ref}`art23-cl-m
 (art23-oi-listed-objects)=
 ## OI-26 Plants and agglomerations in the state tables
 
-**Proposal.** Every plant or agglomeration listed in MeasureObject also has a row in UWWTP or
-Agglomeration, with its status and expected load.
+**Proposal.** Every plant or agglomeration listed in a measure, in `euUWWTPCode` or
+`euAgglomerationCode`, also has a row in UWWTP or Agglomeration, with its status and expected load.
 
 **Question.** Should plants and agglomerations without a planned measure, for example
 non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?

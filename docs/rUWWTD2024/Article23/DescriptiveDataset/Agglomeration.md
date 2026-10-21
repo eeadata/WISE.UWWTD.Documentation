@@ -8,8 +8,8 @@ dates, investment costs and funding are reported in {ref}`art23-measure` and its
 not here ({ref}`art23-oi-measure-model`).
 :::
 
-**Table status:** Conditional. Required for each agglomeration concerned by a measure in
-{ref}`art23-measureobject`.
+**Table status:** Conditional. Required for each agglomeration listed in the
+`euAgglomerationCode` of a measure in {ref}`art23-measure`.
 **Rows:** one row per agglomeration. `thematicIdIdentifier` is the primary key.
 
 The table gives the state of each listed agglomeration: its status, its expected load, and the
@@ -24,7 +24,7 @@ at risk of future non-compliance, for example because of load increases, insuffi
 system capacity or the need to manage urban runoff. Whether compliant agglomerations with planned
 renewal must also be listed is open ({ref}`art23-oi-scope`). The measures planned for collecting
 systems, individual systems and integrated urban wastewater management plans are reported in
-{ref}`art23-measure` and linked to the agglomeration in {ref}`art23-measureobject`.
+{ref}`art23-measure`, with the agglomeration's code in `euAgglomerationCode`.
 
 ```{mermaid} /rUWWTD2024/Article23/mmd/Article23_Agglomeration_ClassDiagram.mmd
 :name: Article23_Agglomeration_ClassDiagram

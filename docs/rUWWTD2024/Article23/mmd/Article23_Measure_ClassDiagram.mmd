@@ -16,6 +16,8 @@ class Measure{
     + uwwtdMeasureType: UWWTDMeasureType [1..n]
     + measureText: string1000 [0..1]
     + geographicalCoverage: UWWTDGeographicCoverage [1]
+    + euUWWTPCode: wiseIdentifier [0..n]
+    + euAgglomerationCode: wiseIdentifier [0..n]
     + numberOfObjects: nonNegativeInteger [0..1]
     + prioritisation: Priority [1]
 
@@ -28,10 +30,8 @@ class Measure{
     + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
     + remarks: string1000 [0..1]
 }
-class MeasureObject{<<descriptive>>}
 class MeasureFinancing{<<descriptive>>}
 
-Measure "1" -- "0..n" MeasureObject
 Measure "1" -- "0..n" MeasureFinancing
 
 classDef default fill:white,stroke:#000;

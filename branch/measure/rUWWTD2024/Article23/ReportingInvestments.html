@@ -864,6 +864,9 @@ leave <code class="docutils literal notranslate"><span class="pre">investmentCos
 ten years but not what it will cost can say so.</p></li>
 <li><p><strong>Estimated or known.</strong> Use <code class="docutils literal notranslate"><span class="pre">estimated</span></code> for estimates and <code class="docutils literal notranslate"><span class="pre">known</span></code> for costs from a project,
 tender or contract.</p></li>
+<li><p><strong>Several types, one cost.</strong> A measure with several types has one cost, which is not split
+between the types. Totals per type are therefore only exact for measures with one type; for the
+others, count the measures that include a type rather than adding up their costs.</p></li>
 <li><p><strong>Each cost once.</strong> A cost belongs to one measure. Do not add the cost of a plant to the
 agglomeration it serves, or the reverse. The total investment of the programme is the sum of
 <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> over all measures.</p></li>
@@ -925,7 +928,7 @@ because high-priority projects can be complex and take longer to complete
 <li><p>Each measure has its own <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>. For a
 measure at a treatment plant, the completion year is the year of expected compliance.</p></li>
 <li><p>If the plants or agglomerations under one measure finish in different years, split the measure
-(<a class="reference internal" href="OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 One type and one completion year per measure</span></a>).</p></li>
+(<a class="reference internal" href="OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 Types and completion year of a measure</span></a>).</p></li>
 <li><p>Whether the first programme should cover measures to 2045 or a shorter horizon is open
 (<a class="reference internal" href="OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>).</p></li>
 </ul>
@@ -968,7 +971,7 @@ of the money still to be found, and a national renewal programme.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlantMeasure</span></code>, <code class="docutils literal notranslate"><span class="pre">agglomerationMeasure</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, one type per measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, one or more types per measure, as in the draft</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">measureText</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
@@ -1081,50 +1084,56 @@ warning (<a class="reference internal" href="../SpatialPoints/index.html#sp-refe
 </tr>
 <tr class="row-even"><td><p>R03</p></td>
 <td><p>MeasureObject</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">objectType</span></code> matches the object type of the measure type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">objectType</span></code> matches the object type of the measure types</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R04</p></td>
+<tr class="row-odd"><td><p>R13</p></td>
+<td><p>Measure</p></td>
+<td><p>All the types of a measure concern the same kind of object, treatment plants or
+agglomerations; <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> may be combined with either</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R04</p></td>
 <td><p>Measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is empty</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R05</p></td>
+<tr class="row-odd"><td><p>R05</p></td>
 <td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> = <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> requires <code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> including <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> requires <code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R06</p></td>
+<tr class="row-even"><td><p>R06</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> is given</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R07</p></td>
+<tr class="row-odd"><td><p>R07</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p>The sum of the amounts of a measure does not exceed its <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code></p></td>
 <td><p>Warning</p></td>
 </tr>
-<tr class="row-odd"><td><p>R08</p></td>
+<tr class="row-even"><td><p>R08</p></td>
 <td><p>Measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code> is not after <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code>, and both are between 2027 and 2045</p></td>
 <td><p>Warning</p></td>
 </tr>
-<tr class="row-even"><td><p>R09</p></td>
+<tr class="row-odd"><td><p>R09</p></td>
 <td><p>Measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> is given only with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R10</p></td>
+<tr class="row-even"><td><p>R10</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> requires <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R11</p></td>
+<tr class="row-odd"><td><p>R11</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">loanName</span></code> is given only with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">loan</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R12</p></td>
+<tr class="row-even"><td><p>R12</p></td>
 <td><p>Measure, MSSummary</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> is given wherever an amount is, and is <code class="docutils literal notranslate"><span class="pre">EUR</span></code> for euro area
 Member States</p></td>

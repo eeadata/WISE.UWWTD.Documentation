@@ -782,7 +782,7 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 <p>A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one type, one period, one priority and one investment cost. The plants or
+measure has one or more types, and one period, one priority and one investment cost. The plants or
 agglomerations it concerns are listed in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>, and the sources of its
 financing in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>. See <a class="reference internal" href="../ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>.</p>
 <figure class="align-center" id="article23-measure-classdiagram">
@@ -802,7 +802,7 @@ class Measure{
     + measureName: string255 [1]
     + measureNameLanguage: Language [1]
     + measureReference: referenceCode [0..1]
-    + uwwtdMeasureType: UWWTDMeasureType [1]
+    + uwwtdMeasureType: UWWTDMeasureType [1..n]
     + measureText: string1000 [0..1]
     + geographicalCoverage: UWWTDGeographicCoverage [1]
     + numberOfObjects: nonNegativeInteger [0..1]
@@ -885,8 +885,10 @@ updates of the programme, so that its progress can be followed. Primary key.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code></p></td>
 <td><p>Measure type</p></td>
-<td><p>Type of the measure, by the article of the Directive it implements. One type per measure.</p></td>
-<td><p>UWWTDMeasureType</p></td>
+<td><p>Type or types of the measure, by the article of the Directive they implement. Select one or
+more, as in the draft format. All the types of a measure concern the same kind of object:
+treatment plants, or agglomerations.</p></td>
+<td><p>UWWTDMeasureType [1..n]</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-measure-type"><span class="std std-ref">Measure type</span></a></p></td>
 </tr>
@@ -895,7 +897,7 @@ updates of the programme, so that its progress can be followed. Primary key.</p>
 <td><p>Description of another appropriate measure under Article 18(2).</p></td>
 <td><p>string1000</p></td>
 <td><p>Conditional</p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> = <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> includes <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code></p></td>
 <td><p>Geographical coverage</p></td>
@@ -1035,9 +1037,10 @@ all in millions of that currency. Euro area Member States use EUR.</p></td>
 <section id="filling-in-the-table">
 <h2>Filling in the table<a class="headerlink" href="#filling-in-the-table" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>One measure, one type.</strong> A project that both extends a collecting system and supports
-individual systems is reported as two measures, each with its own type, dates and cost
-(<a class="reference internal" href="../OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 One type and one completion year per measure</span></a>).</p></li>
+<li><p><strong>Several types, one measure.</strong> A project with one budget and one completion year that covers
+several types, for example an upgrade to tertiary and to quaternary treatment under one
+contract, is one measure with all its types. Its cost is given once and is not split between the
+types. Projects with their own dates or costs are separate measures.</p></li>
 <li><p><strong>Several measures at one plant.</strong> Report each measure as its own row and link each to the
 plant in <a class="reference internal" href="MeasureObject.html#art23-measureobject"><span class="std std-ref">MeasureObject</span></a>. Each keeps its own dates and cost.</p></li>
 <li><p><strong>Measures not tied to listed objects.</strong> Use <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> for measures
@@ -1052,7 +1055,7 @@ not known is a valid answer.</p></li>
 <section id="related-open-issues">
 <h2>Related open issues<a class="headerlink" href="#related-open-issues" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../OpenIssues.html#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 One type and one completion year per measure</span></a>,
+<li><p><a class="reference internal" href="../OpenIssues.html#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 Types and completion year of a measure</span></a>,
 <a class="reference internal" href="../OpenIssues.html#art23-oi-measure-codes"><span class="std std-ref">OI-24 Persistent measure codes</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-wfd"><span class="std std-ref">OI-25 Reporting measures once</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-currency"><span class="std std-ref">OI-27 Currency</span></a></p></li>
 <li><p><a class="reference internal" href="../OpenIssues.html#art23-oi-prioritisation"><span class="std std-ref">OI-05 Prioritisation</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>, <a class="reference internal" href="../OpenIssues.html#art23-oi-costs"><span class="std std-ref">OI-11 Nominal or annualised costs</span></a></p></li>
 </ul>

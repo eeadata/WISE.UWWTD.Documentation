@@ -190,9 +190,10 @@ systems are to be invested in, in the same agglomeration: should one total be gi
 for each?
 
 **Filling it in.** Northtown is extending its collecting system and, for the outlying houses,
-supporting individual systems. These are two measures of different types, with their own dates and
-costs, both linked to the agglomeration. The Agglomeration table gives the expected split of the
-load between the two.
+supporting individual systems. These are two measures, with their own dates and costs, both linked
+to the agglomeration. Had they been one project, with one budget and one completion year, they
+could have been one measure with both types. The Agglomeration table gives the expected split of
+the load between the two.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -538,7 +539,10 @@ that one measure is not costed.
 missing. For example: a measure costs 100, half of it is secured, and the Member State is applying
 for more.
 
-**Filling it in.** The Lakeside upgrade concerns two plants. Half of the cost is secured from the
+**Filling it in.** The Lakeside upgrade concerns two plants. It adds nutrient removal and
+quaternary treatment at both, under one contract with one budget and one completion year. It is
+therefore one measure with two types, `upgradeTertiaryNitrogenPhosphorus` and `upgradeQuaternary`,
+and its cost is given once, not split between them. Half of the cost is secured from the
 operators' own funds, an application for the Cohesion Fund is pending, and the source of the rest
 is not yet identified.
 
@@ -552,8 +556,10 @@ is not yet identified.
   - Coverage
   - Priority
 * - `M007`
-  - Lakeside nutrient removal
+  - Lakeside nutrient removal and quaternary treatment
   - `upgradeTertiaryNitrogenPhosphorus`
+
+    `upgradeQuaternary`
   - `listedObjects`
   - `high`
 :::
@@ -647,7 +653,17 @@ is not yet identified.
 * - Of which no source identified yet
   - 20.0
   - Financing rows with `fundingSource` = `notIdentified`
+* - Measures including quaternary treatment
+  - 1, at 2 plants
+  - Measures whose `uwwtdMeasureType` includes `upgradeQuaternary`
+* - Investment in quaternary treatment alone
+  - Not known
+  - The cost covers both types and is not split
 :::
+
+The two types share one cost. Counting this measure under each of its types answers "which
+measures include quaternary treatment?", but adding its cost once per type would count the 100.0
+twice.
 
 (art23-example-national)=
 ## 6. Renewal of collecting systems nationwide
@@ -801,12 +817,15 @@ reports one national measure, with no plants or agglomerations listed.
 * - Add up the costs and the financing amounts together
   - 1 212.8
   - Financing describes the same money as the cost
+* - Add up `investmentCost` once per measure type
+  - 706.4
+  - Example 5 has two types and is counted twice
 * - Treat the measure without a cost as zero
   - 606.4, presented as complete
   - Example 4 is missing from the total, and nothing says so
 :::
 
-**The rule.** Add up costs per measure, then join to plants and agglomerations only to see which
-ones a measure concerns, never to divide its cost. Report the measures without a cost next to every
-total, as a count. Keep secured financing apart from financing that is only applied for or
-planned, and keep loans apart from grants.
+**The rule.** Add up costs per measure, then join to plants and agglomerations, or to measure
+types, only to see which ones a measure concerns, never to divide or repeat its cost. Report the
+measures without a cost next to every total, as a count. Keep secured financing apart from
+financing that is only applied for or planned, and keep loans apart from grants.

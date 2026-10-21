@@ -274,7 +274,8 @@ Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomerati
 
 **Type:** `UWWTDMeasureType`
 
-Used by the `uwwtdMeasureType` field of the {ref}`art23-measure` table. One value per measure. The
+Used by the `uwwtdMeasureType` field of the {ref}`art23-measure` table. One or more values per
+measure, as in the draft format, all for the same kind of object. The
 codelist brings together the former treatment plant and agglomeration measure codelists; the
 renewal value, which both had, is split into one value for collecting systems and one for
 treatment plants. The notes give the article and the object type: a measure listing plants or
@@ -475,7 +476,9 @@ to be confirmed.
   - Construction or upgrades of wastewater treatment plants.
 :::
 
-`P1-1` is the WFD pressure "Point - Urban waste water" and `P1-2` "Point - Storm overflows".
+`P1-1` is the WFD pressure "Point - Urban waste water" and `P1-2` "Point - Storm overflows". A
+measure with several types corresponds to the key types of all of them. Where those differ, how
+the measure is classified under the Water Framework Directive is open ({ref}`art23-oi-wfd`).
 
 (art23-cl-coverage)=
 ## Geographical coverage

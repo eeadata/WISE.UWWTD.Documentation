@@ -759,7 +759,8 @@ yet be available for these agglomerations and plants.</p>
 <section id="measure-type">
 <span id="art23-cl-measure-type"></span><h2>Measure type<a class="headerlink" href="#measure-type" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">UWWTDMeasureType</span></code></p>
-<p>Used by the <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> field of the <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> table. One value per measure. The
+<p>Used by the <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> field of the <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> table. One or more values per
+measure, as in the draft format, all for the same kind of object. The
 codelist brings together the former treatment plant and agglomeration measure codelists; the
 renewal value, which both had, is split into one value for collecting systems and one for
 treatment plants. The notes give the article and the object type: a measure listing plants or
@@ -1014,7 +1015,9 @@ to be confirmed.</p>
 </tbody>
 </table>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code> is the WFD pressure “Point - Urban waste water” and <code class="docutils literal notranslate"><span class="pre">P1-2</span></code> “Point - Storm overflows”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">P1-1</span></code> is the WFD pressure “Point - Urban waste water” and <code class="docutils literal notranslate"><span class="pre">P1-2</span></code> “Point - Storm overflows”. A
+measure with several types corresponds to the key types of all of them. Where those differ, how
+the measure is classified under the Water Framework Directive is open (<a class="reference internal" href="OpenIssues.html#art23-oi-wfd"><span class="std std-ref">OI-25 Reporting measures once</span></a>).</p>
 </section>
 </section>
 <section id="geographical-coverage">

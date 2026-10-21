@@ -661,9 +661,10 @@ and the quaternary project of 2035 would not have been visible as a separate com
 systems are to be invested in, in the same agglomeration: should one total be given, or one row
 for each?</p>
 <p><strong>Filling it in.</strong> Northtown is extending its collecting system and, for the outlying houses,
-supporting individual systems. These are two measures of different types, with their own dates and
-costs, both linked to the agglomeration. The Agglomeration table gives the expected split of the
-load between the two.</p>
+supporting individual systems. These are two measures, with their own dates and costs, both linked
+to the agglomeration. Had they been one project, with one budget and one completion year, they
+could have been one measure with both types. The Agglomeration table gives the expected split of
+the load between the two.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id7">
 <caption><span class="caption-number">Table 57 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id7" title="Link to this table">#</a></caption>
 <colgroup>
@@ -1161,7 +1162,10 @@ that one measure is not costed.</p>
 <p><strong>The question.</strong> The Commission wants to know whether funding has been secured, and what is still
 missing. For example: a measure costs 100, half of it is secured, and the Member State is applying
 for more.</p>
-<p><strong>Filling it in.</strong> The Lakeside upgrade concerns two plants. Half of the cost is secured from the
+<p><strong>Filling it in.</strong> The Lakeside upgrade concerns two plants. It adds nutrient removal and
+quaternary treatment at both, under one contract with one budget and one completion year. It is
+therefore one measure with two types, <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code> and <code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code>,
+and its cost is given once, not split between them. Half of the cost is secured from the
 operators’ own funds, an application for the Cohesion Fund is pending, and the source of the rest
 is not yet identified.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id21">
@@ -1183,8 +1187,10 @@ is not yet identified.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M007</span></code></p></td>
-<td><p>Lakeside nutrient removal</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p></td>
+<td><p>Lakeside nutrient removal and quaternary treatment</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 </tr>
@@ -1328,9 +1334,20 @@ is not yet identified.</p>
 <td><p>20.0</p></td>
 <td><p>Financing rows with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
 </tr>
+<tr class="row-odd"><td><p>Measures including quaternary treatment</p></td>
+<td><p>1, at 2 plants</p></td>
+<td><p>Measures whose <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> includes <code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Investment in quaternary treatment alone</p></td>
+<td><p>Not known</p></td>
+<td><p>The cost covers both types and is not split</p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<p>The two types share one cost. Counting this measure under each of its types answers “which
+measures include quaternary treatment?”, but adding its cost once per type would count the 100.0
+twice.</p>
 </section>
 <section id="renewal-of-collecting-systems-nationwide">
 <span id="art23-example-national"></span><h2>6. Renewal of collecting systems nationwide<a class="headerlink" href="#renewal-of-collecting-systems-nationwide" title="Link to this heading">#</a></h2>
@@ -1554,17 +1571,21 @@ reports one national measure, with no plants or agglomerations listed.</p>
 <td><p>1 212.8</p></td>
 <td><p>Financing describes the same money as the cost</p></td>
 </tr>
-<tr class="row-even"><td><p>Treat the measure without a cost as zero</p></td>
+<tr class="row-even"><td><p>Add up <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> once per measure type</p></td>
+<td><p>706.4</p></td>
+<td><p>Example 5 has two types and is counted twice</p></td>
+</tr>
+<tr class="row-odd"><td><p>Treat the measure without a cost as zero</p></td>
 <td><p>606.4, presented as complete</p></td>
 <td><p>Example 4 is missing from the total, and nothing says so</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>The rule.</strong> Add up costs per measure, then join to plants and agglomerations only to see which
-ones a measure concerns, never to divide its cost. Report the measures without a cost next to every
-total, as a count. Keep secured financing apart from financing that is only applied for or
-planned, and keep loans apart from grants.</p>
+<p><strong>The rule.</strong> Add up costs per measure, then join to plants and agglomerations, or to measure
+types, only to see which ones a measure concerns, never to divide or repeat its cost. Report the
+measures without a cost next to every total, as a count. Keep secured financing apart from
+financing that is only applied for or planned, and keep loans apart from grants.</p>
 </section>
 </section>
 

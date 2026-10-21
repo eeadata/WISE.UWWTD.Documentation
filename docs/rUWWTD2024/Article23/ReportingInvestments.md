@@ -86,6 +86,9 @@ plants or agglomerations, or be national.
   ten years but not what it will cost can say so.
 * **Estimated or known.** Use `estimated` for estimates and `known` for costs from a project,
   tender or contract.
+* **Several types, one cost.** A measure with several types has one cost, which is not split
+  between the types. Totals per type are therefore only exact for measures with one type; for the
+  others, count the measures that include a type rather than adding up their costs.
 * **Each cost once.** A cost belongs to one measure. Do not add the cost of a plant to the
   agglomeration it serves, or the reverse. The total investment of the programme is the sum of
   `investmentCost` over all measures.
@@ -180,7 +183,7 @@ of the money still to be found, and a national renewal programme.
 * - Draft fields
   - In the measure model
 * - `treatmentPlantMeasure`, `agglomerationMeasure`
-  - `uwwtdMeasureType` in {ref}`art23-measure`, one type per measure
+  - `uwwtdMeasureType` in {ref}`art23-measure`, one or more types per measure, as in the draft
 * - `measureText`
   - `measureText` in {ref}`art23-measure`
 * - `prioritisation` of plants and agglomerations
@@ -262,7 +265,12 @@ of the money still to be found, and a national renewal programme.
   - Error
 * - R03
   - MeasureObject
-  - `objectType` matches the object type of the measure type
+  - `objectType` matches the object type of the measure types
+  - Error
+* - R13
+  - Measure
+  - All the types of a measure concern the same kind of object, treatment plants or
+    agglomerations; `otherMeasureArticle18_2` may be combined with either
   - Error
 * - R04
   - Measure
@@ -270,7 +278,7 @@ of the money still to be found, and a national renewal programme.
   - Error
 * - R05
   - Measure
-  - `uwwtdMeasureType` = `otherMeasureArticle18_2` requires `measureText`
+  - `uwwtdMeasureType` including `otherMeasureArticle18_2` requires `measureText`
   - Error
 * - R06
   - MeasureFinancing

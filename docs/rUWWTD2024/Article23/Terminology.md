@@ -79,7 +79,7 @@ National implementation programme (NIP)
 
 Measure
 : An action to reach or maintain compliance, or to renew, upgrade or replace existing
-  infrastructure, reported in the {ref}`art23-measure` table with one measure type.
+  infrastructure, reported in the {ref}`art23-measure` table with one or more measure types.
 
 Investment cost
 : The capital expenditure of a measure, without operational or maintenance costs, in millions of

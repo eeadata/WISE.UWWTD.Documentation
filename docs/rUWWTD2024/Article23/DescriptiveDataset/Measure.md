@@ -14,7 +14,7 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one type, one period, one priority and one investment cost. The plants or
+measure has one or more types, and one period, one priority and one investment cost. The plants or
 agglomerations it concerns are listed in {ref}`art23-measureobject`, and the sources of its
 financing in {ref}`art23-measurefinancing`. See {ref}`art23-investments`.
 
@@ -66,8 +66,10 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - –
 * - `uwwtdMeasureType`
   - Measure type
-  - Type of the measure, by the article of the Directive it implements. One type per measure.
-  - UWWTDMeasureType
+  - Type or types of the measure, by the article of the Directive they implement. Select one or
+    more, as in the draft format. All the types of a measure concern the same kind of object:
+    treatment plants, or agglomerations.
+  - UWWTDMeasureType [1..n]
   - Required
   - {ref}`art23-cl-measure-type`
 * - `measureText`
@@ -75,7 +77,7 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Description of another appropriate measure under Article 18(2).
   - string1000
   - Conditional
-  - If `uwwtdMeasureType` = `otherMeasureArticle18_2`
+  - If `uwwtdMeasureType` includes `otherMeasureArticle18_2`
 * - `geographicalCoverage`
   - Geographical coverage
   - Whether the measure applies to the whole Member State, to plants or agglomerations listed in
@@ -178,9 +180,10 @@ Directive reports as `implementationPeriod`.
 
 ## Filling in the table
 
-* **One measure, one type.** A project that both extends a collecting system and supports
-  individual systems is reported as two measures, each with its own type, dates and cost
-  ({ref}`art23-oi-measure-granularity`).
+* **Several types, one measure.** A project with one budget and one completion year that covers
+  several types, for example an upgrade to tertiary and to quaternary treatment under one
+  contract, is one measure with all its types. Its cost is given once and is not split between the
+  types. Projects with their own dates or costs are separate measures.
 * **Several measures at one plant.** Report each measure as its own row and link each to the
   plant in {ref}`art23-measureobject`. Each keeps its own dates and cost.
 * **Measures not tied to listed objects.** Use `geographicalCoverage` = `national` for measures

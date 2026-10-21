@@ -183,7 +183,8 @@ optional `expectedStartYear`, both years.
 * What codes will be used in the template?
 
 **Proposed answer.** In the measure model, the two measure codelists are merged into
-`UWWTDMeasureType`, with one type per measure. It includes individual systems under Article 4, and
+`UWWTDMeasureType`, which stays multiple choice as in the draft. It includes individual systems
+under Article 4, and
 separate renewal values for collecting systems and treatment plants
 ({ref}`art23-cl-measure-type`).
 
@@ -290,14 +291,14 @@ it concerns, and a MeasureFinancing table giving its sources of financing
   needs to assess progress?
 
 (art23-oi-measure-granularity)=
-## OI-23 One type and one completion year per measure
+## OI-23 Types and completion year of a measure
 
-**Proposal.** A measure has one measure type and one completion year. A project combining two
-types, for example a collecting system and individual systems, is reported as two measures. If
-the plants or agglomerations under one measure finish in different years, the measure is split.
+**Proposal.** As in the draft format, a measure can have several types, all for the same kind of
+object, with one cost that is not split between them. A measure has one completion year: if the
+plants or agglomerations under one measure finish in different years, the measure is split.
 
-**Questions.** Is splitting acceptable where the Member State knows only the total cost of a
-combined project? Or does MeasureObject need its own completion year?
+**Questions.** Are totals per measure type needed? With several types per measure, they are only
+exact for measures with a single type. Does MeasureObject need its own completion year?
 
 (art23-oi-measure-codes)=
 ## OI-24 Persistent measure codes

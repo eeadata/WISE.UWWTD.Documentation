@@ -817,8 +817,9 @@ per measure.</p>
 <tr class="row-even"><td><p>A measure at one or more identified treatment plants: a new plant, an upgrade to tertiary or
 quaternary treatment, stricter treatment following the risk assessment, energy neutrality,
 or renewal including capacity increase</p></td>
-<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and the plants’
-codes in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, the plants’
+codes in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, and the codes of the agglomerations they serve in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>A measure in the collecting systems or individual systems of one or more identified
 agglomerations: new collecting systems, storm water overflow reduction, individual systems,
@@ -826,13 +827,15 @@ measures resulting from an IUWMP, or renewal</p></td>
 <td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and the
 agglomerations’ codes in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>A measure for the whole Member State, such as the nationwide renewal of collecting systems</p></td>
-<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code>, no objects listed</p></td>
+<tr class="row-even"><td><p>Renewal for the whole Member State, such as the nationwide renewal of collecting systems</p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> of a renewal type with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code>, no
+objects listed</p></td>
 </tr>
 <tr class="row-odd"><td><p>A measure whose plants or agglomerations are not yet identified, for example new collecting
 systems for agglomerations below 2 000 p.e. newly covered by the Directive</p></td>
 <td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> if known</p></td>
+<code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> if known. This raises a warning: the agglomerations should be listed in the
+next update</p></td>
 </tr>
 <tr class="row-even"><td><p>Contribution from producer responsibility organisations</p></td>
 <td><p>For a measure: a row in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
@@ -849,6 +852,21 @@ systems for agglomerations below 2 000 p.e. newly covered by the Directive</p></
 <p>Renewal of compliant infrastructure under Article 23(1)(c) is a measure like any other, with the
 measure type <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code> or <code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code>. It can list the
 plants or agglomerations, or be national.</p>
+</section>
+<section id="investments-for-each-agglomeration">
+<span id="art23-each-agglomeration"></span><h2>Investments for each agglomeration<a class="headerlink" href="#investments-for-each-agglomeration" title="Link to this heading">#</a></h2>
+<p>Article 23(1)(b) asks for “the identification and planning of investments required to implement
+this Directive for each agglomeration”. So that every such investment can be found from the
+agglomerations it concerns:</p>
+<ul class="simple">
+<li><p>every measure with listed objects names its agglomerations in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, including
+a measure at a treatment plant, which names the agglomerations the plant serves;</p></li>
+<li><p>national measures are only for renewal under Article 23(1)(c), which the Directive does not ask
+for per agglomeration;</p></li>
+<li><p>measures whose agglomerations are not yet identified are allowed, but raise a warning.</p></li>
+</ul>
+<p>The cost of a measure is given once and is not divided between its agglomerations or plants. The
+Directive asks to identify the investments for each agglomeration, not to split their cost.</p>
 </section>
 <section id="cost">
 <h2>Cost<a class="headerlink" href="#cost" title="Link to this heading">#</a></h2>
@@ -1065,8 +1083,9 @@ dataflow; a retired code raises a warning (<a class="reference internal" href=".
 </tr>
 <tr class="row-odd"><td><p>R01</p></td>
 <td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> lists at least one code, in the field that matches the
-kind of object of the measure types; the other field is empty</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> lists at least one code in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and
+also in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> if the measure types concern treatment plants; <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> is empty for
+agglomeration measures</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p>R02</p></td>
@@ -1126,6 +1145,18 @@ kind of object of the measure types; the other field is empty</p></td>
 Member States</p></td>
 <td><p>Error</p></td>
 </tr>
+<tr class="row-odd"><td><p>R13</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> only for the renewal types <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code>
+and <code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R14</p></td>
+<td><p>Measure</p></td>
+<td><p>A measure that is not of a renewal type has <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>; with
+<code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code>, its agglomerations are not yet identified for Article 23(1)(b)</p></td>
+<td><p>Warning</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1181,6 +1212,7 @@ Member States</p></td>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-first">Measures first</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-report-each-measure">Where to report each measure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investments-for-each-agglomeration">Investments for each agglomeration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost">Cost</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financing">Financing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currency">Currency</a></li>

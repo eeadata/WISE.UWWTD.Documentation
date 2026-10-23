@@ -48,19 +48,22 @@ flowchart LR
 * - A measure at one or more identified treatment plants: a new plant, an upgrade to tertiary or
     quaternary treatment, stricter treatment following the risk assessment, energy neutrality,
     or renewal including capacity increase
-  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and the plants'
-    codes in `euUWWTPCode`
+  - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, the plants'
+    codes in `euUWWTPCode`, and the codes of the agglomerations they serve in
+    `euAgglomerationCode`
 * - A measure in the collecting systems or individual systems of one or more identified
     agglomerations: new collecting systems, storm water overflow reduction, individual systems,
     measures resulting from an IUWMP, or renewal
   - A row in {ref}`art23-measure` with `geographicalCoverage` = `listedObjects`, and the
     agglomerations' codes in `euAgglomerationCode`
-* - A measure for the whole Member State, such as the nationwide renewal of collecting systems
-  - A row in {ref}`art23-measure` with `geographicalCoverage` = `national`, no objects listed
+* - Renewal for the whole Member State, such as the nationwide renewal of collecting systems
+  - A row in {ref}`art23-measure` of a renewal type with `geographicalCoverage` = `national`, no
+    objects listed
 * - A measure whose plants or agglomerations are not yet identified, for example new collecting
     systems for agglomerations below 2 000 p.e. newly covered by the Directive
   - A row in {ref}`art23-measure` with `geographicalCoverage` = `unlistedObjects`, and
-    `numberOfObjects` if known
+    `numberOfObjects` if known. This raises a warning: the agglomerations should be listed in the
+    next update
 * - Contribution from producer responsibility organisations
   - For a measure: a row in {ref}`art23-measurefinancing` with `fundingSource` =
     `producerResponsibilityOrganisation`. National total: `producerResponsibilityContribution` in
@@ -73,6 +76,22 @@ flowchart LR
 Renewal of compliant infrastructure under Article 23(1)(c) is a measure like any other, with the
 measure type `renewOrReplaceCollectingSystem` or `renewOrReplaceTreatmentPlant`. It can list the
 plants or agglomerations, or be national.
+
+(art23-each-agglomeration)=
+## Investments for each agglomeration
+
+Article 23(1)(b) asks for "the identification and planning of investments required to implement
+this Directive for each agglomeration". So that every such investment can be found from the
+agglomerations it concerns:
+
+* every measure with listed objects names its agglomerations in `euAgglomerationCode`, including
+  a measure at a treatment plant, which names the agglomerations the plant serves;
+* national measures are only for renewal under Article 23(1)(c), which the Directive does not ask
+  for per agglomeration;
+* measures whose agglomerations are not yet identified are allowed, but raise a warning.
+
+The cost of a measure is given once and is not divided between its agglomerations or plants. The
+Directive asks to identify the investments for each agglomeration, not to split their cost.
 
 ## Cost
 
@@ -250,8 +269,9 @@ of the money still to be found, and a national renewal programme.
   - Error
 * - R01
   - Measure
-  - `geographicalCoverage` = `listedObjects` lists at least one code, in the field that matches the
-    kind of object of the measure types; the other field is empty
+  - `geographicalCoverage` = `listedObjects` lists at least one code in `euAgglomerationCode`, and
+    also in `euUWWTPCode` if the measure types concern treatment plants; `euUWWTPCode` is empty for
+    agglomeration measures
   - Error
 * - R02
   - Measure
@@ -299,4 +319,14 @@ of the money still to be found, and a national renewal programme.
   - `millionUnitsOfNationalCurrency` is given wherever an amount is, and is `EUR` for euro area
     Member States
   - Error
+* - R13
+  - Measure
+  - `geographicalCoverage` = `national` only for the renewal types `renewOrReplaceCollectingSystem`
+    and `renewOrReplaceTreatmentPlant`
+  - Error
+* - R14
+  - Measure
+  - A measure that is not of a renewal type has `geographicalCoverage` = `listedObjects`; with
+    `unlistedObjects`, its agglomerations are not yet identified for Article 23(1)(b)
+  - Warning
 :::

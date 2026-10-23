@@ -31,12 +31,14 @@ The nitrogen and phosphorus works are one construction contract with one budget,
 measure of type `upgradeTertiaryNitrogenPhosphorus`, and the cost is not split between the two
 nutrients.
 
-Both measures list the same plant in `euUWWTPCode`. The plant's status, projected load and
-capacity are reported once, in the UWWTP table, not on either measure.
+Both measures list the same plant in `euUWWTPCode`, and the agglomeration it serves, `AGG0007`, in
+`euAgglomerationCode`, so that the investments can be found for that agglomeration, as Article
+23(1)(b) requires. The status, projected load and capacity of the plant and the agglomeration are
+reported once, in the UWWTP and Agglomeration tables, not on either measure.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -49,12 +51,16 @@ capacity are reported once, in the UWWTP table, not on either measure.
   - `upgradeTertiaryNitrogenPhosphorus`
   - `listedObjects`
   - `UWWTP0007`
+
+    `AGG0007`
   - `high`
 * - `M002`
   - Rivermouth quaternary treatment
   - `upgradeQuaternary`
   - `listedObjects`
   - `UWWTP0007`
+
+    `AGG0007`
   - `medium`
 :::
 
@@ -87,7 +93,7 @@ capacity are reported once, in the UWWTP table, not on either measure.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 9 24 32 12 13 10
+:widths: 8 32 26 12 13 9
 
 * - measureCode
   - fundingSource
@@ -134,6 +140,17 @@ capacity are reported once, in the UWWTP table, not on either measure.
   - 240 000
 :::
 
+:::{list-table} Agglomeration
+:header-rows: 1
+
+* - thematicIdIdentifier
+  - status
+  - expectedLoad
+* - `AGG0007`
+  - `nonCompliant`
+  - 205 000
+:::
+
 **Adding it back up.**
 
 :::{list-table} Adding it back up
@@ -146,6 +163,9 @@ capacity are reported once, in the UWWTP table, not on either measure.
 * - Total investment at the plant
   - 40.0
   - Sum of `investmentCost` of the two measures
+* - Investments identified for agglomeration `AGG0007`
+  - 2 measures, 40.0
+  - Measures listing `AGG0007` in `euAgglomerationCode`
 * - Investment completed by 2033
   - 18.0
   - Measures with `expectedCompletionYear` up to 2033
@@ -185,7 +205,7 @@ gives the expected split of the load between the two.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -236,7 +256,7 @@ gives the expected split of the load between the two.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 9 24 32 12 13 10
+:widths: 8 32 26 12 13 9
 
 * - measureCode
   - fundingSource
@@ -322,7 +342,7 @@ amount.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -364,7 +384,7 @@ amount.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 9 24 32 12 13 10
+:widths: 8 32 26 12 13 9
 
 * - measureCode
   - fundingSource
@@ -441,7 +461,7 @@ unknown. There are no financing rows.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -477,7 +497,9 @@ unknown. There are no financing rows.
   - –
 :::
 
-`numberOfObjects` is 10.
+`numberOfObjects` is 10. Since the plants, and so their agglomerations, are not yet identified,
+the measure raises a warning (check R14): Article 23(1)(b) asks for the investments for each
+agglomeration, so the plants and agglomerations should be listed in the next update.
 
 **Adding it back up.**
 
@@ -506,16 +528,16 @@ that one measure is not costed.
 missing. For example: a measure costs 100, half of it is secured, and the Member State is applying
 for more.
 
-**Filling it in.** The Lakeside upgrade concerns two plants. It adds nutrient removal and
-quaternary treatment at both, under one contract with one budget and one completion year. It is
-therefore one measure with two types, `upgradeTertiaryNitrogenPhosphorus` and `upgradeQuaternary`,
-and its cost is given once, not split between them. Half of the cost is secured from the
-operators' own funds, an application for the Cohesion Fund is pending, and the source of the rest
-is not yet identified.
+**Filling it in.** The Lakeside upgrade concerns two plants, which both serve agglomeration
+`AGG0301`. It adds nutrient removal and quaternary treatment at both, under one contract with one
+budget and one completion year. It is therefore one measure with two types,
+`upgradeTertiaryNitrogenPhosphorus` and `upgradeQuaternary`, and its cost is given once, not split
+between them. Half of the cost is secured from the operators' own funds, an application for the
+Cohesion Fund is pending, and the source of the rest is not yet identified.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -532,6 +554,8 @@ is not yet identified.
   - `UWWTP0301`
 
     `UWWTP0302`
+
+    `AGG0301`
   - `high`
 :::
 
@@ -557,7 +581,7 @@ is not yet identified.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 9 24 32 12 13 10
+:widths: 8 32 26 12 13 9
 
 * - measureCode
   - fundingSource
@@ -633,7 +657,7 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} Measure: what
 :header-rows: 1
-:widths: 9 24 26 13 18 10
+:widths: 8 20 32 13 16 11
 
 * - Code
   - Name
@@ -671,7 +695,7 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 9 24 32 12 13 10
+:widths: 8 32 26 12 13 9
 
 * - measureCode
   - fundingSource

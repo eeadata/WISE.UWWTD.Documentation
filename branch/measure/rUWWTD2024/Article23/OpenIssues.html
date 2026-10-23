@@ -695,9 +695,19 @@ measure types without a direct equivalent?</p></li>
 <section id="oi-26-plants-and-agglomerations-in-the-state-tables">
 <span id="art23-oi-listed-objects"></span><h2>OI-26 Plants and agglomerations in the state tables<a class="headerlink" href="#oi-26-plants-and-agglomerations-in-the-state-tables" title="Link to this heading">#</a></h2>
 <p><strong>Proposal.</strong> Every plant or agglomeration listed in a measure, in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
-<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, also has a row in UWWTP or Agglomeration, with its status and expected load.</p>
-<p><strong>Question.</strong> Should plants and agglomerations without a planned measure, for example
-non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?</p>
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, also has a row in UWWTP or Agglomeration, with its status and expected load.
+Since every measure with listed objects names its agglomerations, including the agglomerations
+served by a plant, Article 23(1)(b) is met: the investments required to implement the Directive
+can be identified “for each agglomeration” (<a class="reference internal" href="ReportingInvestments.html#art23-each-agglomeration"><span class="std std-ref">Investments for each agglomeration</span></a>). National measures
+are only for renewal under Article 23(1)(c), and measures whose agglomerations are not yet
+identified raise a warning.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>Should plants and agglomerations without a planned measure, for example non-compliant ones whose
+measures are not yet decided, also be listed in UWWTP and Agglomeration?</p></li>
+<li><p>Can the agglomerations named with a plant be checked against a plant–agglomeration link, for
+example one reported under Article 22? The spatial points dataflow has no such link (SP-03).</p></li>
+</ul>
 </section>
 <section id="oi-27-currency">
 <span id="art23-oi-currency"></span><h2>OI-27 Currency<a class="headerlink" href="#oi-27-currency" title="Link to this heading">#</a></h2>

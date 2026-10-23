@@ -781,14 +781,17 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 <p>A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one or more types, and one period, one priority and one investment cost. The plants or
-agglomerations it concerns are listed in the measure itself, in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
-<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and the sources of its financing in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>. See
-<a class="reference internal" href="../ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>.</p>
+measure has one or more types, and one period, one priority and one investment cost. The plants it
+concerns are listed in the measure itself, in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, and the agglomerations in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>; the sources of its financing are given in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.
+See <a class="reference internal" href="../ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>.</p>
 <p>Listing the plants or agglomerations in a multi-valued field follows the Water Framework Directive,
 whose <code class="docutils literal notranslate"><span class="pre">Measure</span></code> table lists the river basin districts a measure concerns in <code class="docutils literal notranslate"><span class="pre">euRBDCode</span> <span class="pre">[0..n]</span></code>.
 Unlike the Water Framework Directive, which does not ask for the individual water bodies, Article
-23(1)(b) asks for the investments “for each agglomeration”, so the objects are listed.</p>
+23(1)(b) asks for “the identification and planning of investments required to implement this
+Directive for each agglomeration”. Every measure with listed objects therefore names its
+agglomerations, including a measure at a treatment plant, which also names the agglomerations the
+plant serves.</p>
 <figure class="align-center" id="article23-measure-classdiagram">
 <pre  class="mermaid">
         ---
@@ -927,17 +930,18 @@ in <a class="reference internal" href="../../SpatialPoints/UWWTP.html#sp-uwwtp">
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 <td><p>Agglomerations</p></td>
-<td><p>Codes of the agglomerations the measure concerns, as in the spatial points dataflow. Several
-codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
+<td><p>Codes of the agglomerations the measure concerns, as in the spatial points dataflow. For a
+measure at treatment plants, the agglomerations those plants serve. Several codes are
+separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if
 <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> =
-<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> and the
-measure types concern
-agglomerations; empty
-otherwise. Accepted codes
-in <a class="reference internal" href="../../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
+<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, for
+every measure type;
+empty otherwise. Accepted
+codes in
+<a class="reference internal" href="../../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code></p></td>
 <td><p>Number of plants or agglomerations</p></td>
@@ -1077,9 +1081,16 @@ types. Projects with their own dates or costs are separate measures.</p></li>
 code in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. Each keeps its own dates and cost.</p></li>
 <li><p><strong>One measure, several plants or agglomerations.</strong> List all their codes in the one field,
 separated by commas. The cost is given once, for the whole measure.</p></li>
-<li><p><strong>Measures not tied to listed objects.</strong> Use <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> for measures
-for the whole Member State, such as the nationwide renewal of collecting systems, and
-<code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> where the plants or agglomerations are not yet identified.</p></li>
+<li><p><strong>A measure at a treatment plant.</strong> List the plant in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> and the agglomerations it
+serves in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. The cost is given once and is not divided between the
+agglomerations.</p></li>
+<li><p><strong>National measures.</strong> <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> is only for the renewal of existing
+infrastructure under Article 23(1)(c), such as the nationwide renewal of collecting systems,
+which the Directive does not ask for per agglomeration.</p></li>
+<li><p><strong>Agglomerations not yet identified.</strong> Use <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code> where the plants or agglomerations
+are not yet known, for example in the first programme. Since Article 23(1)(b) asks for the
+investments for each agglomeration, this raises a warning, and the agglomerations should be
+listed in the next update.</p></li>
 <li><p><strong>Cost unknown.</strong> Set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. Saying what is
 not known is a valid answer.</p></li>
 <li><p><strong>Currency.</strong> Amounts are in millions of national currency, as in the Water Framework Directive:

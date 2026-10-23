@@ -1043,18 +1043,20 @@ corresponding Water Framework Directive codelist, <code class="docutils literal 
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">national</span></code></p></td>
 <td><p>National</p></td>
 <td><p>The measure applies to the whole Member State; no plants or agglomerations are listed.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> and <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> stay empty.</p></td>
+<td><p>Only for the renewal types <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code> and
+<code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code> (Article 23(1)(c)). The code fields stay empty.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">listedObjects</span></code></p></td>
 <td><p>Listed plants or agglomerations</p></td>
-<td><p>The measure applies to the plants or agglomerations listed in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
-<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
-<td><p>At least one code listed.</p></td>
+<td><p>The measure applies to the agglomerations listed in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> and, for a
+measure at treatment plants, to the plants listed in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> always filled; <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> too for plant measures.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code></p></td>
 <td><p>Plants or agglomerations not yet identified</p></td>
 <td><p>The measure applies to plants or agglomerations that are not yet identified.</p></td>
-<td><p>Give <code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> if known.</p></td>
+<td><p>Give <code class="docutils literal notranslate"><span class="pre">numberOfObjects</span></code> if known. Raises a warning, except for renewal types: the
+agglomerations should be listed in the next update.</p></td>
 </tr>
 </tbody>
 </table>

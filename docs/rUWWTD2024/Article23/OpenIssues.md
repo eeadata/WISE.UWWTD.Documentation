@@ -334,9 +334,18 @@ corresponds to such a key type and pressure, derived centrally ({ref}`art23-cl-m
 
 **Proposal.** Every plant or agglomeration listed in a measure, in `euUWWTPCode` or
 `euAgglomerationCode`, also has a row in UWWTP or Agglomeration, with its status and expected load.
+Since every measure with listed objects names its agglomerations, including the agglomerations
+served by a plant, Article 23(1)(b) is met: the investments required to implement the Directive
+can be identified "for each agglomeration" ({ref}`art23-each-agglomeration`). National measures
+are only for renewal under Article 23(1)(c), and measures whose agglomerations are not yet
+identified raise a warning.
 
-**Question.** Should plants and agglomerations without a planned measure, for example
-non-compliant ones whose measures are not yet decided, also be listed in UWWTP and Agglomeration?
+**Questions.**
+
+* Should plants and agglomerations without a planned measure, for example non-compliant ones whose
+  measures are not yet decided, also be listed in UWWTP and Agglomeration?
+* Can the agglomerations named with a plant be checked against a plant–agglomeration link, for
+  example one reported under Article 22? The spatial points dataflow has no such link (SP-03).
 
 (art23-oi-currency)=
 ## OI-27 Currency

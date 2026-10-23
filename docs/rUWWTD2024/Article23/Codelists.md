@@ -499,16 +499,18 @@ corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has o
 * - `national`
   - National
   - The measure applies to the whole Member State; no plants or agglomerations are listed.
-  - `euUWWTPCode` and `euAgglomerationCode` stay empty.
+  - Only for the renewal types `renewOrReplaceCollectingSystem` and
+    `renewOrReplaceTreatmentPlant` (Article 23(1)(c)). The code fields stay empty.
 * - `listedObjects`
   - Listed plants or agglomerations
-  - The measure applies to the plants or agglomerations listed in `euUWWTPCode` or
-    `euAgglomerationCode`.
-  - At least one code listed.
+  - The measure applies to the agglomerations listed in `euAgglomerationCode` and, for a
+    measure at treatment plants, to the plants listed in `euUWWTPCode`.
+  - `euAgglomerationCode` always filled; `euUWWTPCode` too for plant measures.
 * - `unlistedObjects`
   - Plants or agglomerations not yet identified
   - The measure applies to plants or agglomerations that are not yet identified.
-  - Give `numberOfObjects` if known.
+  - Give `numberOfObjects` if known. Raises a warning, except for renewal types: the
+    agglomerations should be listed in the next update.
 :::
 
 (art23-cl-implementation-status)=

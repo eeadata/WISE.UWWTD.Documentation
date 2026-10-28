@@ -133,7 +133,7 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
     `notYetKnown`
 * - `conditionOfFacility`
   - Condition of facility
-  - Physical state of the plant: proposed, under construction, in use, or no
+  - Physical state of the plant: projected, under construction, in use, or no
     longer in use.
   - ConditionOfFacility
   - Required

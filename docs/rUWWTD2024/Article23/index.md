@@ -82,7 +82,13 @@ Programme references, risk assessment and producer responsibility contribution.
 National self-assessment of compliance with Articles 3 to 8.
 :::
 :::{grid-item-card} {ref}`art23-derogation`
-Deadline extensions and less stringent treatment.
+Deadline extensions under Articles 3(2), 6(3) and 7(4).
+:::
+:::{grid-item-card} {ref}`art23-culturalheritageextension`
+Extensions to preserve cultural heritage, in programme updates.
+:::
+:::{grid-item-card} {ref}`art23-lessstringenttreatment`
+Less stringent treatment under Article 6(4).
 :::
 :::{grid-item-card} {ref}`art23-measure`
 Planned measures, with their type, priority, dates and cost.

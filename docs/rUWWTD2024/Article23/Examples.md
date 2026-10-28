@@ -501,6 +501,11 @@ unknown. There are no financing rows.
 the measure raises a warning (check R14): Article 23(1)(b) asks for the investments for each
 agglomeration, so the plants and agglomerations should be listed in the next update.
 
+The unknown cost raises a second warning (check R16): Article 23(1)(b) asks for an indicative
+financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
+preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
+would report `costStatus` = `estimated` and an `investmentCost` of 15.0, and no R16 warning.
+
 **Adding it back up.**
 
 :::{list-table} Adding it back up

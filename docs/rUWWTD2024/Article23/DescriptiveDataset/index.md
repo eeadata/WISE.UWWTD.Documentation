@@ -19,6 +19,8 @@ Documents referred to from these tables are reported in the {ref}`art23-document
 MSSummary
 SelfAssessment
 Derogation
+CulturalHeritageExtension
+LessStringentTreatment
 Measure
 MeasureFinancing
 UWWTP

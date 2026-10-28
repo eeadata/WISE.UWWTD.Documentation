@@ -27,8 +27,8 @@ namespace DescriptiveDataset {
         + riskDate: date [0..1]
         + riskIdentified: YesNo [0..1]
         + riskSummaryReference: referenceCode [0..1]
-        + producerResponsibilityContribution: nonNegativeValue [1]
-        + millionUnitsOfNationalCurrency: CurrencyCode [1]
+        + producerResponsibilityContribution: nonNegativeValue [0..1]
+        + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
         + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
         + contributionPeriod: ContributionPeriod [0..n]
         + contributionPeriodOther: string1000 [0..1]
@@ -45,31 +45,29 @@ namespace DescriptiveDataset {
         + article8Compliance: ComplianceShareEstimated [1]
     }
     class Derogation {
-        + article3_2DeadlineExtension: DeadlineExtension [1]
-        + article3_2CompleteCollectingSystem: nonNegativeValue [0..1]
-        + article3_2NonCompleteCollectingSystem: nonNegativeValue [0..1]
-        + article3_2CompleteCollectingSystemLoad: nonNegativeValue [0..1]
-        + article3_2NonCompleteCollectingSystemLoad: nonNegativeValue [0..1]
-        + article3_2InvestmentPlanReference: referenceCode [0..1]
-        + article3_2ExtensionReasonReference: referenceCode [0..1]
-        + article3_2CulturalHeritage: YesNo [1]
-        + article3_2CulturalHeritageReference: referenceCode [0..1]
-        + article6_3CulturalHeritage: YesNo [1]
-        + article6_3CulturalHeritageReference: referenceCode [0..1]
-        + article6_3DeadlineExtension: DeadlineExtension [1]
-        + article6_3AgglomerationsWithSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3AgglomerationsWithoutSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3LoadWithSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3LoadWithoutSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3InvestmentPlanReference: referenceCode [0..1]
-        + article6_3ExtensionReasonReference: referenceCode [0..1]
-        + article6_4LessStringentTreatment: YesNo [1]
-        + article6_4LessStringentStudyReference: referenceCode [0..1]
-        + article7_4DeadlineExtension: DeadlineExtensionArticle7_4 [1]
-        + article7_4AgglomerationsWithTertiaryTreatment: nonNegativeValue [0..1]
-        + article7_4AgglomerationsWithoutTertiaryTreatment: nonNegativeValue [0..1]
-        + article7_4InvestmentPlanReference: referenceCode [0..1]
-        + article7_4ExtensionReasonReference: referenceCode [0..1]
+        + derogationType: DerogationType [1]
+        + derogationStatus: DerogationStatus [1]
+        + extendedDeadlineYear: gYear [0..1]
+        + eligibilityCriterion: EligibilityCriterion [0..1]
+        + agglomerationsNotMeeting: nonNegativeValue [0..1]
+        + agglomerationsMeeting: nonNegativeValue [0..1]
+        + loadNotMeeting: nonNegativeValue [0..1]
+        + loadMeeting: nonNegativeValue [0..1]
+        + reasonType: ExtensionReason [0..n]
+        + reasonReference: referenceCode [0..1]
+        + investmentPlanReference: referenceCode [0..1]
+    }
+    class CulturalHeritageExtension {
+        + euAgglomerationCode: wiseIdentifier [1]
+        + areaDescription: string1000 [1]
+        + derogationType: DerogationType [1..n]
+        + adjustedDeadlineYear: gYear [1]
+        + justificationReference: referenceCode [1]
+    }
+    class LessStringentTreatment {
+        + euAgglomerationCode: wiseIdentifier [1]
+        + lessStringentGround: LessStringentGround [1]
+        + studyReference: referenceCode [1]
     }
     class Measure {
         + measureCode: wiseIdentifier [1]
@@ -83,7 +81,7 @@ namespace DescriptiveDataset {
         + euAgglomerationCode: wiseIdentifier [0..n]
         + numberOfObjects: nonNegativeInteger [0..1]
         + prioritisation: Priority [1]
-        + implementationStatus: PlannedOngoingExecutedCancelled [1]
+        + implementationStatus: ImplementationStatus [1]
         + expectedStartYear: gYear [0..1]
         + expectedCompletionYear: gYear [1]
         + costStatus: CostStatus [1]
@@ -123,6 +121,8 @@ namespace SpatialPointsDataflow {
 Measure "1" -- "0..n" MeasureFinancing : measureCode
 Measure ..> SpatialUWWTP : euUWWTPCode
 Measure ..> SpatialAgglomeration : euAgglomerationCode
+CulturalHeritageExtension ..> SpatialAgglomeration : euAgglomerationCode
+LessStringentTreatment ..> SpatialAgglomeration : euAgglomerationCode
 UWWTP ..> SpatialUWWTP : thematicIdIdentifier
 Agglomeration ..> SpatialAgglomeration : thematicIdIdentifier
 

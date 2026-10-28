@@ -153,7 +153,7 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - Implementation status
   - Whether the measure is planned, ongoing, executed or cancelled. In the first programme most
     measures are planned or ongoing.
-  - PlannedOngoingExecutedCancelled
+  - ImplementationStatus
   - Required
   - {ref}`art23-cl-implementation-status`
 * - `expectedStartYear`
@@ -234,8 +234,10 @@ Directive reports as `implementationPeriod`.
   are not yet known, for example in the first programme. Since Article 23(1)(b) asks for the
   investments for each agglomeration, this raises a warning, and the agglomerations should be
   listed in the next update.
-* **Cost unknown.** Set `costStatus` to `unknown` and leave `investmentCost` empty. Saying what is
-  not known is a valid answer.
+* **Indicative cost.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
+  estimate is enough and is reported as `estimated`. Where not even a rough estimate can be given
+  yet, set `costStatus` to `unknown` and leave `investmentCost` empty. This raises a warning, and
+  the cost should be estimated in the next update.
 * **Currency.** Amounts are in millions of national currency, as in the Water Framework Directive:
   0.01 is 10 000 units. Use a full stop as the decimal separator.
 

@@ -58,21 +58,17 @@ gives the definition, condition and codelist of every field.
     `article5ManagementPlanCount`, `article6Compliance`, `article6Compliance1000to1999`,
     `article7Compliance`, `article8Compliance`
 * - {ref}`art23-derogation`
-  - One per Member State
-  - `article3_2DeadlineExtension`, `article3_2CompleteCollectingSystem`,
-    `article3_2NonCompleteCollectingSystem`, `article3_2CompleteCollectingSystemLoad`,
-    `article3_2NonCompleteCollectingSystemLoad`, `article3_2InvestmentPlanReference`,
-    `article3_2ExtensionReasonReference`, `article3_2CulturalHeritage`,
-    `article3_2CulturalHeritageReference`, `article6_3CulturalHeritage`,
-    `article6_3CulturalHeritageReference`, `article6_3DeadlineExtension`,
-    `article6_3AgglomerationsWithSecondaryTreatment`,
-    `article6_3AgglomerationsWithoutSecondaryTreatment`, `article6_3LoadWithSecondaryTreatment`,
-    `article6_3LoadWithoutSecondaryTreatment`, `article6_3InvestmentPlanReference`,
-    `article6_3ExtensionReasonReference`, `article6_4LessStringentTreatment`,
-    `article6_4LessStringentStudyReference`, `article7_4DeadlineExtension`,
-    `article7_4AgglomerationsWithTertiaryTreatment`,
-    `article7_4AgglomerationsWithoutTertiaryTreatment`, `article7_4InvestmentPlanReference`,
-    `article7_4ExtensionReasonReference`
+  - One per extension provision
+  - `derogationType`, `derogationStatus`, `extendedDeadlineYear`, `eligibilityCriterion`,
+    `agglomerationsNotMeeting`, `agglomerationsMeeting`, `loadNotMeeting`, `loadMeeting`,
+    `reasonType`, `reasonReference`, `investmentPlanReference`
+* - {ref}`art23-culturalheritageextension`
+  - One per agglomeration and area
+  - `euAgglomerationCode`, `areaDescription`, `derogationType`, `adjustedDeadlineYear`,
+    `justificationReference`
+* - {ref}`art23-lessstringenttreatment`
+  - One per agglomeration
+  - `euAgglomerationCode`, `lessStringentGround`, `studyReference`
 * - {ref}`art23-measure`
   - One per measure
   - `measureCode`, `measureName`, `measureNameLanguage`, `measureReference`, `uwwtdMeasureType`,

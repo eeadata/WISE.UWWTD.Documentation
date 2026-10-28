@@ -97,11 +97,15 @@ Directive asks to identify the investments for each agglomeration, not to split 
 
 * **Investment cost only.** `investmentCost` is capital expenditure. Operational and maintenance
   costs are not reported.
-* **Unknown is a valid answer.** If the cost is not yet known, set `costStatus` to `unknown` and
-  leave `investmentCost` empty. A Member State that knows it must upgrade ten plants in the next
-  ten years but not what it will cost can say so.
+* **Give an indicative estimate.** Article 23(1)(b) asks for an indicative financial estimation of
+  the investments. A rough figure is enough, for example a typical cost per plant multiplied by the
+  number of plants. Report it with `costStatus` = `estimated`.
 * **Estimated or known.** Use `estimated` for estimates and `known` for costs from a project,
   tender or contract.
+* **Unknown is an exception.** Where not even a rough estimate can be given yet, set `costStatus`
+  to `unknown` and leave `investmentCost` empty. The measure is accepted but raises a warning
+  (check R16), since it gives no financial estimation, and the cost should be estimated in the
+  next update.
 * **Several types, one cost.** A measure with several types has one cost, which is not split
   between the types. Totals per type are therefore only exact for measures with one type; for the
   others, count the measures that include a type rather than adding up their costs.
@@ -328,5 +332,15 @@ of the money still to be found, and a national renewal programme.
   - Measure
   - A measure that is not of a renewal type has `geographicalCoverage` = `listedObjects`; with
     `unlistedObjects`, its agglomerations are not yet identified for Article 23(1)(b)
+  - Warning
+* - R15
+  - MSSummary
+  - `producerResponsibilityContribution` is given if and only if
+    `producerResponsibilityEstimateBasedOn` is not `notAvailable`
+  - Error
+* - R16
+  - Measure
+  - `costStatus` = `unknown`: the measure gives no indicative financial estimation for
+    Article 23(1)(b) or (c)
   - Warning
 :::

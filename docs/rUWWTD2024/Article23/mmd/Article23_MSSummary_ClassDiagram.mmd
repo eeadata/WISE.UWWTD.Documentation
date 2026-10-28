@@ -20,8 +20,8 @@ class MSSummary{
     + riskIdentified: YesNo [0..1]
     + riskSummaryReference: referenceCode [0..1]
 
-    + producerResponsibilityContribution: nonNegativeValue [1]
-    + millionUnitsOfNationalCurrency: CurrencyCode [1]
+    + producerResponsibilityContribution: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
     + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
     + contributionPeriod: ContributionPeriod [0..n]
     + contributionPeriodOther: string1000 [0..1]

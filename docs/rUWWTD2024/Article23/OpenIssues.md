@@ -117,8 +117,10 @@ row in MeasureFinancing with its own amount, so the multi-select question no lon
 yet be estimated, and using OtherInvestment for aggregated estimates. A minimum threshold for
 reporting investments was also suggested.
 
-**Proposed answer.** In the measure model, `costStatus` = `unknown` with an empty
-`investmentCost` is a valid answer, and no minimum threshold applies
+**Proposed answer.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
+estimate is reported as `costStatus` = `estimated`. In the measure model, `costStatus` =
+`unknown` with an empty `investmentCost` remains possible as an exception, where not even a rough
+estimate can be given, but raises a warning (check R16). No minimum threshold applies
 ({ref}`art23-oi-measure-model`).
 
 (art23-oi-loans)=
@@ -143,10 +145,14 @@ MeasureFinancing, with an optional lender name and amount.
 **Questions.** Which period does `producerResponsibilityContribution` cover, and is the amount
 nominal? Which
 requirements does `contributionPeriod` refer to, and should it be Required now that it replaces
-four Required questions? Should there be an "unknown"
-option? Can the fields be optional in the first programme, when estimates may not be available?
+four Required questions?
 How does PRO funding reported for individual measures, with `fundingSource` =
 `producerResponsibilityOrganisation`, relate to the national total?
+
+**Proposed answer, unknown estimates.** Article 23(1)(b) asks for the contribution "when
+available". `producerResponsibilityEstimateBasedOn` stays Required and has the value
+`notAvailable`; the amount and its currency are then left empty (check R15). This also covers the
+first programme, when the PROs may not yet be recognised.
 
 (art23-oi-costs)=
 ## OI-11 Nominal or annualised costs
@@ -191,13 +197,34 @@ separate renewal values for collecting systems and treatment plants
 (art23-oi-derogation)=
 ## OI-15 Derogation details
 
+**Baseline.** One row per Member State with 25 fields, repeating the same questions for each
+provision. The extension is a number of whole years. Cultural heritage is a Required yes/no for
+Articles 3(2) and 6(3) with one link, and Article 6(4) a Required yes/no with one study link. For
+Article 3(2), either the numbers of agglomerations or the loads are required, so the number
+lacking collecting systems can be left out; for Article 6(3), all four numbers are required.
+
+**Proposal.** Three tables, following the suggestions to separate type, rationale and period and
+to derive the checks from the legal conditions:
+
+* {ref}`art23-derogation`: one row per provision, Articles 3(2), 6(3) and 7(4), also where no
+  extension is requested. The extended deadline is a year, checked against the maximum that
+  follows from the reported shares. The number of agglomerations not meeting the requirement is
+  always required, as the Directive lists it; the other numbers only for the criterion the Member
+  State relies on, agglomerations or load.
+* {ref}`art23-culturalheritageextension`: one row per agglomeration and area, in programme updates
+  only. The Directive places these extensions in an update made during implementation, with a
+  list of agglomerations and an adjusted timeline, which a national yes/no cannot hold.
+* {ref}`art23-lessstringenttreatment`: one row per agglomeration, Optional. Less stringent
+  treatment is not a deadline extension, and Article 23(1)(e) names only Articles 6(3) and 7(4).
+
 **Questions.**
 
 * What counts as a complete collecting system, including where individual systems are used?
 * How are agglomerations served by one plant each treated?
-* The Article 3(2) condition asks for numbers or loads, but the Article 6(3) condition asks for
-  both.
-* Should the Article 6(4) study be optional where studies are not yet complete?
+* Does the cultural heritage maximum of 8 years run from 31 December 2035, or from a deadline
+  already extended under Article 3(2) or 6(3)?
+* Does Article 6(4) belong in the Article 23 dataflow, or should the studies be provided to the
+  Commission another way?
 * What content is expected in the linked plans and justifications?
 
 (art23-oi-risk)=
@@ -287,7 +314,8 @@ MeasureFinancing table giving its sources of financing
 * Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
   the references to Article 23(1)(b) to (d)? The names should be checked against the text of
   Article 23(1).
-* Is `costStatus` = `unknown`, with an empty `investmentCost`, accepted as a valid answer?
+* Is `costStatus` = `unknown`, with an empty `investmentCost`, accepted as an exception with a
+  warning (OI-08), or should an indicative estimate always be required?
 * Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
   needs to assess progress?
 

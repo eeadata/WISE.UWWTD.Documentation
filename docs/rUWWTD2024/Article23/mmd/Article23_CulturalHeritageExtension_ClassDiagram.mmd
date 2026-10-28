@@ -1,0 +1,20 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class CulturalHeritageExtension{
+    + euAgglomerationCode: wiseIdentifier [1]
+    + areaDescription: string1000 [1]
+    + derogationType: DerogationType [1..n]
+    + adjustedDeadlineYear: gYear [1]
+    + justificationReference: referenceCode [1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

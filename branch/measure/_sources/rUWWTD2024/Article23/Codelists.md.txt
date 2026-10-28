@@ -12,77 +12,143 @@ each value the notation to report, a short label and a definition, following
 
 Each codelist field takes one value unless its type is marked `[0..n]`.
 
-(art23-cl-deadline-ext)=
-## Deadline extension - Articles 3(2) and 6(3)
+(art23-cl-derogation-type)=
+## Derogation type
 
-**Type:** `DeadlineExtension`
+**Type:** `DerogationType`
 
-Used by `article3_2DeadlineExtension` and `article6_3DeadlineExtension`.
+Used by `derogationType` in {ref}`art23-derogation` and {ref}`art23-culturalheritageextension`.
 
-:::{list-table} Proposed deadline extension values - Articles 3(2) and 6(3)
+:::{list-table} Proposed derogation type values
 :header-rows: 1
-:widths: 20 20 32 28
+:widths: 24 22 34 20
 
 * - Notation
   - Label
   - Definition
   - Notes
-* - `noDerogation`
-  - No derogation
-  - No extension of the deadline is requested.
-  - Report this value where the deadline is met without an extension.
-* - `oneYear`
-  - 1 year
-  - The deadline is extended by one whole year.
-  - One value per whole year, from `oneYear` to `fourteenYears`.
-* - `twoYears`
-  - 2 years
-  - The deadline is extended by two whole years.
+* - `article3_2`
+  - Article 3(2)
+  - Extension of the deadline for collecting systems in agglomerations of 1 000 to
+    1 999 p.e.
   - –
-* - `...`
-  - ...
-  - Values continue for each whole year.
-  - `threeYears` to `thirteenYears` follow the same pattern.
-* - `fourteenYears`
-  - 14 years
-  - The deadline is extended by fourteen whole years.
-  - Available to Bulgaria, Croatia and Romania only.
+* - `article6_3`
+  - Article 6(3)
+  - Extension of the deadline for secondary treatment of discharges from agglomerations
+    of 1 000 to 1 999 p.e.
+  - –
+* - `article7_4`
+  - Article 7(4)
+  - Extension of the deadline of Article 7(3), point (d), for tertiary treatment in
+    areas sensitive to eutrophication.
+  - Not used in CulturalHeritageExtension.
 :::
 
-Under the Directive, the maximum extension is 8 or 10 years depending on the situation on
-1 January 2025, or 12 or 14 years for Bulgaria, Croatia and Romania.
+(art23-cl-derogation-status)=
+## Derogation status
 
-(art23-cl-deadline-ext-7-4)=
-## Deadline extension - Article 7(4)
+**Type:** `DerogationStatus`
 
-**Type:** `DeadlineExtensionArticle7_4`
+Used by `derogationStatus` in {ref}`art23-derogation`.
 
-Used by `article7_4DeadlineExtension`.
-
-:::{list-table} Proposed deadline extension values - Article 7(4)
+:::{list-table} Proposed derogation status values
 :header-rows: 1
-:widths: 20 20 32 28
+:widths: 24 22 34 20
 
 * - Notation
   - Label
   - Definition
   - Notes
-* - `noDerogation`
-  - No derogation
-  - No extension of the deadline is requested.
+* - `requested`
+  - Requested
+  - An extension of the deadline is requested under the provision.
   - –
-* - `oneYear`
-  - 1 year
-  - The deadline is extended by one whole year.
-  - One value per whole year, from `oneYear` to `eightYears`.
-* - `...`
-  - ...
-  - Values continue for each whole year.
-  - `twoYears` to `sevenYears` follow the same pattern.
-* - `eightYears`
-  - 8 years
-  - The deadline is extended by eight whole years.
-  - The maximum extension under Article 7(4).
+* - `notRequested`
+  - Not requested
+  - No extension is requested under the provision.
+  - The other fields of the row stay
+    empty.
+:::
+
+(art23-cl-eligibility-criterion)=
+## Eligibility criterion
+
+**Type:** `EligibilityCriterion`
+
+Used by `eligibilityCriterion` in {ref}`art23-derogation`.
+
+:::{list-table} Proposed eligibility criterion values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `shareOfAgglomerations`
+  - Share of agglomerations
+  - Eligibility is based on the share of the agglomerations concerned meeting the
+    requirement on 1 January 2025.
+  - –
+* - `shareOfLoad`
+  - Share of load
+  - Eligibility is based on the share of the generated load of the agglomerations
+    concerned meeting the requirement on 1 January 2025.
+  - Articles 3(2) and 6(3) only.
+:::
+
+(art23-cl-extension-reason)=
+## Extension reason
+
+**Type:** `ExtensionReason`
+
+Used by `reasonType` in {ref}`art23-derogation`. Select one or both.
+
+:::{list-table} Proposed extension reason values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `technical`
+  - Technical
+  - Technical reasons justify the extension.
+  - –
+* - `economic`
+  - Economic
+  - Economic reasons justify the extension.
+  - –
+:::
+
+(art23-cl-less-stringent-ground)=
+## Less stringent treatment ground
+
+**Type:** `LessStringentGround`
+
+Used by `lessStringentGround` in {ref}`art23-lessstringenttreatment`.
+
+:::{list-table} Proposed less stringent treatment ground values
+:header-rows: 1
+:widths: 24 22 34 20
+
+* - Notation
+  - Label
+  - Definition
+  - Notes
+* - `highMountain`
+  - High mountain
+  - Discharges into high mountain waters above 1 500 m.
+  - –
+* - `deepMarineOutermostRegion`
+  - Deep marine waters, outermost region
+  - Discharges into deep marine waters in less-populated outermost regions.
+  - –
+* - `coldClimate`
+  - Cold climate
+  - Discharges from agglomerations of 1 000 to 1 999 p.e. in cold climates.
+  - –
 :::
 
 (art23-cl-compliance-share)=
@@ -516,7 +582,7 @@ corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has o
 (art23-cl-implementation-status)=
 ## Implementation status
 
-**Type:** `PlannedOngoingExecutedCancelled`
+**Type:** `ImplementationStatus`
 
 Used by `implementationStatus` in {ref}`art23-measure`. The same codelist as in the Water Framework
 Directive 4th cycle.
@@ -568,12 +634,12 @@ Used by `costStatus` in {ref}`art23-measure`.
   - –
 * - `estimated`
   - Estimated
-  - The cost is an estimate.
+  - The cost is an estimate, including a rough indicative one.
   - –
 * - `unknown`
   - Unknown
-  - The cost is not yet known.
-  - `investmentCost` stays empty.
+  - No indicative estimate of the cost can be given yet.
+  - An exception: `investmentCost` stays empty and the measure raises a warning (check R16).
 :::
 
 (art23-cl-priority)=
@@ -837,6 +903,10 @@ Used by `producerResponsibilityEstimateBasedOn`.
   - Member State estimate
   - An estimate by the Member State, where agreed financial plans are not yet available.
   - –
+* - `notAvailable`
+  - Not available
+  - No estimate of the contribution is available yet.
+  - `producerResponsibilityContribution` is left empty (check R15).
 :::
 
 (art23-cl-licence)=
@@ -872,5 +942,5 @@ Used by `license` in {ref}`art23-dcmetadata`.
   - –
 :::
 
-Where a Member State publishes under another licence, report the licence document in
+fWhere a Member State publishes under another licence, report the licence document in
 `licenseDocument` instead.

@@ -54,8 +54,8 @@ its official name later does not change its identifier.
 (sp-oi-condition)=
 ### SP-06 Proposed facilities
 
-`planned` is dropped; `proposed` is the only pre-construction condition. It corresponds to the
-INSPIRE value `projected` ({ref}`sp-cl-condition`).
+`planned` is dropped; `projected` is the only pre-construction condition, as in INSPIRE
+({ref}`sp-cl-condition`).
 
 (sp-oi-inspire)=
 ### SP-07 INSPIRE identifiers
@@ -79,8 +79,8 @@ Not reported in this dataflow ({ref}`sp-dischargepoint`).
 The INSPIRE
 [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
 checked on 6 October 2026, has the values `functional`, `projected`, `underConstruction`,
-`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them, with `projected` called
-`proposed` ({ref}`sp-cl-condition`).
+`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them unchanged, including
+`projected`, as agreed with EEA on 19 October 2026 ({ref}`sp-cl-condition`).
 
 (sp-oi-reactivation)=
 ### SP-11a Reactivation

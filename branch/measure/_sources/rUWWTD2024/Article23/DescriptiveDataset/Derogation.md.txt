@@ -2,25 +2,33 @@
 # Derogation
 
 :::{warning} Draft
-Draft baseline. Legal conditions on this page are taken from Directive (EU) 2024/3019.
-Field design is not final.
+Legal conditions on this page are taken from Directive (EU) 2024/3019. The one-row-per-provision
+structure is a proposal, and field design is not final ({ref}`art23-oi-derogation`).
 :::
 
 **Table status:** Required in the first programme. After that, the draft asks for the table only
 if derogation requests change.
-**Rows:** one row per Member State.
+**Rows:** one row per extension provision, three rows per Member State: Articles 3(2), 6(3) and
+7(4). `derogationType` is the primary key. A provision under which no extension is requested has a
+row with `derogationStatus` = `notRequested`.
 
-The table records whether the Member State extends deadlines, together with the numbers and
-documents the Directive requires as justification. The Commission uses it to check whether the
-conditions for each extension are met. Under Articles 3(2), 6(3) and 7(4), the Commission must
-notify Member States by 31 July 2028 if the conditions are not fulfilled.
+The table records whether the Member State extends the deadlines of Articles 3(2), 6(3) and 7(4),
+together with the numbers and documents the Directive requires as justification. The Commission
+uses it to check whether the conditions for each extension are met: under Articles 3(2), 6(3) and
+7(4), it must notify Member States by 31 July 2028 if they are not.
 
-The table covers deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent
-treatment under Article 6(4). Other derogations in the Directive, such as Article 7(8), are not
-part of this table in the draft.
+The three provisions ask the same questions, so each is one row with the same fields. A row for a
+provision that is not used states explicitly that no extension is requested: an absent row could
+not be told apart from an incomplete delivery.
 
-The reference fields may point to a chapter of the programme. Where no extension is requested, report
-`noDerogation`: the extension fields are Required.
+Two other derogations are reported in their own tables:
+
+* extensions to preserve cultural heritage, which arise during the implementation of the
+  programme and are listed per agglomeration, in {ref}`art23-culturalheritageextension`;
+* less stringent treatment under Article 6(4), which is not a deadline extension, in
+  {ref}`art23-lessstringenttreatment`.
+
+Other derogations in the Directive, such as Article 7(8), are not part of the draft.
 
 ```{mermaid} /rUWWTD2024/Article23/mmd/Article23_Derogation_ClassDiagram.mmd
 :name: Article23_Derogation_ClassDiagram
@@ -31,19 +39,76 @@ The reference fields may point to a chapter of the programme. Where no extension
 In {numref}`Article23_Derogation_ClassDiagram`, `[1]` marks the Required fields and `[0..1]` the
 Optional and Conditional ones ({ref}`art23-requirement-status`).
 
-## Article 3(2) - collecting systems (1 000 to 1 999 p.e.)
+## What the Directive requires
 
-Agglomerations of 1 000 to 1 999 p.e. must have collecting systems by 31 December 2035. A Member
-State may extend this deadline by up to 8 years where, on 1 January 2025, less than 50 % of these
-agglomerations were provided with collecting systems or less than 50 % of their load was
-collected, or by up to 10 years where the figure was less than 25 % (12 and 14 years for
-Bulgaria, Croatia and Romania). The first programme must then include the number of these
-agglomerations lacking complete collecting systems on 1 January 2025, an investment plan, and the
-technical or economic reasons.
+The three provisions extend a deadline for a requirement on agglomerations. Where a Member State
+uses one, the first programme must include the number of agglomerations not meeting the
+requirement on 1 January 2025, an investment plan, and the technical or economic reasons
+(Articles 3(2), 6(3) and 7(4), and Article 23(1)(e)).
 
-:::{list-table} Derogation fields - Article 3(2)
+:::{list-table} The three extension provisions
 :header-rows: 1
-:widths: 30 18 22 10 8 14
+:widths: 14 30 14 42
+
+* - `derogationType`
+  - Requirement
+  - Deadline
+  - Eligibility on 1 January 2025
+* - `article3_2`
+  - Collecting systems in agglomerations of 1 000 to 1 999 p.e.
+  - 31 December 2035
+  - Less than 50 % of these agglomerations provided with collecting systems, or less than 50 % of
+    their load collected
+* - `article6_3`
+  - Secondary treatment of discharges from agglomerations of 1 000 to 1 999 p.e.
+  - 31 December 2035
+  - Less than 50 % of these agglomerations, or of their load, meeting the secondary treatment
+    requirements
+* - `article7_4`
+  - Tertiary treatment of discharges from agglomerations of 10 000 p.e. and above into areas
+    sensitive to eutrophication (Article 7(3), point (d))
+  - 31 December 2045
+  - At least 50 % of the agglomerations concerned not applying tertiary treatment or not meeting
+    its requirements
+:::
+
+For Articles 3(2) and 6(3) the test is on agglomerations or on load, and the Member State says
+which one it relies on in `eligibilityCriterion`. For Article 7(4) it is on agglomerations only.
+Plants treating 150 000 p.e. and above must still meet the deadlines of Article 7(1).
+
+The maximum extension follows from the share meeting the requirement:
+
+:::{list-table} Maximum extended deadline
+:header-rows: 1
+:widths: 14 46 20 20
+
+* - `derogationType`
+  - Share on 1 January 2025
+  - Maximum extension
+  - Latest `extendedDeadlineYear`
+* - `article3_2`, `article6_3`
+  - 50 % or more meeting the requirement, by agglomerations and by load
+  - Not eligible
+  - –
+* - `article3_2`, `article6_3`
+  - Less than 50 % meeting it, by the chosen criterion
+  - 8 years (12 for Bulgaria, Croatia and Romania)
+  - 2043 (2047)
+* - `article3_2`, `article6_3`
+  - Less than 25 % meeting it, by the chosen criterion
+  - 10 years (14 for Bulgaria, Croatia and Romania)
+  - 2045 (2049)
+* - `article7_4`
+  - At least 50 % of the agglomerations concerned not meeting it
+  - 8 years
+  - 2053
+:::
+
+## Derogation fields
+
+:::{list-table} Derogation fields
+:header-rows: 1
+:widths: 24 16 28 12 8 12
 
 * - Notation
   - Label
@@ -51,272 +116,163 @@ technical or economic reasons.
   - Type
   - Status
   - Condition or codelist
-* - `article3_2DeadlineExtension`
-  - Article 3(2) deadline extension
-  - Extension of the Article 3(2) deadline.
-  - DeadlineExtension
+* - `derogationType`
+  - Derogation type
+  - The provision under which the deadline may be extended.
+  - DerogationType
   - Required
-  - {ref}`art23-cl-deadline-ext`
-* - `article3_2CompleteCollectingSystem`
-  - Agglomerations with complete collecting system
-  - Number of agglomerations of 1 000 to 1 999 p.e. with complete collecting systems on
-    1 January 2025.
+  - {ref}`art23-cl-derogation-type`; `article3_2`, `article6_3` or `article7_4`
+* - `derogationStatus`
+  - Derogation status
+  - Whether an extension is requested under the provision.
+  - DerogationStatus
+  - Required
+  - {ref}`art23-cl-derogation-status`
+* - `extendedDeadlineYear`
+  - Extended deadline
+  - The year by the end of which the requirement will be met, under the extension.
+  - gYear
+  - Conditional
+  - Required if `derogationStatus` = `requested`
+* - `eligibilityCriterion`
+  - Eligibility criterion
+  - The criterion on which the Member State relies for eligibility: the share of agglomerations
+    or the share of their load.
+  - EligibilityCriterion
+  - Conditional
+  - Required if `derogationStatus` = `requested`. {ref}`art23-cl-eligibility-criterion`
+* - `agglomerationsNotMeeting`
+  - Agglomerations not meeting the requirement
+  - Number of agglomerations concerned not meeting the requirement on 1 January 2025.
   - nonNegativeValue
   - Conditional
-  - See note below the table
-* - `article3_2NonCompleteCollectingSystem`
-  - Agglomerations lacking complete collecting system
-  - Number of agglomerations of 1 000 to 1 999 p.e. lacking complete collecting systems
-    on 1 January 2025.
+  - Required if `derogationStatus` = `requested`
+* - `agglomerationsMeeting`
+  - Agglomerations meeting the requirement
+  - Number of agglomerations concerned meeting the requirement on 1 January 2025.
   - nonNegativeValue
   - Conditional
-  - See note below the table
-* - `article3_2CompleteCollectingSystemLoad`
-  - Load with complete collecting system
-  - Generated load of the agglomerations with complete collecting systems on
+  - Required if `eligibilityCriterion` = `shareOfAgglomerations`
+* - `loadNotMeeting`
+  - Load not meeting the requirement
+  - Generated load of the agglomerations concerned not meeting the requirement on
     1 January 2025.
   - nonNegativeValue (p.e.)
   - Conditional
-  - See note below the table
-* - `article3_2NonCompleteCollectingSystemLoad`
-  - Load lacking complete collecting system
-  - Generated load of the agglomerations lacking complete collecting systems on
-    1 January 2025.
+  - Required if `eligibilityCriterion` = `shareOfLoad`
+* - `loadMeeting`
+  - Load meeting the requirement
+  - Generated load of the agglomerations concerned meeting the requirement on 1 January 2025.
   - nonNegativeValue (p.e.)
   - Conditional
-  - See note below the table
-* - `article3_2InvestmentPlanReference`
-  - Article 3(2) investment plan reference
-  - Reference to the plan detailing the investments needed to reach full compliance within
-    the extended deadline.
-  - referenceCode
+  - Required if `eligibilityCriterion` = `shareOfLoad`
+* - `reasonType`
+  - Reason type
+  - Whether the reasons for the extension are technical, economic or both. Select one or both.
+  - ExtensionReason [0..n]
   - Conditional
-  - Required if `article3_2DeadlineExtension` is not `noDerogation`
-* - `article3_2ExtensionReasonReference`
-  - Article 3(2) extension reason reference
+  - Required if `derogationStatus` = `requested`. {ref}`art23-cl-extension-reason`
+* - `reasonReference`
+  - Reason reference
   - Reference to the technical or economic reasons justifying the extension.
   - referenceCode
   - Conditional
-  - Required if `article3_2DeadlineExtension` is not `noDerogation`
+  - Required if `derogationStatus` = `requested`
+* - `investmentPlanReference`
+  - Investment plan reference
+  - Reference to the plan detailing the investments needed to meet the requirement within the
+    extended deadline.
+  - referenceCode
+  - Conditional
+  - Required if `derogationStatus` = `requested`
 :::
 
-The draft condition for the four count and load fields applies when
-`article3_2DeadlineExtension` is not `noDerogation`. It asks for either the numbers of
-agglomerations or the loads, which mirrors the
-two alternative conditions in Article 3(2). It refers to "treated and untreated load", although
-the fields describe collected load. See {ref}`art23-oi-derogation`.
+"The requirement" is complete collecting systems for `article3_2`, secondary treatment for
+`article6_3` and tertiary treatment for `article7_4`. For `article7_4`, agglomerations lacking
+tertiary treatment and those not meeting its requirements both count as not meeting it, as in
+Article 7(4)(a).
 
-## Cultural heritage - Articles 3(2) and 6(3)
+The number not meeting the requirement is always required when an extension is requested, since
+the Directive lists it as content of the programme. The other numbers are asked for only for the
+chosen criterion: the Commission needs them to calculate the share, and cannot do so from the
+number not meeting alone. The reasons themselves stay in the referenced document; `reasonType`
+allows them to be counted across Member States.
 
-Under Article 23(1), a Member State that establishes, while implementing its programme, that the
-need to preserve cultural heritage makes it impossible to meet the deadline of Article 3(2) or
-6(3) in specific areas must update its programme. The update lists the agglomerations and areas
-concerned and gives a detailed justification and an adjusted timeline. Extensions are
-area-specific, kept as short as possible and may not exceed 8 years. The updated programme is
-submitted by 31 December of the year of the update.
+The reference fields may point to a chapter of the programme.
 
-:::{list-table} Derogation fields - cultural heritage
+## Quality checks
+
+:::{list-table} Proposed quality checks for the Derogation table
 :header-rows: 1
-:widths: 30 18 24 10 8 14
+:widths: 10 70 20
 
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `article3_2CulturalHeritage`
-  - Article 3(2) cultural heritage
-  - Declaration that the Article 3(2) deadline must be postponed to preserve cultural
-    heritage (Article 23(1)).
-  - YesNo
-  - Required
-  - –
-* - `article3_2CulturalHeritageReference`
-  - Article 3(2) cultural heritage reference
-  - Reference to the list of the agglomerations, detailed justification and adjusted
-    timeline.
-  - referenceCode
-  - Conditional
-  - Required if `article3_2CulturalHeritage` = yes
-* - `article6_3CulturalHeritage`
-  - Article 6(3) cultural heritage
-  - Declaration that the Article 6(3) deadline must be postponed to preserve cultural
-    heritage.
-  - YesNo
-  - Required
-  - –
-* - `article6_3CulturalHeritageReference`
-  - Article 6(3) cultural heritage reference
-  - Reference to the list of the agglomerations, detailed justification and adjusted
-    timeline.
-  - referenceCode
-  - Conditional
-  - Required if `article6_3CulturalHeritage` = yes
+* - Code
+  - Rule
+  - Severity
+* - D01
+  - Exactly one row for each of `article3_2`, `article6_3` and `article7_4`
+  - Blocker
+* - D02
+  - With `derogationStatus` = `requested`: `extendedDeadlineYear`, `eligibilityCriterion`,
+    `agglomerationsNotMeeting`, `reasonType`, `reasonReference` and `investmentPlanReference`
+    are given, and so are the numbers of the chosen criterion
+  - Error
+* - D03
+  - With `derogationStatus` = `notRequested`: all other fields are empty
+  - Warning
+* - D04
+  - `eligibilityCriterion` = `shareOfLoad` is not used with `article7_4`
+  - Error
+* - D05
+  - The share calculated from the numbers of the chosen criterion meets the eligibility condition
+  - Error
+* - D06
+  - `extendedDeadlineYear` is after the deadline and not after the latest year allowed for the
+    calculated share and the Member State
+  - Error
 :::
 
-## Article 6(3) - secondary treatment (1 000 to 1 999 p.e.)
+## Mapping from the previous fields
 
-Discharges from plants treating wastewater from agglomerations of 1 000 to 1 999 p.e. must meet
-the secondary treatment requirements by 31 December 2035. The possible extensions and the content
-required in the first programme follow the same pattern as Article 3(2), based on secondary
-treatment on 1 January 2025.
+The previous design had one row per Member State, with the same questions repeated for each
+provision under prefixed names.
 
-:::{list-table} Derogation fields - Article 6(3)
+:::{list-table} Previous fields and their place in the proposal
 :header-rows: 1
-:widths: 32 18 22 10 8 14
+:widths: 55 45
 
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `article6_3DeadlineExtension`
-  - Article 6(3) deadline extension
-  - Extension of the Article 6(3) deadline.
-  - DeadlineExtension
-  - Required
-  - {ref}`art23-cl-deadline-ext`
-* - `article6_3AgglomerationsWithSecondaryTreatment`
-  - Agglomerations with secondary treatment
-  - Number of agglomerations of 1 000 to 1 999 p.e. with secondary treatment on
-    1 January 2025.
-  - nonNegativeValue
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
-* - `article6_3AgglomerationsWithoutSecondaryTreatment`
-  - Agglomerations without secondary treatment
-  - Number of agglomerations of 1 000 to 1 999 p.e. lacking secondary treatment on
-    1 January 2025.
-  - nonNegativeValue
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
-* - `article6_3LoadWithSecondaryTreatment`
-  - Load with secondary treatment
-  - Generated load of these agglomerations meeting the secondary treatment requirements
-    on 1 January 2025.
-  - nonNegativeValue (p.e.)
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
-* - `article6_3LoadWithoutSecondaryTreatment`
-  - Load without secondary treatment
-  - Generated load of these agglomerations not meeting the secondary treatment
-    requirements on 1 January 2025.
-  - nonNegativeValue (p.e.)
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
-* - `article6_3InvestmentPlanReference`
-  - Article 6(3) investment plan reference
-  - Reference to the plan detailing the investments needed to reach full compliance within
-    the extended deadline.
-  - referenceCode
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
-* - `article6_3ExtensionReasonReference`
-  - Article 6(3) extension reason reference
-  - Reference to the technical or economic reasons justifying the extension.
-  - referenceCode
-  - Conditional
-  - Required if `article6_3DeadlineExtension` is not `noDerogation`
+* - Previous
+  - Proposal
+* - `article3_2DeadlineExtension`, `article6_3DeadlineExtension`, `article7_4DeadlineExtension`,
+    as a number of whole years
+  - `derogationStatus` and `extendedDeadlineYear`, one row each
+* - `article3_2NonCompleteCollectingSystem`, `article6_3AgglomerationsWithoutSecondaryTreatment`,
+    `article7_4AgglomerationsWithoutTertiaryTreatment`
+  - `agglomerationsNotMeeting`
+* - `article3_2CompleteCollectingSystem`, `article6_3AgglomerationsWithSecondaryTreatment`,
+    `article7_4AgglomerationsWithTertiaryTreatment`
+  - `agglomerationsMeeting`
+* - `article3_2NonCompleteCollectingSystemLoad`, `article6_3LoadWithoutSecondaryTreatment`
+  - `loadNotMeeting`
+* - `article3_2CompleteCollectingSystemLoad`, `article6_3LoadWithSecondaryTreatment`
+  - `loadMeeting`
+* - `article3_2InvestmentPlanReference`, `article6_3InvestmentPlanReference`,
+    `article7_4InvestmentPlanReference`
+  - `investmentPlanReference`
+* - `article3_2ExtensionReasonReference`, `article6_3ExtensionReasonReference`,
+    `article7_4ExtensionReasonReference`
+  - `reasonType` and `reasonReference`
+* - `article3_2CulturalHeritage`, `article3_2CulturalHeritageReference`,
+    `article6_3CulturalHeritage`, `article6_3CulturalHeritageReference`
+  - {ref}`art23-culturalheritageextension`, in programme updates
+* - `article6_4LessStringentTreatment`, `article6_4LessStringentStudyReference`
+  - {ref}`art23-lessstringenttreatment`
 :::
 
-Unlike the Article 3(2) fields, all four count and load fields are required here when an extension
-is requested.
-
-## Article 6(4) - less stringent treatment
-
-Under Article 6(4), discharges may be subject to less stringent treatment than secondary treatment
-until 31 December 2045 where they go into high mountain waters above 1 500 m, certain deep marine
-waters in less-populated outermost regions, or come from agglomerations of 1 000 to 1 999 p.e. in
-cold climates. The Member State must provide the Commission with detailed studies showing that the
-discharges do not adversely affect the environment and human health.
-
-:::{list-table} Derogation fields - Article 6(4)
-:header-rows: 1
-:widths: 32 18 24 10 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `article6_4LessStringentTreatment`
-  - Article 6(4) less stringent treatment
-  - Whether urban wastewater discharges are subject to less stringent treatment under
-    Article 6(4).
-  - YesNo
-  - Required
-  - –
-* - `article6_4LessStringentStudyReference`
-  - Article 6(4) study reference
-  - Reference to the study justifying less stringent treatment under Article 6(4), until
-    31 December 2045.
-  - referenceCode
-  - Conditional
-  - If `article6_4LessStringentTreatment` = yes
-:::
-
-This field concerns less stringent treatment, not a deadline extension.
-
-## Article 7(4) - tertiary treatment in sensitive areas
-
-Article 7(3) requires discharges from agglomerations of 10 000 p.e. and above into areas sensitive
-to eutrophication to meet the tertiary treatment requirements in stages, with all agglomerations
-by 31 December 2045. A Member State may extend that final deadline by up to 8 years if at least
-50 % of the agglomerations concerned did not apply tertiary treatment, or did not meet the
-requirements, on 1 January 2025. The first programme must include their number, an investment
-plan and the justification. Plants treating 150 000 p.e. and above must still meet the deadlines
-of Article 7(1).
-
-:::{list-table} Derogation fields - Article 7(4)
-:header-rows: 1
-:widths: 32 18 22 10 8 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `article7_4DeadlineExtension`
-  - Article 7(4) deadline extension
-  - Extension of the Article 7(3), point (d), deadline.
-  - DeadlineExtensionArticle7_4
-  - Required
-  - {ref}`art23-cl-deadline-ext-7-4`
-* - `article7_4AgglomerationsWithTertiaryTreatment`
-  - Agglomerations with tertiary treatment
-  - Number of agglomerations subject to tertiary treatment that met the requirements on
-    1 January 2025.
-  - nonNegativeValue
-  - Conditional
-  - Required if `article7_4DeadlineExtension` is not `noDerogation`
-* - `article7_4AgglomerationsWithoutTertiaryTreatment`
-  - Agglomerations without tertiary treatment
-  - Number of agglomerations subject to tertiary treatment that lacked it or did not meet
-    the requirements on 1 January 2025.
-  - nonNegativeValue
-  - Conditional
-  - Required if `article7_4DeadlineExtension` is not `noDerogation`
-* - `article7_4InvestmentPlanReference`
-  - Article 7(4) investment plan reference
-  - Reference to the plan detailing the investments needed to reach full compliance within
-    the extended deadline.
-  - referenceCode
-  - Conditional
-  - Required if `article7_4DeadlineExtension` is not `noDerogation`
-* - `article7_4ExtensionReasonReference`
-  - Article 7(4) extension reason reference
-  - Reference to the technical or economic reasons justifying the extension.
-  - referenceCode
-  - Conditional
-  - Required if `article7_4DeadlineExtension` is not `noDerogation`
-:::
-
-Both situations, lacking tertiary treatment and not meeting the requirements, count towards
-`article7_4AgglomerationsWithoutTertiaryTreatment`, as in Article 7(4)(a).
+The previous design allowed, for Article 3(2), either the numbers of agglomerations or the loads,
+so the number not meeting the requirement could be left out; for Article 6(3) it required all four
+numbers. The proposal always requires the number not meeting the requirement, and the other
+numbers only for the chosen criterion.
 
 ## Related open issues
 

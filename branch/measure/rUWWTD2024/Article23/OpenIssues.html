@@ -316,6 +316,8 @@
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
@@ -505,8 +507,10 @@ row in MeasureFinancing with its own amount, so the multi-select question no lon
 <p><strong>Under consideration.</strong> Adding an “unknown” option, allowing more flexibility where costs cannot
 yet be estimated, and using OtherInvestment for aggregated estimates. A minimum threshold for
 reporting investments was also suggested.</p>
-<p><strong>Proposed answer.</strong> In the measure model, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> with an empty
-<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is a valid answer, and no minimum threshold applies
+<p><strong>Proposed answer.</strong> Article 23(1)(b) asks for an indicative financial estimation, so a rough
+estimate is reported as <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. In the measure model, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> =
+<code class="docutils literal notranslate"><span class="pre">unknown</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> remains possible as an exception, where not even a rough
+estimate can be given, but raises a warning (check R16). No minimum threshold applies
 (<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="oi-09-loan-fields">
@@ -526,10 +530,13 @@ MeasureFinancing, with an optional lender name and amount.</p>
 <p><strong>Questions.</strong> Which period does <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> cover, and is the amount
 nominal? Which
 requirements does <code class="docutils literal notranslate"><span class="pre">contributionPeriod</span></code> refer to, and should it be Required now that it replaces
-four Required questions? Should there be an “unknown”
-option? Can the fields be optional in the first programme, when estimates may not be available?
+four Required questions?
 How does PRO funding reported for individual measures, with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
 <code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code>, relate to the national total?</p>
+<p><strong>Proposed answer, unknown estimates.</strong> Article 23(1)(b) asks for the contribution “when
+available”. <code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> stays Required and has the value
+<code class="docutils literal notranslate"><span class="pre">notAvailable</span></code>; the amount and its currency are then left empty (check R15). This also covers the
+first programme, when the PROs may not yet be recognised.</p>
 </section>
 <section id="oi-11-nominal-or-annualised-costs">
 <span id="art23-oi-costs"></span><h2>OI-11 Nominal or annualised costs<a class="headerlink" href="#oi-11-nominal-or-annualised-costs" title="Link to this heading">#</a></h2>
@@ -568,13 +575,33 @@ separate renewal values for collecting systems and treatment plants
 </section>
 <section id="oi-15-derogation-details">
 <span id="art23-oi-derogation"></span><h2>OI-15 Derogation details<a class="headerlink" href="#oi-15-derogation-details" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> One row per Member State with 25 fields, repeating the same questions for each
+provision. The extension is a number of whole years. Cultural heritage is a Required yes/no for
+Articles 3(2) and 6(3) with one link, and Article 6(4) a Required yes/no with one study link. For
+Article 3(2), either the numbers of agglomerations or the loads are required, so the number
+lacking collecting systems can be left out; for Article 6(3), all four numbers are required.</p>
+<p><strong>Proposal.</strong> Three tables, following the suggestions to separate type, rationale and period and
+to derive the checks from the legal conditions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a>: one row per provision, Articles 3(2), 6(3) and 7(4), also where no
+extension is requested. The extended deadline is a year, checked against the maximum that
+follows from the reported shares. The number of agglomerations not meeting the requirement is
+always required, as the Directive lists it; the other numbers only for the criterion the Member
+State relies on, agglomerations or load.</p></li>
+<li><p><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html#art23-culturalheritageextension"><span class="std std-ref">CulturalHeritageExtension</span></a>: one row per agglomeration and area, in programme updates
+only. The Directive places these extensions in an update made during implementation, with a
+list of agglomerations and an adjusted timeline, which a national yes/no cannot hold.</p></li>
+<li><p><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html#art23-lessstringenttreatment"><span class="std std-ref">LessStringentTreatment</span></a>: one row per agglomeration, Optional. Less stringent
+treatment is not a deadline extension, and Article 23(1)(e) names only Articles 6(3) and 7(4).</p></li>
+</ul>
 <p><strong>Questions.</strong></p>
 <ul class="simple">
 <li><p>What counts as a complete collecting system, including where individual systems are used?</p></li>
 <li><p>How are agglomerations served by one plant each treated?</p></li>
-<li><p>The Article 3(2) condition asks for numbers or loads, but the Article 6(3) condition asks for
-both.</p></li>
-<li><p>Should the Article 6(4) study be optional where studies are not yet complete?</p></li>
+<li><p>Does the cultural heritage maximum of 8 years run from 31 December 2035, or from a deadline
+already extended under Article 3(2) or 6(3)?</p></li>
+<li><p>Does Article 6(4) belong in the Article 23 dataflow, or should the studies be provided to the
+Commission another way?</p></li>
 <li><p>What content is expected in the linked plans and justifications?</p></li>
 </ul>
 </section>
@@ -654,7 +681,8 @@ MeasureFinancing table giving its sources of financing
 <li><p>Terminology: should the tables and guidance use “measure” and “cost of measure”, while keeping
 the references to Article 23(1)(b) to (d)? The names should be checked against the text of
 Article 23(1).</p></li>
-<li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, accepted as a valid answer?</p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, accepted as an exception with a
+warning (OI-08), or should an indicative estimate always be required?</p></li>
 <li><p>Are <code class="docutils literal notranslate"><span class="pre">secured</span></code>, <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code>, <code class="docutils literal notranslate"><span class="pre">planned</span></code> and <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> the funding statuses the Commission
 needs to assess progress?</p></li>
 </ul>

@@ -285,9 +285,9 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 
 | `conditionOfFacility` | `locationStatus` | Coordinates |
 | --- | --- | --- |
-| `proposed`, site not selected | `notYetKnown` | empty |
-| `proposed`, provisional site known | `provisional` | an approximate point |
-| `proposed`, site selected | `confirmed` | the site |
+| `projected`, site not selected | `notYetKnown` | empty |
+| `projected`, provisional site known | `provisional` | an approximate point |
+| `projected`, site selected | `confirmed` | the site |
 | `underConstruction` or `functional` | `confirmed` | the site |
 | `disused` or `decommissioned` | `confirmed` | the known location, kept |
 
@@ -296,7 +296,7 @@ a `change`.
 
 **Discharge points.** Latitude and longitude are always required, whatever the condition of the
 discharge point. A proposed discharge point is reported once its location is known; its condition
-stays `proposed` until it is built.
+stays `projected` until it is built.
 
 A location is never filled with zero, or with the point of the agglomeration a facility serves.
 
@@ -400,7 +400,7 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
 * - Agglomerations and discharge points have coordinates; treatment plants have them unless
     `locationStatus` is `notYetKnown`
   - Blocker
-* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `proposed`
+* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `projected`
   - Error
 * - Coordinates are not both zero
   - Error

@@ -100,15 +100,15 @@ A UWWTD codelist.
 * - `confirmed`
   - Confirmed
   - The coordinates are those of the selected or existing site.
-  - Required for every condition other than `proposed`.
+  - Required for every condition other than `projected`.
 * - `provisional`
   - Provisional
   - The coordinates are an approximate point for a site not yet selected.
-  - Only with `conditionOfFacility` = `proposed`.
+  - Only with `conditionOfFacility` = `projected`.
 * - `notYetKnown`
   - Not yet known
   - No site has been selected and no coordinates are given.
-  - Only with `conditionOfFacility` = `proposed`.
+  - Only with `conditionOfFacility` = `projected`.
 :::
 
 (sp-cl-condition)=
@@ -119,8 +119,8 @@ A UWWTD codelist.
 Used by `conditionOfFacility` in the UWWTP and DischargePoint tables. It describes the physical
 state of the facility only. Whether an investment has been approved belongs to investment planning,
 not here. The values follow the INSPIRE
-[ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
-except that its `projected` is called `proposed` here ({ref}`sp-oi-vocabulary`).
+[ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist
+and use its notations ({ref}`sp-oi-vocabulary`).
 
 :::{list-table} Condition of facility values
 :header-rows: 1
@@ -130,10 +130,10 @@ except that its `projected` is called `proposed` here ({ref}`sp-oi-vocabulary`).
   - Label
   - Definition
   - Notes
-* - `proposed`
-  - Proposed
+* - `projected`
+  - Projected
   - The facility is planned or being designed; construction has not started.
-  - The only pre-construction value. INSPIRE value `projected`.
+  - The only pre-construction value.
 * - `underConstruction`
   - Under construction
   - The facility is being built.

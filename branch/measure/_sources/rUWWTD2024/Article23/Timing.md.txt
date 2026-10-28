@@ -149,5 +149,10 @@ According to the draft, the {ref}`art23-derogation` table is reported in the fir
 afterwards only if derogation requests change. The Directive requires the programme itself to be
 updated at least every six years.
 
+Extensions to preserve cultural heritage are not part of the first programme. A Member State that
+establishes during implementation that cultural heritage makes the deadline of Article 3(2) or
+6(3) impossible to meet in specific areas updates its programme, and reports the agglomerations
+concerned in {ref}`art23-culturalheritageextension`, by 31 December of the year of the update.
+
 ```{footbibliography}
 ```

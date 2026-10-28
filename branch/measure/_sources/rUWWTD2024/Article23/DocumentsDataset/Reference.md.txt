@@ -11,7 +11,7 @@ points to a document.
 **Rows:** one row per cited place in a document.
 
 A reference identifies a place within a document: a chapter, a section or a bookmark. Fields such
-as `programmeReference` and `article3_2InvestmentPlanReference` hold a `referenceCode` from this
+as `programmeReference` and `investmentPlanReference` hold a `referenceCode` from this
 table, so several fields can cite different chapters of the same programme without repeating the
 document itself.
 

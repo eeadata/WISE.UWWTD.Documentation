@@ -674,6 +674,8 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
@@ -782,7 +784,9 @@ document the programme refers to.</p>
   subgraph descriptive[&quot;Descriptive dataset&quot;]
     MSSummary
     SelfAssessment
-    Derogation
+    Derogation[&quot;Derogation&lt;br/&gt;one row per provision&quot;]
+    CulturalHeritageExtension
+    LessStringentTreatment
     Measure[&quot;Measure&lt;br/&gt;one row per measure&quot;]
     MeasureFinancing
     UWWTP[&quot;UWWTP&lt;br/&gt;one row per plant&quot;]
@@ -795,6 +799,8 @@ document the programme refers to.</p>
   end
   MSSummary -- &quot;referenceCode&quot; --&gt; Reference
   Derogation -- &quot;referenceCode&quot; --&gt; Reference
+  CulturalHeritageExtension -- &quot;referenceCode&quot; --&gt; Reference
+  LessStringentTreatment -- &quot;referenceCode&quot; --&gt; Reference
   Measure -. &quot;measureReference&quot; .-&gt; Reference
   MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
   Reference -- &quot;documentCode&quot; --&gt; Document
@@ -808,13 +814,16 @@ document the programme refers to.</p>
   Agglomeration -- &quot;thematicIdIdentifier&quot; --&gt; SpAgglomeration
   Measure -- &quot;euUWWTPCode&quot; --&gt; SpUWWTP
   Measure -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
+  CulturalHeritageExtension -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
+  LessStringentTreatment -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
     </pre><p>The names and locations of treatment plants and agglomerations are not reported in this dataflow.
 They are reported in the separate <a class="reference internal" href="../SpatialPoints/index.html#spatial-points"><span class="std std-ref">Spatial points</span></a> dataflow. The UWWTP and Agglomeration tables
 refer to them by <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, and measures list them in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
 <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. A code must already have been
 accepted there, for the reporting country and the right object type (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>).
 Earlier reporting stays valid when an object later changes or is retired.</p>
-<p>MSSummary and Derogation cite documents, and a measure may do so in <code class="docutils literal notranslate"><span class="pre">measureReference</span></code>. The UWWTP
+<p>MSSummary and the three derogation tables cite documents, and a measure may do so in
+<code class="docutils literal notranslate"><span class="pre">measureReference</span></code>. The UWWTP
 and Agglomeration tables have no reference fields, and there is no field linking a plant to an
 agglomeration. The dashed links are optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only where the
 licence or further metadata is delivered as one.</p>
@@ -858,10 +867,23 @@ risk assessment and PRO contribution.</p></td>
 <td><p>National self-assessment of compliance with Articles 3 to 8.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a></p></td>
-<td><p>One per Member State</p></td>
+<td><p>One per extension provision: Articles 3(2), 6(3) and 7(4) (<code class="docutils literal notranslate"><span class="pre">derogationType</span></code> is the primary
+key)</p></td>
 <td><p>Required in the first programme; afterwards only if derogation requests change</p></td>
-<td><p>Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
-under Article 6(4).</p></td>
+<td><p>Whether each deadline is extended, to which year, and the numbers and documents justifying it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html#art23-culturalheritageextension"><span class="std std-ref">CulturalHeritageExtension</span></a></p></td>
+<td><p>One per agglomeration and area</p></td>
+<td><p>Conditional: required in a programme update where cultural heritage makes the deadline of
+Article 3(2) or 6(3) impossible to meet</p></td>
+<td><p>Agglomerations and areas concerned, adjusted deadline and justification (Article 23(1), third
+subparagraph).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html#art23-lessstringenttreatment"><span class="std std-ref">LessStringentTreatment</span></a></p></td>
+<td><p>One per agglomeration</p></td>
+<td><p>Optional</p></td>
+<td><p>Agglomerations whose discharges are subject to less stringent treatment under Article 6(4),
+with the ground and the study.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
 <td><p>One per measure (<code class="docutils literal notranslate"><span class="pre">measureCode</span></code> is the primary key)</p></td>

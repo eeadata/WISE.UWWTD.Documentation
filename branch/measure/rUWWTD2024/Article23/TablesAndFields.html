@@ -674,6 +674,8 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
@@ -807,8 +809,8 @@ namespace DescriptiveDataset {
         + riskDate: date [0..1]
         + riskIdentified: YesNo [0..1]
         + riskSummaryReference: referenceCode [0..1]
-        + producerResponsibilityContribution: nonNegativeValue [1]
-        + millionUnitsOfNationalCurrency: CurrencyCode [1]
+        + producerResponsibilityContribution: nonNegativeValue [0..1]
+        + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
         + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
         + contributionPeriod: ContributionPeriod [0..n]
         + contributionPeriodOther: string1000 [0..1]
@@ -825,31 +827,29 @@ namespace DescriptiveDataset {
         + article8Compliance: ComplianceShareEstimated [1]
     }
     class Derogation {
-        + article3_2DeadlineExtension: DeadlineExtension [1]
-        + article3_2CompleteCollectingSystem: nonNegativeValue [0..1]
-        + article3_2NonCompleteCollectingSystem: nonNegativeValue [0..1]
-        + article3_2CompleteCollectingSystemLoad: nonNegativeValue [0..1]
-        + article3_2NonCompleteCollectingSystemLoad: nonNegativeValue [0..1]
-        + article3_2InvestmentPlanReference: referenceCode [0..1]
-        + article3_2ExtensionReasonReference: referenceCode [0..1]
-        + article3_2CulturalHeritage: YesNo [1]
-        + article3_2CulturalHeritageReference: referenceCode [0..1]
-        + article6_3CulturalHeritage: YesNo [1]
-        + article6_3CulturalHeritageReference: referenceCode [0..1]
-        + article6_3DeadlineExtension: DeadlineExtension [1]
-        + article6_3AgglomerationsWithSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3AgglomerationsWithoutSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3LoadWithSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3LoadWithoutSecondaryTreatment: nonNegativeValue [0..1]
-        + article6_3InvestmentPlanReference: referenceCode [0..1]
-        + article6_3ExtensionReasonReference: referenceCode [0..1]
-        + article6_4LessStringentTreatment: YesNo [1]
-        + article6_4LessStringentStudyReference: referenceCode [0..1]
-        + article7_4DeadlineExtension: DeadlineExtensionArticle7_4 [1]
-        + article7_4AgglomerationsWithTertiaryTreatment: nonNegativeValue [0..1]
-        + article7_4AgglomerationsWithoutTertiaryTreatment: nonNegativeValue [0..1]
-        + article7_4InvestmentPlanReference: referenceCode [0..1]
-        + article7_4ExtensionReasonReference: referenceCode [0..1]
+        + derogationType: DerogationType [1]
+        + derogationStatus: DerogationStatus [1]
+        + extendedDeadlineYear: gYear [0..1]
+        + eligibilityCriterion: EligibilityCriterion [0..1]
+        + agglomerationsNotMeeting: nonNegativeValue [0..1]
+        + agglomerationsMeeting: nonNegativeValue [0..1]
+        + loadNotMeeting: nonNegativeValue [0..1]
+        + loadMeeting: nonNegativeValue [0..1]
+        + reasonType: ExtensionReason [0..n]
+        + reasonReference: referenceCode [0..1]
+        + investmentPlanReference: referenceCode [0..1]
+    }
+    class CulturalHeritageExtension {
+        + euAgglomerationCode: wiseIdentifier [1]
+        + areaDescription: string1000 [1]
+        + derogationType: DerogationType [1..n]
+        + adjustedDeadlineYear: gYear [1]
+        + justificationReference: referenceCode [1]
+    }
+    class LessStringentTreatment {
+        + euAgglomerationCode: wiseIdentifier [1]
+        + lessStringentGround: LessStringentGround [1]
+        + studyReference: referenceCode [1]
     }
     class Measure {
         + measureCode: wiseIdentifier [1]
@@ -863,7 +863,7 @@ namespace DescriptiveDataset {
         + euAgglomerationCode: wiseIdentifier [0..n]
         + numberOfObjects: nonNegativeInteger [0..1]
         + prioritisation: Priority [1]
-        + implementationStatus: PlannedOngoingExecutedCancelled [1]
+        + implementationStatus: ImplementationStatus [1]
         + expectedStartYear: gYear [0..1]
         + expectedCompletionYear: gYear [1]
         + costStatus: CostStatus [1]
@@ -903,6 +903,8 @@ namespace SpatialPointsDataflow {
 Measure &quot;1&quot; -- &quot;0..n&quot; MeasureFinancing : measureCode
 Measure ..&gt; SpatialUWWTP : euUWWTPCode
 Measure ..&gt; SpatialAgglomeration : euAgglomerationCode
+CulturalHeritageExtension ..&gt; SpatialAgglomeration : euAgglomerationCode
+LessStringentTreatment ..&gt; SpatialAgglomeration : euAgglomerationCode
 UWWTP ..&gt; SpatialUWWTP : thematicIdIdentifier
 Agglomeration ..&gt; SpatialAgglomeration : thematicIdIdentifier
 
@@ -971,21 +973,19 @@ gives the definition, condition and codelist of every field.</p>
 <code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code>, <code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a></p></td>
-<td><p>One per Member State</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">article3_2DeadlineExtension</span></code>, <code class="docutils literal notranslate"><span class="pre">article3_2CompleteCollectingSystem</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article3_2NonCompleteCollectingSystem</span></code>, <code class="docutils literal notranslate"><span class="pre">article3_2CompleteCollectingSystemLoad</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article3_2NonCompleteCollectingSystemLoad</span></code>, <code class="docutils literal notranslate"><span class="pre">article3_2InvestmentPlanReference</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article3_2ExtensionReasonReference</span></code>, <code class="docutils literal notranslate"><span class="pre">article3_2CulturalHeritage</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article3_2CulturalHeritageReference</span></code>, <code class="docutils literal notranslate"><span class="pre">article6_3CulturalHeritage</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_3CulturalHeritageReference</span></code>, <code class="docutils literal notranslate"><span class="pre">article6_3DeadlineExtension</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_3AgglomerationsWithSecondaryTreatment</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_3AgglomerationsWithoutSecondaryTreatment</span></code>, <code class="docutils literal notranslate"><span class="pre">article6_3LoadWithSecondaryTreatment</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_3LoadWithoutSecondaryTreatment</span></code>, <code class="docutils literal notranslate"><span class="pre">article6_3InvestmentPlanReference</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_3ExtensionReasonReference</span></code>, <code class="docutils literal notranslate"><span class="pre">article6_4LessStringentTreatment</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article6_4LessStringentStudyReference</span></code>, <code class="docutils literal notranslate"><span class="pre">article7_4DeadlineExtension</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article7_4AgglomerationsWithTertiaryTreatment</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article7_4AgglomerationsWithoutTertiaryTreatment</span></code>, <code class="docutils literal notranslate"><span class="pre">article7_4InvestmentPlanReference</span></code>,
-<code class="docutils literal notranslate"><span class="pre">article7_4ExtensionReasonReference</span></code></p></td>
+<td><p>One per extension provision</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">derogationType</span></code>, <code class="docutils literal notranslate"><span class="pre">derogationStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">extendedDeadlineYear</span></code>, <code class="docutils literal notranslate"><span class="pre">eligibilityCriterion</span></code>,
+<code class="docutils literal notranslate"><span class="pre">agglomerationsNotMeeting</span></code>, <code class="docutils literal notranslate"><span class="pre">agglomerationsMeeting</span></code>, <code class="docutils literal notranslate"><span class="pre">loadNotMeeting</span></code>, <code class="docutils literal notranslate"><span class="pre">loadMeeting</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reasonType</span></code>, <code class="docutils literal notranslate"><span class="pre">reasonReference</span></code>, <code class="docutils literal notranslate"><span class="pre">investmentPlanReference</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html#art23-culturalheritageextension"><span class="std std-ref">CulturalHeritageExtension</span></a></p></td>
+<td><p>One per agglomeration and area</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, <code class="docutils literal notranslate"><span class="pre">areaDescription</span></code>, <code class="docutils literal notranslate"><span class="pre">derogationType</span></code>, <code class="docutils literal notranslate"><span class="pre">adjustedDeadlineYear</span></code>,
+<code class="docutils literal notranslate"><span class="pre">justificationReference</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html#art23-lessstringenttreatment"><span class="std std-ref">LessStringentTreatment</span></a></p></td>
+<td><p>One per agglomeration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, <code class="docutils literal notranslate"><span class="pre">lessStringentGround</span></code>, <code class="docutils literal notranslate"><span class="pre">studyReference</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
 <td><p>One per measure</p></td>

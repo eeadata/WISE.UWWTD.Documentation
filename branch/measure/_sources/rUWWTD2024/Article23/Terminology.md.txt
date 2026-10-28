@@ -100,8 +100,10 @@ Organic design capacity
 : The design capacity of a plant expressed in p.e. (`expectedCapacity`).
 
 Derogation
-: In the {ref}`art23-derogation` table, an extension of a deadline under Article 3(2), 6(3),
-  7(4) or 23(1), or less stringent treatment under Article 6(4).
+: An extension of a deadline under Article 3(2), 6(3) or 7(4), reported in {ref}`art23-derogation`;
+  an extension to preserve cultural heritage under Article 23(1), reported in
+  {ref}`art23-culturalheritageextension`; or less stringent treatment under Article 6(4), reported
+  in {ref}`art23-lessstringenttreatment`.
 
 (art23-status-values)=
 ## Status values C, NC and PD

@@ -18,7 +18,9 @@ flowchart LR
   subgraph descriptive["Descriptive dataset"]
     MSSummary
     SelfAssessment
-    Derogation
+    Derogation["Derogation<br/>one row per provision"]
+    CulturalHeritageExtension
+    LessStringentTreatment
     Measure["Measure<br/>one row per measure"]
     MeasureFinancing
     UWWTP["UWWTP<br/>one row per plant"]
@@ -31,6 +33,8 @@ flowchart LR
   end
   MSSummary -- "referenceCode" --> Reference
   Derogation -- "referenceCode" --> Reference
+  CulturalHeritageExtension -- "referenceCode" --> Reference
+  LessStringentTreatment -- "referenceCode" --> Reference
   Measure -. "measureReference" .-> Reference
   MeasureFinancing -- "measureCode" --> Measure
   Reference -- "documentCode" --> Document
@@ -44,6 +48,8 @@ flowchart LR
   Agglomeration -- "thematicIdIdentifier" --> SpAgglomeration
   Measure -- "euUWWTPCode" --> SpUWWTP
   Measure -- "euAgglomerationCode" --> SpAgglomeration
+  CulturalHeritageExtension -- "euAgglomerationCode" --> SpAgglomeration
+  LessStringentTreatment -- "euAgglomerationCode" --> SpAgglomeration
 ```
 
 The names and locations of treatment plants and agglomerations are not reported in this dataflow.
@@ -53,7 +59,8 @@ refer to them by `thematicIdIdentifier`, and measures list them in `euUWWTPCode`
 accepted there, for the reporting country and the right object type ({ref}`sp-references`).
 Earlier reporting stays valid when an object later changes or is retired.
 
-MSSummary and Derogation cite documents, and a measure may do so in `measureReference`. The UWWTP
+MSSummary and the three derogation tables cite documents, and a measure may do so in
+`measureReference`. The UWWTP
 and Agglomeration tables have no reference fields, and there is no field linking a plant to an
 agglomeration. The dashed links are optional: `dcMetadata` points to a document only where the
 licence or further metadata is delivered as one.
@@ -89,10 +96,21 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
   - Required
   - National self-assessment of compliance with Articles 3 to 8.
 * - {ref}`art23-derogation`
-  - One per Member State
+  - One per extension provision: Articles 3(2), 6(3) and 7(4) (`derogationType` is the primary
+    key)
   - Required in the first programme; afterwards only if derogation requests change
-  - Deadline extensions under Articles 3(2), 6(3), 7(4) and 23(1), and less stringent treatment
-    under Article 6(4).
+  - Whether each deadline is extended, to which year, and the numbers and documents justifying it.
+* - {ref}`art23-culturalheritageextension`
+  - One per agglomeration and area
+  - Conditional: required in a programme update where cultural heritage makes the deadline of
+    Article 3(2) or 6(3) impossible to meet
+  - Agglomerations and areas concerned, adjusted deadline and justification (Article 23(1), third
+    subparagraph).
+* - {ref}`art23-lessstringenttreatment`
+  - One per agglomeration
+  - Optional
+  - Agglomerations whose discharges are subject to less stringent treatment under Article 6(4),
+    with the ground and the study.
 * - {ref}`art23-measure`
   - One per measure (`measureCode` is the primary key)
   - Conditional: required where measures are planned

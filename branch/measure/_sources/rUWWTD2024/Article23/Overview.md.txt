@@ -79,9 +79,12 @@ is required, and `situationAt` records the date of the reported situation.
   - {ref}`art23-measurefinancing`: `fundingSource`, `fundingStatus` and `amount`.
     Loans are an optional source; see {ref}`art23-oi-loans`.
 * - Article 23(1)(e) and Article 3(2) - derogation information
-  - {ref}`art23-derogation`.
+  - {ref}`art23-derogation`: one row each for Articles 3(2), 6(3) and 7(4).
 * - Article 23(1), third subparagraph - cultural heritage
-  - {ref}`art23-derogation`: `article3_2CulturalHeritage`, `article6_3CulturalHeritage` and their links.
+  - {ref}`art23-culturalheritageextension`: the agglomerations and areas concerned, the adjusted
+    deadline and the justification, in programme updates.
+* - Article 6(4) - less stringent treatment
+  - {ref}`art23-lessstringenttreatment`, Optional: not named in Article 23(1).
 * - Article 18(3) - summary of risks and measures
   - {ref}`art23-mssummary`: `riskAssessment`, `riskDate`, `riskIdentified`, `riskSummaryReference`.
 * - The programme document itself

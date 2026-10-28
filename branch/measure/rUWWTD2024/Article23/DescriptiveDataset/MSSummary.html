@@ -674,6 +674,8 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Measure.html">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
@@ -805,8 +807,8 @@ class MSSummary{
     + riskIdentified: YesNo [0..1]
     + riskSummaryReference: referenceCode [0..1]
 
-    + producerResponsibilityContribution: nonNegativeValue [1]
-    + millionUnitsOfNationalCurrency: CurrencyCode [1]
+    + producerResponsibilityContribution: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
     + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
     + contributionPeriod: ContributionPeriod [0..n]
     + contributionPeriodOther: string1000 [0..1]
@@ -954,7 +956,11 @@ conditional fields apply in that case is open (<a class="reference internal" hre
 <h2>Producer responsibility contribution<a class="headerlink" href="#producer-responsibility-contribution" title="Link to this heading">#</a></h2>
 <p>Article 23(1)(b) asks for an estimation of the financial contribution from PROs “when available”.
 In the first programme a Member State may estimate the contribution for the whole period or for
-the period of an interim target, and assign it to that period.</p>
+the period of an interim target, and assign it to that period. Where no estimate is available yet,
+for example because the PROs are not yet recognised, the Member State reports
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> = <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code> and leaves the amount and its currency
+empty. An empty amount then always means that no estimate is available, not that it was
+forgotten.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">MSSummary fields - producer responsibility contribution</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
@@ -980,20 +986,20 @@ the period of an interim target, and assign it to that period.</p>
 <td><p>Estimated financial contribution from producer responsibility organisations, total at
 national level.</p></td>
 <td><p>nonNegativeValue (million units of national currency)</p></td>
-<td><p>Required</p></td>
-<td><p>–</p></td>
+<td><p>Conditional</p></td>
+<td><p>Required unless <code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> = <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code>, and empty if it is</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code></p></td>
 <td><p>Currency</p></td>
 <td><p>Currency of <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>, in millions of that currency. Euro area
 Member States use EUR.</p></td>
 <td><p>CurrencyCode</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-currency"><span class="std std-ref">Currency</span></a></p></td>
+<td><p>Conditional</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> is given. <a class="reference internal" href="../Codelists.html#art23-cl-currency"><span class="std std-ref">Currency</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code></p></td>
 <td><p>Estimate based on</p></td>
-<td><p>Basis of the estimate.</p></td>
+<td><p>Basis of the estimate, or <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code> where no estimate is available yet.</p></td>
 <td><p>EstimateBasis</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-pro-basis"><span class="std std-ref">Basis of the producer responsibility estimate</span></a></p></td>

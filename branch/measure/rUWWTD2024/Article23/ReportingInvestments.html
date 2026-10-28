@@ -674,6 +674,8 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
@@ -803,7 +805,7 @@ per measure.</p>
 <section id="where-to-report-each-measure">
 <h2>Where to report each measure<a class="headerlink" href="#where-to-report-each-measure" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 46 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 52 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -873,11 +875,15 @@ Directive asks to identify the investments for each agglomeration, not to split 
 <ul class="simple">
 <li><p><strong>Investment cost only.</strong> <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is capital expenditure. Operational and maintenance
 costs are not reported.</p></li>
-<li><p><strong>Unknown is a valid answer.</strong> If the cost is not yet known, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and
-leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. A Member State that knows it must upgrade ten plants in the next
-ten years but not what it will cost can say so.</p></li>
+<li><p><strong>Give an indicative estimate.</strong> Article 23(1)(b) asks for an indicative financial estimation of
+the investments. A rough figure is enough, for example a typical cost per plant multiplied by the
+number of plants. Report it with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>.</p></li>
 <li><p><strong>Estimated or known.</strong> Use <code class="docutils literal notranslate"><span class="pre">estimated</span></code> for estimates and <code class="docutils literal notranslate"><span class="pre">known</span></code> for costs from a project,
 tender or contract.</p></li>
+<li><p><strong>Unknown is an exception.</strong> Where not even a rough estimate can be given yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>
+to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. The measure is accepted but raises a warning
+(check R16), since it gives no financial estimation, and the cost should be estimated in the
+next update.</p></li>
 <li><p><strong>Several types, one cost.</strong> A measure with several types has one cost, which is not split
 between the types. Totals per type are therefore only exact for measures with one type; for the
 others, count the measures that include a type rather than adding up their costs.</p></li>
@@ -973,7 +979,7 @@ of the money still to be found, and a national renewal programme.</p>
 <section id="from-the-draft-fields-to-the-measure-model">
 <h2>From the draft fields to the measure model<a class="headerlink" href="#from-the-draft-fields-to-the-measure-model" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 47 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 53 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -1038,7 +1044,7 @@ measure type</p></td>
 <section id="quality-checks">
 <span id="art23-quality-checks"></span><h2>Quality checks<a class="headerlink" href="#quality-checks" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 48 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 54 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 10.0%" />
 <col style="width: 22.0%" />
@@ -1155,6 +1161,18 @@ and <code class="docutils literal notranslate"><span class="pre">renewOrReplaceT
 <td><p>Measure</p></td>
 <td><p>A measure that is not of a renewal type has <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>; with
 <code class="docutils literal notranslate"><span class="pre">unlistedObjects</span></code>, its agglomerations are not yet identified for Article 23(1)(b)</p></td>
+<td><p>Warning</p></td>
+</tr>
+<tr class="row-odd"><td><p>R15</p></td>
+<td><p>MSSummary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> is given if and only if
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> is not <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R16</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>: the measure gives no indicative financial estimation for
+Article 23(1)(b) or (c)</p></td>
 <td><p>Warning</p></td>
 </tr>
 </tbody>

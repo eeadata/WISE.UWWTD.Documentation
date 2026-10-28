@@ -417,7 +417,7 @@ window.runMermaid = runMermaid;</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="MeasureFinancing" href="MeasureFinancing.html" />
-    <link rel="prev" title="Derogation" href="Derogation.html" />
+    <link rel="prev" title="LessStringentTreatment" href="LessStringentTreatment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -674,6 +674,8 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l3"><a class="reference internal" href="MSSummary.html">MSSummary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SelfAssessment.html">SelfAssessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LessStringentTreatment.html">LessStringentTreatment</a></li>
 <li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Measure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MeasureFinancing.html">MeasureFinancing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
@@ -817,7 +819,7 @@ class Measure{
     + numberOfObjects: nonNegativeInteger [0..1]
     + prioritisation: Priority [1]
 
-    + implementationStatus: PlannedOngoingExecutedCancelled [1]
+    + implementationStatus: ImplementationStatus [1]
     + expectedStartYear: gYear [0..1]
     + expectedCompletionYear: gYear [1]
 
@@ -834,15 +836,15 @@ classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;
 
     </pre><figcaption>
-<p><span class="caption-number">Figure 6 </span><span class="caption-text">Article 23 - Measure - draft</span><a class="headerlink" href="#article23-measure-classdiagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 8 </span><span class="caption-text">Article 23 - Measure - draft</span><a class="headerlink" href="#article23-measure-classdiagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In <a class="reference internal" href="#article23-measure-classdiagram"><span class="std std-numref">Figure 6</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
+<p>In <a class="reference internal" href="#article23-measure-classdiagram"><span class="std std-numref">Figure 8</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
 Optional and Conditional ones (<a class="reference internal" href="../Terminology.html#art23-requirement-status"><span class="std std-ref">Requirement status</span></a>).</p>
 <section id="measure-type-and-coverage">
 <h2>Measure, type and coverage<a class="headerlink" href="#measure-type-and-coverage" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 18 </span><span class="caption-text">Measure fields - measure, type and coverage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 21 </span><span class="caption-text">Measure fields - measure, type and coverage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -966,7 +968,7 @@ environmental impact.</p></td>
 <section id="status-and-dates">
 <h2>Status and dates<a class="headerlink" href="#status-and-dates" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 19 </span><span class="caption-text">Measure fields - status and dates</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 22 </span><span class="caption-text">Measure fields - status and dates</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 16.0%" />
@@ -989,7 +991,7 @@ environmental impact.</p></td>
 <td><p>Implementation status</p></td>
 <td><p>Whether the measure is planned, ongoing, executed or cancelled. In the first programme most
 measures are planned or ongoing.</p></td>
-<td><p>PlannedOngoingExecutedCancelled</p></td>
+<td><p>ImplementationStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-implementation-status"><span class="std std-ref">Implementation status</span></a></p></td>
 </tr>
@@ -1017,7 +1019,7 @@ Directive reports as <code class="docutils literal notranslate"><span class="pre
 <section id="cost">
 <h2>Cost<a class="headerlink" href="#cost" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 20 </span><span class="caption-text">Measure fields - cost</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 23 </span><span class="caption-text">Measure fields - cost</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 16.0%" />
@@ -1091,8 +1093,10 @@ which the Directive does not ask for per agglomeration.</p></li>
 are not yet known, for example in the first programme. Since Article 23(1)(b) asks for the
 investments for each agglomeration, this raises a warning, and the agglomerations should be
 listed in the next update.</p></li>
-<li><p><strong>Cost unknown.</strong> Set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. Saying what is
-not known is a valid answer.</p></li>
+<li><p><strong>Indicative cost.</strong> Article 23(1)(b) asks for an indicative financial estimation, so a rough
+estimate is enough and is reported as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. Where not even a rough estimate can be given
+yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. This raises a warning, and
+the cost should be estimated in the next update.</p></li>
 <li><p><strong>Currency.</strong> Amounts are in millions of national currency, as in the Water Framework Directive:
 0.01 is 10 000 units. Use a full stop as the decimal separator.</p></li>
 </ul>
@@ -1118,12 +1122,12 @@ not known is a valid answer.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Derogation.html"
+       href="LessStringentTreatment.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Derogation</p>
+        <p class="prev-next-title">LessStringentTreatment</p>
       </div>
     </a>
     <a class="right-next"

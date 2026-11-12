@@ -106,8 +106,7 @@ the measures adopted to be included in the programme.
 * - `riskIdentified`
   - Risks identified
   - Whether any risks have been identified. Measures under Article 18(2) that address
-    identified risks are reported with the measure codelists of the UWWTP and Agglomeration
-    tables.
+    identified risks are reported in {ref}`art23-measure`.
   - YesNo
   - Conditional
   - Required if `riskAssessment` = `yes`

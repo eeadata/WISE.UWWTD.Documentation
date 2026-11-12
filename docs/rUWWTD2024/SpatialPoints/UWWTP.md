@@ -7,13 +7,11 @@ objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
 
 The table identifies and locates every urban wastewater treatment plant, including proposed ones,
-with its code, name, location and condition. The dataflow starts from the objects reported under
+with its code, name, location, condition and capacity. The dataflow starts from the objects reported under
 Directive 91/271/EEC; a Member State then reports only what changes ({ref}`sp-reporting`).
 
-A proposed plant whose site has not been chosen is reported with `locationStatus` =
-`notYetKnown` and no coordinates. When its site is chosen, the same code is kept and the plant is
-reported as a `change` ({ref}`sp-location`). A plant that closes keeps its code, with its
-condition changed ({ref}`sp-lifecycle`).
+A proposed plant is reported once its location is known. A plant that closes keeps its code,
+with its condition changed ({ref}`sp-lifecycle`).
 
 ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_UWWTP_ClassDiagram.mmd
 :name: SpatialPoints_UWWTP_ClassDiagram
@@ -23,25 +21,32 @@ condition changed ({ref}`sp-lifecycle`).
 
 ## What the fields are
 
-**Identifiers.** `thematicIdIdentifier` is the treatment plant's code: the key that other
-reporting uses to refer to it ({ref}`sp-references`). The three INSPIRE fields are only for Member
-States that already publish the treatment plant in a national INSPIRE dataset; they let the two
-records be matched. Otherwise they stay empty.
+The fields follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data
+definitions ({ref}`sp-sources`). Descriptive information on the plant is for a later Article 22
+table, not this dataflow.
+
+**Location.** `geometry`, a single point at the site of the plant.
+
+**Identifiers.** `thematicIdIdentifier` is the treatment plant's code: the key that other reporting uses
+to refer to it ({ref}`sp-references`). Its scheme, `thematicIdIdentifierScheme`, is always
+`euUWWTPCode`. The three INSPIRE fields are only for Member States that already publish the treatment plant in
+a national INSPIRE dataset; they let the two records be matched. Otherwise they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 For a proposed plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a `change`, keeping the same identifier.
 
-**Location and state.** The position of the plant in decimal degrees, and `locationStatus`, which
-says whether that position is the actual site, a provisional one, or not yet known.
-`conditionOfFacility` says whether the plant is proposed, under construction, in use or out of
-use. `euRegistryFacilityId` links it to the same installation in the EU Registry, where it is
-registered there.
+**Version and history.** `beginLifespanVersion` and `endLifespanVersion` date the version reported.
+`wiseEvolutionType` says what is being reported: no change, a new treatment plant, a change, a merger, a
+split or a retirement. A new treatment plant that replaces earlier ones lists their codes in
+`predecessorsIdentifier`. A plant that closes is a `change` of condition, not a retirement. See {ref}`sp-lifecycle`.
 
-**Change.** `wiseEvolutionType` says what is being reported: no change, a new plant, a change, a
-merger, a split or a retirement. A new plant that replaces earlier plants lists their codes in
-`supersedesIdentifier`. A plant that closes is a `change` of condition, not a retirement. See
-{ref}`sp-lifecycle`.
+**Designation.** `designationPeriodBegin` and `designationPeriodEnd` give the period in which the
+treatment plant is in the scope of the Directive.
+
+**Condition and capacity.** `conditionOfFacility` says whether the plant is proposed, under
+construction, in use or out of use. `uwwCapacity` is its organic design capacity in population
+equivalent.
 
 ## UWWTP fields
 
@@ -55,14 +60,11 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - Type
   - Status
   - Condition
-* - `thematicIdIdentifier`
-  - Code
-  - Code of the treatment plant. Its identifier scheme is always `euUWWTPCode`, the only one for
-    this table, so the scheme is not reported but added centrally ({ref}`sp-cl-scheme`). A new plant
-    receives a new code; an existing one keeps its code ({ref}`sp-reporting`). A code from the
-    reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is converted
-    ({ref}`sp-code-conversion`).
-  - wiseIdentifier
+* - `geometry`
+  - Location
+  - Location of the treatment plant, as a single point geometry (a latitude and longitude pair) in ETRS89
+    (EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places ({ref}`sp-location`).
+  - point
   - Required
   - –
 * - `inspireIdLocalId`
@@ -88,10 +90,29 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - string25
   - Optional
   - –
+* - `thematicIdIdentifier`
+  - Code
+  - Code of the treatment plant. A new plant receives a new code; an existing one keeps its code
+    ({ref}`sp-reporting`). A code from the reporting under Directive 91/271/EEC that does not meet
+    the WISE identifier rules is converted ({ref}`sp-code-conversion`).
+  - wiseIdentifier
+  - Required
+  - –
+* - `thematicIdIdentifierScheme`
+  - Code scheme
+  - Scheme of `thematicIdIdentifier`. Always `euUWWTPCode` ({ref}`sp-cl-scheme`).
+  - IdentifierScheme
+  - Required
+  - –
+* - `nameTextInternational`
+  - English name
+  - Existing English version of the name, if available. No translation is required.
+  - string254
+  - Optional
+  - –
 * - `nameText`
   - Name
-  - Official name of the treatment plant, or a working or descriptive name for a proposed plant
-    that has no official name yet.
+  - Official name of the treatment plant, or a working name for a proposed plant.
   - string254
   - Required
   - –
@@ -101,50 +122,37 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - Language
   - Required
   - –
-* - `nameTextInternational`
-  - English name
-  - Existing English version of the name, if available. No translation is required.
-  - string254
+* - `beginLifespanVersion`
+  - Version start
+  - Date on which this version of the treatment plant was inserted or changed.
+  - date
   - Optional
   - –
-* - `locationStatus`
-  - Location status
-  - Whether the location is the selected site, a provisional one, or
-    not yet known.
-  - LocationStatus
-  - Required
-  - {ref}`sp-cl-location`
-* - `latitude`
-  - Latitude
-  - Latitude of the location in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
-    (EPSG:4326), with at least four decimal places.
-  - NumberDecimalExtendedType
+* - `endLifespanVersion`
+  - Version end
+  - Date on which the treatment plant was retired.
+  - date
   - Conditional
-  - Required unless
-    `locationStatus` =
-    `notYetKnown`
-* - `longitude`
-  - Longitude
-  - Longitude of the location, as for `latitude`.
-  - NumberDecimalExtendedType
+  - Required with
+    `deletion`; otherwise
+    empty
+* - `predecessorsIdentifier`
+  - Predecessors
+  - Codes of the treatment plants this one replaces, given once, in the delivery in which the change
+    happens. Several codes are separated by commas.
+  - wiseIdentifier [0..n]
   - Conditional
-  - Required unless
-    `locationStatus` =
-    `notYetKnown`
-* - `conditionOfFacility`
-  - Condition of facility
-  - Physical state of the plant: projected, under construction, in use, or no
-    longer in use.
-  - ConditionOfFacility
-  - Required
-  - {ref}`sp-cl-condition`
-* - `euRegistryFacilityId`
-  - EU Registry facility identifier
-  - Identifier of the same installation in the EU Registry of industrial
-    facilities, where it is registered there.
-  - string254
-  - Optional
-  - –
+  - Required with
+    `aggregation` and
+    `splitting`
+* - `predecessorsIdentifierScheme`
+  - Predecessors scheme
+  - Scheme of `predecessorsIdentifier`. Always `euUWWTPCode` ({ref}`sp-cl-scheme`).
+  - IdentifierScheme
+  - Conditional
+  - Required if
+    `predecessorsIdentifier`
+    is given
 * - `wiseEvolutionType`
   - Evolution type
   - What is being reported: no change, a new object, a change, a merger, a split or a
@@ -152,14 +160,30 @@ merger, a split or a retirement. A new plant that replaces earlier plants lists 
   - WiseEvolutionType
   - Required
   - {ref}`sp-cl-evolution`
-* - `supersedesIdentifier`
-  - Supersedes
-  - Codes of the treatment plants this one replaces, given once, in the delivery in which the change
-    happens. They are codes of the same scheme, `euUWWTPCode`. Several codes are separated by
-    commas.
-  - wiseIdentifier [0..n]
+* - `designationPeriodBegin`
+  - Designation start
+  - Date from which the treatment plant is in the scope of the Directive.
+  - date
+  - Required
+  - –
+* - `designationPeriodEnd`
+  - Designation end
+  - Date on which the treatment plant left the scope of the Directive.
+  - date
   - Conditional
-  - Required with
-    `aggregation` and
-    `splitting`
+  - Required when the
+    treatment plant leaves the
+    scope of the Directive
+* - `conditionOfFacility`
+  - Condition
+  - Physical state of the plant: proposed, under construction, in use, disused or decommissioned.
+  - ConditionOfFacility
+  - Required
+  - {ref}`sp-cl-condition`
+* - `uwwCapacity`
+  - Capacity
+  - Organic design capacity of the treatment plant, in population equivalent (p.e.).
+  - integer
+  - Required
+  - –
 :::

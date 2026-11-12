@@ -224,7 +224,7 @@ to derive the checks from the legal conditions:
 * Does the cultural heritage maximum of 8 years run from 31 December 2035, or from a deadline
   already extended under Article 3(2) or 6(3)?
 * Does Article 6(4) belong in the Article 23 dataflow, or should the studies be provided to the
-  Commission another way?
+  Commission another way? At which level should it be reported ({ref}`art23-oi-less-sensitive`)?
 * What content is expected in the linked plans and justifications?
 
 (art23-oi-risk)=
@@ -300,10 +300,16 @@ dealt with in that dataflow ({ref}`sp-location`).
 ## OI-22 Measure-first model
 
 **Baseline.** Investment, funding and measure fields are spread over the UWWTP, Agglomeration and
-OtherInvestment tables. It is hard to rebuild the total investment from them, or to report several
-measures, dates or funds for one plant.
+OtherInvestment tables. OtherInvestment holds only the investments not attributed to a single plant
+or agglomeration, and the total investment is the sum of the three tables. That sum is right only if
+nothing is reported in two tables, which the draft leaves to an instruction. A plant or
+agglomeration has one start and one completion date, one EU fund and one loan, so several
+measures, dates or funds for one object cannot be told apart.
 
-**Proposal.** Start from measures, as the Directive and the Water Framework Directive do: a
+**Proposal.** Report each investment as a measure, as the Water Framework Directive does in its
+programme of measures. Article 23(1) itself speaks of investments, not measures; the Directive
+uses "measures" in Article 18(2) and (3), whose summary of measures goes both into the river basin
+management plans and into the programme. The proposal is a
 Measure table with one row per measure, listing the plants or agglomerations it concerns in a
 multi-valued field as the Water Framework Directive lists river basin districts, and a
 MeasureFinancing table giving its sources of financing
@@ -312,8 +318,7 @@ MeasureFinancing table giving its sources of financing
 **Questions.**
 
 * Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
-  the references to Article 23(1)(b) to (d)? The names should be checked against the text of
-  Article 23(1).
+  the references to Article 23(1)(b) to (d), which speak of investments?
 * Is `costStatus` = `unknown`, with an empty `investmentCost`, accepted as an exception with a
   warning (OI-08), or should an indicative estimate always be required?
 * Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
@@ -383,3 +388,38 @@ euro area Member States, and of national currency by the others, with the curren
 `millionUnitsOfNationalCurrency`. The draft reports all amounts in million EUR.
 
 **Question.** Which exchange rate and date are used when amounts are converted for comparison?
+
+(art23-oi-less-sensitive)=
+## OI-28 Less sensitive areas and less stringent treatment
+
+**Baseline.** The draft has a Required yes/no on Article 6(4) less stringent treatment, with one
+study link. Less sensitive areas are not reported.
+
+**Gap.** Two provisions allow treatment less stringent than secondary treatment, and both are
+worded as discharges into particular waters:
+
+* Article 6(2): for agglomerations discharging into less sensitive areas under Article 6(1) of
+  Directive 91/271/EEC on 1 January 2025, secondary treatment applies from 31 December 2037.
+  Under Article 32(5), Article 6 of Directive 91/271/EEC continues to apply to them until
+  30 December 2037. Compliance checking needs to know which discharges this concerns. The
+  proposal does not cover it.
+* Article 6(4): discharges into high mountain waters, certain deep marine waters or in cold
+  climates may have less stringent treatment until 31 December 2045. The proposal lists the
+  agglomerations concerned in {ref}`art23-lessstringenttreatment`.
+
+An agglomeration can discharge into several receiving waters, of which only some are less
+sensitive or qualify under Article 6(4), so a list of agglomerations cannot always say which
+discharges are concerned.
+
+**Alternative proposal (ETC).** Report less sensitive areas and less stringent treatment at the
+level of the discharge point, in the {ref}`sp-dischargepoint` table reported under Article 22, and
+keep at most a flag in the Article 23 dataflow, or none.
+
+**Questions.**
+
+* At which level does the Commission need this information for compliance checking: area,
+  discharge point or agglomeration?
+* Are less sensitive areas still reported as spatial areas, or only through the discharge points
+  that discharge into them?
+* If discharge points are used, are the Article 6(4) studies still referenced from the Article 23
+  dataflow?

@@ -77,7 +77,7 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - Currency
 * - `M001`
   - `ongoing`
-  - 2028
+  - 2027
   - 2033
   - `known`
   - 18.0
@@ -136,7 +136,7 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - expectedCapacity
 * - `UWWTP0007`
   - `nonCompliant`
-  - 210 000
+  - 205 000
   - 240 000
 :::
 
@@ -799,8 +799,8 @@ reports one national measure, with no plants or agglomerations listed.
   - Result
   - What went wrong
 * - Add up `investmentCost` after joining the measures to their plants and agglomerations
-  - 726.4
-  - Example 3 is counted three times and example 5 twice
+  - 866.4
+  - Example 1 is counted twice, and examples 3 and 5 three times
 * - Add up the costs and the financing amounts together
   - 1 212.8
   - Financing describes the same money as the cost

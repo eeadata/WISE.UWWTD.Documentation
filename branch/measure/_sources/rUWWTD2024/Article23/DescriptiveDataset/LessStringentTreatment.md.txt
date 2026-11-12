@@ -64,4 +64,7 @@ In {numref}`Article23_LessStringentTreatment_ClassDiagram`, `[1]` marks the Requ
 :::
 
 The draft had a Required yes/no for the whole Member State and one link to a study. Listing the
-agglomerations makes it possible to see which discharges are concerned and on which ground.
+agglomerations makes it possible to see which discharges are concerned and on which ground. An
+agglomeration that discharges into several waters, of which only some qualify, cannot be described
+fully this way; reporting at the level of the discharge point is an alternative
+({ref}`art23-oi-less-sensitive`).

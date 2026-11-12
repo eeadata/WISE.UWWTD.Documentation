@@ -97,7 +97,9 @@ Optional ones ({ref}`art23-requirement-status`).
   measures in {ref}`art23-measure`, each with its own type, dates and cost, and link both to the
   agglomeration. Use `expectedLoadCollected` and `expectedLoadIndividualSystems` to show the
   expected split of the load.
-* **Treatment plant measures.** Link them to the plant, not to the agglomeration it serves.
+* **Treatment plant measures.** List the plant in `euUWWTPCode` and the agglomerations it serves
+  in `euAgglomerationCode`, so that the investment can be found for each agglomeration
+  ({ref}`art23-each-agglomeration`).
 
 ## Related open issues
 

@@ -601,7 +601,7 @@ treatment is not a deadline extension, and Article 23(1)(e) names only Articles 
 <li><p>Does the cultural heritage maximum of 8 years run from 31 December 2035, or from a deadline
 already extended under Article 3(2) or 6(3)?</p></li>
 <li><p>Does Article 6(4) belong in the Article 23 dataflow, or should the studies be provided to the
-Commission another way?</p></li>
+Commission another way? At which level should it be reported (<a class="reference internal" href="#art23-oi-less-sensitive"><span class="std std-ref">OI-28 Less sensitive areas and less stringent treatment</span></a>)?</p></li>
 <li><p>What content is expected in the linked plans and justifications?</p></li>
 </ul>
 </section>
@@ -669,9 +669,15 @@ dealt with in that dataflow (<a class="reference internal" href="../SpatialPoint
 <section id="art23-oi-measure-model">
 <span id="oi-22-measure-first-model"></span><h2>OI-22 Measure-first model<a class="headerlink" href="#art23-oi-measure-model" title="Link to this heading">#</a></h2>
 <p><strong>Baseline.</strong> Investment, funding and measure fields are spread over the UWWTP, Agglomeration and
-OtherInvestment tables. It is hard to rebuild the total investment from them, or to report several
-measures, dates or funds for one plant.</p>
-<p><strong>Proposal.</strong> Start from measures, as the Directive and the Water Framework Directive do: a
+OtherInvestment tables. OtherInvestment holds only the investments not attributed to a single plant
+or agglomeration, and the total investment is the sum of the three tables. That sum is right only if
+nothing is reported in two tables, which the draft leaves to an instruction. A plant or
+agglomeration has one start and one completion date, one EU fund and one loan, so several
+measures, dates or funds for one object cannot be told apart.</p>
+<p><strong>Proposal.</strong> Report each investment as a measure, as the Water Framework Directive does in its
+programme of measures. Article 23(1) itself speaks of investments, not measures; the Directive
+uses “measures” in Article 18(2) and (3), whose summary of measures goes both into the river basin
+management plans and into the programme. The proposal is a
 Measure table with one row per measure, listing the plants or agglomerations it concerns in a
 multi-valued field as the Water Framework Directive lists river basin districts, and a
 MeasureFinancing table giving its sources of financing
@@ -679,8 +685,7 @@ MeasureFinancing table giving its sources of financing
 <p><strong>Questions.</strong></p>
 <ul class="simple">
 <li><p>Terminology: should the tables and guidance use “measure” and “cost of measure”, while keeping
-the references to Article 23(1)(b) to (d)? The names should be checked against the text of
-Article 23(1).</p></li>
+the references to Article 23(1)(b) to (d), which speak of investments?</p></li>
 <li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, accepted as an exception with a
 warning (OI-08), or should an indicative estimate always be required?</p></li>
 <li><p>Are <code class="docutils literal notranslate"><span class="pre">secured</span></code>, <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code>, <code class="docutils literal notranslate"><span class="pre">planned</span></code> and <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> the funding statuses the Commission
@@ -743,6 +748,38 @@ example one reported under Article 22? The spatial points dataflow has no such l
 euro area Member States, and of national currency by the others, with the currency code in
 <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code>. The draft reports all amounts in million EUR.</p>
 <p><strong>Question.</strong> Which exchange rate and date are used when amounts are converted for comparison?</p>
+</section>
+<section id="art23-oi-less-sensitive">
+<span id="oi-28-less-sensitive-areas-and-less-stringent-treatment"></span><h2>OI-28 Less sensitive areas and less stringent treatment<a class="headerlink" href="#art23-oi-less-sensitive" title="Link to this heading">#</a></h2>
+<p><strong>Baseline.</strong> The draft has a Required yes/no on Article 6(4) less stringent treatment, with one
+study link. Less sensitive areas are not reported.</p>
+<p><strong>Gap.</strong> Two provisions allow treatment less stringent than secondary treatment, and both are
+worded as discharges into particular waters:</p>
+<ul class="simple">
+<li><p>Article 6(2): for agglomerations discharging into less sensitive areas under Article 6(1) of
+Directive 91/271/EEC on 1 January 2025, secondary treatment applies from 31 December 2037.
+Under Article 32(5), Article 6 of Directive 91/271/EEC continues to apply to them until
+30 December 2037. Compliance checking needs to know which discharges this concerns. The
+proposal does not cover it.</p></li>
+<li><p>Article 6(4): discharges into high mountain waters, certain deep marine waters or in cold
+climates may have less stringent treatment until 31 December 2045. The proposal lists the
+agglomerations concerned in <a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html#art23-lessstringenttreatment"><span class="std std-ref">LessStringentTreatment</span></a>.</p></li>
+</ul>
+<p>An agglomeration can discharge into several receiving waters, of which only some are less
+sensitive or qualify under Article 6(4), so a list of agglomerations cannot always say which
+discharges are concerned.</p>
+<p><strong>Alternative proposal (ETC).</strong> Report less sensitive areas and less stringent treatment at the
+level of the discharge point, in the <a class="reference internal" href="../SpatialPoints/DischargePoint.html#sp-dischargepoint"><span class="std std-ref">DischargePoint</span></a> table reported under Article 22, and
+keep at most a flag in the Article 23 dataflow, or none.</p>
+<p><strong>Questions.</strong></p>
+<ul class="simple">
+<li><p>At which level does the Commission need this information for compliance checking: area,
+discharge point or agglomeration?</p></li>
+<li><p>Are less sensitive areas still reported as spatial areas, or only through the discharge points
+that discharge into them?</p></li>
+<li><p>If discharge points are used, are the Article 6(4) studies still referenced from the Article 23
+dataflow?</p></li>
+</ul>
 </section>
 </section>
 
@@ -820,6 +857,7 @@ euro area Member States, and of national currency by the others, with the curren
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-oi-wfd">OI-25 Reporting measures once</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-oi-listed-objects">OI-26 Plants and agglomerations in the state tables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-oi-currency">OI-27 Currency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-oi-less-sensitive">OI-28 Less sensitive areas and less stringent treatment</a></li>
 </ul>
   </nav></div>
 

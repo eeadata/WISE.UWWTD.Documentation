@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reporting measures and costs &#8212; WISE.UWWTD.Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTable.css?v=ed6b5e55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/customTheme.css?v=562b8974" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = "pre.mermaid {\n    /* Same as .mermaid-container > pre */\n    display: block;\n    width: 100%;\n}\n\npre.mermaid > svg {\n    /* Same as .mermaid-container > pre > svg */\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}";
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = ".mermaid-container {\n    position: relative;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n\n.mermaid-container > pre {\n    display: block;\n    width: 100%;\n}\n\n.mermaid-container > pre > svg {\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}\n\n.mermaid-fullscreen-btn {\n    position: absolute;\n    width: 28px;\n    height: 28px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.3);\n    border-radius: 4px;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: all 0.2s;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n    font-size: 14px;\n    line-height: 1;\n    padding: 0;\n    color: #333;\n}\n\n.mermaid-fullscreen-btn:hover {\n    opacity: 100% !important;\n    background: rgba(255, 255, 255, 1);\n    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-btn.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.3);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-btn.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal {\n    display: none;\n    position: fixed !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 95vw;\n    height: 100vh;\n    background: rgba(255, 255, 255, 0.98);\n    z-index: 9999;\n    padding: 20px;\n    overflow: auto;\n}\n\n.mermaid-fullscreen-modal.dark-theme {\n    background: rgba(0, 0, 0, 0.98);\n}\n\n.mermaid-fullscreen-modal.active {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen {\n    position: relative;\n    width: 95vw;\n    height: 90vh;\n    max-width: 95vw;\n    max-height: 90vh;\n    background: white;\n    border-radius: 8px;\n    padding: 20px;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);\n    overflow: auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen.dark-theme {\n    background: #1a1a1a;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);\n}\n\n.mermaid-container-fullscreen pre.mermaid {\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen .mermaid svg {\n    height: 100% !important;\n    width: 100% !important;\n    cursor: grab;\n}\n\n.mermaid-fullscreen-close {\n    position: fixed !important;\n    top: 20px !important;\n    right: 20px !important;\n    width: 40px;\n    height: 40px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 50%;\n    cursor: pointer;\n    z-index: 10000;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\n    transition: all 0.2s;\n    font-size: 24px;\n    line-height: 1;\n    color: #333;\n}\n\n.mermaid-fullscreen-close:hover {\n    background: white;\n    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-close.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.2);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-close.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal .mermaid-fullscreen-btn {\n    display: none !important;\n}";
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+let _lazyObserver = null;
+let _renderQueue = Promise.resolve();
+let closeModal = () => {};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Apply d3 zoom to each SVG. Idempotent: an SVG already wrapped is skipped,
+// so this is safe to call both for the initial batch and for diagrams that
+// render lazily once they become visible.
+const addZoomToSvgs = (svgs) => {
+    svgs.each(function() {
+        if (this.getAttribute('data-zoom-applied') === 'true') return;
+        var svg = d3.select(this);
+        svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+        var inner = svg.select("g");
+        var zoom = d3.zoom().on("zoom", function(event) {
+            inner.attr("transform", event.transform);
+        });
+        svg.call(zoom);
+        this.setAttribute('data-zoom-applied', 'true');
+    });
+};
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        // Disconnect any previous lazy rendering observer
+        if (_lazyObserver) {
+            _lazyObserver.disconnect();
+            _lazyObserver = null;
+        }
+
+        all_mermaids.forEach((el) => {
+            el.removeAttribute('data-mermaid-deferred');
+            el.removeAttribute('data-mermaid-render-failed');
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+
+        // Separate visible and hidden elements. Mermaid's layout engine measures
+        // text dimensions via the DOM, which fails for elements hidden by a parent
+        // (e.g., Reveal.js non-active slides, sphinx-design unopened tabs),
+        // producing broken SVGs. Render visible elements now, defer hidden ones.
+        const visible = [];
+        const hidden = [];
+        all_mermaids.forEach((el) => {
+            // offsetParent is null for display:none ancestors.
+            // getClientRects().length > 0 catches position:fixed elements
+            // (which also have null offsetParent but are still visible).
+            if (el.offsetParent !== null || el.getClientRects().length > 0) {
+                visible.push(el);
+            } else {
+                hidden.push(el);
+                el.setAttribute('data-mermaid-deferred', 'true');
+            }
+        });
+
+        if (visible.length > 0) {
+            try {
+                await mermaid.run({ nodes: visible });
+            } catch (e) {
+                console.error("Mermaid rendering failed:", e);
+            }
+        }
+
+        // Lazily render hidden elements when they become visible.
+        // Uses a promise chain (_renderQueue) to serialize rendering,
+        // since IntersectionObserver may report multiple entries at once
+        // and mermaid.run() is not safe to call concurrently.
+        if (hidden.length > 0) {
+            if (typeof IntersectionObserver === 'undefined') {
+                console.warn("IntersectionObserver not available; hidden mermaid diagrams will not render.");
+            } else {
+                _renderQueue = Promise.resolve();
+                _lazyObserver = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting && entry.target.getAttribute("data-processed") !== "true") {
+                            _lazyObserver.unobserve(entry.target);
+                            const el = entry.target;
+                            _renderQueue = _renderQueue.then(async () => {
+                                try {
+                                    await mermaid.run({ nodes: [el] });
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    // Apply zoom to the now-rendered diagram, matching
+                                    // the decoration visible diagrams receive.
+                                    if (false) {
+                                        addZoomToSvgs(d3.selectAll("").select(function() {
+                                            return this.querySelector("svg");
+                                        }));
+                                    }
+                                } catch (e) {
+                                    console.error("Mermaid deferred rendering failed:", e);
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    el.setAttribute('data-mermaid-render-failed', 'true');
+                                }
+                            });
+                        }
+                    }
+                });
+                hidden.forEach((el) => _lazyObserver.observe(el));
+            }
+        }
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    // Exclude deferred (hidden) and render-failed elements from completion checks
+    const mermaids_active = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])");
+    const mermaids_processed = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])[data-processed='true']");
+
+    if (false) {
+        const mermaids_to_add_zoom = 0 === -1 ? mermaids_active.length : 0;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("").select(function() {
+                return this.querySelector("svg");
+            });
+            // Wait until every active (visible) diagram has rendered. Deferred
+            // diagrams are excluded, so a fixed d3_node_count that counts a
+            // hidden diagram no longer loops forever waiting for its SVG.
+            if(mermaids_active.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            }
+            addZoomToSvgs(svgs);
+        }
+    } else if(mermaids_active.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if (!true) return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = "\u26f6";
+        fullscreenBtn.style.opacity = "50%";
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scrollX, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+
+                if (false) {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+
+
+const load = async () => {
+    initStyles();
+
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...{"startOnLoad": false},
+                ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...{"startOnLoad": false},
+    ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rUWWTD2024/Article23/ReportingInvestments';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/js/mermaid-zoom.js?v=572d2af9"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples" href="Examples.html" />
+    <link rel="prev" title="Codelists" href="Codelists.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/wise.svg" class="logo__image only-light" alt="WISE UWWTD Documentation"/>
+    <img src="../../_static/wise.svg" class="logo__image only-dark pst-js-only" alt="WISE UWWTD Documentation"/>
+  
+  
+    <p class="title logo__title">Urban Waste Water Treatment Directive</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../UWWTD1991/index.html">
+    UWWTD - Directive 91/271/EEC
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    rUWWTD - Directive (EU) 2024/3019
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Article 23 - National implementation programmes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Purpose and scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Timing.html">Reporting timing and reference dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataModel.html">Data model overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TablesAndFields.html">Tables and fields</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="PrivateDataset/index.html">Private dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="PrivateDataset/Contact.html">Contact</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DescriptiveDataset/index.html">Descriptive dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MSSummary.html">MSSummary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/SelfAssessment.html">SelfAssessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Derogation.html">Derogation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html">CulturalHeritageExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html">LessStringentTreatment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Measure.html">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html">MeasureFinancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DescriptiveDataset/Agglomeration.html">Agglomeration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="DocumentsDataset/index.html">Documents dataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/dcMetadata.html">dcMetadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Reference.html">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DocumentsDataset/Document.html">Document</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Reporting measures and costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Open issues and proposed changes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SpatialPoints/index.html">Spatial points</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SpatialPoints/Agglomeration.html">Agglomeration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SpatialPoints/UWWTP.html">UWWTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SpatialPoints/DischargePoint.html">DischargePoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SpatialPoints/Codelists.html">Codelists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SpatialPoints/OpenIssues.html">Decisions and open issues</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">rUWWTD - Directive (EU) 2024/3019</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Article 23 - National implementation programmes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Reporting measures and costs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <aside class="draft-banner" role="note">Draft – under review &amp; revision</aside><section class="tex2jax_ignore mathjax_ignore" id="art23-investments">
+<span id="reporting-measures-and-costs"></span><h1>Reporting measures and costs<a class="headerlink" href="#art23-investments" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Draft
+This page describes the proposed measure-first model, which replaces the investment and funding
+fields of the UWWTP and Agglomeration tables and the OtherInvestment table
+(<a class="reference internal" href="OpenIssues.html#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>). Nothing here is decided.</p>
+</div>
+<section id="measures-first">
+<h2>Measures first<a class="headerlink" href="#measures-first" title="Link to this heading">#</a></h2>
+<p>The programme starts from measures. A measure is what the Member State plans to do to reach or
+maintain compliance, or to renew existing infrastructure. Each measure has a cost, and that cost
+is financed from one or more sources:</p>
+<ul class="simple">
+<li><p><strong>Measure</strong> (<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>): one row per measure, with its types, coverage, the plants or
+agglomerations it concerns (<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>), priority, status, dates and
+investment cost.</p></li>
+<li><p><strong>MeasureFinancing</strong> (<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>): where the money comes from, source by
+source, and how far each part is secured.</p></li>
+</ul>
+<p>The <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables keep only the state of each listed
+plant or agglomeration: status, expected load and capacity. This follows the structure of the Water
+Framework Directive 4th cycle, where a <code class="docutils literal notranslate"><span class="pre">Measure</span></code> table is the main table and costs are reported
+per measure.</p>
+<pre  class="mermaid">
+        flowchart LR
+  Measure[&quot;Measure&lt;br/&gt;types, plants or agglomerations,&lt;br/&gt;priority, dates, cost&quot;]
+  MeasureFinancing[&quot;MeasureFinancing&lt;br/&gt;source, status, amount&quot;]
+  UWWTP[&quot;UWWTP&lt;br/&gt;state of the plant&quot;]
+  Agglomeration[&quot;Agglomeration&lt;br/&gt;state of the agglomeration&quot;]
+  Spatial[&quot;Spatial points&lt;br/&gt;code, name, location&quot;]
+  MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
+  Measure -- &quot;euUWWTPCode, euAgglomerationCode&quot; --&gt; Spatial
+  UWWTP -- &quot;thematicIdIdentifier&quot; --&gt; Spatial
+  Agglomeration -- &quot;thematicIdIdentifier&quot; --&gt; Spatial
+    </pre></section>
+<section id="where-to-report-each-measure">
+<h2>Where to report each measure<a class="headerlink" href="#where-to-report-each-measure" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 52 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Measure</p></th>
+<th class="head"><p>Where to report it</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A measure at one or more identified treatment plants: a new plant, an upgrade to tertiary or
+quaternary treatment, stricter treatment following the risk assessment, energy neutrality,
+or renewal including capacity increase</p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, the plants’
+codes in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, and the codes of the agglomerations they serve in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>A measure in the collecting systems or individual systems of one or more identified
+agglomerations: new collecting systems, storm water overflow reduction, individual systems,
+measures resulting from an IUWMP, or renewal</p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, and the
+agglomerations’ codes in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Renewal for the whole Member State, such as the nationwide renewal of collecting systems</p></td>
+<td><p>A row in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> of a renewal type with <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code>, no
+objects listed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Contribution from producer responsibility organisations</p></td>
+<td><p>For a measure: a row in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code>. National total: <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> in
+<a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Investment plans justifying deadline extensions</p></td>
+<td><p><a class="reference internal" href="DescriptiveDataset/Derogation.html#art23-derogation"><span class="std std-ref">Derogation</span></a>: links to the documents. The measures themselves are reported in
+<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Renewal of compliant infrastructure under Article 23(1)(c) is a measure like any other, with the
+measure type <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code> or <code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code>. It can list the
+plants or agglomerations, or be national.</p>
+</section>
+<section id="art23-each-agglomeration">
+<span id="investments-for-each-agglomeration"></span><h2>Investments for each agglomeration<a class="headerlink" href="#art23-each-agglomeration" title="Link to this heading">#</a></h2>
+<p>Article 23(1)(b) asks for “the identification and planning of investments required to implement
+this Directive for each agglomeration”. So that every such investment can be found from the
+agglomerations it concerns:</p>
+<ul class="simple">
+<li><p>every measure with listed objects names its agglomerations in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, including
+a measure at a treatment plant, which names the agglomerations the plant serves;</p></li>
+<li><p>national measures are only for renewal under Article 23(1)(c), which the Directive does not ask
+for per agglomeration.</p></li>
+</ul>
+<p>The cost of a measure is given once and is not divided between its agglomerations or plants. The
+Directive asks to identify the investments for each agglomeration, not to split their cost.</p>
+</section>
+<section id="cost">
+<h2>Cost<a class="headerlink" href="#cost" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Investment cost only.</strong> <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is capital expenditure. Operational and maintenance
+costs are not reported.</p></li>
+<li><p><strong>Give an indicative estimate.</strong> Article 23(1)(b) asks for an indicative financial estimation of
+the investments. A rough figure is enough, for example a typical cost per plant multiplied by the
+number of plants. Report it with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>.</p></li>
+<li><p><strong>Estimated or known.</strong> Use <code class="docutils literal notranslate"><span class="pre">estimated</span></code> for estimates and <code class="docutils literal notranslate"><span class="pre">known</span></code> for costs from a project,
+tender or contract.</p></li>
+<li><p><strong>Unknown is an exception.</strong> Where not even a rough estimate can be given yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>
+to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> empty. The measure is accepted but raises a warning
+(check R16), since it gives no financial estimation, and the cost should be estimated in the
+next update.</p></li>
+<li><p><strong>Several types, one cost.</strong> A measure with several types has one cost, which is not split
+between the types. Totals per type are therefore only exact for measures with one type; for the
+others, count the measures that include a type rather than adding up their costs.</p></li>
+<li><p><strong>Each cost once.</strong> A cost belongs to one measure. Do not add the cost of a plant to the
+agglomeration it serves, or the reverse. The total investment of the programme is the sum of
+<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> over all measures.</p></li>
+</ul>
+</section>
+<section id="financing">
+<h2>Financing<a class="headerlink" href="#financing" title="Link to this heading">#</a></h2>
+<p>Each row of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> gives one source of financing for a measure, with its
+status and amount:</p>
+<ul class="simple">
+<li><p><strong>Several sources.</strong> Each source, and each EU fund, is its own row with its own amount, so it is
+clear how much is expected from which fund.</p></li>
+<li><p><strong>Secured or not.</strong> <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> says whether the money is secured, applied for or only
+planned, or whether no source has been identified.</p></li>
+<li><p><strong>The gap.</strong> The financing gap of a measure is calculated, not reported: <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> minus
+the sum of the amounts with <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">secured</span></code>.</p></li>
+<li><p><strong>Funding is not an investment.</strong> Financing amounts describe how a measure’s cost is covered.
+They are not added to the total investment.</p></li>
+</ul>
+</section>
+<section id="currency">
+<h2>Currency<a class="headerlink" href="#currency" title="Link to this heading">#</a></h2>
+<p>As in the Water Framework Directive, amounts are reported in millions: of euro by euro area
+Member States, and of national currency by the others. <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> gives the
+currency once per measure, and applies to <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> and to the financing amounts of that
+measure. A value below one million uses decimals with a full stop: 10 000 is <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p>
+</section>
+<section id="art23-measures-wfd">
+<span id="reported-once"></span><h2>Reported once<a class="headerlink" href="#art23-measures-wfd" title="Link to this heading">#</a></h2>
+<p>Measures for urban wastewater treatment plants and collecting systems are intended to be reported
+once, in this dataflow. Reporters would then no longer report them again in the programme of
+measures under the Water Framework Directive. Each measure type corresponds to a WFD key type of
+measure and main pressure, derived centrally, so that these measures can still be used in
+assessments under that Directive (<a class="reference internal" href="Codelists.html#art23-cl-measure-type-wfd"><span class="std std-ref">Correspondence with the Water Framework Directive</span></a>). This depends on agreement
+with the Water Framework Directive reporting (<a class="reference internal" href="OpenIssues.html#art23-oi-wfd"><span class="std std-ref">OI-25 Reporting measures once</span></a>).</p>
+</section>
+<section id="prioritisation">
+<h2>Prioritisation<a class="headerlink" href="#prioritisation" title="Link to this heading">#</a></h2>
+<p>Article 23(1)(b) requires a prioritisation of investments related to:</p>
+<ul class="simple">
+<li><p>the size of the agglomeration; and</p></li>
+<li><p>the level of environmental impact of discharges of untreated urban wastewater and the related
+risks for the environment or human health.</p></li>
+</ul>
+<p>The Directive does not link priority to the timing of completion. In the proposed model each
+measure has its own <code class="docutils literal notranslate"><span class="pre">prioritisation</span></code>, High, Medium or Low, and <code class="docutils literal notranslate"><span class="pre">prioritisationReference</span></code> in
+<a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a> points to the national prioritisation methodology.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The draft description adds that “‘High’ should be used for projects that are scheduled for
+earlier completion relative to others”. A proposal to remove this link is under consideration,
+because high-priority projects can be complex and take longer to complete
+(<a class="reference internal" href="OpenIssues.html#art23-oi-prioritisation"><span class="std std-ref">OI-05 Prioritisation</span></a>).</p>
+</div>
+</section>
+<section id="dates">
+<h2>Dates<a class="headerlink" href="#dates" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Each measure has its own <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code>, a range of years from the start of the works
+to completion, for example <code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code>. The completion year is always given; the start year
+may be left open, as in <code class="docutils literal notranslate"><span class="pre">[,2036]</span></code>. For a measure at a treatment plant, the completion year is the
+year of expected compliance.</p></li>
+<li><p>If the plants or agglomerations under one measure finish in different years, split the measure
+(<a class="reference internal" href="OpenIssues.html#art23-oi-measure-granularity"><span class="std std-ref">OI-23 Types and completion year of a measure</span></a>).</p></li>
+<li><p>Whether the first programme should cover measures to 2045 or a shorter horizon is open
+(<a class="reference internal" href="OpenIssues.html#art23-oi-reference-dates"><span class="std std-ref">OI-04 Reference date and investment horizon of the first programme</span></a>).</p></li>
+</ul>
+</section>
+<section id="projected-loads-and-capacity">
+<h2>Projected loads and capacity<a class="headerlink" href="#projected-loads-and-capacity" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> in <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> is the planned load entering the plant at the expected date
+of compliance. <code class="docutils literal notranslate"><span class="pre">expectedCapacity</span></code> is the planned organic design capacity in p.e. Hydraulic
+capacity is not requested.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expectedLoad</span></code> in <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> is the expected generated load of the
+agglomeration at the expected date of compliance. <code class="docutils literal notranslate"><span class="pre">expectedLoadCollected</span></code> and
+<code class="docutils literal notranslate"><span class="pre">expectedLoadIndividualSystems</span></code> give the expected percentages collected and addressed through
+individual systems.</p></li>
+</ul>
+<p>Articles 3(3) and 6(5) set out how the load of an agglomeration and the load entering a plant are
+calculated: from the maximum average weekly load during the year, excluding unusual weather
+situations. The draft does not say whether projected loads should be estimated on the same basis
+(<a class="reference internal" href="OpenIssues.html#art23-oi-loads"><span class="std std-ref">OI-12 Projected loads and capacity</span></a>).</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="Examples.html#art23-examples"><span class="std std-ref">Examples</span></a> works through six situations raised in the consultation, from filling in
+the tables to adding the money back up: several measures at one plant, a collecting system and
+individual systems in one agglomeration, several funds for one project, a cost not yet known, part
+of the money still to be found, and a national renewal programme.</p>
+</section>
+<section id="from-the-draft-fields-to-the-measure-model">
+<h2>From the draft fields to the measure model<a class="headerlink" href="#from-the-draft-fields-to-the-measure-model" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 53 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Draft fields</p></th>
+<th class="head"><p>In the measure model</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">treatmentPlantMeasure</span></code>, <code class="docutils literal notranslate"><span class="pre">agglomerationMeasure</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, one or more types per measure, as in the draft</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">measureText</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> of plants and agglomerations</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">prioritisation</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code></p></td>
+<td><p>Lower bound of <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>, <code class="docutils literal notranslate"><span class="pre">completionDate</span></code></p></td>
+<td><p>Upper bound of <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">investment</span></code> of plants and agglomerations</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code></p></td>
+<td><p>A <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> and
+<code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">otherPublicFund</span></code>, <code class="docutils literal notranslate"><span class="pre">otherPublicFundSpecification</span></code></p></td>
+<td><p>A <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">nationalFederal</span></code>, <code class="docutils literal notranslate"><span class="pre">regional</span></code>,
+<code class="docutils literal notranslate"><span class="pre">municipal</span></code> or <code class="docutils literal notranslate"><span class="pre">otherPublicFunds</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">loan</span></code>, <code class="docutils literal notranslate"><span class="pre">loanName</span></code></p></td>
+<td><p>A <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">loan</span></code>, and <code class="docutils literal notranslate"><span class="pre">loanName</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityFund</span></code></p></td>
+<td><p>A <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>OtherInvestment: <code class="docutils literal notranslate"><span class="pre">collectingSystemNewInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantNewInvestment</span></code></p></td>
+<td><p>Measures with a new-infrastructure measure type, which list their agglomerations</p></td>
+</tr>
+<tr class="row-odd"><td><p>OtherInvestment: <code class="docutils literal notranslate"><span class="pre">collectingSystemRenewalInvestment</span></code>, <code class="docutils literal notranslate"><span class="pre">treatmentPlantRenewalInvestment</span></code></p></td>
+<td><p>Measures of type <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code> or <code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code>, usually
+<code class="docutils literal notranslate"><span class="pre">national</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>OtherInvestment: <code class="docutils literal notranslate"><span class="pre">startYear</span></code>, <code class="docutils literal notranslate"><span class="pre">endYear</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of each measure</p></td>
+</tr>
+<tr class="row-odd"><td><p>All amounts in million EUR</p></td>
+<td><p>Millions of national currency, with <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="art23-quality-checks">
+<span id="quality-checks"></span><h2>Quality checks<a class="headerlink" href="#art23-quality-checks" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 54 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 22.0%" />
+<col style="width: 54.0%" />
+<col style="width: 14.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Table</p></th>
+<th class="head"><p>Check</p></th>
+<th class="head"><p>Severity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TU01</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code> is unique</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-odd"><td><p>TU02</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p>The combination of <code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> and <code class="docutils literal notranslate"><span class="pre">loanName</span></code> is
+unique</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-even"><td><p>RF01</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code> exists in Measure</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-odd"><td><p>RF02</p></td>
+<td><p>Measure</p></td>
+<td><p>Each code in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> is an accepted treatment plant, and each code in
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> an accepted agglomeration, of the reporting country in the spatial points
+dataflow; a retired code raises a warning (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>)</p></td>
+<td><p>Blocker</p></td>
+</tr>
+<tr class="row-even"><td><p>RF03</p></td>
+<td><p>Measure</p></td>
+<td><p>Each plant or agglomeration listed in a measure has a row in UWWTP or Agglomeration</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R01</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> lists at least one code in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and
+also in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> if the measure types concern treatment plants; <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> is empty for
+agglomeration measures</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R02</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> lists no codes</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R03</p></td>
+<td><p>Measure</p></td>
+<td><p>All the types of a measure concern the same kind of object, treatment plants or agglomerations;
+<code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> may be combined with either</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R04</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> is empty</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R05</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> including <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> requires <code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R06</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> is given</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R07</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p>The sum of the amounts of a measure does not exceed its <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code></p></td>
+<td><p>Warning</p></td>
+</tr>
+<tr class="row-even"><td><p>R08</p></td>
+<td><p>Measure</p></td>
+<td><p>The bounds of <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> are between 2027 and 2045</p></td>
+<td><p>Warning</p></td>
+</tr>
+<tr class="row-odd"><td><p>R10</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> requires <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R11</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">loanName</span></code> is given only with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">loan</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R12</p></td>
+<td><p>Measure, MSSummary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> is given wherever an amount is, and is <code class="docutils literal notranslate"><span class="pre">EUR</span></code> for euro area
+Member States</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R13</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">national</span></code> only for the renewal types <code class="docutils literal notranslate"><span class="pre">renewOrReplaceCollectingSystem</span></code>
+and <code class="docutils literal notranslate"><span class="pre">renewOrReplaceTreatmentPlant</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R15</p></td>
+<td><p>MSSummary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code> is given if and only if
+<code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> is not <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code></p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R16</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>: the measure gives no indicative financial estimation for
+Article 23(1)(b) or (c)</p></td>
+<td><p>Warning</p></td>
+</tr>
+<tr class="row-odd"><td><p>R17</p></td>
+<td><p>Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> has an upper bound, the completion year</p></td>
+<td><p>Error</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Codelists.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Codelists</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Examples.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-first">Measures first</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-report-each-measure">Where to report each measure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-each-agglomeration">Investments for each agglomeration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cost">Cost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financing">Financing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currency">Currency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-measures-wfd">Reported once</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prioritisation">Prioritisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-loads-and-capacity">Projected loads and capacity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-draft-fields-to-the-measure-model">From the draft fields to the measure model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-quality-checks">Quality checks</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/edit/main/docs/rUWWTD2024/Article23/ReportingInvestments.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/rUWWTD2024/Article23/ReportingInvestments.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.2.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.24.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

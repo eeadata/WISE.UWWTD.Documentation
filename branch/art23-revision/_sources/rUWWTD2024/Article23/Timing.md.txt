@@ -109,6 +109,40 @@ The share of plants or agglomerations that must meet the requirements by each da
 
 These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
 
+(art23-cycles)=
+## Cycles
+
+The programme is updated at least every six years (Article 23(3)). Its cycles are fixed six-year
+periods that coincide with the cycles of the Water Framework Directive, so that the capital
+expenditure of a measure can be compared with, or reused in, the programme of measures under that
+Directive. The third cycle ends with the final deadlines of the Directive in 2045.
+
+:::{list-table} Cycles of the programme and of the Water Framework Directive
+:header-rows: 1
+:widths: 22 22 26 30
+
+* - Programme
+  - Years
+  - Water Framework Directive
+  - Capital expenditure in the first programme
+* - 1st cycle
+  - 2028 to 2033
+  - 4th cycle
+  - `totalCapitalExpenditure1stCycle`
+* - 2nd cycle
+  - 2034 to 2039
+  - 5th cycle
+  - `totalCapitalExpenditureAfter1stCycle`
+* - 3rd cycle
+  - 2040 to 2045
+  - 6th cycle
+  - `totalCapitalExpenditureAfter1stCycle`
+:::
+
+As in the Water Framework Directive, the fields are named after the cycle of the programme, and
+the field names of later programmes follow the cycle they report on. Only capital expenditure is
+reported; the current expenditure of the Water Framework Directive has no equivalent here.
+
 ## Reference dates in the draft reporting format
 
 :::{list-table} Reference dates used in the draft tables
@@ -138,6 +172,10 @@ These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
 * - Expected years
   - Start of works, and completion or compliance, of each measure.
   - `implementationPeriod` in {ref}`art23-measure`
+* - 1st cycle, 2028 to 2033, and after it
+  - Split of the capital expenditure of each measure.
+  - `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle` in
+    {ref}`art23-measure`
 :::
 
 Which period the first programme should describe, and whether measures should cover the whole

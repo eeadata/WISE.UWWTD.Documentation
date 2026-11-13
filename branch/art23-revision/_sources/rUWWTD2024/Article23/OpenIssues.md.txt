@@ -70,6 +70,11 @@ and agglomeration status.
 collected for earlier reporting under Directive 91/271/EEC be reused? Should investment amounts
 cover the whole implementation period to 2045 or a shorter horizon?
 
+**Proposed answer.** Align with the Water Framework Directive cycles ({ref}`art23-cycles`).
+Capital expenditure is reported for the 1st cycle, 2028 to 2033, and in one amount for the period
+after it, to 2045, so that the whole investment to compliance is covered. Expenditure before 2028
+is not reported.
+
 (art23-oi-prioritisation)=
 ## OI-05 Prioritisation
 
@@ -119,7 +124,7 @@ reporting investments was also suggested.
 
 **Proposed answer.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
 estimate is reported as `costStatus` = `estimated`. In the measure model, `costStatus` =
-`unknown` with an empty `investmentCost` remains possible as an exception, where not even a rough
+`unknown` with empty expenditure fields remains possible as an exception, where not even a rough
 estimate can be given, but raises a warning (check R16). No minimum threshold applies
 ({ref}`art23-oi-measure-model`).
 
@@ -157,7 +162,7 @@ first programme, when the PROs may not yet be recognised.
 (art23-oi-costs)=
 ## OI-11 Nominal or annualised costs
 
-**Question.** Are amounts (`investmentCost`, the financing amounts and
+**Question.** Are amounts (the capital expenditure, the financing amounts and
 `producerResponsibilityContribution`) nominal or annualised? If annualised, which assumptions
 should be reported?
 
@@ -320,7 +325,7 @@ MeasureFinancing table giving its sources of financing
 
 * Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
   the references to Article 23(1)(b) to (d), which speak of investments?
-* Is `costStatus` = `unknown`, with an empty `investmentCost`, accepted as an exception with a
+* Is `costStatus` = `unknown`, with empty expenditure fields, accepted as an exception with a
   warning (OI-08), or should an indicative estimate always be required?
 * Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
   needs to assess progress?

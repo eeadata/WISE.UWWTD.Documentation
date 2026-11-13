@@ -108,8 +108,7 @@ plants and agglomerations with planned renewal investments must be listed indivi
 yet decided ({ref}`art23-oi-scope`).
 
 Either way, renewal is part of the programme under Article 23(1)(c). Measures that are not
-reported against listed plants or agglomerations are reported as national measures, or as
-measures for plants or agglomerations not yet identified. See {ref}`art23-investments`.
+reported against listed plants or agglomerations are reported as national measures. See {ref}`art23-investments`.
 
 ## Level of detail
 

@@ -175,8 +175,9 @@ to when new connections extend the area served by a plant?
 `expectedYearPerformance`). Where planning is uncertain, is an expected year enough for
 `completionDate` as well?
 
-**Proposed answer.** In the measure model, every measure has an `expectedCompletionYear` and an
-optional `expectedStartYear`, both years.
+**Proposed answer.** In the measure model, every measure has an `implementationPeriod`, a range
+of years as in the Water Framework Directive. The completion year is required and the start year
+may be left open.
 
 (art23-oi-measures)=
 ## OI-14 Measure codelists
@@ -258,7 +259,7 @@ documentation.
 programme's six years, individual years, or the period to 2045?
 
 **Proposed answer.** In the measure model, the OtherInvestment table is removed. Its amounts become
-national measures, or measures for plants or agglomerations not yet identified, each with its own
+national renewal measures, or measures for listed plants or agglomerations, each with its own
 years ({ref}`art23-oi-measure-model`).
 
 (art23-oi-confidentiality)=

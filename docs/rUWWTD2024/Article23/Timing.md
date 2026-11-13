@@ -137,7 +137,7 @@ These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
     `expectedLoadCollected`, `expectedLoadIndividualSystems`
 * - Expected years
   - Start of works, and completion or compliance, of each measure.
-  - `expectedStartYear`, `expectedCompletionYear` in {ref}`art23-measure`
+  - `implementationPeriod` in {ref}`art23-measure`
 :::
 
 Which period the first programme should describe, and whether measures should cover the whole

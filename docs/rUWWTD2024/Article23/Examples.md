@@ -66,26 +66,23 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M001`
   - `ongoing`
-  - 2027
-  - 2033
+  - `[2027,2033]`
   - `known`
   - 18.0
   - EUR
 * - `M002`
   - `planned`
-  - 2035
-  - 2040
+  - `[2035,2040]`
   - `estimated`
   - 22.0
   - EUR
@@ -168,10 +165,10 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - Measures listing `AGG0007` in `euAgglomerationCode`
 * - Investment completed by 2033
   - 18.0
-  - Measures with `expectedCompletionYear` up to 2033
+  - Measures whose `implementationPeriod` ends by 2033
 * - Investment starting from 2035
   - 22.0
-  - Measures with `expectedStartYear` from 2035
+  - Measures whose `implementationPeriod` starts from 2035
 * - Secured financing
   - 7.0
   - Financing rows with `fundingStatus` = `secured`
@@ -229,26 +226,23 @@ gives the expected split of the load between the two.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M003`
   - `planned`
-  - 2028
-  - 2031
+  - `[2028,2031]`
   - `known`
   - 5.6
   - EUR
 * - `M004`
   - `planned`
-  - 2029
-  - 2032
+  - `[2029,2032]`
   - `estimated`
   - 0.8
   - EUR
@@ -364,19 +358,17 @@ amount.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M005`
   - `planned`
-  - 2028
-  - 2033
+  - `[2028,2033]`
   - `known`
   - 10.0
   - EUR
@@ -456,8 +448,8 @@ would be very uncertain.
 
 **Filling it in.** The Member State knows that ten small coastal plants must remove nitrogen
 within the next ten years, but not yet which plants come first or what the work will cost. It
-reports one measure for plants not yet identified, gives their number, and says that the cost is
-unknown. There are no financing rows.
+reports one measure that lists the ten plants and the agglomerations they serve, and says that the
+cost is unknown. There are no financing rows.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -472,36 +464,36 @@ unknown. There are no financing rows.
 * - `M006`
   - Nitrogen removal at small coastal plants
   - `upgradeTertiaryNitrogen`
-  - `unlistedObjects`
-  - –
+  - `listedObjects`
+  - `UWWTP0601` to
+    `UWWTP0610`;
+    `AGG0601` to
+    `AGG0610`
   - `medium`
 :::
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M006`
   - `planned`
-  - –
-  - 2036
+  - `[,2036]`
   - `unknown`
   - –
   - –
 :::
 
-`numberOfObjects` is 10. Since the plants, and so their agglomerations, are not yet identified,
-the measure raises a warning (check R14): Article 23(1)(b) asks for the investments for each
-agglomeration, so the plants and agglomerations should be listed in the next update.
+The plants and agglomerations are listed even though the order of the work is not yet decided:
+Article 23(1)(b) asks for the investments for each agglomeration.
 
-The unknown cost raises a second warning (check R16): Article 23(1)(b) asks for an indicative
+The unknown cost raises a warning (check R16): Article 23(1)(b) asks for an indicative
 financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
 preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
 would report `costStatus` = `estimated` and an `investmentCost` of 15.0, and no R16 warning.
@@ -516,7 +508,7 @@ would report `costStatus` = `estimated` and an `investmentCost` of 15.0, and no 
   - Answer
   - How
 * - Planned measures without a cost
-  - 1 measure, about 10 plants
+  - 1 measure, 10 plants
   - Measures with `costStatus` = `unknown`
 * - Total investment
   - Not known for this measure
@@ -566,19 +558,17 @@ Cohesion Fund is pending, and the source of the rest is not yet identified.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M007`
   - `planned`
-  - 2030
-  - 2036
+  - `[2030,2036]`
   - `estimated`
   - 100.0
   - EUR
@@ -680,19 +670,17 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 12 14 18 14 14
+:widths: 12 16 22 18 16 16
 
 * - Code
   - Status
-  - Start
-  - Completion
+  - Period
   - Cost status
   - Cost
   - Currency
 * - `M008`
   - `ongoing`
-  - 2027
-  - 2035
+  - `[2027,2035]`
   - `estimated`
   - 450.0
   - EUR

@@ -59,11 +59,6 @@ flowchart LR
 * - Renewal for the whole Member State, such as the nationwide renewal of collecting systems
   - A row in {ref}`art23-measure` of a renewal type with `geographicalCoverage` = `national`, no
     objects listed
-* - A measure whose plants or agglomerations are not yet identified, for example new collecting
-    systems for agglomerations below 2 000 p.e. newly covered by the Directive
-  - A row in {ref}`art23-measure` with `geographicalCoverage` = `unlistedObjects`, and
-    `numberOfObjects` if known. This raises a warning: the agglomerations should be listed in the
-    next update
 * - Contribution from producer responsibility organisations
   - For a measure: a row in {ref}`art23-measurefinancing` with `fundingSource` =
     `producerResponsibilityOrganisation`. National total: `producerResponsibilityContribution` in
@@ -87,8 +82,7 @@ agglomerations it concerns:
 * every measure with listed objects names its agglomerations in `euAgglomerationCode`, including
   a measure at a treatment plant, which names the agglomerations the plant serves;
 * national measures are only for renewal under Article 23(1)(c), which the Directive does not ask
-  for per agglomeration;
-* measures whose agglomerations are not yet identified are allowed, but raise a warning.
+  for per agglomeration.
 
 The cost of a measure is given once and is not divided between its agglomerations or plants. The
 Directive asks to identify the investments for each agglomeration, not to split their cost.
@@ -165,8 +159,10 @@ because high-priority projects can be complex and take longer to complete
 
 ## Dates
 
-* Each measure has its own `expectedCompletionYear`, and optionally `expectedStartYear`. For a
-  measure at a treatment plant, the completion year is the year of expected compliance.
+* Each measure has its own `implementationPeriod`, a range of years from the start of the works
+  to completion, for example `[2028,2033]`. The completion year is always given; the start year
+  may be left open, as in `[,2036]`. For a measure at a treatment plant, the completion year is the
+  year of expected compliance.
 * If the plants or agglomerations under one measure finish in different years, split the measure
   ({ref}`art23-oi-measure-granularity`).
 * Whether the first programme should cover measures to 2045 or a shorter horizon is open
@@ -209,9 +205,9 @@ of the money still to be found, and a national renewal programme.
 * - `prioritisation` of plants and agglomerations
   - `prioritisation` in {ref}`art23-measure`
 * - `expectedYearStartWork`
-  - `expectedStartYear` in {ref}`art23-measure`
+  - Lower bound of `implementationPeriod` in {ref}`art23-measure`
 * - `expectedYearPerformance`, `completionDate`
-  - `expectedCompletionYear` in {ref}`art23-measure`
+  - Upper bound of `implementationPeriod` in {ref}`art23-measure`
 * - `investment` of plants and agglomerations
   - `investmentCost` in {ref}`art23-measure`
 * - `europeanUnionFund`, `europeanUnionFundName`
@@ -226,13 +222,12 @@ of the money still to be found, and a national renewal programme.
   - A {ref}`art23-measurefinancing` row with `fundingSource` =
     `producerResponsibilityOrganisation`
 * - OtherInvestment: `collectingSystemNewInvestment`, `treatmentPlantNewInvestment`
-  - Measures with `geographicalCoverage` = `national` or `unlistedObjects` and a new-infrastructure
-    measure type
+  - Measures with a new-infrastructure measure type, which list their agglomerations
 * - OtherInvestment: `collectingSystemRenewalInvestment`, `treatmentPlantRenewalInvestment`
   - Measures of type `renewOrReplaceCollectingSystem` or `renewOrReplaceTreatmentPlant`, usually
     `national`
 * - OtherInvestment: `startYear`, `endYear`
-  - `expectedStartYear` and `expectedCompletionYear` of each measure
+  - `implementationPeriod` of each measure
 * - All amounts in million EUR
   - Millions of national currency, with `millionUnitsOfNationalCurrency`
 :::
@@ -279,7 +274,7 @@ of the money still to be found, and a national renewal programme.
   - Error
 * - R02
   - Measure
-  - `geographicalCoverage` = `national` or `unlistedObjects` lists no codes
+  - `geographicalCoverage` = `national` lists no codes
   - Error
 * - R03
   - Measure
@@ -304,12 +299,8 @@ of the money still to be found, and a national renewal programme.
   - Warning
 * - R08
   - Measure
-  - `expectedStartYear` is not after `expectedCompletionYear`, and both are between 2027 and 2045
+  - The bounds of `implementationPeriod` are between 2027 and 2045
   - Warning
-* - R09
-  - Measure
-  - `numberOfObjects` is given only with `geographicalCoverage` = `unlistedObjects`
-  - Error
 * - R10
   - MeasureFinancing
   - `fundingSource` = `notIdentified` requires `fundingStatus` = `notIdentified`
@@ -328,11 +319,6 @@ of the money still to be found, and a national renewal programme.
   - `geographicalCoverage` = `national` only for the renewal types `renewOrReplaceCollectingSystem`
     and `renewOrReplaceTreatmentPlant`
   - Error
-* - R14
-  - Measure
-  - A measure that is not of a renewal type has `geographicalCoverage` = `listedObjects`; with
-    `unlistedObjects`, its agglomerations are not yet identified for Article 23(1)(b)
-  - Warning
 * - R15
   - MSSummary
   - `producerResponsibilityContribution` is given if and only if
@@ -343,4 +329,8 @@ of the money still to be found, and a national renewal programme.
   - `costStatus` = `unknown`: the measure gives no indicative financial estimation for
     Article 23(1)(b) or (c)
   - Warning
+* - R17
+  - Measure
+  - `implementationPeriod` has an upper bound, the completion year
+  - Error
 :::

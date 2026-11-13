@@ -94,7 +94,7 @@ Financing gap
 
 Expected date of compliance
 : For a treatment plant, the year by which 12 months of compliant samples are expected
-  (`expectedCompletionYear` of a measure at the plant).
+  (upper bound of `implementationPeriod` of a measure at the plant).
 
 Organic design capacity
 : The design capacity of a plant expressed in p.e. (`expectedCapacity`).
@@ -168,6 +168,9 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **nonNegativeInteger** - a whole number of 0 or more;
 * **Percentage** - a value in the interval [0, 100];
 * **gYear** - a Gregorian year;
+* **range** - a range of values, written as in the PostgreSQL range types following
+  ISO 80000-2, for example `[2028,2033]` for the years 2028 to 2033 included. A bound left empty
+  is open, for example `[,2036]`;
 * **date** - a date in the format yyyy-mm-dd;
 * **YesNo** - a yes or no answer;
 * **Email** - an e-mail address, at most 250 characters, validated with a regular expression;

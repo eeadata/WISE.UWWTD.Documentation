@@ -18,12 +18,10 @@ class Measure{
     + geographicalCoverage: UWWTDGeographicCoverage [1]
     + euUWWTPCode: wiseIdentifier [0..n]
     + euAgglomerationCode: wiseIdentifier [0..n]
-    + numberOfObjects: nonNegativeInteger [0..1]
     + prioritisation: Priority [1]
 
     + implementationStatus: ImplementationStatus [1]
-    + expectedStartYear: gYear [0..1]
-    + expectedCompletionYear: gYear [1]
+    + implementationPeriod: range [1]
 
     + costStatus: CostStatus [1]
     + investmentCost: nonNegativeValue [0..1]

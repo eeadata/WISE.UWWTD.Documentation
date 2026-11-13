@@ -8,6 +8,14 @@ tmp
 /temp
 .venv/
 
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
 # Prefill: the Reportnet source and generated baselines hold provisional Member State data
 /prefill/*/input/
 /prefill/*/output/

@@ -19,29 +19,7 @@ Each codelist field takes one value unless its type is marked `[0..n]`.
 
 Used by `derogationType` in {ref}`art23-derogation` and {ref}`art23-culturalheritageextension`.
 
-:::{list-table} Proposed derogation type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `article3_2`
-  - Article 3(2)
-  - Extension of the deadline for collecting systems in agglomerations of 1 000 to
-    1 999 p.e.
-  - –
-* - `article6_3`
-  - Article 6(3)
-  - Extension of the deadline for secondary treatment of discharges from agglomerations
-    of 1 000 to 1 999 p.e.
-  - –
-* - `article7_4`
-  - Article 7(4)
-  - Extension of the deadline of Article 7(3), point (d), for tertiary treatment in
-    areas sensitive to eutrophication.
-  - Not used in CulturalHeritageExtension.
+:::{codelist} DerogationType
 :::
 
 (art23-cl-derogation-status)=
@@ -51,23 +29,7 @@ Used by `derogationType` in {ref}`art23-derogation` and {ref}`art23-culturalheri
 
 Used by `derogationStatus` in {ref}`art23-derogation`.
 
-:::{list-table} Proposed derogation status values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `requested`
-  - Requested
-  - An extension of the deadline is requested under the provision.
-  - –
-* - `notRequested`
-  - Not requested
-  - No extension is requested under the provision.
-  - The other fields of the row stay
-    empty.
+:::{codelist} DerogationStatus
 :::
 
 (art23-cl-eligibility-criterion)=
@@ -77,24 +39,7 @@ Used by `derogationStatus` in {ref}`art23-derogation`.
 
 Used by `eligibilityCriterion` in {ref}`art23-derogation`.
 
-:::{list-table} Proposed eligibility criterion values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `shareOfAgglomerations`
-  - Share of agglomerations
-  - Eligibility is based on the share of the agglomerations concerned meeting the
-    requirement on 1 January 2025.
-  - –
-* - `shareOfLoad`
-  - Share of load
-  - Eligibility is based on the share of the generated load of the agglomerations
-    concerned meeting the requirement on 1 January 2025.
-  - Articles 3(2) and 6(3) only.
+:::{codelist} EligibilityCriterion
 :::
 
 (art23-cl-extension-reason)=
@@ -104,22 +49,7 @@ Used by `eligibilityCriterion` in {ref}`art23-derogation`.
 
 Used by `reasonType` in {ref}`art23-derogation`. Select one or both.
 
-:::{list-table} Proposed extension reason values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `technical`
-  - Technical
-  - Technical reasons justify the extension.
-  - –
-* - `economic`
-  - Economic
-  - Economic reasons justify the extension.
-  - –
+:::{codelist} ExtensionReason
 :::
 
 (art23-cl-less-stringent-ground)=
@@ -129,26 +59,7 @@ Used by `reasonType` in {ref}`art23-derogation`. Select one or both.
 
 Used by `lessStringentGround` in {ref}`art23-lessstringenttreatment`.
 
-:::{list-table} Proposed less stringent treatment ground values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `highMountain`
-  - High mountain
-  - Discharges into high mountain waters above 1 500 m.
-  - –
-* - `deepMarineOutermostRegion`
-  - Deep marine waters, outermost region
-  - Discharges into deep marine waters in less-populated outermost regions.
-  - –
-* - `coldClimate`
-  - Cold climate
-  - Discharges from agglomerations of 1 000 to 1 999 p.e. in cold climates.
-  - –
+:::{codelist} LessStringentGround
 :::
 
 (art23-cl-compliance-share)=
@@ -158,38 +69,7 @@ Used by `lessStringentGround` in {ref}`art23-lessstringenttreatment`.
 
 Used by `article3Compliance` and `article6Compliance` in {ref}`art23-selfassessment`.
 
-:::{list-table} Proposed compliance share values
-:header-rows: 1
-:widths: 22 20 34 24
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `lessThan50`
-  - Less than 50%
-  - Fewer than half of the agglomerations comply.
-  - –
-* - `from50to75`
-  - 50-75%
-  - Between 50 % and 75 % of the agglomerations comply.
-  - –
-* - `from76to85`
-  - 76-85%
-  - Between 76 % and 85 % of the agglomerations comply.
-  - –
-* - `from86to95`
-  - 86-95%
-  - Between 86 % and 95 % of the agglomerations comply.
-  - –
-* - `from96to99`
-  - 96-99%
-  - Between 96 % and 99 % of the agglomerations comply.
-  - –
-* - `full`
-  - 100%
-  - All agglomerations comply.
-  - –
+:::{codelist} ComplianceShare
 :::
 
 (art23-cl-compliance-share-estimated)=
@@ -202,34 +82,7 @@ Used by `article3Compliance1000to1999`, `article6Compliance1000to1999`, `article
 may not
 yet be available for these agglomerations and plants.
 
-:::{list-table} Proposed estimated compliance share values
-:header-rows: 1
-:widths: 22 20 34 24
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `none`
-  - 0%
-  - None comply.
-  - –
-* - `from1to25`
-  - 1-25%
-  - Up to a quarter comply.
-  - –
-* - `from26to50`
-  - 26-50%
-  - Between a quarter and a half comply.
-  - –
-* - `from51to75`
-  - 51-75%
-  - Between a half and three quarters comply.
-  - –
-* - `from76to100`
-  - 76-100%
-  - More than three quarters comply.
-  - –
+:::{codelist} ComplianceShareEstimated
 :::
 
 (art23-cl-risk-assessment)=
@@ -239,26 +92,7 @@ yet be available for these agglomerations and plants.
 
 Used by `riskAssessment` in {ref}`art23-mssummary`.
 
-:::{list-table} Proposed risk assessment values
-:header-rows: 1
-:widths: 20 20 36 24
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `yes`
-  - Yes
-  - A risk assessment has been carried out in accordance with Article 18.
-  - The date, the identified risks and the summary are then required.
-* - `partially`
-  - Partially
-  - A risk assessment covers only some urban wastewater discharges.
-  - –
-* - `no`
-  - No
-  - No risk assessment has been carried out.
-  - –
+:::{codelist} RiskAssessment
 :::
 
 (art23-cl-contribution-period)=
@@ -268,34 +102,7 @@ Used by `riskAssessment` in {ref}`art23-mssummary`.
 
 Used by `contributionPeriod` in {ref}`art23-mssummary`. Several values may be selected.
 
-:::{list-table} Proposed contribution period values
-:header-rows: 1
-:widths: 20 20 36 24
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `endOf2033`
-  - End of 2033
-  - The planned resources cover the requirements due by the end of 2033.
-  - Interim deadline of Articles 8(1) and 8(4).
-* - `endOf2036`
-  - End of 2036
-  - The planned resources cover the requirements due by the end of 2036.
-  - Interim deadline of Article 8(4).
-* - `endOf2039`
-  - End of 2039
-  - The planned resources cover the requirements due by the end of 2039.
-  - Interim deadline of Articles 8(1) and 8(4).
-* - `endOf2045`
-  - End of 2045
-  - The planned resources cover the requirements due by the end of 2045.
-  - Final deadline of Articles 8(1) and 8(4).
-* - `other`
-  - Other
-  - Another period, explained in `contributionPeriodOther`.
-  - –
+:::{codelist} ContributionPeriod
 :::
 
 (art23-cl-status)=
@@ -305,34 +112,7 @@ Used by `contributionPeriod` in {ref}`art23-mssummary`. Several values may be se
 
 Used by the `status` field of the {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables.
 
-:::{list-table} Proposed status values
-:header-rows: 1
-:widths: 26 22 32 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `compliant`
-  - Compliant (C)
-  - Articles 3 to 8 compliant; Article 18 requirements fulfilled or not applicable.
-  - –
-* - `nonCompliant`
-  - Non-compliant (NC)
-  - Articles 3 to 8 non-compliant; Article 18 requirements fulfilled or not applicable.
-  - –
-* - `pendingDeadline`
-  - Pending deadline (PD)
-  - Pending deadline: time remains for submission of the application.
-  - –
-* - `compliantArticle18NotMet`
-  - Compliant, Article 18 not met (C+A18)
-  - Articles 3 to 8 compliant; more stringent Article 18 requirements not met.
-  - –
-* - `nonCompliantArticle18NotMet`
-  - Non-compliant, Article 18 not met (NC+A18)
-  - Articles 3 to 8 non-compliant; more stringent Article 18 requirements not met.
-  - –
+:::{codelist} PlantAgglomerationStatus
 :::
 
 (art23-cl-measure-type)=
@@ -350,96 +130,7 @@ them in `euUWWTPCode`, and a measure listing agglomerations in `euAgglomerationC
 The name is prefixed with `UWWTD` because the Water Framework Directive codelist `MeasureType`
 classifies measures differently, by their nature (legislative, technical, economic and so on).
 
-:::{list-table} Proposed measure types
-:header-rows: 1
-:widths: 30 24 26 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `newCollectingSystemArticle3_1`
-  - New collecting systems, 2 000 p.e. and above
-  - New collecting systems in agglomerations of 2 000 p.e. and above.
-  - Article 3(1). Agglomeration.
-* - `newCollectingSystemArticle3_2`
-  - New collecting systems, 1 000 to 1 999 p.e.
-  - New collecting systems in agglomerations of 1 000 to 1 999 p.e.
-  - Article 3(2). Agglomeration.
-* - `stormWaterOverflowReduction`
-  - Measures to reduce storm water overflows
-  - Measures to reduce storm water overflows from collecting systems, so that they meet Part A
-    of Annex I.
-  - Article 3(4). Agglomeration.
-* - `individualSystemsArticle4`
-  - Measures for individual systems
-  - Measures for individual systems used where a collecting system is not established.
-  - Article 4. Agglomeration.
-* - `managementPlanMeasures`
-  - Measures resulting from a management plan
-  - Measures resulting from an integrated urban wastewater management plan.
-  - Article 5 and Annex V. Agglomeration.
-* - `newCollectingSystemRiskBased`
-  - New collecting systems, below 1 000 p.e.
-  - New collecting systems in agglomerations below 1 000 p.e., on the basis of the risk
-    assessment.
-  - Article 18(2)(b). Agglomeration.
-* - `renewOrReplaceCollectingSystem`
-  - Renew or replace existing collecting systems
-  - Renewal or replacement of existing collecting system infrastructure.
-  - Article 23(1)(c). Agglomeration.
-* - `newPlantArticle6_1`
-  - New plant, agglomerations of 2 000 p.e. and above
-  - A new treatment plant providing secondary treatment.
-  - Article 6(1). Treatment plant.
-* - `newPlantArticle6_3`
-  - New plant, agglomerations of 1 000 to 1 999 p.e.
-  - A new treatment plant providing secondary treatment.
-  - Article 6(3). Treatment plant.
-* - `upgradeTertiaryNitrogen`
-  - Upgrade to tertiary treatment (N)
-  - Upgrade to tertiary treatment for nitrogen.
-  - Article 7(1), 7(3). Treatment plant.
-* - `upgradeTertiaryPhosphorus`
-  - Upgrade to tertiary treatment (P)
-  - Upgrade to tertiary treatment for phosphorus.
-  - Article 7(1), 7(3). Treatment plant.
-* - `upgradeTertiaryNitrogenPhosphorus`
-  - Upgrade to tertiary treatment (N+P)
-  - Upgrade to tertiary treatment for both nitrogen and phosphorus.
-  - Article 7(1), 7(3). Treatment plant.
-* - `upgradeQuaternary`
-  - Upgrade to quaternary treatment
-  - Upgrade to quaternary treatment for micropollutants.
-  - Article 8(1), 8(4). Treatment plant.
-* - `energyNeutrality`
-  - Energy neutrality
-  - Measures to meet the renewable energy targets.
-  - Article 11(2). Treatment plant.
-* - `secondaryTreatmentRiskBased`
-  - Secondary treatment, agglomerations below 1 000 p.e.
-  - Applying secondary treatment on the basis of the risk assessment.
-  - Article 18(2)(c). Treatment plant.
-* - `tertiaryTreatmentRiskBased`
-  - Tertiary treatment, agglomerations below 10 000 p.e.
-  - Applying tertiary treatment on the basis of the risk assessment.
-  - Article 18(2)(d). Treatment plant.
-* - `quaternaryTreatmentRiskBased`
-  - Quaternary treatment, agglomerations below 10 000 p.e.
-  - Applying quaternary treatment on the basis of the risk assessment.
-  - Article 18(2)(e). Treatment plant.
-* - `stricterTreatmentRiskBased`
-  - Stricter treatment requirements
-  - Applying stricter requirements for treatment on the basis of the risk assessment.
-  - Article 18(2)(g). Treatment plant.
-* - `otherMeasureArticle18_2`
-  - Other appropriate measure
-  - Another appropriate measure under Article 18(2). Describe it in `measureText`.
-  - Article 18(2). Either.
-* - `renewOrReplaceTreatmentPlant`
-  - Renew or replace existing treatment plants
-  - Renewal or replacement of an existing treatment plant, including capacity increase.
-  - Article 23(1)(c). Treatment plant.
+:::{codelist} UWWTDMeasureType
 :::
 
 (art23-cl-measure-type-wfd)=
@@ -452,94 +143,7 @@ measure type corresponds to a WFD key type of measure (`mainKeyTypeOfMeasure`) a
 (`mainPressureType`), derived centrally and not reported. The correspondence below is a proposal,
 to be confirmed.
 
-:::{list-table} Proposed correspondence with WFD key types of measures
-:header-rows: 1
-:widths: 34 22 22 22
-
-* - Measure type
-  - WFD key type of measure
-  - WFD main pressure
-  - Notes
-* - `newCollectingSystemArticle3_1`
-  - `G`
-  - `P1-1`
-  - Measure to control point source discharges.
-* - `newCollectingSystemArticle3_2`
-  - `G`
-  - `P1-1`
-  - Measure to control point source discharges.
-* - `stormWaterOverflowReduction`
-  - `G`
-  - `P1-2`
-  - Measure to control point source discharges.
-* - `individualSystemsArticle4`
-  - `G`
-  - `P1-1`
-  - Measure to control point source discharges.
-* - `managementPlanMeasures`
-  - `G`
-  - `P1-2`
-  - Measure to control point source discharges.
-* - `newCollectingSystemRiskBased`
-  - `G`
-  - `P1-1`
-  - Measure to control point source discharges.
-* - `renewOrReplaceCollectingSystem`
-  - `G`
-  - `P1-1`
-  - Measure to control point source discharges.
-* - `newPlantArticle6_1`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `newPlantArticle6_3`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `upgradeTertiaryNitrogen`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `upgradeTertiaryPhosphorus`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `upgradeTertiaryNitrogenPhosphorus`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `upgradeQuaternary`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `energyNeutrality`
-  - –
-  - –
-  - No direct equivalent; to be decided.
-* - `secondaryTreatmentRiskBased`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `tertiaryTreatmentRiskBased`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `quaternaryTreatmentRiskBased`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `stricterTreatmentRiskBased`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
-* - `otherMeasureArticle18_2`
-  - –
-  - –
-  - No direct equivalent; to be decided.
-* - `renewOrReplaceTreatmentPlant`
-  - `X01`
-  - `P1-1`
-  - Construction or upgrades of wastewater treatment plants.
+:::{codelist} UWWTDMeasureTypeWFD
 :::
 
 `P1-1` is the WFD pressure "Point - Urban waste water" and `P1-2` "Point - Storm overflows". A
@@ -554,29 +158,7 @@ the measure is classified under the Water Framework Directive is open ({ref}`art
 Used by `geographicalCoverage` in {ref}`art23-measure`. Prefixed with `UWWTD` because the
 corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has other values.
 
-:::{list-table} Proposed geographical coverage values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `national`
-  - National
-  - The measure applies to the whole Member State; no plants or agglomerations are listed.
-  - Only for the renewal types `renewOrReplaceCollectingSystem` and
-    `renewOrReplaceTreatmentPlant` (Article 23(1)(c)). The code fields stay empty.
-* - `listedObjects`
-  - Listed plants or agglomerations
-  - The measure applies to the agglomerations listed in `euAgglomerationCode` and, for a
-    measure at treatment plants, to the plants listed in `euUWWTPCode`.
-  - `euAgglomerationCode` always filled; `euUWWTPCode` too for plant measures.
-* - `unlistedObjects`
-  - Plants or agglomerations not yet identified
-  - The measure applies to plants or agglomerations that are not yet identified.
-  - Give `numberOfObjects` if known. Raises a warning, except for renewal types: the
-    agglomerations should be listed in the next update.
+:::{codelist} UWWTDGeographicCoverage
 :::
 
 (art23-cl-implementation-status)=
@@ -587,30 +169,7 @@ corresponding Water Framework Directive codelist, `WFDGeographicCoverage`, has o
 Used by `implementationStatus` in {ref}`art23-measure`. The same codelist as in the Water Framework
 Directive 4th cycle.
 
-:::{list-table} Implementation status values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `planned`
-  - Planned
-  - The measure is planned and has not started.
-  - –
-* - `ongoing`
-  - Ongoing
-  - The measure has started and is not yet completed.
-  - –
-* - `executed`
-  - Executed
-  - The measure has been completed.
-  - Used in later programmes.
-* - `cancelled`
-  - Cancelled
-  - The measure has been cancelled.
-  - Used in later programmes.
+:::{codelist} ImplementationStatus
 :::
 
 (art23-cl-cost-status)=
@@ -620,26 +179,7 @@ Directive 4th cycle.
 
 Used by `costStatus` in {ref}`art23-measure`.
 
-:::{list-table} Proposed cost status values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `known`
-  - Known
-  - The cost comes from a project, tender or contract.
-  - –
-* - `estimated`
-  - Estimated
-  - The cost is an estimate, including a rough indicative one.
-  - –
-* - `unknown`
-  - Unknown
-  - No indicative estimate of the cost can be given yet.
-  - An exception: `investmentCost` stays empty and the measure raises a warning (check R16).
+:::{codelist} CostStatus
 :::
 
 (art23-cl-priority)=
@@ -649,26 +189,7 @@ Used by `costStatus` in {ref}`art23-measure`.
 
 Used by the `prioritisation` field of the {ref}`art23-measure` table.
 
-:::{list-table} Proposed priority values
-:header-rows: 1
-:widths: 20 20 32 28
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `high`
-  - High
-  - High priority measure.
-  - Related to the size of the agglomeration and the level of environmental impact.
-* - `medium`
-  - Medium
-  - Medium priority measure.
-  - –
-* - `low`
-  - Low
-  - Low priority measure.
-  - –
+:::{codelist} Priority
 :::
 
 The draft does not define the boundaries between the three levels. See {ref}`art23-investments`
@@ -681,54 +202,7 @@ and {ref}`art23-oi-prioritisation`.
 
 Used by `europeanUnionFundName` in {ref}`art23-measurefinancing`.
 
-:::{list-table} Proposed EU fund values
-:header-rows: 1
-:widths: 34 30 24 12
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `europeanAgriculturalFundForRuralDevelopment`
-  - European Agricultural Fund for Rural Development
-  - Funding under the European Agricultural Fund for Rural Development.
-  - –
-* - `europeanRegionalDevelopmentFund`
-  - European Regional Development Fund
-  - Funding under the European Regional Development Fund.
-  - –
-* - `interreg`
-  - Interreg
-  - Funding under the Interreg programmes.
-  - –
-* - `cohesionFund`
-  - Cohesion Fund
-  - Funding under the Cohesion Fund.
-  - –
-* - `justTransitionFund`
-  - Just Transition Fund
-  - Funding under the Just Transition Fund.
-  - –
-* - `recoveryAndResilienceFacility`
-  - Recovery and Resilience Facility
-  - Funding under the Recovery and Resilience Facility.
-  - –
-* - `horizonEurope`
-  - Horizon Europe
-  - Funding under Horizon Europe.
-  - –
-* - `investEuFund`
-  - InvestEU fund
-  - Funding under the InvestEU fund.
-  - –
-* - `europeanInvestmentBank`
-  - European Investment Bank
-  - Funding from the European Investment Bank.
-  - –
-* - `otherEuropeanUnionFunds`
-  - Other EU funds
-  - Any other Union fund not listed above.
-  - –
+:::{codelist} EUFund
 :::
 
 (art23-cl-funding-source)=
@@ -739,54 +213,7 @@ Used by `europeanUnionFundName` in {ref}`art23-measurefinancing`.
 Used by `fundingSource` in {ref}`art23-measurefinancing`. It replaces the former other public fund
 codelist, whose values are kept.
 
-:::{list-table} Proposed funding source values
-:header-rows: 1
-:widths: 30 22 30 18
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `ownFunds`
-  - Own funds
-  - Funds of the operator, including tariffs, under the polluter-pays or user-pays principle.
-  - –
-* - `producerResponsibilityOrganisation`
-  - Producer responsibility
-  - Funding from producer responsibility organisations.
-  - –
-* - `nationalFederal`
-  - National-federal
-  - Funds from the national or federal budget.
-  - –
-* - `regional`
-  - Regional
-  - Funds from a regional authority.
-  - –
-* - `municipal`
-  - Municipal
-  - Funds from a municipal authority.
-  - –
-* - `otherPublicFunds`
-  - Other public funds
-  - Public funds from another source.
-  - –
-* - `europeanUnionFund`
-  - EU fund
-  - Funding from a Union fund.
-  - Name the fund in `europeanUnionFundName`.
-* - `loan`
-  - Loan
-  - A loan from a public or private lender.
-  - Lender optional in `loanName`.
-* - `privateFunds`
-  - Private funds
-  - Private funding other than a loan.
-  - –
-* - `notIdentified`
-  - Not identified
-  - The source of this part of the cost is not yet identified.
-  - Use with `fundingStatus` = `notIdentified`.
+:::{codelist} FundingSource
 :::
 
 (art23-cl-funding-status)=
@@ -796,30 +223,7 @@ codelist, whose values are kept.
 
 Used by `fundingStatus` in {ref}`art23-measurefinancing`.
 
-:::{list-table} Proposed funding status values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `secured`
-  - Secured
-  - The money is granted or committed.
-  - Counts towards the financing of the measure.
-* - `appliedFor`
-  - Applied for
-  - An application for the money has been made.
-  - –
-* - `planned`
-  - Planned
-  - The Member State plans to use this source.
-  - –
-* - `notIdentified`
-  - Not identified
-  - No source has been identified yet.
-  - –
+:::{codelist} FundingStatus
 :::
 
 (art23-cl-currency)=
@@ -833,50 +237,7 @@ and in millions of national currency by the others, which use their own currency
 generic code for domestic currency. The values are those of the Water Framework Directive
 codelist.
 
-:::{list-table} Currency values
-:header-rows: 1
-:widths: 20 30 30 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `EUR`
-  - Euro
-  - Euro.
-  - Euro area Member States.
-* - `CZK`
-  - Czech koruna
-  - Czech koruna.
-  - –
-* - `DKK`
-  - Danish krone
-  - Danish krone.
-  - –
-* - `HUF`
-  - Hungarian forint
-  - Hungarian forint.
-  - –
-* - `PLN`
-  - Polish zloty
-  - Polish zloty.
-  - –
-* - `RON`
-  - Romanian leu
-  - Romanian leu.
-  - –
-* - `SEK`
-  - Swedish krona
-  - Swedish krona.
-  - –
-* - `NOK`
-  - Norwegian krone
-  - Norwegian krone.
-  - –
-* - `ISK`
-  - Icelandic krona
-  - Icelandic krona.
-  - –
+:::{codelist} CurrencyCode
 :::
 
 (art23-cl-pro-basis)=
@@ -886,27 +247,7 @@ codelist.
 
 Used by `producerResponsibilityEstimateBasedOn`.
 
-:::{list-table} Proposed basis of estimate values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `agreedFinancialPlan`
-  - Agreed financial plan
-  - Based on financial plans agreed between the Member State and the producer
-    responsibility organisations during the recognition procedure.
-  - –
-* - `memberStateEstimate`
-  - Member State estimate
-  - An estimate by the Member State, where agreed financial plans are not yet available.
-  - –
-* - `notAvailable`
-  - Not available
-  - No estimate of the contribution is available yet.
-  - `producerResponsibilityContribution` is left empty (check R15).
+:::{codelist} EstimateBasis
 :::
 
 (art23-cl-licence)=
@@ -916,30 +257,7 @@ Used by `producerResponsibilityEstimateBasedOn`.
 
 Used by `license` in {ref}`art23-dcmetadata`.
 
-:::{list-table} Proposed licence values
-:header-rows: 1
-:widths: 20 22 34 24
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `CC0`
-  - CC0 1.0
-  - Creative Commons public domain dedication.
-  - Used across the WISE dataflows.
-* - `CC_BY_4_0`
-  - CC BY 4.0
-  - Creative Commons Attribution 4.0 International.
-  - Used across the WISE dataflows.
-* - `exactMatch_CC_BY_4_0`
-  - Exact match of CC BY 4.0
-  - A national licence whose terms match CC BY 4.0.
-  - –
-* - `narrowMatch_CC_BY_4_0`
-  - Narrow match of CC BY 4.0
-  - A national licence that is more restrictive than CC BY 4.0.
-  - –
+:::{codelist} Licence
 :::
 
 fWhere a Member State publishes under another licence, report the licence document in

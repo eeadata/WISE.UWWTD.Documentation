@@ -1,0 +1,27 @@
+type,dataflow,anchor,caption,headers,widths,codeColumns
+IdentifierScheme,SpatialPoints,sp-cl-scheme,Identifier scheme values,Notation|Label|Definition|Notes,24 22 34 20,notation
+WiseEvolutionType,SpatialPoints,sp-cl-evolution,Evolution type values,Notation|Label|Definition|Notes,24 22 34 20,notation
+SpecialisedZoneType,SpatialPoints,sp-cl-specialisedzonetype,Specialised zone type values,Notation|Label|Definition|Notes,24 22 34 20,notation
+ConditionOfFacility,SpatialPoints,sp-cl-condition,Condition of facility values,Notation|Label|Definition|Notes,24 22 34 20,notation
+DerogationType,Article23,art23-cl-derogation-type,Proposed derogation type values,Notation|Label|Definition|Notes,24 22 34 20,notation
+DerogationStatus,Article23,art23-cl-derogation-status,Proposed derogation status values,Notation|Label|Definition|Notes,24 22 34 20,notation
+EligibilityCriterion,Article23,art23-cl-eligibility-criterion,Proposed eligibility criterion values,Notation|Label|Definition|Notes,24 22 34 20,notation
+ExtensionReason,Article23,art23-cl-extension-reason,Proposed extension reason values,Notation|Label|Definition|Notes,24 22 34 20,notation
+LessStringentGround,Article23,art23-cl-less-stringent-ground,Proposed less stringent treatment ground values,Notation|Label|Definition|Notes,24 22 34 20,notation
+ComplianceShare,Article23,art23-cl-compliance-share,Proposed compliance share values,Notation|Label|Definition|Notes,22 20 34 24,notation
+ComplianceShareEstimated,Article23,art23-cl-compliance-share-estimated,Proposed estimated compliance share values,Notation|Label|Definition|Notes,22 20 34 24,notation
+RiskAssessment,Article23,art23-cl-risk-assessment,Proposed risk assessment values,Notation|Label|Definition|Notes,20 20 36 24,notation
+ContributionPeriod,Article23,art23-cl-contribution-period,Proposed contribution period values,Notation|Label|Definition|Notes,20 20 36 24,notation
+PlantAgglomerationStatus,Article23,art23-cl-status,Proposed status values,Notation|Label|Definition|Notes,26 22 32 20,notation
+UWWTDMeasureType,Article23,art23-cl-measure-type,Proposed measure types,Notation|Label|Definition|Notes,30 24 26 20,notation
+UWWTDMeasureTypeWFD,Article23,art23-cl-measure-type-wfd,Proposed correspondence with WFD key types of measures,Measure type|WFD key type of measure|WFD main pressure|Notes,34 22 22 22,measureType wfdKeyTypeOfMeasure wfdMainPressure
+UWWTDGeographicCoverage,Article23,art23-cl-coverage,Proposed geographical coverage values,Notation|Label|Definition|Notes,24 22 34 20,notation
+ImplementationStatus,Article23,art23-cl-implementation-status,Implementation status values,Notation|Label|Definition|Notes,24 22 34 20,notation
+CostStatus,Article23,art23-cl-cost-status,Proposed cost status values,Notation|Label|Definition|Notes,24 22 34 20,notation
+Priority,Article23,art23-cl-priority,Proposed priority values,Notation|Label|Definition|Notes,20 20 32 28,notation
+EUFund,Article23,art23-cl-eu-funds,Proposed EU fund values,Notation|Label|Definition|Notes,34 30 24 12,notation
+FundingSource,Article23,art23-cl-funding-source,Proposed funding source values,Notation|Label|Definition|Notes,30 22 30 18,notation
+FundingStatus,Article23,art23-cl-funding-status,Proposed funding status values,Notation|Label|Definition|Notes,24 22 34 20,notation
+CurrencyCode,Article23,art23-cl-currency,Currency values,Notation|Label|Definition|Notes,20 30 30 20,notation
+EstimateBasis,Article23,art23-cl-pro-basis,Proposed basis of estimate values,Notation|Label|Definition|Notes,24 22 34 20,notation
+Licence,Article23,art23-cl-licence,Proposed licence values,Notation|Label|Definition|Notes,20 22 34 24,notation

@@ -1,0 +1,21 @@
+measureType,wfdKeyTypeOfMeasure,wfdMainPressure,notes
+newCollectingSystemArticle3_1,G,P1-1,Measure to control point source discharges.
+newCollectingSystemArticle3_2,G,P1-1,Measure to control point source discharges.
+stormWaterOverflowReduction,G,P1-2,Measure to control point source discharges.
+individualSystemsArticle4,G,P1-1,Measure to control point source discharges.
+managementPlanMeasures,G,P1-2,Measure to control point source discharges.
+newCollectingSystemRiskBased,G,P1-1,Measure to control point source discharges.
+renewOrReplaceCollectingSystem,G,P1-1,Measure to control point source discharges.
+newPlantArticle6_1,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+newPlantArticle6_3,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+upgradeTertiaryNitrogen,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+upgradeTertiaryPhosphorus,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+upgradeTertiaryNitrogenPhosphorus,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+upgradeQuaternary,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+energyNeutrality,,,No direct equivalent; to be decided.
+secondaryTreatmentRiskBased,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+tertiaryTreatmentRiskBased,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+quaternaryTreatmentRiskBased,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+stricterTreatmentRiskBased,X01,P1-1,Construction or upgrades of wastewater treatment plants.
+otherMeasureArticle18_2,,,No direct equivalent; to be decided.
+renewOrReplaceTreatmentPlant,X01,P1-1,Construction or upgrades of wastewater treatment plants.

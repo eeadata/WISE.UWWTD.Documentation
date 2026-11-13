@@ -1,0 +1,5 @@
+notation,label,definition,notes
+planned,Planned,The measure is planned and has not started.,
+ongoing,Ongoing,The measure has started and is not yet completed.,
+executed,Executed,The measure has been completed.,Used in later programmes.
+cancelled,Cancelled,The measure has been cancelled.,Used in later programmes.

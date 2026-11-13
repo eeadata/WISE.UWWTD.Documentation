@@ -1,0 +1,4 @@
+notation,label,definition,notes
+requested,Requested,An extension of the deadline is requested under the provision.,
+notRequested,Not requested,No extension is requested under the provision.,"The other fields of the row stay
+empty."

@@ -1,0 +1,7 @@
+notation,label,definition,notes
+lessThan50,Less than 50%,Fewer than half of the agglomerations comply.,
+from50to75,50-75%,Between 50 % and 75 % of the agglomerations comply.,
+from76to85,76-85%,Between 76 % and 85 % of the agglomerations comply.,
+from86to95,86-95%,Between 86 % and 95 % of the agglomerations comply.,
+from96to99,96-99%,Between 96 % and 99 % of the agglomerations comply.,
+full,100%,All agglomerations comply.,

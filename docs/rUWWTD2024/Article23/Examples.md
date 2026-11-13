@@ -29,7 +29,8 @@ micropollutants by 2040. These are two separate projects, with different designs
 funders, seven years apart. They are reported as two measures, each with its own dates and cost.
 The nitrogen and phosphorus works are one construction contract with one budget, so they are one
 measure of type `upgradeTertiaryNitrogenPhosphorus`, and the cost is not split between the two
-nutrients.
+nutrients. The first measure is already under way: its 18.0 is what remains to be spent from
+2028, all in the 1st cycle. The second starts in 2035, so all its cost falls after the 1st cycle.
 
 Both measures list the same plant in `euUWWTPCode`, and the agglomeration it serves, `AGG0007`, in
 `euAgglomerationCode`, so that the investments can be found for that agglomeration, as Article
@@ -66,24 +67,27 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M001`
   - `ongoing`
   - `[2027,2033]`
   - `known`
   - 18.0
+  - –
   - EUR
 * - `M002`
   - `planned`
   - `[2035,2040]`
   - `estimated`
+  - –
   - 22.0
   - EUR
 :::
@@ -159,16 +163,16 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - How
 * - Total investment at the plant
   - 40.0
-  - Sum of `investmentCost` of the two measures
+  - Sum of both expenditure fields of the two measures
 * - Investments identified for agglomeration `AGG0007`
   - 2 measures, 40.0
   - Measures listing `AGG0007` in `euAgglomerationCode`
-* - Investment completed by 2033
+* - Capital expenditure in the 1st cycle, 2028 to 2033
   - 18.0
-  - Measures whose `implementationPeriod` ends by 2033
-* - Investment starting from 2035
+  - Sum of `totalCapitalExpenditure1stCycle`
+* - Capital expenditure after the 1st cycle
   - 22.0
-  - Measures whose `implementationPeriod` starts from 2035
+  - Sum of `totalCapitalExpenditureAfter1stCycle`
 * - Secured financing
   - 7.0
   - Financing rows with `fundingStatus` = `secured`
@@ -226,25 +230,28 @@ gives the expected split of the load between the two.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M003`
   - `planned`
   - `[2028,2031]`
   - `known`
   - 5.6
+  - –
   - EUR
 * - `M004`
   - `planned`
   - `[2029,2032]`
   - `estimated`
   - 0.8
+  - –
   - EUR
 :::
 
@@ -358,19 +365,21 @@ amount.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M005`
   - `planned`
   - `[2028,2033]`
   - `known`
   - 10.0
+  - –
   - EUR
 :::
 
@@ -421,7 +430,7 @@ amount.
   - How
 * - Total investment
   - 10.0
-  - `investmentCost` of the measure, counted once
+  - Capital expenditure of the measure, counted once
 * - Agglomerations concerned
   - 3
   - Codes in `euAgglomerationCode`
@@ -474,18 +483,20 @@ cost is unknown. There are no financing rows.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M006`
   - `planned`
   - `[,2036]`
   - `unknown`
+  - –
   - –
   - –
 :::
@@ -496,7 +507,8 @@ Article 23(1)(b) asks for the investments for each agglomeration.
 The unknown cost raises a warning (check R16): Article 23(1)(b) asks for an indicative
 financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
 preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
-would report `costStatus` = `estimated` and an `investmentCost` of 15.0, and no R16 warning.
+would report `costStatus` = `estimated` and 15.0 spread over the years to 2036, for example 10.0 in
+the 1st cycle and 5.0 after it, and no R16 warning.
 
 **Adding it back up.**
 
@@ -530,7 +542,9 @@ for more.
 budget and one completion year. It is therefore one measure with two types,
 `upgradeTertiaryNitrogenPhosphorus` and `upgradeQuaternary`, and its cost is given once, not split
 between them. Half of the cost is secured from the operators' own funds, an application for the
-Cohesion Fund is pending, and the source of the rest is not yet identified.
+Cohesion Fund is pending, and the source of the rest is not yet identified. Of the 100.0, 70.0 is
+expected to be spent from 2030 to 2033, in the 1st cycle, and 30.0 from 2034 to 2036. The
+financing is given for the whole measure, not per cycle.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -558,19 +572,21 @@ Cohesion Fund is pending, and the source of the rest is not yet identified.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M007`
   - `planned`
   - `[2030,2036]`
   - `estimated`
-  - 100.0
+  - 70.0
+  - 30.0
   - EUR
 :::
 
@@ -615,7 +631,7 @@ Cohesion Fund is pending, and the source of the rest is not yet identified.
   - How
 * - Total investment
   - 100.0
-  - `investmentCost` of the measure
+  - 70.0 in the 1st cycle and 30.0 after it
 * - Secured financing
   - 50.0
   - Financing rows with `fundingStatus` = `secured`
@@ -648,7 +664,9 @@ national programme, without a list of agglomerations. The draft format reported 
 the OtherInvestment table.
 
 **Filling it in.** The Member State plans to renew collecting systems across the country. It
-reports one national measure, with no plants or agglomerations listed.
+reports one national measure, with no plants or agglomerations listed. The renewal is under way;
+the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2035: 337.5 in the
+1st cycle and 112.5 after it.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -670,19 +688,21 @@ reports one national measure, with no plants or agglomerations listed.
 
 :::{list-table} Measure: when and how much
 :header-rows: 1
-:widths: 12 16 22 18 16 16
+:widths: 10 13 17 15 15 17 13
 
 * - Code
   - Status
   - Period
   - Cost status
-  - Cost
+  - 1st cycle
+  - After 1st cycle
   - Currency
 * - `M008`
   - `ongoing`
   - `[2027,2035]`
   - `estimated`
-  - 450.0
+  - 337.5
+  - 112.5
   - EUR
 :::
 
@@ -721,7 +741,7 @@ reports one national measure, with no plants or agglomerations listed.
   - How
 * - Total renewal investment
   - 450.0
-  - `investmentCost` of the measure
+  - 337.5 in the 1st cycle and 112.5 after it
 * - Secured financing
   - 0.0
   - No financing rows are `secured`
@@ -750,7 +770,13 @@ reports one national measure, with no plants or agglomerations listed.
   - `costStatus` is `known` or `estimated`
 * - Total investment
   - 606.4
-  - Sum of `investmentCost` over the measures
+  - Sum of both expenditure fields over the measures
+* - In the 1st cycle, 2028 to 2033
+  - 441.9
+  - Sum of `totalCapitalExpenditure1stCycle`
+* - After the 1st cycle
+  - 164.5
+  - Sum of `totalCapitalExpenditureAfter1stCycle`
 * - For listed plants or agglomerations
   - 156.4
   - Examples 1, 2, 3 and 5
@@ -786,13 +812,13 @@ reports one national measure, with no plants or agglomerations listed.
 * - Method
   - Result
   - What went wrong
-* - Add up `investmentCost` after joining the measures to their plants and agglomerations
+* - Add up the capital expenditure after joining the measures to their plants and agglomerations
   - 866.4
   - Example 1 is counted twice, and examples 3 and 5 three times
 * - Add up the costs and the financing amounts together
   - 1 212.8
   - Financing describes the same money as the cost
-* - Add up `investmentCost` once per measure type
+* - Add up the capital expenditure once per measure type
   - 706.4
   - Example 5 has two types and is counted twice
 * - Treat the measure without a cost as zero

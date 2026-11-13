@@ -69,7 +69,8 @@ is required, and `situationAt` records the date of the reported situation.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
   - {ref}`art23-measure`: the measures, the plants or agglomerations they concern, their `prioritisation`
-    and `investmentCost`.
+    and their capital expenditure, `totalCapitalExpenditure1stCycle` and
+    `totalCapitalExpenditureAfter1stCycle`.
     {ref}`art23-mssummary`: `producerResponsibilityContribution`,
     `producerResponsibilityEstimateBasedOn`, `contributionPeriod`, `prioritisationReference`.
 * - Article 23(1)(c) - renewal, upgrade or replacement of existing infrastructure

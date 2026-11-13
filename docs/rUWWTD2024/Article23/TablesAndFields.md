@@ -74,7 +74,8 @@ gives the definition, condition and codelist of every field.
   - `measureCode`, `measureName`, `measureNameLanguage`, `measureReference`, `uwwtdMeasureType`,
     `measureText`, `geographicalCoverage`, `euUWWTPCode`, `euAgglomerationCode`,
     `prioritisation`, `implementationStatus`, `implementationPeriod`,
-    `costStatus`, `investmentCost`, `millionUnitsOfNationalCurrency`,
+    `costStatus`, `totalCapitalExpenditure1stCycle`,
+    `totalCapitalExpenditureAfter1stCycle`, `millionUnitsOfNationalCurrency`,
     `remarks`
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing

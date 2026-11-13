@@ -81,16 +81,23 @@ Measure
 : An action to reach or maintain compliance, or to renew, upgrade or replace existing
   infrastructure, reported in the {ref}`art23-measure` table with one or more measure types.
 
-Investment cost
-: The capital expenditure of a measure, without operational or maintenance costs, in millions of
-  national currency (`investmentCost`). See {ref}`art23-investments`.
+Capital expenditure
+: Investment spending on a measure, without operational or maintenance costs, in millions of
+  national currency, as in the Water Framework Directive. Reported per cycle
+  (`totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle`); their sum is the
+  cost of the measure. See {ref}`art23-investments`.
+
+Cycle
+: A six-year period of the programme: the 1st cycle is 2028 to 2033, the 2nd 2034 to 2039 and the
+  3rd 2040 to 2045. They coincide with the 4th to 6th cycles of the Water Framework Directive. See
+  {ref}`art23-cycles`.
 
 Funding status
 : How far the money from a source of financing is secured: secured, applied for, planned, or not
   identified (`fundingStatus`).
 
 Financing gap
-: The investment cost of a measure minus its secured financing. Calculated, not reported.
+: The cost of a measure, the sum of its capital expenditure, minus its secured financing. Calculated, not reported.
 
 Expected date of compliance
 : For a treatment plant, the year by which 12 months of compliant samples are expected

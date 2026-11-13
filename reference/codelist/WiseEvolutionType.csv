@@ -1,0 +1,9 @@
+notation,label,definition,notes
+creation,Creation,A new object that does not replace another.,New code.
+noChange,No change,The code and location are unchanged.,"The prefilled value in the first reporting. Missing values may be added. Never with
+replaced codes."
+change,Change,The code is unchanged; other values are updated.,"Includes closing and reopening a facility, and an agglomeration absorbing another."
+aggregation,Aggregation,"A new object formed by merging two or more objects, which it replaces.",New code. Needs the replaced codes.
+splitting,Splitting,"A new object formed by splitting one object, which it replaces.",New code. Needs the replaced codes.
+deletion,Deletion,The object no longer exists and is not replaced.,"The code is retired, not removed, and is not reused."
+reactivation,Reactivation,"An object retired with `deletion` is in use again, under its old code.",Not for an object that has been replaced.

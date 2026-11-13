@@ -106,8 +106,7 @@ the measures adopted to be included in the programme.
 * - `riskIdentified`
   - Risks identified
   - Whether any risks have been identified. Measures under Article 18(2) that address
-    identified risks are reported with the measure codelists of the UWWTP and Agglomeration
-    tables.
+    identified risks are reported in {ref}`art23-measure`.
   - YesNo
   - Conditional
   - Required if `riskAssessment` = `yes`
@@ -127,7 +126,11 @@ conditional fields apply in that case is open ({ref}`art23-oi-risk`).
 
 Article 23(1)(b) asks for an estimation of the financial contribution from PROs "when available".
 In the first programme a Member State may estimate the contribution for the whole period or for
-the period of an interim target, and assign it to that period.
+the period of an interim target, and assign it to that period. Where no estimate is available yet,
+for example because the PROs are not yet recognised, the Member State reports
+`producerResponsibilityEstimateBasedOn` = `notAvailable` and leaves the amount and its currency
+empty. An empty amount then always means that no estimate is available, not that it was
+forgotten.
 
 :::{list-table} MSSummary fields - producer responsibility contribution
 :header-rows: 1
@@ -143,12 +146,19 @@ the period of an interim target, and assign it to that period.
   - Producer responsibility contribution
   - Estimated financial contribution from producer responsibility organisations, total at
     national level.
-  - nonNegativeValue (million EUR)
-  - Required
-  - –
+  - nonNegativeValue (million units of national currency)
+  - Conditional
+  - Required unless `producerResponsibilityEstimateBasedOn` = `notAvailable`, and empty if it is
+* - `millionUnitsOfNationalCurrency`
+  - Currency
+  - Currency of `producerResponsibilityContribution`, in millions of that currency. Euro area
+    Member States use EUR.
+  - CurrencyCode
+  - Conditional
+  - Required if `producerResponsibilityContribution` is given. {ref}`art23-cl-currency`
 * - `producerResponsibilityEstimateBasedOn`
   - Estimate based on
-  - Basis of the estimate.
+  - Basis of the estimate, or `notAvailable` where no estimate is available yet.
   - EstimateBasis
   - Required
   - {ref}`art23-cl-pro-basis`

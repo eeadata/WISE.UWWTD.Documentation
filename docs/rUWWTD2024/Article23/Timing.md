@@ -130,28 +130,29 @@ These years are the values of `contributionPeriod` in {ref}`art23-mssummary`.
   - {ref}`art23-derogation`
 * - "Reference year"
   - Status of plants and agglomerations. Not defined in the draft.
-  - `status` in both investment tables
+  - `status` in {ref}`art23-uwwtp` and {ref}`art23-agglomeration`
 * - Expected date of compliance
   - Projected loads and shares.
-  - `expectedLoad` in both investment tables, `expectedLoadCollected`,
-    `expectedLoadIndividualSystems`
-* - Expected years and date
-  - Start of works, compliance and completion.
-  - `expectedYearStartWork`, `expectedYearPerformance`, `completionDate`
-* - `startYear` to `endYear`
-  - Period covered by a row of aggregated investments. The period is not defined in the draft.
-  - {ref}`art23-otherinvestment`
+  - `expectedLoad` in {ref}`art23-uwwtp` and {ref}`art23-agglomeration`,
+    `expectedLoadCollected`, `expectedLoadIndividualSystems`
+* - Expected years
+  - Start of works, and completion or compliance, of each measure.
+  - `expectedStartYear`, `expectedCompletionYear` in {ref}`art23-measure`
 :::
 
-Which period the first programme should describe, and whether investment amounts cover the whole
-period to 2045, are open questions ({ref}`art23-oi-reference-dates`,
-{ref}`art23-oi-otherinvestment`).
+Which period the first programme should describe, and whether measures should cover the whole
+period to 2045, are open questions ({ref}`art23-oi-reference-dates`).
 
 ## After the first programme
 
 According to the draft, the {ref}`art23-derogation` table is reported in the first programme and
 afterwards only if derogation requests change. The Directive requires the programme itself to be
 updated at least every six years.
+
+Extensions to preserve cultural heritage are not part of the first programme. A Member State that
+establishes during implementation that cultural heritage makes the deadline of Article 3(2) or
+6(3) impossible to meet in specific areas updates its programme, and reports the agglomerations
+concerned in {ref}`art23-culturalheritageextension`, by 31 December of the year of the update.
 
 ```{footbibliography}
 ```

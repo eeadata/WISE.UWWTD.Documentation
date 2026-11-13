@@ -1,0 +1,4 @@
+notation,label,definition,notes
+euAgglomerationCode,Agglomeration code,The code of an agglomeration.,Agglomeration table.
+euUWWTPCode,Treatment plant code,The code of an urban wastewater treatment plant.,UWWTP table; `relatedZoneIdentifierScheme` in the DischargePoint table.
+euDischargePointCode,Discharge point code,The code of a discharge point.,DischargePoint table.

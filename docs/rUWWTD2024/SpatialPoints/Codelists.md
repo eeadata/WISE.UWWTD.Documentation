@@ -6,30 +6,11 @@
 
 **Type:** `IdentifierScheme`
 
-The scheme fields are not reported: each table has only one kind of code, so its scheme is fixed
-and is added automatically, with the value below, when the WISE output is produced
-({ref}`sp-oi-schemes`).
+Each table has only one kind of code, so its scheme is fixed. It is reported, as in WISE, in
+`thematicIdIdentifierScheme` and `predecessorsIdentifierScheme`, and in the DischargePoint table
+also in `relatedZoneIdentifierScheme` for the treatment plant ({ref}`sp-oi-schemes`).
 
-:::{list-table} Identifier scheme values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `euAgglomerationCode`
-  - Agglomeration code
-  - The code of an agglomeration.
-  - Agglomeration table.
-* - `euUWWTPCode`
-  - Treatment plant code
-  - The code of an urban wastewater treatment plant.
-  - UWWTP table.
-* - `euDischargePointCode`
-  - Discharge point code
-  - The code of a discharge point.
-  - DischargePoint table.
+:::{codelist} IdentifierScheme
 :::
 
 (sp-cl-evolution)=
@@ -42,73 +23,31 @@ Used by `wiseEvolutionType` in the Agglomeration, UWWTP and DischargePoint table
 [WISE evolution type vocabulary](https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue)
 ({ref}`sp-sources`); only those needed here are used.
 
-:::{list-table} Evolution type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `creation`
-  - Creation
-  - A new object that does not replace another.
-  - New code.
-* - `noChange`
-  - No change
-  - The code and location are unchanged.
-  - The prefilled value in the first reporting. Missing values may be added. Never with
-    `supersedesIdentifier`.
-* - `change`
-  - Change
-  - The code is unchanged; other values are updated.
-  - Includes closing and reopening a facility, and an agglomeration absorbing another.
-* - `aggregation`
-  - Aggregation
-  - A new object formed by merging two or more objects, which it replaces.
-  - New code. Needs `supersedesIdentifier`.
-* - `splitting`
-  - Splitting
-  - A new object formed by splitting one object, which it replaces.
-  - New code. Needs `supersedesIdentifier`.
-* - `deletion`
-  - Deletion
-  - The object no longer exists and is not replaced.
-  - The code is retired, not removed, and is not reused.
-* - `reactivation`
-  - Reactivation
-  - An object retired with `deletion` is in use again, under its old code.
-  - Not for an object that has been replaced.
+:::{codelist} WiseEvolutionType
 :::
 
-(sp-cl-location)=
-## Location status
+(sp-cl-zonetype)=
+## Zone type
 
-**Type:** `LocationStatus`
+**Type:** `ZoneType`
 
-Used by `locationStatus` in the UWWTP table only; a discharge point always has a known location.
-A UWWTD codelist.
+Used by `zoneType` in the Agglomeration table. WISE takes its values from the INSPIRE
+[ZoneTypeCode](https://dd.eionet.europa.eu/vocabulary/inspire/ZoneTypeCode/view) vocabulary. That
+vocabulary has no value for an agglomeration under the Directive, so the value is still to be
+agreed ({ref}`sp-oi-zonetype`). It is the same for every agglomeration.
 
-:::{list-table} Location status values
-:header-rows: 1
-:widths: 24 22 34 20
+(sp-cl-specialisedzonetype)=
+## Specialised zone type
 
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `confirmed`
-  - Confirmed
-  - The coordinates are those of the selected or existing site.
-  - Required for every condition other than `proposed`.
-* - `provisional`
-  - Provisional
-  - The coordinates are an approximate point for a site not yet selected.
-  - Only with `conditionOfFacility` = `proposed`.
-* - `notYetKnown`
-  - Not yet known
-  - No site has been selected and no coordinates are given.
-  - Only with `conditionOfFacility` = `proposed`.
+**Type:** `SpecialisedZoneType`
+
+Used by `specialisedZoneType` in the Agglomeration table. WISE takes its values from the INSPIRE
+[SpecialisedZoneTypeCode](https://dd.eionet.europa.eu/vocabulary/inspire/SpecialisedZoneTypeCode/view)
+vocabulary, which has no values for agglomerations under the Directive. The values below are
+proposed in the geospatial schema of 12 November 2026 and are to be agreed
+({ref}`sp-oi-zonetype`).
+
+:::{codelist} SpecialisedZoneType
 :::
 
 (sp-cl-condition)=
@@ -116,69 +55,13 @@ A UWWTD codelist.
 
 **Type:** `ConditionOfFacility`
 
-Used by `conditionOfFacility` in the UWWTP and DischargePoint tables. It describes the physical
+Used by `conditionOfFacility` in the UWWTP table. It describes the physical
 state of the facility only. Whether an investment has been approved belongs to investment planning,
 not here. The values follow the INSPIRE
-[ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
-except that its `projected` is called `proposed` here ({ref}`sp-oi-vocabulary`).
+[ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist
+and use its notations ({ref}`sp-oi-vocabulary`).
 
-:::{list-table} Condition of facility values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `proposed`
-  - Proposed
-  - The facility is planned or being designed; construction has not started.
-  - The only pre-construction value. INSPIRE value `projected`.
-* - `underConstruction`
-  - Under construction
-  - The facility is being built.
-  - –
-* - `functional`
-  - Functional
-  - The facility is in use.
-  - –
-* - `disused`
-  - Disused
-  - The facility is not in use but still exists.
-  - Its known location is kept.
-* - `decommissioned`
-  - Decommissioned
-  - The facility has been closed and taken out of service.
-  - Its known location is kept.
-:::
-
-(sp-cl-receiving)=
-## Receiving type
-
-**Type:** `ReceivingType`
-
-Used by `receivingType` in the DischargePoint table.
-
-:::{list-table} Receiving type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `surfaceWater`
-  - Surface water
-  - The discharge goes to a river, lake, transitional or coastal water.
-  - –
-* - `groundwater`
-  - Groundwater
-  - The discharge goes directly to groundwater.
-  - –
-* - `soil`
-  - Soil
-  - The discharge goes to land.
-  - –
+:::{codelist} ConditionOfFacility
 :::
 
 (sp-cl-language)=

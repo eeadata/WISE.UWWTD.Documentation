@@ -13,7 +13,13 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc',
+# Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv
+import os
+import sys
+sys.path.insert(0, os.path.abspath('_ext'))
+
+extensions = ['codelist',
+              'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',
               'sphinx_copybutton',

@@ -1,0 +1,6 @@
+notation,label,definition,notes
+projected,Projected,The facility is planned or being designed; construction has not started.,The only pre-construction value.
+underConstruction,Under construction,The facility is being built.,
+functional,Functional,The facility is in use.,
+disused,Disused,The facility is not in use but still exists.,Its known location is kept.
+decommissioned,Decommissioned,The facility has been closed and taken out of service.,Its known location is kept.

@@ -1,0 +1,11 @@
+notation,label,definition,notes
+ownFunds,Own funds,"Funds of the operator, including tariffs, under the polluter-pays or user-pays principle.",
+producerResponsibilityOrganisation,Producer responsibility,Funding from producer responsibility organisations.,
+nationalFederal,National-federal,Funds from the national or federal budget.,
+regional,Regional,Funds from a regional authority.,
+municipal,Municipal,Funds from a municipal authority.,
+otherPublicFunds,Other public funds,Public funds from another source.,
+europeanUnionFund,EU fund,Funding from a Union fund.,Name the fund in `europeanUnionFundName`.
+loan,Loan,A loan from a public or private lender.,Lender optional in `loanName`.
+privateFunds,Private funds,Private funding other than a loan.,
+notIdentified,Not identified,The source of this part of the cost is not yet identified.,Use with `fundingStatus` = `notIdentified`.

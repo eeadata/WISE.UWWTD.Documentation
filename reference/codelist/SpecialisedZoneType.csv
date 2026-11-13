@@ -1,0 +1,5 @@
+notation,label,definition,notes
+agglomerationWithinUWWTDScope,Within the scope,The agglomeration is within the scope of the Directive.,Proposed.
+agglomerationOutsideUWWTDScope,Outside the scope,"The agglomeration is outside the scope of the Directive (below 1 000 p.e.), has been
+cancelled, or has merged with another agglomeration.",Proposed.
+agglomerationFluctuatesUWWTDScope,Fluctuating,The size of the agglomeration fluctuates around 1 000 p.e.,Proposed.

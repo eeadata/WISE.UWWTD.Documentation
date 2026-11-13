@@ -18,10 +18,10 @@ its main settlement. The location of a treatment plant is not used instead ({ref
 (sp-oi-planned-location)=
 ### SP-02 Coordinates of planned facilities
 
-For treatment plants, `locationStatus` (`confirmed`, `provisional`, `notYetKnown`) allows a
-proposed plant without a selected site. Discharge points have no `locationStatus`: their latitude
-and longitude are always required, and a proposed discharge point is reported once its location is
-known. Coordinates are never filled with zero ({ref}`sp-location`).
+`geometry` is always required, as in the geospatial schema proposal of 12 November 2026. A
+proposed treatment plant or discharge point is reported once its location is known; there is no
+longer a `locationStatus` for a plant whose site is not yet selected. An Article 23 measure can
+therefore refer to a planned plant only once its location is known. Coordinates are never filled with zero ({ref}`sp-location`).
 
 (sp-oi-agglomeration-uwwtp)=
 ### SP-03 No link between agglomerations and treatment plants
@@ -31,8 +31,8 @@ No link table is requested. Article 23(1)(b) does not require one.
 (sp-oi-lineage)=
 ### SP-04 Merges, splits and retirement
 
-A new object formed by a merger or split lists the codes it replaces in `supersedesIdentifier`,
-once. An agglomeration that absorbs another keeps its code and is reported as a `change` listing
+A new object formed by a merger or split lists the codes it replaces once, in
+`predecessorsIdentifier`. An agglomeration that absorbs another keeps its code and is reported as a `change` listing
 the absorbed code. `deletion` retires an object that is not replaced. Retired codes stay
 identifiable and are not reused; the reverse link and the history are kept centrally. Changes and
 retirement apply to current objects only, reactivation only to objects retired without
@@ -54,8 +54,8 @@ its official name later does not change its identifier.
 (sp-oi-condition)=
 ### SP-06 Proposed facilities
 
-`planned` is dropped; `proposed` is the only pre-construction condition. It corresponds to the
-INSPIRE value `projected` ({ref}`sp-cl-condition`).
+`planned` is dropped; `projected` is the only pre-construction condition, as in INSPIRE
+({ref}`sp-cl-condition`).
 
 (sp-oi-inspire)=
 ### SP-07 INSPIRE identifiers
@@ -79,8 +79,8 @@ Not reported in this dataflow ({ref}`sp-dischargepoint`).
 The INSPIRE
 [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
 checked on 6 October 2026, has the values `functional`, `projected`, `underConstruction`,
-`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them, with `projected` called
-`proposed` ({ref}`sp-cl-condition`).
+`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them unchanged, including
+`projected`, as agreed with EEA on 19 October 2026 ({ref}`sp-cl-condition`).
 
 (sp-oi-reactivation)=
 ### SP-11a Reactivation
@@ -101,7 +101,7 @@ after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 wi
 is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
 reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.
 
-**Reopening a closed facility is a `change`.** A treatment plant or discharge point that closes is
+**Reopening a closed facility is a `change`.** A treatment plant that closes is
 not retired: it stays in the register with `conditionOfFacility` set to `disused` or
 `decommissioned`. Bringing it back into use only changes that condition. For example, XXUWWTP0005
 closes (`change`, `decommissioned`) and later reopens (`change`, `functional`).
@@ -115,8 +115,10 @@ closes (`change`, `decommissioned`) and later reopens (`change`, `functional`).
 (sp-oi-dischargepoint-simplicity)=
 ### SP-12 Discharge points
 
-Reported like the other objects, with no link to a treatment plant or agglomeration. Discharge
-points are intended for Article 22 reporting and are not needed for Article 23. Completing this
+Reported like the other objects. Each discharge point is linked to the treatment plant that
+discharges through it, in `relatedZoneIdentifier`, as WISE requires a related zone for a discharge
+point. The receiving water body and the other descriptive fields are for a later Article 22
+table. Discharge points are intended for Article 22 reporting and are not needed for Article 23. Completing this
 table is not a prerequisite for an Article 23 delivery.
 
 (sp-oi-legacy-codes)=
@@ -134,14 +136,15 @@ is introduced; the existing flag-and-resolve rule stays.
 (sp-oi-schemes)=
 ### SP-15 Identifier schemes
 
-Each table has one kind of code, so its scheme is fixed and added centrally, not reported
+Each table has one kind of code, so its scheme is fixed. The Agglomeration table reports it, as
+WISE does; the UWWTP and DischargePoint tables do not, and it is added centrally
 ({ref}`sp-cl-scheme`).
 
 (sp-oi-complete-rows)=
 ### SP-16 Complete rows
 
 A reported row gives all the current values of the object. An optional field left empty clears its
-earlier value; an empty `supersedesIdentifier` reports no new replacement and never removes one
+earlier value; empty replaced codes report no new replacement and never removes one
 already accepted. Omitting an object means no change ({ref}`sp-reporting`).
 
 (sp-oi-first-reporting)=
@@ -163,14 +166,40 @@ registration of the object, and the EEA keeps the link to the original code
 (sp-oi-wise)=
 ### SP-13 Differences from WISE
 
-This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. Reporting
-`latitude` and `longitude` instead of a WISE `geometry` is settled for this draft. Points still
+This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. The three tables
+follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data tables: each
+object has a `geometry` point, its identifier schemes, lifespan and designation dates, and
+`predecessorsIdentifier`. The Agglomeration table also follows the WISE management zone tables,
+with `zoneType` and `specialisedZoneType` (SP-18). Descriptive fields go to later Article 22
+tables. Where the proposal and WISE differ, WISE is followed: the English name and the INSPIRE
+identifiers are optional or conditional, as in WISE, not mandatory as in the proposal. Points still
 to settle:
 
-* How an absorption, reported as a `change` with `supersedesIdentifier`, is published to WISE.
-* Whether `conditionOfFacility` is kept, or replaced or complemented by the WISE operational period
-  dates.
-* Whether the EU Registry link, `euRegistryFacilityId`, is still wanted.
+* How an absorption, reported as a `change` with `predecessorsIdentifier`, is published to WISE.
+* Whether `designationPeriodBegin` and `designationPeriodEnd` suit treatment plants and discharge
+  points, or the WISE operational activity period dates of monitoring sites fit better.
+* Discharge points have no `conditionOfFacility`: how a closed or proposed discharge point is
+  shown, for example by `designationPeriodEnd`.
+* The `relatedZoneIdentifier` row is coloured in the proposal, while its scheme is not; it is kept
+  because WISE requires the related zone for a discharge point.
+* The EU Registry link of a treatment plant, `euRegistryFacilityId`, is no longer in this
+  dataflow, as in the proposal.
+
+(sp-oi-zonetype)=
+### SP-18 Agglomeration as a management zone
+
+The Agglomeration table follows the WISE management zone tables. Still to settle:
+
+* The value of `zoneType`. The INSPIRE zone type codelist has no value for an agglomeration under
+  the Directive ({ref}`sp-cl-zonetype`).
+* The values of `specialisedZoneType`, proposed as within the scope, outside it, and fluctuating
+  around 1 000 p.e. ({ref}`sp-cl-specialisedzonetype`). They are not in the INSPIRE codelist, and
+  how they relate to `designationPeriodEnd` and to `deletion` is to be agreed.
+* `designationPeriodBegin` is required: which date is prefilled for agglomerations taken over from
+  the reporting under Directive 91/271/EEC.
+* `relatedZoneIdentifier`, mandatory in the WISE management zone tables, is not reported.
+* The descriptive agglomeration fields of the geospatial schema (generated load, collection rates,
+  collecting system type) are for a later Article 22 descriptive dataset, not this dataflow.
 
 (sp-oi-reportnet)=
 ### SP-20 Reportnet

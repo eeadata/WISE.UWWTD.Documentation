@@ -33,10 +33,10 @@ are reported: no documents, metadata records, document links or file uploads.
 Code, name and representative point of each agglomeration.
 :::
 :::{grid-item-card} {ref}`sp-uwwtp`
-Code, name, location and condition of each treatment plant.
+Code, name, location, condition and capacity of each treatment plant.
 :::
 :::{grid-item-card} {ref}`sp-dischargepoint`
-Location of each discharge point, what discharges there and into what.
+Code, name and location of each discharge point, and the treatment plant discharging there.
 :::
 ::::
 
@@ -73,15 +73,14 @@ values, so that the reporter only edits what has changed; whether Reportnet can 
 been verified ({ref}`sp-oi-reportnet`).
 
 * An optional field left empty clears the value accepted earlier.
-* `supersedesIdentifier` is an exception: left empty, it means that no new replacement is
-  reported. It never removes a replacement accepted earlier.
+* The replaced codes are an exception: left empty, they mean that no new replacement is
+  reported. They never remove a replacement accepted earlier.
 
 **Codes and history are kept.** An object keeps its `thematicIdIdentifier` for as long as it
 remains the same object; a new name, a corrected location or a change of condition does not change
 it. An accepted object is never dropped, and its code is never reused. After an object is retired,
 its code and history are kept centrally, and Article 22 and Article 23 reporting that referred to
-it remains valid. The identifier scheme of each table is fixed and is added centrally; it is not
-reported ({ref}`sp-cl-scheme`).
+it remains valid. The identifier scheme of each table is fixed ({ref}`sp-cl-scheme`).
 
 (sp-code-conversion)=
 ### Converting existing codes into WISE identifiers
@@ -144,7 +143,11 @@ resolve, not fixed automatically:
 (sp-lifecycle)=
 ### What to report when something changes
 
-| Situation | What to report | `wiseEvolutionType` | `supersedesIdentifier` |
+The codes an object replaces, the replaced codes below, are reported in `predecessorsIdentifier`,
+with their scheme in `predecessorsIdentifierScheme`, as in the WISE spatial data tables
+({ref}`sp-sources`).
+
+| Situation | What to report | `wiseEvolutionType` | `predecessorsIdentifier` |
 | --- | --- | --- | --- |
 | Nothing has changed | Nothing, or the prefilled row as it is | `noChange` | – |
 | New object | The object, with a new code | `creation` | – |
@@ -157,20 +160,21 @@ resolve, not fixed automatically:
 
 * **Retired codes stay.** An object that is merged, split or retired is not removed. Its code
   remains identifiable, so earlier reporting that refers to it can still be traced. The codes
-  listed in `supersedesIdentifier` are treated as retired.
+  listed as replaced codes are treated as retired.
 * **Replacements are reported once.** Only the new object lists the codes it replaces, in the
   delivery in which the change happens. Reporters do not fill in the reverse link; it is derived
   centrally. The history of an object is kept centrally and is not reported again.
-* **Closing is not retiring.** A closed treatment plant or discharge point is reported as a
-  `change` with `conditionOfFacility` set to `disused` or `decommissioned`. It keeps its code and
-  can be reopened in the same way.
+* **Closing is not retiring.** A closed treatment plant is reported as a `change` with
+  `conditionOfFacility` set to `disused` or `decommissioned`. It keeps its code and can be reopened
+  in the same way. Discharge points have no condition; how a closed one is reported is open
+  ({ref}`sp-oi-wise`).
 
 Cases that are easy to get wrong:
 
 1. **Merger.** XXAGG0101 and XXAGG0102 merge into a new agglomeration. Report XXAGG0150 with
-   `aggregation` and `supersedesIdentifier` = `XXAGG0101,XXAGG0102`. Do not report the two old
+   `aggregation` and `predecessorsIdentifier` = `XXAGG0101,XXAGG0102`. Do not report the two old
    agglomerations; they are retired with XXAGG0150 as their successor. A later rename of XXAGG0150
-   is a `change` with `supersedesIdentifier` left empty, which keeps the merger in its history.
+   is a `change` with `predecessorsIdentifier` left empty, which keeps the merger in its history.
 
    ```{mermaid} /rUWWTD2024/SpatialPoints/mmd/SpatialPoints_Example_Merger.mmd
    :name: SpatialPoints_Example_Merger
@@ -179,7 +183,7 @@ Cases that are easy to get wrong:
    ```
 
 2. **Split.** Later, XXAGG0150, the agglomeration formed by the merger, splits into two. Report
-   XXAGG0151 and XXAGG0152, each with `splitting` and `supersedesIdentifier` = `XXAGG0150`, in the
+   XXAGG0151 and XXAGG0152, each with `splitting` and `predecessorsIdentifier` = `XXAGG0150`, in the
    same delivery. Do not report XXAGG0150; it is retired with both as its successors, and its own
    merger history is kept.
 
@@ -190,7 +194,7 @@ Cases that are easy to get wrong:
    ```
 
 3. **Absorption.** XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
-   as a `change`, with its new values, and `supersedesIdentifier` = `XXAGG0111`. It keeps its
+   as a `change`, with its new values, and `predecessorsIdentifier` = `XXAGG0111`. It keeps its
    code: in WISE, an `aggregation` produces a new object and must not reuse a replaced code. How
    this case is published to WISE is open ({ref}`sp-oi-wise`).
 
@@ -226,19 +230,18 @@ baseline takes the place of that accepted state throughout these checks
 
 * **No change, change and retirement.** `noChange`, `change` and `deletion` apply only to an
   accepted object that is current, that is, not retired. A `noChange` row keeps the accepted code
-  and location and lists no codes in `supersedesIdentifier`; values missing from the earlier
+  and location and lists no replaced codes; values missing from the earlier
   reporting, such as a name language, may be added under `noChange`.
 * **Reactivation.** `reactivation` applies only to an object retired with `deletion`, not to one
   that has been replaced.
-* **Predecessors.** Each code in `supersedesIdentifier` must be an accepted, current object of the
+* **Predecessors.** Each replaced code must be an accepted, current object of the
   same country and the same table, other than the object itself. It must not also be reported in
   its own row of the delivery, nor be listed by another row, except by the other parts of the same
   split.
 * **Mergers and splits.** An `aggregation` lists at least two codes. A `splitting` lists exactly
   one; all the new objects that list the same code are checked together as one split, and there
   must be at least two.
-* **Absorption.** A `change` with `supersedesIdentifier` is accepted only in the Agglomeration
-  table.
+* **Absorption.** A `change` with replaced codes is accepted only in the Agglomeration table.
 * **New codes.** `creation`, `aggregation` and `splitting` use a code never used before in the
   table, including retired codes.
 
@@ -246,7 +249,8 @@ baseline takes the place of that accepted state throughout these checks
 ## Use by Article 22 and Article 23 reporting
 
 The Article 23 {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables refer to treatment plants
-and agglomerations by `thematicIdIdentifier`, without repeating their name or location. The
+and agglomerations by `thematicIdIdentifier`, and Article 23 measures list them in `euUWWTPCode` or
+`euAgglomerationCode`, without repeating their name or location. The
 Article 22 reporting is expected to refer to agglomerations, treatment plants and discharge points
 in the same way; its tables are not defined yet.
 
@@ -258,14 +262,15 @@ in the same way; its tables are not defined yet.
 (sp-location)=
 ## Locations
 
-**Coordinates as numbers.** Report latitude and longitude in decimal degrees, in ETRS89
-(EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places. Either system is accepted.
-No conversion between the two systems or separate declaration of the system is required.
+**Geometry.** Every object is located by `geometry`, a single point made of a latitude and
+longitude pair in decimal degrees, as in the WISE spatial data tables. Use ETRS89 (EPSG:4258) or
+WGS 84 (EPSG:4326), with at least four decimal places. Either system is accepted. No conversion
+between the two systems or separate declaration of the system is required.
 
 Use existing coordinates or read them from a map that provides latitude and longitude in either
-system. Enter the two numbers directly in the table; no GIS file or metadata is needed. Use a
-full stop as the decimal separator, for example `52.374031` and `4.889690`, and a negative
-longitude west of Greenwich. Four decimal places locate a point to about 10 m; more are accepted.
+system; no GIS file or metadata is needed. Use a full stop as the decimal separator, for example
+`52.374031` and `4.889690`, and a negative longitude west of Greenwich. Four decimal places locate
+a point to about 10 m; more are accepted.
 
 | Decimal places | Precision |
 | --- | --- |
@@ -280,22 +285,9 @@ located by a point within its main settlement, chosen by the reporting authority
 a treatment plant is not used in its place. An unsuitable earlier point is corrected as a
 `change`, keeping the code.
 
-**Treatment plants.** The location of a plant may not yet be known while it is proposed.
-
-| `conditionOfFacility` | `locationStatus` | Coordinates |
-| --- | --- | --- |
-| `proposed`, site not selected | `notYetKnown` | empty |
-| `proposed`, provisional site known | `provisional` | an approximate point |
-| `proposed`, site selected | `confirmed` | the site |
-| `underConstruction` or `functional` | `confirmed` | the site |
-| `disused` or `decommissioned` | `confirmed` | the known location, kept |
-
-When the site of a proposed plant is selected, the same code is kept and the plant is reported as
-a `change`.
-
-**Discharge points.** Latitude and longitude are always required, whatever the condition of the
-discharge point. A proposed discharge point is reported once its location is known; its condition
-stays `proposed` until it is built.
+**Treatment plants and discharge points.** The geometry is always required, whatever the
+condition of the facility. A proposed treatment plant or discharge point is reported once its
+location is known ({ref}`sp-oi-planned-location`). A closed facility keeps its known location.
 
 A location is never filled with zero, or with the point of the agglomeration a facility serves.
 
@@ -334,10 +326,12 @@ about a Member State's separate INSPIRE obligations.
 | --- | --- |
 | `wiseIdentifier` | A WISE code, following the rules below |
 | `string254`, `string25` | Text of at most 254 or 25 characters |
-| `NumberDecimalExtendedType` | A decimal number, which may be negative, as in the WFD schema |
+| `point` | A point geometry: a latitude and longitude pair in decimal degrees, as in the WISE spatial data tables |
+| `date` | A date, `YYYY-MM-DD` |
+| `integer` | A whole number |
 | *codelist name* | A value from the codelist of that name ({ref}`sp-codelists`) |
 
-Decimal numbers use a full stop as the decimal separator and no thousands separator, for example
+Coordinates use a full stop as the decimal separator and no thousands separator, for example
 `-8.61`, not `-8,61`.
 
 `[0..n]` marks a field that accepts several values, separated by commas.
@@ -378,30 +372,45 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
   - Blocker
 * - `noChange`, `change` and `deletion` refer to an accepted, current object
   - Blocker
-* - A `noChange` row has no `supersedesIdentifier`
+* - A `noChange` row has no replaced codes
   - Error
 * - A `noChange` row has the accepted location; a different location is a `change`
   - Error
 * - `reactivation` refers to an object retired with `deletion` and not replaced
   - Blocker
-* - `supersedesIdentifier` is given with `aggregation` and `splitting`, and otherwise only with a
+* - Replaced codes are given with `aggregation` and `splitting`, and otherwise only with a
     `change` in the Agglomeration table
   - Error
-* - Each code in `supersedesIdentifier` is an accepted, current object of the same country and
+* - Each replaced code is an accepted, current object of the same country and
     table, other than the object itself. It is not reported in its own row or replaced elsewhere
     in the delivery, except by other successors of the same split
   - Blocker
 * - An `aggregation` lists at least two codes; a split lists one code, shared by at least two new
     objects
   - Error
-* - `latitude` is between -90 and 90 and `longitude` between -180 and 180
+* - `geometry` is given and is a valid single point
   - Blocker
-* - Agglomerations and discharge points have coordinates; treatment plants have them unless
-    `locationStatus` is `notYetKnown`
-  - Blocker
-* - `notYetKnown` and `provisional` occur only with `conditionOfFacility` = `proposed`
+* - `geometry` lies within the bounding box of the reporting country
   - Error
-* - Coordinates are not both zero
+* - A discharge point lies within 10 km of the treatment plant in `relatedZoneIdentifier`
+  - Warning
+* - `thematicIdIdentifierScheme` is the scheme of the table ({ref}`sp-cl-scheme`), and
+    `predecessorsIdentifierScheme` is the same scheme when `predecessorsIdentifier` is given and
+    empty otherwise
+  - Blocker
+* - `relatedZoneIdentifier` is an accepted treatment plant of the same country, and
+    `relatedZoneIdentifierScheme` is `euUWWTPCode`
+  - Blocker
+* - `uwwCapacity` is a whole number greater than zero
+  - Error
+* - `endLifespanVersion` is given with `deletion` and only then; it is not before
+    `beginLifespanVersion`
+  - Error
+* - `designationPeriodEnd`, when given, is not before `designationPeriodBegin`
+  - Error
+* - `zoneType` and `specialisedZoneType` in the Agglomeration table are values of their codelists
+  - Blocker
+* - The latitude and longitude of `geometry` are not both zero
   - Error
 * - A new or changed location has at least four decimal places
   - Error
@@ -412,8 +421,6 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
   - Error
 * - `nameText` and `nameLanguage` are given, and `nameLanguage` is in the ISO 639-2 vocabulary
   - Blocker
-* - `waterBodyCode` refers to a water body reported under the Water Framework Directive
-  - Warning
 :::
 
 Article 22 and Article 23 deliveries check that each referenced code has been accepted here, for
@@ -426,6 +433,8 @@ The WISE definitions below are reused selectively. This dataflow is a simplified
 not a copy of the WISE spatial data schema.
 
 * WISE spatial data, Eionet Data Dictionary dataset 3158, released 18 May 2017: tables
+  [SubUnit](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/SubUnit), the
+  model for the Agglomeration table as a management zone,
   [MonitoringSite](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/MonitoringSite),
   [RiverBasinDistrict](https://dd.eionet.europa.eu/datasets/latest/WISE_SpatialData/tables/RiverBasinDistrict)
   and
@@ -439,10 +448,6 @@ not a copy of the WISE spatial data schema.
 * ISO 639-2 language vocabulary, Eionet Data Dictionary,
   [common/iso639-2](https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view), released
   10 July 2019.
-* WFD reporting schema,
-  [WFDCommon_2022.xsd](https://dd.eionet.europa.eu/schemas/WFD2022/WFDCommon_2022.xsd):
-  `NumberDecimalExtendedType`, a plain decimal number. Its `NumberDecimalType` is not used for
-  coordinates, as it allows only non-negative values and the codes `-9999`, `-8888` and `-7777`.
 * INSPIRE condition of facility codelist,
   [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue),
   checked on 6 October 2026.

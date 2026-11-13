@@ -10,26 +10,7 @@ Each table has only one kind of code, so its scheme is fixed. It is reported, as
 `thematicIdIdentifierScheme` and `predecessorsIdentifierScheme`, and in the DischargePoint table
 also in `relatedZoneIdentifierScheme` for the treatment plant ({ref}`sp-oi-schemes`).
 
-:::{list-table} Identifier scheme values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `euAgglomerationCode`
-  - Agglomeration code
-  - The code of an agglomeration.
-  - Agglomeration table.
-* - `euUWWTPCode`
-  - Treatment plant code
-  - The code of an urban wastewater treatment plant.
-  - UWWTP table; `relatedZoneIdentifierScheme` in the DischargePoint table.
-* - `euDischargePointCode`
-  - Discharge point code
-  - The code of a discharge point.
-  - DischargePoint table.
+:::{codelist} IdentifierScheme
 :::
 
 (sp-cl-evolution)=
@@ -42,43 +23,7 @@ Used by `wiseEvolutionType` in the Agglomeration, UWWTP and DischargePoint table
 [WISE evolution type vocabulary](https://dd.eionet.europa.eu/vocabulary/wise/WiseEvolutionTypeValue)
 ({ref}`sp-sources`); only those needed here are used.
 
-:::{list-table} Evolution type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `creation`
-  - Creation
-  - A new object that does not replace another.
-  - New code.
-* - `noChange`
-  - No change
-  - The code and location are unchanged.
-  - The prefilled value in the first reporting. Missing values may be added. Never with
-    replaced codes.
-* - `change`
-  - Change
-  - The code is unchanged; other values are updated.
-  - Includes closing and reopening a facility, and an agglomeration absorbing another.
-* - `aggregation`
-  - Aggregation
-  - A new object formed by merging two or more objects, which it replaces.
-  - New code. Needs the replaced codes.
-* - `splitting`
-  - Splitting
-  - A new object formed by splitting one object, which it replaces.
-  - New code. Needs the replaced codes.
-* - `deletion`
-  - Deletion
-  - The object no longer exists and is not replaced.
-  - The code is retired, not removed, and is not reused.
-* - `reactivation`
-  - Reactivation
-  - An object retired with `deletion` is in use again, under its old code.
-  - Not for an object that has been replaced.
+:::{codelist} WiseEvolutionType
 :::
 
 (sp-cl-zonetype)=
@@ -102,27 +47,7 @@ vocabulary, which has no values for agglomerations under the Directive. The valu
 proposed in the geospatial schema of 12 November 2026 and are to be agreed
 ({ref}`sp-oi-zonetype`).
 
-:::{list-table} Specialised zone type values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `agglomerationWithinUWWTDScope`
-  - Within the scope
-  - The agglomeration is within the scope of the Directive.
-  - Proposed.
-* - `agglomerationOutsideUWWTDScope`
-  - Outside the scope
-  - The agglomeration is outside the scope of the Directive (below 1 000 p.e.), has been
-    cancelled, or has merged with another agglomeration.
-  - Proposed.
-* - `agglomerationFluctuatesUWWTDScope`
-  - Fluctuating
-  - The size of the agglomeration fluctuates around 1 000 p.e.
-  - Proposed.
+:::{codelist} SpecialisedZoneType
 :::
 
 (sp-cl-condition)=
@@ -136,34 +61,7 @@ not here. The values follow the INSPIRE
 [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist
 and use its notations ({ref}`sp-oi-vocabulary`).
 
-:::{list-table} Condition of facility values
-:header-rows: 1
-:widths: 24 22 34 20
-
-* - Notation
-  - Label
-  - Definition
-  - Notes
-* - `projected`
-  - Projected
-  - The facility is planned or being designed; construction has not started.
-  - The only pre-construction value.
-* - `underConstruction`
-  - Under construction
-  - The facility is being built.
-  - –
-* - `functional`
-  - Functional
-  - The facility is in use.
-  - –
-* - `disused`
-  - Disused
-  - The facility is not in use but still exists.
-  - Its known location is kept.
-* - `decommissioned`
-  - Decommissioned
-  - The facility has been closed and taken out of service.
-  - Its known location is kept.
+:::{codelist} ConditionOfFacility
 :::
 
 (sp-cl-language)=

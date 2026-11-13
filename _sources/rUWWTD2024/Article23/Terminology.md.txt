@@ -78,22 +78,32 @@ National implementation programme (NIP)
   and link to the full document (`programmeReference`).
 
 Measure
-: An action to reach or maintain compliance, selected from the measure codelists of the
-  {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables.
+: An action to reach or maintain compliance, or to renew, upgrade or replace existing
+  infrastructure, reported in the {ref}`art23-measure` table with one or more measure types.
 
-Investment
-: The forecast cost of measures, in million EUR. See {ref}`art23-investments`.
+Investment cost
+: The capital expenditure of a measure, without operational or maintenance costs, in millions of
+  national currency (`investmentCost`). See {ref}`art23-investments`.
+
+Funding status
+: How far the money from a source of financing is secured: secured, applied for, planned, or not
+  identified (`fundingStatus`).
+
+Financing gap
+: The investment cost of a measure minus its secured financing. Calculated, not reported.
 
 Expected date of compliance
 : For a treatment plant, the year by which 12 months of compliant samples are expected
-  (`expectedYearPerformance`).
+  (`expectedCompletionYear` of a measure at the plant).
 
 Organic design capacity
 : The design capacity of a plant expressed in p.e. (`expectedCapacity`).
 
 Derogation
-: In the {ref}`art23-derogation` table, an extension of a deadline under Article 3(2), 6(3),
-  7(4) or 23(1), or less stringent treatment under Article 6(4).
+: An extension of a deadline under Article 3(2), 6(3) or 7(4), reported in {ref}`art23-derogation`;
+  an extension to preserve cultural heritage under Article 23(1), reported in
+  {ref}`art23-culturalheritageextension`; or less stringent treatment under Article 6(4), reported
+  in {ref}`art23-lessstringenttreatment`.
 
 (art23-status-values)=
 ## Status values C, NC and PD
@@ -154,7 +164,8 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **string*n*** - character string of at most *n* characters, UTF-8 encoded, for example
   `string100`. Plain **string** allows up to 4 000 characters;
 * **nonNegativeValue** - a non-negative number. The unit follows in brackets, for example
-  a load in p.e. or an amount in million EUR;
+  a load in p.e. or an amount in millions of national currency;
+* **nonNegativeInteger** - a whole number of 0 or more;
 * **Percentage** - a value in the interval [0, 100];
 * **gYear** - a Gregorian year;
 * **date** - a date in the format yyyy-mm-dd;

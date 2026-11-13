@@ -30,19 +30,30 @@ The location is a representative point, not the boundary of the agglomeration
 
 ## What the fields are
 
+The fields follow the WISE spatial data tables for management zones, such as `SubUnit`
+({ref}`sp-sources`), as proposed in the geospatial schema of 12 November 2026.
+
+**Location.** `geometry`, a single point that represents the agglomeration, within its main
+settlement.
+
 **Identifiers.** `thematicIdIdentifier` is the agglomeration's code: the key that other reporting
-uses to refer to it ({ref}`sp-references`). The three INSPIRE fields are only for Member States
-that already publish the agglomeration in a national INSPIRE dataset; they let the two records be
-matched. Otherwise they stay empty.
+uses to refer to it ({ref}`sp-references`). Its scheme, `thematicIdIdentifierScheme`, is always
+`euAgglomerationCode`. The three INSPIRE fields are only for Member States that already publish
+the agglomeration in a national INSPIRE dataset; they let the two records be matched. Otherwise
+they stay empty.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 
-**Location.** A representative point in decimal degrees, within the main settlement.
+**Version and history.** `beginLifespanVersion` and `endLifespanVersion` date the version reported.
+`wiseEvolutionType` says what is being reported: no change, a new agglomeration, a change, a
+merger, a split or a retirement. A new agglomeration that results from a merger or split lists the
+codes it replaces in `predecessorsIdentifier`; so does an agglomeration that absorbs another and
+keeps its code. See {ref}`sp-lifecycle`.
 
-**Change.** `wiseEvolutionType` says what is being reported: no change, a new agglomeration, a
-change, a merger, a split or a retirement. A new agglomeration that results from a merger or split
-lists the codes it replaces in `supersedesIdentifier`; so does an agglomeration that absorbs
-another and keeps its code. See {ref}`sp-lifecycle`.
+**Designation and zone type.** `designationPeriodBegin` and `designationPeriodEnd` give the period
+in which the agglomeration is in the scope of the Directive. `zoneType` and `specialisedZoneType`
+classify it as a management zone, as in WISE; their values are still to be agreed
+({ref}`sp-oi-zonetype`).
 
 ## Agglomeration fields
 
@@ -56,14 +67,12 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - Type
   - Status
   - Condition
-* - `thematicIdIdentifier`
-  - Code
-  - Code of the agglomeration. Its identifier scheme is always `euAgglomerationCode`, the only one
-    for this table, so the scheme is not reported but added centrally ({ref}`sp-cl-scheme`). A new
-    agglomeration receives a new code; an existing one keeps its code ({ref}`sp-reporting`). A code
-    from the reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is
-    converted ({ref}`sp-code-conversion`).
-  - wiseIdentifier
+* - `geometry`
+  - Location
+  - Representative point of the agglomeration, as a single point geometry (a latitude and
+    longitude pair) in ETRS89 (EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal
+    places ({ref}`sp-location`).
+  - point
   - Required
   - –
 * - `inspireIdLocalId`
@@ -89,6 +98,26 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - string25
   - Optional
   - –
+* - `thematicIdIdentifier`
+  - Code
+  - Code of the agglomeration. A new agglomeration receives a new code; an existing one keeps its
+    code ({ref}`sp-reporting`). A code from the reporting under Directive 91/271/EEC that does not
+    meet the WISE identifier rules is converted ({ref}`sp-code-conversion`).
+  - wiseIdentifier
+  - Required
+  - –
+* - `thematicIdIdentifierScheme`
+  - Code scheme
+  - Scheme of `thematicIdIdentifier`. Always `euAgglomerationCode` ({ref}`sp-cl-scheme`).
+  - IdentifierScheme
+  - Required
+  - –
+* - `nameTextInternational`
+  - English name
+  - Existing English version of the name, if available. No translation is required.
+  - string254
+  - Optional
+  - –
 * - `nameText`
   - Name
   - Official name of the agglomeration.
@@ -101,37 +130,24 @@ another and keeps its code. See {ref}`sp-lifecycle`.
   - Language
   - Required
   - –
-* - `nameTextInternational`
-  - English name
-  - Existing English version of the name, if available. No translation is required.
-  - string254
+* - `beginLifespanVersion`
+  - Version start
+  - Date on which this version of the agglomeration was inserted or changed.
+  - date
   - Optional
   - –
-* - `latitude`
-  - Latitude
-  - Latitude of the representative point in decimal degrees, in ETRS89 (EPSG:4258) or WGS 84
-    (EPSG:4326), with at least four decimal places.
-  - NumberDecimalExtendedType
-  - Required
-  - –
-* - `longitude`
-  - Longitude
-  - Longitude of the representative point, as for `latitude`.
-  - NumberDecimalExtendedType
-  - Required
-  - –
-* - `wiseEvolutionType`
-  - Evolution type
-  - What is being reported: no change, a new object, a change, a merger, a split or a
-    retirement.
-  - WiseEvolutionType
-  - Required
-  - {ref}`sp-cl-evolution`
-* - `supersedesIdentifier`
-  - Supersedes
+* - `endLifespanVersion`
+  - Version end
+  - Date on which the agglomeration was retired.
+  - date
+  - Conditional
+  - Required with
+    `deletion`; otherwise
+    empty
+* - `predecessorsIdentifier`
+  - Predecessors
   - Codes of the agglomerations this one replaces, given once, in the delivery in which the change
-    happens. They are codes of the same scheme, `euAgglomerationCode`. Several codes are separated
-    by commas.
+    happens. Several codes are separated by commas.
   - wiseIdentifier [0..n]
   - Conditional
   - Required with
@@ -139,4 +155,48 @@ another and keeps its code. See {ref}`sp-lifecycle`.
     `splitting`, and with
     `change` for an
     absorption
+* - `predecessorsIdentifierScheme`
+  - Predecessors scheme
+  - Scheme of `predecessorsIdentifier`. Always `euAgglomerationCode` ({ref}`sp-cl-scheme`).
+  - IdentifierScheme
+  - Conditional
+  - Required if
+    `predecessorsIdentifier`
+    is given
+* - `wiseEvolutionType`
+  - Evolution type
+  - What is being reported: no change, a new object, a change, a merger, a split or a
+    retirement.
+  - WiseEvolutionType
+  - Required
+  - {ref}`sp-cl-evolution`
+* - `designationPeriodBegin`
+  - Designation start
+  - Date from which the agglomeration is in the scope of the Directive.
+  - date
+  - Required
+  - –
+* - `designationPeriodEnd`
+  - Designation end
+  - Date on which the agglomeration left the scope of the Directive.
+  - date
+  - Conditional
+  - Required when the
+    agglomeration leaves
+    the scope of the
+    Directive
+* - `zoneType`
+  - Zone type
+  - Type of management zone, from the INSPIRE zone type codelist. The same value for every
+    agglomeration.
+  - ZoneType
+  - Required
+  - {ref}`sp-cl-zonetype`
+* - `specialisedZoneType`
+  - Specialised zone type
+  - Whether the agglomeration is within the scope of the Directive, outside it, or fluctuating
+    around the threshold.
+  - SpecialisedZoneType
+  - Required
+  - {ref}`sp-cl-specialisedzonetype`
 :::

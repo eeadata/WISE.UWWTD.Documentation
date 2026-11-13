@@ -11,4 +11,4 @@ tmp
 # Prefill: the Reportnet source and generated baselines hold provisional Member State data
 /prefill/*/input/
 /prefill/*/output/
-/prifill
+/prefill

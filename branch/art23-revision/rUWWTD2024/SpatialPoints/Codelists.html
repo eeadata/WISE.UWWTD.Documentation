@@ -413,8 +413,9 @@
 <span id="identifier-scheme"></span><h2>Identifier scheme<a class="headerlink" href="#sp-cl-scheme" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">IdentifierScheme</span></code></p>
 <p>Each table has only one kind of code, so its scheme is fixed. It is reported, as in WISE, in
-<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code> and <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifierScheme</span></code>, and in the DischargePoint table
-also in <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code> for the treatment plant (<a class="reference internal" href="OpenIssues.html#sp-oi-schemes"><span class="std std-ref">SP-15 Identifier schemes</span></a>).</p>
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code> and <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifierScheme</span></code> (<a class="reference internal" href="OpenIssues.html#sp-oi-schemes"><span class="std std-ref">SP-15 Identifier schemes</span></a>). The
+treatment plant code in <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code> of the DischargePoint table has no scheme field; it
+is always a <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
 <caption><span class="caption-number">Table 88 </span><span class="caption-text">Identifier scheme values</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
@@ -439,7 +440,7 @@ also in <code class="docutils literal notranslate"><span class="pre">relatedZone
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
 <td><p>Treatment plant code</p></td>
 <td><p>The code of an urban wastewater treatment plant.</p></td>
-<td><p>UWWTP table; <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code> in the DischargePoint table.</p></td>
+<td><p>UWWTP table; also the code in <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code> in the DischargePoint table.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code></p></td>
 <td><p>Discharge point code</p></td>
@@ -518,63 +519,20 @@ replaced codes.</p></td>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ZoneType</span></code></p>
 <p>Used by <code class="docutils literal notranslate"><span class="pre">zoneType</span></code> in the Agglomeration table. WISE takes its values from the INSPIRE
 <a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/inspire/ZoneTypeCode/view">ZoneTypeCode</a> vocabulary. That
-vocabulary has no value for an agglomeration under the Directive, so the value is still to be
-agreed (<a class="reference internal" href="OpenIssues.html#sp-oi-zonetype"><span class="std std-ref">SP-18 Agglomeration as a management zone</span></a>). It is the same for every agglomeration.</p>
-</section>
-<section id="sp-cl-specialisedzonetype">
-<span id="specialised-zone-type"></span><h2>Specialised zone type<a class="headerlink" href="#sp-cl-specialisedzonetype" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">SpecialisedZoneType</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code> in the Agglomeration table. WISE takes its values from the INSPIRE
-<a class="reference external" href="https://dd.eionet.europa.eu/vocabulary/inspire/SpecialisedZoneTypeCode/view">SpecialisedZoneTypeCode</a>
-vocabulary, which has no values for agglomerations under the Directive. The values below are
-proposed in the geospatial schema of 12 November 2026 and are to be agreed
-(<a class="reference internal" href="OpenIssues.html#sp-oi-zonetype"><span class="std std-ref">SP-18 Agglomeration as a management zone</span></a>).</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 90 </span><span class="caption-text">Specialised zone type values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 24.0%" />
-<col style="width: 22.0%" />
-<col style="width: 34.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Notation</p></th>
-<th class="head"><p>Label</p></th>
-<th class="head"><p>Definition</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agglomerationWithinUWWTDScope</span></code></p></td>
-<td><p>Within the scope</p></td>
-<td><p>The agglomeration is within the scope of the Directive.</p></td>
-<td><p>Proposed.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agglomerationOutsideUWWTDScope</span></code></p></td>
-<td><p>Outside the scope</p></td>
-<td><p>The agglomeration is outside the scope of the Directive (below 1 000 p.e.), has been
-cancelled, or has merged with another agglomeration.</p></td>
-<td><p>Proposed.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agglomerationFluctuatesUWWTDScope</span></code></p></td>
-<td><p>Fluctuating</p></td>
-<td><p>The size of the agglomeration fluctuates around 1 000 p.e.</p></td>
-<td><p>Proposed.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+vocabulary has no value for an agglomeration under the Directive. The UML diagram of 16 November
+2026 proposes <code class="docutils literal notranslate"><span class="pre">uwwtdAgglomeration</span></code>; the value is still to be agreed (<a class="reference internal" href="OpenIssues.html#sp-oi-zonetype"><span class="std std-ref">SP-18 Agglomeration as a management zone</span></a>). It is
+the same for every agglomeration.</p>
 </section>
 <section id="sp-cl-condition">
 <span id="condition-of-facility"></span><h2>Condition of facility<a class="headerlink" href="#sp-cl-condition" title="Link to this heading">#</a></h2>
-<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ConditionOfFacility</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> in the UWWTP table. It describes the physical
+<p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">ConditionOfFacilityValue</span></code></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">status</span></code> in the UWWTP and DischargePoint tables. It describes the physical
 state of the facility only. Whether an investment has been approved belongs to investment planning,
 not here. The values follow the INSPIRE
 <a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist
 and use its notations (<a class="reference internal" href="OpenIssues.html#sp-oi-vocabulary"><span class="std std-ref">SP-11 Condition codelist</span></a>).</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 91 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 90 </span><span class="caption-text">Condition of facility values</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 22.0%" />
@@ -680,7 +638,6 @@ is the vocabulary of the WISE data element
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-scheme">Identifier scheme</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-evolution">Evolution type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-zonetype">Zone type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-specialisedzonetype">Specialised zone type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-condition">Condition of facility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-cl-language">Language</a></li>
 </ul>

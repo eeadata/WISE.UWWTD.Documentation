@@ -772,7 +772,7 @@ plants (<a class="reference internal" href="index.html#sp-first-reporting"><span
 objects; unchanged rows may be included as <code class="docutils literal notranslate"><span class="pre">noChange</span></code>.
 <strong>Rows:</strong> one row per treatment plant reported. <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the key.</p>
 <p>The table identifies and locates every urban wastewater treatment plant, including proposed ones,
-with its code, name, location, condition and capacity. The dataflow starts from the objects reported under
+with its code, name, location and condition. The dataflow starts from the objects reported under
 Directive 91/271/EEC; a Member State then reports only what changes (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p>
 <p>A proposed plant is reported once its location is known. A plant that closes keeps its code,
 with its condition changed (<a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>).</p>
@@ -789,9 +789,9 @@ classDiagram
 direction LR
 class UWWTP {
     + geometry: point [1]
-    + inspireIdLocalId: string254 [0..1]
-    + inspireIdNamespace: string254 [0..1]
-    + inspireIdVersionId: string25 [0..1]
+    + inspireIdLocalId: string254 [1]
+    + inspireIdNamespace: string254 [1]
+    + inspireIdVersionId: string254 [0..1]
     + thematicIdIdentifier: wiseIdentifier [1]
     + thematicIdIdentifierScheme: IdentifierScheme [1]
     + nameTextInternational: string254 [0..1]
@@ -802,10 +802,10 @@ class UWWTP {
     + predecessorsIdentifier: wiseIdentifier [0..n]
     + predecessorsIdentifierScheme: IdentifierScheme [0..1]
     + wiseEvolutionType: WiseEvolutionType [1]
-    + designationPeriodBegin: date [1]
-    + designationPeriodEnd: date [0..1]
-    + conditionOfFacility: ConditionOfFacility [1]
-    + uwwCapacity: integer [1]
+    + status: ConditionOfFacilityValue [1]
+    + validFrom: date [1]
+    + validTo: date [0..1]
+    + link: url [0..1]
 }
 
 classDef default fill:white,stroke:#000;
@@ -817,14 +817,14 @@ classDef forFixing fill:white,stroke:#f00;
 </figure>
 <section id="what-the-fields-are">
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
-<p>The fields follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data
-definitions (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>). Descriptive information on the plant is for a later Article 22
-table, not this dataflow.</p>
+<p>The fields follow the UML diagram of the geospatial schema of 16 November 2026 and the WISE
+spatial data definitions (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>). Descriptive information on the plant, including its
+capacity, is for a later Article 22 table, not this dataflow (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
 <p><strong>Location.</strong> <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, a single point at the site of the plant.</p>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the treatment plant’s code: the key that other reporting uses
 to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). Its scheme, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>, is always
-<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. The three INSPIRE fields are only for Member States that already publish the treatment plant in
-a national INSPIRE dataset; they let the two records be matched. Otherwise they stay empty.</p>
+<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> give the INSPIRE identifier of the
+treatment plant and are required (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>); <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is optional.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.
 For a proposed plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the same identifier.</p>
@@ -832,11 +832,12 @@ official name is assigned, report the new name as a <code class="docutils litera
 <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new treatment plant, a change, a merger, a
 split or a retirement. A new treatment plant that replaces earlier ones lists their codes in
 <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>. A plant that closes is a <code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a retirement. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
-<p><strong>Designation.</strong> <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> and <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> give the period in which the
-treatment plant is in the scope of the Directive.</p>
-<p><strong>Condition and capacity.</strong> <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> says whether the plant is proposed, under
-construction, in use or out of use. <code class="docutils literal notranslate"><span class="pre">uwwCapacity</span></code> is its organic design capacity in population
-equivalent.</p>
+<p><strong>Condition.</strong> <code class="docutils literal notranslate"><span class="pre">status</span></code> says whether the plant is proposed, under construction, in use or out of
+use, with the INSPIRE condition of facility values.</p>
+<p><strong>Validity.</strong> <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and <code class="docutils literal notranslate"><span class="pre">validTo</span></code> give the period in which the treatment plant is in the
+scope of the Directive. The names follow INSPIRE; their exact meaning is to be confirmed
+(<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
+<p><strong>Link.</strong> <code class="docutils literal notranslate"><span class="pre">link</span></code> is an optional web address with more information on the treatment plant.</p>
 </section>
 <section id="uwwtp-fields">
 <h2>UWWTP fields<a class="headerlink" href="#uwwtp-fields" title="Link to this heading">#</a></h2>
@@ -872,25 +873,20 @@ equivalent.</p>
 <td><p>INSPIRE local identifier</p></td>
 <td><p>Local identifier of the same object in a national INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required if an INSPIRE
-identifier has been
-assigned; give with
-<code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 <td><p>INSPIRE namespace</p></td>
 <td><p>Namespace of that INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is
-given</p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
 <td><p>Version of the object in that INSPIRE dataset, where the source uses versions.</p></td>
-<td><p>string25</p></td>
+<td><p>string254</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
@@ -974,15 +970,22 @@ retirement.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code></p></td>
-<td><p>Designation start</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p>Condition</p></td>
+<td><p>Physical state of the plant: proposed, under construction, in use, disused or decommissioned.</p></td>
+<td><p>ConditionOfFacilityValue</p></td>
+<td><p>Required</p></td>
+<td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">validFrom</span></code></p></td>
+<td><p>Valid from</p></td>
 <td><p>Date from which the treatment plant is in the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code></p></td>
-<td><p>Designation end</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">validTo</span></code></p></td>
+<td><p>Valid to</p></td>
 <td><p>Date on which the treatment plant left the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
@@ -990,18 +993,11 @@ retirement.</p></td>
 treatment plant leaves the
 scope of the Directive</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code></p></td>
-<td><p>Condition</p></td>
-<td><p>Physical state of the plant: proposed, under construction, in use, disused or decommissioned.</p></td>
-<td><p>ConditionOfFacility</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uwwCapacity</span></code></p></td>
-<td><p>Capacity</p></td>
-<td><p>Organic design capacity of the treatment plant, in population equivalent (p.e.).</p></td>
-<td><p>integer</p></td>
-<td><p>Required</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p>Link</p></td>
+<td><p>Web address of a page with more information on the treatment plant.</p></td>
+<td><p>url</p></td>
+<td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
 </tbody>

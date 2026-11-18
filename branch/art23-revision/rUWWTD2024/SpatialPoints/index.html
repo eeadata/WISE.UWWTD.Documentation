@@ -816,7 +816,7 @@ classDef forFixing fill:white,stroke:#f00;
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <a class="reference internal" href="UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a></div>
-<p class="sd-card-text">Code, name, location, condition and capacity of each treatment plant.</p>
+<p class="sd-card-text">Code, name, location and condition of each treatment plant.</p>
 </div>
 </div>
 </div>
@@ -1001,10 +1001,9 @@ listed as replaced codes are treated as retired.</p></li>
 <li><p><strong>Replacements are reported once.</strong> Only the new object lists the codes it replaces, in the
 delivery in which the change happens. Reporters do not fill in the reverse link; it is derived
 centrally. The history of an object is kept centrally and is not reported again.</p></li>
-<li><p><strong>Closing is not retiring.</strong> A closed treatment plant is reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> with
-<code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. It keeps its code and can be reopened
-in the same way. Discharge points have no condition; how a closed one is reported is open
-(<a class="reference internal" href="OpenIssues.html#sp-oi-wise"><span class="std std-ref">SP-13 Differences from WISE</span></a>).</p></li>
+<li><p><strong>Closing is not retiring.</strong> A closed treatment plant or discharge point is reported as a
+<code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">status</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. It keeps its code and can be
+reopened in the same way.</p></li>
 </ul>
 <p>Cases that are easy to get wrong:</p>
 <ol class="arabic">
@@ -1224,11 +1223,11 @@ the official name is assigned, update the name and keep the same identifier (<a 
 </section>
 <section id="inspire-identifiers">
 <h2>INSPIRE identifiers<a class="headerlink" href="#inspire-identifiers" title="Link to this heading">#</a></h2>
-<p>The WISE code in <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is required for every object. <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and
-<code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are given together where an INSPIRE identifier has already been assigned to
-the same object, and left empty otherwise. <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is optional. INSPIRE identifiers
-are not to be invented to complete a row. This rule concerns this reporting only; it says nothing
-about a Member State’s separate INSPIRE obligations.</p>
+<p>The WISE code in <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is required for every object. Following the UML diagram
+of 16 November 2026, <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are required for agglomerations
+and treatment plants. For discharge points they are given together where an INSPIRE identifier has
+already been assigned to the same object, and left empty otherwise. <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is
+optional for all three (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
 </section>
 <section id="data-types">
 <h2>Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
@@ -1242,8 +1241,8 @@ about a Member State’s separate INSPIRE obligations.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wiseIdentifier</span></code></p></td>
 <td><p>A WISE code, following the rules below</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string254</span></code>, <code class="docutils literal notranslate"><span class="pre">string25</span></code></p></td>
-<td><p>Text of at most 254 or 25 characters</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string254</span></code></p></td>
+<td><p>Text of at most 254 characters</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">point</span></code></p></td>
 <td><p>A point geometry: a latitude and longitude pair in decimal degrees, as in the WISE spatial data tables</p></td>
@@ -1251,10 +1250,13 @@ about a Member State’s separate INSPIRE obligations.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
 <td><p>A date, <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></td>
+<td><p>A web address, starting with <code class="docutils literal notranslate"><span class="pre">https://</span></code> or <code class="docutils literal notranslate"><span class="pre">http://</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></td>
 <td><p>A whole number</p></td>
 </tr>
-<tr class="row-odd"><td><p><em>codelist name</em></p></td>
+<tr class="row-even"><td><p><em>codelist name</em></p></td>
 <td><p>A value from the codelist of that name (<a class="reference internal" href="Codelists.html#sp-codelists"><span class="std std-ref">Codelists</span></a>)</p></td>
 </tr>
 </tbody>
@@ -1333,7 +1335,7 @@ objects</p></td>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> lies within the bounding box of the reporting country</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>A discharge point lies within 10 km of the treatment plant in <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p>A discharge point lies within 10 km of the treatment plant in <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code></p></td>
 <td><p>Warning</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code> is the scheme of the table (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>), and
@@ -1341,34 +1343,36 @@ objects</p></td>
 empty otherwise</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code> is an accepted treatment plant of the same country, and
-<code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code> is <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code> is an accepted treatment plant of the same country</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uwwCapacity</span></code> is a whole number greater than zero</p></td>
-<td><p>Error</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">endLifespanVersion</span></code> is given with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and only then; it is not before
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endLifespanVersion</span></code> is given with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> and only then; it is not before
 <code class="docutils literal notranslate"><span class="pre">beginLifespanVersion</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code>, when given, is not before <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code>, when given, is not before <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> (Agglomeration),
+and <code class="docutils literal notranslate"><span class="pre">validTo</span></code>, when given, is not before <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> (UWWTP, DischargePoint)</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">zoneType</span></code> and <code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code> in the Agglomeration table are values of their codelists</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zoneType</span></code> in the Agglomeration table and <code class="docutils literal notranslate"><span class="pre">status</span></code> in the UWWTP and DischargePoint tables
+are values of their codelists</p></td>
 <td><p>Blocker</p></td>
 </tr>
-<tr class="row-even"><td><p>The latitude and longitude of <code class="docutils literal notranslate"><span class="pre">geometry</span></code> are not both zero</p></td>
+<tr class="row-odd"><td><p>The latitude and longitude of <code class="docutils literal notranslate"><span class="pre">geometry</span></code> are not both zero</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>A new or changed location has at least four decimal places</p></td>
+<tr class="row-even"><td><p>A new or changed location has at least four decimal places</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>A location taken over from the reporting under Directive 91/271/EEC has at least four decimal
+<tr class="row-odd"><td><p>A location taken over from the reporting under Directive 91/271/EEC has at least four decimal
 places</p></td>
 <td><p>Warning</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are both given or both empty</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are given for every agglomeration and treatment
+plant, and for a discharge point are both given or both empty</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code>, when given, is a valid web address</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nameText</span></code> and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> are given, and <code class="docutils literal notranslate"><span class="pre">nameLanguage</span></code> is in the ISO 639-2 vocabulary</p></td>

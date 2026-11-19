@@ -461,7 +461,9 @@ its official name later does not change its identifier.</p>
 </section>
 <section id="sp-oi-inspire">
 <span id="sp-07-inspire-identifiers"></span><h3>SP-07 INSPIRE identifiers<a class="headerlink" href="#sp-oi-inspire" title="Link to this heading">#</a></h3>
-<p>Given only where an INSPIRE identifier already exists; never invented.</p>
+<p>Required for agglomerations and treatment plants, as in the UML diagram of 16 November 2026. For
+discharge points, given only where an INSPIRE identifier already exists; never invented
+(<a class="reference internal" href="#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
 </section>
 <section id="sp-oi-metadata">
 <span id="sp-09-no-documents-or-metadata"></span><h3>SP-09 No documents or metadata<a class="headerlink" href="#sp-oi-metadata" title="Link to this heading">#</a></h3>
@@ -477,7 +479,7 @@ its official name later does not change its identifier.</p>
 <p>The INSPIRE
 <a class="reference external" href="https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue">ConditionOfFacilityValue</a> codelist,
 checked on 6 October 2026, has the values <code class="docutils literal notranslate"><span class="pre">functional</span></code>, <code class="docutils literal notranslate"><span class="pre">projected</span></code>, <code class="docutils literal notranslate"><span class="pre">underConstruction</span></code>,
-<code class="docutils literal notranslate"><span class="pre">disused</span></code> and <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>, all valid. <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> uses them unchanged, including
+<code class="docutils literal notranslate"><span class="pre">disused</span></code> and <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>, all valid. <code class="docutils literal notranslate"><span class="pre">status</span></code> uses them unchanged, including
 <code class="docutils literal notranslate"><span class="pre">projected</span></code>, as agreed with EEA on 19 October 2026 (<a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a>).</p>
 </section>
 <section id="sp-oi-reactivation">
@@ -495,8 +497,8 @@ and its successor would both be in use, which would quietly undo the merger or s
 after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 with <code class="docutils literal notranslate"><span class="pre">reactivation</span></code>
 is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
 reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.</p>
-<p><strong>Reopening a closed facility is a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</strong> A treatment plant that closes is
-not retired: it stays in the register with <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or
+<p><strong>Reopening a closed facility is a <code class="docutils literal notranslate"><span class="pre">change</span></code>.</strong> A treatment plant or discharge point that closes is
+not retired: it stays in the register with <code class="docutils literal notranslate"><span class="pre">status</span></code> set to <code class="docutils literal notranslate"><span class="pre">disused</span></code> or
 <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>. Bringing it back into use only changes that condition. For example, XXUWWTP0005
 closes (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">decommissioned</span></code>) and later reopens (<code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">functional</span></code>).</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -526,8 +528,8 @@ closes (<code class="docutils literal notranslate"><span class="pre">change</spa
 <section id="sp-oi-dischargepoint-simplicity">
 <span id="sp-12-discharge-points"></span><h3>SP-12 Discharge points<a class="headerlink" href="#sp-oi-dischargepoint-simplicity" title="Link to this heading">#</a></h3>
 <p>Reported like the other objects. Each discharge point is linked to the treatment plant that
-discharges through it, in <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code>, as WISE requires a related zone for a discharge
-point. The receiving water body and the other descriptive fields are for a later Article 22
+discharges through it, in <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code>: as in INSPIRE, the discharge point is an
+installation grouped under the treatment plant as its facility. The receiving water body and the other descriptive fields are for a later Article 22
 table. Discharge points are intended for Article 22 reporting and are not needed for Article 23. Completing this
 table is not a prerequisite for an Article 23 delivery.</p>
 </section>
@@ -573,20 +575,16 @@ registration of the object, and the EEA keeps the link to the original code
 <span id="sp-13-differences-from-wise"></span><h3>SP-13 Differences from WISE<a class="headerlink" href="#sp-oi-wise" title="Link to this heading">#</a></h3>
 <p>This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. The three tables
 follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data tables: each
-object has a <code class="docutils literal notranslate"><span class="pre">geometry</span></code> point, its identifier schemes, lifespan and designation dates, and
+object has a <code class="docutils literal notranslate"><span class="pre">geometry</span></code> point, its identifier schemes, lifespan dates and
 <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>. The Agglomeration table also follows the WISE management zone tables,
-with <code class="docutils literal notranslate"><span class="pre">zoneType</span></code> and <code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code> (SP-18). Descriptive fields go to later Article 22
-tables. Where the proposal and WISE differ, WISE is followed: the English name and the INSPIRE
-identifiers are optional or conditional, as in WISE, not mandatory as in the proposal. Points still
-to settle:</p>
+with designation dates and <code class="docutils literal notranslate"><span class="pre">zoneType</span></code> (SP-18). The UWWTP and DischargePoint tables use the INSPIRE
+names <code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">validFrom</span></code>, <code class="docutils literal notranslate"><span class="pre">validTo</span></code> and, for the discharge point, <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code>, as in
+the UML diagram of 16 November 2026 (SP-21). Descriptive fields go to later Article 22 tables.
+Points still to settle:</p>
 <ul class="simple">
 <li><p>How an absorption, reported as a <code class="docutils literal notranslate"><span class="pre">change</span></code> with <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>, is published to WISE.</p></li>
-<li><p>Whether <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> and <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> suit treatment plants and discharge
-points, or the WISE operational activity period dates of monitoring sites fit better.</p></li>
-<li><p>Discharge points have no <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code>: how a closed or proposed discharge point is
-shown, for example by <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code> row is coloured in the proposal, while its scheme is not; it is kept
-because WISE requires the related zone for a discharge point.</p></li>
+<li><p>WISE requires a related zone for a discharge point; <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code> replaces
+<code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code> and its scheme, so the WISE publication has to derive it.</p></li>
 <li><p>The EU Registry link of a treatment plant, <code class="docutils literal notranslate"><span class="pre">euRegistryFacilityId</span></code>, is no longer in this
 dataflow, as in the proposal.</p></li>
 </ul>
@@ -596,10 +594,11 @@ dataflow, as in the proposal.</p></li>
 <p>The Agglomeration table follows the WISE management zone tables. Still to settle:</p>
 <ul class="simple">
 <li><p>The value of <code class="docutils literal notranslate"><span class="pre">zoneType</span></code>. The INSPIRE zone type codelist has no value for an agglomeration under
-the Directive (<a class="reference internal" href="Codelists.html#sp-cl-zonetype"><span class="std std-ref">Zone type</span></a>).</p></li>
-<li><p>The values of <code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code>, proposed as within the scope, outside it, and fluctuating
-around 1 000 p.e. (<a class="reference internal" href="Codelists.html#sp-cl-specialisedzonetype"><span class="std std-ref">Specialised zone type</span></a>). They are not in the INSPIRE codelist, and
-how they relate to <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> and to <code class="docutils literal notranslate"><span class="pre">deletion</span></code> is to be agreed.</p></li>
+the Directive; the UML diagram of 16 November 2026 proposes <code class="docutils literal notranslate"><span class="pre">uwwtdAgglomeration</span></code>
+(<a class="reference internal" href="Codelists.html#sp-cl-zonetype"><span class="std std-ref">Zone type</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code> (within the scope, outside it, fluctuating around 1 000 p.e.) is no longer
+reported, as in the UML diagram of 16 November 2026. Whether an agglomeration below the threshold
+is retired with <code class="docutils literal notranslate"><span class="pre">deletion</span></code> or closed with <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> is to be agreed.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> is required: which date is prefilled for agglomerations taken over from
 the reporting under Directive 91/271/EEC.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code>, mandatory in the WISE management zone tables, is not reported.</p></li>
@@ -614,6 +613,37 @@ check codes against accepted objects needs technical confirmation in Reportnet. 
 prefilling the reporting tables, for the first reporting from the reporting under Directive
 91/271/EEC and later with the accepted values. How an object reported by mistake is
 corrected through the helpdesk is to be agreed.</p>
+</section>
+<section id="sp-oi-uml-2026-11">
+<span id="sp-21-alignment-with-the-uml-diagram-of-16-november-2026"></span><h3>SP-21 Alignment with the UML diagram of 16 November 2026<a class="headerlink" href="#sp-oi-uml-2026-11" title="Link to this heading">#</a></h3>
+<p>The three tables were aligned with the EEA’s UML diagram of the Article 22 geospatial schema of
+16 November 2026. Changes and what is still to confirm:</p>
+<ul class="simple">
+<li><p><strong>INSPIRE identifiers required.</strong> <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are required for
+agglomerations and treatment plants, and stay conditional for discharge points. The reporting
+under Directive 91/271/EEC has no INSPIRE identifiers, so the first-reporting prefill cannot
+fill them, and Member States that do not publish these objects under INSPIRE have none to give.
+This replaces the earlier rule that INSPIRE identifiers are never invented (SP-07).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">validFrom</span></code>, <code class="docutils literal notranslate"><span class="pre">validTo</span></code>.</strong> They replace <code class="docutils literal notranslate"><span class="pre">conditionOfFacility</span></code>, <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code>
+and <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> in the UWWTP and DischargePoint tables. The codelist is renamed
+<code class="docutils literal notranslate"><span class="pre">ConditionOfFacilityValue</span></code>, as in INSPIRE; its values are unchanged. In INSPIRE, <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and
+<code class="docutils literal notranslate"><span class="pre">validTo</span></code> mark when a facility exists in the real world, which is not the same as the period in
+the scope of the Directive used here.</p></li>
+<li><p><strong>Discharge point dates.</strong> The diagram gives the discharge point <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and <code class="docutils literal notranslate"><span class="pre">validTo</span></code> both
+as <code class="docutils literal notranslate"><span class="pre">dateTime</span></code> and as <code class="docutils literal notranslate"><span class="pre">date</span></code>, and no lifespan dates. Here they are <code class="docutils literal notranslate"><span class="pre">date</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">beginLifespanVersion</span></code> and <code class="docutils literal notranslate"><span class="pre">endLifespanVersion</span></code> are kept, as for the other two tables, because
+the lifecycle rules use them.</p></li>
+<li><p><strong>Discharge point condition.</strong> Discharge points now have a <code class="docutils literal notranslate"><span class="pre">status</span></code>, so a closed or proposed
+discharge point is reported in the same way as a treatment plant.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code>.</strong> It replaces <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code> and
+<code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code>, without a scheme field. The diagram spells it
+<code class="docutils literal notranslate"><span class="pre">groupingInstalation</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">uwwCapacity</span></code>.</strong> Moved out of the UWWTP table to a later Article 22 descriptive table, which is
+not yet defined here.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code>.</strong> Removed from the Agglomeration table, with its codelist (SP-18).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">link</span></code>.</strong> Added to all three tables, without a type or definition in the diagram. It is
+documented here as an optional web address; its purpose is to be confirmed.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -679,6 +709,7 @@ corrected through the helpdesk is to be agreed.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-oi-wise">SP-13 Differences from WISE</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-oi-zonetype">SP-18 Agglomeration as a management zone</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-oi-reportnet">SP-20 Reportnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sp-oi-uml-2026-11">SP-21 Alignment with the UML diagram of 16 November 2026</a></li>
 </ul>
 </li>
 </ul>

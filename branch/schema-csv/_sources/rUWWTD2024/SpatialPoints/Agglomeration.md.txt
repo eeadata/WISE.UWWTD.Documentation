@@ -31,16 +31,15 @@ The location is a representative point, not the boundary of the agglomeration
 ## What the fields are
 
 The fields follow the WISE spatial data tables for management zones, such as `SubUnit`
-({ref}`sp-sources`), as proposed in the geospatial schema of 12 November 2026.
+({ref}`sp-sources`), as proposed in the UML diagram of the geospatial schema of 16 November 2026.
 
 **Location.** `geometry`, a single point that represents the agglomeration, within its main
 settlement.
 
 **Identifiers.** `thematicIdIdentifier` is the agglomeration's code: the key that other reporting
 uses to refer to it ({ref}`sp-references`). Its scheme, `thematicIdIdentifierScheme`, is always
-`euAgglomerationCode`. The three INSPIRE fields are only for Member States that already publish
-the agglomeration in a national INSPIRE dataset; they let the two records be matched. Otherwise
-they stay empty.
+`euAgglomerationCode`. `inspireIdLocalId` and `inspireIdNamespace` give the INSPIRE identifier of
+the agglomeration and are required ({ref}`sp-oi-uml-2026-11`); `inspireIdVersionId` is optional.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 
@@ -51,9 +50,11 @@ codes it replaces in `predecessorsIdentifier`; so does an agglomeration that abs
 keeps its code. See {ref}`sp-lifecycle`.
 
 **Designation and zone type.** `designationPeriodBegin` and `designationPeriodEnd` give the period
-in which the agglomeration is in the scope of the Directive. `zoneType` and `specialisedZoneType`
-classify it as a management zone, as in WISE; their values are still to be agreed
-({ref}`sp-oi-zonetype`).
+in which the agglomeration is in the scope of the Directive. `zoneType` classifies it as a
+management zone, as in WISE; its value is still to be agreed ({ref}`sp-oi-zonetype`).
+
+**Link.** `link` is an optional web address with more information on the agglomeration
+({ref}`sp-oi-uml-2026-11`).
 
 ## Agglomeration fields
 

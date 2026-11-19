@@ -34,9 +34,9 @@ name is in use, a descriptive name such as the plant or watercourse it relates t
 
 ## What the fields are
 
-The fields follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data
-definitions ({ref}`sp-sources`). The receiving water and other descriptive information are for a
-later Article 22 table, not this dataflow.
+The fields follow the UML diagram of the geospatial schema of 16 November 2026 and the WISE
+spatial data definitions ({ref}`sp-sources`). The receiving water and other descriptive
+information are for a later Article 22 table, not this dataflow.
 
 **Location.** `geometry`, a single point at the outlet.
 
@@ -52,12 +52,19 @@ a national INSPIRE dataset; they let the two records be matched. Otherwise they 
 split or a retirement. A new discharge point that replaces earlier ones lists their codes in
 `predecessorsIdentifier`. See {ref}`sp-lifecycle`.
 
-**Designation.** `designationPeriodBegin` and `designationPeriodEnd` give the period in which the
-discharge point is in the scope of the Directive.
+**Condition.** `status` says whether the discharge point is proposed, under construction, in use
+or out of use, with the same values as for treatment plants. A discharge point that closes is a
+`change` of condition, not a retirement.
 
-**Treatment plant.** `relatedZoneIdentifier` gives the code of the treatment plant that discharges
-through the point, with `relatedZoneIdentifierScheme` = `euUWWTPCode`, as WISE requires a related
-zone for a discharge point ({ref}`sp-oi-dischargepoint-simplicity`).
+**Validity.** `validFrom` and `validTo` give the period in which the discharge point is in the
+scope of the Directive. The names follow INSPIRE; their exact meaning is to be confirmed
+({ref}`sp-oi-uml-2026-11`).
+
+**Treatment plant.** `groupingInstallation` gives the code of the treatment plant that discharges
+through the point. As in INSPIRE, the discharge point is an installation and the treatment plant
+the facility that groups it ({ref}`sp-oi-dischargepoint-simplicity`).
+
+**Link.** `link` is an optional web address with more information on the discharge point.
 
 ## DischargePoint fields
 

@@ -60,7 +60,9 @@ its official name later does not change its identifier.
 (sp-oi-inspire)=
 ### SP-07 INSPIRE identifiers
 
-Given only where an INSPIRE identifier already exists; never invented.
+Required for agglomerations and treatment plants, as in the UML diagram of 16 November 2026. For
+discharge points, given only where an INSPIRE identifier already exists; never invented
+({ref}`sp-oi-uml-2026-11`).
 
 (sp-oi-metadata)=
 ### SP-09 No documents or metadata
@@ -79,7 +81,7 @@ Not reported in this dataflow ({ref}`sp-dischargepoint`).
 The INSPIRE
 [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist,
 checked on 6 October 2026, has the values `functional`, `projected`, `underConstruction`,
-`disused` and `decommissioned`, all valid. `conditionOfFacility` uses them unchanged, including
+`disused` and `decommissioned`, all valid. `status` uses them unchanged, including
 `projected`, as agreed with EEA on 19 October 2026 ({ref}`sp-cl-condition`).
 
 (sp-oi-reactivation)=
@@ -101,8 +103,8 @@ after XXAGG0101 and XXAGG0102 have merged into XXAGG0150, reporting XXAGG0101 wi
 is rejected. If the merger is reversed, XXAGG0150 is split into new codes; if the merger was a
 reporting mistake, it is corrected. WISE likewise excludes superseded objects from reactivation.
 
-**Reopening a closed facility is a `change`.** A treatment plant that closes is
-not retired: it stays in the register with `conditionOfFacility` set to `disused` or
+**Reopening a closed facility is a `change`.** A treatment plant or discharge point that closes is
+not retired: it stays in the register with `status` set to `disused` or
 `decommissioned`. Bringing it back into use only changes that condition. For example, XXUWWTP0005
 closes (`change`, `decommissioned`) and later reopens (`change`, `functional`).
 
@@ -116,8 +118,8 @@ closes (`change`, `decommissioned`) and later reopens (`change`, `functional`).
 ### SP-12 Discharge points
 
 Reported like the other objects. Each discharge point is linked to the treatment plant that
-discharges through it, in `relatedZoneIdentifier`, as WISE requires a related zone for a discharge
-point. The receiving water body and the other descriptive fields are for a later Article 22
+discharges through it, in `groupingInstallation`: as in INSPIRE, the discharge point is an
+installation grouped under the treatment plant as its facility. The receiving water body and the other descriptive fields are for a later Article 22
 table. Discharge points are intended for Article 22 reporting and are not needed for Article 23. Completing this
 table is not a prerequisite for an Article 23 delivery.
 
@@ -168,20 +170,16 @@ registration of the object, and the EEA keeps the link to the original code
 
 This is a simplified UWWTD proposal, not a copy of the WISE spatial data schema. The three tables
 follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data tables: each
-object has a `geometry` point, its identifier schemes, lifespan and designation dates, and
+object has a `geometry` point, its identifier schemes, lifespan dates and
 `predecessorsIdentifier`. The Agglomeration table also follows the WISE management zone tables,
-with `zoneType` and `specialisedZoneType` (SP-18). Descriptive fields go to later Article 22
-tables. Where the proposal and WISE differ, WISE is followed: the English name and the INSPIRE
-identifiers are optional or conditional, as in WISE, not mandatory as in the proposal. Points still
-to settle:
+with designation dates and `zoneType` (SP-18). The UWWTP and DischargePoint tables use the INSPIRE
+names `status`, `validFrom`, `validTo` and, for the discharge point, `groupingInstallation`, as in
+the UML diagram of 16 November 2026 (SP-21). Descriptive fields go to later Article 22 tables.
+Points still to settle:
 
 * How an absorption, reported as a `change` with `predecessorsIdentifier`, is published to WISE.
-* Whether `designationPeriodBegin` and `designationPeriodEnd` suit treatment plants and discharge
-  points, or the WISE operational activity period dates of monitoring sites fit better.
-* Discharge points have no `conditionOfFacility`: how a closed or proposed discharge point is
-  shown, for example by `designationPeriodEnd`.
-* The `relatedZoneIdentifier` row is coloured in the proposal, while its scheme is not; it is kept
-  because WISE requires the related zone for a discharge point.
+* WISE requires a related zone for a discharge point; `groupingInstallation` replaces
+  `relatedZoneIdentifier` and its scheme, so the WISE publication has to derive it.
 * The EU Registry link of a treatment plant, `euRegistryFacilityId`, is no longer in this
   dataflow, as in the proposal.
 
@@ -191,10 +189,11 @@ to settle:
 The Agglomeration table follows the WISE management zone tables. Still to settle:
 
 * The value of `zoneType`. The INSPIRE zone type codelist has no value for an agglomeration under
-  the Directive ({ref}`sp-cl-zonetype`).
-* The values of `specialisedZoneType`, proposed as within the scope, outside it, and fluctuating
-  around 1 000 p.e. ({ref}`sp-cl-specialisedzonetype`). They are not in the INSPIRE codelist, and
-  how they relate to `designationPeriodEnd` and to `deletion` is to be agreed.
+  the Directive; the UML diagram of 16 November 2026 proposes `uwwtdAgglomeration`
+  ({ref}`sp-cl-zonetype`).
+* `specialisedZoneType` (within the scope, outside it, fluctuating around 1 000 p.e.) is no longer
+  reported, as in the UML diagram of 16 November 2026. Whether an agglomeration below the threshold
+  is retired with `deletion` or closed with `designationPeriodEnd` is to be agreed.
 * `designationPeriodBegin` is required: which date is prefilled for agglomerations taken over from
   the reporting under Directive 91/271/EEC.
 * `relatedZoneIdentifier`, mandatory in the WISE management zone tables, is not reported.
@@ -209,3 +208,34 @@ check codes against accepted objects needs technical confirmation in Reportnet. 
 prefilling the reporting tables, for the first reporting from the reporting under Directive
 91/271/EEC and later with the accepted values. How an object reported by mistake is
 corrected through the helpdesk is to be agreed.
+
+(sp-oi-uml-2026-11)=
+### SP-21 Alignment with the UML diagram of 16 November 2026
+
+The three tables were aligned with the EEA's UML diagram of the Article 22 geospatial schema of
+16 November 2026. Changes and what is still to confirm:
+
+* **INSPIRE identifiers required.** `inspireIdLocalId` and `inspireIdNamespace` are required for
+  agglomerations and treatment plants, and stay conditional for discharge points. The reporting
+  under Directive 91/271/EEC has no INSPIRE identifiers, so the first-reporting prefill cannot
+  fill them, and Member States that do not publish these objects under INSPIRE have none to give.
+  This replaces the earlier rule that INSPIRE identifiers are never invented (SP-07).
+* **`status`, `validFrom`, `validTo`.** They replace `conditionOfFacility`, `designationPeriodBegin`
+  and `designationPeriodEnd` in the UWWTP and DischargePoint tables. The codelist is renamed
+  `ConditionOfFacilityValue`, as in INSPIRE; its values are unchanged. In INSPIRE, `validFrom` and
+  `validTo` mark when a facility exists in the real world, which is not the same as the period in
+  the scope of the Directive used here.
+* **Discharge point dates.** The diagram gives the discharge point `validFrom` and `validTo` both
+  as `dateTime` and as `date`, and no lifespan dates. Here they are `date`, and
+  `beginLifespanVersion` and `endLifespanVersion` are kept, as for the other two tables, because
+  the lifecycle rules use them.
+* **Discharge point condition.** Discharge points now have a `status`, so a closed or proposed
+  discharge point is reported in the same way as a treatment plant.
+* **`groupingInstallation`.** It replaces `relatedZoneIdentifier` and
+  `relatedZoneIdentifierScheme`, without a scheme field. The diagram spells it
+  `groupingInstalation`.
+* **`uwwCapacity`.** Moved out of the UWWTP table to a later Article 22 descriptive table, which is
+  not yet defined here.
+* **`specialisedZoneType`.** Removed from the Agglomeration table, with its codelist (SP-18).
+* **`link`.** Added to all three tables, without a type or definition in the diagram. It is
+  documented here as an optional web address; its purpose is to be confirmed.

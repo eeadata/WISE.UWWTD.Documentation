@@ -471,6 +471,10 @@ and agglomeration status.</p>
 <p><strong>Questions.</strong> Which period should the first programme’s information describe, and may data
 collected for earlier reporting under Directive 91/271/EEC be reused? Should investment amounts
 cover the whole implementation period to 2045 or a shorter horizon?</p>
+<p><strong>Proposed answer.</strong> Align with the Water Framework Directive cycles (<a class="reference internal" href="Timing.html#art23-cycles"><span class="std std-ref">Cycles</span></a>).
+Capital expenditure is reported for the 1st cycle, 2028 to 2033, and in one amount for the period
+after it, to 2045, so that the whole investment to compliance is covered. Expenditure before 2028
+is not reported.</p>
 </section>
 <section id="art23-oi-prioritisation">
 <span id="oi-05-prioritisation"></span><h2>OI-05 Prioritisation<a class="headerlink" href="#art23-oi-prioritisation" title="Link to this heading">#</a></h2>
@@ -509,7 +513,7 @@ yet be estimated, and using OtherInvestment for aggregated estimates. A minimum 
 reporting investments was also suggested.</p>
 <p><strong>Proposed answer.</strong> Article 23(1)(b) asks for an indicative financial estimation, so a rough
 estimate is reported as <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. In the measure model, <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> =
-<code class="docutils literal notranslate"><span class="pre">unknown</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code> remains possible as an exception, where not even a rough
+<code class="docutils literal notranslate"><span class="pre">unknown</span></code> with empty expenditure fields remains possible as an exception, where not even a rough
 estimate can be given, but raises a warning (check R16). No minimum threshold applies
 (<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
@@ -540,7 +544,7 @@ first programme, when the PROs may not yet be recognised.</p>
 </section>
 <section id="art23-oi-costs">
 <span id="oi-11-nominal-or-annualised-costs"></span><h2>OI-11 Nominal or annualised costs<a class="headerlink" href="#art23-oi-costs" title="Link to this heading">#</a></h2>
-<p><strong>Question.</strong> Are amounts (<code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, the financing amounts and
+<p><strong>Question.</strong> Are amounts (the capital expenditure, the financing amounts and
 <code class="docutils literal notranslate"><span class="pre">producerResponsibilityContribution</span></code>) nominal or annualised? If annualised, which assumptions
 should be reported?</p>
 </section>
@@ -555,8 +559,9 @@ to when new connections extend the area served by a plant?</p>
 <p><strong>Question.</strong> The plant fields are reported as years (<code class="docutils literal notranslate"><span class="pre">expectedYearStartWork</span></code>,
 <code class="docutils literal notranslate"><span class="pre">expectedYearPerformance</span></code>). Where planning is uncertain, is an expected year enough for
 <code class="docutils literal notranslate"><span class="pre">completionDate</span></code> as well?</p>
-<p><strong>Proposed answer.</strong> In the measure model, every measure has an <code class="docutils literal notranslate"><span class="pre">expectedCompletionYear</span></code> and an
-optional <code class="docutils literal notranslate"><span class="pre">expectedStartYear</span></code>, both years.</p>
+<p><strong>Proposed answer.</strong> In the measure model, every measure has an <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code>, a range
+of years as in the Water Framework Directive. The completion year is required and the start year
+may be left open.</p>
 </section>
 <section id="art23-oi-measures">
 <span id="oi-14-measure-codelists"></span><h2>OI-14 Measure codelists<a class="headerlink" href="#art23-oi-measures" title="Link to this heading">#</a></h2>
@@ -632,7 +637,7 @@ and <code class="docutils literal notranslate"><span class="pre">pro</span></cod
 <p><strong>Question.</strong> Which period do <code class="docutils literal notranslate"><span class="pre">startYear</span></code> and <code class="docutils literal notranslate"><span class="pre">endYear</span></code> describe, for example the
 programme’s six years, individual years, or the period to 2045?</p>
 <p><strong>Proposed answer.</strong> In the measure model, the OtherInvestment table is removed. Its amounts become
-national measures, or measures for plants or agglomerations not yet identified, each with its own
+national renewal measures, or measures for listed plants or agglomerations, each with its own
 years (<a class="reference internal" href="#art23-oi-measure-model"><span class="std std-ref">OI-22 Measure-first model</span></a>).</p>
 </section>
 <section id="art23-oi-confidentiality">
@@ -686,7 +691,7 @@ MeasureFinancing table giving its sources of financing
 <ul class="simple">
 <li><p>Terminology: should the tables and guidance use “measure” and “cost of measure”, while keeping
 the references to Article 23(1)(b) to (d), which speak of investments?</p></li>
-<li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with an empty <code class="docutils literal notranslate"><span class="pre">investmentCost</span></code>, accepted as an exception with a
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, with empty expenditure fields, accepted as an exception with a
 warning (OI-08), or should an indicative estimate always be required?</p></li>
 <li><p>Are <code class="docutils literal notranslate"><span class="pre">secured</span></code>, <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code>, <code class="docutils literal notranslate"><span class="pre">planned</span></code> and <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> the funding statuses the Commission
 needs to assess progress?</p></li>

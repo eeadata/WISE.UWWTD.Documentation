@@ -799,7 +799,7 @@ class DischargePoint {
     + geometry: point [1]
     + inspireIdLocalId: string254 [0..1]
     + inspireIdNamespace: string254 [0..1]
-    + inspireIdVersionId: string25 [0..1]
+    + inspireIdVersionId: string254 [0..1]
     + thematicIdIdentifier: wiseIdentifier [1]
     + thematicIdIdentifierScheme: IdentifierScheme [1]
     + nameTextInternational: string254 [0..1]
@@ -810,10 +810,11 @@ class DischargePoint {
     + predecessorsIdentifier: wiseIdentifier [0..n]
     + predecessorsIdentifierScheme: IdentifierScheme [0..1]
     + wiseEvolutionType: WiseEvolutionType [1]
-    + designationPeriodBegin: date [1]
-    + designationPeriodEnd: date [0..1]
-    + relatedZoneIdentifier: wiseIdentifier [1]
-    + relatedZoneIdentifierScheme: IdentifierScheme [1]
+    + status: ConditionOfFacilityValue [1]
+    + validFrom: date [1]
+    + validTo: date [0..1]
+    + groupingInstallation: wiseIdentifier [1]
+    + link: url [0..1]
 }
 
 classDef default fill:white,stroke:#000;
@@ -827,9 +828,9 @@ classDef forFixing fill:white,stroke:#f00;
 name is in use, a descriptive name such as the plant or watercourse it relates to may be given.</p>
 <section id="what-the-fields-are">
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
-<p>The fields follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data
-definitions (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>). The receiving water and other descriptive information are for a
-later Article 22 table, not this dataflow.</p>
+<p>The fields follow the UML diagram of the geospatial schema of 16 November 2026 and the WISE
+spatial data definitions (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>). The receiving water and other descriptive
+information are for a later Article 22 table, not this dataflow.</p>
 <p><strong>Location.</strong> <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, a single point at the outlet.</p>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the discharge point’s code: the key that other reporting uses
 to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). Its scheme, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>, is always
@@ -840,16 +841,21 @@ a national INSPIRE dataset; they let the two records be matched. Otherwise they 
 <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new discharge point, a change, a merger, a
 split or a retirement. A new discharge point that replaces earlier ones lists their codes in
 <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
-<p><strong>Designation.</strong> <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> and <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> give the period in which the
-discharge point is in the scope of the Directive.</p>
-<p><strong>Treatment plant.</strong> <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code> gives the code of the treatment plant that discharges
-through the point, with <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code> = <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>, as WISE requires a related
-zone for a discharge point (<a class="reference internal" href="OpenIssues.html#sp-oi-dischargepoint-simplicity"><span class="std std-ref">SP-12 Discharge points</span></a>).</p>
+<p><strong>Condition.</strong> <code class="docutils literal notranslate"><span class="pre">status</span></code> says whether the discharge point is proposed, under construction, in use
+or out of use, with the same values as for treatment plants. A discharge point that closes is a
+<code class="docutils literal notranslate"><span class="pre">change</span></code> of condition, not a retirement.</p>
+<p><strong>Validity.</strong> <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and <code class="docutils literal notranslate"><span class="pre">validTo</span></code> give the period in which the discharge point is in the
+scope of the Directive. The names follow INSPIRE; their exact meaning is to be confirmed
+(<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
+<p><strong>Treatment plant.</strong> <code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code> gives the code of the treatment plant that discharges
+through the point. As in INSPIRE, the discharge point is an installation and the treatment plant
+the facility that groups it (<a class="reference internal" href="OpenIssues.html#sp-oi-dischargepoint-simplicity"><span class="std std-ref">SP-12 Discharge points</span></a>).</p>
+<p><strong>Link.</strong> <code class="docutils literal notranslate"><span class="pre">link</span></code> is an optional web address with more information on the discharge point.</p>
 </section>
 <section id="dischargepoint-fields">
 <h2>DischargePoint fields<a class="headerlink" href="#dischargepoint-fields" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 86 </span><span class="caption-text">DischargePoint fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 87 </span><span class="caption-text">DischargePoint fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -892,7 +898,7 @@ zone for a discharge point (<a class="reference internal" href="OpenIssues.html#
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
 <td><p>Version of the object in that INSPIRE dataset, where the source uses versions.</p></td>
-<td><p>string25</p></td>
+<td><p>string254</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
@@ -966,32 +972,39 @@ zone for a discharge point (<a class="reference internal" href="OpenIssues.html#
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code></p></td>
-<td><p>Designation start</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p>Condition</p></td>
+<td><p>Physical state of the discharge point: proposed, under construction, in use, disused or decommissioned.</p></td>
+<td><p>ConditionOfFacilityValue</p></td>
+<td><p>Required</p></td>
+<td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">validFrom</span></code></p></td>
+<td><p>Valid from</p></td>
 <td><p>Date from which the discharge point is in the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code></p></td>
-<td><p>Designation end</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">validTo</span></code></p></td>
+<td><p>Valid to</p></td>
 <td><p>Date on which the discharge point left the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required when the discharge point leaves the scope of the Directive</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code></p></td>
 <td><p>Treatment plant</p></td>
 <td><p>Code of the treatment plant, or collecting system without treatment, that discharges through this point. It must be an accepted treatment plant in the UWWTP table.</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifierScheme</span></code></p></td>
-<td><p>Treatment plant scheme</p></td>
-<td><p>Scheme of <code class="docutils literal notranslate"><span class="pre">relatedZoneIdentifier</span></code>. Always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p></td>
-<td><p>IdentifierScheme</p></td>
-<td><p>Required</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p>Link</p></td>
+<td><p>Web address of a page with more information on the discharge point.</p></td>
+<td><p>url</p></td>
+<td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
 </tbody>

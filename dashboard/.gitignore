@@ -1,0 +1,4 @@
+node_modules/
+# The loader cache and the build hold provisional Member State data: never commit them
+dist/
+src/.observablehq/cache/

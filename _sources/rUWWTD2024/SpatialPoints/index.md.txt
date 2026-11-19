@@ -33,7 +33,7 @@ are reported: no documents, metadata records, document links or file uploads.
 Code, name and representative point of each agglomeration.
 :::
 :::{grid-item-card} {ref}`sp-uwwtp`
-Code, name, location, condition and capacity of each treatment plant.
+Code, name, location and condition of each treatment plant.
 :::
 :::{grid-item-card} {ref}`sp-dischargepoint`
 Code, name and location of each discharge point, and the treatment plant discharging there.
@@ -164,10 +164,9 @@ with their scheme in `predecessorsIdentifierScheme`, as in the WISE spatial data
 * **Replacements are reported once.** Only the new object lists the codes it replaces, in the
   delivery in which the change happens. Reporters do not fill in the reverse link; it is derived
   centrally. The history of an object is kept centrally and is not reported again.
-* **Closing is not retiring.** A closed treatment plant is reported as a `change` with
-  `conditionOfFacility` set to `disused` or `decommissioned`. It keeps its code and can be reopened
-  in the same way. Discharge points have no condition; how a closed one is reported is open
-  ({ref}`sp-oi-wise`).
+* **Closing is not retiring.** A closed treatment plant or discharge point is reported as a
+  `change` with `status` set to `disused` or `decommissioned`. It keeps its code and can be
+  reopened in the same way.
 
 Cases that are easy to get wrong:
 
@@ -314,20 +313,21 @@ the official name is assigned, update the name and keep the same identifier ({re
 
 ## INSPIRE identifiers
 
-The WISE code in `thematicIdIdentifier` is required for every object. `inspireIdLocalId` and
-`inspireIdNamespace` are given together where an INSPIRE identifier has already been assigned to
-the same object, and left empty otherwise. `inspireIdVersionId` is optional. INSPIRE identifiers
-are not to be invented to complete a row. This rule concerns this reporting only; it says nothing
-about a Member State's separate INSPIRE obligations.
+The WISE code in `thematicIdIdentifier` is required for every object. Following the UML diagram
+of 16 November 2026, `inspireIdLocalId` and `inspireIdNamespace` are required for agglomerations
+and treatment plants. For discharge points they are given together where an INSPIRE identifier has
+already been assigned to the same object, and left empty otherwise. `inspireIdVersionId` is
+optional for all three ({ref}`sp-oi-uml-2026-11`).
 
 ## Data types
 
 | Type | Meaning |
 | --- | --- |
 | `wiseIdentifier` | A WISE code, following the rules below |
-| `string254`, `string25` | Text of at most 254 or 25 characters |
+| `string254` | Text of at most 254 characters |
 | `point` | A point geometry: a latitude and longitude pair in decimal degrees, as in the WISE spatial data tables |
 | `date` | A date, `YYYY-MM-DD` |
+| `url` | A web address, starting with `https://` or `http://` |
 | `integer` | A whole number |
 | *codelist name* | A value from the codelist of that name ({ref}`sp-codelists`) |
 
@@ -392,23 +392,22 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
   - Blocker
 * - `geometry` lies within the bounding box of the reporting country
   - Error
-* - A discharge point lies within 10 km of the treatment plant in `relatedZoneIdentifier`
+* - A discharge point lies within 10 km of the treatment plant in `groupingInstallation`
   - Warning
 * - `thematicIdIdentifierScheme` is the scheme of the table ({ref}`sp-cl-scheme`), and
     `predecessorsIdentifierScheme` is the same scheme when `predecessorsIdentifier` is given and
     empty otherwise
   - Blocker
-* - `relatedZoneIdentifier` is an accepted treatment plant of the same country, and
-    `relatedZoneIdentifierScheme` is `euUWWTPCode`
+* - `groupingInstallation` is an accepted treatment plant of the same country
   - Blocker
-* - `uwwCapacity` is a whole number greater than zero
-  - Error
 * - `endLifespanVersion` is given with `deletion` and only then; it is not before
     `beginLifespanVersion`
   - Error
-* - `designationPeriodEnd`, when given, is not before `designationPeriodBegin`
+* - `designationPeriodEnd`, when given, is not before `designationPeriodBegin` (Agglomeration),
+    and `validTo`, when given, is not before `validFrom` (UWWTP, DischargePoint)
   - Error
-* - `zoneType` and `specialisedZoneType` in the Agglomeration table are values of their codelists
+* - `zoneType` in the Agglomeration table and `status` in the UWWTP and DischargePoint tables
+    are values of their codelists
   - Blocker
 * - The latitude and longitude of `geometry` are not both zero
   - Error
@@ -417,7 +416,10 @@ delivery only, read "accepted" in these checks as the EEA-prepared migration bas
 * - A location taken over from the reporting under Directive 91/271/EEC has at least four decimal
     places
   - Warning
-* - `inspireIdLocalId` and `inspireIdNamespace` are both given or both empty
+* - `inspireIdLocalId` and `inspireIdNamespace` are given for every agglomeration and treatment
+    plant, and for a discharge point are both given or both empty
+  - Error
+* - `link`, when given, is a valid web address
   - Error
 * - `nameText` and `nameLanguage` are given, and `nameLanguage` is in the ISO 639-2 vocabulary
   - Blocker

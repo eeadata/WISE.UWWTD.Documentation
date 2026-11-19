@@ -14,7 +14,8 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one or more types, and one period, one priority and one investment cost. The plants it
+measure has one or more types, and one period, one priority and one capital expenditure,
+split between the 1st cycle and after it. The plants it
 concerns are listed in the measure itself, in `euUWWTPCode`, and the agglomerations in
 `euAgglomerationCode`; the sources of its financing are given in {ref}`art23-measurefinancing`.
 See {ref}`art23-investments`.
@@ -89,8 +90,8 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - If `uwwtdMeasureType` includes `otherMeasureArticle18_2`
 * - `geographicalCoverage`
   - Geographical coverage
-  - Whether the measure applies to the whole Member State, to plants or agglomerations listed in
-    `euUWWTPCode` or `euAgglomerationCode`, or to plants or agglomerations not yet identified.
+  - Whether the measure applies to the whole Member State or to the plants or agglomerations
+    listed in `euUWWTPCode` or `euAgglomerationCode`.
   - UWWTDGeographicCoverage
   - Required
   - {ref}`art23-cl-coverage`
@@ -121,13 +122,6 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
     empty otherwise. Accepted
     codes in
     {ref}`sp-agglomeration`
-* - `numberOfObjects`
-  - Number of plants or agglomerations
-  - Number of plants or agglomerations concerned, where they are not listed, for example
-    "10 plants".
-  - nonNegativeInteger
-  - Optional
-  - Only if `geographicalCoverage` = `unlistedObjects`
 * - `prioritisation`
   - Prioritisation
   - Priority of the measure, related to the size of the agglomeration and the level of
@@ -156,23 +150,19 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
   - ImplementationStatus
   - Required
   - {ref}`art23-cl-implementation-status`
-* - `expectedStartYear`
-  - Expected start year
-  - Year in which the works start, or are expected to start.
-  - gYear
-  - Optional
-  - –
-* - `expectedCompletionYear`
-  - Expected completion year
-  - Year in which the measure is expected to be completed. For a measure at a treatment plant,
-    the year of expected compliance, meaning 12 months of compliant samples.
-  - gYear
+* - `implementationPeriod`
+  - Implementation period
+  - Range of years from the year in which the works start, or are expected to start, to the year
+    in which the measure is expected to be completed, both included, for example `[2028,2033]`.
+    For a measure at a treatment plant, the completion year is the year of expected compliance,
+    meaning 12 months of compliant samples. Where the start year is not known, the lower bound is
+    left open: `[,2036]`.
+  - range
   - Required
-  - –
+  - Upper bound always given
 :::
 
-Together, `expectedStartYear` and `expectedCompletionYear` give the period that the Water Framework
-Directive reports as `implementationPeriod`.
+The field is the same as `implementationPeriod` in the Water Framework Directive measures.
 
 ## Cost
 
@@ -188,24 +178,35 @@ Directive reports as `implementationPeriod`.
   - Condition or codelist
 * - `costStatus`
   - Cost status
-  - Whether the investment cost is known, estimated or not yet known.
+  - Whether the capital expenditure is known, estimated or not yet known. Applies to both
+    expenditure fields.
   - CostStatus
   - Required
   - {ref}`art23-cl-cost-status`
-* - `investmentCost`
-  - Investment cost
-  - Investment cost of the measure: capital expenditure only, without operational or maintenance
-    costs. The equivalent of capital expenditure in the Water Framework Directive.
+* - `totalCapitalExpenditure1stCycle`
+  - Capital expenditure, 1st cycle
+  - Capital expenditure of the measure in the 1st cycle, 2028 to 2033, without operational or
+    maintenance costs. Expenditure before 2028 is not reported. Corresponds to
+    `totalCapitalExpenditure4thCycle` in the Water Framework Directive.
   - nonNegativeValue (million units of national currency)
   - Conditional
-  - Required unless `costStatus` = `unknown`; empty if it is
+  - Required if `implementationPeriod` overlaps 2028 to 2033, unless `costStatus` = `unknown`;
+    empty otherwise
+* - `totalCapitalExpenditureAfter1stCycle`
+  - Capital expenditure after the 1st cycle
+  - Capital expenditure of the measure from 2034 until its completion, without operational or
+    maintenance costs. Covers the 2nd and 3rd cycles together, to 2045.
+  - nonNegativeValue (million units of national currency)
+  - Conditional
+  - Required if `implementationPeriod` ends after 2033, unless `costStatus` = `unknown`; empty
+    otherwise
 * - `millionUnitsOfNationalCurrency`
   - Currency
-  - Currency of `investmentCost` and of the amounts in {ref}`art23-measurefinancing`, which are
+  - Currency of the capital expenditure and of the amounts in {ref}`art23-measurefinancing`, which are
     all in millions of that currency. Euro area Member States use EUR.
   - CurrencyCode
   - Conditional
-  - Required if `investmentCost` or a financing amount is given. {ref}`art23-cl-currency`
+  - Required if an expenditure or a financing amount is given. {ref}`art23-cl-currency`
 * - `remarks`
   - Remarks
   - Any relevant comment on the measure.
@@ -230,14 +231,19 @@ Directive reports as `implementationPeriod`.
 * **National measures.** `geographicalCoverage` = `national` is only for the renewal of existing
   infrastructure under Article 23(1)(c), such as the nationwide renewal of collecting systems,
   which the Directive does not ask for per agglomeration.
-* **Agglomerations not yet identified.** Use `unlistedObjects` where the plants or agglomerations
-  are not yet known, for example in the first programme. Since Article 23(1)(b) asks for the
-  investments for each agglomeration, this raises a warning, and the agglomerations should be
-  listed in the next update.
+* **Plants and agglomerations are always listed.** Article 23(1)(b) asks for the investments for
+  each agglomeration, so every measure other than a national renewal measure lists the
+  agglomerations it concerns, and the plants for a measure at treatment plants. Where the order
+  or the cost of the work is not yet known, the measure is still reported against them.
 * **Indicative cost.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
   estimate is enough and is reported as `estimated`. Where not even a rough estimate can be given
-  yet, set `costStatus` to `unknown` and leave `investmentCost` empty. This raises a warning, and
-  the cost should be estimated in the next update.
+  yet, set `costStatus` to `unknown` and leave both expenditure fields empty. This raises a
+  warning, and the cost should be estimated in the next update.
+* **Splitting by cycle.** Give the capital expenditure expected in 2028 to 2033 in
+  `totalCapitalExpenditure1stCycle`, and what follows from 2034 in
+  `totalCapitalExpenditureAfter1stCycle`. Where the yearly profile is not known, spread the cost
+  evenly over the years of `implementationPeriod`. For an ongoing measure, report only what is
+  spent from 2028. The cost of the measure is the sum of the two fields.
 * **Currency.** Amounts are in millions of national currency, as in the Water Framework Directive:
   0.01 is 10 000 units. Use a full stop as the decimal separator.
 

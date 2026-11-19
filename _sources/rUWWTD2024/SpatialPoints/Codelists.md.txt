@@ -7,8 +7,9 @@
 **Type:** `IdentifierScheme`
 
 Each table has only one kind of code, so its scheme is fixed. It is reported, as in WISE, in
-`thematicIdIdentifierScheme` and `predecessorsIdentifierScheme`, and in the DischargePoint table
-also in `relatedZoneIdentifierScheme` for the treatment plant ({ref}`sp-oi-schemes`).
+`thematicIdIdentifierScheme` and `predecessorsIdentifierScheme` ({ref}`sp-oi-schemes`). The
+treatment plant code in `groupingInstallation` of the DischargePoint table has no scheme field; it
+is always a `euUWWTPCode`.
 
 :::{codelist} IdentifierScheme
 :::
@@ -33,35 +34,22 @@ Used by `wiseEvolutionType` in the Agglomeration, UWWTP and DischargePoint table
 
 Used by `zoneType` in the Agglomeration table. WISE takes its values from the INSPIRE
 [ZoneTypeCode](https://dd.eionet.europa.eu/vocabulary/inspire/ZoneTypeCode/view) vocabulary. That
-vocabulary has no value for an agglomeration under the Directive, so the value is still to be
-agreed ({ref}`sp-oi-zonetype`). It is the same for every agglomeration.
-
-(sp-cl-specialisedzonetype)=
-## Specialised zone type
-
-**Type:** `SpecialisedZoneType`
-
-Used by `specialisedZoneType` in the Agglomeration table. WISE takes its values from the INSPIRE
-[SpecialisedZoneTypeCode](https://dd.eionet.europa.eu/vocabulary/inspire/SpecialisedZoneTypeCode/view)
-vocabulary, which has no values for agglomerations under the Directive. The values below are
-proposed in the geospatial schema of 12 November 2026 and are to be agreed
-({ref}`sp-oi-zonetype`).
-
-:::{codelist} SpecialisedZoneType
-:::
+vocabulary has no value for an agglomeration under the Directive. The UML diagram of 16 November
+2026 proposes `uwwtdAgglomeration`; the value is still to be agreed ({ref}`sp-oi-zonetype`). It is
+the same for every agglomeration.
 
 (sp-cl-condition)=
 ## Condition of facility
 
-**Type:** `ConditionOfFacility`
+**Type:** `ConditionOfFacilityValue`
 
-Used by `conditionOfFacility` in the UWWTP table. It describes the physical
+Used by `status` in the UWWTP and DischargePoint tables. It describes the physical
 state of the facility only. Whether an investment has been approved belongs to investment planning,
 not here. The values follow the INSPIRE
 [ConditionOfFacilityValue](https://inspire.ec.europa.eu/codelist/ConditionOfFacilityValue) codelist
 and use its notations ({ref}`sp-oi-vocabulary`).
 
-:::{codelist} ConditionOfFacility
+:::{codelist} ConditionOfFacilityValue
 :::
 
 (sp-cl-language)=

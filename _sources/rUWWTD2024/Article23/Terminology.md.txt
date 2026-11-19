@@ -81,20 +81,27 @@ Measure
 : An action to reach or maintain compliance, or to renew, upgrade or replace existing
   infrastructure, reported in the {ref}`art23-measure` table with one or more measure types.
 
-Investment cost
-: The capital expenditure of a measure, without operational or maintenance costs, in millions of
-  national currency (`investmentCost`). See {ref}`art23-investments`.
+Capital expenditure
+: Investment spending on a measure, without operational or maintenance costs, in millions of
+  national currency, as in the Water Framework Directive. Reported per cycle
+  (`totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle`); their sum is the
+  cost of the measure. See {ref}`art23-investments`.
+
+Cycle
+: A six-year period of the programme: the 1st cycle is 2028 to 2033, the 2nd 2034 to 2039 and the
+  3rd 2040 to 2045. They coincide with the 4th to 6th cycles of the Water Framework Directive. See
+  {ref}`art23-cycles`.
 
 Funding status
 : How far the money from a source of financing is secured: secured, applied for, planned, or not
   identified (`fundingStatus`).
 
 Financing gap
-: The investment cost of a measure minus its secured financing. Calculated, not reported.
+: The cost of a measure, the sum of its capital expenditure, minus its secured financing. Calculated, not reported.
 
 Expected date of compliance
 : For a treatment plant, the year by which 12 months of compliant samples are expected
-  (`expectedCompletionYear` of a measure at the plant).
+  (upper bound of `implementationPeriod` of a measure at the plant).
 
 Organic design capacity
 : The design capacity of a plant expressed in p.e. (`expectedCapacity`).
@@ -168,6 +175,9 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **nonNegativeInteger** - a whole number of 0 or more;
 * **Percentage** - a value in the interval [0, 100];
 * **gYear** - a Gregorian year;
+* **range** - a range of values, written as in the PostgreSQL range types following
+  ISO 80000-2, for example `[2028,2033]` for the years 2028 to 2033 included. A bound left empty
+  is open, for example `[,2036]`;
 * **date** - a date in the format yyyy-mm-dd;
 * **YesNo** - a yes or no answer;
 * **Email** - an e-mail address, at most 250 characters, validated with a regular expression;

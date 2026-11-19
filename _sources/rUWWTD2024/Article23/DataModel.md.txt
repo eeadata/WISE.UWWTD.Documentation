@@ -142,4 +142,5 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
   - The document itself, as a hyperlink or an uploaded file.
 :::
 
-The total investment of a Member State is the sum of `investmentCost` over all measures.
+The total investment of a Member State is the sum of `totalCapitalExpenditure1stCycle` and
+`totalCapitalExpenditureAfter1stCycle` over all measures.

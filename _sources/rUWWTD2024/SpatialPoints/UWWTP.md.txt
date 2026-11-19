@@ -7,7 +7,7 @@ objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
 
 The table identifies and locates every urban wastewater treatment plant, including proposed ones,
-with its code, name, location, condition and capacity. The dataflow starts from the objects reported under
+with its code, name, location and condition. The dataflow starts from the objects reported under
 Directive 91/271/EEC; a Member State then reports only what changes ({ref}`sp-reporting`).
 
 A proposed plant is reported once its location is known. A plant that closes keeps its code,
@@ -21,16 +21,16 @@ with its condition changed ({ref}`sp-lifecycle`).
 
 ## What the fields are
 
-The fields follow the geospatial schema proposal of 12 November 2026 and the WISE spatial data
-definitions ({ref}`sp-sources`). Descriptive information on the plant is for a later Article 22
-table, not this dataflow.
+The fields follow the UML diagram of the geospatial schema of 16 November 2026 and the WISE
+spatial data definitions ({ref}`sp-sources`). Descriptive information on the plant, including its
+capacity, is for a later Article 22 table, not this dataflow ({ref}`sp-oi-uml-2026-11`).
 
 **Location.** `geometry`, a single point at the site of the plant.
 
 **Identifiers.** `thematicIdIdentifier` is the treatment plant's code: the key that other reporting uses
 to refer to it ({ref}`sp-references`). Its scheme, `thematicIdIdentifierScheme`, is always
-`euUWWTPCode`. The three INSPIRE fields are only for Member States that already publish the treatment plant in
-a national INSPIRE dataset; they let the two records be matched. Otherwise they stay empty.
+`euUWWTPCode`. `inspireIdLocalId` and `inspireIdNamespace` give the INSPIRE identifier of the
+treatment plant and are required ({ref}`sp-oi-uml-2026-11`); `inspireIdVersionId` is optional.
 
 **Name.** The official name and its language, with an English name if one is already in use.
 For a proposed plant without an official name, give a working or descriptive name. When the
@@ -41,12 +41,14 @@ official name is assigned, report the new name as a `change`, keeping the same i
 split or a retirement. A new treatment plant that replaces earlier ones lists their codes in
 `predecessorsIdentifier`. A plant that closes is a `change` of condition, not a retirement. See {ref}`sp-lifecycle`.
 
-**Designation.** `designationPeriodBegin` and `designationPeriodEnd` give the period in which the
-treatment plant is in the scope of the Directive.
+**Condition.** `status` says whether the plant is proposed, under construction, in use or out of
+use, with the INSPIRE condition of facility values.
 
-**Condition and capacity.** `conditionOfFacility` says whether the plant is proposed, under
-construction, in use or out of use. `uwwCapacity` is its organic design capacity in population
-equivalent.
+**Validity.** `validFrom` and `validTo` give the period in which the treatment plant is in the
+scope of the Directive. The names follow INSPIRE; their exact meaning is to be confirmed
+({ref}`sp-oi-uml-2026-11`).
+
+**Link.** `link` is an optional web address with more information on the treatment plant.
 
 ## UWWTP fields
 
@@ -71,23 +73,18 @@ equivalent.
   - INSPIRE local identifier
   - Local identifier of the same object in a national INSPIRE dataset.
   - string254
-  - Conditional
-  - Required if an INSPIRE
-    identifier has been
-    assigned; give with
-    `inspireIdNamespace`
+  - Required
+  - –
 * - `inspireIdNamespace`
   - INSPIRE namespace
   - Namespace of that INSPIRE dataset.
   - string254
-  - Conditional
-  - Required if
-    `inspireIdLocalId` is
-    given
+  - Required
+  - –
 * - `inspireIdVersionId`
   - INSPIRE version identifier
   - Version of the object in that INSPIRE dataset, where the source uses versions.
-  - string25
+  - string254
   - Optional
   - –
 * - `thematicIdIdentifier`
@@ -160,30 +157,30 @@ equivalent.
   - WiseEvolutionType
   - Required
   - {ref}`sp-cl-evolution`
-* - `designationPeriodBegin`
-  - Designation start
+* - `status`
+  - Condition
+  - Physical state of the plant: proposed, under construction, in use, disused or decommissioned.
+  - ConditionOfFacilityValue
+  - Required
+  - {ref}`sp-cl-condition`
+* - `validFrom`
+  - Valid from
   - Date from which the treatment plant is in the scope of the Directive.
   - date
   - Required
   - –
-* - `designationPeriodEnd`
-  - Designation end
+* - `validTo`
+  - Valid to
   - Date on which the treatment plant left the scope of the Directive.
   - date
   - Conditional
   - Required when the
     treatment plant leaves the
     scope of the Directive
-* - `conditionOfFacility`
-  - Condition
-  - Physical state of the plant: proposed, under construction, in use, disused or decommissioned.
-  - ConditionOfFacility
-  - Required
-  - {ref}`sp-cl-condition`
-* - `uwwCapacity`
-  - Capacity
-  - Organic design capacity of the treatment plant, in population equivalent (p.e.).
-  - integer
-  - Required
+* - `link`
+  - Link
+  - Web address of a page with more information on the treatment plant.
+  - url
+  - Optional
   - –
 :::

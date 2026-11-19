@@ -799,9 +799,9 @@ classDiagram
 direction LR
 class Agglomeration {
     + geometry: point [1]
-    + inspireIdLocalId: string254 [0..1]
-    + inspireIdNamespace: string254 [0..1]
-    + inspireIdVersionId: string25 [0..1]
+    + inspireIdLocalId: string254 [1]
+    + inspireIdNamespace: string254 [1]
+    + inspireIdVersionId: string254 [0..1]
     + thematicIdIdentifier: wiseIdentifier [1]
     + thematicIdIdentifierScheme: IdentifierScheme [1]
     + nameTextInternational: string254 [0..1]
@@ -815,7 +815,7 @@ class Agglomeration {
     + designationPeriodBegin: date [1]
     + designationPeriodEnd: date [0..1]
     + zoneType: ZoneType [1]
-    + specialisedZoneType: SpecialisedZoneType [1]
+    + link: url [0..1]
 }
 
 classDef default fill:white,stroke:#000;
@@ -828,14 +828,13 @@ classDef forFixing fill:white,stroke:#f00;
 <section id="what-the-fields-are">
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
 <p>The fields follow the WISE spatial data tables for management zones, such as <code class="docutils literal notranslate"><span class="pre">SubUnit</span></code>
-(<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>), as proposed in the geospatial schema of 12 November 2026.</p>
+(<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>), as proposed in the UML diagram of the geospatial schema of 16 November 2026.</p>
 <p><strong>Location.</strong> <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, a single point that represents the agglomeration, within its main
 settlement.</p>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the agglomeration’s code: the key that other reporting
 uses to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). Its scheme, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>, is always
-<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. The three INSPIRE fields are only for Member States that already publish
-the agglomeration in a national INSPIRE dataset; they let the two records be matched. Otherwise
-they stay empty.</p>
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> give the INSPIRE identifier of
+the agglomeration and are required (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>); <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is optional.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.</p>
 <p><strong>Version and history.</strong> <code class="docutils literal notranslate"><span class="pre">beginLifespanVersion</span></code> and <code class="docutils literal notranslate"><span class="pre">endLifespanVersion</span></code> date the version reported.
 <code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code> says what is being reported: no change, a new agglomeration, a change, a
@@ -843,14 +842,15 @@ merger, a split or a retirement. A new agglomeration that results from a merger 
 codes it replaces in <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>; so does an agglomeration that absorbs another and
 keeps its code. See <a class="reference internal" href="index.html#sp-lifecycle"><span class="std std-ref">What to report when something changes</span></a>.</p>
 <p><strong>Designation and zone type.</strong> <code class="docutils literal notranslate"><span class="pre">designationPeriodBegin</span></code> and <code class="docutils literal notranslate"><span class="pre">designationPeriodEnd</span></code> give the period
-in which the agglomeration is in the scope of the Directive. <code class="docutils literal notranslate"><span class="pre">zoneType</span></code> and <code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code>
-classify it as a management zone, as in WISE; their values are still to be agreed
-(<a class="reference internal" href="OpenIssues.html#sp-oi-zonetype"><span class="std std-ref">SP-18 Agglomeration as a management zone</span></a>).</p>
+in which the agglomeration is in the scope of the Directive. <code class="docutils literal notranslate"><span class="pre">zoneType</span></code> classifies it as a
+management zone, as in WISE; its value is still to be agreed (<a class="reference internal" href="OpenIssues.html#sp-oi-zonetype"><span class="std std-ref">SP-18 Agglomeration as a management zone</span></a>).</p>
+<p><strong>Link.</strong> <code class="docutils literal notranslate"><span class="pre">link</span></code> is an optional web address with more information on the agglomeration
+(<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
 </section>
 <section id="agglomeration-fields">
 <h2>Agglomeration fields<a class="headerlink" href="#agglomeration-fields" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 84 </span><span class="caption-text">Agglomeration fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 85 </span><span class="caption-text">Agglomeration fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -882,25 +882,20 @@ places (<a class="reference internal" href="index.html#sp-location"><span class=
 <td><p>INSPIRE local identifier</p></td>
 <td><p>Local identifier of the same object in a national INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required if an INSPIRE
-identifier has been
-assigned; give with
-<code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 <td><p>INSPIRE namespace</p></td>
 <td><p>Namespace of that INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
-<td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is
-given</p></td>
+<td><p>Required</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
 <td><p>Version of the object in that INSPIRE dataset, where the source uses versions.</p></td>
-<td><p>string25</p></td>
+<td><p>string254</p></td>
 <td><p>Optional</p></td>
 <td><p>–</p></td>
 </tr>
@@ -1011,13 +1006,12 @@ agglomeration.</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-zonetype"><span class="std std-ref">Zone type</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">specialisedZoneType</span></code></p></td>
-<td><p>Specialised zone type</p></td>
-<td><p>Whether the agglomeration is within the scope of the Directive, outside it, or fluctuating
-around the threshold.</p></td>
-<td><p>SpecialisedZoneType</p></td>
-<td><p>Required</p></td>
-<td><p><a class="reference internal" href="Codelists.html#sp-cl-specialisedzonetype"><span class="std std-ref">Specialised zone type</span></a></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p>Link</p></td>
+<td><p>Web address of a page with more information on the agglomeration, such as a national register.</p></td>
+<td><p>url</p></td>
+<td><p>Optional</p></td>
+<td><p>–</p></td>
 </tr>
 </tbody>
 </table>

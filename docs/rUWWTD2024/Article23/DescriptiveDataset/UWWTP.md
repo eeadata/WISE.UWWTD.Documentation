@@ -35,50 +35,7 @@ Optional ones ({ref}`art23-requirement-status`).
 
 ## UWWTP fields
 
-:::{list-table} UWWTP fields
-:header-rows: 1
-:widths: 22 16 26 10 10 16
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `thematicIdIdentifier`
-  - Plant code
-  - Code of the treatment plant, as in the spatial points dataflow. Primary key. Its identifier
-    scheme is always `euUWWTPCode`, the only one used, so the scheme is not reported.
-  - wiseIdentifier
-  - Required
-  - Accepted code of a
-    treatment plant of the
-    country in
-    {ref}`sp-uwwtp`
-* - `status`
-  - Status
-  - Status of the plant at the reference year.
-  - PlantAgglomerationStatus
-  - Required
-  - {ref}`art23-cl-status`
-* - `expectedLoad`
-  - Expected load
-  - Planned load entering the plant at the expected date of compliance.
-  - nonNegativeValue (p.e.)
-  - Required
-  - –
-* - `expectedCapacity`
-  - Expected capacity
-  - Planned organic design capacity of the plant.
-  - nonNegativeValue (p.e.)
-  - Required
-  - –
-* - `remarks`
-  - Remarks
-  - Any relevant comment on the plant.
-  - string1000
-  - Optional
-  - –
+:::{fieldtable} Article23/UWWTP
 :::
 
 ## Filling in the table

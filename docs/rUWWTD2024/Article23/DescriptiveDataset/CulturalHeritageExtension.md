@@ -34,46 +34,7 @@ and `[1..n]` a Required field that accepts several values ({ref}`art23-requireme
 
 ## CulturalHeritageExtension fields
 
-:::{list-table} CulturalHeritageExtension fields
-:header-rows: 1
-:widths: 24 16 28 12 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `euAgglomerationCode`
-  - Agglomeration
-  - Code of the agglomeration concerned, as accepted in the {ref}`spatial-points` dataflow.
-  - wiseIdentifier
-  - Required
-  - –
-* - `areaDescription`
-  - Area concerned
-  - Description of the area within the agglomeration where the deadline cannot be met.
-  - string1000
-  - Required
-  - –
-* - `derogationType`
-  - Deadline concerned
-  - The deadline or deadlines that cannot be met in the area. Select one or both.
-  - DerogationType [1..n]
-  - Required
-  - {ref}`art23-cl-derogation-type`; `article3_2`, `article6_3` or both
-* - `adjustedDeadlineYear`
-  - Adjusted deadline
-  - The year by the end of which the required infrastructure will be finalised in the area.
-  - gYear
-  - Required
-  - –
-* - `justificationReference`
-  - Justification reference
-  - Reference to the detailed justification.
-  - referenceCode
-  - Required
-  - –
+:::{fieldtable} Article23/CulturalHeritageExtension
 :::
 
 ## Quality checks

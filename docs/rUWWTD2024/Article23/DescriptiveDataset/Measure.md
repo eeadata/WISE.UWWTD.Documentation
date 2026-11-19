@@ -38,137 +38,14 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
 
 ## Measure, type and coverage
 
-:::{list-table} Measure fields - measure, type and coverage
-:header-rows: 1
-:widths: 22 16 28 12 8 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `measureCode`
-  - Measure code
-  - Unique, persistent code of the measure. The same measure keeps the same code in later
-    updates of the programme, so that its progress can be followed. Primary key.
-  - wiseIdentifier
-  - Required
-  - –
-* - `measureName`
-  - Measure name
-  - The original descriptive name of the measure, or an English translation of it.
-  - string255
-  - Required
-  - –
-* - `measureNameLanguage`
-  - Measure name language
-  - Language of `measureName`, as a code from the ISO 639-2 vocabulary.
-  - Language
-  - Required
-  - {ref}`sp-cl-language`
-* - `measureReference`
-  - Measure reference
-  - Place in a document that describes the measure, where there is one.
-  - referenceCode
-  - Optional
-  - –
-* - `uwwtdMeasureType`
-  - Measure type
-  - Type or types of the measure, by the article of the Directive they implement. Select one or
-    more, as in the draft format. All the types of a measure concern the same kind of object:
-    treatment plants, or agglomerations.
-  - UWWTDMeasureType [1..n]
-  - Required
-  - {ref}`art23-cl-measure-type`
-* - `measureText`
-  - Other measure description
-  - Description of another appropriate measure under Article 18(2).
-  - string1000
-  - Conditional
-  - If `uwwtdMeasureType` includes `otherMeasureArticle18_2`
-* - `geographicalCoverage`
-  - Geographical coverage
-  - Whether the measure applies to the whole Member State, to plants or agglomerations listed in
-    `euUWWTPCode` or `euAgglomerationCode`, or to plants or agglomerations not yet identified.
-  - UWWTDGeographicCoverage
-  - Required
-  - {ref}`art23-cl-coverage`
-* - `euUWWTPCode`
-  - Treatment plants
-  - Codes of the treatment plants the measure concerns, as in the spatial points dataflow.
-    Several codes are separated by commas. The identifier scheme is always `euUWWTPCode`.
-  - wiseIdentifier [0..n]
-  - Conditional
-  - Required if
-    `geographicalCoverage` =
-    `listedObjects` and the
-    measure types concern
-    treatment plants; empty
-    otherwise. Accepted codes
-    in {ref}`sp-uwwtp`
-* - `euAgglomerationCode`
-  - Agglomerations
-  - Codes of the agglomerations the measure concerns, as in the spatial points dataflow. For a
-    measure at treatment plants, the agglomerations those plants serve. Several codes are
-    separated by commas. The identifier scheme is always `euAgglomerationCode`.
-  - wiseIdentifier [0..n]
-  - Conditional
-  - Required if
-    `geographicalCoverage` =
-    `listedObjects`, for
-    every measure type;
-    empty otherwise. Accepted
-    codes in
-    {ref}`sp-agglomeration`
-* - `numberOfObjects`
-  - Number of plants or agglomerations
-  - Number of plants or agglomerations concerned, where they are not listed, for example
-    "10 plants".
-  - nonNegativeInteger
-  - Optional
-  - Only if `geographicalCoverage` = `unlistedObjects`
-* - `prioritisation`
-  - Prioritisation
-  - Priority of the measure, related to the size of the agglomeration and the level of
-    environmental impact.
-  - Priority
-  - Required
-  - {ref}`art23-cl-priority`
+:::{fieldtable} Article23/Measure
+:group: measure-type-and-coverage
 :::
 
 ## Status and dates
 
-:::{list-table} Measure fields - status and dates
-:header-rows: 1
-:widths: 24 16 28 12 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `implementationStatus`
-  - Implementation status
-  - Whether the measure is planned, ongoing, executed or cancelled. In the first programme most
-    measures are planned or ongoing.
-  - ImplementationStatus
-  - Required
-  - {ref}`art23-cl-implementation-status`
-* - `expectedStartYear`
-  - Expected start year
-  - Year in which the works start, or are expected to start.
-  - gYear
-  - Optional
-  - –
-* - `expectedCompletionYear`
-  - Expected completion year
-  - Year in which the measure is expected to be completed. For a measure at a treatment plant,
-    the year of expected compliance, meaning 12 months of compliant samples.
-  - gYear
-  - Required
-  - –
+:::{fieldtable} Article23/Measure
+:group: status-and-dates
 :::
 
 Together, `expectedStartYear` and `expectedCompletionYear` give the period that the Water Framework
@@ -176,42 +53,8 @@ Directive reports as `implementationPeriod`.
 
 ## Cost
 
-:::{list-table} Measure fields - cost
-:header-rows: 1
-:widths: 26 16 26 12 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `costStatus`
-  - Cost status
-  - Whether the investment cost is known, estimated or not yet known.
-  - CostStatus
-  - Required
-  - {ref}`art23-cl-cost-status`
-* - `investmentCost`
-  - Investment cost
-  - Investment cost of the measure: capital expenditure only, without operational or maintenance
-    costs. The equivalent of capital expenditure in the Water Framework Directive.
-  - nonNegativeValue (million units of national currency)
-  - Conditional
-  - Required unless `costStatus` = `unknown`; empty if it is
-* - `millionUnitsOfNationalCurrency`
-  - Currency
-  - Currency of `investmentCost` and of the amounts in {ref}`art23-measurefinancing`, which are
-    all in millions of that currency. Euro area Member States use EUR.
-  - CurrencyCode
-  - Conditional
-  - Required if `investmentCost` or a financing amount is given. {ref}`art23-cl-currency`
-* - `remarks`
-  - Remarks
-  - Any relevant comment on the measure.
-  - string1000
-  - Optional
-  - –
+:::{fieldtable} Article23/Measure
+:group: cost
 :::
 
 ## Filling in the table

@@ -13,12 +13,14 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv
+# Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv,
+# _ext/fieldtable.py the field tables from reference/schema/*/*.csv
 import os
 import sys
 sys.path.insert(0, os.path.abspath('_ext'))
 
 extensions = ['codelist',
+              'fieldtable',
               'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',

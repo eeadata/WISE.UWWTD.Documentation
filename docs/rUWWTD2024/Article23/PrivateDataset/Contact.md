@@ -27,38 +27,5 @@ See the Reportnet 3 privacy policy.
 All fields are Required, shown as `[1]` in {numref}`Article23_Contact_ClassDiagram`
 ({ref}`art23-requirement-status`).
 
-:::{list-table} Contact fields
-:header-rows: 1
-:widths: 16 16 30 12 12 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `name`
-  - Name
-  - Name of the person to contact about the report.
-  - string100
-  - Required
-  - –
-* - `institution`
-  - Institution
-  - Name of the institution the contact person works for.
-  - string255
-  - Required
-  - –
-* - `phone`
-  - Phone
-  - Contact person's phone number.
-  - string100
-  - Required
-  - –
-* - `email`
-  - E-mail
-  - Contact person's e-mail address.
-  - Email
-  - Required
-  - –
+:::{fieldtable} Article23/Contact
 :::

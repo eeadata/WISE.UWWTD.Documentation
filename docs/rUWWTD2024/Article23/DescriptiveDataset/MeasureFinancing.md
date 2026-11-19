@@ -28,54 +28,7 @@ funds.
 
 ## MeasureFinancing fields
 
-:::{list-table} MeasureFinancing fields
-:header-rows: 1
-:widths: 24 16 26 12 8 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `measureCode`
-  - Measure code
-  - Code of the measure in {ref}`art23-measure`.
-  - wiseIdentifier
-  - Required
-  - Must exist in
-    {ref}`art23-measure`
-* - `fundingSource`
-  - Funding source
-  - Where the money comes from.
-  - FundingSource
-  - Required
-  - {ref}`art23-cl-funding-source`
-* - `europeanUnionFundName`
-  - European Union fund name
-  - Name of the EU fund.
-  - EUFund
-  - Conditional
-  - Required if `fundingSource` = `europeanUnionFund`, empty otherwise.
-    {ref}`art23-cl-eu-funds`
-* - `loanName`
-  - Loan provider
-  - Name of the lender.
-  - string255
-  - Optional
-  - Only if `fundingSource` = `loan`
-* - `fundingStatus`
-  - Funding status
-  - How far the money from this source is secured.
-  - FundingStatus
-  - Required
-  - {ref}`art23-cl-funding-status`
-* - `amount`
-  - Amount
-  - Amount expected from this source, in the currency of the measure. Leave empty if not known.
-  - nonNegativeValue (million units of national currency)
-  - Optional
-  - –
+:::{fieldtable} Article23/MeasureFinancing
 :::
 
 ## Filling in the table

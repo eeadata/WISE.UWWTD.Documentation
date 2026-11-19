@@ -1,0 +1,21 @@
+dataflow,dataset,table,group,order,page,anchor,caption,conditionHeader,widths,primaryKey
+SpatialPoints,,Agglomeration,,1,docs/rUWWTD2024/SpatialPoints/Agglomeration.md,sp-agglomeration,Agglomeration fields,Condition,22 16 30 12 8 12,thematicIdIdentifier
+SpatialPoints,,UWWTP,,2,docs/rUWWTD2024/SpatialPoints/UWWTP.md,sp-uwwtp,UWWTP fields,Condition,22 16 30 12 8 12,thematicIdIdentifier
+SpatialPoints,,DischargePoint,,3,docs/rUWWTD2024/SpatialPoints/DischargePoint.md,sp-dischargepoint,DischargePoint fields,Condition,22 16 30 12 8 12,thematicIdIdentifier
+Article23,DescriptiveDataset,MSSummary,programme-and-references,1,docs/rUWWTD2024/Article23/DescriptiveDataset/MSSummary.md,art23-mssummary,MSSummary fields - programme and references,Condition,22 16 26 12 10 14,
+Article23,DescriptiveDataset,MSSummary,risk-assessment,2,docs/rUWWTD2024/Article23/DescriptiveDataset/MSSummary.md,art23-mssummary,MSSummary fields - risk assessment,Condition or codelist,22 16 26 12 10 14,
+Article23,DescriptiveDataset,MSSummary,producer-responsibility-contribution,3,docs/rUWWTD2024/Article23/DescriptiveDataset/MSSummary.md,art23-mssummary,MSSummary fields - producer responsibility contribution,Condition or codelist,28 18 22 12 8 12,
+Article23,DescriptiveDataset,SelfAssessment,,4,docs/rUWWTD2024/Article23/DescriptiveDataset/SelfAssessment.md,art23-selfassessment,SelfAssessment fields,Codelist,26 18 22 14 8 12,
+Article23,DescriptiveDataset,Derogation,,5,docs/rUWWTD2024/Article23/DescriptiveDataset/Derogation.md,art23-derogation,Derogation fields,Condition or codelist,24 16 28 12 8 12,derogationType
+Article23,DescriptiveDataset,CulturalHeritageExtension,,6,docs/rUWWTD2024/Article23/DescriptiveDataset/CulturalHeritageExtension.md,art23-culturalheritageextension,CulturalHeritageExtension fields,Condition or codelist,24 16 28 12 8 12,
+Article23,DescriptiveDataset,LessStringentTreatment,,7,docs/rUWWTD2024/Article23/DescriptiveDataset/LessStringentTreatment.md,art23-lessstringenttreatment,LessStringentTreatment fields,Condition or codelist,24 16 28 12 8 12,
+Article23,DescriptiveDataset,Measure,measure-type-and-coverage,8,docs/rUWWTD2024/Article23/DescriptiveDataset/Measure.md,art23-measure,"Measure fields - measure, type and coverage",Condition or codelist,22 16 28 12 8 14,measureCode
+Article23,DescriptiveDataset,Measure,status-and-dates,9,docs/rUWWTD2024/Article23/DescriptiveDataset/Measure.md,art23-measure,Measure fields - status and dates,Condition or codelist,24 16 28 12 8 12,measureCode
+Article23,DescriptiveDataset,Measure,cost,10,docs/rUWWTD2024/Article23/DescriptiveDataset/Measure.md,art23-measure,Measure fields - cost,Condition or codelist,26 16 26 12 8 12,measureCode
+Article23,DescriptiveDataset,MeasureFinancing,,11,docs/rUWWTD2024/Article23/DescriptiveDataset/MeasureFinancing.md,art23-measurefinancing,MeasureFinancing fields,Condition or codelist,24 16 26 12 8 14,measureCode fundingSource europeanUnionFundName loanName
+Article23,DescriptiveDataset,UWWTP,,12,docs/rUWWTD2024/Article23/DescriptiveDataset/UWWTP.md,art23-uwwtp,UWWTP fields,Condition or codelist,22 16 26 10 10 16,thematicIdIdentifier
+Article23,DescriptiveDataset,Agglomeration,,13,docs/rUWWTD2024/Article23/DescriptiveDataset/Agglomeration.md,art23-agglomeration,Agglomeration fields,Condition or codelist,24 16 26 10 10 14,thematicIdIdentifier
+Article23,DocumentsDataset,dcMetadata,,14,docs/rUWWTD2024/Article23/DocumentsDataset/dcMetadata.md,art23-dcmetadata,dcMetadata fields,Condition,24 18 26 14 8 10,
+Article23,DocumentsDataset,Reference,,15,docs/rUWWTD2024/Article23/DocumentsDataset/Reference.md,art23-reference,Reference fields,Condition,22 18 30 14 8 8,referenceCode
+Article23,DocumentsDataset,Document,,16,docs/rUWWTD2024/Article23/DocumentsDataset/Document.md,art23-document,Document fields,Condition,22 18 30 14 8 8,documentCode
+Article23,PrivateDataset,Contact,,17,docs/rUWWTD2024/Article23/PrivateDataset/Contact.md,art23-contact,Contact fields,Condition,16 16 30 12 12 14,

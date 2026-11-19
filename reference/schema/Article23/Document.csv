@@ -1,0 +1,5 @@
+notation,label,definition,type,multiplicity,unit,status,condition,group
+documentCode,Document code,"Unique code of the document. Primary key, cited by the {ref}`art23-reference` table.",wiseIdentifier,,,Required,,
+documentName,Document name,Name of the document.,string250,,,Required,,
+hyperlink,Hyperlink,Web address of the published document.,URL,,,Conditional,Required if `documentFile` is empty,
+documentFile,Document file,The document uploaded to Reportnet 3.,Attachment,,,Conditional,Required if `hyperlink` is empty,

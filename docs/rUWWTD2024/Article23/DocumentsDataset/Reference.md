@@ -15,38 +15,5 @@ as `programmeReference` and `investmentPlanReference` hold a `referenceCode` fro
 table, so several fields can cite different chapters of the same programme without repeating the
 document itself.
 
-:::{list-table} Reference fields
-:header-rows: 1
-:widths: 22 18 30 14 8 8
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `referenceCode`
-  - Reference code
-  - Unique code of the reference. Primary key, cited by the reporting tables.
-  - wiseIdentifier
-  - Required
-  - –
-* - `documentCode`
-  - Document code
-  - Document the reference points into, from the {ref}`art23-document` table.
-  - documentCode
-  - Required
-  - –
-* - `bookmark`
-  - Bookmark
-  - Chapter, section, page or bookmark within the document.
-  - string250
-  - Optional
-  - –
-* - `subject`
-  - Subject
-  - What the cited place covers, for example the investment plan for Article 3(2).
-  - string250
-  - Optional
-  - –
+:::{fieldtable} Article23/Reference
 :::

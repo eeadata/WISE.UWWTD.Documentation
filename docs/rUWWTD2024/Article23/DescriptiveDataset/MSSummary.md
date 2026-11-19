@@ -27,48 +27,8 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
 
 ## Programme and references
 
-:::{list-table} MSSummary fields - programme and references
-:header-rows: 1
-:widths: 22 16 26 12 10 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `situationAt`
-  - Situation at
-  - Date of the reported situation, for example the date the programme was approved or the
-    date of the decision not to establish one.
-  - date
-  - Required
-  - Between 2026 and 2045
-* - `programmeObligation`
-  - Programme obligation
-  - Whether the Member State is obliged to provide a national implementation programme.
-  - YesNo
-  - Required
-  - –
-* - `programmeReference`
-  - Programme reference
-  - Reference to the national implementation programme in the documents dataset.
-  - referenceCode
-  - Conditional
-  - Required if `programmeObligation` = yes
-* - `prioritisationReference`
-  - Prioritisation reference
-  - Reference to the methodology used to prioritise investments.
-  - referenceCode
-  - Conditional
-  - Required if `programmeObligation` = yes
-* - `article5ManagementPlanReference`
-  - Article 5 management plan reference
-  - Reference to the document listing the Member State's integrated urban wastewater
-    management plans.
-  - referenceCode
-  - Optional
-  - –
+:::{fieldtable} Article23/MSSummary
+:group: programme-and-references
 :::
 
 The programme is updated at least every six years, unless the Member State is fully compliant
@@ -80,43 +40,8 @@ Article 18(1) requires Member States to identify and assess the risks caused by 
 discharges by 31 December 2027. Article 18(3) requires a summary of the identified risks and of
 the measures adopted to be included in the programme.
 
-:::{list-table} MSSummary fields - risk assessment
-:header-rows: 1
-:widths: 22 16 26 12 10 14
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `riskAssessment`
-  - Risk assessment
-  - Whether a risk assessment of urban wastewater discharges has been carried out in
-    accordance with Article 18.
-  - RiskAssessment
-  - Required
-  - {ref}`art23-cl-risk-assessment`
-* - `riskDate`
-  - Risk assessment date
-  - Date of issue of the risk assessment.
-  - date
-  - Conditional
-  - Required if `riskAssessment` = `yes`
-* - `riskIdentified`
-  - Risks identified
-  - Whether any risks have been identified. Measures under Article 18(2) that address
-    identified risks are reported in {ref}`art23-measure`.
-  - YesNo
-  - Conditional
-  - Required if `riskAssessment` = `yes`
-* - `riskSummaryReference`
-  - Risk summary reference
-  - Reference to the relevant section of the river basin management plan, or to another
-    official summary of the identified risks and adopted measures.
-  - referenceCode
-  - Conditional
-  - Required if `riskAssessment` = `yes`
+:::{fieldtable} Article23/MSSummary
+:group: risk-assessment
 :::
 
 A risk assessment covering only some discharges is reported as `partially`. How the three
@@ -132,56 +57,8 @@ for example because the PROs are not yet recognised, the Member State reports
 empty. An empty amount then always means that no estimate is available, not that it was
 forgotten.
 
-:::{list-table} MSSummary fields - producer responsibility contribution
-:header-rows: 1
-:widths: 28 18 22 12 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `producerResponsibilityContribution`
-  - Producer responsibility contribution
-  - Estimated financial contribution from producer responsibility organisations, total at
-    national level.
-  - nonNegativeValue (million units of national currency)
-  - Conditional
-  - Required unless `producerResponsibilityEstimateBasedOn` = `notAvailable`, and empty if it is
-* - `millionUnitsOfNationalCurrency`
-  - Currency
-  - Currency of `producerResponsibilityContribution`, in millions of that currency. Euro area
-    Member States use EUR.
-  - CurrencyCode
-  - Conditional
-  - Required if `producerResponsibilityContribution` is given. {ref}`art23-cl-currency`
-* - `producerResponsibilityEstimateBasedOn`
-  - Estimate based on
-  - Basis of the estimate, or `notAvailable` where no estimate is available yet.
-  - EstimateBasis
-  - Required
-  - {ref}`art23-cl-pro-basis`
-* - `contributionPeriod`
-  - Contribution period
-  - Period or periods by which the planned resources, including the contribution in
-    `producerResponsibilityContribution`, are expected to be sufficient to meet the
-    requirements of the Directive. Select one or more.
-  - ContributionPeriod [0..n]
-  - Optional
-  - {ref}`art23-cl-contribution-period`
-* - `contributionPeriodOther`
-  - Other contribution period
-  - Explanation of the period, where `contributionPeriod` includes `other`.
-  - string1000
-  - Conditional
-  - Required if `contributionPeriod` includes `other`
-* - `remarks`
-  - Remarks
-  - Other important information on compliance and its assessment.
-  - string1000
-  - Optional
-  - –
+:::{fieldtable} Article23/MSSummary
+:group: producer-responsibility-contribution
 :::
 
 The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8. A

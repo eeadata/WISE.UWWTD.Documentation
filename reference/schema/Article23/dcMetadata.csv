@@ -1,0 +1,12 @@
+notation,label,definition,type,multiplicity,unit,status,condition,group
+title,Title,Title of the delivery.,string,,,Required,,
+creatorOrganisationName,Creator organisation,Name of the organisation that produced the delivery.,string,,,Required,,
+creatorElectronicMailAddress,Creator e-mail address,Contact address of the creator organisation.,Email,,,Required,,
+description,Description,Free text describing the delivery.,string,,,Optional,,
+created,Created,Date the delivery was produced.,date,,,Optional,,
+language,Language,Language or languages of the delivery.,Language,1..n,,Required,,
+license,Licence,Licence under which the delivery is published.,Licence,,,Required,{ref}`art23-cl-licence`,
+rights,Rights,Statement of the rights held over the delivery.,string,,,Optional,,
+rightsHolder,Rights holder,Organisation holding those rights.,string,,,Optional,,
+licenseDocument,Licence document,"Document stating the licence, where it is not one of the standard licences.",documentCode,0..n,,Optional,,
+metadataDocument,Metadata document,Document holding further metadata about the delivery.,documentCode,0..n,,Optional,,

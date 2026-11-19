@@ -31,36 +31,7 @@ In {numref}`Article23_LessStringentTreatment_ClassDiagram`, `[1]` marks the Requ
 
 ## LessStringentTreatment fields
 
-:::{list-table} LessStringentTreatment fields
-:header-rows: 1
-:widths: 24 16 28 12 8 12
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition or codelist
-* - `euAgglomerationCode`
-  - Agglomeration
-  - Code of the agglomeration whose discharges are subject to less stringent treatment, as
-    accepted in the {ref}`spatial-points` dataflow.
-  - wiseIdentifier
-  - Required
-  - –
-* - `lessStringentGround`
-  - Ground
-  - The situation of Article 6(4) that applies.
-  - LessStringentGround
-  - Required
-  - {ref}`art23-cl-less-stringent-ground`
-* - `studyReference`
-  - Study reference
-  - Reference to the detailed study showing that the discharges do not adversely affect the
-    environment and human health.
-  - referenceCode
-  - Required
-  - –
+:::{fieldtable} Article23/LessStringentTreatment
 :::
 
 The draft had a Required yes/no for the whole Member State and one link to a study. Listing the

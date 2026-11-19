@@ -11,6 +11,8 @@ source of the values:
   value that is not in its code list;
 * the Reportnet 3 schema and quality checks can read the same files.
 
+The fields that use these code lists are in [reference/schema](../schema/README.md).
+
 To add, change or remove a value, edit the CSV. Do not edit the tables in the documentation: they
 are generated. The text around each table (what the code list is for, where it comes from) stays
 in the documentation page.

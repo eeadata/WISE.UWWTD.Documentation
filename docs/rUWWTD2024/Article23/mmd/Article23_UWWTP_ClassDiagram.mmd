@@ -1,0 +1,20 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class UWWTP{
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + status: PlantAgglomerationStatus [1]
+    + expectedLoad: nonNegativeValue [1]
+    + expectedCapacity: nonNegativeValue [1]
+    + remarks: string1000 [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

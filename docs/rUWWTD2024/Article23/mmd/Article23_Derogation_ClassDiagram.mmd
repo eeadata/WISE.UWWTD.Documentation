@@ -1,0 +1,26 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class Derogation{
+    + derogationType: DerogationType [1]
+    + derogationStatus: DerogationStatus [1]
+    + extendedDeadlineYear: gYear [0..1]
+    + eligibilityCriterion: EligibilityCriterion [0..1]
+    + agglomerationsNotMeeting: nonNegativeValue [0..1]
+    + agglomerationsMeeting: nonNegativeValue [0..1]
+    + loadNotMeeting: nonNegativeValue [0..1]
+    + loadMeeting: nonNegativeValue [0..1]
+    + reasonType: ExtensionReason [0..n]
+    + reasonReference: referenceCode [0..1]
+    + investmentPlanReference: referenceCode [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

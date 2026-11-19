@@ -1,0 +1,32 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+class UWWTP {
+    + geometry: point [1]
+    + inspireIdLocalId: string254 [1]
+    + inspireIdNamespace: string254 [1]
+    + inspireIdVersionId: string254 [0..1]
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + thematicIdIdentifierScheme: IdentifierScheme [1]
+    + nameTextInternational: string254 [0..1]
+    + nameText: string254 [1]
+    + nameLanguage: Language [1]
+    + beginLifespanVersion: date [0..1]
+    + endLifespanVersion: date [0..1]
+    + predecessorsIdentifier: wiseIdentifier [0..n]
+    + predecessorsIdentifierScheme: IdentifierScheme [0..1]
+    + wiseEvolutionType: WiseEvolutionType [1]
+    + status: ConditionOfFacilityValue [1]
+    + validFrom: date [1]
+    + validTo: date [0..1]
+    + link: url [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

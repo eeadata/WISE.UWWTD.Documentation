@@ -1,0 +1,21 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class Agglomeration{
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + status: PlantAgglomerationStatus [1]
+    + expectedLoad: nonNegativeValue [1]
+    + expectedLoadCollected: Percentage [0..1]
+    + expectedLoadIndividualSystems: Percentage [0..1]
+    + remarks: string1000 [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

@@ -1,0 +1,21 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class MeasureFinancing{
+    + measureCode: wiseIdentifier [1]
+    + fundingSource: FundingSource [1]
+    + europeanUnionFundName: EUFund [0..1]
+    + loanName: string255 [0..1]
+    + fundingStatus: FundingStatus [1]
+    + amount: nonNegativeValue [0..1]
+}
+
+classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

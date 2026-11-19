@@ -1,0 +1,25 @@
+type,kind,dataflows,definition,reference
+point,simple,SpatialPoints,"A point geometry: a latitude and longitude pair in decimal degrees, as in the WISE spatial data tables.",docs/rUWWTD2024/SpatialPoints/index.md#data-types
+date,simple,SpatialPoints Article23,"A date in the format yyyy-mm-dd.",docs/rUWWTD2024/SpatialPoints/index.md#data-types docs/rUWWTD2024/Article23/Terminology.md#data-types
+integer,simple,SpatialPoints,A whole number.,docs/rUWWTD2024/SpatialPoints/index.md#data-types
+nonNegativeInteger,simple,Article23,A whole number of 0 or more.,docs/rUWWTD2024/Article23/Terminology.md#data-types
+nonNegativeValue,simple,Article23,"A non-negative number. The unit, where there is one, is in the unit column of the field.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+Percentage,simple,Article23,"A value in the interval [0, 100].",docs/rUWWTD2024/Article23/Terminology.md#data-types
+gYear,simple,Article23,A Gregorian year.,docs/rUWWTD2024/Article23/Terminology.md#data-types
+range,simple,Article23,"A range of values, written as in the PostgreSQL range types following ISO 80000-2, for example [2028,2033] for the years 2028 to 2033 included. A bound left empty is open, for example [,2036].",docs/rUWWTD2024/Article23/Terminology.md#data-types
+YesNo,simple,Article23,A yes or no answer.,docs/rUWWTD2024/Article23/Terminology.md#data-types
+string,simple,Article23,"A character string of at most 4 000 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+string100,simple,Article23,"A character string of at most 100 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+string250,simple,Article23,"A character string of at most 250 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+string254,simple,SpatialPoints,Text of at most 254 characters.,docs/rUWWTD2024/SpatialPoints/index.md#data-types
+string255,simple,Article23,"A character string of at most 255 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+string1000,simple,Article23,"A character string of at most 1 000 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+Email,simple,Article23,"An e-mail address, at most 250 characters, validated with a regular expression.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+url,simple,SpatialPoints,"A web address, starting with https:// or http://.",docs/rUWWTD2024/SpatialPoints/index.md#data-types
+URL,simple,Article23,"A web address, at most 2 100 characters, validated with a regular expression.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+wiseIdentifier,simple,SpatialPoints Article23,"A WISE identifier of at most 42 characters, starting with the ISO 3166-1 alpha-2 country code, as defined for the WISE reporting of the Water Framework Directive.",docs/rUWWTD2024/SpatialPoints/index.md#wise-identifiers docs/rUWWTD2024/Article23/Terminology.md#data-types
+documentCode,simple,Article23,A wiseIdentifier identifying a document of the documents dataset.,docs/rUWWTD2024/Article23/Terminology.md#data-types
+referenceCode,simple,Article23,"A wiseIdentifier identifying a place within a document of the documents dataset, for example a chapter or a bookmark.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+Attachment,simple,Article23,"A file uploaded to Reportnet 3, at most 100 MB, as pdf, xlsx or docx.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+Language,external,SpatialPoints Article23,"A three-letter language code of the ISO 639-2 vocabulary of the Eionet Data Dictionary (common/iso639-2), for example eng.",https://dd.eionet.europa.eu/vocabulary/common/iso639-2/view
+ZoneType,external,SpatialPoints,"A value of the INSPIRE ZoneTypeCode vocabulary. The value for an agglomeration under the Directive is still to be agreed.",https://dd.eionet.europa.eu/vocabulary/inspire/ZoneTypeCode/view

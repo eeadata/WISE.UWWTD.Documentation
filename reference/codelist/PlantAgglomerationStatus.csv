@@ -1,0 +1,6 @@
+notation,label,definition,notes
+compliant,Compliant (C),Articles 3 to 8 compliant; Article 18 requirements fulfilled or not applicable.,
+nonCompliant,Non-compliant (NC),Articles 3 to 8 non-compliant; Article 18 requirements fulfilled or not applicable.,
+pendingDeadline,Pending deadline (PD),Pending deadline: time remains for submission of the application.,
+compliantArticle18NotMet,"Compliant, Article 18 not met (C+A18)",Articles 3 to 8 compliant; more stringent Article 18 requirements not met.,
+nonCompliantArticle18NotMet,"Non-compliant, Article 18 not met (NC+A18)",Articles 3 to 8 non-compliant; more stringent Article 18 requirements not met.,

@@ -1,0 +1,23 @@
+```{list-table} 
+:name: notation_complianceStatus
+:header-rows: 1
+:widths: 25 75
+
+* - Acronym
+  - Meaning / Explanation
+* - C
+  - Compliant / Calculated (context-dependent)
+* - NC
+  - Not Compliant
+* - NI
+  - No Information
+* - PD
+  - Pending Deadline [^deadline]
+* - NR
+  - Not Relevant
+* - QC
+  - Questionable Compliance [^qcompliance]
+* - AddQC
+  - Additional Questionable Compliance [^aqcompliance]
+
+```

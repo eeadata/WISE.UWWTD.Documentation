@@ -1,0 +1,5 @@
+notation,label,definition,notes
+agreedFinancialPlan,Agreed financial plan,"Based on financial plans agreed between the Member State and the producer
+responsibility organisations during the recognition procedure.",
+memberStateEstimate,Member State estimate,"An estimate by the Member State, where agreed financial plans are not yet available.",
+notAvailable,Not available,No estimate of the contribution is available yet.,`producerResponsibilityContribution` is left empty (check R15).

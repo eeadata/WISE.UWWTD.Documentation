@@ -9,9 +9,9 @@ classDiagram
 direction LR
 class UWWTP {
     + geometry: point [1]
-    + inspireIdLocalId: string254 [0..1]
-    + inspireIdNamespace: string254 [0..1]
-    + inspireIdVersionId: string25 [0..1]
+    + inspireIdLocalId: string254 [1]
+    + inspireIdNamespace: string254 [1]
+    + inspireIdVersionId: string254 [0..1]
     + thematicIdIdentifier: wiseIdentifier [1]
     + thematicIdIdentifierScheme: IdentifierScheme [1]
     + nameTextInternational: string254 [0..1]
@@ -22,10 +22,10 @@ class UWWTP {
     + predecessorsIdentifier: wiseIdentifier [0..n]
     + predecessorsIdentifierScheme: IdentifierScheme [0..1]
     + wiseEvolutionType: WiseEvolutionType [1]
-    + designationPeriodBegin: date [1]
-    + designationPeriodEnd: date [0..1]
-    + conditionOfFacility: ConditionOfFacility [1]
-    + uwwCapacity: integer [1]
+    + status: ConditionOfFacilityValue [1]
+    + validFrom: date [1]
+    + validTo: date [0..1]
+    + link: url [0..1]
 }
 
 classDef default fill:white,stroke:#000;

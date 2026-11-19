@@ -6,15 +6,16 @@ nonNegativeInteger,simple,Article23,A whole number of 0 or more.,docs/rUWWTD2024
 nonNegativeValue,simple,Article23,"A non-negative number. The unit, where there is one, is in the unit column of the field.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 Percentage,simple,Article23,"A value in the interval [0, 100].",docs/rUWWTD2024/Article23/Terminology.md#data-types
 gYear,simple,Article23,A Gregorian year.,docs/rUWWTD2024/Article23/Terminology.md#data-types
+range,simple,Article23,"A range of values, written as in the PostgreSQL range types following ISO 80000-2, for example [2028,2033] for the years 2028 to 2033 included. A bound left empty is open, for example [,2036].",docs/rUWWTD2024/Article23/Terminology.md#data-types
 YesNo,simple,Article23,A yes or no answer.,docs/rUWWTD2024/Article23/Terminology.md#data-types
 string,simple,Article23,"A character string of at most 4 000 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
-string25,simple,SpatialPoints,Text of at most 25 characters.,docs/rUWWTD2024/SpatialPoints/index.md#data-types
 string100,simple,Article23,"A character string of at most 100 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string250,simple,Article23,"A character string of at most 250 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string254,simple,SpatialPoints,Text of at most 254 characters.,docs/rUWWTD2024/SpatialPoints/index.md#data-types
 string255,simple,Article23,"A character string of at most 255 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string1000,simple,Article23,"A character string of at most 1 000 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 Email,simple,Article23,"An e-mail address, at most 250 characters, validated with a regular expression.",docs/rUWWTD2024/Article23/Terminology.md#data-types
+url,simple,SpatialPoints,"A web address, starting with https:// or http://.",docs/rUWWTD2024/SpatialPoints/index.md#data-types
 URL,simple,Article23,"A web address, at most 2 100 characters, validated with a regular expression.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 wiseIdentifier,simple,SpatialPoints Article23,"A WISE identifier of at most 42 characters, starting with the ISO 3166-1 alpha-2 country code, as defined for the WISE reporting of the Water Framework Directive.",docs/rUWWTD2024/SpatialPoints/index.md#wise-identifiers docs/rUWWTD2024/Article23/Terminology.md#data-types
 documentCode,simple,Article23,A wiseIdentifier identifying a document of the documents dataset.,docs/rUWWTD2024/Article23/Terminology.md#data-types

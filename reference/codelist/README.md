@@ -21,14 +21,14 @@ in the documentation page.
 
 | File | Content |
 | --- | --- |
-| `<Type>.csv` | The values of one code list, named after its type (`ConditionOfFacility.csv` for `ConditionOfFacility`) |
+| `<Type>.csv` | The values of one code list, named after its type (`ConditionOfFacilityValue.csv` for `ConditionOfFacilityValue`) |
 | `codelists.csv` | Every code list: its type, dataflow, the page anchor it belongs to, the table caption, the column headers shown, their widths and the columns that hold codes |
 
 Code lists:
 
 | Dataflow | Types |
 | --- | --- |
-| Spatial points | `IdentifierScheme`, `WiseEvolutionType`, `SpecialisedZoneType`, `ConditionOfFacility` |
+| Spatial points | `IdentifierScheme`, `WiseEvolutionType`, `ConditionOfFacilityValue` |
 | Article 23 | `DerogationType`, `DerogationStatus`, `EligibilityCriterion`, `ExtensionReason`, `LessStringentGround`, `ComplianceShare`, `ComplianceShareEstimated`, `RiskAssessment`, `ContributionPeriod`, `PlantAgglomerationStatus`, `UWWTDMeasureType`, `UWWTDGeographicCoverage`, `ImplementationStatus`, `CostStatus`, `Priority`, `EUFund`, `FundingSource`, `FundingStatus`, `CurrencyCode`, `EstimateBasis`, `Licence` |
 | Article 23 (correspondence) | `UWWTDMeasureTypeWFD`: each measure type with its WFD key type of measure and main pressure |
 
@@ -47,6 +47,6 @@ ISO 639-2 languages of `nameLanguage`, are referenced from the documentation and
 * A new code list needs its CSV, a row in `codelists.csv`, and a `{codelist}` directive on its page:
 
   ```
-  :::{codelist} ConditionOfFacility
+  :::{codelist} ConditionOfFacilityValue
   :::
   ```

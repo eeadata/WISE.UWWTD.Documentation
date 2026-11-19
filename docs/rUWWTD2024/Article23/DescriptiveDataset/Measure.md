@@ -14,7 +14,8 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one or more types, and one period, one priority and one investment cost. The plants it
+measure has one or more types, and one period, one priority and one capital expenditure,
+split between the 1st cycle and after it. The plants it
 concerns are listed in the measure itself, in `euUWWTPCode`, and the agglomerations in
 `euAgglomerationCode`; the sources of its financing are given in {ref}`art23-measurefinancing`.
 See {ref}`art23-investments`.
@@ -48,8 +49,7 @@ Optional and Conditional ones ({ref}`art23-requirement-status`).
 :group: status-and-dates
 :::
 
-Together, `expectedStartYear` and `expectedCompletionYear` give the period that the Water Framework
-Directive reports as `implementationPeriod`.
+The field is the same as `implementationPeriod` in the Water Framework Directive measures.
 
 ## Cost
 
@@ -73,14 +73,19 @@ Directive reports as `implementationPeriod`.
 * **National measures.** `geographicalCoverage` = `national` is only for the renewal of existing
   infrastructure under Article 23(1)(c), such as the nationwide renewal of collecting systems,
   which the Directive does not ask for per agglomeration.
-* **Agglomerations not yet identified.** Use `unlistedObjects` where the plants or agglomerations
-  are not yet known, for example in the first programme. Since Article 23(1)(b) asks for the
-  investments for each agglomeration, this raises a warning, and the agglomerations should be
-  listed in the next update.
+* **Plants and agglomerations are always listed.** Article 23(1)(b) asks for the investments for
+  each agglomeration, so every measure other than a national renewal measure lists the
+  agglomerations it concerns, and the plants for a measure at treatment plants. Where the order
+  or the cost of the work is not yet known, the measure is still reported against them.
 * **Indicative cost.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
   estimate is enough and is reported as `estimated`. Where not even a rough estimate can be given
-  yet, set `costStatus` to `unknown` and leave `investmentCost` empty. This raises a warning, and
-  the cost should be estimated in the next update.
+  yet, set `costStatus` to `unknown` and leave both expenditure fields empty. This raises a
+  warning, and the cost should be estimated in the next update.
+* **Splitting by cycle.** Give the capital expenditure expected in 2028 to 2033 in
+  `totalCapitalExpenditure1stCycle`, and what follows from 2034 in
+  `totalCapitalExpenditureAfter1stCycle`. Where the yearly profile is not known, spread the cost
+  evenly over the years of `implementationPeriod`. For an ongoing measure, report only what is
+  spent from 2028. The cost of the measure is the sum of the two fields.
 * **Currency.** Amounts are in millions of national currency, as in the Water Framework Directive:
   0.01 is 10 000 units. Use a full stop as the decimal separator.
 

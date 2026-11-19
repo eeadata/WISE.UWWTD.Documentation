@@ -79,7 +79,7 @@ multiplicity in square brackets: `nonNegativeValue (p.e.)`, `wiseIdentifier [0..
 | --- | --- |
 | `type` | Type name, as used in the `type` column |
 | `kind` | `simple` for a WISE attribute type; `external` for a vocabulary published elsewhere and not copied here |
-| `dataflows` | Space-separated dataflows that use it |
+| `dataflows` | Space-separated dataflows whose documentation defines it (the *Data types* sections of the spatial points and Article 23 pages) |
 | `definition` | What a value of the type is |
 | `reference` | Where the documentation defines it, or the URL of the external vocabulary |
 

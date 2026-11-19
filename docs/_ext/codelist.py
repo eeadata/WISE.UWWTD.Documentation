@@ -3,7 +3,7 @@
 The CSV files are the single source of the code list values; the documentation shows them, and other
 tools (the Reportnet 3 schema, quality checks, the prefill) read the same files.
 
-    :::{codelist} ConditionOfFacility
+    :::{codelist} ConditionOfFacilityValue
     :::
 
 reference/codelist/codelists.csv lists every code list: the dataflow and page anchor it belongs to, its

@@ -69,7 +69,8 @@ is required, and `situationAt` records the date of the reported situation.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
   - {ref}`art23-measure`: the measures, the plants or agglomerations they concern, their `prioritisation`
-    and `investmentCost`.
+    and their capital expenditure, `totalCapitalExpenditure1stCycle` and
+    `totalCapitalExpenditureAfter1stCycle`.
     {ref}`art23-mssummary`: `producerResponsibilityContribution`,
     `producerResponsibilityEstimateBasedOn`, `contributionPeriod`, `prioritisationReference`.
 * - Article 23(1)(c) - renewal, upgrade or replacement of existing infrastructure
@@ -108,8 +109,7 @@ plants and agglomerations with planned renewal investments must be listed indivi
 yet decided ({ref}`art23-oi-scope`).
 
 Either way, renewal is part of the programme under Article 23(1)(c). Measures that are not
-reported against listed plants or agglomerations are reported as national measures, or as
-measures for plants or agglomerations not yet identified. See {ref}`art23-investments`.
+reported against listed plants or agglomerations are reported as national measures. See {ref}`art23-investments`.
 
 ## Level of detail
 

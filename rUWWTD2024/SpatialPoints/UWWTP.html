@@ -863,8 +863,7 @@ scope of the Directive. The names follow INSPIRE; their exact meaning is to be c
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
 <td><p>Location</p></td>
-<td><p>Location of the treatment plant, as a single point geometry (a latitude and longitude pair) in ETRS89
-(EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p></td>
+<td><p>Location of the treatment plant, as a single point geometry (a latitude and longitude pair) in ETRS89 (EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p></td>
 <td><p>point</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -892,9 +891,7 @@ scope of the Directive. The names follow INSPIRE; their exact meaning is to be c
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
-<td><p>Code of the treatment plant. A new plant receives a new code; an existing one keeps its code
-(<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>). A code from the reporting under Directive 91/271/EEC that does not meet
-the WISE identifier rules is converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
+<td><p>Code of the treatment plant. A new plant receives a new code; an existing one keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>). A code from the reporting under Directive 91/271/EEC that does not meet the WISE identifier rules is converted (<a class="reference internal" href="index.html#sp-code-conversion"><span class="std std-ref">Converting existing codes into WISE identifiers</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -939,33 +936,25 @@ the WISE identifier rules is converted (<a class="reference internal" href="inde
 <td><p>Date on which the treatment plant was retired.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required with
-<code class="docutils literal notranslate"><span class="pre">deletion</span></code>; otherwise
-empty</p></td>
+<td><p>Required with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>; otherwise empty</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code></p></td>
 <td><p>Predecessors</p></td>
-<td><p>Codes of the treatment plants this one replaces, given once, in the delivery in which the change
-happens. Several codes are separated by commas.</p></td>
+<td><p>Codes of the treatment plants this one replaces, given once, in the delivery in which the change happens. Several codes are separated by commas.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required with
-<code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and
-<code class="docutils literal notranslate"><span class="pre">splitting</span></code></p></td>
+<td><p>Required with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">predecessorsIdentifierScheme</span></code></p></td>
 <td><p>Predecessors scheme</p></td>
 <td><p>Scheme of <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>. Always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p></td>
 <td><p>IdentifierScheme</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>
-is given</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code> is given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
-<td><p>What is being reported: no change, a new object, a change, a merger, a split or a
-retirement.</p></td>
+<td><p>What is being reported: no change, a new object, a change, a merger, a split or a retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
@@ -989,9 +978,7 @@ retirement.</p></td>
 <td><p>Date on which the treatment plant left the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required when the
-treatment plant leaves the
-scope of the Directive</p></td>
+<td><p>Required when the treatment plant leaves the scope of the Directive</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
 <td><p>Link</p></td>

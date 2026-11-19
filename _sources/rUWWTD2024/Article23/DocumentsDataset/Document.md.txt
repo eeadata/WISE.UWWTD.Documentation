@@ -14,38 +14,5 @@ Each document is delivered either as a hyperlink to a published document or as a
 Reportnet 3. Where a Member State publishes its programme on a national website, report the
 hyperlink; where it does not, upload the file.
 
-:::{list-table} Document fields
-:header-rows: 1
-:widths: 22 18 30 14 8 8
-
-* - Notation
-  - Label
-  - Definition
-  - Type
-  - Status
-  - Condition
-* - `documentCode`
-  - Document code
-  - Unique code of the document. Primary key, cited by the {ref}`art23-reference` table.
-  - wiseIdentifier
-  - Required
-  - –
-* - `documentName`
-  - Document name
-  - Name of the document.
-  - string250
-  - Required
-  - –
-* - `hyperlink`
-  - Hyperlink
-  - Web address of the published document.
-  - URL
-  - Conditional
-  - Required if `documentFile` is empty
-* - `documentFile`
-  - Document file
-  - The document uploaded to Reportnet 3.
-  - Attachment
-  - Conditional
-  - Required if `hyperlink` is empty
+:::{fieldtable} Article23/Document
 :::

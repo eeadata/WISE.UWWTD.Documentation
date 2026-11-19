@@ -876,8 +876,7 @@ the facility that groups it (<a class="reference internal" href="OpenIssues.html
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
 <td><p>Location</p></td>
-<td><p>Location of the discharge point, as a single point geometry (a latitude and longitude pair) in ETRS89
-(EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p></td>
+<td><p>Location of the discharge point, as a single point geometry (a latitude and longitude pair) in ETRS89 (EPSG:4258) or WGS 84 (EPSG:4326), with at least four decimal places (<a class="reference internal" href="index.html#sp-location"><span class="std std-ref">Locations</span></a>).</p></td>
 <td><p>point</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -887,19 +886,14 @@ the facility that groups it (<a class="reference internal" href="OpenIssues.html
 <td><p>Local identifier of the same object in a national INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if an INSPIRE
-identifier has been
-assigned; give with
-<code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
+<td><p>Required if an INSPIRE identifier has been assigned; give with <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code></p></td>
 <td><p>INSPIRE namespace</p></td>
 <td><p>Namespace of that INSPIRE dataset.</p></td>
 <td><p>string254</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is
-given</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> is given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code></p></td>
 <td><p>INSPIRE version identifier</p></td>
@@ -910,8 +904,7 @@ given</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code></p></td>
 <td><p>Code</p></td>
-<td><p>Code of the discharge point. A new discharge point receives a new code; an existing one keeps its
-code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p></td>
+<td><p>Code of the discharge point. A new discharge point receives a new code; an existing one keeps its code (<a class="reference internal" href="index.html#sp-reporting"><span class="std std-ref">Reporting</span></a>).</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -956,41 +949,32 @@ code (<a class="reference internal" href="index.html#sp-reporting"><span class="
 <td><p>Date on which the discharge point was retired.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required with
-<code class="docutils literal notranslate"><span class="pre">deletion</span></code>; otherwise
-empty</p></td>
+<td><p>Required with <code class="docutils literal notranslate"><span class="pre">deletion</span></code>; otherwise empty</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code></p></td>
 <td><p>Predecessors</p></td>
-<td><p>Codes of the discharge points this one replaces, given once, in the delivery in which the change
-happens. Several codes are separated by commas.</p></td>
+<td><p>Codes of the discharge points this one replaces, given once, in the delivery in which the change happens. Several codes are separated by commas.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required with
-<code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and
-<code class="docutils literal notranslate"><span class="pre">splitting</span></code></p></td>
+<td><p>Required with <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> and <code class="docutils literal notranslate"><span class="pre">splitting</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">predecessorsIdentifierScheme</span></code></p></td>
 <td><p>Predecessors scheme</p></td>
 <td><p>Scheme of <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>. Always <code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code> (<a class="reference internal" href="Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p></td>
 <td><p>IdentifierScheme</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code>
-is given</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code> is given</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wiseEvolutionType</span></code></p></td>
 <td><p>Evolution type</p></td>
-<td><p>What is being reported: no change, a new object, a change, a merger, a split or a
-retirement.</p></td>
+<td><p>What is being reported: no change, a new object, a change, a merger, a split or a retirement.</p></td>
 <td><p>WiseEvolutionType</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-evolution"><span class="std std-ref">Evolution type</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
 <td><p>Condition</p></td>
-<td><p>Physical state of the discharge point: proposed, under construction, in use, disused or
-decommissioned.</p></td>
+<td><p>Physical state of the discharge point: proposed, under construction, in use, disused or decommissioned.</p></td>
 <td><p>ConditionOfFacilityValue</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="Codelists.html#sp-cl-condition"><span class="std std-ref">Condition of facility</span></a></p></td>
@@ -1007,14 +991,11 @@ decommissioned.</p></td>
 <td><p>Date on which the discharge point left the scope of the Directive.</p></td>
 <td><p>date</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required when the
-discharge point leaves the
-scope of the Directive</p></td>
+<td><p>Required when the discharge point leaves the scope of the Directive</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">groupingInstallation</span></code></p></td>
 <td><p>Treatment plant</p></td>
-<td><p>Code of the treatment plant, or collecting system without treatment, that discharges through
-this point. It must be an accepted treatment plant in the UWWTP table.</p></td>
+<td><p>Code of the treatment plant, or collecting system without treatment, that discharges through this point. It must be an accepted treatment plant in the UWWTP table.</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>

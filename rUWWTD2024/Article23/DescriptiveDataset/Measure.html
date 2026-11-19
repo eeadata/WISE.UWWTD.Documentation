@@ -865,8 +865,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">measureCode</span></code></p></td>
 <td><p>Measure code</p></td>
-<td><p>Unique, persistent code of the measure. The same measure keeps the same code in later
-updates of the programme, so that its progress can be followed. Primary key.</p></td>
+<td><p>Unique, persistent code of the measure. The same measure keeps the same code in later updates of the programme, so that its progress can be followed. Primary key.</p></td>
 <td><p>wiseIdentifier</p></td>
 <td><p>Required</p></td>
 <td><p>–</p></td>
@@ -894,9 +893,7 @@ updates of the programme, so that its progress can be followed. Primary key.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code></p></td>
 <td><p>Measure type</p></td>
-<td><p>Type or types of the measure, by the article of the Directive they implement. Select one or
-more, as in the draft format. All the types of a measure concern the same kind of object:
-treatment plants, or agglomerations.</p></td>
+<td><p>Type or types of the measure, by the article of the Directive they implement. Select one or more, as in the draft format. All the types of a measure concern the same kind of object: treatment plants, or agglomerations.</p></td>
 <td><p>UWWTDMeasureType [1..n]</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-measure-type"><span class="std std-ref">Measure type</span></a></p></td>
@@ -910,45 +907,28 @@ treatment plants, or agglomerations.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code></p></td>
 <td><p>Geographical coverage</p></td>
-<td><p>Whether the measure applies to the whole Member State or to the plants or agglomerations
-listed in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
+<td><p>Whether the measure applies to the whole Member State or to the plants or agglomerations listed in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
 <td><p>UWWTDGeographicCoverage</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-coverage"><span class="std std-ref">Geographical coverage</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
 <td><p>Treatment plants</p></td>
-<td><p>Codes of the treatment plants the measure concerns, as in the spatial points dataflow.
-Several codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p></td>
+<td><p>Codes of the treatment plants the measure concerns, as in the spatial points dataflow. Several codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> =
-<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> and the
-measure types concern
-treatment plants; empty
-otherwise. Accepted codes
-in <a class="reference internal" href="../../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code> and the measure types concern treatment plants; empty otherwise. Accepted codes in <a class="reference internal" href="../../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
 <td><p>Agglomerations</p></td>
-<td><p>Codes of the agglomerations the measure concerns, as in the spatial points dataflow. For a
-measure at treatment plants, the agglomerations those plants serve. Several codes are
-separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
+<td><p>Codes of the agglomerations the measure concerns, as in the spatial points dataflow. For a measure at treatment plants, the agglomerations those plants serve. Several codes are separated by commas. The identifier scheme is always <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>.</p></td>
 <td><p>wiseIdentifier [0..n]</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if
-<code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> =
-<code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, for
-every measure type;
-empty otherwise. Accepted
-codes in
-<a class="reference internal" href="../../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">geographicalCoverage</span></code> = <code class="docutils literal notranslate"><span class="pre">listedObjects</span></code>, for every measure type; empty otherwise. Accepted codes in <a class="reference internal" href="../../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">prioritisation</span></code></p></td>
 <td><p>Prioritisation</p></td>
-<td><p>Priority of the measure, related to the size of the agglomeration and the level of
-environmental impact.</p></td>
+<td><p>Priority of the measure, related to the size of the agglomeration and the level of environmental impact.</p></td>
 <td><p>Priority</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-priority"><span class="std std-ref">Priority</span></a></p></td>
@@ -981,19 +961,14 @@ environmental impact.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">implementationStatus</span></code></p></td>
 <td><p>Implementation status</p></td>
-<td><p>Whether the measure is planned, ongoing, executed or cancelled. In the first programme most
-measures are planned or ongoing.</p></td>
+<td><p>Whether the measure is planned, ongoing, executed or cancelled. In the first programme most measures are planned or ongoing.</p></td>
 <td><p>ImplementationStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-implementation-status"><span class="std std-ref">Implementation status</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code></p></td>
 <td><p>Implementation period</p></td>
-<td><p>Range of years from the year in which the works start, or are expected to start, to the year
-in which the measure is expected to be completed, both included, for example <code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code>.
-For a measure at a treatment plant, the completion year is the year of expected compliance,
-meaning 12 months of compliant samples. Where the start year is not known, the lower bound is
-left open: <code class="docutils literal notranslate"><span class="pre">[,2036]</span></code>.</p></td>
+<td><p>Range of years from the year in which the works start, or are expected to start, to the year in which the measure is expected to be completed, both included, for example <code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code>. For a measure at a treatment plant, the completion year is the year of expected compliance, meaning 12 months of compliant samples. Where the start year is not known, the lower bound is left open: <code class="docutils literal notranslate"><span class="pre">[,2036]</span></code>.</p></td>
 <td><p>range</p></td>
 <td><p>Required</p></td>
 <td><p>Upper bound always given</p></td>
@@ -1027,35 +1002,28 @@ left open: <code class="docutils literal notranslate"><span class="pre">[,2036]<
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code></p></td>
 <td><p>Cost status</p></td>
-<td><p>Whether the capital expenditure is known, estimated or not yet known. Applies to both
-expenditure fields.</p></td>
+<td><p>Whether the capital expenditure is known, estimated or not yet known. Applies to both expenditure fields.</p></td>
 <td><p>CostStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-cost-status"><span class="std std-ref">Cost status</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code></p></td>
 <td><p>Capital expenditure, 1st cycle</p></td>
-<td><p>Capital expenditure of the measure in the 1st cycle, 2028 to 2033, without operational or
-maintenance costs. Expenditure before 2028 is not reported. Corresponds to
-<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure4thCycle</span></code> in the Water Framework Directive.</p></td>
+<td><p>Capital expenditure of the measure in the 1st cycle, 2028 to 2033, without operational or maintenance costs. Expenditure before 2028 is not reported. Corresponds to <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure4thCycle</span></code> in the Water Framework Directive.</p></td>
 <td><p>nonNegativeValue (million units of national currency)</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> overlaps 2028 to 2033, unless <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>;
-empty otherwise</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> overlaps 2028 to 2033, unless <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>; empty otherwise</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code></p></td>
 <td><p>Capital expenditure after the 1st cycle</p></td>
-<td><p>Capital expenditure of the measure from 2034 until its completion, without operational or
-maintenance costs. Covers the 2nd and 3rd cycles together, to 2045.</p></td>
+<td><p>Capital expenditure of the measure from 2034 until its completion, without operational or maintenance costs. Covers the 2nd and 3rd cycles together, to 2045.</p></td>
 <td><p>nonNegativeValue (million units of national currency)</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> ends after 2033, unless <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>; empty
-otherwise</p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> ends after 2033, unless <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>; empty otherwise</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code></p></td>
 <td><p>Currency</p></td>
-<td><p>Currency of the capital expenditure and of the amounts in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>, which are
-all in millions of that currency. Euro area Member States use EUR.</p></td>
+<td><p>Currency of the capital expenditure and of the amounts in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>, which are all in millions of that currency. Euro area Member States use EUR.</p></td>
 <td><p>CurrencyCode</p></td>
 <td><p>Conditional</p></td>
 <td><p>Required if an expenditure or a financing amount is given. <a class="reference internal" href="../Codelists.html#art23-cl-currency"><span class="std std-ref">Currency</span></a></p></td>

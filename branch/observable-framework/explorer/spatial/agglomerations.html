@@ -14,15 +14,15 @@
 <link rel="stylesheet" type="text/css" href="../_observablehq/theme-air,near-midnight.b050d634.css">
 <link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
 <link rel="stylesheet" type="text/css" href="../_npm/leaflet@1.9.4/dist/leaflet.css">
-<link rel="modulepreload" href="../_observablehq/client.b75d5c6a.js">
+<link rel="modulepreload" href="../_observablehq/client.8e579122.js">
 <link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
-<link rel="modulepreload" href="../_observablehq/stdlib.8ab8c2e4.js">
+<link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
 <link rel="modulepreload" href="../_import/components/prefill.f0070044.js">
 <link rel="modulepreload" href="../_import/components/download.caf5946e.js">
 <link rel="modulepreload" href="../_import/components/reference.94cb7930.js">
 <link rel="modulepreload" href="../_npm/d3@7.9.2/172963d6.js">
 <link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
-<link rel="modulepreload" href="../_observablehq/stdlib/inputs.a358a3bb.js">
+<link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
 <link rel="modulepreload" href="../_npm/leaflet@1.9.4/b6187c6b.js">
 <link rel="modulepreload" href="../_npm/@observablehq/plot@0.6.19/2e9f152c.js">
 <link rel="modulepreload" href="../_npm/apache-arrow@21.2.0/63b06f0b.js">
@@ -68,13 +68,13 @@
 </style>
 <script type="module">
 
-import {define} from "../_observablehq/client.b75d5c6a.js";
-import {registerFile} from "../_observablehq/stdlib.8ab8c2e4.js";
+import {define} from "../_observablehq/client.8e579122.js";
+import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.47a92044.json","lastModified":1795173614664,"size":107015});
-registerFile("./data/agglomerations.parquet", {"name":"./data/agglomerations.parquet","path":"../_file/spatial/data/agglomerations.278a6d4c.parquet","lastModified":1795173615098,"size":925477});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795173615297,"size":1020393});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795173614867,"size":1519});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.e1b77058.json","lastModified":1795174468840,"size":107442});
+registerFile("./data/agglomerations.parquet", {"name":"./data/agglomerations.parquet","path":"../_file/spatial/data/agglomerations.278a6d4c.parquet","lastModified":1795174469908,"size":925477});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795174470334,"size":1020393});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795174469242,"size":1519});
 
 define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
 const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.94cb7930.js")]);
@@ -471,7 +471,7 @@ release.release_status
   </ol>
   <div id="observablehq-search"><input type="search" placeholder="Search"></div>
   <div id="observablehq-search-results"></div>
-  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.5382afbb.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.4874e321.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
   <details open>
     <summary>Reference data</summary>
     <ol>

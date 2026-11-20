@@ -262,3 +262,15 @@ Used by `license` in {ref}`art23-dcmetadata`.
 
 fWhere a Member State publishes under another licence, report the licence document in
 `licenseDocument` instead.
+
+(art23-cl-yesno)=
+## Yes or no
+
+**Type:** `YesNo`
+
+Used by `programmeObligation` and `riskIdentified` in {ref}`art23-mssummary`, and by
+`article4Compliance` in {ref}`art23-selfassessment`. As in the Water Framework Directive, the values
+are written in lower case.
+
+:::{codelist} YesNo
+:::

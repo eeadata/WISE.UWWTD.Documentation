@@ -691,7 +691,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/Codelists.html">Codelists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/Examples.html">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Article23/OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Spatial points</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -699,7 +698,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -819,12 +817,12 @@ classDef forFixing fill:white,stroke:#f00;
 <h2>What the fields are<a class="headerlink" href="#what-the-fields-are" title="Link to this heading">#</a></h2>
 <p>The fields follow the UML diagram of the geospatial schema of 16 November 2026 and the WISE
 spatial data definitions (<a class="reference internal" href="index.html#sp-sources"><span class="std std-ref">Sources</span></a>). Descriptive information on the plant, including its
-capacity, is for a later Article 22 table, not this dataflow (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
+capacity, is for a later Article 22 table, not this dataflow.</p>
 <p><strong>Location.</strong> <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, a single point at the site of the plant.</p>
 <p><strong>Identifiers.</strong> <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the treatment plant’s code: the key that other reporting uses
 to refer to it (<a class="reference internal" href="index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). Its scheme, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>, is always
 <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>. <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> give the INSPIRE identifier of the
-treatment plant and are required (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>); <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is optional.</p>
+treatment plant and are required; <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is optional.</p>
 <p><strong>Name.</strong> The official name and its language, with an English name if one is already in use.
 For a proposed plant without an official name, give a working or descriptive name. When the
 official name is assigned, report the new name as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the same identifier.</p>
@@ -836,7 +834,7 @@ split or a retirement. A new treatment plant that replaces earlier ones lists th
 use, with the INSPIRE condition of facility values.</p>
 <p><strong>Validity.</strong> <code class="docutils literal notranslate"><span class="pre">validFrom</span></code> and <code class="docutils literal notranslate"><span class="pre">validTo</span></code> give the period in which the treatment plant is in the
 scope of the Directive. The names follow INSPIRE; their exact meaning is to be confirmed
-(<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
+.</p>
 <p><strong>Link.</strong> <code class="docutils literal notranslate"><span class="pre">link</span></code> is an optional web address with more information on the treatment plant.</p>
 </section>
 <section id="uwwtp-fields">

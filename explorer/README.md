@@ -65,5 +65,15 @@ version:
 
 4. Set `TAG` in `src/spatial/data/release.py` to the new tag, and push.
 
-Releases are named `spatialpoints-prefill-<reference year>-v<major>.<minor>`. The files of a release
+Releases are named `spatialpoints-prefill-<reference year>-v<major>.<minor>`: a new major version
+for new source data or a breaking change of the specification, a new minor version for a fix of the
+prefill method or a compatible change of the specification. A release is never changed: a fix is a
+new release. Its `manifest.json` records the specification version it follows
+(`specification_version`, from `reference/versions.csv`), which the spatial pages show next to the
+current one. A release stays a pre-release while the data is under review; the one used to prefill
+Reportnet is published as a full release.
+
+In `npm run dev`, Framework keeps what the data loaders made in `src/.observablehq/cache`, and runs a
+loader again only when the loader itself changes, not when a CSV file of `reference/` does. After
+changing one, run `npm run clean`. The published site is always built from scratch. The files of a release
 are public: publish one only for data that may be shown, as provisional, to reporters.

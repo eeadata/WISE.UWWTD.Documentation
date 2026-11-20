@@ -16,7 +16,8 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv,
 # _ext/fieldtable.py the field tables from reference/schema/*/*.csv,
 # _ext/internal.py keeps the open issues pages out of the published build (-t internal to include them)
-# _ext/explorer.py links to the data explorer published under explorer/
+# _ext/explorer.py links to the data explorer published under explorer/,
+# _ext/versions.py shows the version of a dataflow specification from reference/versions.csv
 import os
 import sys
 sys.path.insert(0, os.path.abspath('_ext'))
@@ -25,6 +26,7 @@ extensions = ['codelist',
               'fieldtable',
               'internal',
               'explorer',
+              'versions',
               'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',
@@ -86,6 +88,17 @@ html_context = {
     "github_version": "main",
     "doc_path": "docs",
 }
+
+# A snapshot of the documentation for a version of a specification, published under
+# versions/<tag>/ when the version is tagged (DOCS_SNAPSHOT=<tag>, set by the workflow). It shows a
+# banner, and its links to the data explorer go to the current one, two folders up.
+SNAPSHOT = os.environ.get('DOCS_SNAPSHOT', '')
+explorer_up = 2 if SNAPSHOT else 0
+html_context["explorer_up"] = explorer_up
+if SNAPSHOT:
+    html_theme_options["announcement"] = (
+        f"You are reading the documentation as published with <strong>{SNAPSHOT}</strong>. "
+        '<a href="https://eeadata.github.io/WISE.UWWTD.Documentation/">Read the latest version</a>.')
 html_logo = "_static/wise.svg"
 
 html_sidebars = {

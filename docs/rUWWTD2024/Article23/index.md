@@ -10,6 +10,9 @@ Nothing here is final: table names, field names, data types, codelists and condi
 still change.
 :::
 
+**Specification version:** {specversion}`Article23`. Each version is a release of the repository,
+with its changes, the template database and the CSV files; see {ref}`spec-versions`.
+
 Article 23 of the revised Urban Wastewater Treatment Directive
 {footcite:p}`urbanWastewaterTreatmentDirectiveRecast` requires each Member State to establish a
 national implementation programme (NIP) by 1 January 2028 and to submit it to the Commission,

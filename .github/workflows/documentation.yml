@@ -5,9 +5,15 @@
 name: documentation
 
 # Defines the events that trigger this workflow: 
-# Runs on code pushes, pull requests, manual triggers (workflow_dispatch),
-# and branch deletions, which remove that branch's published preview
-on: [push, pull_request, workflow_dispatch, delete]
+# Runs on pushes to branches, pull requests, manual triggers (workflow_dispatch), and branch
+# deletions, which remove that branch's published preview. Pushing a tag does not run it: the tags
+# of the specification versions are made by this workflow itself.
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+  delete:
 
 # Grants the workflow write permissions to the repository. 
 # This is required so it can push the built HTML to the gh-pages branch later.
@@ -27,24 +33,36 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Step 1: Download your repository's code onto the runner so the workflow can use it
+      # Step 1: Download the repository, with its history and tags, to compare versions
       - uses: actions/checkout@v6
-      
+        with:
+          fetch-depth: 0
+
       # Step 2: Install and set up a Python environment
       - uses: actions/setup-python@v6
-      
+
       # Step 3: Install the required Python packages for building the docs
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt          
-          
+          pip install -r docs/requirements.txt
+
       # Check the field tables in reference/schema against the types and code lists,
       # and that the template databases can be built from them
       - name: Check field tables
         run: |
           python reference/schema/check.py
           python reference/schema/template.py --check
+
+      # Check that every change to a specification comes with the version bump it needs
+      # (reference/versioning.py). The report is shown in the summary of the run.
+      - name: Check versions
+        if: ${{ github.ref != 'refs/heads/main' }}
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'origin/main' }}
+        run: |
+          set -o pipefail
+          python reference/versioning.py check "$BASE" | tee -a "$GITHUB_STEP_SUMMARY"
 
       # Step 4: Run Sphinx to build the actual HTML documentation
       # This takes the source files from the 'doc' folder and outputs HTML to '_build'
@@ -70,16 +88,47 @@ jobs:
           cp -r explorer/dist _build/explorer
           rm -rf _build/.doctrees _build/.buildinfo
 
-      # Step 6: Deploy to GitHub Pages. The site is served from the gh-pages branch: main at the
-      # root, and every other branch in its own subdirectory under branch/, so work in progress
-      # can be reviewed online before it is merged. Pull requests are not deployed: the preview
-      # of their source branch already covers them.
+      # Step 6: On main, find the specification versions that changed with this push. For each,
+      # build a snapshot of the documentation (published under versions/<tag>/) and the files of
+      # its release: the template database, the CSV files and the list of changes.
+      - name: Find new versions
+        id: versions
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          git cat-file -e "$BEFORE^{commit}" 2>/dev/null || BEFORE=HEAD~1
+          python reference/versioning.py new-tags "$BEFORE" > new-tags.txt
+          cat new-tags.txt
+          echo "count=$(wc -l < new-tags.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+      - name: Build snapshots and release files
+        if: ${{ steps.versions.outputs.count != '' && steps.versions.outputs.count != '0' }}
+        run: |
+          mkdir -p _versions _release
+          while read -r dataflow tag <&3; do
+            DOCS_SNAPSHOT="$tag" sphinx-build -q docs "_versions/$tag"
+            rm -rf "_versions/$tag/.doctrees" "_versions/$tag/.buildinfo"
+            version="${tag##*-v}"
+            ext=$([ "$dataflow" = SpatialPoints ] && echo gpkg || echo sqlite)
+            mkdir -p "_release/$tag"
+            python reference/schema/template.py "$dataflow" "_release/$tag/rUWWTD_${dataflow}_v${version}_template.$ext"
+            zip -q -r "_release/$tag/rUWWTD_reference_$tag.zip" reference/versions.csv reference/codelist reference/schema -i '*.csv' '*.md'
+            previous=$(git tag --list "${dataflow,,}-v*" --sort=-v:refname | head -1)
+            python reference/versioning.py changelog "$dataflow" "${previous:-none}" > "_release/$tag/notes.md"
+            printf '\nThe documentation as published with this version: https://eeadata.github.io/WISE.UWWTD.Documentation/versions/%s/\n' "$tag" >> "_release/$tag/notes.md"
+          done 3< new-tags.txt
+
+      # Step 7: Deploy to GitHub Pages. The site is served from the gh-pages branch: main at the
+      # root, the snapshots of the specification versions under versions/, and every other branch
+      # in its own subdirectory under branch/, so work in progress can be reviewed online before it
+      # is merged. Pull requests are not deployed: the preview of their source branch covers them.
       #
       # The deployed folder is replaced, so files that the build no longer makes are removed from
-      # the site. The deployment of main leaves branch/ alone, and a preview leaves everything
+      # the site. The deployment of main leaves branch/ and versions/ alone, adds the new snapshots,
+      # and removes the previews of branches that no longer exist. A preview leaves everything
       # outside its own folder alone.
       - name: Deploy to GitHub Pages
-        if: ${{ github.event_name == 'push' && github.ref != 'refs/heads/gh-pages' }}
+        if: ${{ github.event_name == 'push' }}
         env:
           REF_NAME: ${{ github.ref_name }}
           IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
@@ -89,7 +138,25 @@ jobs:
           git fetch --depth 1 origin gh-pages
           git worktree add --detach site FETCH_HEAD
           if [ "$IS_MAIN" = true ]; then
-            rsync -a --delete --exclude=/.git --exclude=/branch/ _build/ site/
+            rsync -a --delete --exclude=/.git --exclude=/branch/ --exclude=/versions/ _build/ site/
+            if [ -d _versions ]; then
+              mkdir -p site/versions
+              cp -r _versions/. site/versions/
+            fi
+            # Remove the previews of branches that no longer exist
+            branches=$(git ls-remote --heads origin | sed 's|.*refs/heads/||')
+            for dir in site/branch/*/; do
+              [ -d "$dir" ] || continue
+              name="${dir#site/branch/}"; name="${name%/}"
+              keep=no
+              for b in $branches; do
+                if [ "$b" = "$name" ] || [ "${b#"$name"/}" != "$b" ]; then keep=yes; fi
+              done
+              if [ "$keep" = no ]; then
+                rm -rf "site/branch/$name"
+                echo "Removed the preview of $name, which is not a branch"
+              fi
+            done
           else
             # Slashes in a branch name become subdirectories, which is harmless
             mkdir -p "site/branch/$REF_NAME"
@@ -105,6 +172,21 @@ jobs:
             git commit -q -m "Deploy $REF_NAME ${GITHUB_SHA::7}"
             git push origin HEAD:gh-pages
           fi
+
+      # Step 8: Tag each new version and publish its release. A version that is not adopted yet is
+      # a pre-release.
+      - name: Tag and release new versions
+        if: ${{ steps.versions.outputs.count != '' && steps.versions.outputs.count != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while read -r dataflow tag <&3; do
+            status=$(python -c "import csv; print({r['dataflow']: r for r in csv.DictReader(open('reference/versions.csv'))}['$dataflow']['status'])")
+            pre=""; [ "$status" = adopted ] || pre="--prerelease"
+            find "_release/$tag" -type f ! -name notes.md -print0 | xargs -0 \
+              gh release create "$tag" --target "$GITHUB_SHA" $pre \
+                --title "$dataflow specification ${tag##*-v} ($status)" --notes-file "_release/$tag/notes.md"
+          done 3< new-tags.txt
 
   # Remove a branch's preview once the branch itself is deleted
   cleanup:

@@ -238,9 +238,12 @@ def build(dataflow, path):
     register('Metadata', 'attributes', 'The tables and fields, as in the documentation')
 
     con.execute(f'CREATE TABLE "_about" ({own_key}"key" TEXT NOT NULL UNIQUE, "value" TEXT)')
+    version = {r['dataflow']: r for r in read(REPO / 'reference' / 'versions.csv')}.get(dataflow, {})
     con.executemany('INSERT INTO "_about" ("key", "value") VALUES (?, ?)', [
         ('title', f'rUWWTD {dataflow} template'),
         ('dataflow', dataflow),
+        ('version', f"{version.get('version', '')} ({version.get('status', '')}), tag "
+                    f"{dataflow.lower()}-v{version.get('version', '')}"),
         ('status', 'Draft, under development: tables, fields and code lists may change'),
         ('documentation', DOCS_URL),
         ('source', 'https://github.com/eeadata/WISE.UWWTD.Documentation, reference/schema and reference/codelist'),

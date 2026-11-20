@@ -69,7 +69,9 @@ def main():
                        'fields': fields})
 
     _, types = read(SCHEMA / 'types.csv')
-    json.dump({'codelists': codelists, 'tables': tables, 'types': types, 'labels': labels()},
+    _, versions = read(REPO / 'reference' / 'versions.csv')
+    json.dump({'codelists': codelists, 'tables': tables, 'types': types, 'labels': labels(),
+               'versions': {v['dataflow']: v for v in versions}},
               sys.stdout, ensure_ascii=False)
 
 

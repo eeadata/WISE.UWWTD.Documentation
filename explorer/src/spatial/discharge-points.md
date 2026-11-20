@@ -302,8 +302,11 @@ display(countryFlags.length
 
 <p class="muted small">Source: release ${html`<a href="${release.url}"><code>${release.tag}</code></a>`} of the
 spatial points prefill, made from ${release.source.name} (reference year ${release.reference_year},
-${release.release_status}). Its fields are those of the specification when the prefill was made; fields
-added since are marked as not in this release. The whole tables can be downloaded from the release, as
+${release.release_status}). It follows ${release.specification_version
+  ? html`specification <code>${release.specification_version}</code>`
+  : "a specification from before the versions were introduced"}; the current one is
+<code>spatialpoints-v${ref.versions.SpatialPoints.version}</code>. Fields added since the release are
+marked as not in this release. The whole tables can be downloaded from the release, as
 Parquet. Map tiles © OpenStreetMap contributors.</p>
 
 <style>

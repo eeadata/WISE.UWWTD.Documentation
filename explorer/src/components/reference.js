@@ -76,3 +76,15 @@ export function codelistUsage(tables) {
     }
   return usage;
 }
+
+// The version of a dataflow specification, linked to its release.
+export function versionNote(versions, dataflow) {
+  const v = versions[dataflow];
+  const span = document.createElement("span");
+  if (!v) return span;
+  const a = document.createElement("a");
+  a.href = `https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/${dataflow.toLowerCase()}-v${v.version}`;
+  a.textContent = `${DATAFLOWS[dataflow]} specification ${v.version}`;
+  span.append(a, ` (${v.status}, ${v.date})`);
+  return span;
+}

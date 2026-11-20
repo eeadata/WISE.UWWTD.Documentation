@@ -63,6 +63,13 @@ def to_parquet(source, target):
     subprocess.run(['duckdb', '-c', query], check=True, capture_output=True)
 
 
+def specification_version():
+    versions = Path(__file__).resolve().parents[2] / 'reference' / 'versions.csv'
+    with open(versions, encoding='utf-8', newline='') as f:
+        row = {r['dataflow']: r for r in csv.DictReader(f)}['SpatialPoints']
+    return f"spatialpoints-v{row['version']}"
+
+
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -119,6 +126,9 @@ def main(baseline, out):
                  '91/271/EEC, which is under Member State review. Not an EEA publication.'),
         'source': source['source'],
         'baseline_made': source.get('created'),
+        # the version of the spatial points specification when the release is made: the fields
+        # follow it if the prefill script is up to date with reference/schema
+        'specification_version': specification_version(),
         'fields': ('As in the specification of 13 November 2026, before the spatial points tables '
                    'were aligned with the UML diagram of 16 November 2026: see README.md.'),
         'release_made': datetime.now(timezone.utc).replace(microsecond=0).isoformat(),

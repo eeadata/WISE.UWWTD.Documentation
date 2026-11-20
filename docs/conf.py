@@ -14,13 +14,15 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv,
-# _ext/fieldtable.py the field tables from reference/schema/*/*.csv
+# _ext/fieldtable.py the field tables from reference/schema/*/*.csv,
+# _ext/internal.py keeps the open issues pages out of the published build (-t internal to include them)
 import os
 import sys
 sys.path.insert(0, os.path.abspath('_ext'))
 
 extensions = ['codelist',
               'fieldtable',
+              'internal',
               'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',

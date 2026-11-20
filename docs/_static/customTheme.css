@@ -49,3 +49,16 @@ figure[id^="spatialpoints-example-"] .mermaid-container > pre > svg {
     height: auto;
     width: auto;
 }
+
+/* The button to the data explorer in the top bar (_templates/explorer-navbar.html) */
+.explorer-navbar-link {
+  border: 1px solid var(--pst-color-primary);
+  color: var(--pst-color-primary);
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+.explorer-navbar-link:hover {
+  background: var(--pst-color-primary);
+  color: var(--pst-color-background);
+}

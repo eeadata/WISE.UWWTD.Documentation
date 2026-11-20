@@ -19,6 +19,8 @@ from docutils.parsers.rst import directives
 from docutils.statemachine import StringList
 from sphinx.util.docutils import SphinxDirective
 
+from explorer import explorer_link
+
 
 def codelist_dir(env):
     return Path(env.srcdir).parent / 'reference' / 'codelist'
@@ -71,7 +73,9 @@ class CodelistDirective(SphinxDirective):
 
         container = nodes.container()
         self.state.nested_parse(StringList(lines, source=str(path)), self.content_offset, container)
-        return container.children
+        link = explorer_link(self.env.docname, f'reference/codelists.html?type={name}',
+                             'Browse, search and download this code list')
+        return [*container.children, link]
 
 
 def setup(app):

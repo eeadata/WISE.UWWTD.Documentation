@@ -24,3 +24,4 @@ FundingStatus,Article23,art23-cl-funding-status,Proposed funding status values,N
 CurrencyCode,Article23,art23-cl-currency,Currency values,Notation|Label|Definition|Notes,20 30 30 20,notation
 EstimateBasis,Article23,art23-cl-pro-basis,Proposed basis of estimate values,Notation|Label|Definition|Notes,24 22 34 20,notation
 Licence,Article23,art23-cl-licence,Proposed licence values,Notation|Label|Definition|Notes,20 22 34 24,notation
+YesNo,Article23,art23-cl-yesno,Yes or no values,Notation|Label|Definition|Notes,20 22 34 24,notation

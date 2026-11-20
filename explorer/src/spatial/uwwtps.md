@@ -1,58 +1,79 @@
 ---
-title: Agglomerations
+title: Treatment plants
 toc: false
 ---
 
 ```js
-import {
-  AGGLOMERATION_FIELDS, SEVERITIES, SEVERITY_COLORS, countryName, downloadButton, fieldValue, worstSeverity
-} from "./components/prefill.js";
+import {COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity} from "../components/prefill.js";
+import {csvButton} from "../components/download.js";
+import {markup} from "../components/reference.js";
 ```
 
 ```js
-const raw = FileAttachment("data/agglomerations.csv").csv();
-const flagRows = FileAttachment("data/agglomeration-flags.csv").csv();
+const PAGE = "uwwtps";
+const {table: TABLE, label: LABEL, one: ONE} = TABLES[PAGE];
+const DOCS = "../../"; // the documentation, from this page
+const data = FileAttachment("data/uwwtps.parquet").parquet();
+const flagData = FileAttachment("data/flags.parquet").parquet();
+const release = FileAttachment("data/release.json").json();
+const ref = FileAttachment("../reference/data/reference.json").json();
 ```
 
 ```js
-const num = (v) => (v === "" || v == null ? null : +v);
+const raw = rowsOf(data);
+const dataColumns = data.schema.fields.map((f) => f.name);
+const flagRows = rowsOf(flagData).filter((d) => d.table === TABLE);
+const spec = ref.tables.find((t) => t.dataflow === "SpatialPoints" && t.table === TABLE);
+const HELPERS = new Set(["countryCode", "longitude", "latitude", "reportedName", "nameSteps", "reportedLongitude", "reportedLatitude", "originalCode"]);
+const specFields = spec.fields.map((f) => ({...f, inRelease: f.notation === "geometry" || dataColumns.includes(f.notation)}));
+const oldFields = dataColumns.filter((c) => !HELPERS.has(c) && !spec.fields.some((f) => f.notation === c));
+```
+
+```js
 const flagsByCode = d3.group(flagRows, (d) => d.thematicIdIdentifier);
-const aggs = raw.map((d) => {
+const rows = raw.map((d) => {
   const flags = flagsByCode.get(d.thematicIdIdentifier) ?? [];
   return {
     ...d,
-    longitude: num(d.longitude),
-    latitude: num(d.latitude),
-    reportedLongitude: num(d.reportedLongitude),
-    reportedLatitude: num(d.reportedLatitude),
+    reportedName: d.reportedName ?? "",
+    originalCode: d.originalCode ?? "",
     flags,
     flagCount: flags.length,
     severity: worstSeverity(flags),
-    nameCleaned: d.reportedName !== "" && d.reportedName !== d.nameText,
-    moved: d.reportedLatitude !== "",
-    converted: d.originalCode !== ""
+    nameCleaned: !!d.reportedName && d.reportedName !== d.nameText,
+    moved: d.reportedLatitude != null,
+    converted: !!d.originalCode
   };
 });
-const byCode = new Map(aggs.map((d) => [d.thematicIdIdentifier, d]));
-const countries = [...new Set(aggs.map((d) => d.countryCode))].sort();
+const byCode = new Map(rows.map((d) => [d.thematicIdIdentifier, d]));
+const countries = [...new Set(rows.map((d) => d.countryCode))].sort();
 const checks = [...new Set(flagRows.map((d) => d.check))].sort();
 ```
 
-# Agglomerations
+# Treatment plants <span class="tag">provisional</span>
 
-The agglomerations that will be prefilled in the first delivery of the spatial points dataflow, from
-the reporting of reference year 2024 under Directive 91/271/EEC. Every row starts as `noChange`: in
-the delivery, the Member State confirms it, corrects it, or retires or replaces it. Select a point on
-the map or a row in the table to see the values that will be prefilled and the checks to look at.
-The fields are described in the
-<a href="https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/SpatialPoints/Agglomeration.html" target="_blank">Agglomeration table specification</a> (draft).
+<div class="warning" label="Provisional data, under development">
+
+These are the ${LABEL.toLowerCase()} that will be prefilled in the first delivery of the spatial points
+dataflow, from the reporting of reference year ${release.reference_year} under Directive 91/271/EEC.
+That reporting is provisional and under Member State review, and the prefill itself is still being
+developed: names, locations, codes and flags may change. Not an EEA publication.
+
+</div>
+
+Every row starts as `noChange`: in the delivery, the Member State confirms it, corrects it, or retires
+or replaces it. Select a point on the map or a row in the table to see the values that will be
+prefilled and the checks to look at. The fields are defined in the
+${html`<a href="${DOCS}${spec.page}">${TABLE} table specification</a>`} (draft).
 
 ```js
-const initial = new URLSearchParams(location.search).get("country");
+const query = new URLSearchParams(location.search);
+const linked = byCode.get(query.get("code"));
+const initialCountry = linked?.countryCode ?? query.get("country");
 const country = view(Inputs.select([null, ...countries], {
   label: "Country",
   format: countryName,
-  value: countries.includes(initial) ? initial : countries[0]
+  value: countries.includes(initialCountry) ? initialCountry : countries[0]
 }));
 ```
 
@@ -71,31 +92,28 @@ const check = view(Inputs.select([null, ...checks], {label: "Check", format: (c)
 ```
 
 ```js
-const query = view(Inputs.text({label: "Search", placeholder: "Code or name"}));
+const search = view(Inputs.text({label: "Search", placeholder: "Code or name"}));
 ```
 
 </div>
 
 ```js
-const inCountry = country ? aggs.filter((d) => d.countryCode === country) : aggs;
-const q = query.trim().toLowerCase();
+const inCountry = country ? rows.filter((d) => d.countryCode === country) : rows;
+const q = search.trim().toLowerCase();
 const matches = (d) =>
   d.thematicIdIdentifier.toLowerCase().includes(q) ||
-  d.nameText.toLowerCase().includes(q) ||
+  (d.nameText ?? "").toLowerCase().includes(q) ||
   d.reportedName.toLowerCase().includes(q) ||
   d.originalCode.toLowerCase().includes(q);
 const shown = inCountry.filter(
   (d) => severity.includes(d.severity) && (!check || d.flags.some((f) => f.check === check)) && (!q || matches(d))
 );
-```
-
-```js
 const count = (f) => inCountry.filter(f).length.toLocaleString("en-US");
 ```
 
 <div class="grid grid-cols-4">
-  <div class="card"><h2>Agglomerations</h2><span class="big">${inCountry.length.toLocaleString("en-US")}</span><div class="muted">${shown.length.toLocaleString("en-US")} shown</div></div>
-  <div class="card"><h2>With an error</h2><span class="big" style="color: ${SEVERITY_COLORS.Error}">${count((d) => d.severity === "Blocker" || d.severity === "Error")}</span><div class="muted">${count((d) => d.severity === "Warning")} with warnings only</div></div>
+  <div class="card"><h2>${LABEL}</h2><span class="big">${inCountry.length.toLocaleString("en-US")}</span><div class="muted">${shown.length.toLocaleString("en-US")} shown</div></div>
+  <div class="card"><h2>With a blocker or an error</h2><span class="big" style="color: ${SEVERITY_COLORS.Error}">${count((d) => d.severity === "Blocker" || d.severity === "Error")}</span><div class="muted">${count((d) => d.severity === "Warning")} with warnings only</div></div>
   <div class="card"><h2>Names cleaned</h2><span class="big">${count((d) => d.nameCleaned)}</span><div class="muted">reported name changed in <code>nameText</code></div></div>
   <div class="card"><h2>Codes and locations</h2><span class="big">${count((d) => d.converted)}</span><div class="muted">codes converted · ${count((d) => d.moved)} locations corrected</div></div>
 </div>
@@ -114,7 +132,7 @@ invalidation.then(() => map.remove());
 ```
 
 ```js
-const picked = Mutable(null);
+const picked = Mutable(linked?.thematicIdIdentifier ?? null);
 const pick = (code) => (picked.value = code);
 ```
 
@@ -138,7 +156,7 @@ for (const d of d3.sort(shown, rank)) {
     fillColor: SEVERITY_COLORS[d.severity],
     fillOpacity: 0.9
   })
-    .bindTooltip(`${d.nameText} · ${d.thematicIdIdentifier}`)
+    .bindTooltip(`${d.nameText ?? ""} · ${d.thematicIdIdentifier}`)
     .on("click", () => pick(d.thematicIdIdentifier))
     .addTo(pointsLayer);
 }
@@ -156,12 +174,12 @@ for (const d of d3.sort(shown, rank)) {
       {padding: [20, 20], maxZoom: 11}
     );
   }
-  pick(null);
+  if (!linked || linked.countryCode !== country) pick(null);
 }
 ```
 
 ```js
-// Mark the selected agglomeration and, where its location was corrected, the reported one.
+// Mark the selected object and, where its location was corrected, the reported one.
 highlightLayer.clearLayers();
 const sel = picked ? byCode.get(picked) : null;
 if (sel && sel.latitude != null) {
@@ -184,9 +202,15 @@ function zoomTo(d) {
   button.onclick = () => map.setView([d.latitude, d.longitude], Math.max(map.getZoom(), 12));
   return button;
 }
+// A discharge point names its treatment plant: link to it.
+function valueCell(row, field) {
+  const value = fieldValue(row, field);
+  if (field === "relatedZoneIdentifier" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
+  return html`<span>${value}</span>`;
+}
 const detail = !sel
-  ? html`<h2>No agglomeration selected</h2><p class="muted">Select a point on the map or a row in the table below.</p>`
-  : html`<h2>${sel.nameText}</h2>
+  ? html`<h2>No ${ONE} selected</h2><p class="muted">Select a point on the map or a row in the table below.</p>`
+  : html`<h2>${sel.nameText ?? sel.thematicIdIdentifier}</h2>
 <div class="muted"><code>${sel.thematicIdIdentifier}</code> · ${countryName(sel.countryCode)}</div>
 <div class="actions">${sel.latitude != null ? zoomTo(sel) : ""}</div>
 ${sel.flags.length
@@ -204,22 +228,29 @@ ${sel.nameCleaned || sel.converted || sel.moved
 <h3>Prefilled values</h3>
 <table class="fields">
   <thead><tr><th>Field</th><th>Value</th></tr></thead>
-  <tbody>${AGGLOMERATION_FIELDS.map(({field, status, prefill}) => {
-    const value = fieldValue(sel, field);
-    const missing = !value && status === "Required";
+  <tbody>${specFields.map((f) => {
+    const value = f.inRelease ? fieldValue(sel, f.notation) : "";
+    const missing = f.inRelease && !value && f.status === "Required";
     return html`<tr class=${missing ? "missing" : ""}>
-      <td><code>${field}</code><div class="muted">${status}</div></td>
-      <td>${value ? html`<span>${value}</span>` : html`<span class="muted">${missing ? "To be given" : "Empty"}</span>`}<div class="muted small">${prefill}</div></td>
+      <td><code>${f.notation}</code><div class="muted">${f.status}</div></td>
+      <td>${!f.inRelease
+        ? html`<span class="muted">Not in this release: a field of the current specification</span>`
+        : value ? valueCell(sel, f.notation) : html`<span class="muted">${missing ? "To be given" : "Empty"}</span>`}
+        <div class="muted small">${markup(f.label, ref.labels, DOCS)}</div></td>
     </tr>`;
   })}</tbody>
 </table>
-<p class="muted small">Reported scope (1991 <code>aggState</code>): ${sel.specialisedZoneType || "–"}. Not reported in the new table.</p>`;
+${oldFields.length
+  ? html`<h3>In this release only</h3>
+<p class="muted small">Fields of the baseline that are no longer in the current specification.</p>
+<table class="fields"><tbody>${oldFields.map((c) => html`<tr><td><code>${c}</code></td><td>${valueCell(sel, c)}</td></tr>`)}</tbody></table>`
+  : ""}`;
 ```
 
 ## Prefilled rows
 
 ```js
-const table = view(Inputs.table(shown, {
+const tableView = view(Inputs.table(shown, {
   columns: ["thematicIdIdentifier", "nameText", "reportedName", "nameLanguage", "designationPeriodBegin", "severity", "flagCount"],
   header: {
     thematicIdIdentifier: "Code",
@@ -241,12 +272,12 @@ const table = view(Inputs.table(shown, {
 ```
 
 ```js
-if (table) pick(table.thematicIdIdentifier);
+if (tableView) pick(tableView.thematicIdIdentifier);
 ```
 
 ```js
-const exportColumns = ["latitude", "longitude", ...AGGLOMERATION_FIELDS.map((f) => f.field).filter((f) => f !== "geometry")];
-display(downloadButton(inCountry, exportColumns, `Agglomeration_prefill_${country ?? "all"}.csv`, "Download the prefilled table"));
+const exportColumns = dataColumns.filter((c) => !["reportedLongitude", "reportedLatitude", "nameSteps"].includes(c));
+display(csvButton(inCountry, exportColumns, `${TABLE}_prefill_${release.reference_year}_${country ?? "all"}.csv`, `Download the ${country ? countryName(country) : "whole"} table as CSV`));
 ```
 
 ## Checks that fail
@@ -258,7 +289,7 @@ display(countryFlags.length
       marginLeft: 10,
       width,
       height: 40 + 28 * new Set(countryFlags.map((f) => f.check)).size,
-      x: {label: "Agglomerations flagged", grid: true},
+      x: {label: `${LABEL} flagged`, grid: true},
       y: {label: null, axis: null},
       color: {domain: SEVERITIES.slice(0, 3), range: SEVERITIES.slice(0, 3).map((s) => SEVERITY_COLORS[s]), legend: true},
       marks: [
@@ -269,9 +300,15 @@ display(countryFlags.length
   : html`<p>No checks fail.</p>`);
 ```
 
-<p class="muted small">Source: the spatial points migration baseline, made by <code>prefill/spatial/prefill_spatial.py</code> from the Reportnet 3 EU dataset, Article 15 descriptive data, released 29 October 2026 (reference year 2024, provisional). Map tiles © OpenStreetMap contributors.</p>
+<p class="muted small">Source: release ${html`<a href="${release.url}"><code>${release.tag}</code></a>`} of the
+spatial points prefill, made from ${release.source.name} (reference year ${release.reference_year},
+${release.release_status}). Its fields are those of the specification when the prefill was made; fields
+added since are marked as not in this release. The whole tables can be downloaded from the release, as
+Parquet. Map tiles © OpenStreetMap contributors.</p>
 
 <style>
+.tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;
+  background: var(--theme-orange, #e8590c); color: white; }
 .map { height: 640px; width: 100%; }
 .filters { display: flex; flex-wrap: wrap; gap: 0 2rem; align-items: flex-start; }
 .big { font-size: 2rem; font-weight: 600; }

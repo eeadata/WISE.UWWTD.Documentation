@@ -5,6 +5,8 @@
 points ({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired
 objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per discharge point reported. `thematicIdIdentifier` is the key.
+**Prefill:** {explorer}`browse the prefilled discharge points <spatial/discharge-points.html>` on a map, with their
+quality-check flags. Provisional: reference year 2024, under Member State review.
 
 **Use by other reporting.** Discharge points are not needed for the Article 23 national
 implementation programme: its tables refer only to agglomerations and treatment plants.

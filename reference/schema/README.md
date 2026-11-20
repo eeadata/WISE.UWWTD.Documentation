@@ -24,6 +24,7 @@ The values of the code lists that fields use are in [reference/codelist](../code
 | `<dataflow>/<table>.csv` | The fields of one table, for example `Article23/Measure.csv` |
 | `types.csv` | The simple types and the external vocabularies a field's type may name |
 | `check.py` | Checks the files against each other and against the code lists |
+| `template.py` | Makes an empty template database of a dataflow from these files (see below) |
 
 Tables:
 
@@ -109,6 +110,39 @@ not in `datasets.csv`, a type is in neither `types.csv` nor `codelists.csv`, a s
 the three, a notation is repeated, a `primaryKey` field does not exist, a `group` does not match, or
 a page does not show its table with the directive. The documentation build runs the same checks
 and reports them as warnings.
+
+## Template databases
+
+```
+python reference/schema/template.py Article23 rUWWTD_Article23_template.sqlite
+python reference/schema/template.py SpatialPoints rUWWTD_SpatialPoints_template.gpkg
+```
+
+`template.py` makes an empty database of a dataflow from these files and the code lists, to load
+data into and check it. The data explorer publishes both, and the workflow checks that they can
+be built (`template.py --check`). Each has:
+
+* one empty table per reporting table, with its fields in order, `NOT NULL` for the Required
+  fields, the key stated in `datasets.csv`, and `CHECK` constraints from the types: lengths, dates,
+  values of 0 or more, percentages, years and ranges;
+* one table per code list, `cl_<Type>`, filled from `reference/codelist`, and a foreign key to it
+  from each field of that type. A field with several values (`[0..n]`) holds them as text,
+  separated by commas, without a foreign key;
+* foreign keys between reporting tables, where a field holds the key of another table of the
+  dataflow (`measureCode` in MeasureFinancing; `documentCode` and `referenceCode` fields);
+* `Metadata`: the tables and fields in the layout of the `Metadata` table of the Water Framework
+  Directive documentation (`tableName`, `columnName`, `columnPosition`, `columnDataType`,
+  `multiplicity`, `description`, `objectType`, `dataflowCode`), with `label`, `status`,
+  `condition`, `unit` and `documentation` added;
+* `_about`: the dataflow, the commit it was made from, and how to use it.
+
+The spatial points template is a GeoPackage: its tables have a point geometry in ETRS89
+(EPSG:4258), and it opens in QGIS. Because a GeoPackage table needs an integer key of its own
+(`fid`), the stated key is `UNIQUE` there. The Article 23 template is a plain SQLite database.
+
+SQLite checks foreign keys only when they are enabled on each connection
+(`PRAGMA foreign_keys = ON`). Conditions ("Required if ...") are not enforced; they are left to the
+quality checks.
 
 ## Adding a table
 

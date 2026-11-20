@@ -21,6 +21,11 @@ The documentation is organised in two sections, one per Directive.
 
 Information will be added as it becomes available.
 
+The **data explorer** (`explorer/`, published under
+[explorer/](https://eeadata.github.io/WISE.UWWTD.Documentation/explorer/)) lets readers browse,
+search and download the code lists and field tables of `reference/`, and look at the provisional
+spatial points prefill. It is under development; see [explorer/README.md](explorer/README.md).
+
 ## Building the documentation
 
 ```sh

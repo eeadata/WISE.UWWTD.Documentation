@@ -16,6 +16,7 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv,
 # _ext/fieldtable.py the field tables from reference/schema/*/*.csv,
 # _ext/internal.py keeps the open issues pages out of the published build (-t internal to include them)
+# _ext/explorer.py links to the data explorer published under explorer/
 import os
 import sys
 sys.path.insert(0, os.path.abspath('_ext'))
@@ -23,6 +24,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 extensions = ['codelist',
               'fieldtable',
               'internal',
+              'explorer',
               'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',
@@ -73,7 +75,9 @@ html_theme_options = {
     "secondary_sidebar_items": ["page-toc", "edit-this-page", "sourcelink"],
     "show_toc_level": 4,
     "use_edit_page_button": True,
-    "navbar_align": "right"
+    "navbar_align": "right",
+    # A button to the data explorer (_templates/explorer-navbar.html), before the default items
+    "navbar_end": ["explorer-navbar", "theme-switcher", "navbar-icon-links"],
 }
 
 html_context = {

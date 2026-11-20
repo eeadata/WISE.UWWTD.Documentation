@@ -83,9 +83,10 @@ Measure
 
 Capital expenditure
 : Investment spending on a measure, without operational or maintenance costs, in millions of
-  national currency, as in the Water Framework Directive. Reported per cycle
-  (`totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle`); their sum is the
-  cost of the measure. See {ref}`art23-investments`.
+  national currency, as in the Water Framework Directive. Reported per cycle and per source of
+  financing in {ref}`art23-measurefinancing` (`totalCapitalExpenditure1stCycle`,
+  `totalCapitalExpenditureAfter1stCycle`); their sum over the rows of a measure is the cost of the
+  measure. See {ref}`art23-investments`.
 
 Cycle
 : A six-year period of the programme: the 1st cycle is 2028 to 2033, the 2nd 2034 to 2039 and the

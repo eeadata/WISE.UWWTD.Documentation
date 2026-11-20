@@ -898,13 +898,14 @@ with the ground and the study.</p></td>
 <tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
 <td><p>One per measure (<code class="docutils literal notranslate"><span class="pre">measureCode</span></code> is the primary key)</p></td>
 <td><p>Conditional: required where measures are planned</p></td>
-<td><p>Type, coverage and listed plants or agglomerations, priority, status, dates and investment
-cost of each measure.</p></td>
+<td><p>Type, coverage and listed plants or agglomerations, priority, status, dates and cost status
+of each measure.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a></p></td>
 <td><p>One per measure and source of financing</p></td>
-<td><p>Optional</p></td>
-<td><p>Source, funding status and amount of the financing of each measure.</p></td>
+<td><p>Conditional: required for each measure whose cost is known or estimated</p></td>
+<td><p>Capital expenditure of each measure per cycle, by source of financing, with its funding
+status.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a></p></td>
 <td><p>One per plant (<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> is the primary key)</p></td>
@@ -935,7 +936,7 @@ cost of each measure.</p></td>
 </table>
 </div>
 <p>The total investment of a Member State is the sum of <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> and
-<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> over all measures.</p>
+<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> over all the rows of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p>
 </section>
 
 

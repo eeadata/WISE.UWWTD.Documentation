@@ -114,12 +114,13 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 * - {ref}`art23-measure`
   - One per measure (`measureCode` is the primary key)
   - Conditional: required where measures are planned
-  - Type, coverage and listed plants or agglomerations, priority, status, dates and investment
-    cost of each measure.
+  - Type, coverage and listed plants or agglomerations, priority, status, dates and cost status
+    of each measure.
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
-  - Optional
-  - Source, funding status and amount of the financing of each measure.
+  - Conditional: required for each measure whose cost is known or estimated
+  - Capital expenditure of each measure per cycle, by source of financing, with its funding
+    status.
 * - {ref}`art23-uwwtp`
   - One per plant (`thematicIdIdentifier` is the primary key)
   - Conditional: required for each plant concerned by a measure
@@ -143,4 +144,4 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
 :::
 
 The total investment of a Member State is the sum of `totalCapitalExpenditure1stCycle` and
-`totalCapitalExpenditureAfter1stCycle` over all measures.
+`totalCapitalExpenditureAfter1stCycle` over all the rows of {ref}`art23-measurefinancing`.

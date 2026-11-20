@@ -792,18 +792,18 @@ is financed from one or more sources:</p>
 <ul class="simple">
 <li><p><strong>Measure</strong> (<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>): one row per measure, with its types, coverage, the plants or
 agglomerations it concerns (<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>), priority, status, dates and
-capital expenditure per cycle.</p></li>
-<li><p><strong>MeasureFinancing</strong> (<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>): where the money comes from, source by
-source, and how far each part is secured.</p></li>
+cost status.</p></li>
+<li><p><strong>MeasureFinancing</strong> (<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>): the capital expenditure per cycle, source
+by source, and how far each part is secured.</p></li>
 </ul>
 <p>The <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a> and <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a> tables keep only the state of each listed
 plant or agglomeration: status, expected load and capacity. This follows the structure of the Water
-Framework Directive 4th cycle, where a <code class="docutils literal notranslate"><span class="pre">Measure</span></code> table is the main table and costs are reported
-per measure.</p>
+Framework Directive 4th cycle, where a <code class="docutils literal notranslate"><span class="pre">Measure</span></code> table is the main table and the capital
+expenditure of each measure is reported per cycle in a separate table, <code class="docutils literal notranslate"><span class="pre">ExpenditurePerMeasurePerSector</span></code>.</p>
 <pre  class="mermaid">
         flowchart LR
-  Measure[&quot;Measure&lt;br/&gt;types, plants or agglomerations,&lt;br/&gt;priority, dates, cost&quot;]
-  MeasureFinancing[&quot;MeasureFinancing&lt;br/&gt;source, status, amount&quot;]
+  Measure[&quot;Measure&lt;br/&gt;types, plants or agglomerations,&lt;br/&gt;priority, dates, cost status&quot;]
+  MeasureFinancing[&quot;MeasureFinancing&lt;br/&gt;source, status,&lt;br/&gt;capital expenditure per cycle&quot;]
   UWWTP[&quot;UWWTP&lt;br/&gt;state of the plant&quot;]
   Agglomeration[&quot;Agglomeration&lt;br/&gt;state of the agglomeration&quot;]
   Spatial[&quot;Spatial points&lt;br/&gt;code, name, location&quot;]
@@ -879,18 +879,20 @@ Directive asks to identify the investments for each agglomeration, not to split 
 <li><p><strong>Capital expenditure only.</strong> As in the Water Framework Directive, the cost of a measure is its
 capital expenditure. Operational and maintenance costs, which the Water Framework Directive
 reports as current expenditure, are not reported.</p></li>
-<li><p><strong>Split by cycle.</strong> <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> is the expenditure in 2028 to 2033, and
+<li><p><strong>By source and by cycle.</strong> The capital expenditure is reported in
+<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>, one row per source of financing. In each row,
+<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> is the expenditure in 2028 to 2033, and
 <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> the expenditure from 2034 until completion. Each is given
 where <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> falls in that period. Expenditure before 2028 is not reported. Where
 the yearly profile is not known, spread the cost evenly over the years of the measure
-(<a class="reference internal" href="Timing.html#art23-cycles"><span class="std std-ref">Cycles</span></a>).</p></li>
+(<a class="reference internal" href="Timing.html#art23-cycles"><span class="std std-ref">Cycles</span></a>). The cost of a measure is the sum of both fields over its rows.</p></li>
 <li><p><strong>Give an indicative estimate.</strong> Article 23(1)(b) asks for an indicative financial estimation of
 the investments. A rough figure is enough, for example a typical cost per plant multiplied by the
 number of plants. Report it with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>.</p></li>
 <li><p><strong>Estimated or known.</strong> Use <code class="docutils literal notranslate"><span class="pre">estimated</span></code> for estimates and <code class="docutils literal notranslate"><span class="pre">known</span></code> for costs from a project,
 tender or contract.</p></li>
 <li><p><strong>Unknown is an exception.</strong> Where not even a rough estimate can be given yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>
-to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and leave both expenditure fields empty. The measure is accepted but raises a warning
+to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and report no financing rows. The measure is accepted but raises a warning
 (check R16), since it gives no financial estimation, and the cost should be estimated in the
 next update.</p></li>
 <li><p><strong>Several types, one cost.</strong> A measure with several types has one cost, which is not split
@@ -898,31 +900,34 @@ between the types. Totals per type are therefore only exact for measures with on
 others, count the measures that include a type rather than adding up their costs.</p></li>
 <li><p><strong>Each cost once.</strong> A cost belongs to one measure. Do not add the cost of a plant to the
 agglomeration it serves, or the reverse. The total investment of the programme is the sum of
-both expenditure fields over all measures.</p></li>
+both expenditure fields over all the rows of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p></li>
 </ul>
 </section>
 <section id="financing">
 <h2>Financing<a class="headerlink" href="#financing" title="Link to this heading">#</a></h2>
 <p>Each row of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> gives one source of financing for a measure, with its
-status and amount:</p>
+status and its capital expenditure per cycle:</p>
 <ul class="simple">
-<li><p><strong>Several sources.</strong> Each source, and each EU fund, is its own row with its own amount, so it is
-clear how much is expected from which fund.</p></li>
+<li><p><strong>Several sources.</strong> Each source, and each EU fund, is its own row with its own expenditure, so
+it is clear how much is expected from which fund, and in which cycle.</p></li>
 <li><p><strong>Secured or not.</strong> <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> says whether the money is secured, applied for or only
 planned, or whether no source has been identified.</p></li>
-<li><p><strong>The gap.</strong> The financing gap of a measure is calculated, not reported: its capital expenditure
-in both fields minus the sum of the amounts with <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">secured</span></code>. Financing is given
-for the whole measure, not per cycle.</p></li>
-<li><p><strong>Funding is not an investment.</strong> Financing amounts describe how a measure’s cost is covered.
-They are not added to the total investment.</p></li>
+<li><p><strong>The whole cost.</strong> The rows of a measure add up to its cost. The part without a source yet is
+a row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code>.</p></li>
+<li><p><strong>The gap.</strong> The financing gap of a measure is calculated, not reported: the sum of the
+expenditure of its rows whose <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> is not <code class="docutils literal notranslate"><span class="pre">secured</span></code>, per cycle or for both together.</p></li>
+<li><p><strong>Sums use both tables.</strong> Totals per measure type, plant, agglomeration or priority join the
+financing rows to their measure on <code class="docutils literal notranslate"><span class="pre">measureCode</span></code>, and are added up per measure first
+(<a class="reference internal" href="Examples.html#art23-examples-together"><span class="std std-ref">All six together</span></a>).</p></li>
 </ul>
 </section>
 <section id="currency">
 <h2>Currency<a class="headerlink" href="#currency" title="Link to this heading">#</a></h2>
 <p>As in the Water Framework Directive, amounts are reported in millions: of euro by euro area
 Member States, and of national currency by the others. <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> gives the
-currency once per measure, and applies to the capital expenditure and to the financing amounts of that
-measure. A value below one million uses decimals with a full stop: 10 000 is <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p>
+currency of each row of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>, as in the Water Framework Directive, and is
+the same in all the rows of a delivery. A value below one million uses decimals with a full stop:
+10 000 is <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p>
 </section>
 <section id="art23-measures-wfd">
 <span id="reported-once"></span><h2>Reported once<a class="headerlink" href="#art23-measures-wfd" title="Link to this heading">#</a></h2>
@@ -1019,7 +1024,7 @@ of the money still to be found, and a national renewal programme.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">investment</span></code> of plants and agglomerations</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> and <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> in
-<a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+<a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>, per source of financing</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code></p></td>
 <td><p>A <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> and
@@ -1117,27 +1122,28 @@ agglomeration measures</p></td>
 <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> may be combined with either</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R04</p></td>
-<td><p>Measure</p></td>
-<td><p>With <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>, both expenditure fields are empty. Otherwise
-<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> is given if and only if <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> overlaps
-<code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code>, and <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> if and only if it ends after 2033</p></td>
+<tr class="row-even"><td><p>RF04</p></td>
+<td><p>Measure, MeasureFinancing</p></td>
+<td><p>A measure with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">known</span></code> or <code class="docutils literal notranslate"><span class="pre">estimated</span></code> has at least one MeasureFinancing row; a
+measure with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> has none</p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-odd"><td><p>R05</p></td>
+<tr class="row-odd"><td><p>R04</p></td>
+<td><p>MeasureFinancing, Measure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> is given if and only if the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the
+measure overlaps <code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code>, and <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> if and only if it
+ends after 2033</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-even"><td><p>R05</p></td>
 <td><p>Measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> including <code class="docutils literal notranslate"><span class="pre">otherMeasureArticle18_2</span></code> requires <code class="docutils literal notranslate"><span class="pre">measureText</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R06</p></td>
+<tr class="row-odd"><td><p>R06</p></td>
 <td><p>MeasureFinancing</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> is given</p></td>
 <td><p>Error</p></td>
-</tr>
-<tr class="row-odd"><td><p>R07</p></td>
-<td><p>MeasureFinancing</p></td>
-<td><p>The sum of the amounts of a measure does not exceed the sum of its two expenditure fields</p></td>
-<td><p>Warning</p></td>
 </tr>
 <tr class="row-even"><td><p>R08</p></td>
 <td><p>Measure</p></td>
@@ -1155,9 +1161,9 @@ agglomeration measures</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-odd"><td><p>R12</p></td>
-<td><p>Measure, MSSummary</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> is given wherever an amount is, and is <code class="docutils literal notranslate"><span class="pre">EUR</span></code> for euro area
-Member States</p></td>
+<td><p>MeasureFinancing, MSSummary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> is given wherever an amount is, is the same in all rows of
+the delivery, and is <code class="docutils literal notranslate"><span class="pre">EUR</span></code> for euro area Member States</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-even"><td><p>R13</p></td>

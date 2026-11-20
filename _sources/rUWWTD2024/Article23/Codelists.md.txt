@@ -231,7 +231,7 @@ Used by `fundingStatus` in {ref}`art23-measurefinancing`.
 
 **Type:** `CurrencyCode`
 
-Used by `millionUnitsOfNationalCurrency` in {ref}`art23-measure` and {ref}`art23-mssummary`. As in
+Used by `millionUnitsOfNationalCurrency` in {ref}`art23-measurefinancing` and {ref}`art23-mssummary`. As in
 the Water Framework Directive, amounts are reported in millions of euro by euro area Member States
 and in millions of national currency by the others, which use their own currency code, not a
 generic code for domestic currency. The values are those of the Water Framework Directive

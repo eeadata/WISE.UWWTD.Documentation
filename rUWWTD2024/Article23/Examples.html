@@ -432,7 +432,8 @@ analyst’s side, adding the money back up. The last section puts all six togeth
 <ul class="simple">
 <li><p>codes are shown without the country code that a real code starts with;</p></li>
 <li><p>all names are in English, so <code class="docutils literal notranslate"><span class="pre">measureNameLanguage</span></code> is <code class="docutils literal notranslate"><span class="pre">eng</span></code> throughout, and all amounts are in
-millions of euro, so the currency is <code class="docutils literal notranslate"><span class="pre">EUR</span></code>;</p></li>
+millions of euro, so <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> is <code class="docutils literal notranslate"><span class="pre">EUR</span></code> in every financing row and is not
+shown;</p></li>
 <li><p>optional fields that are left empty are not shown.</p></li>
 </ul>
 <section id="art23-example-two-dates">
@@ -493,24 +494,18 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 58 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 58 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -518,17 +513,11 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">ongoing</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2027,2033]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">known</span></code></p></td>
-<td><p>18.0</p></td>
-<td><p>–</p></td>
-<td><p>EUR</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M002</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2035,2040]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">estimated</span></code></p></td>
-<td><p>–</p></td>
-<td><p>22.0</p></td>
-<td><p>EUR</p></td>
 </tr>
 </tbody>
 </table>
@@ -537,11 +526,12 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <caption><span class="caption-number">Table 59 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 8.0%" />
-<col style="width: 32.0%" />
-<col style="width: 26.0%" />
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
 <col style="width: 12.0%" />
-<col style="width: 13.0%" />
-<col style="width: 9.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -549,7 +539,8 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <th class="head"><p>europeanUnionFundName</p></th>
 <th class="head"><p>loanName</p></th>
 <th class="head"><p>fundingStatus</p></th>
-<th class="head"><p>amount</p></th>
+<th class="head"><p>1st cycle</p></th>
+<th class="head"><p>After 1st cycle</p></th>
 </tr>
 </thead>
 <tbody>
@@ -559,6 +550,7 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
 <td><p>11.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M001</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">nationalFederal</span></code></p></td>
@@ -566,12 +558,14 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
 <td><p>7.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M002</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">producerResponsibilityOrganisation</span></code></p></td>
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
+<td><p>–</p></td>
 <td><p>14.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M002</span></code></p></td>
@@ -579,6 +573,7 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <td><p>–</p></td>
 <td><p>National Development Bank</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
+<td><p>–</p></td>
 <td><p>8.0</p></td>
 </tr>
 </tbody>
@@ -635,11 +630,11 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 <tbody>
 <tr class="row-even"><td><p>Total investment at the plant</p></td>
 <td><p>40.0</p></td>
-<td><p>Sum of both expenditure fields of the two measures</p></td>
+<td><p>Sum of both expenditure fields over the financing rows of the two measures</p></td>
 </tr>
 <tr class="row-odd"><td><p>Investments identified for agglomeration <code class="docutils literal notranslate"><span class="pre">AGG0007</span></code></p></td>
 <td><p>2 measures, 40.0</p></td>
-<td><p>Measures listing <code class="docutils literal notranslate"><span class="pre">AGG0007</span></code> in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
+<td><p>Measures listing <code class="docutils literal notranslate"><span class="pre">AGG0007</span></code> in <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, with their financing rows</p></td>
 </tr>
 <tr class="row-even"><td><p>Capital expenditure in the 1st cycle, 2028 to 2033</p></td>
 <td><p>18.0</p></td>
@@ -668,7 +663,8 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.</p>
 </tbody>
 </table>
 </div>
-<p>The financing of each measure adds up to its cost: 11.0 + 7.0 = 18.0, and 14.0 + 8.0 = 22.0. In the
+<p>The cost of each measure is the sum of its financing rows: 11.0 + 7.0 = 18.0, and 14.0 + 8.0 =
+22.0. In the
 draft format, the plant would have been one row of 40.0 with one start and one completion date,
 and the quaternary project of 2035 would not have been visible as a separate commitment.</p>
 </section>
@@ -720,24 +716,18 @@ gives the expected split of the load between the two.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id8">
-<caption><span class="caption-number">Table 64 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 64 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -745,17 +735,11 @@ gives the expected split of the load between the two.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2028,2031]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">known</span></code></p></td>
-<td><p>5.6</p></td>
-<td><p>–</p></td>
-<td><p>EUR</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M004</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2029,2032]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">estimated</span></code></p></td>
-<td><p>0.8</p></td>
-<td><p>–</p></td>
-<td><p>EUR</p></td>
 </tr>
 </tbody>
 </table>
@@ -764,11 +748,12 @@ gives the expected split of the load between the two.</p>
 <caption><span class="caption-number">Table 65 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id9" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 8.0%" />
-<col style="width: 32.0%" />
-<col style="width: 26.0%" />
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
 <col style="width: 12.0%" />
-<col style="width: 13.0%" />
-<col style="width: 9.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -776,7 +761,8 @@ gives the expected split of the load between the two.</p>
 <th class="head"><p>europeanUnionFundName</p></th>
 <th class="head"><p>loanName</p></th>
 <th class="head"><p>fundingStatus</p></th>
-<th class="head"><p>amount</p></th>
+<th class="head"><p>1st cycle</p></th>
+<th class="head"><p>After 1st cycle</p></th>
 </tr>
 </thead>
 <tbody>
@@ -786,6 +772,7 @@ gives the expected split of the load between the two.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
 <td><p>2.6</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M003</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code></p></td>
@@ -793,6 +780,7 @@ gives the expected split of the load between the two.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
 <td><p>3.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M004</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ownFunds</span></code></p></td>
@@ -800,6 +788,7 @@ gives the expected split of the load between the two.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p>0.8</p></td>
+<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -873,7 +862,7 @@ several funds may be requested for one project.</p>
 to a shared collecting system. It is one measure, with the three agglomerations in
 <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. Its cost is given once, for the whole project, and not divided between the
 agglomerations. Each source of financing, including each EU fund, is its own row with its own
-amount.</p>
+expenditure.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id12">
 <caption><span class="caption-number">Table 68 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id12" title="Link to this table">#</a></caption>
 <colgroup>
@@ -908,24 +897,18 @@ amount.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id13">
-<caption><span class="caption-number">Table 69 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 69 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id13" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -933,9 +916,6 @@ amount.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">known</span></code></p></td>
-<td><p>10.0</p></td>
-<td><p>–</p></td>
-<td><p>EUR</p></td>
 </tr>
 </tbody>
 </table>
@@ -944,11 +924,12 @@ amount.</p>
 <caption><span class="caption-number">Table 70 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id14" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 8.0%" />
-<col style="width: 32.0%" />
-<col style="width: 26.0%" />
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
 <col style="width: 12.0%" />
-<col style="width: 13.0%" />
-<col style="width: 9.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -956,7 +937,8 @@ amount.</p>
 <th class="head"><p>europeanUnionFundName</p></th>
 <th class="head"><p>loanName</p></th>
 <th class="head"><p>fundingStatus</p></th>
-<th class="head"><p>amount</p></th>
+<th class="head"><p>1st cycle</p></th>
+<th class="head"><p>After 1st cycle</p></th>
 </tr>
 </thead>
 <tbody>
@@ -966,6 +948,7 @@ amount.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
 <td><p>4.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code></p></td>
@@ -973,6 +956,7 @@ amount.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
 <td><p>2.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">regional</span></code></p></td>
@@ -980,6 +964,7 @@ amount.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
 <td><p>3.0</p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M005</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ownFunds</span></code></p></td>
@@ -987,6 +972,7 @@ amount.</p>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
 <td><p>1.0</p></td>
+<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1008,7 +994,7 @@ amount.</p>
 <tbody>
 <tr class="row-even"><td><p>Total investment</p></td>
 <td><p>10.0</p></td>
-<td><p>Capital expenditure of the measure, counted once</p></td>
+<td><p>Sum of the financing rows of the measure, counted once</p></td>
 </tr>
 <tr class="row-odd"><td><p>Agglomerations concerned</p></td>
 <td><p>3</p></td>
@@ -1075,24 +1061,18 @@ cost is unknown. There are no financing rows.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id17">
-<caption><span class="caption-number">Table 73 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 73 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id17" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1100,9 +1080,6 @@ cost is unknown. There are no financing rows.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[,2036]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unknown</span></code></p></td>
-<td><p>–</p></td>
-<td><p>–</p></td>
-<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1112,8 +1089,9 @@ Article 23(1)(b) asks for the investments for each agglomeration.</p>
 <p>The unknown cost raises a warning (check R16): Article 23(1)(b) asks for an indicative
 financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
 preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
-would report <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code> and 15.0 spread over the years to 2036, for example 10.0 in
-the 1st cycle and 5.0 after it, and no R16 warning.</p>
+would report <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code> and one financing row with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> =
+<code class="docutils literal notranslate"><span class="pre">notIdentified</span></code>, its 15.0 spread over the years to 2036, for example 10.0 in the 1st cycle and 5.0
+after it, and no R16 warning.</p>
 <p><strong>Adding it back up.</strong></p>
 <div class="pst-scrollable-table-container"><table class="table" id="id18">
 <caption><span class="caption-number">Table 74 </span><span class="caption-text">Adding it back up</span><a class="headerlink" href="#id18" title="Link to this table">#</a></caption>
@@ -1154,8 +1132,8 @@ budget and one completion year. It is therefore one measure with two types,
 <code class="docutils literal notranslate"><span class="pre">upgradeTertiaryNitrogenPhosphorus</span></code> and <code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code>, and its cost is given once, not split
 between them. Half of the cost is secured from the operators’ own funds, an application for the
 Cohesion Fund is pending, and the source of the rest is not yet identified. Of the 100.0, 70.0 is
-expected to be spent from 2030 to 2033, in the 1st cycle, and 30.0 from 2034 to 2036. The
-financing is given for the whole measure, not per cycle.</p>
+expected to be spent from 2030 to 2033, in the 1st cycle, and 30.0 from 2034 to 2036. Each source
+is split between the cycles in the same proportion as the measure: 70 % in the 1st cycle.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id19">
 <caption><span class="caption-number">Table 75 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id19" title="Link to this table">#</a></caption>
 <colgroup>
@@ -1192,24 +1170,18 @@ financing is given for the whole measure, not per cycle.</p>
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id20">
-<caption><span class="caption-number">Table 76 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 76 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id20" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1217,9 +1189,6 @@ financing is given for the whole measure, not per cycle.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2030,2036]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">estimated</span></code></p></td>
-<td><p>70.0</p></td>
-<td><p>30.0</p></td>
-<td><p>EUR</p></td>
 </tr>
 </tbody>
 </table>
@@ -1228,11 +1197,12 @@ financing is given for the whole measure, not per cycle.</p>
 <caption><span class="caption-number">Table 77 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id21" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 8.0%" />
-<col style="width: 32.0%" />
-<col style="width: 26.0%" />
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
 <col style="width: 12.0%" />
-<col style="width: 13.0%" />
-<col style="width: 9.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -1240,7 +1210,8 @@ financing is given for the whole measure, not per cycle.</p>
 <th class="head"><p>europeanUnionFundName</p></th>
 <th class="head"><p>loanName</p></th>
 <th class="head"><p>fundingStatus</p></th>
-<th class="head"><p>amount</p></th>
+<th class="head"><p>1st cycle</p></th>
+<th class="head"><p>After 1st cycle</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1249,21 +1220,24 @@ financing is given for the whole measure, not per cycle.</p>
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">secured</span></code></p></td>
-<td><p>50.0</p></td>
+<td><p>35.0</p></td>
+<td><p>15.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M007</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">europeanUnionFund</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">cohesionFund</span></code></p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
-<td><p>30.0</p></td>
+<td><p>21.0</p></td>
+<td><p>9.0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M007</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
-<td><p>20.0</p></td>
+<td><p>14.0</p></td>
+<td><p>6.0</p></td>
 </tr>
 </tbody>
 </table>
@@ -1295,19 +1269,23 @@ financing is given for the whole measure, not per cycle.</p>
 <td><p>50.0</p></td>
 <td><p>100.0 − 50.0</p></td>
 </tr>
-<tr class="row-odd"><td><p>Of which applied for</p></td>
+<tr class="row-odd"><td><p>Financing gap in the 1st cycle</p></td>
+<td><p>35.0</p></td>
+<td><p>70.0 − 35.0 secured: the rows that are not <code class="docutils literal notranslate"><span class="pre">secured</span></code>, 1st cycle only</p></td>
+</tr>
+<tr class="row-even"><td><p>Of which applied for</p></td>
 <td><p>30.0</p></td>
 <td><p>Financing rows with <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">appliedFor</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Of which no source identified yet</p></td>
+<tr class="row-odd"><td><p>Of which no source identified yet</p></td>
 <td><p>20.0</p></td>
 <td><p>Financing rows with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Measures including quaternary treatment</p></td>
+<tr class="row-even"><td><p>Measures including quaternary treatment</p></td>
 <td><p>1, at 2 plants</p></td>
 <td><p>Measures whose <code class="docutils literal notranslate"><span class="pre">uwwtdMeasureType</span></code> includes <code class="docutils literal notranslate"><span class="pre">upgradeQuaternary</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Investment in quaternary treatment alone</p></td>
+<tr class="row-odd"><td><p>Investment in quaternary treatment alone</p></td>
 <td><p>Not known</p></td>
 <td><p>The cost covers both types and is not split</p></td>
 </tr>
@@ -1326,7 +1304,7 @@ the OtherInvestment table.</p>
 <p><strong>Filling it in.</strong> The Member State plans to renew collecting systems across the country. It
 reports one national measure, with no plants or agglomerations listed. The renewal is under way;
 the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2035: 337.5 in the
-1st cycle and 112.5 after it.</p>
+1st cycle and 112.5 after it. Each source is split in the same proportion.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id23">
 <caption><span class="caption-number">Table 79 </span><span class="caption-text">Measure: what</span><a class="headerlink" href="#id23" title="Link to this table">#</a></caption>
 <colgroup>
@@ -1358,24 +1336,18 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id24">
-<caption><span class="caption-number">Table 80 </span><span class="caption-text">Measure: when and how much</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 80 </span><span class="caption-text">Measure: when</span><a class="headerlink" href="#id24" title="Link to this table">#</a></caption>
 <colgroup>
-<col style="width: 10.0%" />
-<col style="width: 13.0%" />
-<col style="width: 17.0%" />
-<col style="width: 15.0%" />
-<col style="width: 15.0%" />
-<col style="width: 17.0%" />
-<col style="width: 13.0%" />
+<col style="width: 16.0%" />
+<col style="width: 24.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Status</p></th>
 <th class="head"><p>Period</p></th>
 <th class="head"><p>Cost status</p></th>
-<th class="head"><p>1st cycle</p></th>
-<th class="head"><p>After 1st cycle</p></th>
-<th class="head"><p>Currency</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1383,9 +1355,6 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 <td><p><code class="docutils literal notranslate"><span class="pre">ongoing</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">[2027,2035]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">estimated</span></code></p></td>
-<td><p>337.5</p></td>
-<td><p>112.5</p></td>
-<td><p>EUR</p></td>
 </tr>
 </tbody>
 </table>
@@ -1394,11 +1363,12 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 <caption><span class="caption-number">Table 81 </span><span class="caption-text">MeasureFinancing</span><a class="headerlink" href="#id25" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 8.0%" />
-<col style="width: 32.0%" />
-<col style="width: 26.0%" />
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
 <col style="width: 12.0%" />
-<col style="width: 13.0%" />
-<col style="width: 9.0%" />
+<col style="width: 12.0%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>measureCode</p></th>
@@ -1406,7 +1376,8 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 <th class="head"><p>europeanUnionFundName</p></th>
 <th class="head"><p>loanName</p></th>
 <th class="head"><p>fundingStatus</p></th>
-<th class="head"><p>amount</p></th>
+<th class="head"><p>1st cycle</p></th>
+<th class="head"><p>After 1st cycle</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1415,14 +1386,16 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
-<td><p>300.0</p></td>
+<td><p>225.0</p></td>
+<td><p>75.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M008</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">municipal</span></code></p></td>
 <td><p>–</p></td>
 <td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">planned</span></code></p></td>
-<td><p>150.0</p></td>
+<td><p>112.5</p></td>
+<td><p>37.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -1485,7 +1458,7 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 </tr>
 <tr class="row-even"><td><p>Total investment</p></td>
 <td><p>606.4</p></td>
-<td><p>Sum of both expenditure fields over the measures</p></td>
+<td><p>Sum of both expenditure fields over the financing rows</p></td>
 </tr>
 <tr class="row-odd"><td><p>In the 1st cycle, 2028 to 2033</p></td>
 <td><p>441.9</p></td>
@@ -1549,9 +1522,9 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 <td><p>866.4</p></td>
 <td><p>Example 1 is counted twice, and examples 3 and 5 three times</p></td>
 </tr>
-<tr class="row-odd"><td><p>Add up the costs and the financing amounts together</p></td>
-<td><p>1 212.8</p></td>
-<td><p>Financing describes the same money as the cost</p></td>
+<tr class="row-odd"><td><p>Count only the secured financing as the investment</p></td>
+<td><p>63.6</p></td>
+<td><p>The investment is all the financing rows, whatever their <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Add up the capital expenditure once per measure type</p></td>
 <td><p>706.4</p></td>

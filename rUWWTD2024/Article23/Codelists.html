@@ -1019,8 +1019,8 @@ to be confirmed.</p>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Measure type</p></th>
-<th class="head"><p>WFD key type of measure</p></th>
-<th class="head"><p>WFD main pressure</p></th>
+<th class="head"><p>WFD mainKeyTypeOfMeasure</p></th>
+<th class="head"><p>WFD mainPressureType</p></th>
 <th class="head"><p>Notes</p></th>
 </tr>
 </thead>
@@ -1251,7 +1251,7 @@ Directive 4th cycle.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unknown</span></code></p></td>
 <td><p>Unknown</p></td>
 <td><p>No indicative estimate of the cost can be given yet.</p></td>
-<td><p>An exception: both capital expenditure fields stay empty and the measure raises a warning (check R16).</p></td>
+<td><p>An exception: the measure has no financing rows</p></td>
 </tr>
 </tbody>
 </table>
@@ -1499,7 +1499,7 @@ codelist, whose values are kept.</p>
 <section id="art23-cl-currency">
 <span id="currency"></span><h2>Currency<a class="headerlink" href="#art23-cl-currency" title="Link to this heading">#</a></h2>
 <p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">CurrencyCode</span></code></p>
-<p>Used by <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> and <a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. As in
+<p>Used by <code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code> in <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> and <a class="reference internal" href="DescriptiveDataset/MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>. As in
 the Water Framework Directive, amounts are reported in millions of euro by euro area Member States
 and in millions of national currency by the others, which use their own currency code, not a
 generic code for domestic currency. The values are those of the Water Framework Directive

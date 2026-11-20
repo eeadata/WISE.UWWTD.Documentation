@@ -75,7 +75,9 @@ html_theme_options = {
     "secondary_sidebar_items": ["page-toc", "edit-this-page", "sourcelink"],
     "show_toc_level": 4,
     "use_edit_page_button": True,
-    "navbar_align": "right"
+    "navbar_align": "right",
+    # A button to the data explorer (_templates/explorer-navbar.html), before the default items
+    "navbar_end": ["explorer-navbar", "theme-switcher", "navbar-icon-links"],
 }
 
 html_context = {

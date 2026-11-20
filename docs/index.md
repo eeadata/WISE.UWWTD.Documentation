@@ -29,3 +29,17 @@ Contains the documentation of the electronic reporting under Directive (EU) 2024
 which recasts Directive 91/271/EEC.
 :::
 ::::
+
+## Data explorer
+
+::::{grid} 1
+:::{grid-item-card} Data explorer
+:link: explorer/index.html
+:link-type: url
+**UNDER DEVELOPMENT**
+^^^
+Browse, search and download the code lists and field tables of the rUWWTD dataflows, an empty
+template database of each dataflow, and the provisional prefill of the spatial points dataflow on a
+map.
+:::
+::::

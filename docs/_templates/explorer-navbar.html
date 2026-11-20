@@ -1,0 +1,7 @@
+{# A button in the top bar of every page, to the data explorer published next to the
+   documentation under explorer/. pathto(..., 1) gives the path from the current page,
+   so that it also works in the preview of a branch. #}
+<a class="btn explorer-navbar-link" href="{{ pathto('explorer/index.html', 1) }}"
+   title="Browse, search and download the code lists, field tables and the spatial points prefill">
+  <i class="fa-solid fa-table-list"></i> Data explorer
+</a>

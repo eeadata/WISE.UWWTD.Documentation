@@ -19,7 +19,7 @@
 <link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
 <link rel="modulepreload" href="../_import/components/prefill.f0070044.js">
 <link rel="modulepreload" href="../_import/components/download.caf5946e.js">
-<link rel="modulepreload" href="../_import/components/reference.94cb7930.js">
+<link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
 <link rel="modulepreload" href="../_npm/d3@7.9.2/172963d6.js">
 <link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
@@ -80,13 +80,13 @@
 import {define} from "../_observablehq/client.8e579122.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.d86e4208.json","lastModified":1795178456035,"size":107310});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795178457619,"size":1020393});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795178456780,"size":1519});
-registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795178458270,"size":1125082});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795178947749,"size":107626});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795178949122,"size":1020393});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795178948241,"size":1519});
+registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795178949840,"size":1125082});
 
 define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
-const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.94cb7930.js")]);
+const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js")]);
 
 return {COUNTRIES,SEVERITIES,SEVERITY_COLORS,TABLES,countryName,fieldValue,rowsOf,worstSeverity,csvButton,markup};
 }});
@@ -468,6 +468,20 @@ release.release_status
 ))
 }});
 
+define({id: "5004c234", mode: "inline", inputs: ["release","html","display"], body: async (release,html,display) => {
+display(await(
+release.specification_version
+  ? html`specification <code>${release.specification_version}</code>`
+  : "a specification from before the versions were introduced"
+))
+}});
+
+define({id: "f22ac174", mode: "inline", inputs: ["ref","display"], body: async (ref,display) => {
+display(await(
+ref.versions.SpatialPoints.version
+))
+}});
+
 </script>
 </head>
 <body>
@@ -480,7 +494,7 @@ release.release_status
   </ol>
   <div id="observablehq-search"><input type="search" placeholder="Search"></div>
   <div id="observablehq-search-results"></div>
-  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.4874e321.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.860f7801.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
   <details open>
     <summary>Reference data</summary>
     <ol>
@@ -555,8 +569,9 @@ prefilled and the checks to look at. The fields are defined in the
 <div class="observablehq observablehq--block"><!--:ac9ed816:--></div>
 <p class="muted small">Source: release <observablehq-loading></observablehq-loading><!--:517c4153:--> of the
 spatial points prefill, made from <observablehq-loading></observablehq-loading><!--:abff2c24:--> (reference year <observablehq-loading></observablehq-loading><!--:290ccafa-1:-->,
-<observablehq-loading></observablehq-loading><!--:c76ed253:-->). Its fields are those of the specification when the prefill was made; fields
-added since are marked as not in this release. The whole tables can be downloaded from the release, as
+<observablehq-loading></observablehq-loading><!--:c76ed253:-->). It follows <observablehq-loading></observablehq-loading><!--:5004c234:-->; the current one is
+<code>spatialpoints-v<observablehq-loading></observablehq-loading><!--:f22ac174:--></code>. Fields added since the release are
+marked as not in this release. The whole tables can be downloaded from the release, as
 Parquet. Map tiles © OpenStreetMap contributors.</p>
 <style>
 .tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;

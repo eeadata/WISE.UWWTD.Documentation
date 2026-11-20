@@ -15,7 +15,7 @@
 <link rel="modulepreload" href="../_observablehq/client.8e579122.js">
 <link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
-<link rel="modulepreload" href="../_import/components/reference.94cb7930.js">
+<link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
 <link rel="modulepreload" href="../_import/components/download.caf5946e.js">
 <link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
@@ -40,13 +40,13 @@
 import {define} from "../_observablehq/client.8e579122.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("./data/reference.json", {"name":"./data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.d86e4208.json","lastModified":1795178456035,"size":107310});
-registerFile("./data/reference.zip", {"name":"./data/reference.zip","mimeType":"application/zip","path":"../_file/reference/data/reference.341fdc82.zip","lastModified":1795178456828,"size":32937});
+registerFile("./data/reference.json", {"name":"./data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795178947749,"size":107626});
+registerFile("./data/reference.zip", {"name":"./data/reference.zip","mimeType":"application/zip","path":"../_file/reference/data/reference.3a7cb272.zip","lastModified":1795178948275,"size":32475});
 
-define({id: "c63c9f30", outputs: ["DATAFLOWS","codelistHref","codelistUsage","markup","plain","csvButton","jsonButton"], body: async () => {
-const [{DATAFLOWS, codelistHref, codelistUsage, markup, plain}, {csvButton, jsonButton}] = await Promise.all([import("../_import/components/reference.94cb7930.js"), import("../_import/components/download.caf5946e.js")]);
+define({id: "018170ad", outputs: ["DATAFLOWS","codelistHref","codelistUsage","markup","plain","versionNote","csvButton","jsonButton"], body: async () => {
+const [{DATAFLOWS, codelistHref, codelistUsage, markup, plain, versionNote}, {csvButton, jsonButton}] = await Promise.all([import("../_import/components/reference.7bf0625c.js"), import("../_import/components/download.caf5946e.js")]);
 
-return {DATAFLOWS,codelistHref,codelistUsage,markup,plain,csvButton,jsonButton};
+return {DATAFLOWS,codelistHref,codelistUsage,markup,plain,versionNote,csvButton,jsonButton};
 }});
 
 define({id: "b3fa2236", inputs: ["FileAttachment"], outputs: ["ref","DOCS"], body: (FileAttachment) => {
@@ -102,12 +102,13 @@ const choice = view(Inputs.select(ref.codelists, {
 return {choice};
 }});
 
-define({id: "364df7f9", inputs: ["usage","choice","display","html","DATAFLOWS","codelistHref","DOCS"], outputs: ["used"], body: (usage,choice,display,html,DATAFLOWS,codelistHref,DOCS) => {
+define({id: "2e153d3c", inputs: ["usage","choice","display","html","DATAFLOWS","codelistHref","DOCS","versionNote","ref"], outputs: ["used"], body: (usage,choice,display,html,DATAFLOWS,codelistHref,DOCS,versionNote,ref) => {
 const used = usage.get(choice.type) ?? [];
 display(html`<div class="card">
   <h2><code>${choice.type}</code></h2>
   <p>${choice.caption}. ${DATAFLOWS[choice.dataflow]} dataflow.
   <a href="${codelistHref(DOCS, choice)}">Definition in the documentation</a>.</p>
+  <p class="muted small">Version: ${versionNote(ref.versions, choice.dataflow)}</p>
   <p>${used.length
     ? html`Used by ${used.map((u, i) => html`${i ? ", " : ""}<a href="./fields?table=${u.dataflow}/${u.table}#${u.notation}"><code>${u.table}.${u.notation}</code></a>`)}.`
     : html`<span class="muted">Not the type of any field: it describes the values of another code list.</span>`}</p>
@@ -146,7 +147,7 @@ display(html`<a href="${FileAttachment("./data/reference.zip").href}" download="
   </ol>
   <div id="observablehq-search"><input type="search" placeholder="Search"></div>
   <div id="observablehq-search-results"></div>
-  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.4874e321.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.860f7801.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
   <details open class="observablehq-section-active">
     <summary>Reference data</summary>
     <ol>
@@ -174,7 +175,7 @@ documentation it draws on are drafts. The spatial points prefill is provisional 
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>
 </header>
 <main id="observablehq-main" class="observablehq">
-<div class="observablehq observablehq--block"><!--:c63c9f30:--></div>
+<div class="observablehq observablehq--block"><!--:018170ad:--></div>
 <div class="observablehq observablehq--block"><!--:b3fa2236:--></div>
 <div class="observablehq observablehq--block"><!--:d9319374:--></div>
 <h1 id="code-lists" tabindex="-1"><a class="observablehq-header-anchor" href="#code-lists">Code lists</a></h1>
@@ -183,7 +184,7 @@ a code list, or search the values of all of them. Drafts: values may change.</p>
 <div class="observablehq observablehq--block"><!--:98f1fbcf:--></div>
 <div class="observablehq observablehq--block"><!--:e27e7b26:--></div>
 <div class="observablehq observablehq--block"><!--:84f73087:--></div>
-<div class="observablehq observablehq--block"><!--:364df7f9:--></div>
+<div class="observablehq observablehq--block"><!--:2e153d3c:--></div>
 <div class="observablehq observablehq--block"><!--:53bbd5f2:--></div>
 <div class="downloads">
 <div class="observablehq observablehq--block"><!--:5454ba24:--></div>

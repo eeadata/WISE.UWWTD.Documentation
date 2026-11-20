@@ -41,9 +41,7 @@ points, referred to by the Article 22 and Article 23 reporting.
 ## Data explorer
 
 ::::{grid} 1
-:::{grid-item-card} Data explorer
-:link: ../explorer/index.html
-:link-type: url
+:::{grid-item-card} {explorer}`Data explorer <index.html>`
 **UNDER DEVELOPMENT**
 ^^^
 Browse, search and download the code lists and field tables of the rUWWTD dataflows, an empty
@@ -51,6 +49,45 @@ template database of each dataflow, and the provisional prefill of the spatial p
 map.
 :::
 ::::
+
+(spec-versions)=
+## Versions
+
+Each dataflow specification, its tables, fields and code lists, has a version:
+
+* **Spatial points:** {specversion}`SpatialPoints`
+* **Article 23:** {specversion}`Article23`
+
+A version is a number such as `0.4.1`. It changes with every change to the specification, by how
+much an earlier delivery is affected:
+
+:::{list-table} When the version changes
+:header-rows: 1
+:widths: 18 42 40
+
+* - Change
+  - When
+  - Examples
+* - Major (`1.0.0` → `2.0.0`)
+  - A delivery that was valid may no longer be.
+  - A field, code value or table removed or renamed; a field made required; a type changed or a
+    text shortened
+* - Minor (`1.0.0` → `1.1.0`)
+  - Everything that was valid still is.
+  - A code value, an optional field or a table added; a text lengthened
+* - Patch (`1.0.0` → `1.0.1`)
+  - Only text changed.
+  - A label, definition, note or condition corrected
+:::
+
+While a specification is a draft, its version starts with `0.`, and a breaking change only raises
+the minor number. Version `1.0.0` is the first used for reporting.
+
+Each version is a [release](https://github.com/eeadata/WISE.UWWTD.Documentation/releases) of
+this repository, tagged `spatialpoints-v…` or `article23-v…`, with the list of changes, the CSV files
+of the tables and code lists, and the template database of the dataflow. The documentation as it was
+published with each version stays online, under `versions/<tag>/`. This site always shows the latest
+version.
 
 ```{bibliography}
 :filter: docname in docnames

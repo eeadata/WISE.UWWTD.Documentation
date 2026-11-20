@@ -15,7 +15,7 @@
 <link rel="modulepreload" href="../_observablehq/client.8e579122.js">
 <link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
-<link rel="modulepreload" href="../_import/components/reference.94cb7930.js">
+<link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
 <link rel="modulepreload" href="../_import/components/download.caf5946e.js">
 <link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
@@ -42,15 +42,15 @@
 import {define} from "../_observablehq/client.8e579122.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("./data/rUWWTD_Article23_template.sqlite", {"name":"./data/rUWWTD_Article23_template.sqlite","path":"../_file/reference/data/rUWWTD_Article23_template.732e4696.sqlite","lastModified":1795178456891,"size":335872});
-registerFile("./data/rUWWTD_SpatialPoints_template.gpkg", {"name":"./data/rUWWTD_SpatialPoints_template.gpkg","path":"../_file/reference/data/rUWWTD_SpatialPoints_template.b522197f.gpkg","lastModified":1795178456950,"size":122880});
-registerFile("./data/reference.json", {"name":"./data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.d86e4208.json","lastModified":1795178456035,"size":107310});
-registerFile("./data/reference.zip", {"name":"./data/reference.zip","mimeType":"application/zip","path":"../_file/reference/data/reference.341fdc82.zip","lastModified":1795178456828,"size":32937});
+registerFile("./data/rUWWTD_Article23_template.sqlite", {"name":"./data/rUWWTD_Article23_template.sqlite","path":"../_file/reference/data/rUWWTD_Article23_template.f0300377.sqlite","lastModified":1795178948416,"size":335872});
+registerFile("./data/rUWWTD_SpatialPoints_template.gpkg", {"name":"./data/rUWWTD_SpatialPoints_template.gpkg","path":"../_file/reference/data/rUWWTD_SpatialPoints_template.5edc1b27.gpkg","lastModified":1795178948459,"size":122880});
+registerFile("./data/reference.json", {"name":"./data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795178947749,"size":107626});
+registerFile("./data/reference.zip", {"name":"./data/reference.zip","mimeType":"application/zip","path":"../_file/reference/data/reference.3a7cb272.zip","lastModified":1795178948275,"size":32475});
 
-define({id: "a8c4856e", outputs: ["DATAFLOWS","docsHref","markup","plain","typeText","csvButton","jsonButton"], body: async () => {
-const [{DATAFLOWS, docsHref, markup, plain, typeText}, {csvButton, jsonButton}] = await Promise.all([import("../_import/components/reference.94cb7930.js"), import("../_import/components/download.caf5946e.js")]);
+define({id: "6a8454f5", outputs: ["DATAFLOWS","docsHref","markup","plain","typeText","versionNote","csvButton","jsonButton"], body: async () => {
+const [{DATAFLOWS, docsHref, markup, plain, typeText, versionNote}, {csvButton, jsonButton}] = await Promise.all([import("../_import/components/reference.7bf0625c.js"), import("../_import/components/download.caf5946e.js")]);
 
-return {DATAFLOWS,docsHref,markup,plain,typeText,csvButton,jsonButton};
+return {DATAFLOWS,docsHref,markup,plain,typeText,versionNote,csvButton,jsonButton};
 }});
 
 define({id: "344bc87c", inputs: ["FileAttachment"], outputs: ["ref","DOCS","TEMPLATES"], body: (FileAttachment) => {
@@ -124,7 +124,7 @@ const choice = view(Inputs.select(ref.tables, {
 return {initial,choice};
 }});
 
-define({id: "dea3b2ea", inputs: ["display","html","choice","DATAFLOWS","docsHref","DOCS"], body: (display,html,choice,DATAFLOWS,docsHref,DOCS) => {
+define({id: "cb034704", inputs: ["display","html","choice","DATAFLOWS","docsHref","DOCS","versionNote","ref"], body: (display,html,choice,DATAFLOWS,docsHref,DOCS,versionNote,ref) => {
 display(html`<div class="card">
   <h2>${choice.table}</h2>
   <p>${DATAFLOWS[choice.dataflow]} dataflow${choice.dataset ? html`, ${choice.dataset}` : ""}.
@@ -132,6 +132,7 @@ display(html`<div class="card">
     ? html`Key: ${choice.primaryKey.map((k, i) => html`${i ? ", " : ""}<code>${k}</code>`)}.`
     : html`<span class="muted">No key stated.</span>`}
   <a href="${docsHref(DOCS, choice.page, choice.anchor)}">Definition in the documentation</a>.</p>
+  <p class="muted small">Version: ${versionNote(ref.versions, choice.dataflow)}</p>
 </div>`);
 }});
 
@@ -176,7 +177,7 @@ display(html`<ul>${Object.entries(TEMPLATES).map(([dataflow, t]) => html`<li><a 
   </ol>
   <div id="observablehq-search"><input type="search" placeholder="Search"></div>
   <div id="observablehq-search-results"></div>
-  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.4874e321.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.860f7801.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
   <details open class="observablehq-section-active">
     <summary>Reference data</summary>
     <ol>
@@ -204,7 +205,7 @@ documentation it draws on are drafts. The spatial points prefill is provisional 
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>
 </header>
 <main id="observablehq-main" class="observablehq">
-<div class="observablehq observablehq--block"><!--:a8c4856e:--></div>
+<div class="observablehq observablehq--block"><!--:6a8454f5:--></div>
 <div class="observablehq observablehq--block"><!--:344bc87c:--></div>
 <div class="observablehq observablehq--block"><!--:f0b5d770:--></div>
 <h1 id="field-tables" tabindex="-1"><a class="observablehq-header-anchor" href="#field-tables">Field tables</a></h1>
@@ -214,7 +215,7 @@ change.</p>
 <div class="observablehq observablehq--block"><!--:b646bb70:--></div>
 <div class="observablehq observablehq--block"><!--:eb380ce5:--></div>
 <div class="observablehq observablehq--block"><!--:07865d42:--></div>
-<div class="observablehq observablehq--block"><!--:dea3b2ea:--></div>
+<div class="observablehq observablehq--block"><!--:cb034704:--></div>
 <div class="observablehq observablehq--block"><!--:8eadbd7d:--></div>
 <div class="downloads">
 <div class="observablehq observablehq--block"><!--:86a9eac1:--></div>

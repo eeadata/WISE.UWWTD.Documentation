@@ -3,7 +3,7 @@
     python reference/versioning.py check [base]        # fail if a change is not matched by a bump
     python reference/versioning.py report [base]       # the changes per dataflow, in Markdown
     python reference/versioning.py changelog <dataflow> <base>   # release notes since <base>
-    python reference/versioning.py new-tags <base>     # the tags to create: versions changed since <base>
+    python reference/versioning.py new-tags            # the tags to create: versions without a tag
     python reference/versioning.py tag <dataflow>      # the tag of the current version
 
 <base> is a git revision, such as origin/main or a tag; the default is origin/main. The current
@@ -235,7 +235,7 @@ def markdown(results, base):
     lines = [f'Changes to the specifications since `{base}`:', '']
     for df, changes, level, version, bump, problems in results:
         head = f'**{df}**: ' + ('no change' if level == 'none' else f'{level} change') + (f'; version {version}' if version else '')
-        head += f' ({bump} bump)' if bump not in (None, 'first') else ' (first version)' if bump == 'first' else ''
+        head += {None: '', 'first': ' (first version)', 'none': ' (unchanged)'}.get(bump, f' ({bump} bump)')
         lines.append(f'- {head}')
         for lvl, text in changes:
             lines.append(f'  - {lvl}: {text}')
@@ -270,17 +270,17 @@ def changelog(dataflow, base):
     return '\n'.join(lines).rstrip() + '\n'
 
 
-def new_tags(base):
-    """The tags of the versions that changed since `base`, or that have no tag yet."""
-    old_v, new_v = versions(Tree(base)), versions(Tree())
+def new_tags():
+    """The tags of the current versions that do not exist yet.
+
+    Not only the versions changed by the last push: if a run of the workflow on main was skipped,
+    the next one releases what it left out. (A version merged and replaced before any run could
+    release it is not released; the next version's changelog covers its changes.)
+    """
     existing = set(subprocess.run(['git', '-C', str(REPO), 'tag', '--list'], capture_output=True,
                                   text=True).stdout.split())
-    tags = []
-    for df, row in new_v.items():
-        tag = tag_name(df, row['version'])
-        if tag not in existing and (df not in old_v or old_v[df]['version'] != row['version']):
-            tags.append((df, tag))
-    return tags
+    return [(df, tag_name(df, row['version'])) for df, row in versions(Tree()).items()
+            if tag_name(df, row['version']) not in existing]
 
 
 def main(args):
@@ -293,8 +293,8 @@ def main(args):
             sys.exit(1)
     elif command == 'changelog' and len(rest) == 2:
         print(changelog(rest[0], rest[1]), end='')
-    elif command == 'new-tags' and len(rest) == 1:
-        for df, tag in new_tags(rest[0]):
+    elif command == 'new-tags' and not rest:
+        for df, tag in new_tags():
             print(df, tag)
     elif command == 'tag' and len(rest) == 1:
         print(tag_name(rest[0], versions(Tree())[rest[0]]['version']))

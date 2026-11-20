@@ -65,16 +65,25 @@
 .under-development { padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.9rem;
   background: color-mix(in srgb, var(--theme-orange, #e8590c) 15%, var(--theme-background));
   border-left: 4px solid var(--theme-orange, #e8590c); }
+/* The header holds two lines: the link back to the documentation, and the notice */
+:root { --observablehq-header-height: 5.5rem; }
+@media (max-width: 720px) { :root { --observablehq-header-height: 8rem; } }
+#observablehq-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+.docs-bar { display: flex; align-items: center; gap: 1rem; }
+.docs-link { font-weight: 600; padding: 0.25rem 0.75rem; border: 1px solid var(--theme-foreground-focus);
+  border-radius: 4px; text-decoration: none; white-space: nowrap; }
+.docs-link:hover { background: var(--theme-foreground-focus); color: var(--theme-background); }
+.docs-bar-title { color: var(--theme-foreground-muted); font-size: 0.9rem; }
 </style>
 <script type="module">
 
 import {define} from "../_observablehq/client.8e579122.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.e1b77058.json","lastModified":1795174468840,"size":107442});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795174470334,"size":1020393});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795174469242,"size":1519});
-registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795174471229,"size":1125082});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.e1b77058.json","lastModified":1795176683361,"size":107442});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795176685207,"size":1020393});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795176684339,"size":1519});
+registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795176685969,"size":1125082});
 
 define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
 const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.94cb7930.js")]);
@@ -491,6 +500,9 @@ release.release_status
 <script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <header id="observablehq-header">
+<nav class="docs-bar"><a class="docs-link" id="docs-link" href="https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/index.html" target="_blank" rel="noopener noreferrer">← rUWWTD documentation</a>
+<span class="docs-bar-title">rUWWTD data explorer</span></nav>
+<script>{const m = location.pathname.match(/^(.*\/)explorer\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}</script>
 <div class="under-development"><strong>Under development.</strong> This explorer and the
 documentation it draws on are drafts. The spatial points prefill is provisional data under Member State
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>

@@ -19,15 +19,24 @@
 .under-development { padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.9rem;
   background: color-mix(in srgb, var(--theme-orange, #e8590c) 15%, var(--theme-background));
   border-left: 4px solid var(--theme-orange, #e8590c); }
+/* The header holds two lines: the link back to the documentation, and the notice */
+:root { --observablehq-header-height: 5.5rem; }
+@media (max-width: 720px) { :root { --observablehq-header-height: 8rem; } }
+#observablehq-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+.docs-bar { display: flex; align-items: center; gap: 1rem; }
+.docs-link { font-weight: 600; padding: 0.25rem 0.75rem; border: 1px solid var(--theme-foreground-focus);
+  border-radius: 4px; text-decoration: none; white-space: nowrap; }
+.docs-link:hover { background: var(--theme-foreground-focus); color: var(--theme-background); }
+.docs-bar-title { color: var(--theme-foreground-muted); font-size: 0.9rem; }
 </style>
 <script type="module">
 
 import {define} from "./_observablehq/client.8e579122.js";
 import {registerFile} from "./_observablehq/stdlib.de0ea62b.js";
 
-registerFile("./reference/data/reference.json", {"name":"./reference/data/reference.json","mimeType":"application/json","path":"./_file/reference/data/reference.e1b77058.json","lastModified":1795174468840,"size":107442});
-registerFile("./reference/data/reference.zip", {"name":"./reference/data/reference.zip","mimeType":"application/zip","path":"./_file/reference/data/reference.b4a482e1.zip","lastModified":1795174469288,"size":32946});
-registerFile("./spatial/data/release.json", {"name":"./spatial/data/release.json","mimeType":"application/json","path":"./_file/spatial/data/release.48fe6086.json","lastModified":1795174469242,"size":1519});
+registerFile("./reference/data/reference.json", {"name":"./reference/data/reference.json","mimeType":"application/json","path":"./_file/reference/data/reference.e1b77058.json","lastModified":1795176683361,"size":107442});
+registerFile("./reference/data/reference.zip", {"name":"./reference/data/reference.zip","mimeType":"application/zip","path":"./_file/reference/data/reference.8b35ad54.zip","lastModified":1795176684388,"size":32946});
+registerFile("./spatial/data/release.json", {"name":"./spatial/data/release.json","mimeType":"application/json","path":"./_file/spatial/data/release.48fe6086.json","lastModified":1795176684339,"size":1519});
 
 define({id: "4542e737", inputs: ["FileAttachment"], outputs: ["ref","release"], body: (FileAttachment) => {
 const ref = FileAttachment("./reference/data/reference.json").json();
@@ -139,6 +148,9 @@ html`<a href="${release.url}"><code>${release.tag}</code></a>`
 <script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <header id="observablehq-header">
+<nav class="docs-bar"><a class="docs-link" id="docs-link" href="https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/index.html" target="_blank" rel="noopener noreferrer">← rUWWTD documentation</a>
+<span class="docs-bar-title">rUWWTD data explorer</span></nav>
+<script>{const m = location.pathname.match(/^(.*\/)explorer\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}</script>
 <div class="under-development"><strong>Under development.</strong> This explorer and the
 documentation it draws on are drafts. The spatial points prefill is provisional data under Member State
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>

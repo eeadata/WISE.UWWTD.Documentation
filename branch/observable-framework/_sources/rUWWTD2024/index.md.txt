@@ -38,6 +38,20 @@ points, referred to by the Article 22 and Article 23 reporting.
 :::
 ::::
 
+## Data explorer
+
+::::{grid} 1
+:::{grid-item-card} Data explorer
+:link: ../explorer/index.html
+:link-type: url
+**UNDER DEVELOPMENT**
+^^^
+Browse, search and download the code lists and field tables of the rUWWTD dataflows, an empty
+template database of each dataflow, and the provisional prefill of the spatial points dataflow on a
+map.
+:::
+::::
+
 ```{bibliography}
 :filter: docname in docnames
 ```

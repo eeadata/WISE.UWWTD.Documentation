@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../../_static/customTable.css?v=ed6b5e55" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/customTheme.css?v=562b8974" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/customTheme.css?v=752a12b4" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
@@ -544,6 +544,12 @@ window.runMermaid = runMermaid;</script>
       
       
         <div class="navbar-item">
+<a class="btn explorer-navbar-link" href="../../../explorer/index.html"
+   title="Browse, search and download the code lists, field tables and the spatial points prefill">
+  <i class="fa-solid fa-table-list"></i> Data explorer
+</a></div>
+      
+        <div class="navbar-item">
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
@@ -626,6 +632,12 @@ window.runMermaid = runMermaid;</script>
     
     
       <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<a class="btn explorer-navbar-link" href="../../../explorer/index.html"
+   title="Browse, search and download the code lists, field tables and the spatial points prefill">
+  <i class="fa-solid fa-table-list"></i> Data explorer
+</a></div>
         
           <div class="navbar-item">
 
@@ -856,7 +868,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <td><p>Whether the Member State is obliged to provide a national implementation programme.</p></td>
 <td><p>YesNo</p></td>
 <td><p>Required</p></td>
-<td><p>–</p></td>
+<td><p><a class="reference internal" href="../Codelists.html#art23-cl-yesno"><span class="std std-ref">Yes or no</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">programmeReference</span></code></p></td>
 <td><p>Programme reference</p></td>
@@ -929,7 +941,7 @@ the measures adopted to be included in the programme.</p>
 <td><p>Whether any risks have been identified. Measures under Article 18(2) that address identified risks are reported in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>.</p></td>
 <td><p>YesNo</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = <code class="docutils literal notranslate"><span class="pre">yes</span></code></p></td>
+<td><p>Required if <code class="docutils literal notranslate"><span class="pre">riskAssessment</span></code> = <code class="docutils literal notranslate"><span class="pre">yes</span></code>. <a class="reference internal" href="../Codelists.html#art23-cl-yesno"><span class="std std-ref">Yes or no</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">riskSummaryReference</span></code></p></td>
 <td><p>Risk summary reference</p></td>
@@ -1018,6 +1030,7 @@ forgotten.</p>
 </tbody>
 </table>
 </div>
+<p class="explorer-link"><a class="reference external" href="../../../explorer/reference/fields.html?table=Article23/MSSummary">Browse, search and download the fields of this table</a></p>
 <p>The years 2033, 2036, 2039 and 2045 are the interim and final deadlines of Articles 7 and 8. A
 Member State that has estimated its contribution over a longer period, such as 2028 to 2045, or
 that works to a different budgetary cycle, selects <code class="docutils literal notranslate"><span class="pre">other</span></code> and describes the period in

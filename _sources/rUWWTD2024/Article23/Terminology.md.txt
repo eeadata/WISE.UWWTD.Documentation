@@ -179,7 +179,8 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
   ISO 80000-2, for example `[2028,2033]` for the years 2028 to 2033 included. A bound left empty
   is open, for example `[,2036]`;
 * **date** - a date in the format yyyy-mm-dd;
-* **YesNo** - a yes or no answer;
+* **YesNo** - a yes or no answer, `yes` or `no`: a value of the {ref}`art23-cl-yesno` codelist, as
+  in the Water Framework Directive;
 * **Email** - an e-mail address, at most 250 characters, validated with a regular expression;
 * **URL** - a web address, at most 2 100 characters, validated with a regular expression;
 * **wiseIdentifier** - a WISE identifier of at most 42 characters, starting with the ISO 3166-1

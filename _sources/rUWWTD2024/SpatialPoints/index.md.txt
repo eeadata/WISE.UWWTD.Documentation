@@ -60,6 +60,11 @@ retired or replaced before their first acceptance. New codes must also be distin
 codes. This exception does not make baseline codes available to Article 22 or Article 23: only
 objects accepted through this dataflow can be referenced there.
 
+The prefilled objects can be browsed on a map, with their quality-check flags, in the
+{explorer}`data explorer <spatial/agglomerations.html>`. The prefill is provisional: it is made
+from the reporting of reference year 2024, which is under Member State review, and is still under
+development.
+
 The accepted delivery puts these objects into the register. Using `noChange` for objects that were
 reported before and have not been replaced follows the WISE GIS Guidance ({ref}`sp-sources`).
 

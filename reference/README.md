@@ -55,7 +55,7 @@ A larger bump than needed is always accepted.
 
 3. Open a pull request. The workflow runs `versioning.py check`: it fails if a dataflow changed
    without the bump its changes need, and shows the list of changes in the summary of the run.
-4. Merge. The workflow then, for each version that changed:
+4. Merge. The workflow then, for each version that has no tag yet:
    * publishes a snapshot of the documentation under `versions/<tag>/`, with a banner saying which
      version it is; the current documentation stays at the root of the site;
    * creates the tag, `spatialpoints-v0.4.1` or `article23-v0.4.1`, on the merge commit;
@@ -64,6 +64,8 @@ A larger bump than needed is always accepted.
      is a pre-release.
 
 Do not create these tags by hand: the workflow makes them. Pushing a tag does not run the workflow.
+Because the workflow releases every version without a tag, a run of `main` that was skipped or failed
+is caught up by the next one; rerunning the failed run does the same.
 
 ## Where the version shows
 

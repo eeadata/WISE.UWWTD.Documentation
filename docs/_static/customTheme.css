@@ -62,3 +62,9 @@ figure[id^="spatialpoints-example-"] .mermaid-container > pre > svg {
   background: var(--pst-color-primary);
   color: var(--pst-color-background);
 }
+
+/* The footer: the versions of the specifications (_templates/spec-versions-footer.html) */
+.spec-versions-footer {
+  margin: 0;
+  font-size: 0.85rem;
+}

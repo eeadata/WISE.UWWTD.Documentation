@@ -1,0 +1,10 @@
+{# The footer of every page: the version of each dataflow specification this documentation
+   describes, from reference/versions.csv (conf.py), linked to its release. It replaces the default
+   "Created using Sphinx" and "Built with the PyData Sphinx Theme". #}
+<p class="spec-versions-footer">
+  Specification versions:
+  {%- for v in spec_versions %}
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/{{ v.tag }}">{{ v.label }} {{ v.version }}</a>
+  ({{ v.status }}, {{ v.date }}){% if not loop.last %} ·{% endif %}
+  {%- endfor %}
+</p>

@@ -80,6 +80,10 @@ html_theme_options = {
     "navbar_align": "right",
     # A button to the data explorer (_templates/explorer-navbar.html), before the default items
     "navbar_end": ["explorer-navbar", "theme-switcher", "navbar-icon-links"],
+    # The footer shows the versions of the specifications (_templates/spec-versions-footer.html)
+    # instead of the Sphinx and theme versions
+    "footer_start": ["spec-versions-footer"],
+    "footer_end": [],
 }
 
 html_context = {
@@ -113,6 +117,16 @@ html_css_files = [
     ]
 
 html_show_copyright = False
+html_show_sphinx = False
+
+# The versions of the dataflow specifications, for the footer of every page
+import csv
+_LABELS = {"SpatialPoints": "Spatial points", "Article23": "Article 23"}
+with open(os.path.join(os.path.dirname(__file__), '..', 'reference', 'versions.csv'), encoding='utf-8') as _f:
+    html_context["spec_versions"] = [
+        {**_v, "label": _LABELS.get(_v["dataflow"], _v["dataflow"]),
+         "tag": f'{_v["dataflow"].lower()}-v{_v["version"]}'}
+        for _v in csv.DictReader(_f)]
 
 html_js_files = [
     "js/mermaid-zoom.js",

@@ -14,7 +14,8 @@ To keep the tables readable:
 
 * codes are shown without the country code that a real code starts with;
 * all names are in English, so `measureNameLanguage` is `eng` throughout, and all amounts are in
-  millions of euro, so the currency is `EUR`;
+  millions of euro, so `millionUnitsOfNationalCurrency` is `EUR` in every financing row and is not
+  shown;
 * optional fields that are left empty are not shown.
 
 (art23-example-two-dates)=
@@ -65,66 +66,62 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - `medium`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M001`
   - `ongoing`
   - `[2027,2033]`
   - `known`
-  - 18.0
-  - –
-  - EUR
 * - `M002`
   - `planned`
   - `[2035,2040]`
   - `estimated`
-  - –
-  - 22.0
-  - EUR
 :::
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 8 32 26 12 13 9
+:widths: 8 28 24 12 12 8 8
 
 * - measureCode
   - fundingSource
   - europeanUnionFundName
   - loanName
   - fundingStatus
-  - amount
+  - 1st cycle
+  - After 1st cycle
 * - `M001`
   - `europeanUnionFund`
   - `cohesionFund`
   - –
   - `appliedFor`
   - 11.0
+  - –
 * - `M001`
   - `nationalFederal`
   - –
   - –
   - `secured`
   - 7.0
+  - –
 * - `M002`
   - `producerResponsibilityOrganisation`
   - –
   - –
   - `planned`
+  - –
   - 14.0
 * - `M002`
   - `loan`
   - –
   - National Development Bank
   - `planned`
+  - –
   - 8.0
 :::
 
@@ -163,10 +160,10 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - How
 * - Total investment at the plant
   - 40.0
-  - Sum of both expenditure fields of the two measures
+  - Sum of both expenditure fields over the financing rows of the two measures
 * - Investments identified for agglomeration `AGG0007`
   - 2 measures, 40.0
-  - Measures listing `AGG0007` in `euAgglomerationCode`
+  - Measures listing `AGG0007` in `euAgglomerationCode`, with their financing rows
 * - Capital expenditure in the 1st cycle, 2028 to 2033
   - 18.0
   - Sum of `totalCapitalExpenditure1stCycle`
@@ -187,7 +184,8 @@ reported once, in the UWWTP and Agglomeration tables, not on either measure.
   - The UWWTP row, not repeated per measure
 :::
 
-The financing of each measure adds up to its cost: 11.0 + 7.0 = 18.0, and 14.0 + 8.0 = 22.0. In the
+The cost of each measure is the sum of its financing rows: 11.0 + 7.0 = 18.0, and 14.0 + 8.0 =
+22.0. In the
 draft format, the plant would have been one row of 40.0 with one start and one completion date,
 and the quaternary project of 2035 would not have been visible as a separate commitment.
 
@@ -228,61 +226,56 @@ gives the expected split of the load between the two.
   - `medium`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M003`
   - `planned`
   - `[2028,2031]`
   - `known`
-  - 5.6
-  - –
-  - EUR
 * - `M004`
   - `planned`
   - `[2029,2032]`
   - `estimated`
-  - 0.8
-  - –
-  - EUR
 :::
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 8 32 26 12 13 9
+:widths: 8 28 24 12 12 8 8
 
 * - measureCode
   - fundingSource
   - europeanUnionFundName
   - loanName
   - fundingStatus
-  - amount
+  - 1st cycle
+  - After 1st cycle
 * - `M003`
   - `municipal`
   - –
   - –
   - `secured`
   - 2.6
+  - –
 * - `M003`
   - `europeanUnionFund`
   - `europeanRegionalDevelopmentFund`
   - –
   - `appliedFor`
   - 3.0
+  - –
 * - `M004`
   - `ownFunds`
   - –
   - –
   - `planned`
   - 0.8
+  - –
 :::
 
 :::{list-table} Agglomeration
@@ -339,7 +332,7 @@ several funds may be requested for one project.
 to a shared collecting system. It is one measure, with the three agglomerations in
 `euAgglomerationCode`. Its cost is given once, for the whole project, and not divided between the
 agglomerations. Each source of financing, including each EU fund, is its own row with its own
-amount.
+expenditure.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -363,60 +356,59 @@ amount.
   - `high`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M005`
   - `planned`
   - `[2028,2033]`
   - `known`
-  - 10.0
-  - –
-  - EUR
 :::
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 8 32 26 12 13 9
+:widths: 8 28 24 12 12 8 8
 
 * - measureCode
   - fundingSource
   - europeanUnionFundName
   - loanName
   - fundingStatus
-  - amount
+  - 1st cycle
+  - After 1st cycle
 * - `M005`
   - `europeanUnionFund`
   - `europeanRegionalDevelopmentFund`
   - –
   - `appliedFor`
   - 4.0
+  - –
 * - `M005`
   - `europeanUnionFund`
   - `justTransitionFund`
   - –
   - `appliedFor`
   - 2.0
+  - –
 * - `M005`
   - `regional`
   - –
   - –
   - `secured`
   - 3.0
+  - –
 * - `M005`
   - `ownFunds`
   - –
   - –
   - `secured`
   - 1.0
+  - –
 :::
 
 **Adding it back up.**
@@ -430,7 +422,7 @@ amount.
   - How
 * - Total investment
   - 10.0
-  - Capital expenditure of the measure, counted once
+  - Sum of the financing rows of the measure, counted once
 * - Agglomerations concerned
   - 3
   - Codes in `euAgglomerationCode`
@@ -481,24 +473,18 @@ cost is unknown. There are no financing rows.
   - `medium`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M006`
   - `planned`
   - `[,2036]`
   - `unknown`
-  - –
-  - –
-  - –
 :::
 
 The plants and agglomerations are listed even though the order of the work is not yet decided:
@@ -507,8 +493,9 @@ Article 23(1)(b) asks for the investments for each agglomeration.
 The unknown cost raises a warning (check R16): Article 23(1)(b) asks for an indicative
 financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
 preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
-would report `costStatus` = `estimated` and 15.0 spread over the years to 2036, for example 10.0 in
-the 1st cycle and 5.0 after it, and no R16 warning.
+would report `costStatus` = `estimated` and one financing row with `fundingSource` =
+`notIdentified`, its 15.0 spread over the years to 2036, for example 10.0 in the 1st cycle and 5.0
+after it, and no R16 warning.
 
 **Adding it back up.**
 
@@ -543,8 +530,8 @@ budget and one completion year. It is therefore one measure with two types,
 `upgradeTertiaryNitrogenPhosphorus` and `upgradeQuaternary`, and its cost is given once, not split
 between them. Half of the cost is secured from the operators' own funds, an application for the
 Cohesion Fund is pending, and the source of the rest is not yet identified. Of the 100.0, 70.0 is
-expected to be spent from 2030 to 2033, in the 1st cycle, and 30.0 from 2034 to 2036. The
-financing is given for the whole measure, not per cycle.
+expected to be spent from 2030 to 2033, in the 1st cycle, and 30.0 from 2034 to 2036. Each source
+is split between the cycles in the same proportion as the measure: 70 % in the 1st cycle.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -570,54 +557,52 @@ financing is given for the whole measure, not per cycle.
   - `high`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M007`
   - `planned`
   - `[2030,2036]`
   - `estimated`
-  - 70.0
-  - 30.0
-  - EUR
 :::
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 8 32 26 12 13 9
+:widths: 8 28 24 12 12 8 8
 
 * - measureCode
   - fundingSource
   - europeanUnionFundName
   - loanName
   - fundingStatus
-  - amount
+  - 1st cycle
+  - After 1st cycle
 * - `M007`
   - `ownFunds`
   - –
   - –
   - `secured`
-  - 50.0
+  - 35.0
+  - 15.0
 * - `M007`
   - `europeanUnionFund`
   - `cohesionFund`
   - –
   - `appliedFor`
-  - 30.0
+  - 21.0
+  - 9.0
 * - `M007`
   - `notIdentified`
   - –
   - –
   - `notIdentified`
-  - 20.0
+  - 14.0
+  - 6.0
 :::
 
 **Adding it back up.**
@@ -638,6 +623,9 @@ financing is given for the whole measure, not per cycle.
 * - Financing gap
   - 50.0
   - 100.0 − 50.0
+* - Financing gap in the 1st cycle
+  - 35.0
+  - 70.0 − 35.0 secured: the rows that are not `secured`, 1st cycle only
 * - Of which applied for
   - 30.0
   - Financing rows with `fundingStatus` = `appliedFor`
@@ -666,7 +654,7 @@ the OtherInvestment table.
 **Filling it in.** The Member State plans to renew collecting systems across the country. It
 reports one national measure, with no plants or agglomerations listed. The renewal is under way;
 the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2035: 337.5 in the
-1st cycle and 112.5 after it.
+1st cycle and 112.5 after it. Each source is split in the same proportion.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -686,48 +674,45 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
   - `medium`
 :::
 
-:::{list-table} Measure: when and how much
+:::{list-table} Measure: when
 :header-rows: 1
-:widths: 10 13 17 15 15 17 13
+:widths: 16 24 30 30
 
 * - Code
   - Status
   - Period
   - Cost status
-  - 1st cycle
-  - After 1st cycle
-  - Currency
 * - `M008`
   - `ongoing`
   - `[2027,2035]`
   - `estimated`
-  - 337.5
-  - 112.5
-  - EUR
 :::
 
 :::{list-table} MeasureFinancing
 :header-rows: 1
-:widths: 8 32 26 12 13 9
+:widths: 8 28 24 12 12 8 8
 
 * - measureCode
   - fundingSource
   - europeanUnionFundName
   - loanName
   - fundingStatus
-  - amount
+  - 1st cycle
+  - After 1st cycle
 * - `M008`
   - `ownFunds`
   - –
   - –
   - `planned`
-  - 300.0
+  - 225.0
+  - 75.0
 * - `M008`
   - `municipal`
   - –
   - –
   - `planned`
-  - 150.0
+  - 112.5
+  - 37.5
 :::
 
 **Adding it back up.**
@@ -770,7 +755,7 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
   - `costStatus` is `known` or `estimated`
 * - Total investment
   - 606.4
-  - Sum of both expenditure fields over the measures
+  - Sum of both expenditure fields over the financing rows
 * - In the 1st cycle, 2028 to 2033
   - 441.9
   - Sum of `totalCapitalExpenditure1stCycle`
@@ -815,9 +800,9 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 * - Add up the capital expenditure after joining the measures to their plants and agglomerations
   - 866.4
   - Example 1 is counted twice, and examples 3 and 5 three times
-* - Add up the costs and the financing amounts together
-  - 1 212.8
-  - Financing describes the same money as the cost
+* - Count only the secured financing as the investment
+  - 63.6
+  - The investment is all the financing rows, whatever their `fundingStatus`
 * - Add up the capital expenditure once per measure type
   - 706.4
   - Example 5 has two types and is counted twice

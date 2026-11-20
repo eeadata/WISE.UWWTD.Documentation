@@ -14,10 +14,10 @@ individual systems or treatment plants, or the renewal of existing infrastructur
 A measure is something the Member State plans to do to reach or maintain compliance with the
 Directive, or to renew, upgrade or replace existing infrastructure: for example, a new collecting
 system, an upgrade to tertiary treatment, or the renewal of collecting systems nationwide. Each
-measure has one or more types, and one period, one priority and one capital expenditure,
-split between the 1st cycle and after it. The plants it
+measure has one or more types, and one period, one priority and one cost status. The plants it
 concerns are listed in the measure itself, in `euUWWTPCode`, and the agglomerations in
-`euAgglomerationCode`; the sources of its financing are given in {ref}`art23-measurefinancing`.
+`euAgglomerationCode`. Its capital expenditure, per source of financing and per cycle, is given in
+{ref}`art23-measurefinancing`, as in the Water Framework Directive.
 See {ref}`art23-investments`.
 
 Listing the plants or agglomerations in a multi-valued field follows the Water Framework Directive,
@@ -79,15 +79,11 @@ The field is the same as `implementationPeriod` in the Water Framework Directive
   or the cost of the work is not yet known, the measure is still reported against them.
 * **Indicative cost.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
   estimate is enough and is reported as `estimated`. Where not even a rough estimate can be given
-  yet, set `costStatus` to `unknown` and leave both expenditure fields empty. This raises a
-  warning, and the cost should be estimated in the next update.
-* **Splitting by cycle.** Give the capital expenditure expected in 2028 to 2033 in
-  `totalCapitalExpenditure1stCycle`, and what follows from 2034 in
-  `totalCapitalExpenditureAfter1stCycle`. Where the yearly profile is not known, spread the cost
-  evenly over the years of `implementationPeriod`. For an ongoing measure, report only what is
-  spent from 2028. The cost of the measure is the sum of the two fields.
-* **Currency.** Amounts are in millions of national currency, as in the Water Framework Directive:
-  0.01 is 10 000 units. Use a full stop as the decimal separator.
+  yet, set `costStatus` to `unknown` and report no {ref}`art23-measurefinancing` rows. This raises
+  a warning, and the cost should be estimated in the next update.
+* **Cost by source and cycle.** Report the capital expenditure in {ref}`art23-measurefinancing`,
+  one row per source of financing, split between the 1st cycle and after it. The cost of the
+  measure is the sum of both expenditure fields over its rows.
 
 ## Related open issues
 

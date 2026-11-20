@@ -73,7 +73,9 @@ cover the whole implementation period to 2045 or a shorter horizon?
 **Proposed answer.** Align with the Water Framework Directive cycles ({ref}`art23-cycles`).
 Capital expenditure is reported for the 1st cycle, 2028 to 2033, and in one amount for the period
 after it, to 2045, so that the whole investment to compliance is covered. Expenditure before 2028
-is not reported.
+is not reported. `totalCapitalExpenditure1stCycle` therefore covers the first cycle, 2028 to 2033, the
+same period as the 4th cycle of the Water Framework Directive. It is the expenditure planned for
+those six years: neither a single year, nor the years before the first programme.
 
 (art23-oi-prioritisation)=
 ## OI-05 Prioritisation
@@ -110,7 +112,8 @@ can be given, or whether funding amounts must add up to the investment.
 funds.
 
 **Proposed answer.** In the measure model, each source of financing, and each EU fund, is its own
-row in MeasureFinancing with its own amount, so the multi-select question no longer arises
+row in MeasureFinancing with its own capital expenditure, so the multi-select question no longer
+arises
 ({ref}`art23-oi-measure-model`).
 
 (art23-oi-unknown)=
@@ -124,7 +127,7 @@ reporting investments was also suggested.
 
 **Proposed answer.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
 estimate is reported as `costStatus` = `estimated`. In the measure model, `costStatus` =
-`unknown` with empty expenditure fields remains possible as an exception, where not even a rough
+`unknown` with no financing rows remains possible as an exception, where not even a rough
 estimate can be given, but raises a warning (check R16). No minimum threshold applies
 ({ref}`art23-oi-measure-model`).
 
@@ -142,7 +145,7 @@ codelist, which includes the European Investment Bank?
 **Under consideration.** Making the loan fields optional.
 
 **Proposed answer.** In the measure model, a loan is an optional source of financing in
-MeasureFinancing, with an optional lender name and amount.
+MeasureFinancing, with an optional lender name.
 
 (art23-oi-pro)=
 ## OI-10 Producer responsibility contribution
@@ -162,8 +165,8 @@ first programme, when the PROs may not yet be recognised.
 (art23-oi-costs)=
 ## OI-11 Nominal or annualised costs
 
-**Question.** Are amounts (the capital expenditure, the financing amounts and
-`producerResponsibilityContribution`) nominal or annualised? If annualised, which assumptions
+**Question.** Are amounts (the capital expenditure and `producerResponsibilityContribution`)
+nominal or annualised? If annualised, which assumptions
 should be reported?
 
 (art23-oi-loads)=
@@ -318,15 +321,24 @@ uses "measures" in Article 18(2) and (3), whose summary of measures goes both in
 management plans and into the programme. The proposal is a
 Measure table with one row per measure, listing the plants or agglomerations it concerns in a
 multi-valued field as the Water Framework Directive lists river basin districts, and a
-MeasureFinancing table giving its sources of financing
+MeasureFinancing table giving its capital expenditure per cycle and per source of financing
 ({ref}`art23-investments`). UWWTP and Agglomeration keep only the state of the object.
+
+**Changed after the review with the Water Framework Directive team (November 2026).** The capital
+expenditure per cycle and its currency (`totalCapitalExpenditure1stCycle`,
+`totalCapitalExpenditureAfter1stCycle`, `millionUnitsOfNationalCurrency`) moved from Measure to
+MeasureFinancing, as in the Water Framework Directive `ExpenditurePerMeasurePerSector` table, and
+replace the financing `amount`. A measure financed with 1.0 million, half from an EU fund and half
+from the national budget, is two rows of 0.5. The cost of a measure is now the sum of its
+financing rows, so totals use both tables, and check RF04 requires at least one row for each
+measure whose cost is known or estimated.
 
 **Questions.**
 
 * Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
   the references to Article 23(1)(b) to (d), which speak of investments?
-* Is `costStatus` = `unknown`, with empty expenditure fields, accepted as an exception with a
-  warning (OI-08), or should an indicative estimate always be required?
+* Is `costStatus` = `unknown`, with no financing rows, accepted as an exception with a warning
+  (OI-08), or should an indicative estimate always be required?
 * Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
   needs to assess progress?
 
@@ -367,6 +379,15 @@ corresponds to such a key type and pressure, derived centrally ({ref}`art23-cl-m
   to report these measures there?
 * Is the proposed correspondence between measure types and WFD key types correct, including the
   measure types without a direct equivalent?
+* A WFD key type of measure for collecting systems is to be discussed with DG ENV. `X01` is
+  already the key type for treatment plants, so the new one needs another notation. Once it
+  exists, do the collecting system measure types correspond to it instead of `G`?
+* Are the pressures right? `managementPlanMeasures` corresponds to `P1-2` (storm overflows), but
+  an integrated urban wastewater management plan also addresses urban run-off, which the Water
+  Framework Directive classifies as `P2-1` (diffuse - urban run-off). Plants that are also
+  reported as industrial facilities (E-PRTR) correspond to `P1-1` (urban waste water), not to
+  `P1-3` (IED plants), since treatment plants are not installations under the Industrial
+  Emissions Directive.
 
 (art23-oi-listed-objects)=
 ## OI-26 Plants and agglomerations in the state tables

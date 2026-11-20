@@ -175,7 +175,7 @@ reported; the current expenditure of the Water Framework Directive has no equiva
 * - 1st cycle, 2028 to 2033, and after it
   - Split of the capital expenditure of each measure.
   - `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle` in
-    {ref}`art23-measure`
+    {ref}`art23-measurefinancing`
 :::
 
 Which period the first programme should describe, and whether measures should cover the whole

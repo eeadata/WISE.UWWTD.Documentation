@@ -13,7 +13,7 @@ RiskAssessment,Article23,art23-cl-risk-assessment,Proposed risk assessment value
 ContributionPeriod,Article23,art23-cl-contribution-period,Proposed contribution period values,Notation|Label|Definition|Notes,20 20 36 24,notation
 PlantAgglomerationStatus,Article23,art23-cl-status,Proposed status values,Notation|Label|Definition|Notes,26 22 32 20,notation
 UWWTDMeasureType,Article23,art23-cl-measure-type,Proposed measure types,Notation|Label|Definition|Notes,30 24 26 20,notation
-UWWTDMeasureTypeWFD,Article23,art23-cl-measure-type-wfd,Proposed correspondence with WFD key types of measures,Measure type|WFD key type of measure|WFD main pressure|Notes,34 22 22 22,measureType wfdKeyTypeOfMeasure wfdMainPressure
+UWWTDMeasureTypeWFD,Article23,art23-cl-measure-type-wfd,Proposed correspondence with WFD key types of measures,Measure type|WFD mainKeyTypeOfMeasure|WFD mainPressureType|Notes,34 22 22 22,measureType wfdKeyTypeOfMeasure wfdMainPressure
 UWWTDGeographicCoverage,Article23,art23-cl-coverage,Proposed geographical coverage values,Notation|Label|Definition|Notes,24 22 34 20,notation
 ImplementationStatus,Article23,art23-cl-implementation-status,Implementation status values,Notation|Label|Definition|Notes,24 22 34 20,notation
 CostStatus,Article23,art23-cl-cost-status,Proposed cost status values,Notation|Label|Definition|Notes,24 22 34 20,notation

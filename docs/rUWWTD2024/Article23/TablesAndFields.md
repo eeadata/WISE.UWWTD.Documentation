@@ -74,12 +74,12 @@ gives the definition, condition and codelist of every field.
   - `measureCode`, `measureName`, `measureNameLanguage`, `measureReference`, `uwwtdMeasureType`,
     `measureText`, `geographicalCoverage`, `euUWWTPCode`, `euAgglomerationCode`,
     `prioritisation`, `implementationStatus`, `implementationPeriod`,
-    `costStatus`, `totalCapitalExpenditure1stCycle`,
-    `totalCapitalExpenditureAfter1stCycle`, `millionUnitsOfNationalCurrency`,
-    `remarks`
+    `costStatus`, `remarks`
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
-  - `measureCode`, `fundingSource`, `europeanUnionFundName`, `loanName`, `fundingStatus`, `amount`
+  - `measureCode`, `fundingSource`, `europeanUnionFundName`, `loanName`, `fundingStatus`,
+    `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle`,
+    `millionUnitsOfNationalCurrency`
 * - {ref}`art23-uwwtp`
   - One per plant
   - `thematicIdIdentifier`, `status`, `expectedLoad`, `expectedCapacity`, `remarks`

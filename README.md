@@ -26,6 +26,10 @@ The **data explorer** (`explorer/`, published under
 search and download the code lists and field tables of `reference/`, and look at the provisional
 spatial points prefill. It is under development; see [explorer/README.md](explorer/README.md).
 
+The **reference data** (`reference/`) holds the code lists and field tables as CSV files, the single
+source for the documentation, the explorer and the template databases. Each dataflow specification
+is versioned, tagged and released automatically; see [reference/README.md](reference/README.md).
+
 ## Building the documentation
 
 ```sh

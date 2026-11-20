@@ -11,6 +11,9 @@ and codelists are not final. How Reportnet supports a dataflow that stays open f
 needs technical confirmation ({ref}`sp-oi-reportnet`).
 :::
 
+**Specification version:** {specversion}`SpatialPoints`. Each version is a release of the repository,
+with its changes, the template database and the CSV files; see {ref}`spec-versions`.
+
 The spatial points dataflow identifies and locates the agglomerations, urban wastewater treatment
 plants and discharge points that the reporting under the revised Directive refers to. Each object
 is reported here once, with its code, name and location. The Article 22 and Article 23 reporting

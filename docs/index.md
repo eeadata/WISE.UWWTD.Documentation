@@ -33,9 +33,7 @@ which recasts Directive 91/271/EEC.
 ## Data explorer
 
 ::::{grid} 1
-:::{grid-item-card} Data explorer
-:link: explorer/index.html
-:link-type: url
+:::{grid-item-card} {explorer}`Data explorer <index.html>`
 **UNDER DEVELOPMENT**
 ^^^
 Browse, search and download the code lists and field tables of the rUWWTD dataflows, an empty

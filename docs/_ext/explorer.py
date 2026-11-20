@@ -10,14 +10,24 @@ In a page:
 
 The {codelist} and {fieldtable} directives add a link to their page in the explorer under each table
 (explorer_link below).
+
+A snapshot of the documentation for a version (versions/<tag>/, see conf.py) has no explorer of its
+own: its links go to the current explorer, explorer_up = 2 folders further up.
 """
 
 from docutils import nodes
 
+_up = 0  # explorer_up of the build, set when the configuration is read
+
 
 def explorer_href(docname, path):
     """The address of an explorer page, relative to the HTML page of `docname`."""
-    return '../' * docname.count('/') + 'explorer/' + path
+    return '../' * (docname.count('/') + _up) + 'explorer/' + path
+
+
+def config_inited(app, config):
+    global _up
+    _up = config.explorer_up
 
 
 def explorer_link(docname, path, text):
@@ -38,5 +48,7 @@ def explorer_role(name, rawtext, text, lineno, inliner, options=None, content=No
 
 
 def setup(app):
+    app.add_config_value('explorer_up', 0, 'env')
+    app.connect('config-inited', config_inited)
     app.add_role('explorer', explorer_role)
     return {'version': '1.0', 'parallel_read_safe': True, 'parallel_write_safe': True}

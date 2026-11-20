@@ -4,7 +4,7 @@ toc: false
 ---
 
 ```js
-import {DATAFLOWS, codelistHref, codelistUsage, markup, plain} from "../components/reference.js";
+import {DATAFLOWS, codelistHref, codelistUsage, markup, plain, versionNote} from "../components/reference.js";
 import {csvButton, jsonButton} from "../components/download.js";
 ```
 
@@ -67,6 +67,7 @@ display(html`<div class="card">
   <h2><code>${choice.type}</code></h2>
   <p>${choice.caption}. ${DATAFLOWS[choice.dataflow]} dataflow.
   <a href="${codelistHref(DOCS, choice)}">Definition in the documentation</a>.</p>
+  <p class="muted small">Version: ${versionNote(ref.versions, choice.dataflow)}</p>
   <p>${used.length
     ? html`Used by ${used.map((u, i) => html`${i ? ", " : ""}<a href="./fields?table=${u.dataflow}/${u.table}#${u.notation}"><code>${u.table}.${u.notation}</code></a>`)}.`
     : html`<span class="muted">Not the type of any field: it describes the values of another code list.</span>`}</p>

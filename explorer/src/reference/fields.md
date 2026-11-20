@@ -4,7 +4,7 @@ toc: false
 ---
 
 ```js
-import {DATAFLOWS, docsHref, markup, plain, typeText} from "../components/reference.js";
+import {DATAFLOWS, docsHref, markup, plain, typeText, versionNote} from "../components/reference.js";
 import {csvButton, jsonButton} from "../components/download.js";
 ```
 
@@ -89,6 +89,7 @@ display(html`<div class="card">
     ? html`Key: ${choice.primaryKey.map((k, i) => html`${i ? ", " : ""}<code>${k}</code>`)}.`
     : html`<span class="muted">No key stated.</span>`}
   <a href="${docsHref(DOCS, choice.page, choice.anchor)}">Definition in the documentation</a>.</p>
+  <p class="muted small">Version: ${versionNote(ref.versions, choice.dataflow)}</p>
 </div>`);
 ```
 

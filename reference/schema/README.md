@@ -164,28 +164,6 @@ or, for one part of a table:
 
 ## Versions
 
-*Proposal, not yet applied: no tag has been created.*
-
-Each dataflow is versioned on its own, with a git tag on `main` named `<dataflow>-v<major>.<minor>`
-in lower case:
-
-* `spatialpoints-v0.1`, `spatialpoints-v0.2`, ...
-* `article23-v0.1`, `article23-v0.2`, ...
-
-A version covers everything a tool reads for that dataflow: its tables in `reference/schema/`, the
-types in `types.csv` and its code lists in `reference/codelist/`. Tools that build a Reportnet 3
-schema, prefill data or test quality checks name the tag they used, so that the result can be
-traced back and rebuilt.
-
-When a tag is cut:
-
-* **0.x, while the dataflow is a draft.** A new minor version when a draft is handed over for a
-  defined use: a consultation of the Member States, a Reportnet 3 test schema, a prefill. Changes
-  in between are not tagged.
-* **1.0** when the schema is final for the first reporting under the dataflow.
-* **After 1.0**, a new minor version for a change that leaves earlier deliveries valid (a new
-  optional field, a new code list value, a longer text), and a new major version for one that does
-  not (a field removed or renamed, a type narrowed, a field made required, a code removed).
-
-The tag message lists the changes since the previous version of the same dataflow. A change that
-affects both dataflows, such as a shared type, gets a tag for each.
+The specification of each dataflow, its tables here and its code lists, has a version in
+`reference/versions.csv`. A change here needs a version bump, which the workflow checks, and a merged
+version is tagged and released automatically. See [reference/README.md](../README.md).

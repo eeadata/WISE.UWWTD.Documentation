@@ -14,7 +14,9 @@ class MeasureFinancing{
     + europeanUnionFundName: EUFund [0..1]
     + loanName: string255 [0..1]
     + fundingStatus: FundingStatus [1]
-    + amount: nonNegativeValue [0..1]
+    + totalCapitalExpenditure1stCycle: nonNegativeValue [0..1]
+    + totalCapitalExpenditureAfter1stCycle: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
 }
 
 classDef default fill:white,stroke:#000;

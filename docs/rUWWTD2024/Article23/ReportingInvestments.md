@@ -15,19 +15,19 @@ is financed from one or more sources:
 
 * **Measure** ({ref}`art23-measure`): one row per measure, with its types, coverage, the plants or
   agglomerations it concerns (`euUWWTPCode` or `euAgglomerationCode`), priority, status, dates and
-  capital expenditure per cycle.
-* **MeasureFinancing** ({ref}`art23-measurefinancing`): where the money comes from, source by
-  source, and how far each part is secured.
+  cost status.
+* **MeasureFinancing** ({ref}`art23-measurefinancing`): the capital expenditure per cycle, source
+  by source, and how far each part is secured.
 
 The {ref}`art23-uwwtp` and {ref}`art23-agglomeration` tables keep only the state of each listed
 plant or agglomeration: status, expected load and capacity. This follows the structure of the Water
-Framework Directive 4th cycle, where a `Measure` table is the main table and costs are reported
-per measure.
+Framework Directive 4th cycle, where a `Measure` table is the main table and the capital
+expenditure of each measure is reported per cycle in a separate table, `ExpenditurePerMeasurePerSector`.
 
 ```{mermaid}
 flowchart LR
-  Measure["Measure<br/>types, plants or agglomerations,<br/>priority, dates, cost"]
-  MeasureFinancing["MeasureFinancing<br/>source, status, amount"]
+  Measure["Measure<br/>types, plants or agglomerations,<br/>priority, dates, cost status"]
+  MeasureFinancing["MeasureFinancing<br/>source, status,<br/>capital expenditure per cycle"]
   UWWTP["UWWTP<br/>state of the plant"]
   Agglomeration["Agglomeration<br/>state of the agglomeration"]
   Spatial["Spatial points<br/>code, name, location"]
@@ -92,18 +92,20 @@ Directive asks to identify the investments for each agglomeration, not to split 
 * **Capital expenditure only.** As in the Water Framework Directive, the cost of a measure is its
   capital expenditure. Operational and maintenance costs, which the Water Framework Directive
   reports as current expenditure, are not reported.
-* **Split by cycle.** `totalCapitalExpenditure1stCycle` is the expenditure in 2028 to 2033, and
+* **By source and by cycle.** The capital expenditure is reported in
+  {ref}`art23-measurefinancing`, one row per source of financing. In each row,
+  `totalCapitalExpenditure1stCycle` is the expenditure in 2028 to 2033, and
   `totalCapitalExpenditureAfter1stCycle` the expenditure from 2034 until completion. Each is given
   where `implementationPeriod` falls in that period. Expenditure before 2028 is not reported. Where
   the yearly profile is not known, spread the cost evenly over the years of the measure
-  ({ref}`art23-cycles`).
+  ({ref}`art23-cycles`). The cost of a measure is the sum of both fields over its rows.
 * **Give an indicative estimate.** Article 23(1)(b) asks for an indicative financial estimation of
   the investments. A rough figure is enough, for example a typical cost per plant multiplied by the
   number of plants. Report it with `costStatus` = `estimated`.
 * **Estimated or known.** Use `estimated` for estimates and `known` for costs from a project,
   tender or contract.
 * **Unknown is an exception.** Where not even a rough estimate can be given yet, set `costStatus`
-  to `unknown` and leave both expenditure fields empty. The measure is accepted but raises a warning
+  to `unknown` and report no financing rows. The measure is accepted but raises a warning
   (check R16), since it gives no financial estimation, and the cost should be estimated in the
   next update.
 * **Several types, one cost.** A measure with several types has one cost, which is not split
@@ -111,29 +113,32 @@ Directive asks to identify the investments for each agglomeration, not to split 
   others, count the measures that include a type rather than adding up their costs.
 * **Each cost once.** A cost belongs to one measure. Do not add the cost of a plant to the
   agglomeration it serves, or the reverse. The total investment of the programme is the sum of
-  both expenditure fields over all measures.
+  both expenditure fields over all the rows of {ref}`art23-measurefinancing`.
 
 ## Financing
 
 Each row of {ref}`art23-measurefinancing` gives one source of financing for a measure, with its
-status and amount:
+status and its capital expenditure per cycle:
 
-* **Several sources.** Each source, and each EU fund, is its own row with its own amount, so it is
-  clear how much is expected from which fund.
+* **Several sources.** Each source, and each EU fund, is its own row with its own expenditure, so
+  it is clear how much is expected from which fund, and in which cycle.
 * **Secured or not.** `fundingStatus` says whether the money is secured, applied for or only
   planned, or whether no source has been identified.
-* **The gap.** The financing gap of a measure is calculated, not reported: its capital expenditure
-  in both fields minus the sum of the amounts with `fundingStatus` = `secured`. Financing is given
-  for the whole measure, not per cycle.
-* **Funding is not an investment.** Financing amounts describe how a measure's cost is covered.
-  They are not added to the total investment.
+* **The whole cost.** The rows of a measure add up to its cost. The part without a source yet is
+  a row with `fundingSource` = `notIdentified`.
+* **The gap.** The financing gap of a measure is calculated, not reported: the sum of the
+  expenditure of its rows whose `fundingStatus` is not `secured`, per cycle or for both together.
+* **Sums use both tables.** Totals per measure type, plant, agglomeration or priority join the
+  financing rows to their measure on `measureCode`, and are added up per measure first
+  ({ref}`art23-examples-together`).
 
 ## Currency
 
 As in the Water Framework Directive, amounts are reported in millions: of euro by euro area
 Member States, and of national currency by the others. `millionUnitsOfNationalCurrency` gives the
-currency once per measure, and applies to the capital expenditure and to the financing amounts of that
-measure. A value below one million uses decimals with a full stop: 10 000 is `0.01`.
+currency of each row of {ref}`art23-measurefinancing`, as in the Water Framework Directive, and is
+the same in all the rows of a delivery. A value below one million uses decimals with a full stop:
+10 000 is `0.01`.
 
 (art23-measures-wfd)=
 ## Reported once
@@ -217,7 +222,7 @@ of the money still to be found, and a national renewal programme.
   - Upper bound of `implementationPeriod` in {ref}`art23-measure`
 * - `investment` of plants and agglomerations
   - `totalCapitalExpenditure1stCycle` and `totalCapitalExpenditureAfter1stCycle` in
-    {ref}`art23-measure`
+    {ref}`art23-measurefinancing`, per source of financing
 * - `europeanUnionFund`, `europeanUnionFundName`
   - A {ref}`art23-measurefinancing` row with `fundingSource` = `europeanUnionFund` and
     `europeanUnionFundName`
@@ -289,11 +294,16 @@ of the money still to be found, and a national renewal programme.
   - All the types of a measure concern the same kind of object, treatment plants or agglomerations;
     `otherMeasureArticle18_2` may be combined with either
   - Error
+* - RF04
+  - Measure, MeasureFinancing
+  - A measure with `costStatus` = `known` or `estimated` has at least one MeasureFinancing row; a
+    measure with `costStatus` = `unknown` has none
+  - Error
 * - R04
-  - Measure
-  - With `costStatus` = `unknown`, both expenditure fields are empty. Otherwise
-    `totalCapitalExpenditure1stCycle` is given if and only if `implementationPeriod` overlaps
-    `[2028,2033]`, and `totalCapitalExpenditureAfter1stCycle` if and only if it ends after 2033
+  - MeasureFinancing, Measure
+  - `totalCapitalExpenditure1stCycle` is given if and only if the `implementationPeriod` of the
+    measure overlaps `[2028,2033]`, and `totalCapitalExpenditureAfter1stCycle` if and only if it
+    ends after 2033
   - Error
 * - R05
   - Measure
@@ -303,10 +313,6 @@ of the money still to be found, and a national renewal programme.
   - MeasureFinancing
   - `fundingSource` = `europeanUnionFund` if and only if `europeanUnionFundName` is given
   - Error
-* - R07
-  - MeasureFinancing
-  - The sum of the amounts of a measure does not exceed the sum of its two expenditure fields
-  - Warning
 * - R08
   - Measure
   - The bounds of `implementationPeriod` are between 2027 and 2045
@@ -320,9 +326,9 @@ of the money still to be found, and a national renewal programme.
   - `loanName` is given only with `fundingSource` = `loan`
   - Error
 * - R12
-  - Measure, MSSummary
-  - `millionUnitsOfNationalCurrency` is given wherever an amount is, and is `EUR` for euro area
-    Member States
+  - MeasureFinancing, MSSummary
+  - `millionUnitsOfNationalCurrency` is given wherever an amount is, is the same in all rows of
+    the delivery, and is `EUR` for euro area Member States
   - Error
 * - R13
   - Measure

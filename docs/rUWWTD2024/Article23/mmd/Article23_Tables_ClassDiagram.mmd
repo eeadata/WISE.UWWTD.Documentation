@@ -83,9 +83,6 @@ namespace DescriptiveDataset {
         + implementationStatus: ImplementationStatus [1]
         + implementationPeriod: range [1]
         + costStatus: CostStatus [1]
-        + totalCapitalExpenditure1stCycle: nonNegativeValue [0..1]
-        + totalCapitalExpenditureAfter1stCycle: nonNegativeValue [0..1]
-        + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
         + remarks: string1000 [0..1]
     }
     class MeasureFinancing {
@@ -94,7 +91,9 @@ namespace DescriptiveDataset {
         + europeanUnionFundName: EUFund [0..1]
         + loanName: string255 [0..1]
         + fundingStatus: FundingStatus [1]
-        + amount: nonNegativeValue [0..1]
+        + totalCapitalExpenditure1stCycle: nonNegativeValue [0..1]
+        + totalCapitalExpenditureAfter1stCycle: nonNegativeValue [0..1]
+        + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
     }
     class UWWTP {
         + thematicIdIdentifier: wiseIdentifier [1]

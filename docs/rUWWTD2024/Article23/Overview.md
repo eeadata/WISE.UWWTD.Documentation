@@ -68,16 +68,17 @@ is required, and `situationAt` records the date of the reported situation.
     {ref}`art23-uwwtp` and {ref}`art23-agglomeration`: the `status` field of each.
 * - Article 23(1)(b) - investments required to implement the Directive, PRO contribution and
     prioritisation
-  - {ref}`art23-measure`: the measures, the plants or agglomerations they concern, their `prioritisation`
-    and their capital expenditure, `totalCapitalExpenditure1stCycle` and
-    `totalCapitalExpenditureAfter1stCycle`.
+  - {ref}`art23-measure`: the measures, the plants or agglomerations they concern and their
+    `prioritisation`. {ref}`art23-measurefinancing`: their capital expenditure,
+    `totalCapitalExpenditure1stCycle` and `totalCapitalExpenditureAfter1stCycle`.
     {ref}`art23-mssummary`: `producerResponsibilityContribution`,
     `producerResponsibilityEstimateBasedOn`, `contributionPeriod`, `prioritisationReference`.
 * - Article 23(1)(c) - renewal, upgrade or replacement of existing infrastructure
   - {ref}`art23-measure`: measures of type `renewOrReplaceCollectingSystem` or
     `renewOrReplaceTreatmentPlant`, for listed plants or agglomerations or national.
 * - Article 23(1)(d) - sources of public financing
-  - {ref}`art23-measurefinancing`: `fundingSource`, `fundingStatus` and `amount`.
+  - {ref}`art23-measurefinancing`: `fundingSource` and `fundingStatus`, with the capital
+    expenditure from each source.
     Loans are an optional source; see {ref}`art23-oi-loans`.
 * - Article 23(1)(e) and Article 3(2) - derogation information
   - {ref}`art23-derogation`: one row each for Articles 3(2), 6(3) and 7(4).

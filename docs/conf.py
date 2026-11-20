@@ -16,6 +16,7 @@ copyright = '2026, WISE.UWWTD.Documentation'
 # Local extensions: _ext/codelist.py renders the code lists from reference/codelist/*.csv,
 # _ext/fieldtable.py the field tables from reference/schema/*/*.csv,
 # _ext/internal.py keeps the open issues pages out of the published build (-t internal to include them)
+# _ext/explorer.py links to the data explorer published under explorer/
 import os
 import sys
 sys.path.insert(0, os.path.abspath('_ext'))
@@ -23,6 +24,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 extensions = ['codelist',
               'fieldtable',
               'internal',
+              'explorer',
               'sphinx.ext.autodoc',
               'myst_parser',
               'sphinx_design',

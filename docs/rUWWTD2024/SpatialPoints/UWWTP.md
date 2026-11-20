@@ -5,6 +5,8 @@
 plants ({ref}`first reporting <sp-first-reporting>`). Later, report only new, changed or retired
 objects; unchanged rows may be included as `noChange`.
 **Rows:** one row per treatment plant reported. `thematicIdIdentifier` is the key.
+**Prefill:** {explorer}`browse the prefilled treatment plants <spatial/uwwtps.html>` on a map, with their
+quality-check flags. Provisional: reference year 2024, under Member State review.
 
 The table identifies and locates every urban wastewater treatment plant, including proposed ones,
 with its code, name, location and condition. The dataflow starts from the objects reported under

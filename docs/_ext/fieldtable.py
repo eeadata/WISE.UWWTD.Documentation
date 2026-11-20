@@ -26,6 +26,8 @@ from docutils.statemachine import StringList
 from sphinx.util import logging
 from sphinx.util.docutils import SphinxDirective
 
+from explorer import explorer_link
+
 logger = logging.getLogger(__name__)
 
 HEADERS = ['Notation', 'Label', 'Definition', 'Type', 'Status']
@@ -62,7 +64,9 @@ class FieldtableDirective(SphinxDirective):
         index_path, path = root / 'datasets.csv', root / f'{name}.csv'
         for p in (index_path, path):
             self.env.note_dependency(str(p))
-        index = {(r['dataflow'], r['table'], r['group']): r for r in read_csv(index_path)}
+        rows = read_csv(index_path)
+        index = {(r['dataflow'], r['table'], r['group']): r for r in rows}
+        parts = [r['group'] for r in rows if (r['dataflow'], r['table']) == (dataflow, table)]
         meta = index.get((dataflow, table, group))
         if meta is None or not path.exists():
             raise self.error(f'fieldtable {name!r} group {group!r}: not in {index_path.name} or no {name}.csv')
@@ -87,7 +91,11 @@ class FieldtableDirective(SphinxDirective):
 
         container = nodes.container()
         self.state.nested_parse(StringList(lines, source=str(path)), self.content_offset, container)
-        return container.children
+        if group != parts[-1]:  # a table shown in parts gets the link once, under its last part
+            return container.children
+        link = explorer_link(self.env.docname, f'reference/fields.html?table={name}',
+                             'Browse, search and download the fields of this table')
+        return [*container.children, link]
 
 
 def run_checks(app):

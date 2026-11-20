@@ -1,8 +1,8 @@
 {
-  "name": "uwwtd-spatial-points-dashboard",
+  "name": "uwwtd-data-explorer",
   "private": true,
   "type": "module",
-  "description": "Map of the prefilled rUWWTD spatial points, for reporters to review before their first delivery",
+  "description": "Browse and download the rUWWTD reference data, and the provisional spatial points prefill",
   "scripts": {
     "clean": "rimraf src/.observablehq/cache",
     "build": "observable build",

@@ -39,10 +39,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r docs/requirements.txt          
           
-      # Check the field tables in reference/schema against the types and code lists
+      # Check the field tables in reference/schema against the types and code lists,
+      # and that the template databases can be built from them
       - name: Check field tables
         run: |
           python reference/schema/check.py
+          python reference/schema/template.py --check
 
       # Step 4: Run Sphinx to build the actual HTML documentation
       # This takes the source files from the 'doc' folder and outputs HTML to '_build'

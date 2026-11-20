@@ -40,6 +40,8 @@ the ${html`<a href="../index.html">documentation</a>`}; this explorer reads the 
 - **Reference data:** each code list and table can be downloaded from its page, as CSV or JSON.
   All of them, as the CSV files of the repository:
   ${html`<a href="${FileAttachment("reference/data/reference.zip").href}" download="rUWWTD-reference.zip">rUWWTD-reference.zip</a>`}.
+- **Template databases:** an empty database of each dataflow, with the code lists and keys, on the
+  ${html`<a href="./reference/fields#template-databases">field tables</a>`} page.
 - **Spatial points prefill:** each page downloads the rows of a country as CSV. The whole tables, as
   Parquet, are attached to the release ${html`<a href="${release.url}"><code>${release.tag}</code></a>`}.
 

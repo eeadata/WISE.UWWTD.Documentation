@@ -11,6 +11,11 @@ import {csvButton, jsonButton} from "../components/download.js";
 ```js
 const ref = FileAttachment("data/reference.json").json();
 const DOCS = "../../"; // the documentation, from this page
+// Empty databases of each dataflow, made from the same files (reference/schema/template.py)
+const TEMPLATES = {
+  Article23: {file: FileAttachment("data/rUWWTD_Article23_template.sqlite"), kind: "SQLite"},
+  SpatialPoints: {file: FileAttachment("data/rUWWTD_SpatialPoints_template.gpkg"), kind: "GeoPackage"}
+};
 ```
 
 ```js
@@ -114,6 +119,22 @@ display(html`<a href="${FileAttachment("data/reference.zip").href}" download="rU
 ```
 
 </div>
+
+## Template databases
+
+An empty database of each dataflow, made from the same files, to load data into and check it
+against the keys, the required fields and the code lists:
+
+```js
+display(html`<ul>${Object.entries(TEMPLATES).map(([dataflow, t]) => html`<li><a href="${t.file.href}" download="${t.file.name}">${t.file.name}</a>: ${DATAFLOWS[dataflow]}, ${t.kind}${dataflow === "SpatialPoints" ? ", with a point geometry in ETRS89, opens in QGIS" : ""}</li>`)}</ul>`);
+```
+
+Each has the reporting tables with their keys and required fields, constraints from the types (such
+as lengths, dates and values of 0 or more), the code lists filled in tables `cl_<Type>` with foreign
+keys to them, a `Metadata` table of the tables and fields in the layout of the Water Framework
+Directive documentation, and an `_about` table. Foreign keys are only checked when enabled on each
+connection, with `PRAGMA foreign_keys = ON`. Conditions ("Required if ...") are not enforced: they are
+in `Metadata.condition`, and are left to the quality checks. Drafts, like the documentation.
 
 <p class="muted small">The files are the CSV sources of the field tables in the repository
 (<code>reference/schema</code>); its README explains the columns. Definitions and conditions may contain

@@ -42,7 +42,7 @@ OpenIssues
 What the programme must contain, who reports, and which plants and agglomerations to include.
 :::
 :::{grid-item-card} {ref}`art23-timing`
-Legal deadlines and the reference dates used in the draft reporting format.
+Article 23 deadlines and the reference dates used in the draft reporting format.
 :::
 :::{grid-item-card} {ref}`art23-terminology`
 Acronyms, legal definitions, requirement status and data types.

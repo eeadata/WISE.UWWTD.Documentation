@@ -417,7 +417,7 @@ window.runMermaid = runMermaid;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Agglomeration" href="Agglomeration.html" />
-    <link rel="prev" title="Open issues and proposed changes" href="../Article23/OpenIssues.html" />
+    <link rel="prev" title="Examples" href="../Article23/Examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -687,7 +687,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/Codelists.html">Codelists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/ReportingInvestments.html">Reporting measures and costs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Article23/Examples.html">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Article23/OpenIssues.html">Open issues and proposed changes</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Spatial points</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -695,7 +694,6 @@ window.runMermaid = runMermaid;</script>
 <li class="toctree-l2"><a class="reference internal" href="UWWTP.html">UWWTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DischargePoint.html">DischargePoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Codelists.html">Codelists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OpenIssues.html">Decisions and open issues</a></li>
 </ul>
 </details></li>
 </ul>
@@ -766,7 +764,7 @@ window.runMermaid = runMermaid;</script>
 A simplified UWWTD reporting proposal. It reuses WISE terms and fields where they help, but it is
 not a copy of the WISE spatial data schema of the Water Framework Directive. The tables, fields
 and codelists are not final. How Reportnet supports a dataflow that stays open for updates still
-needs technical confirmation (<a class="reference internal" href="OpenIssues.html#sp-oi-reportnet"><span class="std std-ref">SP-20 Reportnet</span></a>).</p>
+needs technical confirmation.</p>
 </div>
 <p>The spatial points dataflow identifies and locates the agglomerations, urban wastewater treatment
 plants and discharge points that the reporting under the revised Directive refers to. Each object
@@ -856,7 +854,7 @@ whole table has to be delivered again, rows left as they are stay <code class="d
 <p><strong>A row is the complete object.</strong> A reported row gives all the current values of the object, not
 only those that changed. It is proposed that the reporting tables are prefilled with the accepted
 values, so that the reporter only edits what has changed; whether Reportnet can do this has not
-been verified (<a class="reference internal" href="OpenIssues.html#sp-oi-reportnet"><span class="std std-ref">SP-20 Reportnet</span></a>).</p>
+been verified.</p>
 <ul class="simple">
 <li><p>An optional field left empty clears the value accepted earlier.</p></li>
 <li><p>The replaced codes are an exception: left empty, they mean that no new replacement is
@@ -1059,7 +1057,7 @@ flowchart LR
 <li><p><strong>Absorption.</strong> XXAGG0110 absorbs XXAGG0111 and remains the same agglomeration. Report XXAGG0110
 as a <code class="docutils literal notranslate"><span class="pre">change</span></code>, with its new values, and <code class="docutils literal notranslate"><span class="pre">predecessorsIdentifier</span></code> = <code class="docutils literal notranslate"><span class="pre">XXAGG0111</span></code>. It keeps its
 code: in WISE, an <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> produces a new object and must not reuse a replaced code. How
-this case is published to WISE is open (<a class="reference internal" href="OpenIssues.html#sp-oi-wise"><span class="std std-ref">SP-13 Differences from WISE</span></a>).</p>
+this case is published to WISE is open.</p>
 <figure class="align-center" id="spatialpoints-example-absorption">
 <pre  class="mermaid">
         ---
@@ -1199,7 +1197,7 @@ a treatment plant is not used in its place. An unsuitable earlier point is corre
 <code class="docutils literal notranslate"><span class="pre">change</span></code>, keeping the code.</p>
 <p><strong>Treatment plants and discharge points.</strong> The geometry is always required, whatever the
 condition of the facility. A proposed treatment plant or discharge point is reported once its
-location is known (<a class="reference internal" href="OpenIssues.html#sp-oi-planned-location"><span class="std std-ref">SP-02 Coordinates of planned facilities</span></a>). A closed facility keeps its known location.</p>
+location is known. A closed facility keeps its known location.</p>
 <p>A location is never filled with zero, or with the point of the agglomeration a facility serves.</p>
 </section>
 <section id="sp-names">
@@ -1227,7 +1225,7 @@ the official name is assigned, update the name and keep the same identifier (<a 
 of 16 November 2026, <code class="docutils literal notranslate"><span class="pre">inspireIdLocalId</span></code> and <code class="docutils literal notranslate"><span class="pre">inspireIdNamespace</span></code> are required for agglomerations
 and treatment plants. For discharge points they are given together where an INSPIRE identifier has
 already been assigned to the same object, and left empty otherwise. <code class="docutils literal notranslate"><span class="pre">inspireIdVersionId</span></code> is
-optional for all three (<a class="reference internal" href="OpenIssues.html#sp-oi-uml-2026-11"><span class="std std-ref">SP-21 Alignment with the UML diagram of 16 November 2026</span></a>).</p>
+optional for all three.</p>
 </section>
 <section id="data-types">
 <h2>Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
@@ -1434,12 +1432,12 @@ section “Life-cycle management”.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Article23/OpenIssues.html"
+       href="../Article23/Examples.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Open issues and proposed changes</p>
+        <p class="prev-next-title">Examples</p>
       </div>
     </a>
     <a class="right-next"

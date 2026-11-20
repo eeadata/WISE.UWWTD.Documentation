@@ -28,6 +28,17 @@ pip install -r docs/requirements.txt
 sphinx-build -n --keep-going -b html docs _build/html
 ```
 
+### Internal pages
+
+The open issues pages (`docs/rUWWTD2024/*/OpenIssues.md`) are working notes. They are not part of
+the published documentation: the build above leaves them out, and removes the references to them
+from the other pages ([docs/_ext/internal.py](docs/_ext/internal.py)). To read them with their
+links, build with the `internal` tag:
+
+```sh
+sphinx-build -n --keep-going -t internal -b html docs _build/internal
+```
+
 ### Build and view locally with one click
 
 Two scripts rebuild the documentation and open it in the browser at `http://127.0.0.1:8765/`.

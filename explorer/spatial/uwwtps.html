@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../_observablehq/theme-air,near-midnight.b050d634.css">
 <link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
 <link rel="stylesheet" type="text/css" href="../_npm/leaflet@1.9.4/dist/leaflet.css">
-<link rel="modulepreload" href="../_observablehq/client.8e579122.js">
+<link rel="modulepreload" href="../_observablehq/client.f3259856.js">
 <link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
 <link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
 <link rel="modulepreload" href="../_import/components/prefill.f0070044.js">
@@ -77,13 +77,13 @@
 </style>
 <script type="module">
 
-import {define} from "../_observablehq/client.8e579122.js";
+import {define} from "../_observablehq/client.f3259856.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795178947749,"size":107626});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795178949122,"size":1020393});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795178948241,"size":1519});
-registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795178949840,"size":1125082});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795532178526,"size":107626});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795532179850,"size":1020393});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795532178987,"size":1519});
+registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795532180520,"size":1125082});
 
 define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
 const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js")]);
@@ -153,14 +153,14 @@ html`<a href="${DOCS}${spec.page}">${TABLE} table specification</a>`
 ))
 }});
 
-define({id: "28e829bb", inputs: ["URLSearchParams","location","byCode","view","Inputs","countries","countryName"], outputs: ["query","linked","initialCountry","country"], body: (URLSearchParams,location,byCode,view,Inputs,countries,countryName) => {
+define({id: "9096ed9e", inputs: ["URLSearchParams","location","byCode","view","Inputs","countries","countryName"], outputs: ["query","linked","initialCountry","country"], body: (URLSearchParams,location,byCode,view,Inputs,countries,countryName) => {
 const query = new URLSearchParams(location.search);
 const linked = byCode.get(query.get("code"));
 const initialCountry = linked?.countryCode ?? query.get("country");
 const country = view(Inputs.select([null, ...countries], {
   label: "Country",
   format: countryName,
-  value: countries.includes(initialCountry) ? initialCountry : countries[0]
+  value: countries.includes(initialCountry) ? initialCountry : null
 }));
 return {query,linked,initialCountry,country};
 }});
@@ -305,19 +305,27 @@ for (const d of d3.sort(shown, rank)) {
 return {rank};
 }});
 
-define({id: "3b20a96e", inputs: ["inCountry","map","d3","linked","country","pick"], body: (inCountry,map,d3,linked,country,pick) => {
-// Zoom to the country, leaving out outlying points such as overseas regions.
+define({id: "a34c4dd0", inputs: ["inCountry","mapDiv","map","country","d3","linked","pick"], body: (inCountry,mapDiv,map,country,d3,linked,pick) => {
+// Zoom to the country, leaving out outlying points such as overseas regions; for all countries, to Europe.
 {
   const located = inCountry.filter((d) => d.latitude != null);
-  if (located.length) {
-    const lat = located.map((d) => d.latitude), lon = located.map((d) => d.longitude);
-    const lo = located.length > 50 ? 0.01 : 0, hi = 1 - lo;
-    map.fitBounds(
-      [[d3.quantile(lat, lo), d3.quantile(lon, lo)], [d3.quantile(lat, hi), d3.quantile(lon, hi)]],
-      {padding: [20, 20], maxZoom: 11}
-    );
-  }
-  if (!linked || linked.countryCode !== country) pick(null);
+  // Fit only once the map has its size on the page; before that, Leaflet fits into an empty box.
+  const fit = () => {
+    if (!mapDiv.clientWidth) return requestAnimationFrame(fit);
+    map.invalidateSize();
+    if (!country) {
+      map.fitBounds([[34, -25], [71, 35]]); // all countries: Europe, overseas regions left out of view
+    } else if (located.length) {
+      const lat = located.map((d) => d.latitude), lon = located.map((d) => d.longitude);
+      const lo = located.length > 50 ? 0.01 : 0, hi = 1 - lo;
+      map.fitBounds(
+        [[d3.quantile(lat, lo), d3.quantile(lon, lo)], [d3.quantile(lat, hi), d3.quantile(lon, hi)]],
+        {padding: [20, 20], maxZoom: 11}
+      );
+    }
+  };
+  fit();
+  if (!linked || (country && linked.countryCode !== country)) pick(null);
 }
 }});
 
@@ -537,7 +545,7 @@ developed: names, locations, codes and flags may change. Not an EEA publication.
 or replaces it. Select a point on the map or a row in the table to see the values that will be
 prefilled and the checks to look at. The fields are defined in the
 <observablehq-loading></observablehq-loading><!--:ab4646bc:--> (draft).</p>
-<div class="observablehq observablehq--block"><!--:28e829bb:--></div>
+<div class="observablehq observablehq--block"><!--:9096ed9e:--></div>
 <div class="filters">
 <div class="observablehq observablehq--block"><!--:d658c119:--></div>
 <div class="observablehq observablehq--block"><!--:6172c51d:--></div>
@@ -552,13 +560,13 @@ prefilled and the checks to look at. The fields are defined in the
 </div>
 <div class="observablehq observablehq--block"><!--:39b09f3f:--></div>
 <div class="observablehq observablehq--block"><!--:87e10893:--></div>
-<div class="grid grid-cols-3">
-  <div class="card grid-colspan-2" style="padding: 0; overflow: hidden;"><observablehq-loading></observablehq-loading><!--:9072dc52:--></div>
+<div class="grid map-row">
+  <div class="card" style="padding: 0; overflow: hidden;"><observablehq-loading></observablehq-loading><!--:9072dc52:--></div>
   <div class="card detail"><observablehq-loading></observablehq-loading><!--:9c0211c5:--></div>
 </div>
 <div class="legend"><observablehq-loading></observablehq-loading><!--:1e1f2668:--><span><span class="dot ring"></span>Selected</span><span><span class="dot ring dashed"></span>Reported location, where corrected</span></div>
 <div class="observablehq observablehq--block"><!--:5534c889:--></div>
-<div class="observablehq observablehq--block"><!--:3b20a96e:--></div>
+<div class="observablehq observablehq--block"><!--:a34c4dd0:--></div>
 <div class="observablehq observablehq--block"><!--:a0205a51:--></div>
 <div class="observablehq observablehq--block"><!--:e985557c:--></div>
 <h2 id="prefilled-rows" tabindex="-1"><a class="observablehq-header-anchor" href="#prefilled-rows">Prefilled rows</a></h2>
@@ -577,6 +585,8 @@ Parquet. Map tiles © OpenStreetMap contributors.</p>
 .tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;
   background: var(--theme-orange, #e8590c); color: white; }
 .map { height: 640px; width: 100%; }
+.map-row { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .map-row { grid-template-columns: 3fr 2fr; } }
 .filters { display: flex; flex-wrap: wrap; gap: 0 2rem; align-items: flex-start; }
 .big { font-size: 2rem; font-weight: 600; }
 .muted { color: var(--theme-foreground-muted); }

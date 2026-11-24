@@ -2,8 +2,8 @@
 
     python3 explorer/scripts/prefill_release.py <baseline folder> <output folder>
 
-The baseline is the output folder of the spatial points prefill (prefill/spatial/prefill_spatial.py),
-which is not in git. The output folder gets the files to attach to a GitHub release, which the
+The baseline is the output folder of the spatial points prefill, built in the uwwtd repository
+(dataflow/spatialpoints/prefill/output/), which is not in git. The output folder gets the files to attach to a GitHub release, which the
 explorer downloads when it is built:
 
     agglomerations.parquet    one row per prefilled object, with its location as longitude and

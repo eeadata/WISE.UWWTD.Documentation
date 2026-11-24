@@ -16,7 +16,6 @@ __pycache__/
 # macOS
 .DS_Store
 
-# Prefill: the Reportnet source and generated baselines hold provisional Member State data
-/prefill/*/input/
-/prefill/*/output/
+# The prefill is built in the uwwtd repository. A local copy here would hold provisional Member
+# State data: keep it out of git
 /prefill

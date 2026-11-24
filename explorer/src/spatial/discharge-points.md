@@ -73,7 +73,7 @@ const initialCountry = linked?.countryCode ?? query.get("country");
 const country = view(Inputs.select([null, ...countries], {
   label: "Country",
   format: countryName,
-  value: countries.includes(initialCountry) ? initialCountry : countries[0]
+  value: countries.includes(initialCountry) ? initialCountry : null
 }));
 ```
 
@@ -136,8 +136,8 @@ const picked = Mutable(linked?.thematicIdIdentifier ?? null);
 const pick = (code) => (picked.value = code);
 ```
 
-<div class="grid grid-cols-3">
-  <div class="card grid-colspan-2" style="padding: 0; overflow: hidden;">${mapDiv}</div>
+<div class="grid map-row">
+  <div class="card" style="padding: 0; overflow: hidden;">${mapDiv}</div>
   <div class="card detail">${detail}</div>
 </div>
 
@@ -163,18 +163,26 @@ for (const d of d3.sort(shown, rank)) {
 ```
 
 ```js
-// Zoom to the country, leaving out outlying points such as overseas regions.
+// Zoom to the country, leaving out outlying points such as overseas regions; for all countries, to Europe.
 {
   const located = inCountry.filter((d) => d.latitude != null);
-  if (located.length) {
-    const lat = located.map((d) => d.latitude), lon = located.map((d) => d.longitude);
-    const lo = located.length > 50 ? 0.01 : 0, hi = 1 - lo;
-    map.fitBounds(
-      [[d3.quantile(lat, lo), d3.quantile(lon, lo)], [d3.quantile(lat, hi), d3.quantile(lon, hi)]],
-      {padding: [20, 20], maxZoom: 11}
-    );
-  }
-  if (!linked || linked.countryCode !== country) pick(null);
+  // Fit only once the map has its size on the page; before that, Leaflet fits into an empty box.
+  const fit = () => {
+    if (!mapDiv.clientWidth) return requestAnimationFrame(fit);
+    map.invalidateSize();
+    if (!country) {
+      map.fitBounds([[34, -25], [71, 35]]); // all countries: Europe, overseas regions left out of view
+    } else if (located.length) {
+      const lat = located.map((d) => d.latitude), lon = located.map((d) => d.longitude);
+      const lo = located.length > 50 ? 0.01 : 0, hi = 1 - lo;
+      map.fitBounds(
+        [[d3.quantile(lat, lo), d3.quantile(lon, lo)], [d3.quantile(lat, hi), d3.quantile(lon, hi)]],
+        {padding: [20, 20], maxZoom: 11}
+      );
+    }
+  };
+  fit();
+  if (!linked || (country && linked.countryCode !== country)) pick(null);
 }
 ```
 
@@ -313,6 +321,8 @@ Parquet. Map tiles © OpenStreetMap contributors.</p>
 .tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;
   background: var(--theme-orange, #e8590c); color: white; }
 .map { height: 640px; width: 100%; }
+.map-row { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .map-row { grid-template-columns: 3fr 2fr; } }
 .filters { display: flex; flex-wrap: wrap; gap: 0 2rem; align-items: flex-start; }
 .big { font-size: 2rem; font-weight: 600; }
 .muted { color: var(--theme-foreground-muted); }

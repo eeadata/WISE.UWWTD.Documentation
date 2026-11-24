@@ -7,8 +7,9 @@ source of the values:
   [Spatial points](../../docs/rUWWTD2024/SpatialPoints/Codelists.md) and
   [Article 23](../../docs/rUWWTD2024/Article23/Codelists.md) is rendered from its CSV by the
   `{codelist}` directive ([docs/_ext/codelist.py](../../docs/_ext/codelist.py));
-* the spatial points prefill ([prefill/spatial](../../prefill/spatial/)) stops if it would write a
-  value that is not in its code list;
+* the spatial points prefill, in the
+  [uwwtd](https://github.com/eea/uwwtd/tree/main/dataflow/spatialpoints/prefill) repository,
+  stops if it would write a value that is not in its code list;
 * the Reportnet 3 schema and quality checks can read the same files.
 
 The fields that use these code lists are in [reference/schema](../schema/README.md).

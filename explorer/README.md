@@ -41,11 +41,13 @@ version is a GitHub release of this repository whose files are made from a prefi
 data loaders in `src/spatial/data/` download them (`release.py` names the release). To make a new
 version:
 
-1. Make the files from the baseline made by `prefill/spatial/prefill_spatial.py`. This needs the
-   DuckDB command-line tool:
+1. Make the files from a baseline of the spatial points prefill. The prefill is built in the
+   [uwwtd](https://github.com/eea/uwwtd/tree/main/dataflow/spatialpoints/prefill) repository,
+   not here; its baseline is in `dataflow/spatialpoints/prefill/output/`. With `uwwtd` cloned
+   next to this repository, and the DuckDB command-line tool installed:
 
    ```sh
-   python3 explorer/scripts/prefill_release.py prefill/spatial/output/SpatialPoints_2024_baseline /tmp/prefill-release
+   python3 explorer/scripts/prefill_release.py ../uwwtd/dataflow/spatialpoints/prefill/output/SpatialPoints_2024_baseline /tmp/prefill-release
    ```
 
 2. Check them locally, without publishing them:

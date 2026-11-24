@@ -14,6 +14,7 @@ guidance is finalised. Do not rely on it as final reporting guidance.
 :maxdepth: 2
 :hidden:
 
+Article22/index
 Article23/index
 SpatialPoints/index
 ```
@@ -28,6 +29,12 @@ Information will be added as it becomes available.
 
 ::::{grid} 2
 :gutter: 1 2 3 3
+:::{grid-item-card} {ref}`art22`
+**PRELIMINARY - UNDER REVIEW**
+^^^
+The first reporting under Article 22: the descriptive data of agglomerations, treatment plants and
+discharge points.
+:::
 :::{grid-item-card} {ref}`art23`
 Draft reporting guidance for national implementation programmes: purpose, timing, the six
 reporting tables, field references and open issues.
@@ -56,6 +63,7 @@ map.
 Each dataflow specification, its tables, fields and code lists, has a version:
 
 * **Spatial points:** {specversion}`SpatialPoints`
+* **Article 22:** {specversion}`Article22`
 * **Article 23:** {specversion}`Article23`
 
 A version is a number such as `0.4.1`. It changes with every change to the specification, by how

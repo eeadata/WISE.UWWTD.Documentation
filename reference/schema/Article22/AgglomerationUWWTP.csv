@@ -1,0 +1,4 @@
+notation,label,definition,type,multiplicity,unit,status,condition,group
+euUWWTPCode,Treatment plant,ID of the UWWTP / collecting system without treatment,wiseIdentifier,,,Required,Must exist in {ref}`sp-uwwtp`,
+euAgglomerationCode,Agglomeration,ID of the agglomeration that is served by the treatment plant / collecting system,wiseIdentifier,,,Required,Must exist in {ref}`sp-agglomeration`,
+loadEnteringShare,Load entering share,Share (%) of generated load of agglomeration collected in collecting system and entering particular plant,Percentage,,,Required,,

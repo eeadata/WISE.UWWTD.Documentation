@@ -1,0 +1,22 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class SP_Agglomeration["Agglomeration (spatial points)"]
+class SP_UWWTP["UWWTP (spatial points)"]
+class SP_DischargePoint["DischargePoint (spatial points)"]
+
+SP_Agglomeration "1" --> "1" Agglomeration : thematicIdIdentifier
+SP_UWWTP "1" --> "1" UWWTP : thematicIdIdentifier
+SP_DischargePoint "1" --> "1" DischargePoint : thematicIdIdentifier
+SP_Agglomeration "1" --> "0..n" AgglomerationUWWTP : euAgglomerationCode
+SP_UWWTP "1" --> "0..n" AgglomerationUWWTP : euUWWTPCode
+class MSSummary
+
+classDef default fill:white,stroke:#000;

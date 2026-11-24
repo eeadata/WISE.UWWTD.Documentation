@@ -1,0 +1,12 @@
+notation,label,definition,type,multiplicity,unit,status,condition,group
+thematicIdIdentifier,Agglomeration code,Code of the agglomeration.,wiseIdentifier,,,Required,Must exist in {ref}`sp-agglomeration`,
+generatedLoad,Generated load,"Generated load (p.e.), size of the agglomeration",integer,,p.e.,Required,,
+loadCollected,Load collected,Proportion of generated load of agglomeration collected through collecting system (% of the agglomeration size – `generatedLoad`). Article 3; Article 22(1)(b).,Percentage,,,Required,,
+loadIndividualSystems,Load individual systems,Proportion of generated load of agglomeration above 2000 p.e. addressed through Individual Systems - IS (% of the agglomeration size – `generatedLoad`). Article 4(5); Article 22(1)(c).,Percentage,,,Required,,
+loadNotCollected,Load not collected,Proportion of generated load of agglomeration not collected through collecting systems and not addressed through IS (% of the agglomeration size – `generatedLoad`),Percentage,,,Required,,
+individualSystemsRegistry,Individual systems registry,Individual systems that are used in agglomerations of 1 000 p.e. and above are registered in a registry. Article 4(3).,YesNo,,,Optional,,
+managementPlanObligation,Management plan obligation,MS shall establish a list of agglomerations obliged to have IUWMP (by 6/2028). Article 5.,YesNo,,,Required,,
+collectingSystemType,Collecting system type,Type of collecting system (separated/combined/both). Article 21(2).,SewerSystemType,,,Required,,
+combinedSystemShare,Combined system share,Percentage of combined,Percentage,,,Conditional,If `collectingSystemType` = `both`,
+referencePeriod,Reference period,Period the data refers to.,range,,,Required,,
+remarks,Remarks,Remarks,string1000,,,Optional,,

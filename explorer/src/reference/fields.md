@@ -13,6 +13,7 @@ const ref = FileAttachment("data/reference.json").json();
 const DOCS = "../../"; // the documentation, from this page
 // Empty databases of each dataflow, made from the same files (reference/schema/template.py)
 const TEMPLATES = {
+  Article22: {file: FileAttachment("data/rUWWTD_Article22_template.sqlite"), kind: "SQLite"},
   Article23: {file: FileAttachment("data/rUWWTD_Article23_template.sqlite"), kind: "SQLite"},
   SpatialPoints: {file: FileAttachment("data/rUWWTD_SpatialPoints_template.gpkg"), kind: "GeoPackage"}
 };

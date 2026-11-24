@@ -25,3 +25,11 @@ CurrencyCode,Article23,art23-cl-currency,Currency values,Notation|Label|Definiti
 EstimateBasis,Article23,art23-cl-pro-basis,Proposed basis of estimate values,Notation|Label|Definition|Notes,24 22 34 20,notation
 Licence,Article23,art23-cl-licence,Proposed licence values,Notation|Label|Definition|Notes,20 22 34 24,notation
 YesNo,Article23,art23-cl-yesno,Yes or no values,Notation|Label|Definition|Notes,20 22 34 24,notation
+SewerSystemType,Article22,art22-cl-sewer-system-type,Sewer system type values,Notation|Label|Definition|Notes,22 30 30 18,notation
+CollectingSystemConnection,Article22,art22-cl-collecting-system-connection,Collecting system connection values,Notation|Label|Definition|Notes,22 30 30 18,notation
+Disinfection,Article22,art22-cl-disinfection,Disinfection values,Notation|Label|Definition|Notes,22 30 30 18,notation
+NatureBasedSolution,Article22,art22-cl-nature-based-solution,Nature based solution values,Notation|Label|Definition|Notes,22 30 30 18,notation
+Performance,Article22,art22-cl-performance,Performance values,Notation|Label|Definition|Notes,22 30 30 18,notation
+PoorPerformanceReason,Article22,art22-cl-poor-performance-reason,Poor performance reason values,Notation|Label|Definition|Notes,22 30 30 18,notation
+LoadMethod,Article22,art22-cl-load-method,Load method values,Notation|Label|Definition|Notes,22 30 30 18,notation
+ReceivingArea,Article22,art22-cl-receiving-area,Receiving area values,Notation|Label|Definition|Notes,22 30 30 18,notation

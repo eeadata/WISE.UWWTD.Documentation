@@ -1,0 +1,4 @@
+notation,label,definition,notes
+measured,Measured,Both inputs (concentration and volume) were measured,
+calculated,Calculated,Either concentration or volume (or both) was calculated; none was estimated,
+estimated,Estimated,Either concentration or volume (or both) was estimated,

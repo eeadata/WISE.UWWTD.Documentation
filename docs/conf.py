@@ -121,7 +121,7 @@ html_show_sphinx = False
 
 # The versions of the dataflow specifications, for the footer of every page
 import csv
-_LABELS = {"SpatialPoints": "Spatial points", "Article23": "Article 23"}
+_LABELS = {"SpatialPoints": "Spatial points", "Article22": "Article 22", "Article23": "Article 23"}
 with open(os.path.join(os.path.dirname(__file__), '..', 'reference', 'versions.csv'), encoding='utf-8') as _f:
     html_context["spec_versions"] = [
         {**_v, "label": _LABELS.get(_v["dataflow"], _v["dataflow"]),

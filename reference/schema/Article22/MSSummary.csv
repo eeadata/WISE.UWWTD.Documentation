@@ -1,0 +1,5 @@
+notation,label,definition,type,multiplicity,unit,status,condition,group
+individualSystemsJustificationNeeded,Individual systems justification needed,Justification required from MS that uses IS (individual systems) to collect and/or treat more than 2% of the urban WW load at the national level from agglomerations of ≥ 2 000 p.e. Article 4(5); Article 22(1)(c).,YesNo,,,Required,,
+individualSystemsJustification,Individual systems justification,Link to the IS justification. Article 4(5); Article 22(1)(c).,url,,,Conditional,If `individualSystemsJustificationNeeded` = `yes`,
+accessToSanitation,Access to sanitation,,string,,,Optional,,
+remarks,Remarks,Further information at national level,string1000,,,Optional,,

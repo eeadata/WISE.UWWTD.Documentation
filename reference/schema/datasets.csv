@@ -19,3 +19,8 @@ Article23,DocumentsDataset,dcMetadata,,14,docs/rUWWTD2024/Article23/DocumentsDat
 Article23,DocumentsDataset,Reference,,15,docs/rUWWTD2024/Article23/DocumentsDataset/Reference.md,art23-reference,Reference fields,Condition,22 18 30 14 8 8,referenceCode
 Article23,DocumentsDataset,Document,,16,docs/rUWWTD2024/Article23/DocumentsDataset/Document.md,art23-document,Document fields,Condition,22 18 30 14 8 8,documentCode
 Article23,PrivateDataset,Contact,,17,docs/rUWWTD2024/Article23/PrivateDataset/Contact.md,art23-contact,Contact fields,Condition,16 16 30 12 12 14,
+Article22,,Agglomeration,,1,docs/rUWWTD2024/Article22/Agglomeration.md,art22-agglomeration,Agglomeration fields,Condition,22 12 34 12 8 12,thematicIdIdentifier
+Article22,,UWWTP,,2,docs/rUWWTD2024/Article22/UWWTP.md,art22-uwwtp,UWWTP fields,Condition,22 12 34 12 8 12,thematicIdIdentifier
+Article22,,DischargePoint,,3,docs/rUWWTD2024/Article22/DischargePoint.md,art22-dischargepoint,DischargePoint fields,Condition,22 12 34 12 8 12,thematicIdIdentifier
+Article22,,AgglomerationUWWTP,,4,docs/rUWWTD2024/Article22/AgglomerationUWWTP.md,art22-agglomerationuwwtp,AgglomerationUWWTP fields,Condition,22 12 34 12 8 12,euUWWTPCode euAgglomerationCode
+Article22,,MSSummary,,5,docs/rUWWTD2024/Article22/MSSummary.md,art22-mssummary,MSSummary fields,Condition,22 12 34 12 8 12,

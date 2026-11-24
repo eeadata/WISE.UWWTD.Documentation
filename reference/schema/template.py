@@ -40,7 +40,8 @@ REPO = Path(__file__).resolve().parents[2]
 SCHEMA = REPO / 'reference' / 'schema'
 CODELIST = REPO / 'reference' / 'codelist'
 DOCS_URL = 'https://eeadata.github.io/WISE.UWWTD.Documentation/'
-FILES = {'Article23': 'rUWWTD_Article23_template.sqlite',
+FILES = {'Article22': 'rUWWTD_Article22_template.sqlite',
+         'Article23': 'rUWWTD_Article23_template.sqlite',
          'SpatialPoints': 'rUWWTD_SpatialPoints_template.gpkg'}
 
 ETRS89 = ('GEOGCS["ETRS89",DATUM["European_Terrestrial_Reference_System_1989",SPHEROID["GRS 1980",'

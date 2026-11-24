@@ -1,0 +1,4 @@
+notation,label,definition,notes
+connected,Collecting system is connected to UWWTP,,
+notConnected,Collecting system is not connected to UWWTP,,
+suppliedByTruck,UWWTP is not connected to the collecting system but is supplied only via trucks,,

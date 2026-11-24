@@ -59,7 +59,7 @@ export function codelistHref(base, codelist) {
   return docsHref(base, `rUWWTD2024/${codelist.dataflow}/Codelists.html`, codelist.anchor);
 }
 
-export const DATAFLOWS = {SpatialPoints: "Spatial points", Article23: "Article 23"};
+export const DATAFLOWS = {SpatialPoints: "Spatial points", Article22: "Article 22", Article23: "Article 23"};
 
 // The Type column as written in the documentation: type, then (unit), then [multiplicity].
 export function typeText(field) {

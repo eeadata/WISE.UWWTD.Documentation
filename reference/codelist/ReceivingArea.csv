@@ -1,0 +1,8 @@
+notation,label,definition,notes
+riverWater,"river water (lotic systems, i.e. rivers, streams)",,
+lakeWater,"lake water (lentic systems, i.e. lakes, reservoirs)",,
+transitionalWater,transitional water (estuaries and river mouths),,
+coastalWater,coastal water (marine environment near the coast),,
+groundwater,groundwater (subsurface aquifers),,
+land,discharge on land (irrigation),,
+otherReuse,Other type of reuse,,

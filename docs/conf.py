@@ -74,7 +74,10 @@ html_theme_options = {
         "alt_text": "WISE UWWTD Documentation",
         "text": "Urban Waste Water Treatment Directive",
     },
-    "secondary_sidebar_items": ["page-toc", "edit-this-page", "sourcelink"],
+    # The right column only lists the page's sections, so that it disappears on pages without any and
+    # the tables get the full width. The edit and source links are at the bottom of every page.
+    "secondary_sidebar_items": ["page-toc"],
+    "article_footer_items": ["edit-this-page", "sourcelink"],
     "show_toc_level": 4,
     "use_edit_page_button": True,
     "navbar_align": "right",

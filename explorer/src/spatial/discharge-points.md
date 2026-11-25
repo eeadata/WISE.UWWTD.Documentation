@@ -213,7 +213,7 @@ function zoomTo(d) {
 // A discharge point names its treatment plant: link to it.
 function valueCell(row, field) {
   const value = fieldValue(row, field);
-  if (field === "relatedZoneIdentifier" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
+  if (field === "groupingInstallation" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
   return html`<span>${value}</span>`;
 }
 const detail = !sel

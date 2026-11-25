@@ -1,11 +1,11 @@
 notation,label,definition,type,multiplicity,unit,status,condition,group
 thematicIdIdentifier,Discharge point code,Code of the discharge point.,wiseIdentifier,,,Required,Must exist in {ref}`sp-dischargepoint`,
 volumeShare,Volume share,Share of UWWTP's wastewater discharged via this discharge point (%),Percentage,,,Optional,,
-irrigation,Irrigation,Water reuse in agriculture,YesNo,,,Conditional,,
+irrigation,Irrigation,Water reuse in agriculture,YesNo,,,Conditional,{ref}`art23-cl-yesno`,
 lessSensitiveAreaCode,Less sensitive area code,"code of less sensitive area according to Article 6(2) or 6(4). If a list of less sensitive areas is not being compiled, only the code for the type of less sensitive area can be provided (e.g. lsa according to Article 6(2), where the deadline for 2T is 2037 or 6(4), where the deadline is 2045. Article 6(2); Article 6(4).",wiseIdentifier,,,Required,,
 nutrientSensitiveAreaCode,Nutrient sensitive area code,link to nutrient sensitive area spatial delineation. Article 7.,wiseIdentifier,,,Conditional,Required after by 2030,
 micropollutantRiskAreaCode,Micropollutant risk area code,link to the spatial delineation of areas where the concentration or the accumulation of micropollutants represents a risk for the environment or human health SAnutrient / SAmicropollutant. Article 8.,wiseIdentifier,,,Conditional,Required after by 2030,
-receivingAreaType,Receiving area type,Type of water body (receiving environment) into which wastewater is discharged.,ReceivingArea,,,Required,,
+receivingAreaType,Receiving area type,Type of water body (receiving environment) into which wastewater is discharged.,ReceivingArea,,,Required,{ref}`art22-cl-receiving-area`,
 referencePeriod,Reference period,Period the data refers to.,range,,,Required,,
 waterBodyCode,Water body code,"Code of the receiving water body. Idea, to be confirmed.",wiseIdentifier,,,Optional,,
 sensitiveAreaCode,Sensitive area code,"Code of the sensitive area. Idea, to be confirmed.",wiseIdentifier,,,Optional,,

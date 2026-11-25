@@ -20,6 +20,7 @@
 <link rel="modulepreload" href="../_import/components/prefill.f0070044.js">
 <link rel="modulepreload" href="../_import/components/download.caf5946e.js">
 <link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
+<link rel="modulepreload" href="../_import/components/basemap.8e28ff12.js">
 <link rel="modulepreload" href="../_npm/d3@7.9.2/172963d6.js">
 <link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
 <link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
@@ -87,15 +88,15 @@
 import {define} from "../_observablehq/client.f3259856.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795612474500,"size":107626});
-registerFile("./data/agglomerations.parquet", {"name":"./data/agglomerations.parquet","path":"../_file/spatial/data/agglomerations.a7f39f20.parquet","lastModified":1795612475689,"size":927679});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.03a28c81.parquet","lastModified":1795612476169,"size":1182587});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.ba279ca1.json","lastModified":1795612474961,"size":1640});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795613260474,"size":107626});
+registerFile("./data/agglomerations.parquet", {"name":"./data/agglomerations.parquet","path":"../_file/spatial/data/agglomerations.a7f39f20.parquet","lastModified":1795613261778,"size":927679});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.03a28c81.parquet","lastModified":1795613262221,"size":1182587});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.ba279ca1.json","lastModified":1795613260881,"size":1640});
 
-define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
-const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js")]);
+define({id: "da88acd1", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup","addBaseLayers"], body: async () => {
+const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}, {addBaseLayers}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js"), import("../_import/components/basemap.8e28ff12.js")]);
 
-return {COUNTRIES,SEVERITIES,SEVERITY_COLORS,TABLES,countryName,fieldValue,rowsOf,worstSeverity,csvButton,markup};
+return {COUNTRIES,SEVERITIES,SEVERITY_COLORS,TABLES,countryName,fieldValue,rowsOf,worstSeverity,csvButton,markup,addBaseLayers};
 }});
 
 define({id: "bb53c64d", inputs: ["TABLES","FileAttachment"], outputs: ["PAGE","TABLE","LABEL","ONE","DOCS","data","flagData","release","ref"], body: (TABLES,FileAttachment) => {
@@ -254,13 +255,10 @@ count((d) => d.moved)
 ))
 }});
 
-define({id: "39b09f3f", inputs: ["html","L","ResizeObserver","invalidation"], outputs: ["mapDiv","map","pointsLayer","highlightLayer"], body: (html,L,ResizeObserver,invalidation) => {
+define({id: "a121df6e", inputs: ["html","L","addBaseLayers","ResizeObserver","invalidation"], outputs: ["mapDiv","map","pointsLayer","highlightLayer"], body: (html,L,addBaseLayers,ResizeObserver,invalidation) => {
 const mapDiv = html`<div class="map"></div>`;
 const map = L.map(mapDiv, {preferCanvas: true, worldCopyJump: true}).setView([50, 10], 4);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+addBaseLayers(map);
 const pointsLayer = L.layerGroup().addTo(map);
 const highlightLayer = L.layerGroup().addTo(map);
 new ResizeObserver(() => map.invalidateSize()).observe(mapDiv);
@@ -509,7 +507,7 @@ ref.versions.SpatialPoints.version
   </ol>
   <div id="observablehq-search"><input type="search" placeholder="Search"></div>
   <div id="observablehq-search-results"></div>
-  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.860f7801.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.51829439.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
   <details open>
     <summary>Reference data</summary>
     <ol>
@@ -546,7 +544,7 @@ documentation it draws on are drafts. The spatial points prefill is provisional 
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>
 </header>
 <main id="observablehq-main" class="observablehq">
-<div class="observablehq observablehq--block"><!--:1acbcc5f:--></div>
+<div class="observablehq observablehq--block"><!--:da88acd1:--></div>
 <div class="observablehq observablehq--block"><!--:bb53c64d:--></div>
 <div class="observablehq observablehq--block"><!--:9f803838:--></div>
 <div class="observablehq observablehq--block"><!--:36a20b8e:--></div>
@@ -574,7 +572,7 @@ prefilled and the checks to look at. The fields are defined in the
   <div class="card"><h2>Names cleaned</h2><span class="big"><observablehq-loading></observablehq-loading><!--:7a46cf1f:--></span><div class="muted">reported name changed in <code>nameText</code></div></div>
   <div class="card"><h2>Codes and locations</h2><span class="big"><observablehq-loading></observablehq-loading><!--:b166cc6a:--></span><div class="muted">codes converted · <observablehq-loading></observablehq-loading><!--:a3ab6799:--> locations corrected</div></div>
 </div>
-<div class="observablehq observablehq--block"><!--:39b09f3f:--></div>
+<div class="observablehq observablehq--block"><!--:a121df6e:--></div>
 <div class="observablehq observablehq--block"><!--:87e10893:--></div>
 <div class="grid map-row">
   <div class="card" style="padding: 0; overflow: hidden;"><observablehq-loading></observablehq-loading><!--:9072dc52:--></div>
@@ -596,7 +594,7 @@ spatial points prefill, made from <observablehq-loading></observablehq-loading><
 <observablehq-loading></observablehq-loading><!--:c76ed253:-->). It follows <observablehq-loading></observablehq-loading><!--:5004c234:-->; the current one is
 <code>spatialpoints-v<observablehq-loading></observablehq-loading><!--:f22ac174:--></code>. Fields added since the release are
 marked as not in this release. The whole tables can be downloaded from the release, as
-Parquet. Map tiles © OpenStreetMap contributors.</p>
+Parquet. Map tiles © OpenStreetMap contributors; satellite imagery © Esri, Maxar, Earthstar Geographics and the GIS User Community.</p>
 <style>
 .tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;
   background: var(--theme-orange, #e8590c); color: white; }

@@ -87,10 +87,10 @@
 import {define} from "../_observablehq/client.f3259856.js";
 import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
 
-registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795612207873,"size":107626});
-registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795612208943,"size":1020393});
-registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795612208316,"size":1519});
-registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795612209399,"size":1125082});
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795612387983,"size":107626});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.cd34f6da.parquet","lastModified":1795612389535,"size":1020393});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.48fe6086.json","lastModified":1795612388416,"size":1519});
+registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.c9467f7f.parquet","lastModified":1795612390493,"size":1125082});
 
 define({id: "1acbcc5f", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup"], body: async () => {
 const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js")]);
@@ -355,7 +355,7 @@ if (sel && sel.latitude != null) {
 return {sel};
 }});
 
-define({id: "e985557c", inputs: ["html","map","fieldValue","sel","ONE","countryName","d3","SEVERITIES","SEVERITY_COLORS","specFields","markup","ref","DOCS","oldFields"], outputs: ["zoomTo","valueCell","detail"], body: (html,map,fieldValue,sel,ONE,countryName,d3,SEVERITIES,SEVERITY_COLORS,specFields,markup,ref,DOCS,oldFields) => {
+define({id: "87b6e03b", inputs: ["html","map","fieldValue","sel","ONE","countryName","d3","SEVERITIES","SEVERITY_COLORS","specFields","markup","ref","DOCS","oldFields"], outputs: ["zoomTo","valueCell","detail"], body: (html,map,fieldValue,sel,ONE,countryName,d3,SEVERITIES,SEVERITY_COLORS,specFields,markup,ref,DOCS,oldFields) => {
 function zoomTo(d) {
   const button = html`<button>Zoom to</button>`;
   button.onclick = () => map.setView([d.latitude, d.longitude], Math.max(map.getZoom(), 12));
@@ -364,7 +364,7 @@ function zoomTo(d) {
 // A discharge point names its treatment plant: link to it.
 function valueCell(row, field) {
   const value = fieldValue(row, field);
-  if (field === "relatedZoneIdentifier" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
+  if (field === "groupingInstallation" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
   return html`<span>${value}</span>`;
 }
 const detail = !sel
@@ -584,7 +584,7 @@ prefilled and the checks to look at. The fields are defined in the
 <div class="observablehq observablehq--block"><!--:5534c889:--></div>
 <div class="observablehq observablehq--block"><!--:a34c4dd0:--></div>
 <div class="observablehq observablehq--block"><!--:a0205a51:--></div>
-<div class="observablehq observablehq--block"><!--:e985557c:--></div>
+<div class="observablehq observablehq--block"><!--:87b6e03b:--></div>
 <h2 id="prefilled-rows" tabindex="-1"><a class="observablehq-header-anchor" href="#prefilled-rows">Prefilled rows</a></h2>
 <div class="observablehq observablehq--block"><!--:cd6f7e90:--></div>
 <div class="observablehq observablehq--block"><!--:1aff4686:--></div>

@@ -6,17 +6,109 @@ config:
   theme: neutral
 ---
 classDiagram
-direction LR
+direction TB
 
-class SP_Agglomeration["Agglomeration (spatial points)"]
-class SP_UWWTP["UWWTP (spatial points)"]
-class SP_DischargePoint["DischargePoint (spatial points)"]
+class Agglomeration {
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + generatedLoad: integer [1]
+    + loadCollected: Percentage [1]
+    + loadIndividualSystems: Percentage [1]
+    + loadNotCollected: Percentage [1]
+    + individualSystemsRegistry: YesNo [0..1]
+    + managementPlanObligation: YesNo [1]
+    + collectingSystemType: SewerSystemType [1]
+    + combinedSystemShare: Percentage [0..1]
+    + referencePeriod: range [1]
+    + remarks: string1000 [0..1]
+}
+class UWWTP {
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + capacity: integer [1]
+    + collectingSystemConnection: CollectingSystemConnection [1]
+    + loadEntering: integer [1]
+    + primaryTreatment: YesNo [1]
+    + secondaryTreatment: YesNo [1]
+    + tertiaryTreatmentNitrogen: YesNo [1]
+    + tertiaryTreatmentPhosphorus: YesNo [1]
+    + quaternaryTreatment: YesNo [1]
+    + disinfection: Disinfection [0..1]
+    + natureBasedSolution: NatureBasedSolution [0..1]
+    + natureBasedSecondaryTreatment: YesNo [0..1]
+    + treatmentRemarks: string1000 [0..1]
+    + performanceTSS: Performance [0..1]
+    + performanceBOD: Performance [1]
+    + performanceCOD: Performance [0..1]
+    + performanceTOC: Performance [0..1]
+    + performanceNitrogen: Performance [0..1]
+    + performancePhosphorus: Performance [0..1]
+    + poorPerformanceReason: PoorPerformanceReason [0..1]
+    + incomingLoadBOD: nonNegativeValue [0..1]
+    + incomingLoadBODMethod: LoadMethod [0..1]
+    + dischargedLoadBOD: nonNegativeValue [0..1]
+    + dischargedLoadBODMethod: LoadMethod [0..1]
+    + incomingLoadCOD: nonNegativeValue [0..1]
+    + incomingLoadCODMethod: LoadMethod [0..1]
+    + dischargedLoadCOD: nonNegativeValue [0..1]
+    + dischargedLoadCODMethod: LoadMethod [0..1]
+    + incomingLoadTOC: nonNegativeValue [0..1]
+    + incomingLoadTOCMethod: LoadMethod [0..1]
+    + dischargedLoadTOC: nonNegativeValue [0..1]
+    + dischargedLoadTOCMethod: LoadMethod [0..1]
+    + incomingLoadNitrogen: nonNegativeValue [0..1]
+    + incomingLoadNitrogenMethod: LoadMethod [0..1]
+    + dischargedLoadNitrogen: nonNegativeValue [0..1]
+    + dischargedLoadNitrogenMethod: LoadMethod [0..1]
+    + incomingLoadPhosphorus: nonNegativeValue [0..1]
+    + incomingLoadPhosphorusMethod: LoadMethod [0..1]
+    + dischargedLoadPhosphorus: nonNegativeValue [0..1]
+    + dischargedLoadPhosphorusMethod: LoadMethod [0..1]
+    + outflowConcentrationBOD: nonNegativeValue [0..1]
+    + outflowConcentrationCOD: nonNegativeValue [0..1]
+    + outflowConcentrationTOC: nonNegativeValue [0..1]
+    + outflowConcentrationNitrogen: nonNegativeValue [0..1]
+    + outflowConcentrationPhosphorus: nonNegativeValue [0..1]
+    + samplesCollected: integer [1]
+    + samplesFailed: integer [1]
+    + wastewaterTreated: nonNegativeValue [0..1]
+    + referencePeriod: range [1]
+    + remarks: string1000 [0..1]
+}
+class DischargePoint {
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + volumeShare: Percentage [0..1]
+    + irrigation: YesNo [0..1]
+    + lessSensitiveAreaCode: wiseIdentifier [1]
+    + nutrientSensitiveAreaCode: wiseIdentifier [0..1]
+    + micropollutantRiskAreaCode: wiseIdentifier [0..1]
+    + receivingAreaType: ReceivingArea [1]
+    + referencePeriod: range [1]
+    + waterBodyCode: wiseIdentifier [0..1]
+    + sensitiveAreaCode: wiseIdentifier [0..1]
+    + remarks: string1000 [0..1]
+}
+class AgglomerationUWWTP {
+    + euUWWTPCode: wiseIdentifier [1]
+    + euAgglomerationCode: wiseIdentifier [1]
+    + loadEnteringShare: Percentage [1]
+}
+class MSSummary {
+    + individualSystemsJustificationNeeded: YesNo [1]
+    + individualSystemsJustification: url [0..1]
+    + accessToSanitation: string [0..1]
+    + remarks: string1000 [0..1]
+}
 
-SP_Agglomeration "1" --> "1" Agglomeration : thematicIdIdentifier
-SP_UWWTP "1" --> "1" UWWTP : thematicIdIdentifier
-SP_DischargePoint "1" --> "1" DischargePoint : thematicIdIdentifier
-SP_Agglomeration "1" --> "0..n" AgglomerationUWWTP : euAgglomerationCode
-SP_UWWTP "1" --> "0..n" AgglomerationUWWTP : euUWWTPCode
-class MSSummary
+namespace SpatialPointsDataflow {
+    class SpatialAgglomeration["Agglomeration (spatial points)"]
+    class SpatialUWWTP["UWWTP (spatial points)"]
+    class SpatialDischargePoint["DischargePoint (spatial points)"]
+}
+
+Agglomeration ..> SpatialAgglomeration : thematicIdIdentifier
+UWWTP ..> SpatialUWWTP : thematicIdIdentifier
+DischargePoint ..> SpatialDischargePoint : thematicIdIdentifier
+AgglomerationUWWTP ..> SpatialAgglomeration : euAgglomerationCode
+AgglomerationUWWTP ..> SpatialUWWTP : euUWWTPCode
 
 classDef default fill:white,stroke:#000;
+classDef forFixing fill:white,stroke:#f00;

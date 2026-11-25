@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 
 REPOSITORY = 'eeadata/WISE.UWWTD.Documentation'
-TAG = 'spatialpoints-prefill-2024-v0.1'
+TAG = 'spatialpoints-prefill-2024-v0.2'
 RELEASE_URL = f'https://github.com/{REPOSITORY}/releases/tag/{TAG}'
 
 

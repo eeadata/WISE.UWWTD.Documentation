@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Field tables | rUWWTD data explorer</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="../_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="preload" as="style" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="../_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="modulepreload" href="../_observablehq/client.f3259856.js">
+<link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
+<link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
+<link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
+<link rel="modulepreload" href="../_import/components/download.caf5946e.js">
+<link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
+<link rel="modulepreload" href="../_observablehq/stdlib/sqlite.9c917b13.js">
+<link rel="modulepreload" href="../_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="../_npm/sql.js@1.17.0/ef8a8912.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2250%22%20cy=%2250%22%20r=%2240%22%20fill=%22%25232b7bb9%22/%3E%3C/svg%3E">
+<style>
+.under-development { padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.9rem;
+  background: color-mix(in srgb, var(--theme-orange, #e8590c) 15%, var(--theme-background));
+  border-left: 4px solid var(--theme-orange, #e8590c); }
+/* The header holds two lines: the link back to the documentation, and the notice */
+:root { --observablehq-header-height: 5.5rem; }
+@media (max-width: 720px) { :root { --observablehq-header-height: 8rem; } }
+#observablehq-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+.docs-bar { display: flex; align-items: center; gap: 1rem; }
+.docs-link { font-weight: 600; padding: 0.25rem 0.75rem; border: 1px solid var(--theme-foreground-focus);
+  border-radius: 4px; text-decoration: none; white-space: nowrap; }
+.docs-link:hover { background: var(--theme-foreground-focus); color: var(--theme-background); }
+.docs-bar-title { color: var(--theme-foreground-muted); font-size: 0.9rem; }
+/* Full width: the page uses the whole window instead of Framework's 1440px; tables and maps follow */
+:root.full-width { --observablehq-max-width: 100vw; }
+.width-toggle { margin-left: auto; font: inherit; font-size: 0.85rem; cursor: pointer; white-space: nowrap;
+  padding: 0.2rem 0.6rem; border: 1px solid var(--theme-foreground-faint); border-radius: 4px;
+  background: none; color: var(--theme-foreground); }
+.width-toggle:hover, .width-toggle[aria-pressed="true"] { border-color: var(--theme-foreground-focus); }
+</style>
+<script>try { if (localStorage.getItem("explorer-full-width") === "1") document.documentElement.classList.add("full-width"); } catch (e) {}</script>
+<script type="module">
+
+import {define} from "../_observablehq/client.f3259856.js";
+import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
+
+registerFile("./data/rUWWTD_Article23_template.sqlite", {"name":"./data/rUWWTD_Article23_template.sqlite","path":"../_file/reference/data/rUWWTD_Article23_template.326204af.sqlite","lastModified":1795612208436,"size":335872});
+registerFile("./data/rUWWTD_SpatialPoints_template.gpkg", {"name":"./data/rUWWTD_SpatialPoints_template.gpkg","path":"../_file/reference/data/rUWWTD_SpatialPoints_template.3a43e9f7.gpkg","lastModified":1795612208494,"size":122880});
+registerFile("./data/reference.json", {"name":"./data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795612207873,"size":107626});
+registerFile("./data/reference.zip", {"name":"./data/reference.zip","mimeType":"application/zip","path":"../_file/reference/data/reference.c4a979e1.zip","lastModified":1795612208365,"size":32516});
+
+define({id: "6a8454f5", outputs: ["DATAFLOWS","docsHref","markup","plain","typeText","versionNote","csvButton","jsonButton"], body: async () => {
+const [{DATAFLOWS, docsHref, markup, plain, typeText, versionNote}, {csvButton, jsonButton}] = await Promise.all([import("../_import/components/reference.7bf0625c.js"), import("../_import/components/download.caf5946e.js")]);
+
+return {DATAFLOWS,docsHref,markup,plain,typeText,versionNote,csvButton,jsonButton};
+}});
+
+define({id: "344bc87c", inputs: ["FileAttachment"], outputs: ["ref","DOCS","TEMPLATES"], body: (FileAttachment) => {
+const ref = FileAttachment("./data/reference.json").json();
+const DOCS = "../../"; // the documentation, from this page
+// Empty databases of each dataflow, made from the same files (reference/schema/template.py)
+const TEMPLATES = {
+  Article23: {file: FileAttachment("./data/rUWWTD_Article23_template.sqlite"), kind: "SQLite"},
+  SpatialPoints: {file: FileAttachment("./data/rUWWTD_SpatialPoints_template.gpkg"), kind: "GeoPackage"}
+};
+return {ref,DOCS,TEMPLATES};
+}});
+
+define({id: "f0b5d770", inputs: ["ref","html","typeText"], outputs: ["labels","codelists","types","key","byKey","COLUMNS","typeCell"], body: (ref,html,typeText) => {
+const labels = ref.labels;
+const codelists = new Set(ref.codelists.map((c) => c.type));
+const types = new Map(ref.types.map((t) => [t.type, t]));
+const key = (t) => `${t.dataflow}/${t.table}`;
+const byKey = new Map(ref.tables.map((t) => [key(t), t]));
+const COLUMNS = ["notation", "label", "definition", "type", "multiplicity", "unit", "status", "condition", "group"];
+
+// The Type column links a code list to its page, and shows the definition of a simple type.
+function typeCell(f) {
+  if (codelists.has(f.type)) return html`<a href="./codelists?type=${f.type}"><code>${typeText(f)}</code></a>`;
+  const t = types.get(f.type);
+  return html`<code title="${t ? t.definition : ""}">${typeText(f)}</code>`;
+}
+return {labels,codelists,types,key,byKey,COLUMNS,typeCell};
+}});
+
+define({id: "b646bb70", inputs: ["ref","key","plain","labels","view","Inputs"], outputs: ["allFields","found"], body: (ref,key,plain,labels,view,Inputs) => {
+const allFields = ref.tables.flatMap((t) =>
+  t.fields.map((f) => ({
+    table: key(t),
+    notation: f.notation,
+    label: f.label,
+    type: f.type,
+    status: f.status,
+    definition: plain(f.definition, labels)
+  }))
+);
+const found = view(Inputs.search(allFields, {placeholder: "Search all fields: a name, a type or a word", width: 480}));
+return {allFields,found};
+}});
+
+define({id: "eb380ce5", inputs: ["display","found","allFields","Inputs","html","codelists","ref"], body: (display,found,allFields,Inputs,html,codelists,ref) => {
+display(
+  found.length < allFields.length
+    ? Inputs.table(found, {
+        columns: ["table", "notation", "label", "type", "status", "definition"],
+        header: {table: "Table", notation: "Field", label: "Label", type: "Type", status: "Status", definition: "Definition"},
+        format: {
+          table: (t) => html`<a href="?table=${t}">${t}</a>`,
+          notation: (n) => html`<code>${n}</code>`,
+          type: (t) => (codelists.has(t) ? html`<a href="./codelists?type=${t}"><code>${t}</code></a>` : html`<code>${t}</code>`)
+        },
+        rows: 8,
+        layout: "auto"
+      })
+    : html`<p class="muted small">${allFields.length} fields in ${ref.tables.length} tables.</p>`
+);
+}});
+
+define({id: "07865d42", inputs: ["byKey","URLSearchParams","location","ref","view","Inputs","DATAFLOWS"], outputs: ["initial","choice"], body: (byKey,URLSearchParams,location,ref,view,Inputs,DATAFLOWS) => {
+const initial = byKey.get(new URLSearchParams(location.search).get("table")) ?? ref.tables[0];
+const choice = view(Inputs.select(ref.tables, {
+  label: "Table",
+  format: (t) => `${DATAFLOWS[t.dataflow]}${t.dataset ? ` · ${t.dataset}` : ""} · ${t.table}`,
+  value: initial
+}));
+return {initial,choice};
+}});
+
+define({id: "cb034704", inputs: ["display","html","choice","DATAFLOWS","docsHref","DOCS","versionNote","ref"], body: (display,html,choice,DATAFLOWS,docsHref,DOCS,versionNote,ref) => {
+display(html`<div class="card">
+  <h2>${choice.table}</h2>
+  <p>${DATAFLOWS[choice.dataflow]} dataflow${choice.dataset ? html`, ${choice.dataset}` : ""}.
+  ${choice.fields.length} fields. ${choice.primaryKey.length
+    ? html`Key: ${choice.primaryKey.map((k, i) => html`${i ? ", " : ""}<code>${k}</code>`)}.`
+    : html`<span class="muted">No key stated.</span>`}
+  <a href="${docsHref(DOCS, choice.page, choice.anchor)}">Definition in the documentation</a>.</p>
+  <p class="muted small">Version: ${versionNote(ref.versions, choice.dataflow)}</p>
+</div>`);
+}});
+
+define({id: "8eadbd7d", inputs: ["choice","display","Inputs","html","markup","labels","DOCS","typeCell"], outputs: ["groups","shown"], body: (choice,display,Inputs,html,markup,labels,DOCS,typeCell) => {
+const groups = new Map(choice.groups.map((g) => [g.group, g.caption]));
+const shown = choice.fields.map((f) => ({...f, part: groups.get(f.group) ?? ""}));
+display(Inputs.table(shown, {
+  columns: ["notation", "label", "definition", "type", "status", "condition", ...(choice.groups.length > 1 ? ["part"] : [])],
+  header: {notation: "Field", label: "Label", definition: "Definition", type: "Type", status: "Status", condition: "Condition", part: "Part"},
+  format: {
+    notation: (n) => html`<code id="${n}">${n}</code>`,
+    definition: (d) => markup(d, labels, DOCS),
+    condition: (c) => markup(c, labels, DOCS),
+    type: (t, i) => typeCell(shown[i])
+  },
+  rows: 40,
+  layout: "auto"
+}));
+return {groups,shown};
+}});
+
+define({id: "86a9eac1", inputs: ["display","html","choice","csvButton","COLUMNS","jsonButton","FileAttachment"], body: (display,html,choice,csvButton,COLUMNS,jsonButton,FileAttachment) => {
+display(html`<span>Download <code>${choice.table}</code>:</span>`);
+display(csvButton(choice.fields, COLUMNS, `${choice.dataflow}_${choice.table}.csv`));
+display(jsonButton({dataflow: choice.dataflow, dataset: choice.dataset, table: choice.table, primaryKey: choice.primaryKey, fields: choice.fields}, `${choice.dataflow}_${choice.table}.json`));
+display(html`<a href="${FileAttachment("./data/reference.zip").href}" download="rUWWTD-reference.zip">All code lists and field tables (zip)</a>`);
+}});
+
+define({id: "3d92cf83", inputs: ["display","html","TEMPLATES","DATAFLOWS"], body: (display,html,TEMPLATES,DATAFLOWS) => {
+display(html`<ul>${Object.entries(TEMPLATES).map(([dataflow, t]) => html`<li><a href="${t.file.href}" download="${t.file.name}">${t.file.name}</a>: ${DATAFLOWS[dataflow]}, ${t.kind}${dataflow === "SpatialPoints" ? ", with a point geometry in ETRS89, opens in QGIS" : ""}</li>`)}</ul>`);
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="../">rUWWTD data explorer</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.860f7801.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <details open class="observablehq-section-active">
+    <summary>Reference data</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./codelists">Code lists</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./fields">Field tables</a></li>
+    </ol>
+  </details>
+  <details open>
+    <summary>Spatial points prefill (provisional)</summary>
+    <ol>
+    <li class="observablehq-link"><a href="../spatial/agglomerations">Agglomerations</a></li>
+    <li class="observablehq-link"><a href="../spatial/uwwtps">Treatment plants</a></li>
+    <li class="observablehq-link"><a href="../spatial/discharge-points">Discharge points</a></li>
+    </ol>
+  </details>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<header id="observablehq-header">
+<nav class="docs-bar"><a class="docs-link" id="docs-link" href="https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/index.html" target="_blank" rel="noopener noreferrer">← rUWWTD documentation</a>
+<span class="docs-bar-title">rUWWTD data explorer</span>
+<button type="button" class="width-toggle" id="width-toggle" aria-pressed="false" title="Use the whole width of the window">Full width</button></nav>
+<script>{const m = location.pathname.match(/^(.*\/)explorer\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}
+{const root = document.documentElement, b = document.getElementById("width-toggle");
+const show = () => b.setAttribute("aria-pressed", String(root.classList.contains("full-width")));
+show();
+b.addEventListener("click", () => {
+  const on = root.classList.toggle("full-width"); show();
+  try { localStorage.setItem("explorer-full-width", on ? "1" : "0"); } catch (e) {}
+  window.dispatchEvent(new Event("resize")); // charts and tables that follow the width redraw
+});}</script>
+<div class="under-development"><strong>Under development.</strong> This explorer and the
+documentation it draws on are drafts. The spatial points prefill is provisional data under Member State
+review, shown for reporters to check before their first delivery. Not an EEA publication.</div>
+</header>
+<main id="observablehq-main" class="observablehq">
+<div class="observablehq observablehq--block"><!--:6a8454f5:--></div>
+<div class="observablehq observablehq--block"><!--:344bc87c:--></div>
+<div class="observablehq observablehq--block"><!--:f0b5d770:--></div>
+<h1 id="field-tables" tabindex="-1"><a class="observablehq-header-anchor" href="#field-tables">Field tables</a></h1>
+<p>The fields of every table of the rUWWTD dataflows, as in the documentation, which reads the same
+files. Select a table, or search the fields of all of them. Drafts: names, types and statuses may
+change.</p>
+<div class="observablehq observablehq--block"><!--:b646bb70:--></div>
+<div class="observablehq observablehq--block"><!--:eb380ce5:--></div>
+<div class="observablehq observablehq--block"><!--:07865d42:--></div>
+<div class="observablehq observablehq--block"><!--:cb034704:--></div>
+<div class="observablehq observablehq--block"><!--:8eadbd7d:--></div>
+<div class="downloads">
+<div class="observablehq observablehq--block"><!--:86a9eac1:--></div>
+</div>
+<h2 id="template-databases" tabindex="-1"><a class="observablehq-header-anchor" href="#template-databases">Template databases</a></h2>
+<p>An empty database of each dataflow, made from the same files, to load data into and check it
+against the keys, the required fields and the code lists:</p>
+<div class="observablehq observablehq--block"><!--:3d92cf83:--></div>
+<p>Each has the reporting tables with their keys and required fields, constraints from the types (such
+as lengths, dates and values of 0 or more), the code lists filled in tables <code>cl_&lt;Type&gt;</code> with foreign
+keys to them, a <code>Metadata</code> table of the tables and fields in the layout of the Water Framework
+Directive documentation, and an <code>_about</code> table. Foreign keys are only checked when enabled on each
+connection, with <code>PRAGMA foreign_keys = ON</code>. Conditions ("Required if ...") are not enforced: they are
+in <code>Metadata.condition</code>, and are left to the quality checks. Drafts, like the documentation.</p>
+<p class="muted small">The files are the CSV sources of the field tables in the repository
+(<code>reference/schema</code>); its README explains the columns. Definitions and conditions may contain
+documentation markup, such as <code>{ref}`label`</code>, which is shown here as a link.</p>
+<style>
+.muted { color: var(--theme-foreground-muted); }
+.small { font-size: 0.85rem; }
+.downloads { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin: 1rem 0; }
+</style>
+</main>
+<footer id="observablehq-footer">
+<div>Draft, under development. Reference data from the rUWWTD documentation; spatial points prefill: provisional Member State data, under review. Not an EEA publication.</div>
+</footer>
+</div>
+</body>
+</html>

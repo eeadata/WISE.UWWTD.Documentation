@@ -78,9 +78,9 @@ The field is the same as `implementationPeriod` in the Water Framework Directive
   agglomerations it concerns, and the plants for a measure at treatment plants. Where the order
   or the cost of the work is not yet known, the measure is still reported against them.
 * **Indicative cost.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
-  estimate is enough and is reported as `estimated`. Where not even a rough estimate can be given
-  yet, set `costStatus` to `unknown` and report no {ref}`art23-measurefinancing` rows. This raises
-  a warning, and the cost should be estimated in the next update.
+  estimate is enough and is reported as `estimated`. A cost cannot be left unknown: every measure
+  has at least one {ref}`art23-measurefinancing` row, with an amount above 0. Refine the estimate
+  in the next update.
 * **Cost by source and cycle.** Report the capital expenditure in {ref}`art23-measurefinancing`,
   one row per source of financing, split between the 1st cycle and after it. The cost of the
   measure is the sum of both expenditure fields over its rows.

@@ -584,8 +584,8 @@ them: the contact name is <code class="docutils literal notranslate"><span class
 <p>Field tables add the data type, the requirement status and any condition or codelist. Codelist
 tables add notes. Notations are proposals and are not final.</p>
 </section>
-<section id="data-types">
-<h2>Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
+<section id="art23-data-types">
+<span id="data-types"></span><h2>Data types<a class="headerlink" href="#art23-data-types" title="Link to this heading">#</a></h2>
 <p>The field tables use the WISE attribute types, as defined for the other WISE dataflows:</p>
 <ul class="simple">
 <li><p><strong>string<em>n</em></strong> - character string of at most <em>n</em> characters, UTF-8 encoded, for example
@@ -598,6 +598,8 @@ a load in p.e. or an amount in millions of national currency;</p></li>
 <li><p><strong>range</strong> - a range of values, written as in the PostgreSQL range types following
 ISO 80000-2, for example <code class="docutils literal notranslate"><span class="pre">[2028,2033]</span></code> for the years 2028 to 2033 included. A bound left empty
 is open, for example <code class="docutils literal notranslate"><span class="pre">[,2036]</span></code>;</p></li>
+<li><p><strong>PercentageRange</strong> - a range of percentages, written as a range with both bounds given, from
+0 to 100, for example <code class="docutils literal notranslate"><span class="pre">[76,85]</span></code> for 76 % to 85 % included, or <code class="docutils literal notranslate"><span class="pre">[100,100]</span></code> for 100 %;</p></li>
 <li><p><strong>date</strong> - a date in the format yyyy-mm-dd;</p></li>
 <li><p><strong>YesNo</strong> - a yes or no answer, <code class="docutils literal notranslate"><span class="pre">yes</span></code> or <code class="docutils literal notranslate"><span class="pre">no</span></code>: a value of the <a class="reference internal" href="Codelists.html#art23-cl-yesno"><span class="std std-ref">Yes or no</span></a> codelist, as
 in the Water Framework Directive;</p></li>
@@ -671,7 +673,7 @@ in the WFD 4th cycle, codelist names have no <code class="docutils literal notra
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-status-values">Status values C, NC and PD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-requirement-status">Requirement status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-notation">Notation, label and definition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-data-types">Data types</a></li>
 </ul>
   </nav></div>
 
@@ -726,8 +728,8 @@ in the WFD 4th cycle, codelist names have no <code class="docutils literal notra
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

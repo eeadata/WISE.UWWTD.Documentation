@@ -5,9 +5,7 @@
 Part of the proposed measure-first model ({ref}`art23-oi-measure-model`).
 :::
 
-**Table status:** Conditional. Required for each measure in {ref}`art23-measure` whose
-`costStatus` is `known` or `estimated`: such a measure has at least one row. A measure whose cost is
-unknown has no rows.
+**Table status:** Required. Every measure in {ref}`art23-measure` has at least one row.
 **Rows:** one row per measure and source of financing. The combination of `measureCode`,
 `fundingSource`, `europeanUnionFundName` and `loanName` is unique.
 
@@ -41,6 +39,9 @@ funds instead of per institutional sector.
   Report the part still without a source with `fundingSource` = `notIdentified` and
   `fundingStatus` = `notIdentified`. Where no source is known yet, the measure has one such row
   with all its expenditure.
+* **An amount in every row.** Each row gives more than 0 in `totalCapitalExpenditure1stCycle`,
+  `totalCapitalExpenditureAfter1stCycle` or both. Neither is negative. A source that brings no
+  money to the measure has no row.
 * **Splitting by cycle.** Give the expenditure expected in 2028 to 2033 in
   `totalCapitalExpenditure1stCycle`, and what follows from 2034 in
   `totalCapitalExpenditureAfter1stCycle`, each where the `implementationPeriod` of the measure falls

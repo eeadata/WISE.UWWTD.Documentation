@@ -1009,7 +1009,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code></p></td>
 <td><p>Cost status</p></td>
-<td><p>Whether the capital expenditure of the measure is known, estimated or not yet known. Applies to the expenditure of all its rows in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p></td>
+<td><p>Whether the capital expenditure of the measure is known or estimated. Applies to the expenditure of all its rows in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p></td>
 <td><p>CostStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-cost-status"><span class="std std-ref">Cost status</span></a></p></td>
@@ -1048,9 +1048,9 @@ each agglomeration, so every measure other than a national renewal measure lists
 agglomerations it concerns, and the plants for a measure at treatment plants. Where the order
 or the cost of the work is not yet known, the measure is still reported against them.</p></li>
 <li><p><strong>Indicative cost.</strong> Article 23(1)(b) asks for an indicative financial estimation, so a rough
-estimate is enough and is reported as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. Where not even a rough estimate can be given
-yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and report no <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> rows. This raises
-a warning, and the cost should be estimated in the next update.</p></li>
+estimate is enough and is reported as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. A cost cannot be left unknown: every measure
+has at least one <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row, with an amount above 0. Refine the estimate
+in the next update.</p></li>
 <li><p><strong>Cost by source and cycle.</strong> Report the capital expenditure in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>,
 one row per source of financing, split between the 1st cycle and after it. The cost of the
 measure is the sum of both expenditure fields over its rows.</p></li>
@@ -1163,8 +1163,8 @@ measure is the sum of both expenditure fields over its rows.</p></li>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

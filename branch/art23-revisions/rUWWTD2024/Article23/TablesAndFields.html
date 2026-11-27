@@ -827,14 +827,14 @@ namespace DescriptiveDataset {
         + remarks: string1000 [0..1]
     }
     class SelfAssessment {
-        + article3Compliance: ComplianceShare [1]
-        + article3Compliance1000to1999: ComplianceShareEstimated [1]
+        + article3Compliance: PercentageRange [1]
+        + article3Compliance1000to1999: PercentageRange [1]
         + article4Compliance: YesNo [1]
         + article5ManagementPlanCount: nonNegativeValue [1]
-        + article6Compliance: ComplianceShare [1]
-        + article6Compliance1000to1999: ComplianceShareEstimated [1]
-        + article7Compliance: ComplianceShareEstimated [1]
-        + article8Compliance: ComplianceShareEstimated [1]
+        + article6Compliance: PercentageRange [1]
+        + article6Compliance1000to1999: PercentageRange [1]
+        + article7Compliance: PercentageRange [1]
+        + article8Compliance: PercentageRange [1]
     }
     class Derogation {
         + derogationType: DerogationType [1]
@@ -908,7 +908,7 @@ namespace SpatialPointsDataflow {
     class SpatialAgglomeration[&quot;Agglomeration (spatial points)&quot;]
 }
 
-Measure &quot;1&quot; -- &quot;0..n&quot; MeasureFinancing : measureCode
+Measure &quot;1&quot; -- &quot;1..n&quot; MeasureFinancing : measureCode
 Measure ..&gt; SpatialUWWTP : euUWWTPCode
 Measure ..&gt; SpatialAgglomeration : euAgglomerationCode
 CulturalHeritageExtension ..&gt; SpatialAgglomeration : euAgglomerationCode
@@ -1126,8 +1126,8 @@ gives the definition, condition and codelist of every field.</p>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

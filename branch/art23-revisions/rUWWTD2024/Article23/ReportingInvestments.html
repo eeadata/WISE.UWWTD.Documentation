@@ -815,7 +815,7 @@ expenditure of each measure is reported per cycle in a separate table, <code cla
 <section id="where-to-report-each-measure">
 <h2>Where to report each measure<a class="headerlink" href="#where-to-report-each-measure" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 54 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 52 </span><span class="caption-text">Where to report measures</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -891,10 +891,11 @@ the investments. A rough figure is enough, for example a typical cost per plant 
 number of plants. Report it with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">estimated</span></code>.</p></li>
 <li><p><strong>Estimated or known.</strong> Use <code class="docutils literal notranslate"><span class="pre">estimated</span></code> for estimates and <code class="docutils literal notranslate"><span class="pre">known</span></code> for costs from a project,
 tender or contract.</p></li>
-<li><p><strong>Unknown is an exception.</strong> Where not even a rough estimate can be given yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code>
-to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and report no financing rows. The measure is accepted but raises a warning
-(check R16), since it gives no financial estimation, and the cost should be estimated in the
-next update.</p></li>
+<li><p><strong>Always an amount.</strong> A cost cannot be reported as unknown. Every measure has at least one
+financing row (check RF04), and each row gives more than 0 in
+<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code>, <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> or both (check R18).
+Where only a rough figure is possible, report it as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>, and refine it in the next
+update.</p></li>
 <li><p><strong>Several types, one cost.</strong> A measure with several types has one cost, which is not split
 between the types. Totals per type are therefore only exact for measures with one type; for the
 others, count the measures that include a type rather than adding up their costs.</p></li>
@@ -996,7 +997,7 @@ of the money still to be found, and a national renewal programme.</p>
 <section id="from-the-draft-fields-to-the-measure-model">
 <h2>From the draft fields to the measure model<a class="headerlink" href="#from-the-draft-fields-to-the-measure-model" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 55 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 53 </span><span class="caption-text">Where the draft investment fields go</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 45.0%" />
 <col style="width: 55.0%" />
@@ -1061,7 +1062,7 @@ of the money still to be found, and a national renewal programme.</p>
 <section id="art23-quality-checks">
 <span id="quality-checks"></span><h2>Quality checks<a class="headerlink" href="#art23-quality-checks" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 56 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 54 </span><span class="caption-text">Proposed quality checks for the measure tables</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 10.0%" />
 <col style="width: 22.0%" />
@@ -1124,8 +1125,7 @@ agglomeration measures</p></td>
 </tr>
 <tr class="row-even"><td><p>RF04</p></td>
 <td><p>Measure, MeasureFinancing</p></td>
-<td><p>A measure with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">known</span></code> or <code class="docutils literal notranslate"><span class="pre">estimated</span></code> has at least one MeasureFinancing row; a
-measure with <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code> has none</p></td>
+<td><p>Each measure has at least one MeasureFinancing row</p></td>
 <td><p>Error</p></td>
 </tr>
 <tr class="row-odd"><td><p>R04</p></td>
@@ -1178,15 +1178,15 @@ and <code class="docutils literal notranslate"><span class="pre">renewOrReplaceT
 <code class="docutils literal notranslate"><span class="pre">producerResponsibilityEstimateBasedOn</span></code> is not <code class="docutils literal notranslate"><span class="pre">notAvailable</span></code></p></td>
 <td><p>Error</p></td>
 </tr>
-<tr class="row-even"><td><p>R16</p></td>
-<td><p>Measure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>: the measure gives no indicative financial estimation for
-Article 23(1)(b) or (c)</p></td>
-<td><p>Warning</p></td>
-</tr>
-<tr class="row-odd"><td><p>R17</p></td>
+<tr class="row-even"><td><p>R17</p></td>
 <td><p>Measure</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> has an upper bound, the completion year</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr class="row-odd"><td><p>R18</p></td>
+<td><p>MeasureFinancing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code>, <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> or both are more
+than 0; neither is negative</p></td>
 <td><p>Error</p></td>
 </tr>
 </tbody>
@@ -1309,8 +1309,8 @@ Article 23(1)(b) or (c)</p></td>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

@@ -785,9 +785,7 @@ window.runMermaid = runMermaid;</script>
 <p>Draft
 Part of the proposed measure-first model.</p>
 </div>
-<p><strong>Table status:</strong> Conditional. Required for each measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> whose
-<code class="docutils literal notranslate"><span class="pre">costStatus</span></code> is <code class="docutils literal notranslate"><span class="pre">known</span></code> or <code class="docutils literal notranslate"><span class="pre">estimated</span></code>: such a measure has at least one row. A measure whose cost is
-unknown has no rows.
+<p><strong>Table status:</strong> Required. Every measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a> has at least one row.
 <strong>Rows:</strong> one row per measure and source of financing. The combination of <code class="docutils literal notranslate"><span class="pre">measureCode</span></code>,
 <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code>, <code class="docutils literal notranslate"><span class="pre">europeanUnionFundName</span></code> and <code class="docutils literal notranslate"><span class="pre">loanName</span></code> is unique.</p>
 <p>The table gives the capital expenditure of each measure in <a class="reference internal" href="Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, source by source
@@ -891,14 +889,14 @@ classDef forFixing fill:white,stroke:#f00;
 <td><p>Capital expenditure of the measure from this source in the 1st cycle, 2028 to 2033, the same period as the 4th cycle of the Water Framework Directive, without operational or maintenance costs. Expenditure before 2028 is not reported. Corresponds to <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure4thCycle</span></code> in the Water Framework Directive.</p></td>
 <td><p>nonNegativeValue (million units of national currency)</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the measure overlaps 2028 to 2033, unless its <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>; empty otherwise</p></td>
+<td><p>Required if the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the measure overlaps 2028 to 2033; empty otherwise. This field, <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> or both are more than 0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code></p></td>
 <td><p>Capital expenditure after the 1st cycle</p></td>
 <td><p>Capital expenditure of the measure from this source from 2034 until the completion of the measure, without operational or maintenance costs. Covers the 2nd and 3rd cycles together, to 2045.</p></td>
 <td><p>nonNegativeValue (million units of national currency)</p></td>
 <td><p>Conditional</p></td>
-<td><p>Required if the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the measure ends after 2033, unless its <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">unknown</span></code>; empty otherwise</p></td>
+<td><p>Required if the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the measure ends after 2033; empty otherwise. This field, <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> or both are more than 0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">millionUnitsOfNationalCurrency</span></code></p></td>
 <td><p>Currency</p></td>
@@ -921,6 +919,9 @@ expenditure.</p></li>
 Report the part still without a source with <code class="docutils literal notranslate"><span class="pre">fundingSource</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code> and
 <code class="docutils literal notranslate"><span class="pre">fundingStatus</span></code> = <code class="docutils literal notranslate"><span class="pre">notIdentified</span></code>. Where no source is known yet, the measure has one such row
 with all its expenditure.</p></li>
+<li><p><strong>An amount in every row.</strong> Each row gives more than 0 in <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code>,
+<code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> or both. Neither is negative. A source that brings no
+money to the measure has no row.</p></li>
 <li><p><strong>Splitting by cycle.</strong> Give the expenditure expected in 2028 to 2033 in
 <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code>, and what follows from 2034 in
 <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code>, each where the <code class="docutils literal notranslate"><span class="pre">implementationPeriod</span></code> of the measure falls
@@ -1041,8 +1042,8 @@ reported in <a class="reference internal" href="MSSummary.html#art23-mssummary">
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

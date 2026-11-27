@@ -805,14 +805,14 @@ classDiagram
 direction LR
 
 class SelfAssessment{
-    + article3Compliance: ComplianceShare [1]
-    + article3Compliance1000to1999: ComplianceShareEstimated [1]
+    + article3Compliance: PercentageRange [1]
+    + article3Compliance1000to1999: PercentageRange [1]
     + article4Compliance: YesNo [1]
     + article5ManagementPlanCount: nonNegativeValue [1]
-    + article6Compliance: ComplianceShare [1]
-    + article6Compliance1000to1999: ComplianceShareEstimated [1]
-    + article7Compliance: ComplianceShareEstimated [1]
-    + article8Compliance: ComplianceShareEstimated [1]
+    + article6Compliance: PercentageRange [1]
+    + article6Compliance1000to1999: PercentageRange [1]
+    + article7Compliance: PercentageRange [1]
+    + article8Compliance: PercentageRange [1]
 }
 
 classDef default fill:white,stroke:#000;
@@ -829,9 +829,13 @@ classDef forFixing fill:white,stroke:#f00;
 <h2>Self-assessment fields<a class="headerlink" href="#self-assessment-fields" title="Link to this heading">#</a></h2>
 <p>Each field records the Member State’s own assessment, at national level, of compliance with one
 Article in the first programme. The draft notes that detailed information may not yet be
-available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
-percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
-Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.</p>
+available, so Articles 3 and 6 are assessed as the share of compliant agglomerations, Article 4 as
+a yes or no answer, Article 5 as a count of agglomerations, and Articles 7 and 8 as the share of
+compliant treatment plants of 150 000 p.e. and above.</p>
+<p>Each share is a range of percentages, from 0 to 100 (<code class="docutils literal notranslate"><span class="pre">PercentageRange</span></code>,
+<a class="reference internal" href="../Terminology.html#art23-data-types"><span class="std std-ref">Data types</span></a>): the Member State gives the range its data supports, for
+example <code class="docutils literal notranslate"><span class="pre">[76,85]</span></code>, or <code class="docutils literal notranslate"><span class="pre">[100,100]</span></code> when all comply. An exact share is a range of one value, such as
+<code class="docutils literal notranslate"><span class="pre">[92,92]</span></code>.</p>
 <p>Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
 agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
@@ -857,16 +861,16 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code></p></td>
 <td><p>Article 3 compliance</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting systems).</p></td>
-<td><p>ComplianceShare</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance1000to1999</span></code></p></td>
 <td><p>Article 3 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article4Compliance</span></code></p></td>
 <td><p>Article 4 compliance</p></td>
@@ -885,30 +889,30 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code></p></td>
 <td><p>Article 6 compliance</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary treatment).</p></td>
-<td><p>ComplianceShare</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance1000to1999</span></code></p></td>
 <td><p>Article 6 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code></p></td>
 <td><p>Article 7 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code></p></td>
 <td><p>Article 8 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>PercentageRange (%)</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>–</p></td>
 </tr>
 </tbody>
 </table>
@@ -1025,8 +1029,8 @@ agglomeration data is not stated.</p>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

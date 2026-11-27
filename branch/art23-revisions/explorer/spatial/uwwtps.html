@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.4">
+<title>Treatment plants | rUWWTD data explorer</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="../_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="preload" as="style" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="preload" as="style" href="../_npm/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="../_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="stylesheet" type="text/css" href="../_observablehq/stdlib/inputs.f7bf0e12.css">
+<link rel="stylesheet" type="text/css" href="../_npm/leaflet@1.9.4/dist/leaflet.css">
+<link rel="modulepreload" href="../_observablehq/client.6e24dba8.js">
+<link rel="modulepreload" href="../_observablehq/runtime.13bc3751.js">
+<link rel="modulepreload" href="../_observablehq/stdlib.de0ea62b.js">
+<link rel="modulepreload" href="../_import/components/prefill.f0070044.js">
+<link rel="modulepreload" href="../_import/components/download.caf5946e.js">
+<link rel="modulepreload" href="../_import/components/reference.7bf0625c.js">
+<link rel="modulepreload" href="../_import/components/basemap.8e28ff12.js">
+<link rel="modulepreload" href="../_npm/d3@7.9.2/172963d6.js">
+<link rel="modulepreload" href="../_npm/htl@1.0.0/11521f02.js">
+<link rel="modulepreload" href="../_observablehq/stdlib/inputs.76748efc.js">
+<link rel="modulepreload" href="../_npm/leaflet@1.9.4/b6187c6b.js">
+<link rel="modulepreload" href="../_npm/@observablehq/plot@0.6.19/2e9f152c.js">
+<link rel="modulepreload" href="../_npm/apache-arrow@21.2.0/63b06f0b.js">
+<link rel="modulepreload" href="../_npm/parquet-wasm@0.9.0/bd2cf640.js">
+<link rel="modulepreload" href="../_npm/isoformat@0.2.1/604cb63b.js">
+<link rel="modulepreload" href="../_npm/d3-array@3.2.5/52d144d7.js">
+<link rel="modulepreload" href="../_npm/d3-axis@3.0.1/c0e5fbdf.js">
+<link rel="modulepreload" href="../_npm/d3-brush@3.0.1/321ca391.js">
+<link rel="modulepreload" href="../_npm/d3-chord@3.0.2/468a53d3.js">
+<link rel="modulepreload" href="../_npm/d3-color@3.1.1/91613843.js">
+<link rel="modulepreload" href="../_npm/d3-contour@4.0.3/8e79d948.js">
+<link rel="modulepreload" href="../_npm/d3-delaunay@6.0.6/d6c84ddb.js">
+<link rel="modulepreload" href="../_npm/d3-dispatch@3.0.2/a70bd0ef.js">
+<link rel="modulepreload" href="../_npm/d3-drag@3.0.1/47229f37.js">
+<link rel="modulepreload" href="../_npm/d3-dsv@3.0.2/4a4147a2.js">
+<link rel="modulepreload" href="../_npm/d3-ease@3.0.2/ca4f77fd.js">
+<link rel="modulepreload" href="../_npm/d3-fetch@3.0.2/eef84249.js">
+<link rel="modulepreload" href="../_npm/d3-force@3.0.1/c1b23a7b.js">
+<link rel="modulepreload" href="../_npm/d3-format@3.1.3/b1442952.js">
+<link rel="modulepreload" href="../_npm/d3-geo@3.1.2/e07dc79e.js">
+<link rel="modulepreload" href="../_npm/d3-hierarchy@3.1.3/d3b0a1aa.js">
+<link rel="modulepreload" href="../_npm/d3-interpolate@3.0.2/6de199be.js">
+<link rel="modulepreload" href="../_npm/d3-path@3.1.1/9eb769d3.js">
+<link rel="modulepreload" href="../_npm/d3-polygon@3.0.2/93595b54.js">
+<link rel="modulepreload" href="../_npm/d3-quadtree@3.0.2/80bafd54.js">
+<link rel="modulepreload" href="../_npm/d3-random@3.0.2/8bf3f736.js">
+<link rel="modulepreload" href="../_npm/d3-scale@4.0.3/d15d690b.js">
+<link rel="modulepreload" href="../_npm/d3-scale-chromatic@3.1.1/287966da.js">
+<link rel="modulepreload" href="../_npm/d3-selection@3.0.1/c4158eb5.js">
+<link rel="modulepreload" href="../_npm/d3-shape@3.2.1/a41eab18.js">
+<link rel="modulepreload" href="../_npm/d3-time@3.1.1/acaa76bc.js">
+<link rel="modulepreload" href="../_npm/d3-time-format@4.1.1/d561e9cd.js">
+<link rel="modulepreload" href="../_npm/d3-timer@3.0.2/ea7e7cf7.js">
+<link rel="modulepreload" href="../_npm/d3-transition@3.0.2/f861168f.js">
+<link rel="modulepreload" href="../_npm/d3-zoom@3.0.1/c1f09323.js">
+<link rel="modulepreload" href="../_npm/tslib@2.9.1/2dc082bf.js">
+<link rel="modulepreload" href="../_npm/flatbuffers@25.9.23/c8db6147.js">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ccircle%20cx=%2250%22%20cy=%2250%22%20r=%2240%22%20fill=%22%25232b7bb9%22/%3E%3C/svg%3E">
+<style>
+.under-development { padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.9rem;
+  background: color-mix(in srgb, var(--theme-orange, #e8590c) 15%, var(--theme-background));
+  border-left: 4px solid var(--theme-orange, #e8590c); }
+/* The header holds two lines: the link back to the documentation, and the notice */
+:root { --observablehq-header-height: 5.5rem; }
+@media (max-width: 720px) { :root { --observablehq-header-height: 8rem; } }
+#observablehq-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+.docs-bar { display: flex; align-items: center; gap: 1rem; }
+.docs-link { font-weight: 600; padding: 0.25rem 0.75rem; border: 1px solid var(--theme-foreground-focus);
+  border-radius: 4px; text-decoration: none; white-space: nowrap; }
+.docs-link:hover { background: var(--theme-foreground-focus); color: var(--theme-background); }
+.docs-bar-title { color: var(--theme-foreground-muted); font-size: 0.9rem; }
+/* Full width: the page uses the whole window instead of Framework's 1440px; tables and maps follow */
+:root.full-width { --observablehq-max-width: 100vw; }
+.width-toggle { margin-left: auto; font: inherit; font-size: 0.85rem; cursor: pointer; white-space: nowrap;
+  padding: 0.2rem 0.6rem; border: 1px solid var(--theme-foreground-faint); border-radius: 4px;
+  background: none; color: var(--theme-foreground); }
+.width-toggle:hover, .width-toggle[aria-pressed="true"] { border-color: var(--theme-foreground-focus); }
+</style>
+<script>try { if (localStorage.getItem("explorer-full-width") === "1") document.documentElement.classList.add("full-width"); } catch (e) {}</script>
+<script type="module">
+
+import {define} from "../_observablehq/client.6e24dba8.js";
+import {registerFile} from "../_observablehq/stdlib.de0ea62b.js";
+
+registerFile("../reference/data/reference.json", {"name":"../reference/data/reference.json","mimeType":"application/json","path":"../_file/reference/data/reference.5e95e121.json","lastModified":1795775162491,"size":107626});
+registerFile("./data/flags.parquet", {"name":"./data/flags.parquet","path":"../_file/spatial/data/flags.a1865ed6.parquet","lastModified":1795775163479,"size":1056468});
+registerFile("./data/release.json", {"name":"./data/release.json","mimeType":"application/json","path":"../_file/spatial/data/release.b8711861.json","lastModified":1795775162720,"size":1641});
+registerFile("./data/uwwtps.parquet", {"name":"./data/uwwtps.parquet","path":"../_file/spatial/data/uwwtps.72cd7e7d.parquet","lastModified":1795775164013,"size":1162844});
+
+define({id: "da88acd1", outputs: ["COUNTRIES","SEVERITIES","SEVERITY_COLORS","TABLES","countryName","fieldValue","rowsOf","worstSeverity","csvButton","markup","addBaseLayers"], body: async () => {
+const [{COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity}, {csvButton}, {markup}, {addBaseLayers}] = await Promise.all([import("../_import/components/prefill.f0070044.js"), import("../_import/components/download.caf5946e.js"), import("../_import/components/reference.7bf0625c.js"), import("../_import/components/basemap.8e28ff12.js")]);
+
+return {COUNTRIES,SEVERITIES,SEVERITY_COLORS,TABLES,countryName,fieldValue,rowsOf,worstSeverity,csvButton,markup,addBaseLayers};
+}});
+
+define({id: "edbbdbbb", inputs: ["TABLES","FileAttachment"], outputs: ["PAGE","TABLE","LABEL","ONE","DOCS","data","flagData","release","ref"], body: (TABLES,FileAttachment) => {
+const PAGE = "uwwtps";
+const {table: TABLE, label: LABEL, one: ONE} = TABLES[PAGE];
+const DOCS = "../../"; // the documentation, from this page
+const data = FileAttachment("./data/uwwtps.parquet").parquet();
+const flagData = FileAttachment("./data/flags.parquet").parquet();
+const release = FileAttachment("./data/release.json").json();
+const ref = FileAttachment("../reference/data/reference.json").json();
+return {PAGE,TABLE,LABEL,ONE,DOCS,data,flagData,release,ref};
+}});
+
+define({id: "9f803838", inputs: ["rowsOf","data","flagData","TABLE","ref"], outputs: ["raw","dataColumns","flagRows","spec","HELPERS","specFields","oldFields"], body: (rowsOf,data,flagData,TABLE,ref) => {
+const raw = rowsOf(data);
+const dataColumns = data.schema.fields.map((f) => f.name);
+const flagRows = rowsOf(flagData).filter((d) => d.table === TABLE);
+const spec = ref.tables.find((t) => t.dataflow === "SpatialPoints" && t.table === TABLE);
+const HELPERS = new Set(["countryCode", "longitude", "latitude", "reportedName", "nameSteps", "reportedLongitude", "reportedLatitude", "originalCode"]);
+const specFields = spec.fields.map((f) => ({...f, inRelease: f.notation === "geometry" || dataColumns.includes(f.notation)}));
+const oldFields = dataColumns.filter((c) => !HELPERS.has(c) && !spec.fields.some((f) => f.notation === c));
+return {raw,dataColumns,flagRows,spec,HELPERS,specFields,oldFields};
+}});
+
+define({id: "36a20b8e", inputs: ["d3","flagRows","raw","worstSeverity"], outputs: ["flagsByCode","rows","byCode","countries","checks"], body: (d3,flagRows,raw,worstSeverity) => {
+const flagsByCode = d3.group(flagRows, (d) => d.thematicIdIdentifier);
+const rows = raw.map((d) => {
+  const flags = flagsByCode.get(d.thematicIdIdentifier) ?? [];
+  return {
+    ...d,
+    reportedName: d.reportedName ?? "",
+    originalCode: d.originalCode ?? "",
+    flags,
+    flagCount: flags.length,
+    severity: worstSeverity(flags),
+    nameCleaned: !!d.reportedName && d.reportedName !== d.nameText,
+    moved: d.reportedLatitude != null,
+    converted: !!d.originalCode
+  };
+});
+const byCode = new Map(rows.map((d) => [d.thematicIdIdentifier, d]));
+const countries = [...new Set(rows.map((d) => d.countryCode))].sort();
+const checks = [...new Set(flagRows.map((d) => d.check))].sort();
+return {flagsByCode,rows,byCode,countries,checks};
+}});
+
+define({id: "02e87060", mode: "inline", inputs: ["LABEL","display"], body: async (LABEL,display) => {
+display(await(
+LABEL.toLowerCase()
+))
+}});
+
+define({id: "290ccafa", mode: "inline", inputs: ["release","display"], body: async (release,display) => {
+display(await(
+release.reference_year
+))
+}});
+
+define({id: "ab4646bc", mode: "inline", inputs: ["html","DOCS","spec","TABLE","display"], body: async (html,DOCS,spec,TABLE,display) => {
+display(await(
+html`<a href="${DOCS}${spec.page}">${TABLE} table specification</a>`
+))
+}});
+
+define({id: "9096ed9e", inputs: ["URLSearchParams","location","byCode","view","Inputs","countries","countryName"], outputs: ["query","linked","initialCountry","country"], body: (URLSearchParams,location,byCode,view,Inputs,countries,countryName) => {
+const query = new URLSearchParams(location.search);
+const linked = byCode.get(query.get("code"));
+const initialCountry = linked?.countryCode ?? query.get("country");
+const country = view(Inputs.select([null, ...countries], {
+  label: "Country",
+  format: countryName,
+  value: countries.includes(initialCountry) ? initialCountry : null
+}));
+return {query,linked,initialCountry,country};
+}});
+
+define({id: "d658c119", inputs: ["view","Inputs","SEVERITIES","html","SEVERITY_COLORS"], outputs: ["severity"], body: (view,Inputs,SEVERITIES,html,SEVERITY_COLORS) => {
+const severity = view(Inputs.checkbox(SEVERITIES, {
+  label: "Worst flag",
+  value: SEVERITIES,
+  format: (s) => html`<span style="color:${SEVERITY_COLORS[s]}">●</span> ${s === "None" ? "No flag" : s}`
+}));
+return {severity};
+}});
+
+define({id: "6172c51d", inputs: ["view","Inputs","checks"], outputs: ["check"], body: (view,Inputs,checks) => {
+const check = view(Inputs.select([null, ...checks], {label: "Check", format: (c) => c ?? "Any check"}));
+return {check};
+}});
+
+define({id: "c8360d82", inputs: ["view","Inputs"], outputs: ["search"], body: (view,Inputs) => {
+const search = view(Inputs.text({label: "Search", placeholder: "Code or name"}));
+return {search};
+}});
+
+define({id: "1853db96", inputs: ["country","rows","search","severity","check"], outputs: ["inCountry","q","matches","shown","count"], body: (country,rows,search,severity,check) => {
+const inCountry = country ? rows.filter((d) => d.countryCode === country) : rows;
+const q = search.trim().toLowerCase();
+const matches = (d) =>
+  d.thematicIdIdentifier.toLowerCase().includes(q) ||
+  (d.nameText ?? "").toLowerCase().includes(q) ||
+  d.reportedName.toLowerCase().includes(q) ||
+  d.originalCode.toLowerCase().includes(q);
+const shown = inCountry.filter(
+  (d) => severity.includes(d.severity) && (!check || d.flags.some((f) => f.check === check)) && (!q || matches(d))
+);
+const count = (f) => inCountry.filter(f).length.toLocaleString("en-US");
+return {inCountry,q,matches,shown,count};
+}});
+
+define({id: "0d6fda01", mode: "inline", inputs: ["LABEL","display"], body: async (LABEL,display) => {
+display(await(
+LABEL
+))
+}});
+
+define({id: "b34b4045", mode: "inline", inputs: ["inCountry","display"], body: async (inCountry,display) => {
+display(await(
+inCountry.length.toLocaleString("en-US")
+))
+}});
+
+define({id: "e8f45b00", mode: "inline", inputs: ["shown","display"], body: async (shown,display) => {
+display(await(
+shown.length.toLocaleString("en-US")
+))
+}});
+
+define({id: "b0512263", mode: "inline", inputs: ["count","display"], body: async (count,display) => {
+display(await(
+count((d) => d.severity === "Blocker" || d.severity === "Error")
+))
+}});
+
+define({id: "f53cbd00", mode: "inline", inputs: ["count","display"], body: async (count,display) => {
+display(await(
+count((d) => d.severity === "Warning")
+))
+}});
+
+define({id: "7a46cf1f", mode: "inline", inputs: ["count","display"], body: async (count,display) => {
+display(await(
+count((d) => d.nameCleaned)
+))
+}});
+
+define({id: "b166cc6a", mode: "inline", inputs: ["count","display"], body: async (count,display) => {
+display(await(
+count((d) => d.converted)
+))
+}});
+
+define({id: "a3ab6799", mode: "inline", inputs: ["count","display"], body: async (count,display) => {
+display(await(
+count((d) => d.moved)
+))
+}});
+
+define({id: "a121df6e", inputs: ["html","L","addBaseLayers","ResizeObserver","invalidation"], outputs: ["mapDiv","map","pointsLayer","highlightLayer"], body: (html,L,addBaseLayers,ResizeObserver,invalidation) => {
+const mapDiv = html`<div class="map"></div>`;
+const map = L.map(mapDiv, {preferCanvas: true, worldCopyJump: true}).setView([50, 10], 4);
+addBaseLayers(map);
+const pointsLayer = L.layerGroup().addTo(map);
+const highlightLayer = L.layerGroup().addTo(map);
+new ResizeObserver(() => map.invalidateSize()).observe(mapDiv);
+invalidation.then(() => map.remove());
+return {mapDiv,map,pointsLayer,highlightLayer};
+}});
+
+define({id: "87e10893", inputs: ["Mutable","linked"], outputs: ["picked","pick"], body: (Mutable,linked) => {
+const picked = Mutable(linked?.thematicIdIdentifier ?? null);
+const pick = (code) => (picked.value = code);
+return {picked,pick};
+}});
+
+define({id: "9072dc52", mode: "inline", inputs: ["mapDiv","display"], body: async (mapDiv,display) => {
+display(await(
+mapDiv
+))
+}});
+
+define({id: "9c0211c5", mode: "inline", inputs: ["detail","display"], body: async (detail,display) => {
+display(await(
+detail
+))
+}});
+
+define({id: "1e1f2668", mode: "inline", inputs: ["SEVERITIES","html","SEVERITY_COLORS","display"], body: async (SEVERITIES,html,SEVERITY_COLORS,display) => {
+display(await(
+SEVERITIES.map((s) => html`<span><span class="dot" style="background:${SEVERITY_COLORS[s]}"></span>${s === "None" ? "No flag" : s}</span>`)
+))
+}});
+
+define({id: "5534c889", inputs: ["SEVERITIES","pointsLayer","d3","shown","L","SEVERITY_COLORS","pick"], outputs: ["rank"], body: (SEVERITIES,pointsLayer,d3,shown,L,SEVERITY_COLORS,pick) => {
+// Draw the points, the worst flags last so that they stay on top.
+const rank = (d) => SEVERITIES.length - SEVERITIES.indexOf(d.severity);
+pointsLayer.clearLayers();
+for (const d of d3.sort(shown, rank)) {
+  if (d.latitude == null) continue;
+  L.circleMarker([d.latitude, d.longitude], {
+    radius: 5,
+    weight: 1,
+    color: "#ffffff",
+    fillColor: SEVERITY_COLORS[d.severity],
+    fillOpacity: 0.9
+  })
+    .bindTooltip(`${d.nameText ?? ""} · ${d.thematicIdIdentifier}`)
+    .on("click", () => pick(d.thematicIdIdentifier))
+    .addTo(pointsLayer);
+}
+return {rank};
+}});
+
+define({id: "a34c4dd0", inputs: ["inCountry","mapDiv","map","country","d3","linked","pick"], body: (inCountry,mapDiv,map,country,d3,linked,pick) => {
+// Zoom to the country, leaving out outlying points such as overseas regions; for all countries, to Europe.
+{
+  const located = inCountry.filter((d) => d.latitude != null);
+  // Fit only once the map has its size on the page; before that, Leaflet fits into an empty box.
+  const fit = () => {
+    if (!mapDiv.clientWidth) return requestAnimationFrame(fit);
+    map.invalidateSize();
+    if (!country) {
+      map.fitBounds([[34, -25], [71, 35]]); // all countries: Europe, overseas regions left out of view
+    } else if (located.length) {
+      const lat = located.map((d) => d.latitude), lon = located.map((d) => d.longitude);
+      const lo = located.length > 50 ? 0.01 : 0, hi = 1 - lo;
+      map.fitBounds(
+        [[d3.quantile(lat, lo), d3.quantile(lon, lo)], [d3.quantile(lat, hi), d3.quantile(lon, hi)]],
+        {padding: [20, 20], maxZoom: 11}
+      );
+    }
+  };
+  fit();
+  if (!linked || (country && linked.countryCode !== country)) pick(null);
+}
+}});
+
+define({id: "a0205a51", inputs: ["highlightLayer","picked","byCode","L","map"], outputs: ["sel"], body: (highlightLayer,picked,byCode,L,map) => {
+// Mark the selected object and, where its location was corrected, the reported one.
+highlightLayer.clearLayers();
+const sel = picked ? byCode.get(picked) : null;
+if (sel && sel.latitude != null) {
+  const here = [sel.latitude, sel.longitude];
+  L.circleMarker(here, {radius: 11, color: "#111111", weight: 2.5, fill: false, interactive: false}).addTo(highlightLayer);
+  if (sel.moved) {
+    const there = [sel.reportedLatitude, sel.reportedLongitude];
+    L.polyline([there, here], {color: "#555555", weight: 2, dashArray: "4 4"}).addTo(highlightLayer);
+    L.circleMarker(there, {radius: 7, color: "#555555", weight: 2, dashArray: "3 3", fill: false})
+      .bindTooltip("Reported location")
+      .addTo(highlightLayer);
+  }
+  if (!map.getBounds().contains(here)) map.panTo(here);
+}
+return {sel};
+}});
+
+define({id: "87b6e03b", inputs: ["html","map","fieldValue","sel","ONE","countryName","d3","SEVERITIES","SEVERITY_COLORS","specFields","markup","ref","DOCS","oldFields"], outputs: ["zoomTo","valueCell","detail"], body: (html,map,fieldValue,sel,ONE,countryName,d3,SEVERITIES,SEVERITY_COLORS,specFields,markup,ref,DOCS,oldFields) => {
+function zoomTo(d) {
+  const button = html`<button>Zoom to</button>`;
+  button.onclick = () => map.setView([d.latitude, d.longitude], Math.max(map.getZoom(), 12));
+  return button;
+}
+// A discharge point names its treatment plant: link to it.
+function valueCell(row, field) {
+  const value = fieldValue(row, field);
+  if (field === "groupingInstallation" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
+  return html`<span>${value}</span>`;
+}
+const detail = !sel
+  ? html`<h2>No ${ONE} selected</h2><p class="muted">Select a point on the map or a row in the table below.</p>`
+  : html`<h2>${sel.nameText ?? sel.thematicIdIdentifier}</h2>
+<div class="muted"><code>${sel.thematicIdIdentifier}</code> · ${countryName(sel.countryCode)}</div>
+<div class="actions">${sel.latitude != null ? zoomTo(sel) : ""}</div>
+${sel.flags.length
+  ? html`<h3>Checks to look at</h3><ul class="flags">${d3.sort(sel.flags, (f) => SEVERITIES.indexOf(f.severity)).map(
+      (f) => html`<li><span class="sev" style="background:${SEVERITY_COLORS[f.severity]}">${f.severity}</span> ${f.check}${f.detail ? html`<div class="muted">${f.detail}</div>` : ""}</li>`
+    )}</ul>`
+  : html`<p>No quality-check flags.</p>`}
+${sel.nameCleaned || sel.converted || sel.moved
+  ? html`<h3>Changed by the prefill</h3><ul class="changes">
+      ${sel.nameCleaned ? html`<li>Name reported as <q>${sel.reportedName}</q></li>` : ""}
+      ${sel.converted ? html`<li>Code reported as <code>${sel.originalCode}</code></li>` : ""}
+      ${sel.moved ? html`<li>Location reported as ${sel.reportedLatitude}, ${sel.reportedLongitude}</li>` : ""}
+    </ul>`
+  : ""}
+<h3>Prefilled values</h3>
+<table class="fields">
+  <thead><tr><th>Field</th><th>Value</th></tr></thead>
+  <tbody>${specFields.map((f) => {
+    const value = f.inRelease ? fieldValue(sel, f.notation) : "";
+    const missing = f.inRelease && !value && f.status === "Required";
+    return html`<tr class=${missing ? "missing" : ""}>
+      <td><code>${f.notation}</code><div class="muted">${f.status}</div></td>
+      <td>${!f.inRelease
+        ? html`<span class="muted">Not in this release: a field of the current specification</span>`
+        : value ? valueCell(sel, f.notation) : html`<span class="muted">${missing ? "To be given" : "Empty"}</span>`}
+        <div class="muted small">${markup(f.label, ref.labels, DOCS)}</div></td>
+    </tr>`;
+  })}</tbody>
+</table>
+${oldFields.length
+  ? html`<h3>In this release only</h3>
+<p class="muted small">Fields of the baseline that are no longer in the current specification.</p>
+<table class="fields"><tbody>${oldFields.map((c) => html`<tr><td><code>${c}</code></td><td>${valueCell(sel, c)}</td></tr>`)}</tbody></table>`
+  : ""}`;
+return {zoomTo,valueCell,detail};
+}});
+
+define({id: "cd6f7e90", inputs: ["view","Inputs","shown","html","SEVERITY_COLORS"], outputs: ["tableView"], body: (view,Inputs,shown,html,SEVERITY_COLORS) => {
+const tableView = view(Inputs.table(shown, {
+  columns: ["thematicIdIdentifier", "nameText", "reportedName", "nameLanguage", "designationPeriodBegin", "severity", "flagCount"],
+  header: {
+    thematicIdIdentifier: "Code",
+    nameText: "Name (prefilled)",
+    reportedName: "Name (reported)",
+    nameLanguage: "Language",
+    designationPeriodBegin: "Designation start",
+    severity: "Worst flag",
+    flagCount: "Flags"
+  },
+  format: {
+    severity: (s) => html`<span style="color:${SEVERITY_COLORS[s]}">●</span> ${s === "None" ? "–" : s}`,
+    designationPeriodBegin: (v) => v || html`<span class="muted">missing</span>`
+  },
+  multiple: false,
+  rows: 16,
+  layout: "auto"
+}));
+return {tableView};
+}});
+
+define({id: "1aff4686", inputs: ["tableView","pick"], body: (tableView,pick) => {
+if (tableView) pick(tableView.thematicIdIdentifier);
+}});
+
+define({id: "ec3e7103", inputs: ["dataColumns","display","csvButton","inCountry","TABLE","release","country","countryName"], outputs: ["exportColumns"], body: (dataColumns,display,csvButton,inCountry,TABLE,release,country,countryName) => {
+const exportColumns = dataColumns.filter((c) => !["reportedLongitude", "reportedLatitude", "nameSteps"].includes(c));
+display(csvButton(inCountry, exportColumns, `${TABLE}_prefill_${release.reference_year}_${country ?? "all"}.csv`, `Download the ${country ? countryName(country) : "whole"} table as CSV`));
+return {exportColumns};
+}});
+
+define({id: "ac9ed816", inputs: ["inCountry","display","Plot","width","LABEL","SEVERITIES","SEVERITY_COLORS","html"], outputs: ["countryFlags"], body: (inCountry,display,Plot,width,LABEL,SEVERITIES,SEVERITY_COLORS,html) => {
+const countryFlags = inCountry.flatMap((d) => d.flags);
+display(countryFlags.length
+  ? Plot.plot({
+      marginLeft: 10,
+      width,
+      height: 40 + 28 * new Set(countryFlags.map((f) => f.check)).size,
+      x: {label: `${LABEL} flagged`, grid: true},
+      y: {label: null, axis: null},
+      color: {domain: SEVERITIES.slice(0, 3), range: SEVERITIES.slice(0, 3).map((s) => SEVERITY_COLORS[s]), legend: true},
+      marks: [
+        Plot.barX(countryFlags, Plot.groupY({x: "count"}, {y: "check", fill: "severity", sort: {y: "-x"}, tip: true})),
+        Plot.text(countryFlags, Plot.groupY({x: "count", text: "first"}, {y: "check", text: "check", textAnchor: "start", dx: 6, x: 0, fill: "currentColor"}))
+      ]
+    })
+  : html`<p>No checks fail.</p>`);
+return {countryFlags};
+}});
+
+define({id: "517c4153", mode: "inline", inputs: ["html","release","display"], body: async (html,release,display) => {
+display(await(
+html`<a href="${release.url}"><code>${release.tag}</code></a>`
+))
+}});
+
+define({id: "abff2c24", mode: "inline", inputs: ["release","display"], body: async (release,display) => {
+display(await(
+release.source.name
+))
+}});
+
+define({id: "290ccafa-1", mode: "inline", inputs: ["release","display"], body: async (release,display) => {
+display(await(
+release.reference_year
+))
+}});
+
+define({id: "c76ed253", mode: "inline", inputs: ["release","display"], body: async (release,display) => {
+display(await(
+release.release_status
+))
+}});
+
+define({id: "5004c234", mode: "inline", inputs: ["release","html","display"], body: async (release,html,display) => {
+display(await(
+release.specification_version
+  ? html`specification <code>${release.specification_version}</code>`
+  : "a specification from before the versions were introduced"
+))
+}});
+
+define({id: "f22ac174", mode: "inline", inputs: ["ref","display"], body: async (ref,display) => {
+display(await(
+ref.versions.SpatialPoints.version
+))
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="../">rUWWTD data explorer</a></li>
+  </ol>
+  <div id="observablehq-search"><input type="search" placeholder="Search"></div>
+  <div id="observablehq-search-results"></div>
+  <script>{const o=document.querySelector("#observablehq-search");o.setAttribute("data-shortcut",`${/Mac|iPhone/.test(navigator.platform)?"\u2318":"Alt-"}K`);const t=o.querySelector("input"),r=()=>import("../_observablehq/search.51829439.js");t.addEventListener("focus",r,{once:!0}),t.addEventListener("keydown",r,{once:!0});const c=document.querySelector("#observablehq-sidebar-toggle");addEventListener("keydown",e=>{(e.code==="KeyK"&&e.metaKey&&!e.altKey&&!e.ctrlKey||e.key==="/"&&!e.metaKey&&!e.altKey&&!e.ctrlKey&&e.target===document.body)&&(c.checked?t.focus():(c.click(),t.focus(),c.click()),t.select(),e.preventDefault())});}</script>
+  <details open>
+    <summary>Reference data</summary>
+    <ol>
+    <li class="observablehq-link"><a href="../reference/codelists">Code lists</a></li>
+    <li class="observablehq-link"><a href="../reference/fields">Field tables</a></li>
+    </ol>
+  </details>
+  <details open class="observablehq-section-active">
+    <summary>Spatial points prefill (provisional)</summary>
+    <ol>
+    <li class="observablehq-link"><a href="./agglomerations">Agglomerations</a></li>
+    <li class="observablehq-link observablehq-link-active"><a href="./uwwtps">Treatment plants</a></li>
+    <li class="observablehq-link"><a href="./discharge-points">Discharge points</a></li>
+    </ol>
+  </details>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<header id="observablehq-header">
+<nav class="docs-bar"><a class="docs-link" id="docs-link" href="https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/index.html" target="_blank" rel="noopener noreferrer">← rUWWTD documentation</a>
+<span class="docs-bar-title">rUWWTD data explorer</span>
+<button type="button" class="width-toggle" id="width-toggle" aria-pressed="false" title="Use the whole width of the window">Full width</button></nav>
+<script>{const m = location.pathname.match(/^(.*\/)explorer\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}
+{const root = document.documentElement, b = document.getElementById("width-toggle");
+const show = () => b.setAttribute("aria-pressed", String(root.classList.contains("full-width")));
+show();
+b.addEventListener("click", () => {
+  const on = root.classList.toggle("full-width"); show();
+  try { localStorage.setItem("explorer-full-width", on ? "1" : "0"); } catch (e) {}
+  window.dispatchEvent(new Event("resize")); // charts and tables that follow the width redraw
+});}</script>
+<div class="under-development"><strong>Under development.</strong> This explorer and the
+documentation it draws on are drafts. The spatial points prefill is provisional data under Member State
+review, shown for reporters to check before their first delivery. Not an EEA publication.</div>
+</header>
+<main id="observablehq-main" class="observablehq">
+<div class="observablehq observablehq--block"><!--:da88acd1:--></div>
+<div class="observablehq observablehq--block"><!--:edbbdbbb:--></div>
+<div class="observablehq observablehq--block"><!--:9f803838:--></div>
+<div class="observablehq observablehq--block"><!--:36a20b8e:--></div>
+<h1 id="treatment-plants-provisional" tabindex="-1"><a class="observablehq-header-anchor" href="#treatment-plants-provisional">Treatment plants <span class="tag">provisional</span></a></h1>
+<div class="warning" label="Provisional data, under development">
+<p>These are the <observablehq-loading></observablehq-loading><!--:02e87060:--> that will be prefilled in the first delivery of the spatial points
+dataflow, from the reporting of reference year <observablehq-loading></observablehq-loading><!--:290ccafa:--> under Directive 91/271/EEC.
+That reporting is provisional and under Member State review, and the prefill itself is still being
+developed: names, locations, codes and flags may change. Not an EEA publication.</p>
+</div>
+<p>Every row starts as <code>noChange</code>: in the delivery, the Member State confirms it, corrects it, or retires
+or replaces it. Select a point on the map or a row in the table to see the values that will be
+prefilled and the checks to look at. The fields are defined in the
+<observablehq-loading></observablehq-loading><!--:ab4646bc:--> (draft).</p>
+<div class="observablehq observablehq--block"><!--:9096ed9e:--></div>
+<div class="filters">
+<div class="observablehq observablehq--block"><!--:d658c119:--></div>
+<div class="observablehq observablehq--block"><!--:6172c51d:--></div>
+<div class="observablehq observablehq--block"><!--:c8360d82:--></div>
+</div>
+<div class="observablehq observablehq--block"><!--:1853db96:--></div>
+<div class="grid grid-cols-4">
+  <div class="card"><h2><observablehq-loading></observablehq-loading><!--:0d6fda01:--></h2><span class="big"><observablehq-loading></observablehq-loading><!--:b34b4045:--></span><div class="muted"><observablehq-loading></observablehq-loading><!--:e8f45b00:--> shown</div></div>
+  <div class="card"><h2>With a blocker or an error</h2><span class="big" style="color: ${SEVERITY_COLORS.Error}"><observablehq-loading></observablehq-loading><!--:b0512263:--></span><div class="muted"><observablehq-loading></observablehq-loading><!--:f53cbd00:--> with warnings only</div></div>
+  <div class="card"><h2>Names cleaned</h2><span class="big"><observablehq-loading></observablehq-loading><!--:7a46cf1f:--></span><div class="muted">reported name changed in <code>nameText</code></div></div>
+  <div class="card"><h2>Codes and locations</h2><span class="big"><observablehq-loading></observablehq-loading><!--:b166cc6a:--></span><div class="muted">codes converted · <observablehq-loading></observablehq-loading><!--:a3ab6799:--> locations corrected</div></div>
+</div>
+<div class="observablehq observablehq--block"><!--:a121df6e:--></div>
+<div class="observablehq observablehq--block"><!--:87e10893:--></div>
+<div class="grid map-row">
+  <div class="card" style="padding: 0; overflow: hidden;"><observablehq-loading></observablehq-loading><!--:9072dc52:--></div>
+  <div class="card detail"><observablehq-loading></observablehq-loading><!--:9c0211c5:--></div>
+</div>
+<div class="legend"><observablehq-loading></observablehq-loading><!--:1e1f2668:--><span><span class="dot ring"></span>Selected</span><span><span class="dot ring dashed"></span>Reported location, where corrected</span></div>
+<div class="observablehq observablehq--block"><!--:5534c889:--></div>
+<div class="observablehq observablehq--block"><!--:a34c4dd0:--></div>
+<div class="observablehq observablehq--block"><!--:a0205a51:--></div>
+<div class="observablehq observablehq--block"><!--:87b6e03b:--></div>
+<h2 id="prefilled-rows" tabindex="-1"><a class="observablehq-header-anchor" href="#prefilled-rows">Prefilled rows</a></h2>
+<div class="observablehq observablehq--block"><!--:cd6f7e90:--></div>
+<div class="observablehq observablehq--block"><!--:1aff4686:--></div>
+<div class="observablehq observablehq--block"><!--:ec3e7103:--></div>
+<h2 id="checks-that-fail" tabindex="-1"><a class="observablehq-header-anchor" href="#checks-that-fail">Checks that fail</a></h2>
+<div class="observablehq observablehq--block"><!--:ac9ed816:--></div>
+<p class="muted small">Source: release <observablehq-loading></observablehq-loading><!--:517c4153:--> of the
+spatial points prefill, made from <observablehq-loading></observablehq-loading><!--:abff2c24:--> (reference year <observablehq-loading></observablehq-loading><!--:290ccafa-1:-->,
+<observablehq-loading></observablehq-loading><!--:c76ed253:-->). It follows <observablehq-loading></observablehq-loading><!--:5004c234:-->; the current one is
+<code>spatialpoints-v<observablehq-loading></observablehq-loading><!--:f22ac174:--></code>. Fields added since the release are
+marked as not in this release. The whole tables can be downloaded from the release, as
+Parquet. Map tiles © OpenStreetMap contributors; satellite imagery © Esri, Maxar, Earthstar Geographics and the GIS User Community.</p>
+<style>
+.tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;
+  background: var(--theme-orange, #e8590c); color: white; }
+.map { height: 640px; width: 100%; }
+.map-row { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .map-row { grid-template-columns: 3fr 2fr; } }
+.filters { display: flex; flex-wrap: wrap; gap: 0 2rem; align-items: flex-start; }
+.big { font-size: 2rem; font-weight: 600; }
+.muted { color: var(--theme-foreground-muted); }
+.small { font-size: 0.8rem; }
+.detail { max-height: 640px; overflow-y: auto; }
+.detail h3 { margin-top: 1rem; }
+.detail .actions { margin: 0.5rem 0; }
+.flags, .changes { padding-left: 1rem; }
+.flags li { margin-bottom: 0.4rem; }
+.sev { color: white; border-radius: 3px; padding: 0 4px; font-size: 0.75rem; }
+table.fields { font-size: 0.85rem; }
+table.fields td { vertical-align: top; }
+table.fields tr.missing td:first-child { box-shadow: inset 3px 0 0 var(--theme-red); }
+.legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; margin-bottom: 1.5rem; }
+.legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.legend .ring { background: none; border: 2px solid currentColor; width: 12px; height: 12px; }
+.legend .dashed { border-style: dashed; }
+</style>
+</main>
+<footer id="observablehq-footer">
+<div>Draft, under development. Reference data from the rUWWTD documentation; spatial points prefill: provisional Member State data, under review. Not an EEA publication.</div>
+</footer>
+</div>
+</body>
+</html>

@@ -32,10 +32,8 @@ available, so Articles 3 and 6 are assessed as the share of compliant agglomerat
 a yes or no answer, Article 5 as a count of agglomerations, and Articles 7 and 8 as the share of
 compliant treatment plants of 150 000 p.e. and above.
 
-Each share is a range of percentages, from 0 to 100 (`PercentageRange`,
-{ref}`art23-data-types`): the Member State gives the range its data supports, for
-example `[76,85]`, or `[100,100]` when all comply. An exact share is a range of one value, such as
-`[92,92]`.
+Each share is a percentage, a whole number from 0 to 100 (`Percentage`, {ref}`art23-data-types`):
+for example `85` when 85 % comply, or `100` when all comply.
 
 Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
 agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.

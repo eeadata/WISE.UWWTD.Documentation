@@ -158,13 +158,13 @@ below, and the values are checked as `package.py` would write them. It reports, 
 field and rows:
 
 * errors: an unknown table or column; a Required field empty; a value that does not fit its type
-  (length, identifier, date, year, number, percentage, range, range of percentages, e-mail address,
-  URL, language code, point); a code not in its code list, for each value of a field with several
-  values; two rows with the same key; a `measureCode`, `documentCode` or `referenceCode` that is not
-  the key of a row of its table; with `--spatial`, a treatment plant or agglomeration code of
-  Article 23 that is not in the spatial points tables given; with `--country`, an identifier of
-  another country; a MeasureFinancing row without an amount above 0 in either expenditure field
-  (check R18); a measure without a row in MeasureFinancing (check RF04);
+  (length, identifier, date, year, number, percentage, range, e-mail address, URL, language code,
+  point); a code not in its code list, for each value of a field with several values; two rows with
+  the same key; a `measureCode`, `documentCode` or `referenceCode` that is not the key of a row of
+  its table; with `--spatial`, a treatment plant or agglomeration code of Article 23 that is not in
+  the spatial points tables given; with `--country`, an identifier of another country; a
+  MeasureFinancing row without an amount above 0 in either expenditure field (check R18); a measure
+  without a row in MeasureFinancing (check RF04);
 * warnings: a column renamed for its case, a link or check that cannot be done because its table is
   not given, a value in an `Attachment` field (files are added on the portal), a value given twice;
 * the Conditional fields that have a value, to check by hand: the conditions are text and are not

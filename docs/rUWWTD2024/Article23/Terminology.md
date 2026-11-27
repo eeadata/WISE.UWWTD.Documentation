@@ -180,8 +180,6 @@ The field tables use the WISE attribute types, as defined for the other WISE dat
 * **range** - a range of values, written as in the PostgreSQL range types following
   ISO 80000-2, for example `[2028,2033]` for the years 2028 to 2033 included. A bound left empty
   is open, for example `[,2036]`;
-* **PercentageRange** - a range of percentages, written as a range with both bounds given, from
-  0 to 100, for example `[76,85]` for 76 % to 85 % included, or `[100,100]` for 100 %;
 * **date** - a date in the format yyyy-mm-dd;
 * **YesNo** - a yes or no answer, `yes` or `no`: a value of the {ref}`art23-cl-yesno` codelist, as
   in the Water Framework Directive;

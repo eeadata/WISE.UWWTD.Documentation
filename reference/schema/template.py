@@ -83,11 +83,6 @@ def column_sql(field, codelists, external_lengths):
         'nonNegativeValue': ('REAL', [f'{name} >= 0']),
         'Percentage': ('REAL', [f'{name} BETWEEN 0 AND 100']),
         'range': ('TEXT', [f"{name} GLOB '[[(]*,*[])]'"]),
-        'PercentageRange': ('TEXT', [
-            f"{name} GLOB '[[(][0-9]*,[0-9]*[])]' AND {name} NOT GLOB '*,*,*'",
-            f"CAST(substr({name}, 2, instr({name}, ',') - 2) AS REAL) BETWEEN 0 AND 100",
-            f"CAST(substr({name}, instr({name}, ',') + 1, length({name}) - instr({name}, ',') - 1) AS REAL) "
-            f"BETWEEN CAST(substr({name}, 2, instr({name}, ',') - 2) AS REAL) AND 100"]),
         'Email': ('TEXT', [f'length({name}) <= 250', f"{name} LIKE '%_@_%'"]),
         'URL': ('TEXT', [f'length({name}) <= 2100', f"{name} LIKE 'http%'"]),
         'url': ('TEXT', [f"{name} LIKE 'http%'"]),

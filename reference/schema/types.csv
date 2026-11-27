@@ -7,7 +7,6 @@ nonNegativeValue,simple,Article23,"A non-negative number. The unit, where there 
 Percentage,simple,Article23,"A value in the interval [0, 100].",docs/rUWWTD2024/Article23/Terminology.md#data-types
 gYear,simple,Article23,A Gregorian year.,docs/rUWWTD2024/Article23/Terminology.md#data-types
 range,simple,Article23,"A range of values, written as in the PostgreSQL range types following ISO 80000-2, for example [2028,2033] for the years 2028 to 2033 included. A bound left empty is open, for example [,2036].",docs/rUWWTD2024/Article23/Terminology.md#data-types
-PercentageRange,simple,Article23,"A range of percentages, written as a range with both bounds given, from 0 to 100, for example [76,85] for 76 % to 85 % included, or [100,100] for 100 %.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string,simple,Article23,"A character string of at most 4 000 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string100,simple,Article23,"A character string of at most 100 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types
 string250,simple,Article23,"A character string of at most 250 characters, UTF-8 encoded.",docs/rUWWTD2024/Article23/Terminology.md#data-types

@@ -1,0 +1,78 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class Measure {
+    + measureCode: wiseIdentifier [1]
+    + measureName: string255 [1]
+    + measureNameLanguage: Language [1]
+    + measureReference: referenceCode [0..1]
+    + uwwtdMeasureType: UWWTDMeasureType [1..n]
+    + measureText: string1000 [0..1]
+    + geographicalCoverage: UWWTDGeographicCoverage [1]
+    + euUWWTPCode: wiseIdentifier [0..n]
+    + euAgglomerationCode: wiseIdentifier [0..n]
+    + prioritisation: Priority [1]
+    + implementationStatus: ImplementationStatus [1]
+    + implementationPeriod: range [1]
+    + costStatus: CostStatus [1]
+    + remarks: string1000 [0..1]
+}
+
+class MeasureFinancing {
+    + measureCode: wiseIdentifier [1]
+    + fundingSource: FundingSource [1]
+    + europeanUnionFundName: EUFund [0..1]
+    + loanName: string255 [0..1]
+    + fundingStatus: FundingStatus [1]
+    + totalCapitalExpenditure1stCycle: nonNegativeValue [0..1]
+    + totalCapitalExpenditureAfter1stCycle: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
+}
+
+class UWWTP {
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + status: PlantAgglomerationStatus [1]
+    + expectedLoad: nonNegativeValue [1]
+    + expectedCapacity: nonNegativeValue [1]
+    + remarks: string1000 [0..1]
+}
+
+class Agglomeration {
+    + thematicIdIdentifier: wiseIdentifier [1]
+    + status: PlantAgglomerationStatus [1]
+    + expectedLoad: nonNegativeValue [1]
+    + expectedLoadCollected: Percentage [0..1]
+    + expectedLoadIndividualSystems: Percentage [0..1]
+    + remarks: string1000 [0..1]
+}
+
+class SpatialUWWTP["UWWTP · spatial points"] {
+    <<spatial points>>
+    + thematicIdIdentifier: wiseIdentifier
+    + thematicIdIdentifierScheme = euUWWTPCode
+}
+
+class SpatialAgglomeration["Agglomeration · spatial points"] {
+    <<spatial points>>
+    + thematicIdIdentifier: wiseIdentifier
+    + thematicIdIdentifierScheme = euAgglomerationCode
+}
+
+Measure "1" -- "1..n" MeasureFinancing : measureCode
+Measure ..> SpatialUWWTP : euUWWTPCode
+Measure ..> SpatialAgglomeration : euAgglomerationCode
+UWWTP ..> SpatialUWWTP : thematicIdIdentifier
+Agglomeration ..> SpatialAgglomeration : thematicIdIdentifier
+
+cssClass "SpatialUWWTP,SpatialAgglomeration" spatial
+
+classDef default fill:#ffffff,stroke:#1f4e79,stroke-width:1px;
+classDef spatial fill:#e8f3ea,stroke:#2f7d4a,stroke-width:1.5px;
+classDef forFixing fill:white,stroke:#f00;

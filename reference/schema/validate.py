@@ -12,7 +12,7 @@ Errors, which the portal would refuse or its validation would report:
 * a column that is not a field of the table, or a table that is not in the dataflow;
 * a Required field that is empty, or a [1..n] field without a value;
 * a value that does not fit its type: string length, identifier, date, year, number, percentage,
-  range, range of percentages, e-mail address, URL, language code, point;
+  range, e-mail address, URL, language code, point;
 * a code that is not in its code list (each value of a field with several values);
 * two rows with the same key (the primaryKey of datasets.csv);
 * a value that should be the key of a row of another table of the dataflow, and is not:
@@ -133,14 +133,6 @@ def type_problem(field, value, args):
             return 'a bound is not a year, a number or a date'
         if low != '' and high != '' and type(low) is type(high) and low > high:
             return 'the lower bound is above the upper bound'
-        return None
-    if typ == 'PercentageRange':
-        m = re.fullmatch(r'([\[(])\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*([\])])', value)
-        if not m:
-            return 'not a range of percentages with both bounds, such as [76,85]'
-        low, high = float(m.group(2)), float(m.group(3))
-        if not (0 <= low <= high <= 100):
-            return 'the bounds must be from 0 to 100, the lower first'
         return None
     if typ == 'Email':
         if len(value) > 250:
@@ -337,7 +329,7 @@ def report(dataflow, problems, counts, review, args):
 
 SAMPLES = {'date': '2026-01-01', 'point': 'POINT (10.5 50.25)', 'integer': '-1',
            'nonNegativeInteger': '1', 'nonNegativeValue': '1.5', 'Percentage': '50', 'gYear': '2030',
-           'range': '[2028,2033]', 'PercentageRange': '[76,85]', 'Email': 'someone@example.org', 'url': 'https://example.org',
+           'range': '[2028,2033]', 'Email': 'someone@example.org', 'url': 'https://example.org',
            'URL': 'https://example.org', 'Language': 'eng', 'ZoneType': 'x', 'Attachment': ''}
 
 
@@ -385,7 +377,7 @@ def check():
         if t == 'MSSummary':
             rows[0]['situationAt'] = '30/06/2026'         # not a date
         if t == 'SelfAssessment':
-            rows[0]['article3Compliance'] = '[90,110]'    # above 100
+            rows[0]['article3Compliance2000andAbove'] = '110'         # above 100
         if t == 'Contact':
             rows[0]['email'] = 'nobody'                   # not an e-mail address
         if t == 'Derogation':
@@ -398,7 +390,7 @@ def check():
                 "MSSummary.situationAt: '30/06/2026' is not a date",
                 "MeasureFinancing: none is more than 0 (check R18)",
                 "Measure row 3: 'XX0001' has no row in MeasureFinancing (check RF04)",
-                "SelfAssessment.article3Compliance: '[90,110]': the bounds must be from 0 to 100",
+                "SelfAssessment.article3Compliance2000andAbove: '110': not a number from 0 to 100",
                 "Contact.email: 'nobody': not an e-mail address",
                 "Derogation.reasonReference: 'XX0009' is not a referenceCode",
                 "UWWTP.thematicIdIdentifier: 'FR0001': does not start with XX"]

@@ -33,14 +33,13 @@ agglomerations of 2 000 p.e. and above and those of 1 000 to 1 999 p.e.; Article
 answer on whether a system of authorisation and control of individual systems exists; Article 5 is
 a count of agglomerations of 100 000 p.e. and above that already have an integrated urban
 wastewater management plan; Articles 7 and 8 are the share of compliant treatment plants of
-150 000 p.e. and above. Each share is a range of percentages from 0 to 100 (`PercentageRange`),
+150 000 p.e. and above. Each share is a percentage, a whole number from 0 to 100 (`Percentage`),
 which replaced the two lists of percentage bands (`ComplianceShare`, six bands, and
 `ComplianceShareEstimated`, five).
 
 **Questions.**
 
 * Is the share counted by number of agglomerations or by population equivalent?
-* Should a range be limited in width, or an exact share be asked for where the data allow it?
 * How is a single national share derived where a Member State holds only plant-level data?
 * Should the basis of each value be recorded, for example calculated or estimated?
 

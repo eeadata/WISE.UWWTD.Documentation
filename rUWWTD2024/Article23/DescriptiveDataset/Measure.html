@@ -837,21 +837,21 @@ class Measure{
 }
 class MeasureFinancing{&lt;&lt;descriptive&gt;&gt;}
 
-Measure &quot;1&quot; -- &quot;0..n&quot; MeasureFinancing
+Measure &quot;1&quot; -- &quot;1..n&quot; MeasureFinancing
 
 classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;
 
     </pre><figcaption>
-<p><span class="caption-number">Figure 8 </span><span class="caption-text">Article 23 - Measure - draft</span><a class="headerlink" href="#article23-measure-classdiagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 12 </span><span class="caption-text">Article 23 - Measure - draft</span><a class="headerlink" href="#article23-measure-classdiagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In <a class="reference internal" href="#article23-measure-classdiagram"><span class="std std-numref">Figure 8</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
+<p>In <a class="reference internal" href="#article23-measure-classdiagram"><span class="std std-numref">Figure 12</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields and <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code> the
 Optional and Conditional ones (<a class="reference internal" href="../Terminology.html#art23-requirement-status"><span class="std std-ref">Requirement status</span></a>).</p>
 <section id="measure-type-and-coverage">
 <h2>Measure, type and coverage<a class="headerlink" href="#measure-type-and-coverage" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 22 </span><span class="caption-text">Measure fields - measure, type and coverage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 23 </span><span class="caption-text">Measure fields - measure, type and coverage</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 22.0%" />
 <col style="width: 16.0%" />
@@ -947,7 +947,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <section id="status-and-dates">
 <h2>Status and dates<a class="headerlink" href="#status-and-dates" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 23 </span><span class="caption-text">Measure fields - status and dates</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 24 </span><span class="caption-text">Measure fields - status and dates</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 24.0%" />
 <col style="width: 16.0%" />
@@ -988,7 +988,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <section id="cost">
 <h2>Cost<a class="headerlink" href="#cost" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 24 </span><span class="caption-text">Measure fields - cost</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 25 </span><span class="caption-text">Measure fields - cost</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 16.0%" />
@@ -1009,7 +1009,7 @@ Optional and Conditional ones (<a class="reference internal" href="../Terminolog
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">costStatus</span></code></p></td>
 <td><p>Cost status</p></td>
-<td><p>Whether the capital expenditure of the measure is known, estimated or not yet known. Applies to the expenditure of all its rows in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p></td>
+<td><p>Whether the capital expenditure of the measure is known or estimated. Applies to the expenditure of all its rows in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p></td>
 <td><p>CostStatus</p></td>
 <td><p>Required</p></td>
 <td><p><a class="reference internal" href="../Codelists.html#art23-cl-cost-status"><span class="std std-ref">Cost status</span></a></p></td>
@@ -1048,9 +1048,9 @@ each agglomeration, so every measure other than a national renewal measure lists
 agglomerations it concerns, and the plants for a measure at treatment plants. Where the order
 or the cost of the work is not yet known, the measure is still reported against them.</p></li>
 <li><p><strong>Indicative cost.</strong> Article 23(1)(b) asks for an indicative financial estimation, so a rough
-estimate is enough and is reported as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. Where not even a rough estimate can be given
-yet, set <code class="docutils literal notranslate"><span class="pre">costStatus</span></code> to <code class="docutils literal notranslate"><span class="pre">unknown</span></code> and report no <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> rows. This raises
-a warning, and the cost should be estimated in the next update.</p></li>
+estimate is enough and is reported as <code class="docutils literal notranslate"><span class="pre">estimated</span></code>. A cost cannot be left unknown: every measure
+has at least one <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a> row, with an amount above 0. Refine the estimate
+in the next update.</p></li>
 <li><p><strong>Cost by source and cycle.</strong> Report the capital expenditure in <a class="reference internal" href="MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>,
 one row per source of financing, split between the 1st cycle and after it. The cost of the
 measure is the sum of both expenditure fields over its rows.</p></li>
@@ -1163,8 +1163,8 @@ measure is the sum of both expenditure fields over its rows.</p></li>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

@@ -786,66 +786,184 @@ The table structure below is the draft baseline. It is not final.</p>
 dataflows: a private dataset for the contact details, the descriptive dataset with the tables of
 the draft reporting format, and a documents dataset holding the delivery metadata and every
 document the programme refers to.</p>
+<section id="datasets-and-tables">
+<h2>Datasets and tables<a class="headerlink" href="#datasets-and-tables" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="article23-datasets-flowchart">
 <pre  class="mermaid">
-        flowchart LR
+        ---
+config:
+  theme: neutral
+  flowchart:
+    curve: basis
+    nodeSpacing: 30
+    rankSpacing: 60
+---
+flowchart LR
   subgraph private[&quot;Private dataset&quot;]
     Contact
   end
+
   subgraph descriptive[&quot;Descriptive dataset&quot;]
-    MSSummary
-    SelfAssessment
-    Derogation[&quot;Derogation&lt;br/&gt;one row per provision&quot;]
-    CulturalHeritageExtension
-    LessStringentTreatment
-    Measure[&quot;Measure&lt;br/&gt;one row per measure&quot;]
-    MeasureFinancing
-    UWWTP[&quot;UWWTP&lt;br/&gt;one row per plant&quot;]
-    Agglomeration[&quot;Agglomeration&lt;br/&gt;one row per agglomeration&quot;]
+    direction TB
+    subgraph programme[&quot;Programme&quot;]
+      direction LR
+      MSSummary ~~~ SelfAssessment
+    end
+    subgraph derogations[&quot;Derogations&quot;]
+      direction LR
+      Derogation ~~~ CulturalHeritageExtension ~~~ LessStringentTreatment
+    end
+    subgraph measures[&quot;Measures and costs&quot;]
+      direction LR
+      MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
+    end
+    subgraph objects[&quot;Plants and agglomerations&quot;]
+      direction LR
+      UWWTP ~~~ Agglomeration
+    end
+    programme ~~~ derogations ~~~ measures ~~~ objects
   end
+
   subgraph documents[&quot;Documents dataset&quot;]
+    direction TB
     dcMetadata
-    Reference
-    Document
+    Reference -- &quot;documentCode&quot; --&gt; Document
+    dcMetadata -. &quot;licenseDocument,&lt;br/&gt;metadataDocument&quot; .-&gt; Document
   end
-  MSSummary -- &quot;referenceCode&quot; --&gt; Reference
-  Derogation -- &quot;referenceCode&quot; --&gt; Reference
-  CulturalHeritageExtension -- &quot;referenceCode&quot; --&gt; Reference
-  LessStringentTreatment -- &quot;referenceCode&quot; --&gt; Reference
-  Measure -. &quot;measureReference&quot; .-&gt; Reference
-  MeasureFinancing -- &quot;measureCode&quot; --&gt; Measure
-  Reference -- &quot;documentCode&quot; --&gt; Document
-  dcMetadata -. &quot;licenseDocument&quot; .-&gt; Document
-  dcMetadata -. &quot;metadataDocument&quot; .-&gt; Document
-  subgraph spatial[&quot;Spatial points dataflow&quot;]
-    SpUWWTP[&quot;UWWTP&lt;br/&gt;name and location&quot;]
-    SpAgglomeration[&quot;Agglomeration&lt;br/&gt;name and location&quot;]
-  end
-  UWWTP -- &quot;thematicIdIdentifier&quot; --&gt; SpUWWTP
-  Agglomeration -- &quot;thematicIdIdentifier&quot; --&gt; SpAgglomeration
-  Measure -- &quot;euUWWTPCode&quot; --&gt; SpUWWTP
-  Measure -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
-  CulturalHeritageExtension -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
-  LessStringentTreatment -- &quot;euAgglomerationCode&quot; --&gt; SpAgglomeration
-    </pre><p>The names and locations of treatment plants and agglomerations are not reported in this dataflow.
-They are reported in the separate <a class="reference internal" href="../SpatialPoints/index.html#spatial-points"><span class="std std-ref">Spatial points</span></a> dataflow. The UWWTP and Agglomeration tables
-refer to them by <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, and measures list them in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or
-<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>. A code must already have been
-accepted there, for the reporting country and the right object type (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>).
-Earlier reporting stays valid when an object later changes or is retired.</p>
-<p>MSSummary and the three derogation tables cite documents, and a measure may do so in
-<code class="docutils literal notranslate"><span class="pre">measureReference</span></code>. The UWWTP
-and Agglomeration tables have no reference fields, and there is no field linking a plant to an
-agglomeration. The dashed links are optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only where the
-licence or further metadata is delivered as one.</p>
+
+  private ~~~ descriptive
+  descriptive -- &quot;referenceCode fields&quot; --&gt; Reference
+
+  classDef table fill:#ffffff,stroke:#1f4e79,color:#1a1a1a;
+  class Contact,MSSummary,SelfAssessment,Derogation,CulturalHeritageExtension,LessStringentTreatment,Measure,MeasureFinancing,UWWTP,Agglomeration,dcMetadata,Reference,Document table;
+  style private fill:#f3f3f3,stroke:#888
+  style descriptive fill:#eef4fb,stroke:#1f4e79
+  style documents fill:#f6f0fa,stroke:#6b3d8f
+  style programme fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style derogations fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style measures fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style objects fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 1 </span><span class="caption-text">Article 23 - the three datasets and their tables - draft</span><a class="headerlink" href="#article23-datasets-flowchart" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>MSSummary, the three derogation tables and Measure cite documents in their <code class="docutils literal notranslate"><span class="pre">referenceCode</span></code>
+fields, such as <code class="docutils literal notranslate"><span class="pre">programmeReference</span></code>: a code pointing to a row of Reference, a place within a
+document of the documents dataset. The tables of the descriptive dataset do not carry web
+addresses; each document is delivered as a hyperlink or as a file uploaded to Reportnet 3
+. The dashed link is optional: <code class="docutils literal notranslate"><span class="pre">dcMetadata</span></code> points to a document only
+where the licence or further metadata is delivered as one.</p>
 <p>Measures are the main object of the programme: each measure has one row in Measure, lists the
-plants or agglomerations it concerns in <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and gives its
-sources of financing in MeasureFinancing (<a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>). This is a proposal.</p>
-<p>The tables of the descriptive dataset do not carry web addresses. Fields such as
-<code class="docutils literal notranslate"><span class="pre">programmeReference</span></code> hold a <code class="docutils literal notranslate"><span class="pre">referenceCode</span></code> pointing into the documents dataset, which resolves to
-a document delivered as a hyperlink or as a file uploaded to Reportnet 3
-.</p>
+plants or agglomerations it concerns, and gives its sources of financing in MeasureFinancing
+(<a class="reference internal" href="ReportingInvestments.html#art23-investments"><span class="std std-ref">Reporting measures and costs</span></a>). This is a proposal.</p>
+</section>
+<section id="art23-spatial-links">
+<span id="links-to-the-spatial-points"></span><h2>Links to the spatial points<a class="headerlink" href="#art23-spatial-links" title="Link to this heading">#</a></h2>
+<p>The names and locations of treatment plants and agglomerations are not reported in this dataflow.
+They are reported once, in the <a class="reference internal" href="../SpatialPoints/index.html#spatial-points"><span class="std std-ref">Spatial points</span></a> dataflow, where each object has a code,
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, and the scheme of that code, <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>: <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code>
+for a treatment plant, <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> for an agglomeration and <code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code> for a
+discharge point (<a class="reference internal" href="../SpatialPoints/Codelists.html#sp-cl-scheme"><span class="std std-ref">Identifier scheme</span></a>).</p>
+<p>Article 23 refers to a plant or an agglomeration only by that code. Every link between the two
+dataflows is the same match: the code in the Article 23 field equals the <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> of
+a spatial points object of the expected scheme.</p>
+<figure class="align-center" id="article23-spatiallinks-flowchart">
+<pre  class="mermaid">
+        ---
+config:
+  theme: neutral
+  flowchart:
+    curve: basis
+    nodeSpacing: 20
+    rankSpacing: 90
+---
+flowchart LR
+  subgraph art23[&quot;Article 23 field with the code&quot;]
+    direction TB
+    u1[&quot;&lt;b&gt;UWWTP&lt;/b&gt;&lt;br/&gt;thematicIdIdentifier&quot;]
+    u2[&quot;&lt;b&gt;Measure&lt;/b&gt;&lt;br/&gt;euUWWTPCode&quot;]
+    a1[&quot;&lt;b&gt;Agglomeration&lt;/b&gt;&lt;br/&gt;thematicIdIdentifier&quot;]
+    a2[&quot;&lt;b&gt;Measure&lt;/b&gt;&lt;br/&gt;euAgglomerationCode&quot;]
+    a3[&quot;&lt;b&gt;CulturalHeritageExtension&lt;/b&gt;&lt;br/&gt;euAgglomerationCode&quot;]
+    a4[&quot;&lt;b&gt;LessStringentTreatment&lt;/b&gt;&lt;br/&gt;euAgglomerationCode&quot;]
+  end
+
+  subgraph sp[&quot;Spatial points object&quot;]
+    direction TB
+    spU[&quot;&lt;b&gt;UWWTP&lt;/b&gt;&lt;br/&gt;thematicIdIdentifier&lt;br/&gt;scheme &lt;i&gt;euUWWTPCode&lt;/i&gt;&quot;]
+    spA[&quot;&lt;b&gt;Agglomeration&lt;/b&gt;&lt;br/&gt;thematicIdIdentifier&lt;br/&gt;scheme &lt;i&gt;euAgglomerationCode&lt;/i&gt;&quot;]
+    spD[&quot;&lt;b&gt;DischargePoint&lt;/b&gt;&lt;br/&gt;thematicIdIdentifier&lt;br/&gt;scheme &lt;i&gt;euDischargePointCode&lt;/i&gt;&lt;br/&gt;not used by Article 23&quot;]
+  end
+
+  u1 --&gt; spU
+  u2 --&gt; spU
+  a1 --&gt; spA
+  a2 --&gt; spA
+  a3 --&gt; spA
+  a4 --&gt; spA
+
+  classDef field fill:#ffffff,stroke:#1f4e79,color:#1a1a1a;
+  classDef plant fill:#e8f3ea,stroke:#2f7d4a,stroke-width:2px,color:#1a1a1a;
+  classDef unused fill:#f3f3f3,stroke:#9a9a9a,stroke-dasharray:4 3,color:#6a6a6a;
+  class u1,u2,a1,a2,a3,a4 field;
+  class spU,spA plant;
+  class spD unused;
+  style art23 fill:#eef4fb,stroke:#1f4e79
+  style sp fill:#f4faf5,stroke:#2f7d4a
+  linkStyle 0,1 stroke:#2f7d4a,stroke-width:2px
+  linkStyle 2,3,4,5 stroke:#1f4e79,stroke-width:2px
+
+    </pre><figcaption>
+<p><span class="caption-number">Figure 2 </span><span class="caption-text">Article 23 - links to the spatial points, by thematicIdIdentifier and scheme - draft</span><a class="headerlink" href="#article23-spatiallinks-flowchart" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 6 </span><span class="caption-text">Tables of the three datasets</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Links from Article 23 to the spatial points</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 22.0%" />
+<col style="width: 44.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Article 23 field</p></th>
+<th class="head"><p>Holds</p></th>
+<th class="head"><p>Matched to, in the spatial points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> in <a class="reference internal" href="DescriptiveDataset/UWWTP.html#art23-uwwtp"><span class="std std-ref">UWWTP</span></a>;
+<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a></p></td>
+<td><p>The code of a treatment plant</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> of a row of <a class="reference internal" href="../SpatialPoints/UWWTP.html#sp-uwwtp"><span class="std std-ref">UWWTP</span></a> whose <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code> is
+<code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> in <a class="reference internal" href="DescriptiveDataset/Agglomeration.html#art23-agglomeration"><span class="std std-ref">Agglomeration</span></a>;
+<code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code> in <a class="reference internal" href="DescriptiveDataset/Measure.html#art23-measure"><span class="std std-ref">Measure</span></a>, <a class="reference internal" href="DescriptiveDataset/CulturalHeritageExtension.html#art23-culturalheritageextension"><span class="std std-ref">CulturalHeritageExtension</span></a> and
+<a class="reference internal" href="DescriptiveDataset/LessStringentTreatment.html#art23-lessstringenttreatment"><span class="std std-ref">LessStringentTreatment</span></a></p></td>
+<td><p>The code of an agglomeration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code> of a row of <a class="reference internal" href="../SpatialPoints/Agglomeration.html#sp-agglomeration"><span class="std std-ref">Agglomeration</span></a> whose <code class="docutils literal notranslate"><span class="pre">thematicIdIdentifierScheme</span></code>
+is <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>The code of a discharge point</p></td>
+<td><p><a class="reference internal" href="../SpatialPoints/DischargePoint.html#sp-dischargepoint"><span class="std std-ref">DischargePoint</span></a>, scheme <code class="docutils literal notranslate"><span class="pre">euDischargePointCode</span></code>: not referred to by Article 23; the
+Article 22 reporting is expected to use it</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the UWWTP and Agglomeration tables of Article 23 the field keeps the spatial points name,
+<code class="docutils literal notranslate"><span class="pre">thematicIdIdentifier</span></code>, and the table says which scheme applies. Elsewhere the field is named
+after its scheme, <code class="docutils literal notranslate"><span class="pre">euUWWTPCode</span></code> or <code class="docutils literal notranslate"><span class="pre">euAgglomerationCode</span></code>, and a measure may list several codes. A
+code must already have been accepted in the spatial points, for the reporting country and the
+right scheme (<a class="reference internal" href="../SpatialPoints/index.html#sp-references"><span class="std std-ref">Use by Article 22 and Article 23 reporting</span></a>). Earlier reporting stays valid when an object later changes or
+is retired. There is no field linking a plant to an agglomeration in Article 23.</p>
+</section>
+<section id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Tables of the three datasets</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 18.0%" />
 <col style="width: 18.0%" />
@@ -903,7 +1021,7 @@ of each measure.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a></p></td>
 <td><p>One per measure and source of financing</p></td>
-<td><p>Conditional: required for each measure whose cost is known or estimated</p></td>
+<td><p>Required: at least one per measure</p></td>
 <td><p>Capital expenditure of each measure per cycle, by source of financing, with its funding
 status.</p></td>
 </tr>
@@ -937,6 +1055,7 @@ status.</p></td>
 </div>
 <p>The total investment of a Member State is the sum of <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditure1stCycle</span></code> and
 <code class="docutils literal notranslate"><span class="pre">totalCapitalExpenditureAfter1stCycle</span></code> over all the rows of <a class="reference internal" href="DescriptiveDataset/MeasureFinancing.html#art23-measurefinancing"><span class="std std-ref">MeasureFinancing</span></a>.</p>
+</section>
 </section>
 
 
@@ -977,6 +1096,20 @@ status.</p></td>
                 <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-and-tables">Datasets and tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art23-spatial-links">Links to the spatial points</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">Tables</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -1029,8 +1162,8 @@ status.</p></td>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

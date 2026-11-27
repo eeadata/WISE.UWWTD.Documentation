@@ -805,37 +805,39 @@ classDiagram
 direction LR
 
 class SelfAssessment{
-    + article3Compliance: ComplianceShare [1]
-    + article3Compliance1000to1999: ComplianceShareEstimated [1]
+    + article3Compliance2000andAbove: Percentage [1]
+    + article3Compliance1000to1999: Percentage [1]
     + article4Compliance: YesNo [1]
     + article5ManagementPlanCount: nonNegativeValue [1]
-    + article6Compliance: ComplianceShare [1]
-    + article6Compliance1000to1999: ComplianceShareEstimated [1]
-    + article7Compliance: ComplianceShareEstimated [1]
-    + article8Compliance: ComplianceShareEstimated [1]
+    + article6Compliance2000andAbove: Percentage [1]
+    + article6Compliance1000to1999: Percentage [1]
+    + article7Compliance: Percentage [1]
+    + article8Compliance: Percentage [1]
 }
 
 classDef default fill:white,stroke:#000;
 classDef forFixing fill:white,stroke:#f00;
 
     </pre><figcaption>
-<p><span class="caption-number">Figure 4 </span><span class="caption-text">Article 23 - SelfAssessment - draft</span><a class="headerlink" href="#article23-selfassessment-classdiagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Figure 8 </span><span class="caption-text">Article 23 - SelfAssessment - draft</span><a class="headerlink" href="#article23-selfassessment-classdiagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In <a class="reference internal" href="#article23-selfassessment-classdiagram"><span class="std std-numref">Figure 4</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields
+<p>In <a class="reference internal" href="#article23-selfassessment-classdiagram"><span class="std std-numref">Figure 8</span></a>, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> marks the Required fields
 (<a class="reference internal" href="../Terminology.html#art23-requirement-status"><span class="std std-ref">Requirement status</span></a>). The reference to the published management plans is reported in
 <a class="reference internal" href="MSSummary.html#art23-mssummary"><span class="std std-ref">MSSummary</span></a>.</p>
 <section id="self-assessment-fields">
 <h2>Self-assessment fields<a class="headerlink" href="#self-assessment-fields" title="Link to this heading">#</a></h2>
 <p>Each field records the Member State’s own assessment, at national level, of compliance with one
 Article in the first programme. The draft notes that detailed information may not yet be
-available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
-percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
-Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.</p>
+available, so Articles 3 and 6 are assessed as the share of compliant agglomerations, Article 4 as
+a yes or no answer, Article 5 as a count of agglomerations, and Articles 7 and 8 as the share of
+compliant treatment plants of 150 000 p.e. and above.</p>
+<p>Each share is a percentage, a whole number from 0 to 100 (<code class="docutils literal notranslate"><span class="pre">Percentage</span></code>, <a class="reference internal" href="../Terminology.html#art23-data-types"><span class="std std-ref">Data types</span></a>):
+for example <code class="docutils literal notranslate"><span class="pre">85</span></code> when 85 % comply, or <code class="docutils literal notranslate"><span class="pre">100</span></code> when all comply.</p>
 <p>Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
 agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 13 </span><span class="caption-text">SelfAssessment fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">SelfAssessment fields</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 26.0%" />
 <col style="width: 18.0%" />
@@ -854,19 +856,19 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance</span></code></p></td>
-<td><p>Article 3 compliance</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance2000andAbove</span></code></p></td>
+<td><p>Article 3 compliance, 2 000 p.e. and above</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 3 (collecting systems).</p></td>
-<td><p>ComplianceShare</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article3Compliance1000to1999</span></code></p></td>
 <td><p>Article 3 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 3.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article4Compliance</span></code></p></td>
 <td><p>Article 4 compliance</p></td>
@@ -882,33 +884,33 @@ agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e
 <td><p>Required</p></td>
 <td><p>–</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance</span></code></p></td>
-<td><p>Article 6 compliance</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance2000andAbove</span></code></p></td>
+<td><p>Article 6 compliance, 2 000 p.e. and above</p></td>
 <td><p>Share of agglomerations of 2 000 p.e. and above that comply with Article 6 (secondary treatment).</p></td>
-<td><p>ComplianceShare</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share"><span class="std std-ref">Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article6Compliance1000to1999</span></code></p></td>
 <td><p>Article 6 compliance, 1 000 to 1 999 p.e.</p></td>
 <td><p>Estimated share of agglomerations of 1 000 to 1 999 p.e. that comply with Article 6.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article7Compliance</span></code></p></td>
 <td><p>Article 7 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 7 tertiary treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">article8Compliance</span></code></p></td>
 <td><p>Article 8 compliance</p></td>
 <td><p>Share of treatment plants of 150 000 p.e. and above that meet the Article 8 quaternary treatment requirements.</p></td>
-<td><p>ComplianceShareEstimated</p></td>
+<td><p>Percentage</p></td>
 <td><p>Required</p></td>
-<td><p><a class="reference internal" href="../Codelists.html#art23-cl-compliance-share-estimated"><span class="std std-ref">Estimated compliance share - Articles 3, 6, 7 and 8</span></a></p></td>
+<td><p>A whole number</p></td>
 </tr>
 </tbody>
 </table>
@@ -1025,8 +1027,8 @@ agglomeration data is not stated.</p>
   Specification versions:
   <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/spatialpoints-v0.1.0">Spatial points 0.1.0</a>
   (draft, 2026-11-20) ·
-  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.1.0">Article 23 0.1.0</a>
-  (draft, 2026-11-20)
+  <a href="https://github.com/eeadata/WISE.UWWTD.Documentation/releases/tag/article23-v0.2.0">Article 23 0.2.0</a>
+  (draft, 2026-11-27)
 </p></div>
       
     </div>

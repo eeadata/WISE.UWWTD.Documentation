@@ -28,19 +28,19 @@ investment to reach or maintain compliance, with other renewal reported as natio
 ## OI-02 Self-assessment of Articles 3 to 8
 
 **Baseline.** After the country consultation the self-assessment was restructured: Articles 3 and
-6 are reported as the share of compliant agglomerations in percentage ranges, split between
+6 are reported as the share of compliant agglomerations, split between
 agglomerations of 2 000 p.e. and above and those of 1 000 to 1 999 p.e.; Article 4 is a yes or no
 answer on whether a system of authorisation and control of individual systems exists; Article 5 is
 a count of agglomerations of 100 000 p.e. and above that already have an integrated urban
 wastewater management plan; Articles 7 and 8 are the share of compliant treatment plants of
-150 000 p.e. and above.
+150 000 p.e. and above. Each share is a range of percentages from 0 to 100 (`PercentageRange`),
+which replaced the two lists of percentage bands (`ComplianceShare`, six bands, and
+`ComplianceShareEstimated`, five).
 
 **Questions.**
 
 * Is the share counted by number of agglomerations or by population equivalent?
-* Articles 3 and 6 use six percentage bands for the larger agglomerations and five for the
-  smaller ones, and Articles 7 and 8 use the five-band list. Should one set of bands be used
-  throughout?
+* Should a range be limited in width, or an exact share be asked for where the data allow it?
 * How is a single national share derived where a Member State holds only plant-level data?
 * Should the basis of each value be recorded, for example calculated or estimated?
 
@@ -126,10 +126,13 @@ yet be estimated, and using OtherInvestment for aggregated estimates. A minimum 
 reporting investments was also suggested.
 
 **Proposed answer.** Article 23(1)(b) asks for an indicative financial estimation, so a rough
-estimate is reported as `costStatus` = `estimated`. In the measure model, `costStatus` =
-`unknown` with no financing rows remains possible as an exception, where not even a rough
-estimate can be given, but raises a warning (check R16). No minimum threshold applies
+estimate is reported as `costStatus` = `estimated`. No minimum threshold applies
 ({ref}`art23-oi-measure-model`).
+
+**Changed (November 2026).** `costStatus` = `unknown`, a measure without financing rows accepted
+with a warning, was removed. Every measure has at least one financing row (check RF04), and each
+row gives more than 0 in `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle`
+or both (check R18).
 
 (art23-oi-loans)=
 ## OI-09 Loan fields
@@ -337,8 +340,6 @@ measure whose cost is known or estimated.
 
 * Terminology: should the tables and guidance use "measure" and "cost of measure", while keeping
   the references to Article 23(1)(b) to (d), which speak of investments?
-* Is `costStatus` = `unknown`, with no financing rows, accepted as an exception with a warning
-  (OI-08), or should an indicative estimate always be required?
 * Are `secured`, `appliedFor`, `planned` and `notIdentified` the funding statuses the Commission
   needs to assess progress?
 

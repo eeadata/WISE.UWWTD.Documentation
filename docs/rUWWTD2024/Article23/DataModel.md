@@ -118,7 +118,7 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
     of each measure.
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
-  - Conditional: required for each measure whose cost is known or estimated
+  - Required: at least one per measure
   - Capital expenditure of each measure per cycle, by source of financing, with its funding
     status.
 * - {ref}`art23-uwwtp`

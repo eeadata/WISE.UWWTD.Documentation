@@ -440,17 +440,19 @@ expenditure.
 The cost is not divided between the agglomerations, because nothing in the project says how it
 would be. Adding up the cost once per agglomeration would count it three times.
 
-(art23-example-cost-unknown)=
-## 4. A cost that cannot be estimated yet
+(art23-example-cost-estimate)=
+## 4. A cost that can only be roughly estimated
 
 **The question.** Several Member States said that investment costs cannot be estimated before the
 planning, design or feasibility studies are done, and that forecasts for less advanced projects
 would be very uncertain.
 
 **Filling it in.** The Member State knows that ten small coastal plants must remove nitrogen
-within the next ten years, but not yet which plants come first or what the work will cost. It
-reports one measure that lists the ten plants and the agglomerations they serve, and says that the
-cost is unknown. There are no financing rows.
+within the next ten years, but not yet which plants come first or what the work will cost exactly.
+It reports one measure that lists the ten plants and the agglomerations they serve. Article
+23(1)(b) asks for an indicative financial estimation, and a rough one is enough: at a typical cost
+of 1.5 million per plant, the measure costs about 15.0. Spread evenly over the years 2028 to 2036,
+that is 10.0 in the 1st cycle and 5.0 after it. No source of financing is identified yet.
 
 :::{list-table} Measure: what
 :header-rows: 1
@@ -484,18 +486,36 @@ cost is unknown. There are no financing rows.
 * - `M006`
   - `planned`
   - `[,2036]`
-  - `unknown`
+  - `estimated`
+:::
+
+:::{list-table} MeasureFinancing
+:header-rows: 1
+:widths: 8 28 24 12 12 8 8
+
+* - measureCode
+  - fundingSource
+  - europeanUnionFundName
+  - loanName
+  - fundingStatus
+  - 1st cycle
+  - After 1st cycle
+* - `M006`
+  - `notIdentified`
+  - –
+  - –
+  - `notIdentified`
+  - 10.0
+  - 5.0
 :::
 
 The plants and agglomerations are listed even though the order of the work is not yet decided:
 Article 23(1)(b) asks for the investments for each agglomeration.
 
-The unknown cost raises a warning (check R16): Article 23(1)(b) asks for an indicative
-financial estimation, and this measure gives none. The delivery is accepted, but an estimate is
-preferred, even a rough one. Had the Member State used a typical cost of 1.5 million per plant, it
-would report `costStatus` = `estimated` and one financing row with `fundingSource` =
-`notIdentified`, its 15.0 spread over the years to 2036, for example 10.0 in the 1st cycle and 5.0
-after it, and no R16 warning.
+The cost cannot be left unknown: every measure has at least one financing row (check RF04), and
+each row gives more than 0 in at least one cycle (check R18). The estimate is refined in the next
+update of the programme, and `costStatus` becomes `known` once a project, tender or contract gives
+the cost.
 
 **Adding it back up.**
 
@@ -506,16 +526,19 @@ after it, and no R16 warning.
 * - Question
   - Answer
   - How
-* - Planned measures without a cost
-  - 1 measure, 10 plants
-  - Measures with `costStatus` = `unknown`
 * - Total investment
-  - Not known for this measure
-  - Not counted as zero
+  - 15.0
+  - 10.0 in the 1st cycle and 5.0 after it
+* - Of which only estimated
+  - 15.0
+  - Measures with `costStatus` = `estimated`
+* - No source identified yet
+  - 15.0
+  - Financing rows with `fundingSource` = `notIdentified`
 :::
 
-The measure is visible and counted, even though its cost is not. A total that includes it must say
-that one measure is not costed.
+The measure counts in the totals like any other. A total can say how much of it is only an
+estimate, from `costStatus`.
 
 (art23-example-gap)=
 ## 5. Part of the money still to be found
@@ -750,33 +773,27 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
 * - Measures reported
   - 8
   - Rows in Measure
-* - Of which with a cost
-  - 7
-  - `costStatus` is `known` or `estimated`
 * - Total investment
-  - 606.4
+  - 621.4
   - Sum of both expenditure fields over the financing rows
 * - In the 1st cycle, 2028 to 2033
-  - 441.9
+  - 451.9
   - Sum of `totalCapitalExpenditure1stCycle`
 * - After the 1st cycle
-  - 164.5
+  - 169.5
   - Sum of `totalCapitalExpenditureAfter1stCycle`
 * - For listed plants or agglomerations
-  - 156.4
-  - Examples 1, 2, 3 and 5
+  - 171.4
+  - Examples 1 to 5
 * - National
   - 450.0
   - Example 6
-* - Not yet costed
-  - 1 measure
-  - Example 4
 * - Secured financing
   - 63.6
   - Financing rows with `fundingStatus` = `secured`
 * - Financing gap
-  - 542.8
-  - 606.4 − 63.6
+  - 557.8
+  - 621.4 − 63.6
 * - EU funds sought
   - 50.0
   - All applied for; none secured yet
@@ -784,8 +801,8 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
   - 8.0
   - Example 1
 * - No source identified yet
-  - 20.0
-  - Example 5
+  - 35.0
+  - Examples 4 and 5
 :::
 
 **The wrong answers, and why.**
@@ -798,20 +815,17 @@ the 450.0 still to be spent from 2028 is spread evenly over the eight years to 2
   - Result
   - What went wrong
 * - Add up the capital expenditure after joining the measures to their plants and agglomerations
-  - 866.4
-  - Example 1 is counted twice, and examples 3 and 5 three times
+  - 1 166.4
+  - Example 1 is counted twice, examples 3 and 5 three times, and example 4 twenty times
 * - Count only the secured financing as the investment
   - 63.6
   - The investment is all the financing rows, whatever their `fundingStatus`
 * - Add up the capital expenditure once per measure type
-  - 706.4
+  - 721.4
   - Example 5 has two types and is counted twice
-* - Treat the measure without a cost as zero
-  - 606.4, presented as complete
-  - Example 4 is missing from the total, and nothing says so
 :::
 
 **The rule.** Add up costs per measure, then join to plants and agglomerations, or to measure
-types, only to see which ones a measure concerns, never to divide or repeat its cost. Report the
-measures without a cost next to every total, as a count. Keep secured financing apart from
-financing that is only applied for or planned, and keep loans apart from grants.
+types, only to see which ones a measure concerns, never to divide or repeat its cost. Keep secured
+financing apart from financing that is only applied for or planned, and keep loans apart from
+grants.

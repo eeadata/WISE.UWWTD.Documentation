@@ -28,9 +28,14 @@ In {numref}`Article23_SelfAssessment_ClassDiagram`, `[1]` marks the Required fie
 
 Each field records the Member State's own assessment, at national level, of compliance with one
 Article in the first programme. The draft notes that detailed information may not yet be
-available, so Articles 3 and 6 are assessed as the share of compliant agglomerations in
-percentage ranges, Article 4 as a yes or no answer, Article 5 as a count of agglomerations, and
-Articles 7 and 8 as the share of compliant treatment plants of 150 000 p.e. and above.
+available, so Articles 3 and 6 are assessed as the share of compliant agglomerations, Article 4 as
+a yes or no answer, Article 5 as a count of agglomerations, and Articles 7 and 8 as the share of
+compliant treatment plants of 150 000 p.e. and above.
+
+Each share is a range of percentages, from 0 to 100 (`PercentageRange`,
+{ref}`art23-data-types`): the Member State gives the range its data supports, for
+example `[76,85]`, or `[100,100]` when all comply. An exact share is a range of one value, such as
+`[92,92]`.
 
 Articles 3 and 6 are assessed separately for the two size bands, because the deadlines differ:
 agglomerations of 2 000 p.e. and above, and agglomerations of 1 000 to 1 999 p.e.

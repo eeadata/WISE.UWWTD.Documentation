@@ -92,7 +92,7 @@ multiplicity in square brackets: `nonNegativeValue (p.e.)`, `wiseIdentifier [0..
 was on the pages so that the documentation still shows the same links and code:
 
 * a cross-reference to a page or a code list, by its label: ``{ref}`art23-cl-cost-status` ``;
-* a field name or a code value, in backticks: `` `costStatus` = `unknown` ``.
+* a field name or a code value, in backticks: `` `costStatus` = `estimated` ``.
 
 The labels are those of the documentation: `datasets.csv` gives the label of each table page, and
 `codelists.csv` that of each code list. A tool that writes a Reportnet 3 schema or a message from
@@ -158,13 +158,15 @@ below, and the values are checked as `package.py` would write them. It reports, 
 field and rows:
 
 * errors: an unknown table or column; a Required field empty; a value that does not fit its type
-  (length, identifier, date, year, number, percentage, range, e-mail address, URL, language code,
-  point); a code not in its code list, for each value of a field with several values; two rows
-  with the same key; a `measureCode`, `documentCode` or `referenceCode` that is not the key of a
-  row of its table; with `--spatial`, a treatment plant or agglomeration code of Article 23 that is
-  not in the spatial points tables given; with `--country`, an identifier of another country;
-* warnings: a column renamed for its case, a link that cannot be checked because its table is not
-  given, a value in an `Attachment` field (files are added on the portal), a value given twice;
+  (length, identifier, date, year, number, percentage, range, range of percentages, e-mail address,
+  URL, language code, point); a code not in its code list, for each value of a field with several
+  values; two rows with the same key; a `measureCode`, `documentCode` or `referenceCode` that is not
+  the key of a row of its table; with `--spatial`, a treatment plant or agglomeration code of
+  Article 23 that is not in the spatial points tables given; with `--country`, an identifier of
+  another country; a MeasureFinancing row without an amount above 0 in either expenditure field
+  (check R18); a measure without a row in MeasureFinancing (check RF04);
+* warnings: a column renamed for its case, a link or check that cannot be done because its table is
+  not given, a value in an `Attachment` field (files are added on the portal), a value given twice;
 * the Conditional fields that have a value, to check by hand: the conditions are text and are not
   checked, nor are the ISO 639-2 and ZoneType vocabularies beyond the form of their codes.
 

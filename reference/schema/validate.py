@@ -12,19 +12,22 @@ Errors, which the portal would refuse or its validation would report:
 * a column that is not a field of the table, or a table that is not in the dataflow;
 * a Required field that is empty, or a [1..n] field without a value;
 * a value that does not fit its type: string length, identifier, date, year, number, percentage,
-  range, e-mail address, URL, language code, point;
+  range, range of percentages, e-mail address, URL, language code, point;
 * a code that is not in its code list (each value of a field with several values);
 * two rows with the same key (the primaryKey of datasets.csv);
 * a value that should be the key of a row of another table of the dataflow, and is not:
   measureCode in MeasureFinancing, the documentCode and referenceCode fields;
 * with --spatial, an Article23 code of a treatment plant or agglomeration that is not in the
-  spatial points tables given.
+  spatial points tables given;
+* a row breaking a rule of the quality checks that only uses the fields of the row: R18, an
+  amount above 0 in at least one of the two expenditure fields of MeasureFinancing;
+* a measure without a row in MeasureFinancing (check RF04).
 
-Warnings: a column renamed for its case, a link that cannot be checked because its table is not
-given, a value in an Attachment field (files are added on the portal, not in the CSV), the same
+Warnings: a column renamed for its case, a link or check that cannot be done because its table is
+not given, a value in an Attachment field (files are added on the portal, not in the CSV), the same
 value twice in one field.
 
-Not checked: the conditions ("Required if ..."), and the ISO 639-2 and ZoneType vocabularies
+Not checked: the other conditions ("Required if ..."), and the ISO 639-2 and ZoneType vocabularies
 beyond the form of their codes. The report lists the conditional fields with a value to look at.
 
 Options:
@@ -52,6 +55,12 @@ from package import Problems, cell, dataflow_tables, match_columns, read_input  
 from template import CODELIST, read  # noqa: E402
 
 IDENTIFIER_TYPES = ('wiseIdentifier', 'documentCode', 'referenceCode')
+# Rules on the fields of one row, from the quality checks of the documentation:
+# (dataflow, table, check, fields of which at least one is more than 0)
+MORE_THAN_ZERO = [('Article23', 'MeasureFinancing', 'R18',
+                   ('totalCapitalExpenditure1stCycle', 'totalCapitalExpenditureAfter1stCycle'))]
+# Rules between two tables: (dataflow, check, table, key, table that has at least one row per key)
+AT_LEAST_ONE_ROW = [('Article23', 'RF04', 'Measure', 'measureCode', 'MeasureFinancing')]
 # Article23 fields that hold the code of a spatial points object: (table or '*', field): table
 SPATIAL_LINKS = {('UWWTP', 'thematicIdIdentifier'): 'UWWTP',
                  ('Agglomeration', 'thematicIdIdentifier'): 'Agglomeration',
@@ -124,6 +133,14 @@ def type_problem(field, value, args):
             return 'a bound is not a year, a number or a date'
         if low != '' and high != '' and type(low) is type(high) and low > high:
             return 'the lower bound is above the upper bound'
+        return None
+    if typ == 'PercentageRange':
+        m = re.fullmatch(r'([\[(])\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*([\])])', value)
+        if not m:
+            return 'not a range of percentages with both bounds, such as [76,85]'
+        low, high = float(m.group(2)), float(m.group(3))
+        if not (0 <= low <= high <= 100):
+            return 'the bounds must be from 0 to 100, the lower first'
         return None
     if typ == 'Email':
         if len(value) > 250:
@@ -199,6 +216,31 @@ def validate(dataflow, source, args):
                         why = type_problem(f, v, args)
                         if why:
                             problems.error(where, f'{v!r}: {why}' if len(v) <= 60 else why)
+
+    # Rules on one row
+    for flow, table, rule, names in MORE_THAN_ZERO:
+        if flow != dataflow or table not in data:
+            continue
+        for rec in data[table]:
+            amounts = [number(rec[n]) for n in names if rec[n]]
+            if None in amounts:
+                continue  # not a number: reported above
+            if not any(a > 0 for a in amounts):
+                problems.error(f"{table} row {rec['_row']}",
+                               f"{' or '.join(names)}: none is more than 0 (check {rule})")
+
+    # Rules between two tables: (dataflow, check, table, its key, table with at least one row for it)
+    for flow, rule, table, key, other in AT_LEAST_ONE_ROW:
+        if flow != dataflow or not data.get(table):
+            continue
+        if other not in data:
+            problems.warn(table, f'check {rule} not done: no {other} table given')
+            continue
+        present = {rec[key] for rec in data[other]}
+        for rec in data[table]:
+            if rec[key] and rec[key] not in present:
+                problems.error(f"{table} row {rec['_row']}",
+                               f'{rec[key]!r} has no row in {other} (check {rule})')
 
     # Keys
     keys = {}
@@ -295,7 +337,7 @@ def report(dataflow, problems, counts, review, args):
 
 SAMPLES = {'date': '2026-01-01', 'point': 'POINT (10.5 50.25)', 'integer': '-1',
            'nonNegativeInteger': '1', 'nonNegativeValue': '1.5', 'Percentage': '50', 'gYear': '2030',
-           'range': '[2028,2033]', 'Email': 'someone@example.org', 'url': 'https://example.org',
+           'range': '[2028,2033]', 'PercentageRange': '[76,85]', 'Email': 'someone@example.org', 'url': 'https://example.org',
            'URL': 'https://example.org', 'Language': 'eng', 'ZoneType': 'x', 'Attachment': ''}
 
 
@@ -338,8 +380,12 @@ def check():
             rows.append(dict(rows[0]))                    # same key
         if t == 'MeasureFinancing':
             rows[0]['measureCode'] = 'XX0002'             # no such measure
+            rows[0]['totalCapitalExpenditure1stCycle'] = '0'
+            rows[0]['totalCapitalExpenditureAfter1stCycle'] = ''   # no amount above 0
         if t == 'MSSummary':
             rows[0]['situationAt'] = '30/06/2026'         # not a date
+        if t == 'SelfAssessment':
+            rows[0]['article3Compliance'] = '[90,110]'    # above 100
         if t == 'Contact':
             rows[0]['email'] = 'nobody'                   # not an e-mail address
         if t == 'Derogation':
@@ -350,6 +396,9 @@ def check():
     expected = ['Measure.measureName: Required, empty', "Measure.costStatus: 'nonsense' is not a code",
                 'Measure row 3: same key', "MeasureFinancing.measureCode: 'XX0002' is not a measureCode",
                 "MSSummary.situationAt: '30/06/2026' is not a date",
+                "MeasureFinancing: none is more than 0 (check R18)",
+                "Measure row 3: 'XX0001' has no row in MeasureFinancing (check RF04)",
+                "SelfAssessment.article3Compliance: '[90,110]': the bounds must be from 0 to 100",
                 "Contact.email: 'nobody': not an e-mail address",
                 "Derogation.reasonReference: 'XX0009' is not a referenceCode",
                 "UWWTP.thematicIdIdentifier: 'FR0001': does not start with XX"]

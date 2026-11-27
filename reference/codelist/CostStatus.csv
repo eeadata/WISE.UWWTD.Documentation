@@ -1,4 +1,3 @@
 notation,label,definition,notes
 known,Known,"The cost comes from a project, tender or contract.",
 estimated,Estimated,"The cost is an estimate, including a rough indicative one.",
-unknown,Unknown,No indicative estimate of the cost can be given yet.,An exception: the measure has no financing rows, so no capital expenditure, and raises a warning (check R16).

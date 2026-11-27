@@ -118,8 +118,8 @@ The Directive asks for an indicative financial estimation, an estimate of renewa
 at least an indication of sources of public financing. The first programme is therefore expected
 to reflect the best information available when it is prepared, and it is updated at least every
 six years. Where measures are not yet allocated to specific plants or agglomerations, they can be
-reported without listing them, and a cost that is not yet known can be reported as unknown
-({ref}`art23-investments`).
+reported without listing them, and a cost that is not yet known precisely is reported as an
+estimate, for which a rough figure is enough ({ref}`art23-investments`).
 
 ## Formats and tools
 

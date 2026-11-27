@@ -62,29 +62,6 @@ Used by `lessStringentGround` in {ref}`art23-lessstringenttreatment`.
 :::{codelist} LessStringentGround
 :::
 
-(art23-cl-compliance-share)=
-## Compliance share - Articles 3 and 6, agglomerations of 2 000 p.e. and above
-
-**Type:** `ComplianceShare`
-
-Used by `article3Compliance` and `article6Compliance` in {ref}`art23-selfassessment`.
-
-:::{codelist} ComplianceShare
-:::
-
-(art23-cl-compliance-share-estimated)=
-## Estimated compliance share - Articles 3, 6, 7 and 8
-
-**Type:** `ComplianceShareEstimated`
-
-Used by `article3Compliance1000to1999`, `article6Compliance1000to1999`, `article7Compliance` and
-`article8Compliance` in {ref}`art23-selfassessment`. The wider bands reflect that detailed data
-may not
-yet be available for these agglomerations and plants.
-
-:::{codelist} ComplianceShareEstimated
-:::
-
 (art23-cl-risk-assessment)=
 ## Risk assessment
 

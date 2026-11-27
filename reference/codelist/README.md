@@ -30,7 +30,7 @@ Code lists:
 | Dataflow | Types |
 | --- | --- |
 | Spatial points | `IdentifierScheme`, `WiseEvolutionType`, `ConditionOfFacilityValue` |
-| Article 23 | `DerogationType`, `DerogationStatus`, `EligibilityCriterion`, `ExtensionReason`, `LessStringentGround`, `ComplianceShare`, `ComplianceShareEstimated`, `RiskAssessment`, `ContributionPeriod`, `PlantAgglomerationStatus`, `UWWTDMeasureType`, `UWWTDGeographicCoverage`, `ImplementationStatus`, `CostStatus`, `Priority`, `EUFund`, `FundingSource`, `FundingStatus`, `CurrencyCode`, `EstimateBasis`, `Licence`, `YesNo` |
+| Article 23 | `DerogationType`, `DerogationStatus`, `EligibilityCriterion`, `ExtensionReason`, `LessStringentGround`, `RiskAssessment`, `ContributionPeriod`, `PlantAgglomerationStatus`, `UWWTDMeasureType`, `UWWTDGeographicCoverage`, `ImplementationStatus`, `CostStatus`, `Priority`, `EUFund`, `FundingSource`, `FundingStatus`, `CurrencyCode`, `EstimateBasis`, `Licence`, `YesNo` |
 | Article 23 (correspondence) | `UWWTDMeasureTypeWFD`: each measure type with its WFD key type of measure and main pressure |
 
 Code lists already published in the Eionet Data Dictionary and used as they are, such as the

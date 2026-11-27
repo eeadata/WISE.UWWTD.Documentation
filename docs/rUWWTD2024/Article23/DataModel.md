@@ -10,69 +10,76 @@ dataflows: a private dataset for the contact details, the descriptive dataset wi
 the draft reporting format, and a documents dataset holding the delivery metadata and every
 document the programme refers to.
 
-```{mermaid}
-flowchart LR
-  subgraph private["Private dataset"]
-    Contact
-  end
-  subgraph descriptive["Descriptive dataset"]
-    MSSummary
-    SelfAssessment
-    Derogation["Derogation<br/>one row per provision"]
-    CulturalHeritageExtension
-    LessStringentTreatment
-    Measure["Measure<br/>one row per measure"]
-    MeasureFinancing
-    UWWTP["UWWTP<br/>one row per plant"]
-    Agglomeration["Agglomeration<br/>one row per agglomeration"]
-  end
-  subgraph documents["Documents dataset"]
-    dcMetadata
-    Reference
-    Document
-  end
-  MSSummary -- "referenceCode" --> Reference
-  Derogation -- "referenceCode" --> Reference
-  CulturalHeritageExtension -- "referenceCode" --> Reference
-  LessStringentTreatment -- "referenceCode" --> Reference
-  Measure -. "measureReference" .-> Reference
-  MeasureFinancing -- "measureCode" --> Measure
-  Reference -- "documentCode" --> Document
-  dcMetadata -. "licenseDocument" .-> Document
-  dcMetadata -. "metadataDocument" .-> Document
-  subgraph spatial["Spatial points dataflow"]
-    SpUWWTP["UWWTP<br/>name and location"]
-    SpAgglomeration["Agglomeration<br/>name and location"]
-  end
-  UWWTP -- "thematicIdIdentifier" --> SpUWWTP
-  Agglomeration -- "thematicIdIdentifier" --> SpAgglomeration
-  Measure -- "euUWWTPCode" --> SpUWWTP
-  Measure -- "euAgglomerationCode" --> SpAgglomeration
-  CulturalHeritageExtension -- "euAgglomerationCode" --> SpAgglomeration
-  LessStringentTreatment -- "euAgglomerationCode" --> SpAgglomeration
+## Datasets and tables
+
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_Datasets_Flowchart.mmd
+:name: Article23_Datasets_Flowchart
+:caption: Article 23 - the three datasets and their tables - draft
+:align: center
 ```
 
-The names and locations of treatment plants and agglomerations are not reported in this dataflow.
-They are reported in the separate {ref}`spatial-points` dataflow. The UWWTP and Agglomeration tables
-refer to them by `thematicIdIdentifier`, and measures list them in `euUWWTPCode` or
-`euAgglomerationCode`. A code must already have been
-accepted there, for the reporting country and the right object type ({ref}`sp-references`).
-Earlier reporting stays valid when an object later changes or is retired.
-
-MSSummary and the three derogation tables cite documents, and a measure may do so in
-`measureReference`. The UWWTP
-and Agglomeration tables have no reference fields, and there is no field linking a plant to an
-agglomeration. The dashed links are optional: `dcMetadata` points to a document only where the
-licence or further metadata is delivered as one.
+MSSummary, the three derogation tables and Measure cite documents in their `referenceCode`
+fields, such as `programmeReference`: a code pointing to a row of Reference, a place within a
+document of the documents dataset. The tables of the descriptive dataset do not carry web
+addresses; each document is delivered as a hyperlink or as a file uploaded to Reportnet 3
+({ref}`art23-oi-documents`). The dashed link is optional: `dcMetadata` points to a document only
+where the licence or further metadata is delivered as one.
 
 Measures are the main object of the programme: each measure has one row in Measure, lists the
-plants or agglomerations it concerns in `euUWWTPCode` or `euAgglomerationCode`, and gives its
-sources of financing in MeasureFinancing ({ref}`art23-investments`). This is a proposal ({ref}`art23-oi-measure-model`).
+plants or agglomerations it concerns, and gives its sources of financing in MeasureFinancing
+({ref}`art23-investments`). This is a proposal ({ref}`art23-oi-measure-model`).
 
-The tables of the descriptive dataset do not carry web addresses. Fields such as
-`programmeReference` hold a `referenceCode` pointing into the documents dataset, which resolves to
-a document delivered as a hyperlink or as a file uploaded to Reportnet 3
-({ref}`art23-oi-documents`).
+(art23-spatial-links)=
+## Links to the spatial points
+
+The names and locations of treatment plants and agglomerations are not reported in this dataflow.
+They are reported once, in the {ref}`spatial-points` dataflow, where each object has a code,
+`thematicIdIdentifier`, and the scheme of that code, `thematicIdIdentifierScheme`: `euUWWTPCode`
+for a treatment plant, `euAgglomerationCode` for an agglomeration and `euDischargePointCode` for a
+discharge point ({ref}`sp-cl-scheme`).
+
+Article 23 refers to a plant or an agglomeration only by that code. Every link between the two
+dataflows is the same match: the code in the Article 23 field equals the `thematicIdIdentifier` of
+a spatial points object of the expected scheme.
+
+```{mermaid} /rUWWTD2024/Article23/mmd/Article23_SpatialLinks_Flowchart.mmd
+:name: Article23_SpatialLinks_Flowchart
+:caption: Article 23 - links to the spatial points, by thematicIdIdentifier and scheme - draft
+:align: center
+```
+
+:::{list-table} Links from Article 23 to the spatial points
+:header-rows: 1
+:widths: 34 22 44
+
+* - Article 23 field
+  - Holds
+  - Matched to, in the spatial points
+* - `thematicIdIdentifier` in {ref}`art23-uwwtp`;
+    `euUWWTPCode` in {ref}`art23-measure`
+  - The code of a treatment plant
+  - `thematicIdIdentifier` of a row of {ref}`sp-uwwtp` whose `thematicIdIdentifierScheme` is
+    `euUWWTPCode`
+* - `thematicIdIdentifier` in {ref}`art23-agglomeration`;
+    `euAgglomerationCode` in {ref}`art23-measure`, {ref}`art23-culturalheritageextension` and
+    {ref}`art23-lessstringenttreatment`
+  - The code of an agglomeration
+  - `thematicIdIdentifier` of a row of {ref}`sp-agglomeration` whose `thematicIdIdentifierScheme`
+    is `euAgglomerationCode`
+* - None
+  - The code of a discharge point
+  - {ref}`sp-dischargepoint`, scheme `euDischargePointCode`: not referred to by Article 23; the
+    Article 22 reporting is expected to use it
+:::
+
+In the UWWTP and Agglomeration tables of Article 23 the field keeps the spatial points name,
+`thematicIdIdentifier`, and the table says which scheme applies. Elsewhere the field is named
+after its scheme, `euUWWTPCode` or `euAgglomerationCode`, and a measure may list several codes. A
+code must already have been accepted in the spatial points, for the reporting country and the
+right scheme ({ref}`sp-references`). Earlier reporting stays valid when an object later changes or
+is retired. There is no field linking a plant to an agglomeration in Article 23.
+
+## Tables
 
 :::{list-table} Tables of the three datasets
 :header-rows: 1
@@ -118,7 +125,7 @@ a document delivered as a hyperlink or as a file uploaded to Reportnet 3
     of each measure.
 * - {ref}`art23-measurefinancing`
   - One per measure and source of financing
-  - Conditional: required for each measure whose cost is known or estimated
+  - Required: at least one per measure
   - Capital expenditure of each measure per cycle, by source of financing, with its funding
     status.
 * - {ref}`art23-uwwtp`

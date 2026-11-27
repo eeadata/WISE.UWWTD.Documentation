@@ -7,6 +7,7 @@ toc: false
 import {COUNTRIES, SEVERITIES, SEVERITY_COLORS, TABLES, countryName, fieldValue, rowsOf, worstSeverity} from "../components/prefill.js";
 import {csvButton} from "../components/download.js";
 import {markup} from "../components/reference.js";
+import {addBaseLayers} from "../components/basemap.js";
 ```
 
 ```js
@@ -121,10 +122,7 @@ const count = (f) => inCountry.filter(f).length.toLocaleString("en-US");
 ```js
 const mapDiv = html`<div class="map"></div>`;
 const map = L.map(mapDiv, {preferCanvas: true, worldCopyJump: true}).setView([50, 10], 4);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+addBaseLayers(map);
 const pointsLayer = L.layerGroup().addTo(map);
 const highlightLayer = L.layerGroup().addTo(map);
 new ResizeObserver(() => map.invalidateSize()).observe(mapDiv);
@@ -213,7 +211,7 @@ function zoomTo(d) {
 // A discharge point names its treatment plant: link to it.
 function valueCell(row, field) {
   const value = fieldValue(row, field);
-  if (field === "relatedZoneIdentifier" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
+  if (field === "groupingInstallation" && value) return html`<a href="./uwwtps?code=${encodeURIComponent(value)}"><code>${value}</code></a>`;
   return html`<span>${value}</span>`;
 }
 const detail = !sel
@@ -315,7 +313,7 @@ ${release.release_status}). It follows ${release.specification_version
   : "a specification from before the versions were introduced"}; the current one is
 <code>spatialpoints-v${ref.versions.SpatialPoints.version}</code>. Fields added since the release are
 marked as not in this release. The whole tables can be downloaded from the release, as
-Parquet. Map tiles © OpenStreetMap contributors.</p>
+Parquet. Map tiles © OpenStreetMap contributors; satellite imagery © Esri, Maxar, Earthstar Geographics and the GIS User Community.</p>
 
 <style>
 .tag { font-size: 0.8rem; vertical-align: middle; padding: 1px 6px; border-radius: 3px;

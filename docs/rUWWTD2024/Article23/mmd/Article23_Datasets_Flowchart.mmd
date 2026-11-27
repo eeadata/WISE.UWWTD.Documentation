@@ -1,0 +1,53 @@
+---
+config:
+  theme: neutral
+  flowchart:
+    curve: basis
+    nodeSpacing: 30
+    rankSpacing: 60
+---
+flowchart LR
+  subgraph private["Private dataset"]
+    Contact
+  end
+
+  subgraph descriptive["Descriptive dataset"]
+    direction TB
+    subgraph programme["Programme"]
+      direction LR
+      MSSummary ~~~ SelfAssessment
+    end
+    subgraph derogations["Derogations"]
+      direction LR
+      Derogation ~~~ CulturalHeritageExtension ~~~ LessStringentTreatment
+    end
+    subgraph measures["Measures and costs"]
+      direction LR
+      MeasureFinancing -- "measureCode" --> Measure
+    end
+    subgraph objects["Plants and agglomerations"]
+      direction LR
+      UWWTP ~~~ Agglomeration
+    end
+    programme ~~~ derogations ~~~ measures ~~~ objects
+  end
+
+  subgraph documents["Documents dataset"]
+    direction TB
+    dcMetadata
+    Reference -- "documentCode" --> Document
+    dcMetadata -. "licenseDocument,<br/>metadataDocument" .-> Document
+  end
+
+  private ~~~ descriptive
+  descriptive -- "referenceCode fields" --> Reference
+
+  classDef table fill:#ffffff,stroke:#1f4e79,color:#1a1a1a;
+  class Contact,MSSummary,SelfAssessment,Derogation,CulturalHeritageExtension,LessStringentTreatment,Measure,MeasureFinancing,UWWTP,Agglomeration,dcMetadata,Reference,Document table;
+  style private fill:#f3f3f3,stroke:#888
+  style descriptive fill:#eef4fb,stroke:#1f4e79
+  style documents fill:#f6f0fa,stroke:#6b3d8f
+  style programme fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style derogations fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style measures fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3
+  style objects fill:#ffffff00,stroke:#9db7d5,stroke-dasharray:3 3

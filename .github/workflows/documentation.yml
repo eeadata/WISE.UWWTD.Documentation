@@ -51,11 +51,13 @@ jobs:
           pip install -r docs/requirements.txt
 
       # Check the field tables in reference/schema against the types and code lists,
-      # and that the template databases can be built from them
+      # that the template databases can be built from them, and that tables check and pack
       - name: Check field tables
         run: |
           python reference/schema/check.py
           python reference/schema/template.py --check
+          python reference/schema/package.py --check
+          python reference/schema/validate.py --check
 
       # Check that every change to a specification comes with the version bump it needs
       # (reference/versioning.py). The report is shown in the summary of the run.
@@ -127,6 +129,10 @@ jobs:
       # the site. The deployment of main leaves branch/ and versions/ alone, adds the new snapshots,
       # and removes the previews of branches that no longer exist. A preview leaves everything
       # outside its own folder alone.
+      #
+      # rsync compares the contents of the files (--checksum), not their size and time: a page
+      # whose only change is the hash of a data file keeps its size, and when it was written in
+      # the same second as the checkout of gh-pages, the default check would skip it.
       - name: Deploy to GitHub Pages
         if: ${{ github.event_name == 'push' }}
         env:
@@ -139,7 +145,7 @@ jobs:
           git worktree add --detach site FETCH_HEAD
           publish() {
             if [ "$IS_MAIN" = true ]; then
-              rsync -a --delete --exclude=/.git --exclude=/branch/ --exclude=/versions/ _build/ site/
+              rsync -a --checksum --delete --exclude=/.git --exclude=/branch/ --exclude=/versions/ _build/ site/
               if [ -d _versions ]; then
                 mkdir -p site/versions
                 cp -r _versions/. site/versions/
@@ -161,7 +167,7 @@ jobs:
             else
               # Slashes in a branch name become subdirectories, which is harmless
               mkdir -p "site/branch/$REF_NAME"
-              rsync -a --delete _build/ "site/branch/$REF_NAME/"
+              rsync -a --checksum --delete _build/ "site/branch/$REF_NAME/"
             fi
             # Serve folders starting with an underscore (_static, _observablehq) as they are
             touch site/.nojekyll

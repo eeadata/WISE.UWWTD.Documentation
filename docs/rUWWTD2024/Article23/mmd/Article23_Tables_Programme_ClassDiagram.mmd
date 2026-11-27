@@ -1,0 +1,42 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  layout: dagre
+  theme: neutral
+---
+classDiagram
+direction LR
+
+class MSSummary {
+    + situationAt: date [1]
+    + programmeObligation: YesNo [1]
+    + programmeReference: referenceCode [0..1]
+    + prioritisationReference: referenceCode [0..1]
+    + article5ManagementPlanReference: referenceCode [0..1]
+    + riskAssessment: RiskAssessment [1]
+    + riskDate: date [0..1]
+    + riskIdentified: YesNo [0..1]
+    + riskSummaryReference: referenceCode [0..1]
+    + producerResponsibilityContribution: nonNegativeValue [0..1]
+    + millionUnitsOfNationalCurrency: CurrencyCode [0..1]
+    + producerResponsibilityEstimateBasedOn: EstimateBasis [1]
+    + contributionPeriod: ContributionPeriod [0..n]
+    + contributionPeriodOther: string1000 [0..1]
+    + remarks: string1000 [0..1]
+}
+
+class SelfAssessment {
+    + article3Compliance2000andAbove: Percentage [1]
+    + article3Compliance1000to1999: Percentage [1]
+    + article4Compliance: YesNo [1]
+    + article5ManagementPlanCount: nonNegativeValue [1]
+    + article6Compliance2000andAbove: Percentage [1]
+    + article6Compliance1000to1999: Percentage [1]
+    + article7Compliance: Percentage [1]
+    + article8Compliance: Percentage [1]
+}
+
+classDef default fill:#ffffff,stroke:#1f4e79,stroke-width:1px;
+classDef spatial fill:#e8f3ea,stroke:#2f7d4a,stroke-width:1.5px;
+classDef forFixing fill:white,stroke:#f00;

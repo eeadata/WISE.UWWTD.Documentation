@@ -25,6 +25,8 @@ The values of the code lists that fields use are in [reference/codelist](../code
 | `types.csv` | The simple types and the external vocabularies a field's type may name |
 | `check.py` | Checks the files against each other and against the code lists |
 | `template.py` | Makes an empty template database of a dataflow from these files (see below) |
+| `validate.py` | Checks filled tables against these files and the code lists (see below) |
+| `package.py` | Packs filled tables into zip files ready to upload on the Reportnet 3 portal (see below) |
 
 Tables:
 
@@ -90,7 +92,7 @@ multiplicity in square brackets: `nonNegativeValue (p.e.)`, `wiseIdentifier [0..
 was on the pages so that the documentation still shows the same links and code:
 
 * a cross-reference to a page or a code list, by its label: ``{ref}`art23-cl-cost-status` ``;
-* a field name or a code value, in backticks: `` `costStatus` = `unknown` ``.
+* a field name or a code value, in backticks: `` `costStatus` = `estimated` ``.
 
 The labels are those of the documentation: `datasets.csv` gives the label of each table page, and
 `codelists.csv` that of each code list. A tool that writes a Reportnet 3 schema or a message from
@@ -143,6 +145,62 @@ The spatial points template is a GeoPackage: its tables have a point geometry in
 SQLite checks foreign keys only when they are enabled on each connection
 (`PRAGMA foreign_keys = ON`). Conditions ("Required if ...") are not enforced; they are left to the
 quality checks.
+
+## Checking filled tables
+
+```sh
+python reference/schema/validate.py Article23 <input> --spatial <spatial-input> --country XX
+python reference/schema/validate.py SpatialPoints <input> --country XX
+```
+
+`validate.py` checks filled tables before they are packed. `<input>` is as for `package.py`
+below, and the values are checked as `package.py` would write them. It reports, with the table,
+field and rows:
+
+* errors: an unknown table or column; a Required field empty; a value that does not fit its type
+  (length, identifier, date, year, number, percentage, range, e-mail address, URL, language code,
+  point); a code not in its code list, for each value of a field with several values; two rows with
+  the same key; a `measureCode`, `documentCode` or `referenceCode` that is not the key of a row of
+  its table; with `--spatial`, a treatment plant or agglomeration code of Article 23 that is not in
+  the spatial points tables given; with `--country`, an identifier of another country; a
+  MeasureFinancing row without an amount above 0 in either expenditure field (check R18); a measure
+  without a row in MeasureFinancing (check RF04);
+* warnings: a column renamed for its case, a link or check that cannot be done because its table is
+  not given, a value in an `Attachment` field (files are added on the portal), a value given twice;
+* the Conditional fields that have a value, to check by hand: the conditions are text and are not
+  checked, nor are the ISO 639-2 and ZoneType vocabularies beyond the form of their codes.
+
+It exits with status 1 if there is an error. `--json <file>` also writes the report as JSON.
+`validate.py --check`, run by the workflow, fills every table with a valid row, which must pass,
+then plants mistakes, which must be found. It fails when a field has a type it has no check for.
+
+## Zip files for Reportnet 3
+
+```sh
+python reference/schema/package.py Article23 <input> <out-dir>
+python reference/schema/package.py SpatialPoints <input> <out-dir> --srid 4258
+```
+
+`package.py` turns filled tables into the files a reporter uploads on the Reportnet 3 portal.
+`<input>` is a folder with one CSV per table, named after the table (`Measure.csv`), or a template
+database with its tables filled. `<out-dir>` receives:
+
+* one zip per Reportnet 3 dataset that has a filled table: `Article23_DescriptiveDataset.zip`,
+  `Article23_DocumentsDataset.zip`, `Article23_PrivateDataset.zip`, `SpatialPoints.zip`;
+* `manifest.json`: the tables and rows packed, the version of the specification, the warnings, and
+  what is left to check.
+
+Each zip holds one CSV per filled table, named after the table, UTF-8, comma-separated. Its header
+is exactly the table's fields, in order, as Reportnet 3 requires: a column missing from the input
+is added empty, with a warning if the field is Required, and an unknown column is an error. Dates
+are written `yyyy-mm-dd`; several values of a field, separated by commas. A point is written as
+the GeoJSON Feature that Reportnet 3 stores, with its SRID in `properties.srid`; it may be given as
+GeoJSON, WKT, EWKT or a GeoPackage geometry, and `--srid` (4258 or 4326) gives the SRID of a value
+that carries none. `--delimiter` and `--multi-separator` change the separators.
+
+On an error it writes nothing and exits with status 1. It does not check code values, keys or
+conditions: run `validate.py` first; the portal's validation checks the conditions.
+`package.py --check`, run by the workflow, packs every table and reads the zips back.
 
 ## Adding a table
 

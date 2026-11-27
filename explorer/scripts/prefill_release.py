@@ -70,6 +70,13 @@ def specification_version():
     return f"spatialpoints-v{row['version']}"
 
 
+def specification_fields(table):
+    """The fields of a spatial points table in reference/schema, in their order."""
+    path = Path(__file__).resolve().parents[2] / 'reference' / 'schema' / 'SpatialPoints' / f'{table}.csv'
+    with open(path, encoding='utf-8', newline='') as f:
+        return [r['notation'] for r in csv.DictReader(f)]
+
+
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -79,7 +86,7 @@ def main(baseline, out):
     gpkg = next(baseline.glob('*.gpkg'))
     source = json.loads((baseline / 'manifest.json').read_text(encoding='utf-8'))
     out.mkdir(parents=True, exist_ok=True)
-    counts = {}
+    counts, differences = {}, {}
     con = sqlite3.connect(f'file:{gpkg}?mode=ro', uri=True)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
@@ -90,6 +97,10 @@ def main(baseline, out):
             cursor = con.execute(f'select * from "{table}" order by thematicIdIdentifier')
             columns = [c[0] for c in cursor.description]
             fields = [c for c in columns if c not in ('fid', 'geometry')]
+            spec = [c for c in specification_fields(table) if c != 'geometry']
+            if fields != spec:
+                differences[table] = {'notInSpecification': [c for c in fields if c not in spec],
+                                      'notInBaseline': [c for c in spec if c not in fields]}
             with open(tmp / f'{name}.csv', 'w', encoding='utf-8', newline='') as f:
                 w = csv.writer(f, lineterminator='\n')
                 w.writerow(['countryCode', 'longitude', 'latitude', *fields, *EXTRA])
@@ -124,13 +135,15 @@ def main(baseline, out):
         'release_status': source['release_status'],
         'note': ('Provisional and under development. Prefilled from the reporting under Directive '
                  '91/271/EEC, which is under Member State review. Not an EEA publication.'),
-        'source': source['source'],
+        # what the data comes from, without the paths of the machine the baseline was made on
+        'source': {k: v for k, v in source['source'].items() if k in ('name', 'file', 'files', 'sha256', 'pinned')}
+                  | {'name': source['source']['name'].split(': ', 1)[-1]},
         'baseline_made': source.get('created'),
-        # the version of the spatial points specification when the release is made: the fields
-        # follow it if the prefill script is up to date with reference/schema
+        # the version of the spatial points specification when the release is made, and whether
+        # the fields of the baseline are those of reference/schema/SpatialPoints
         'specification_version': specification_version(),
-        'fields': ('As in the specification of 13 November 2026, before the spatial points tables '
-                   'were aligned with the UML diagram of 16 November 2026: see README.md.'),
+        'fields': (f'As in specification {specification_version()}.' if not differences
+                   else {'note': f'Not as in specification {specification_version()}.', **differences}),
         'release_made': datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         'rows': counts,
         'files': files,
@@ -139,6 +152,8 @@ def main(baseline, out):
                                        encoding='utf-8')
     shutil.copy(Path(__file__).with_name('prefill_release_README.md'), out / 'README.md')
     print(json.dumps(counts))
+    if differences:
+        print('The fields differ from the specification:', json.dumps(differences), file=sys.stderr)
 
 
 if __name__ == '__main__':

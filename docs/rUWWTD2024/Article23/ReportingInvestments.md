@@ -104,10 +104,11 @@ Directive asks to identify the investments for each agglomeration, not to split 
   number of plants. Report it with `costStatus` = `estimated`.
 * **Estimated or known.** Use `estimated` for estimates and `known` for costs from a project,
   tender or contract.
-* **Unknown is an exception.** Where not even a rough estimate can be given yet, set `costStatus`
-  to `unknown` and report no financing rows. The measure is accepted but raises a warning
-  (check R16), since it gives no financial estimation, and the cost should be estimated in the
-  next update.
+* **Always an amount.** A cost cannot be reported as unknown. Every measure has at least one
+  financing row (check RF04), and each row gives more than 0 in
+  `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle` or both (check R18).
+  Where only a rough figure is possible, report it as `estimated`, and refine it in the next
+  update.
 * **Several types, one cost.** A measure with several types has one cost, which is not split
   between the types. Totals per type are therefore only exact for measures with one type; for the
   others, count the measures that include a type rather than adding up their costs.
@@ -296,8 +297,7 @@ of the money still to be found, and a national renewal programme.
   - Error
 * - RF04
   - Measure, MeasureFinancing
-  - A measure with `costStatus` = `known` or `estimated` has at least one MeasureFinancing row; a
-    measure with `costStatus` = `unknown` has none
+  - Each measure has at least one MeasureFinancing row
   - Error
 * - R04
   - MeasureFinancing, Measure
@@ -340,13 +340,13 @@ of the money still to be found, and a national renewal programme.
   - `producerResponsibilityContribution` is given if and only if
     `producerResponsibilityEstimateBasedOn` is not `notAvailable`
   - Error
-* - R16
-  - Measure
-  - `costStatus` = `unknown`: the measure gives no indicative financial estimation for
-    Article 23(1)(b) or (c)
-  - Warning
 * - R17
   - Measure
   - `implementationPeriod` has an upper bound, the completion year
+  - Error
+* - R18
+  - MeasureFinancing
+  - `totalCapitalExpenditure1stCycle`, `totalCapitalExpenditureAfter1stCycle` or both are more
+    than 0; neither is negative
   - Error
 :::

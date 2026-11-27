@@ -1,0 +1,43 @@
+---
+config:
+  theme: neutral
+  flowchart:
+    curve: basis
+    nodeSpacing: 20
+    rankSpacing: 90
+---
+flowchart LR
+  subgraph art23["Article 23 field with the code"]
+    direction TB
+    u1["<b>UWWTP</b><br/>thematicIdIdentifier"]
+    u2["<b>Measure</b><br/>euUWWTPCode"]
+    a1["<b>Agglomeration</b><br/>thematicIdIdentifier"]
+    a2["<b>Measure</b><br/>euAgglomerationCode"]
+    a3["<b>CulturalHeritageExtension</b><br/>euAgglomerationCode"]
+    a4["<b>LessStringentTreatment</b><br/>euAgglomerationCode"]
+  end
+
+  subgraph sp["Spatial points object"]
+    direction TB
+    spU["<b>UWWTP</b><br/>thematicIdIdentifier<br/>scheme <i>euUWWTPCode</i>"]
+    spA["<b>Agglomeration</b><br/>thematicIdIdentifier<br/>scheme <i>euAgglomerationCode</i>"]
+    spD["<b>DischargePoint</b><br/>thematicIdIdentifier<br/>scheme <i>euDischargePointCode</i><br/>not used by Article 23"]
+  end
+
+  u1 --> spU
+  u2 --> spU
+  a1 --> spA
+  a2 --> spA
+  a3 --> spA
+  a4 --> spA
+
+  classDef field fill:#ffffff,stroke:#1f4e79,color:#1a1a1a;
+  classDef plant fill:#e8f3ea,stroke:#2f7d4a,stroke-width:2px,color:#1a1a1a;
+  classDef unused fill:#f3f3f3,stroke:#9a9a9a,stroke-dasharray:4 3,color:#6a6a6a;
+  class u1,u2,a1,a2,a3,a4 field;
+  class spU,spA plant;
+  class spD unused;
+  style art23 fill:#eef4fb,stroke:#1f4e79
+  style sp fill:#f4faf5,stroke:#2f7d4a
+  linkStyle 0,1 stroke:#2f7d4a,stroke-width:2px
+  linkStyle 2,3,4,5 stroke:#1f4e79,stroke-width:2px

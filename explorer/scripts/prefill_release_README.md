@@ -27,17 +27,8 @@ where the code was converted to meet the WISE identifier rules.
 
 ## Fields
 
-The fields are those of the specification of 13 November 2026, when the prefill was made. The
-spatial points tables were since aligned with the UML diagram of 16 November 2026
-([documentation](https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/SpatialPoints/)).
-The differences:
-
-| Table | In these files | In the current specification |
-| --- | --- | --- |
-| Agglomeration | `specialisedZoneType` (the reported `aggState`) | Removed |
-| UWWTP | `conditionOfFacility` | `status` |
-| UWWTP | `uwwCapacity` | Moved to a later Article 22 table |
-| DischargePoint | `relatedZoneIdentifier`, `relatedZoneIdentifierScheme` | `groupingInstallation` |
-| All | – | `link`, and `validFrom`, `validTo` for UWWTP and DischargePoint |
-
-A later release will follow the current specification.
+The fields are those of the spatial points specification named in `manifest.json`
+(`specification_version`), as in the
+[documentation](https://eeadata.github.io/WISE.UWWTD.Documentation/rUWWTD2024/SpatialPoints/).
+If the specification changed after the release was made, the explorer marks the fields added since
+as not in the release.

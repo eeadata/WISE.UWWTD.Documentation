@@ -43,15 +43,31 @@ export default {
   border-radius: 4px; text-decoration: none; white-space: nowrap; }
 .docs-link:hover { background: var(--theme-foreground-focus); color: var(--theme-background); }
 .docs-bar-title { color: var(--theme-foreground-muted); font-size: 0.9rem; }
-</style>`,
+/* Full width: the page uses the whole window instead of Framework's 1440px; tables and maps follow */
+:root.full-width { --observablehq-max-width: 100vw; }
+.width-toggle { margin-left: auto; font: inherit; font-size: 0.85rem; cursor: pointer; white-space: nowrap;
+  padding: 0.2rem 0.6rem; border: 1px solid var(--theme-foreground-faint); border-radius: 4px;
+  background: none; color: var(--theme-foreground); }
+.width-toggle:hover, .width-toggle[aria-pressed="true"] { border-color: var(--theme-foreground-focus); }
+</style>
+<script>try { if (localStorage.getItem("explorer-full-width") === "1") document.documentElement.classList.add("full-width"); } catch (e) {}</script>`,
   // On every page: a link back to the documentation, and the notice that the explorer is under
   // development. The documentation is published one folder above the explorer. Framework rewrites
   // relative links that leave the explorer, so the link points to the published documentation, and
   // the script points it to the copy next to this explorer instead: in the preview of a branch, the
   // documentation of that branch.
   header: `<nav class="docs-bar"><a class="docs-link" id="docs-link" href="${DOCS}rUWWTD2024/index.html">← rUWWTD documentation</a>
-<span class="docs-bar-title">rUWWTD data explorer</span></nav>
-<script>{const m = location.pathname.match(/^(.*\\/)explorer\\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}</script>
+<span class="docs-bar-title">rUWWTD data explorer</span>
+<button type="button" class="width-toggle" id="width-toggle" aria-pressed="false" title="Use the whole width of the window">Full width</button></nav>
+<script>{const m = location.pathname.match(/^(.*\\/)explorer\\//); const a = document.getElementById("docs-link"); a.removeAttribute("target"); if (m) a.href = m[1] + "rUWWTD2024/index.html";}
+{const root = document.documentElement, b = document.getElementById("width-toggle");
+const show = () => b.setAttribute("aria-pressed", String(root.classList.contains("full-width")));
+show();
+b.addEventListener("click", () => {
+  const on = root.classList.toggle("full-width"); show();
+  try { localStorage.setItem("explorer-full-width", on ? "1" : "0"); } catch (e) {}
+  window.dispatchEvent(new Event("resize")); // charts and tables that follow the width redraw
+});}</script>
 <div class="under-development"><strong>Under development.</strong> This explorer and the
 documentation it draws on are drafts. The spatial points prefill is provisional data under Member State
 review, shown for reporters to check before their first delivery. Not an EEA publication.</div>`,

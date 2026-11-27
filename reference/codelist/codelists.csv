@@ -7,8 +7,6 @@ DerogationStatus,Article23,art23-cl-derogation-status,Proposed derogation status
 EligibilityCriterion,Article23,art23-cl-eligibility-criterion,Proposed eligibility criterion values,Notation|Label|Definition|Notes,24 22 34 20,notation
 ExtensionReason,Article23,art23-cl-extension-reason,Proposed extension reason values,Notation|Label|Definition|Notes,24 22 34 20,notation
 LessStringentGround,Article23,art23-cl-less-stringent-ground,Proposed less stringent treatment ground values,Notation|Label|Definition|Notes,24 22 34 20,notation
-ComplianceShare,Article23,art23-cl-compliance-share,Proposed compliance share values,Notation|Label|Definition|Notes,22 20 34 24,notation
-ComplianceShareEstimated,Article23,art23-cl-compliance-share-estimated,Proposed estimated compliance share values,Notation|Label|Definition|Notes,22 20 34 24,notation
 RiskAssessment,Article23,art23-cl-risk-assessment,Proposed risk assessment values,Notation|Label|Definition|Notes,20 20 36 24,notation
 ContributionPeriod,Article23,art23-cl-contribution-period,Proposed contribution period values,Notation|Label|Definition|Notes,20 20 36 24,notation
 PlantAgglomerationStatus,Article23,art23-cl-status,Proposed status values,Notation|Label|Definition|Notes,26 22 32 20,notation

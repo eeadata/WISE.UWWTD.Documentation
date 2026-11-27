@@ -165,6 +165,7 @@ Each field and each codelist value is described with the same three columns:
 Field tables add the data type, the requirement status and any condition or codelist. Codelist
 tables add notes. Notations are proposals and are not final ({ref}`art23-oi-naming`).
 
+(art23-data-types)=
 ## Data types
 
 The field tables use the WISE attribute types, as defined for the other WISE dataflows:
